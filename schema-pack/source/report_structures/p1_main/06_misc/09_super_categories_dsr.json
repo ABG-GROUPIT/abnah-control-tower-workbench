@@ -1,9 +1,9 @@
 {
   "report_id": "report:p1_main:06_misc:09_super_categories_dsr",
   "schema_status": "captured",
-  "verification_status": "needs_review",
+  "verification_status": "reviewed",
   "layout_kind": "grouped_columns",
-  "capture_method": "manual_schema_reconstruction",
+  "capture_method": "manual_visual_evidence_review",
   "structure_notes": "Wide two-level header combining source-wise charges and net sales, super-category sales, taxes, totals, and payment modes.",
   "blocks": [
     {
@@ -24,8 +24,10 @@
         { "label": "NET SALE" }, { "label": "MERCHANDISE" }, { "label": "COLD BEVERAGES" },
         { "label": "ADD-ON" }, { "label": "ALL DAY BREKKIE BOWLS & TOASTS" },
         { "label": "HOT BEVERAGES" }, { "label": "BREAK SOME BREAD" }, { "label": "DESSERTS" },
-        { "label": "EMPLOYEE MEAL" }, { "label": "BAKERY" }, { "label": "CGST GST@5%" },
-        { "label": "SGST GST@5%" }, { "label": "TOTAL TAX" }, { "label": "TOTAL AMOUNT" },
+        { "label": "EMPLOYEE MEAL" }, { "label": "BAKERY" },
+        { "label": "CGST(GST@5%)", "key": "cgst_gst_5" },
+        { "label": "SGST(GST@5%)", "key": "sgst_gst_5" },
+        { "label": "TOTAL TAX" }, { "label": "TOTAL AMOUNT" },
         { "label": "ROUND OFF" }, { "label": "GROSS AMOUNT" }, { "label": "CASH" },
         { "label": "CREDIT CARD", "children": [{ "label": "VISA", "key": "credit_card_visa" }] },
         { "label": "DEBIT CARD" }, { "label": "COUPON" },

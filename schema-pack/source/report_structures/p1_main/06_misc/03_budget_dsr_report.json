@@ -1,10 +1,10 @@
 {
   "report_id": "report:p1_main:06_misc:03_budget_dsr_report",
   "schema_status": "captured",
-  "verification_status": "needs_review",
+  "verification_status": "reviewed",
   "layout_kind": "grouped_rows",
-  "capture_method": "manual_schema_reconstruction",
-  "structure_notes": "Period groups repeat the same six measures vertically. Outlet values sit under a region and outlet hierarchy with a separate total column.",
+  "capture_method": "manual_visual_evidence_review",
+  "structure_notes": "Outlet Sales is the left row-group header. Seven period groups repeat the same six measures vertically. Dynamic outlet values sit under a dynamic region and outlet hierarchy with a separate total column.",
   "data_points": [
     { "key": "report_date", "label": "Date", "semantic_role": "date", "data_type": "date" },
     { "key": "period", "label": "Period", "semantic_role": "period_dimension" },
@@ -30,9 +30,9 @@
       "id": "primary",
       "name": "Outlet sales matrix",
       "kind": "matrix",
-      "row_headers": ["PERIOD", "METRIC"],
+      "row_headers": ["OUTLET SALES", ""],
       "value_columns": [
-        { "label": "REGION", "children": [{ "label": "OUTLET", "key": "outlet_metric_value" }] },
+        { "label": "DYNAMIC REGION", "children": [{ "label": "DYNAMIC OUTLET", "key": "outlet_metric_value" }] },
         { "label": "TOTAL", "key": "total_metric_value" }
       ],
       "row_groups": [

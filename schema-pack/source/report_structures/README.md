@@ -76,7 +76,7 @@ P1 was reconciled against all usable local report-output evidence on 2026-07-15.
 - 76 captured reports and 14 explicitly unavailable reports.
 - 0 partial reports and 0 pending reports.
 - 59 reviewed report blueprints across Sales Analysis, Settlements, Discounts & Offers, Tax Analysis, and Performance.
-- 17 captured Misc blueprints remain `needs_review`; this is a verification state, not an incomplete-schema state.
+- 7 captured Misc blueprints are reviewed and 10 remain `needs_review`; this is a verification state, not an incomplete-schema state.
 
 The nine active unavailable reports are one filter-only Discounts & Offers report and eight Misc reports for which no usable result table or export schema was present. Every unavailable entry carries its reason in a status override.
 

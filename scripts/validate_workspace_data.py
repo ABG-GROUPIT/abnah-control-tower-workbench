@@ -16,6 +16,7 @@ P1_COMPLETION_BASELINE = {
     "archived_reports": 5,
     "schema_statuses": {"captured": 76, "unavailable": 14},
     "active_schema_statuses": {"captured": 76, "unavailable": 9},
+    "verification_statuses": {"reviewed": 80, "needs_review": 10},
 }
 
 
@@ -102,6 +103,7 @@ def main() -> int:
     p1_archived = [report for report in p1_reports if report.get("isArchived")]
     p1_statuses = Counter(report.get("schemaStatus") for report in p1_reports)
     p1_active_statuses = Counter(report.get("schemaStatus") for report in p1_active)
+    p1_verification_statuses = Counter(report.get("verificationStatus") for report in p1_reports)
 
     if len(p1_reports) != P1_COMPLETION_BASELINE["catalog_reports"]:
         errors.append(
@@ -128,6 +130,12 @@ def main() -> int:
             "P1 active schema-status baseline changed: "
             f"expected {P1_COMPLETION_BASELINE['active_schema_statuses']}, found {dict(p1_active_statuses)}."
         )
+    if p1_verification_statuses != Counter(P1_COMPLETION_BASELINE["verification_statuses"]):
+        errors.append(
+            "P1 verification-status baseline changed: "
+            f"expected {P1_COMPLETION_BASELINE['verification_statuses']}, "
+            f"found {dict(p1_verification_statuses)}."
+        )
 
     for report in p1_reports:
         report_id = report.get("id", "")
@@ -146,7 +154,7 @@ def main() -> int:
         return 1
 
     print(f"Workspace validation passed: {len(report_ids)} reports.")
-    print("P1 completion guard passed: 76 captured, 14 unavailable, 0 partial, 0 pending.")
+    print("P1 completion guard passed: 76 captured, 14 unavailable, 80 reviewed, 0 partial, 0 pending.")
     return 0
 
 

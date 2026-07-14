@@ -64,31 +64,31 @@ report:p1_main:05_performance:16_user_attendance_report_detailed,user_attendance
 report:p1_main:05_performance:17_user_attendance_report_summary,user_attendance_report_summary,p1_main,05_performance,unavailable,reviewed,flat,published,0,1,True
 report:p1_main:06_misc:24_advance_booking_report,Advance Booking Report,p1_main,06_misc,unavailable,reviewed,flat,published,0,1,False
 report:p1_main:06_misc:22_aggregator_status_report,Aggregator Status Report,p1_main,06_misc,unavailable,reviewed,flat,published,0,1,False
-report:p1_main:06_misc:03_budget_dsr_report,Budget DSR Report,p1_main,06_misc,captured,needs_review,grouped_rows,published,12,2,False
+report:p1_main:06_misc:03_budget_dsr_report,Budget DSR Report,p1_main,06_misc,captured,reviewed,grouped_rows,published,12,2,False
 report:p1_main:06_misc:17_call_center_report,Call Center Report,p1_main,06_misc,unavailable,reviewed,flat,published,0,1,False
-report:p1_main:06_misc:02_cashier_report,Cashier Report,p1_main,06_misc,captured,needs_review,grouped_columns,published,42,1,False
+report:p1_main:06_misc:02_cashier_report,Cashier Report,p1_main,06_misc,captured,reviewed,grouped_columns,published,42,1,False
 report:p1_main:06_misc:04_crm_report,CRM Report,p1_main,06_misc,captured,needs_review,flat,published,29,1,False
-report:p1_main:06_misc:12_entp_day_report,Entp Day Report,p1_main,06_misc,captured,needs_review,grouped_columns,published,29,1,False
+report:p1_main:06_misc:12_entp_day_report,Entp Day Report,p1_main,06_misc,captured,reviewed,grouped_columns,published,29,1,False
 report:p1_main:06_misc:11_entp_edc_report,Entp EDC Report,p1_main,06_misc,captured,needs_review,flat,published,13,1,False
 report:p1_main:06_misc:13_entp_reprint_report,Entp Reprint Report,p1_main,06_misc,captured,needs_review,flat,published,12,1,False
 report:p1_main:06_misc:21_expense_report,Expense Report,p1_main,06_misc,unavailable,reviewed,flat,published,0,1,False
 report:p1_main:06_misc:14_filter_invoices_report,filter_invoices_report,p1_main,06_misc,unavailable,reviewed,flat,published,0,1,False
 report:p1_main:06_misc:08_gift_card_report,Gift Card Report,p1_main,06_misc,unavailable,reviewed,flat,published,0,1,False
-report:p1_main:06_misc:18_item_recipe_report,Item Recipe Report,p1_main,06_misc,captured,needs_review,flat,published,8,1,False
+report:p1_main:06_misc:18_item_recipe_report,Item Recipe Report,p1_main,06_misc,captured,reviewed,flat,published,8,1,False
 report:p1_main:06_misc:15_item_out_of_stock,item_out_of_stock,p1_main,06_misc,captured,needs_review,flat,published,12,1,False
 report:p1_main:06_misc:07_msr_reload_report,msr_reload_report,p1_main,06_misc,unavailable,reviewed,flat,published,0,1,False
 report:p1_main:06_misc:10_online_orders_time_log,Online Orders Time Log,p1_main,06_misc,captured,needs_review,flat,published,27,1,False
 report:p1_main:06_misc:19_refund_item_detail_report,Refund Item Detail Report,p1_main,06_misc,unavailable,reviewed,flat,published,0,1,False
 report:p1_main:06_misc:25_removed_taxes_charges_report,Removed Taxes Charges Report,p1_main,06_misc,captured,needs_review,flat,published,14,1,False
 report:p1_main:06_misc:06_sales_and_reload_report,sales_and_reload_report,p1_main,06_misc,captured,needs_review,flat,published,16,1,False
-report:p1_main:06_misc:20_shift_report,Shift Report,p1_main,06_misc,captured,needs_review,grouped_columns,published,34,1,False
+report:p1_main:06_misc:20_shift_report,Shift Report,p1_main,06_misc,captured,reviewed,grouped_columns,published,34,1,False
 report:p1_main:06_misc:23_staff_meal_report,Staff Meal Report,p1_main,06_misc,captured,needs_review,flat,published,15,1,False
-report:p1_main:06_misc:09_super_categories_dsr,Super Categories DSR,p1_main,06_misc,captured,needs_review,grouped_columns,published,40,1,False
+report:p1_main:06_misc:09_super_categories_dsr,Super Categories DSR,p1_main,06_misc,captured,reviewed,grouped_columns,published,40,1,False
 report:p1_main:06_misc:26_unknown_miscellaneous_report_26,Unknown Miscellaneous Report 26,p1_main,06_misc,unavailable,reviewed,flat,published,0,1,True
 report:p1_main:06_misc:27_unknown_miscellaneous_report_27,Unknown Miscellaneous Report 27,p1_main,06_misc,unavailable,reviewed,flat,published,0,1,True
 report:p1_main:06_misc:01_void_bill_item_wise,Void Bill Item Wise,p1_main,06_misc,captured,needs_review,flat,published,24,1,False
 report:p1_main:06_misc:05_voucher_report,Voucher Report,p1_main,06_misc,captured,needs_review,flat,published,21,1,False
-report:p1_main:06_misc:16_whatsapp_message_report,Whatsapp Message Report,p1_main,06_misc,captured,needs_review,mixed,published,10,2,False
+report:p1_main:06_misc:16_whatsapp_message_report,Whatsapp Message Report,p1_main,06_misc,captured,reviewed,mixed,published,10,2,False
 report:p2_reports:01_analytics:05_average_bill,Average Bill,p2_reports,01_analytics,pending,needs_review,flat,published,0,1,False
 report:p2_reports:01_analytics:08_food_cost_report,Food Cost Report,p2_reports,01_analytics,pending,needs_review,flat,published,0,1,False
 report:p2_reports:01_analytics:07_forecast_comparison_report,Forecast Comparison Report,p2_reports,01_analytics,pending,needs_review,flat,published,0,1,False

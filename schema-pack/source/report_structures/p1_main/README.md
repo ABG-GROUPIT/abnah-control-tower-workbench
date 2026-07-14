@@ -24,7 +24,13 @@ Including archived placeholders, P1 contains 90 catalogue entries: 76 captured a
 - Generic repeating groups for dynamic dates, categories, sources, sections, meal periods, order types, and similar runtime members.
 - Explicit status overrides with reasons when no result schema was available.
 
-The first five sections contain 59 reviewed blueprints reconstructed from the complete local evidence set. The 17 captured Misc blueprints are structurally available but retain `needs_review` until separately checked.
+The first five sections contain 59 reviewed blueprints reconstructed from the complete local evidence set. Seven captured Misc blueprints have now been reviewed against the first Misc evidence batch; 10 captured Misc blueprints remain `needs_review` until separately checked.
+
+### Misc Review Batch 1
+
+Reviewed reports: Budget DSR Report, Cashier Report, Entp Day Report, Super Categories DSR, Whatsapp Message Report, Item Recipe Report, and Shift Report.
+
+This batch is routed to P1 Misc because its report catalogue and enterprise report definitions belong to `p1_main/06_misc`. It must not be copied into the similarly named P2 report sections.
 
 ## Folder Rules
 

@@ -1,9 +1,9 @@
 {
   "report_id": "report:p1_main:06_misc:16_whatsapp_message_report",
   "schema_status": "captured",
-  "verification_status": "needs_review",
+  "verification_status": "reviewed",
   "layout_kind": "mixed",
-  "capture_method": "manual_schema_reconstruction",
+  "capture_method": "manual_visual_evidence_review",
   "structure_notes": "Two account-level message counters precede a separate message-delivery table.",
   "blocks": [
     {

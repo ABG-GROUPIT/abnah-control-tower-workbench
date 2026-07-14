@@ -381,11 +381,11 @@
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/02_cashier_report.json",
-      "sha256": "6be22c98fbcf0ffa81f2eb69c594ce342ee977236de09dafa75f7927740d248c"
+      "sha256": "705aff3e06cb8235ae6f8e12986b3c922e7a8daa0c9edf90a436e42cd58373b3"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/03_budget_dsr_report.json",
-      "sha256": "daba0aca826f071735cdc5f33c03ef39109f75e180876c35b63f95146747be59"
+      "sha256": "bdeb36c8c832a0b22c3a5c4718629c093d995376fd5d9f0a4e5aca6dc1d27561"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/04_crm_report.json",
@@ -401,7 +401,7 @@
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/09_super_categories_dsr.json",
-      "sha256": "20acf1e23e3aeb6fa648a83029eaeec3d39bba0101ce4dc5eede71a68501018b"
+      "sha256": "adcc300832fe434319b19c0acb3d8d48fa8ac894e908d497d1763fc0f4b0e4d3"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/10_online_orders_time_log.json",
@@ -413,7 +413,7 @@
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/12_entp_day_report.json",
-      "sha256": "5602ff4011843b5a45e28f417ed3ce1b7374dd41166bfbd73003dbe93b704e5b"
+      "sha256": "5c4973a21c507a21878707624e424f89c44f15d0785d1e4401463bc4d5758ea7"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/13_entp_reprint_report.json",
@@ -425,15 +425,15 @@
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/16_whatsapp_message_report.json",
-      "sha256": "11dec63dc7f621f3928a280e85ec20e79163927277fc1bba6193b75f171d6a33"
+      "sha256": "70578ae83b2a2a41b6e221230b9b0d60d5823fd56415cbc7edddb957130a6dda"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/18_item_recipe_report.json",
-      "sha256": "eb02a96c3b35b9f4c54a96a9e8938206e01611d2c5280548d33156f36b6a4916"
+      "sha256": "ee3823e4c787a948689eae9ffea7d59800bf4ec5d1ff0b7a87d15a20524892dd"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/20_shift_report.json",
-      "sha256": "aabc4ca3b50cfa131aa97042a064b7ff3396ae2488185c706b7ad1012fed9fcc"
+      "sha256": "178405116bafb35bb9e1de18e2d5f06224b0e2dbf192cae1bd3878609a546f82"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/23_staff_meal_report.json",

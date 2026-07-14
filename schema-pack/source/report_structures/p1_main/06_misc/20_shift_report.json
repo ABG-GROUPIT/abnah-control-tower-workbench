@@ -1,9 +1,9 @@
 {
   "report_id": "report:p1_main:06_misc:20_shift_report",
   "schema_status": "captured",
-  "verification_status": "needs_review",
+  "verification_status": "reviewed",
   "layout_kind": "grouped_columns",
-  "capture_method": "pasted_export_headers_and_manual_schema_reconstruction",
+  "capture_method": "pasted_export_headers_and_manual_visual_evidence_review",
   "structure_notes": "Two-level wide table. Date is shared, while opening, closing, sales, cash flow, discount, and advance measures retain their displayed groups.",
   "blocks": [
     {

@@ -1,9 +1,9 @@
 {
   "report_id": "report:p1_main:06_misc:12_entp_day_report",
   "schema_status": "captured",
-  "verification_status": "needs_review",
+  "verification_status": "reviewed",
   "layout_kind": "grouped_columns",
-  "capture_method": "manual_schema_reconstruction",
+  "capture_method": "manual_visual_evidence_review",
   "structure_notes": "One wide report split into day-opening, day-closing, sales, cash-flow, and expense column groups.",
   "blocks": [
     {
