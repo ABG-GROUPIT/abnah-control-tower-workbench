@@ -1,0 +1,320 @@
+﻿report_id,report_name,page,section,domain,priority,is_core,schema_status,field_count,evidence_count,api_link_count,model_link_count
+report:p1_main:01_sales_analysis:01_outlet_sales,Outlet Sales,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,17,3,1,0
+report:p1_main:01_sales_analysis:02_brand_order_type_sales,Brand Order Type Sales,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,17,3,1,0
+report:p1_main:01_sales_analysis:03_hourly_sales_analysis,Hourly Sales Analysis,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,17,3,1,0
+report:p1_main:01_sales_analysis:04_hourly_item_sales_analysis,Hourly Item Sales Analysis,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,18,3,1,0
+report:p1_main:01_sales_analysis:05_daily_item_sales_analysis,Daily Item Sales Analysis,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,8,2,1,0
+report:p1_main:01_sales_analysis:06_consolidated_hourly_sales,Consolidated Hourly Sales,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,6,2,1,0
+report:p1_main:01_sales_analysis:07_consolidated_hourly_sales_tabwise,Consolidated Hourly Sales Tabwise,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,10,2,1,0
+report:p1_main:01_sales_analysis:08_daily_sales,Daily Sales,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,25,3,1,0
+report:p1_main:01_sales_analysis:09_daily_sales_analysis,Daily Sales Analysis,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,18,4,1,0
+report:p1_main:01_sales_analysis:10_daily_sales_tabwise,Daily Sales Tabwise,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,17,3,1,0
+report:p1_main:01_sales_analysis:11_daily_sales_sourcewise,Daily Sales Sourcewise,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,17,3,1,0
+report:p1_main:01_sales_analysis:12_daily_sales_with_categories,Daily Sales With Categories,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,74,6,1,0
+report:p1_main:01_sales_analysis:13_item_hourly_sales_by_tab,Item Hourly Sales By Tab,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,7,2,1,0
+report:p1_main:01_sales_analysis:14_hourly_sales_by_source,Hourly Sales By Source,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,7,2,1,0
+report:p1_main:01_sales_analysis:15_day_part_sales,Day Part Sales,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,12,4,1,0
+report:p1_main:01_sales_analysis:16_day_part_product_sales,Day Part Product Sales,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,10,3,1,0
+report:p1_main:01_sales_analysis:17_day_part_product_detailed,day_part_product_detailed,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,13,3,1,0
+report:p1_main:01_sales_analysis:18_brand_sales,Brand Sales,p1_main,01_sales_analysis,sales_revenue,P2,False,filter_and_context_only_needs_schema,0,5,1,0
+report:p1_main:01_sales_analysis:19_sales_contribution,Sales Contribution,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,50,6,1,0
+report:p1_main:01_sales_analysis:20_billwise_section_sales_analysis,Billwise Section Sales Analysis,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,15,3,1,0
+report:p1_main:01_sales_analysis:21_section_sales_analysis,section_sales_analysis,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,24,4,1,0
+report:p1_main:01_sales_analysis:22_source_analysis_summary,source_analysis_summary,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,10,3,1,0
+report:p1_main:01_sales_analysis:23_source_wise_tab_wise_item_analysis,source_wise_tab_wise_item_analysis,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,14,3,1,0
+report:p1_main:02_settlements:01_settlement_analysis,Settlement Analysis,p1_main,02_settlements,sales_revenue,P2,False,screenshot_schema_and_filter_available,11,2,1,0
+report:p1_main:02_settlements:02_settlement_analysis_consolidated,Settlement Analysis Consolidated,p1_main,02_settlements,sales_revenue,P2,False,screenshot_schema_and_filter_available,11,2,1,0
+report:p1_main:02_settlements:03_daily_payments_breakup,Daily Payments Breakup,p1_main,02_settlements,sales_revenue,P2,False,screenshot_schema_and_filter_available,8,2,1,0
+report:p1_main:02_settlements:04_daily_payments_breakup_consolidate,Daily Payments Breakup Consolidated,p1_main,02_settlements,sales_revenue,P2,False,screenshot_schema_and_filter_available,13,2,1,0
+report:p1_main:02_settlements:05_billwise_settlement_analysis,Billwise Settlement Analysis,p1_main,02_settlements,sales_revenue,P2,False,screenshot_schema_and_filter_available,19,3,1,0
+report:p1_main:02_settlements:06_enterprise_btc_report,Enterprise BTC Report,p1_main,02_settlements,sales_revenue,P2,False,screenshot_schema_and_filter_available,9,2,1,0
+report:p1_main:03_discounts_offers:01_daily_item_wise_discount,Daily Item Wise Discount,p1_main,03_discounts_offers,sales_revenue,P2,False,screenshot_schema_and_filter_available,9,2,1,0
+report:p1_main:03_discounts_offers:02_daily_discount_billwise,Daily Discount Billwise,p1_main,03_discounts_offers,sales_revenue,P2,False,screenshot_schema_and_filter_available,14,3,1,0
+report:p1_main:03_discounts_offers:03_offers_analysis,Offers Analysis,p1_main,03_discounts_offers,sales_revenue,P2,False,filter_only_needs_schema,0,1,1,0
+report:p1_main:03_discounts_offers:04_offer_budget,Offer Budget,p1_main,03_discounts_offers,sales_revenue,P2,False,screenshot_schema_and_filter_available,11,2,1,0
+report:p1_main:03_discounts_offers:05_discount_billwise_analysis,Discount Billwise Analysis,p1_main,03_discounts_offers,sales_revenue,P2,False,screenshot_schema_and_filter_available,18,3,1,0
+report:p1_main:03_discounts_offers:06_offer_code_report,Offer Code Report,p1_main,03_discounts_offers,sales_revenue,P2,False,screenshot_schema_and_filter_available,8,2,1,0
+report:p1_main:03_discounts_offers:07_offer_code_usage_report,Offer Code Usage Report,p1_main,03_discounts_offers,sales_revenue,P2,False,screenshot_schema_and_filter_available,6,2,1,0
+report:p1_main:03_discounts_offers:08_discount_and_complimentary_analysi,Discount And Complimentary Analysis,p1_main,03_discounts_offers,sales_revenue,P2,False,screenshot_schema_available_filter_missing_or_common,16,2,1,0
+report:p1_main:03_discounts_offers:09_entp_item_based_offer,Entp Item Based Offer,p1_main,03_discounts_offers,sales_revenue,P2,False,screenshot_schema_and_filter_available,8,2,1,0
+report:p1_main:03_discounts_offers:10_complimentary_head,Complimentary Head,p1_main,03_discounts_offers,sales_revenue,P2,False,not_captured,0,0,1,0
+report:p1_main:03_discounts_offers:11_complimentary_head_itemwise,Complimentary Head Itemwise,p1_main,03_discounts_offers,sales_revenue,P2,False,screenshot_schema_and_filter_available,9,2,1,0
+report:p1_main:03_discounts_offers:12_consolidated_item_complimentary,Consolidated Item Complimentary,p1_main,03_discounts_offers,sales_revenue,P2,False,screenshot_schema_and_filter_available,6,2,1,0
+report:p1_main:04_tax_analysis:01_daily_tax_analysis,Daily Tax Analysis,p1_main,04_tax_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,5,2,0,0
+report:p1_main:04_tax_analysis:02_daily_no_vat_analysis,Daily No VAT Analysis,p1_main,04_tax_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,3,2,0,0
+report:p1_main:04_tax_analysis:03_super_category_wise_daily_taxes,Super Category Wise Daily Taxes,p1_main,04_tax_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,6,2,1,0
+report:p1_main:04_tax_analysis:04_super_category_wise_no_vat,Super Category Wise No VAT,p1_main,04_tax_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,4,2,1,0
+report:p1_main:04_tax_analysis:05_tax_summary,Tax Summary,p1_main,04_tax_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,25,4,0,0
+report:p1_main:05_performance:01_menu_mix,Menu Mix,p1_main,05_performance,sales_revenue,P2,False,screenshot_schema_and_filter_available,10,2,1,0
+report:p1_main:05_performance:02_category_analysis,Category Analysis,p1_main,05_performance,sales_revenue,P2,False,screenshot_schema_and_filter_available,9,2,1,0
+report:p1_main:05_performance:03_super_category_sourcewise_sales,Super Category Sourcewise Sales,p1_main,05_performance,sales_revenue,P2,False,screenshot_schema_and_filter_available,14,2,1,0
+report:p1_main:05_performance:04_super_category_tabwise_sourcewise,Super Category Tabwise Sourcewise Sales,p1_main,05_performance,sales_revenue,P2,False,screenshot_schema_available_filter_missing_or_common,10,1,1,0
+report:p1_main:05_performance:05_item_analysis,Item Analysis,p1_main,05_performance,sales_revenue,P2,False,screenshot_schema_and_filter_available,11,3,1,0
+report:p1_main:05_performance:06_item_source_report,item_source_report,p1_main,05_performance,sales_revenue,P2,False,screenshot_schema_and_filter_available,11,2,1,0
+report:p1_main:05_performance:07_itemwise_enterprise,itemwise Enterprise,p1_main,05_performance,sales_revenue,P2,False,screenshot_schema_and_filter_available,4,2,1,0
+report:p1_main:05_performance:08_tab_wise_item_analysis,Tab Wise Item Analysis,p1_main,05_performance,sales_revenue,P2,False,screenshot_schema_and_filter_available,13,3,1,0
+report:p1_main:05_performance:09_item_incidence,item_incidence,p1_main,05_performance,sales_revenue,P2,False,screenshot_schema_and_filter_available,9,2,1,0
+report:p1_main:05_performance:10_highest_and_lowest_selling_items,Highest And Lowest Selling Items,p1_main,05_performance,sales_revenue,P2,False,screenshot_schema_and_filter_available,8,2,1,0
+report:p1_main:05_performance:11_tab_wise_analysis,Tab Wise Analysis,p1_main,05_performance,sales_revenue,P2,False,screenshot_schema_and_filter_available,12,4,0,0
+report:p1_main:05_performance:12_brand_performance_section_wise,Brand Performance Section Wise,p1_main,05_performance,sales_revenue,P2,False,screenshot_schema_and_filter_available,19,4,0,0
+report:p1_main:05_performance:13_brand_performance_report,Brand Performance Report,p1_main,05_performance,sales_revenue,P2,False,screenshot_schema_and_filter_available,10,3,0,0
+report:p1_main:05_performance:14_combo_report,Combo Report,p1_main,05_performance,sales_revenue,P2,False,screenshot_schema_and_filter_available,11,3,0,0
+report:p1_main:05_performance:15_meal_count_report,Meal Count Report,p1_main,05_performance,sales_revenue,P2,False,screenshot_schema_and_filter_available,6,2,0,0
+report:p1_main:05_performance:16_user_attendance_report_detailed,user_attendance_report_detailed,p1_main,05_performance,sales_revenue,P2,False,not_captured,0,0,0,0
+report:p1_main:05_performance:17_user_attendance_report_summary,user_attendance_report_summary,p1_main,05_performance,sales_revenue,P2,False,not_captured,0,0,0,0
+report:p1_main:06_misc:01_void_bill_item_wise,Void Bill Item Wise,p1_main,06_misc,sales_revenue,P2,False,not_captured,0,0,1,0
+report:p1_main:06_misc:02_cashier_report,Cashier Report,p1_main,06_misc,sales_revenue,P2,False,not_captured,0,0,0,0
+report:p1_main:06_misc:03_budget_dsr_report,Budget DSR Report,p1_main,06_misc,sales_revenue,P2,False,not_captured,0,0,0,0
+report:p1_main:06_misc:04_crm_report,CRM Report,p1_main,06_misc,sales_revenue,P2,False,not_captured,0,0,0,0
+report:p1_main:06_misc:05_voucher_report,Voucher Report,p1_main,06_misc,sales_revenue,P2,False,not_captured,0,0,0,0
+report:p1_main:06_misc:06_sales_and_reload_report,sales_and_reload_report,p1_main,06_misc,sales_revenue,P2,False,not_captured,0,0,1,0
+report:p1_main:06_misc:07_msr_reload_report,msr_reload_report,p1_main,06_misc,sales_revenue,P2,False,not_captured,0,0,0,0
+report:p1_main:06_misc:08_gift_card_report,Gift Card Report,p1_main,06_misc,sales_revenue,P2,False,not_captured,0,0,0,0
+report:p1_main:06_misc:09_super_categories_dsr,Super Categories DSR,p1_main,06_misc,sales_revenue,P2,False,not_captured,0,0,0,0
+report:p1_main:06_misc:10_online_orders_time_log,Online Orders Time Log,p1_main,06_misc,sales_revenue,P2,False,not_captured,0,0,1,0
+report:p1_main:06_misc:11_entp_edc_report,Entp EDC Report,p1_main,06_misc,sales_revenue,P2,False,not_captured,0,0,0,0
+report:p1_main:06_misc:12_entp_day_report,Entp Day Report,p1_main,06_misc,sales_revenue,P2,False,not_captured,0,0,1,0
+report:p1_main:06_misc:13_entp_reprint_report,Entp Reprint Report,p1_main,06_misc,sales_revenue,P2,False,not_captured,0,0,0,0
+report:p1_main:06_misc:14_filter_invoices_report,filter_invoices_report,p1_main,06_misc,vendor_procurement,P1,False,not_captured,0,0,1,0
+report:p1_main:06_misc:15_item_out_of_stock,item_out_of_stock,p1_main,06_misc,inventory_consumption,P1,False,not_captured,0,0,1,0
+report:p1_main:06_misc:16_whatsapp_message_report,Whatsapp Message Report,p1_main,06_misc,sales_revenue,P2,False,not_captured,0,0,0,0
+report:p1_main:06_misc:17_call_center_report,Call Center Report,p1_main,06_misc,sales_revenue,P2,False,not_captured,0,0,0,0
+report:p1_main:06_misc:18_item_recipe_report,Item Recipe Report,p1_main,06_misc,inventory_consumption,P1,False,not_captured,0,0,2,0
+report:p1_main:06_misc:19_refund_item_detail_report,Refund Item Detail Report,p1_main,06_misc,sales_revenue,P2,False,not_captured,0,0,1,0
+report:p1_main:06_misc:20_shift_report,Shift Report,p1_main,06_misc,sales_revenue,P2,False,not_captured,0,0,0,0
+report:p1_main:06_misc:21_expense_report,Expense Report,p1_main,06_misc,sales_revenue,P2,False,not_captured,0,0,0,0
+report:p1_main:06_misc:22_aggregator_status_report,Aggregator Status Report,p1_main,06_misc,sales_revenue,P2,False,not_captured,0,0,0,0
+report:p1_main:06_misc:23_staff_meal_report,Staff Meal Report,p1_main,06_misc,sales_revenue,P2,False,not_captured,0,0,0,0
+report:p1_main:06_misc:24_advance_booking_report,Advance Booking Report,p1_main,06_misc,sales_revenue,P2,False,not_captured,0,0,0,0
+report:p1_main:06_misc:25_removed_taxes_charges_report,Removed Taxes Charges Report,p1_main,06_misc,sales_revenue,P2,False,not_captured,0,0,0,0
+report:p1_main:06_misc:26_unknown_miscellaneous_report_26,Unknown Miscellaneous Report 26,p1_main,06_misc,sales_revenue,P2,False,not_captured,0,0,0,0
+report:p1_main:06_misc:27_unknown_miscellaneous_report_27,Unknown Miscellaneous Report 27,p1_main,06_misc,sales_revenue,P2,False,not_captured,0,0,0,0
+report:p2_reports:01_analytics:01_hourly_sales_report,Hourly Sales Report,p2_reports,01_analytics,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:01_analytics:02_half_hourly_sales_report,half_hourly_sales_report,p2_reports,01_analytics,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:01_analytics:03_hourly_sales_by_category,Hourly Sales By Category,p2_reports,01_analytics,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:01_analytics:04_growth_report,Growth Report,p2_reports,01_analytics,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:01_analytics:05_average_bill,Average Bill,p2_reports,01_analytics,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:01_analytics:06_income_analysis_report,Income Analysis Report,p2_reports,01_analytics,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:01_analytics:07_forecast_comparison_report,Forecast Comparison Report,p2_reports,01_analytics,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:01_analytics:08_food_cost_report,Food Cost Report,p2_reports,01_analytics,inventory_consumption,P1,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:01_analytics:09_kds_report,KDS Report,p2_reports,01_analytics,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:01_analytics:10_location_wise_sales,Location Wise Sales,p2_reports,01_analytics,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:02_attendance:01_user_attendance_report,User Attendance Report,p2_reports,02_attendance,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:02_attendance:02_single_user_attendance_report,Single User Attendance Report,p2_reports,02_attendance,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:01_kot_detail_report,KOT Detail Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:02_day_opening_variance_report,Day Opening Variance Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:03_kot_delete_history_report,KOT Delete History Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:04_complimentary_report,Complimentary Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:05_complimentary_detail_report_headwi,Complimentary Detail Report Headwise,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:06_discount_report,Discount Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:03_audit:07_discount_and_voucher_report,discount_and_voucher_report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:03_audit:08_offers_report,Offers Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:09_reprint_report,Reprint Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:10_kot_tracking_report,KOT Tracking Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:11_removed_taxes_charges_report,Removed Taxes Charges Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:12_report_by_time,Report By Time,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:13_feedback_report,Feedback Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:14_no_feedback_report,No Feedback Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:15_wis_report,Wis Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:16_feedback_report_advance,Feedback Report Advance,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:17_feedback_followup_report,Feedback Followup Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:18_feedback_without_bill_report,Feedback Without Bill Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:03_audit:19_oms_report_detail,OMS Report Detail,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:20_oms_report_analysis,OMS Report Analysis,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:21_revenue_report,Revenue Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:03_audit:22_negative_orders_report,Negative Orders Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:03_audit:23_call_center_report,Call Center Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:24_delivery_audit_report,Delivery Audit Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:25_service_charge_report,Service Charge Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:26_tips_report,Tips Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:27_charity_report,Charity Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:28_non_taxable_item_report,Non Taxable Item Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:03_audit:29_edited_bills_report,Edited Bills Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:03_audit:30_food_bills_void_tax_report,Food Bills Void Tax Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:03_audit:31_online_orders_time_log,Online Orders Time Log,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:03_audit:32_happy_hour_report,Happy Hour Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:33_item_based_offer_report,Item Based Offer Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:03_audit:34_virtual_user_report,Virtual User Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:35_bi_logs_report,BI Logs Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:36_rms_error_logs_report,RMS Error Logs Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:37_offline_log_report,Offline Log Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:38_aggregator_status_report,Aggregator Status Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:39_custom_group_report,Custom Group Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:40_bill_transfer_in_report,Bill Transfer In Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:03_audit:41_audit_report,audit_report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:42_msr_card_report,msr_card_report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:43_billwise_distribution,billwise_distribution,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:03_audit:44_bill_reprint_report,bill_reprint_report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:03_audit:45_billwise_sale_gst,Billwise_sale_GST,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:03_audit:46_cred_note_issued,cred_note_issued,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:47_day_part_daily_sales,day_part_daily_sales,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:03_audit:48_button_disc_detail_report,button_disc_detail_report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:49_staff_meal_report,staff_meal_report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:03_audit:50_bts_itemwise_report,BTS Itemwise Report,p2_reports,03_audit,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:04_category_item:01_item_by_source_report,Item By Source Report,p2_reports,04_category_item,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:04_category_item:02_item_wise_enterprise_report,Item Wise Enterprise Report,p2_reports,04_category_item,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:04_category_item:03_sale_by_item_category,Sale By Item Category,p2_reports,04_category_item,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:04_category_item:04_item_comment_wise_consolidated_rep,Item Comment Wise Consolidated Report,p2_reports,04_category_item,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:04_category_item:05_itemwise_consolidate,Itemwise Consolidate,p2_reports,04_category_item,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:04_category_item:06_section_category_wise_report,Section Category Wise Report,p2_reports,04_category_item,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:04_category_item:07_section_tabwise_sales_report,Section Tabwise Sales Report,p2_reports,04_category_item,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:04_category_item:08_itemwise_contribution,Itemwise Contribution,p2_reports,04_category_item,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:04_category_item:09_menu_mix_report,Menu Mix Report,p2_reports,04_category_item,sales_revenue,P2,False,schema_text_template_ready,0,0,2,0
+report:p2_reports:04_category_item:10_item_incidence_report,item_incidence_report,p2_reports,04_category_item,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:04_category_item:11_sessionwise_item_sale,Sessionwise Item Sale,p2_reports,04_category_item,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:04_category_item:12_product_report,Product Report,p2_reports,04_category_item,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:04_category_item:13_combo_report,Combo Report,p2_reports,04_category_item,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:04_category_item:14_assorted_items_report,assorted_items_report,p2_reports,04_category_item,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:04_category_item:15_addon_report,AddOn Report,p2_reports,04_category_item,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:04_category_item:16_product_price_variation_report,Product Price Variation Report,p2_reports,04_category_item,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:04_category_item:17_hourly_item_detail_billwise_with_s,Hourly Item Detail Billwise With Settlement Mode,p2_reports,04_category_item,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:04_category_item:18_item_stock_status_report,Item Stock Status Report,p2_reports,04_category_item,inventory_consumption,P1,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:05_crm:01_crm_report,CRM Report,p2_reports,05_crm,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:05_crm:02_bill_and_customer_consolidated_rep,Bill And Customer Consolidated Report,p2_reports,05_crm,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:05_crm:03_call_details_report,Call Details Report,p2_reports,05_crm,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:06_prepaid_card:01_card_report,Card Report,p2_reports,06_prepaid_card,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:07_sales:01_payment_details_report,Payment Details Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:02_payments_breakup_detailed,payments_breakup_detailed,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:03_tax_summary_report,Tax Summary Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:04_taxation_sale_report,Taxation Sale Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:05_category_wise_sales_report,Category Wise Sales Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:06_bill_item_detail_report,Bill Item Detail Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:07_settlement_report,Settlement Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:08_ttr_settlement_report,TTR Settlement Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:09_payments_breakup_report,Payments Breakup Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:10_btc_settlement_report,BTC Settlement Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:11_online_other_payment_detail_report,Online Other Payment Detail Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:12_online_other_payment_consolidated,Online Other Payment Consolidated Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:13_coupon_report,Coupon Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:14_instance_wise_report,Instance Wise Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:15_delivery_report,Delivery Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:16_daily_sales_report,Daily Sales Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:17_daily_sales_summary_report,Daily Sales Summary Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,2,0
+report:p2_reports:07_sales:18_day_wise_sales_report,Day Wise Sales Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:19_daily_sales_report_detailed,Daily Sales Report Detailed,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:20_day_closing_report,Day Closing Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:21_week_cost_report,Week Cost Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:22_mtax_log_report,MTAX Log Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:23_hourly_sales_summary,hourly_sales_summary,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:24_source_wise_analysis_report,Source Wise Analysis Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:25_bill_no_wise_report,Bill No Wise Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:26_bill_status_sales_report,Bill Status Sales Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:27_advance_booking_report,Advance Booking Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:28_advance_booking_session_consolidat,Advance Booking Session Consolidated,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:29_day_check_close_report,Day Check Close Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:30_enterprise_settlement_report,Enterprise Settlement Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:31_online_orders_report,Online Orders Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:32_daily_sales_breakup,Daily Sales Breakup,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:33_food_sold_report,Food Sold Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:34_bill_wise_sales_gst_billwise,Bill Wise Sales GST BillWise,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:35_wtd_sos_comparison,WTD SOS Comparison,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:36_gross_sale_wastage_report,Gross Sale Wastage Report,p2_reports,07_sales,inventory_consumption,P1,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:37_dsh_item_wise_report,DSH Item Wise Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:38_daily_sales_reversal,Daily Sales Reversal,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:39_day_wise_revenue_report,Day Wise Revenue Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:40_online_order_payment_details_repor,Online Order Payment Details Report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:07_sales:41_msr_card_reload_report,msr_card_reload_report,p2_reports,07_sales,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:08_gst:01_item_wise_gst_report,Item Wise GST Report,p2_reports,08_gst,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:08_gst:02_gst_wise_report,GST Wise Report,p2_reports,08_gst,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:08_gst:03_non_gst_wise_report,Non GST Wise Report,p2_reports,08_gst,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:08_gst:04_instance_wise_gst_report,Instance Wise GST Report,p2_reports,08_gst,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:08_gst:05_gstr_report,GSTR_report,p2_reports,08_gst,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:08_gst:06_tab_wise_gst_report,tab_wise_gst_report,p2_reports,08_gst,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:08_gst:07_hsn_report,hsn_report,p2_reports,08_gst,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:08_gst:08_item_per_bill_count_report,item_per_bill_count_report,p2_reports,08_gst,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:09_staff_perf:01_tab_user_waiter_cashier_breakdown,Tab User Waiter Cashier Breakdown Report,p2_reports,09_staff_perf,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:09_staff_perf:02_server_report_card,Server Report Card,p2_reports,09_staff_perf,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:09_staff_perf:03_compare_servers,Compare Servers,p2_reports,09_staff_perf,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:09_staff_perf:04_delivery_rider_tracking_report,Delivery Rider Tracking Report,p2_reports,09_staff_perf,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:09_staff_perf:05_employee_performance_by_category,Employee Performance By Category,p2_reports,09_staff_perf,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:10_cash_mgmt:01_day_report,Day Report,p2_reports,10_cash_mgmt,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:10_cash_mgmt:02_shift_report,Shift Report,p2_reports,10_cash_mgmt,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:10_cash_mgmt:03_envelope_report,Envelope Report,p2_reports,10_cash_mgmt,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:10_cash_mgmt:04_cash_in_cash_out_report,Cash In Cash Out Report,p2_reports,10_cash_mgmt,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:10_cash_mgmt:05_multi_currency_detail_report,Multi Currency Detail Report,p2_reports,10_cash_mgmt,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:11_banquet:01_banquet_function_list_report,Banquet Function List Report,p2_reports,11_banquet,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:11_banquet:02_banquet_sales_register,Banquet Sales Register,p2_reports,11_banquet,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:11_banquet:03_day_wise_sales_register,Day Wise Sales Register,p2_reports,11_banquet,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:12_bir:01_cashierwise_x_report,CashierWise X Report,p2_reports,12_bir,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:12_bir:02_z_report,Z Report,p2_reports,12_bir,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:12_bir:03_audit_log_report,Audit Log Report,p2_reports,12_bir,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p2_reports:12_bir:04_naac_sales_report,NAAC Sales Report,p2_reports,12_bir,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:12_bir:05_pwd_sales_report,PWD Sales Report,p2_reports,12_bir,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:12_bir:06_bir_sales_summary_report,BIR Sales Summary Report,p2_reports,12_bir,sales_revenue,P2,False,schema_text_template_ready,0,0,2,0
+report:p2_reports:12_bir:07_solo_parent_sales_report,Solo Parent Sales Report,p2_reports,12_bir,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:12_bir:08_senior_citizen_sales_report,Senior Citizen Sales Report,p2_reports,12_bir,sales_revenue,P2,False,schema_text_template_ready,0,0,1,0
+report:p2_reports:12_bir:09_20_e_journal_report,20 E Journal Report,p2_reports,12_bir,sales_revenue,P2,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:01_enterprise_reports:01_enterprise_entry,Enterprise Entry,p4_stock_admin,01_enterprise_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:01_enterprise_reports:02_erp_vendor_price,ERP Vendor Price,p4_stock_admin,01_enterprise_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:01_enterprise_reports:03_enterprise_stock_return,Enterprise Stock Return,p4_stock_admin,01_enterprise_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:01_enterprise_reports:04_enterprise_consumption,Enterprise Consumption,p4_stock_admin,01_enterprise_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:01_enterprise_reports:05_enterprise_stock_re_order,Enterprise Stock Re-Order,p4_stock_admin,01_enterprise_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,2,0
+report:p4_stock_admin:01_enterprise_reports:06_enterprise_purchase_order,Enterprise Purchase Order,p4_stock_admin,01_enterprise_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:01_enterprise_reports:07_enterprise_consolidated_indent,Enterprise Consolidated Indent,p4_stock_admin,01_enterprise_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:01_enterprise_reports:08_enterprise_variance,Enterprise Variance,p4_stock_admin,01_enterprise_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:01_enterprise_reports:09_enterprise_categorywise_cogs,Enterprise categorywise cogs,p4_stock_admin,01_enterprise_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:01_enterprise_reports:10_enterprise_bill_passing,Enterprise Bill Passing,p4_stock_admin,01_enterprise_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:01_enterprise_reports:11_enterprise_credit_note_report,Enterprise Credit Note Report,p4_stock_admin,01_enterprise_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:01_enterprise_reports:12_enterprise_wastage_report,Enterprise Wastage Report,p4_stock_admin,01_enterprise_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:01_enterprise_reports:13_enterprise_purchase_summary_report,Enterprise Purchase Summary Report,p4_stock_admin,01_enterprise_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:01_enterprise_reports:14_enterprise_internal_indent_report,Enterprise Internal Indent Report,p4_stock_admin,01_enterprise_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:01_enterprise_reports:15_enterprise_food_cost_report,Enterprise Food Cost Report,p4_stock_admin,01_enterprise_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:02_transactional_reports:01_entry_report,Entry Report,p4_stock_admin,02_transactional_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:02_transactional_reports:02_entry_sync_report,Entry Sync Report,p4_stock_admin,02_transactional_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:02_transactional_reports:03_payment_report,Payment Report,p4_stock_admin,02_transactional_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:02_transactional_reports:04_stock_return,Stock Return,p4_stock_admin,02_transactional_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:02_transactional_reports:05_purchase_detail,Purchase Detail,p4_stock_admin,02_transactional_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:02_transactional_reports:06_purchase_detail_consolidated,Purchase Detail Consolidated,p4_stock_admin,02_transactional_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:02_transactional_reports:07_purchase_requisition_report,Purchase Requisition Report,p4_stock_admin,02_transactional_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:02_transactional_reports:08_cut_code_report,Cut Code Report,p4_stock_admin,02_transactional_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:02_transactional_reports:09_bill_passing_report,Bill Passing Report,p4_stock_admin,02_transactional_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:02_transactional_reports:10_stock_in_stock_out_report,Stock In Stock Out Report,p4_stock_admin,02_transactional_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:03_po_so_reports:01_purchase_order,Purchase Order,p4_stock_admin,03_po_so_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:03_po_so_reports:02_standing_purchase_order,Standing Purchase Order,p4_stock_admin,03_po_so_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:03_po_so_reports:03_sales_order,Sales Order,p4_stock_admin,03_po_so_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:03_po_so_reports:04_openreturn_sales_order_report,OpenReturn Sales Order Report,p4_stock_admin,03_po_so_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:03_po_so_reports:05_erp_vendor_invoice,ERP Vendor Invoice,p4_stock_admin,03_po_so_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:03_po_so_reports:06_consolidated_salesorder_report_rec,Consolidated salesorder Report receiverWise,p4_stock_admin,03_po_so_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:04_indent_reports:01_indent_report,Indent Report,p4_stock_admin,04_indent_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:04_indent_reports:02_consolidated_indent,Consolidated Indent,p4_stock_admin,04_indent_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:04_indent_reports:03_consolidated_indent_items,Consolidated Indent Items,p4_stock_admin,04_indent_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:04_indent_reports:04_issue_report,Issue Report,p4_stock_admin,04_indent_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:04_indent_reports:05_consolidated_indent_report_outlet,Consolidated Indent Report Outlet Wise,p4_stock_admin,04_indent_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:04_indent_reports:06_suspense_report,Suspense Report,p4_stock_admin,04_indent_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:04_indent_reports:07_bulk_return_report,Bulk Return Report,p4_stock_admin,04_indent_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:05_aggregation_reports:01_item_wise_inflation_report,Item Wise Inflation Report,p4_stock_admin,05_aggregation_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:05_aggregation_reports:02_consumption_report,Consumption Report,p4_stock_admin,05_aggregation_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:05_aggregation_reports:03_variance_report,Variance Report,p4_stock_admin,05_aggregation_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:05_aggregation_reports:04_intermediate_semi,Intermediate (Semi),p4_stock_admin,05_aggregation_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:05_aggregation_reports:05_movement_report,Movement Report,p4_stock_admin,05_aggregation_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:05_aggregation_reports:06_finished_food,Finished Food,p4_stock_admin,05_aggregation_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:05_aggregation_reports:07_recipe_consumption_report,Recipe Consumption Report,p4_stock_admin,05_aggregation_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:06_analytical_reports:01_booking_journal,Booking Journal,p4_stock_admin,06_analytical_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:06_analytical_reports:02_food_cost_report,Food Cost Report,p4_stock_admin,06_analytical_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:06_analytical_reports:03_re_order_level,Re-Order Level,p4_stock_admin,06_analytical_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,2,0
+report:p4_stock_admin:06_analytical_reports:04_closing_stock_report,Closing Stock Report,p4_stock_admin,06_analytical_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:06_analytical_reports:05_cost_margin_report,Cost margin Report,p4_stock_admin,06_analytical_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:06_analytical_reports:06_pricing_ledger,Pricing Ledger,p4_stock_admin,06_analytical_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:06_analytical_reports:07_purchase_summary,Purchase Summary,p4_stock_admin,06_analytical_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:06_analytical_reports:08_stock_recipe_report,Stock Recipe Report,p4_stock_admin,06_analytical_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,2,0
+report:p4_stock_admin:07_other_reports:01_advance_ordering_report,Advance Ordering Report,p4_stock_admin,07_other_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:07_other_reports:02_nc_head_consumption_cost,NC Head Consumption Cost,p4_stock_admin,07_other_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:07_other_reports:03_expiry_report,Expiry Report,p4_stock_admin,07_other_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:07_other_reports:04_default_cost_report,Default Cost Report,p4_stock_admin,07_other_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:07_other_reports:05_kitchen_wise_item_report,Kitchen Wise Item Report,p4_stock_admin,07_other_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:07_other_reports:06_vendor_pricing_report,Vendor Pricing Report,p4_stock_admin,07_other_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:07_other_reports:07_late_delivery_report,Late Delivery Report,p4_stock_admin,07_other_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:07_other_reports:08_rr_reports,RR Reports,p4_stock_admin,07_other_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:07_other_reports:09_pending_requests,Pending Requests,p4_stock_admin,07_other_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:07_other_reports:10_manual_month_end_report,Manual Month End Report,p4_stock_admin,07_other_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:07_other_reports:11_hsn_wise_summary,HSN Wise Summary,p4_stock_admin,07_other_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:07_other_reports:12_sales_payout_report,Sales Payout Report,p4_stock_admin,07_other_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:07_other_reports:13_vendor_last_5_purchase_price,Vendor Last 5 Purchase Price,p4_stock_admin,07_other_reports,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:07_other_reports:14_yield_report,Yield Report,p4_stock_admin,07_other_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:07_other_reports:15_production_plan_report,Production Plan Report,p4_stock_admin,07_other_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:07_other_reports:16_gate_pass_report,Gate Pass Report,p4_stock_admin,07_other_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:07_other_reports:17_bin_packaging_report,Bin Packaging Report,p4_stock_admin,07_other_reports,vendor_procurement,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:08_summary:01_deployment_summary,Deployment Summary,p4_stock_admin,08_summary,inventory_consumption,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:09_bill_passing:01_bill_passing,Bill Passing,p4_stock_admin,09_bill_passing,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
+report:p4_stock_admin:10_catering:01_catering,Catering,p4_stock_admin,10_catering,inventory_consumption,P1,False,schema_text_template_ready,0,0,0,0
+report:p4_stock_admin:11_item_master_details:01_raw_material_item_detail,Raw Material Item Detail,p4_stock_admin,11_item_master_details,inventory_consumption,P1,False,schema_text_template_ready,0,0,0,0

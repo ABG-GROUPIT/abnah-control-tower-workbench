@@ -1,0 +1,56 @@
+{
+  "status_overrides": {
+    "report:p1_main:06_misc:07_msr_reload_report": {
+      "schema_status": "unavailable",
+      "verification_status": "reviewed",
+      "note": "No usable rows or export schema were available during this capture cycle."
+    },
+    "report:p1_main:06_misc:08_gift_card_report": {
+      "schema_status": "unavailable",
+      "verification_status": "reviewed",
+      "note": "No usable rows or export schema were available during this capture cycle."
+    },
+    "report:p1_main:06_misc:14_filter_invoices_report": {
+      "schema_status": "unavailable",
+      "verification_status": "reviewed",
+      "note": "No usable rows or export schema were available during this capture cycle."
+    },
+    "report:p1_main:06_misc:17_call_center_report": {
+      "schema_status": "unavailable",
+      "verification_status": "reviewed",
+      "note": "No usable rows or export schema were available during this capture cycle."
+    },
+    "report:p1_main:06_misc:19_refund_item_detail_report": {
+      "schema_status": "unavailable",
+      "verification_status": "reviewed",
+      "note": "No usable rows or export schema were available during this capture cycle."
+    },
+    "report:p1_main:06_misc:21_expense_report": {
+      "schema_status": "unavailable",
+      "verification_status": "reviewed",
+      "note": "No usable rows or export schema were available during this capture cycle."
+    },
+    "report:p1_main:06_misc:22_aggregator_status_report": {
+      "schema_status": "unavailable",
+      "verification_status": "reviewed",
+      "note": "No usable rows or export schema were available during this capture cycle."
+    },
+    "report:p1_main:06_misc:24_advance_booking_report": {
+      "schema_status": "unavailable",
+      "verification_status": "reviewed",
+      "note": "No usable rows or export schema were available during this capture cycle."
+    },
+    "report:p1_main:06_misc:26_unknown_miscellaneous_report_26": {
+      "schema_status": "unavailable",
+      "verification_status": "reviewed",
+      "is_archived": true,
+      "note": "Placeholder was not present in the report menu and is excluded from active discovery."
+    },
+    "report:p1_main:06_misc:27_unknown_miscellaneous_report_27": {
+      "schema_status": "unavailable",
+      "verification_status": "reviewed",
+      "is_archived": true,
+      "note": "Placeholder was not present in the report menu and is excluded from active discovery."
+    }
+  }
+}

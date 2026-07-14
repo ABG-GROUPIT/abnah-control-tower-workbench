@@ -1,0 +1,23 @@
+{
+  "status": "usable_with_warnings",
+  "errors": [],
+  "warnings": [
+    "261 reports do not yet have captured fields.",
+    "No report-to-API mapping is UAT verified; displayed API links are semantic candidates.",
+    "No report-to-model mapping is verified yet.",
+    "No ABNAH UAT validation tests have been recorded yet.",
+    "No final relational mapping option has been selected yet."
+  ],
+  "coverage": {
+    "reports_total": 319,
+    "reports_with_fields": 58,
+    "reports_with_fields_pct": 18.2,
+    "reports_with_api_candidates_or_verified": 198,
+    "verified_report_api_links": 0,
+    "verified_report_model_links": 0,
+    "tested_api_endpoints": 0,
+    "selected_mappings": 0,
+    "validation_tests": 0,
+    "passed_validation_tests": 0
+  }
+}

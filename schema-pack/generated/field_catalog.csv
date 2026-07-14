@@ -1,0 +1,372 @@
+﻿field_id,field_name,display_label,report_count,occurrence_count,semantic_roles,data_type_guesses,status
+field:a_la_carteqty,a_la_carteqty,A La CarteQty,1,1,measure,numeric,ocr_candidate
+field:add,add,ADD-,1,1,unknown,text,ocr_candidate
+field:add_on,add_on,Add-on,1,1,unknown,text,ocr_candidate
+field:advance,advance,Advance,1,1,unknown,text,ocr_candidate
+field:amount,amount,Amount,12,12,measure,numeric,ocr_candidate
+field:apb,apb,APB,1,1,unknown,text,ocr_candidate
+field:apc,apc,APC,2,2,unknown,text,ocr_candidate
+field:applicable_net_amount,applicable_net_amount,Applicable Net Amount,1,1,measure,numeric,ocr_candidate
+field:applicablegrossamount,applicablegrossamount,ApplicableGrossAmount,1,1,measure,numeric,ocr_candidate
+field:appliedofferweighteddiscount,appliedofferweighteddiscount,AppliedOfferWeightedDiscount,1,1,measure,numeric,ocr_candidate
+field:apt,apt,APT,3,3,unknown,text,ocr_candidate
+field:area,area,Area,5,5,unknown,text,ocr_candidate
+field:averagedailysales,averagedailysales,AverageDailySales,1,1,measure,numeric,ocr_candidate
+field:averagedailysales_growth,averagedailysales_growth,AverageDailySales Growth,1,1,measure,numeric,ocr_candidate
+field:avg_per_bill,avg_per_bill,AVG PER BILL,1,1,measure,numeric,ocr_candidate
+field:avg_per_cover,avg_per_cover,AVG PER COVER,1,1,measure,numeric,ocr_candidate
+field:b,b,B,1,1,unknown,text,ocr_candidate
+field:beverage,beverage,BEVERAGE,2,2,unknown,text,ocr_candidate
+field:beveragesales,beveragesales,BEVERAGESALES,1,1,measure,numeric,ocr_candidate
+field:bill_date,bill_date,BILL DATE,3,3,time,date_or_time,ocr_candidate
+field:bill_no,bill_no,Bill No,1,1,measure,numeric,ocr_candidate
+field:bill_number,bill_number,BILL NUMBER,2,2,measure,numeric,ocr_candidate
+field:bill_time,bill_time,Bill Time,2,2,time,date_or_time,ocr_candidate
+field:billamount,billamount,BILLAMOUNT,3,3,measure,numeric,ocr_candidate
+field:billnumber,billnumber,BillNumber,2,2,measure,numeric,ocr_candidate
+field:bills,bills,BILLS,9,9,measure,numeric,ocr_candidate
+field:billuser,billuser,BillUser,1,1,measure,numeric,ocr_candidate
+field:bowls,bowls,BOWLS,2,2,unknown,text,ocr_candidate
+field:brand,brand,BRAND,2,2,dimension,text,ocr_candidate
+field:breads,breads,BREADS,1,1,unknown,text,ocr_candidate
+field:brekkie,brekkie,BREKKIE,2,2,unknown,text,ocr_candidate
+field:brew,brew,BREW,1,1,unknown,text,ocr_candidate
+field:brioche,brioche,BRIOCHE,1,1,unknown,text,ocr_candidate
+field:brioche_sandwich,brioche_sandwich,Brioche Sandwich,1,1,unknown,text,ocr_candidate
+field:brownies,brownies,BROWNIES,2,2,unknown,text,ocr_candidate
+field:btc,btc,BTC,1,1,unknown,text,ocr_candidate
+field:budget,budget,BUDGET,1,2,measure|unknown,numeric|text,ocr_candidate
+field:building_type,building_type,Building Type,5,5,unknown,text,ocr_candidate
+field:buns,buns,BUNS,2,2,unknown,text,ocr_candidate
+field:businessdate,businessdate,BUSINESSDATE,3,3,time,date_or_time,ocr_candidate
+field:businessdatedeploymentname,businessdatedeploymentname,BusinessDateDeploymentName,1,1,time,date_or_time,ocr_candidate
+field:buy_item,buy_item,Buy Item,1,1,dimension,text,ocr_candidate
+field:buy_value,buy_value,Buy Value,1,1,unknown,text,ocr_candidate
+field:cake,cake,CAKE,1,1,unknown,text,ocr_candidate
+field:cakes,cakes,CAKES,2,2,unknown,text,ocr_candidate
+field:cash,cash,CASH,6,6,unknown,text,ocr_candidate
+field:category,category,CATEGORY,5,5,dimension,text,ocr_candidate
+field:category_item_code_item_name,category_item_code_item_name,Category Item Code Item Name,1,1,dimension,text_or_identifier,ocr_candidate
+field:category_name,category_name,CATEGORY NAME,3,3,dimension,text,ocr_candidate
+field:category_name_item_name_item_qty,category_name_item_name_item_qty,Category Name Item Name Item Qty,1,1,measure,numeric,ocr_candidate
+field:categorysuper_category,categorysuper_category,CategorySuper Category,1,1,dimension,text,ocr_candidate
+field:categorytotal,categorytotal,CATEGORYTOTAL,1,1,dimension,text,ocr_candidate
+field:cgst,cgst,CGST(,2,2,measure,numeric,ocr_candidate
+field:cgst_gst_18,cgst_gst_18,CGST (GST@18%),1,1,measure,numeric,ocr_candidate
+field:cgst_gst_5,cgst_gst_5,CGST (GST@5%),1,1,measure,numeric,ocr_candidate
+field:chai,chai,CHAI,2,2,unknown,text,ocr_candidate
+field:charges,charges,CHARGES,9,9,measure,numeric,ocr_candidate
+field:chocolate,chocolate,CHOCOLATE,1,1,unknown,text,ocr_candidate
+field:choice,choice,CHOICE,1,1,unknown,text,ocr_candidate
+field:choiceofmilk,choiceofmilk,ChoiceofMilk,1,1,unknown,text,ocr_candidate
+field:cluster,cluster,CLUSTER,15,15,dimension,text,ocr_candidate
+field:code,code,Code,1,1,unknown,text_or_identifier,ocr_candidate
+field:code_list,code_list,Code List,1,1,unknown,text_or_identifier,ocr_candidate
+field:coffee,coffee,COFFEE,2,2,unknown,text,ocr_candidate
+field:cold,cold,COLD,1,1,unknown,text,ocr_candidate
+field:cold_brew,cold_brew,Cold Brew,1,1,unknown,text,ocr_candidate
+field:combo_constituent_qtytotal_qtyamount,combo_constituent_qtytotal_qtyamount,Combo Constituent QtyTotal QtyAmount,1,1,measure,numeric,ocr_candidate
+field:combo_itemsubtotal,combo_itemsubtotal,Combo itemSubtotal,1,1,dimension,text,ocr_candidate
+field:combo_name,combo_name,Combo Name,1,1,unknown,text,ocr_candidate
+field:combo_qty,combo_qty,Combo Qty,1,1,measure,numeric,ocr_candidate
+field:combo_quantity,combo_quantity,Combo Quantity,1,1,measure,numeric,ocr_candidate
+field:combo_selection_items_name,combo_selection_items_name,Combo Selection Items Name,1,1,dimension,text,ocr_candidate
+field:combo_subtotal,combo_subtotal,Combo Subtotal,1,1,unknown,text,ocr_candidate
+field:comboconsituentqty,comboconsituentqty,ComboConsituentQty,1,1,measure,numeric,ocr_candidate
+field:combodiscount,combodiscount,ComboDiscount,1,1,measure,numeric,ocr_candidate
+field:comboitemdiscount,comboitemdiscount,ComboitemDiscount,1,1,measure,numeric,ocr_candidate
+field:comboitemtaxes,comboitemtaxes,ComboItemTaxes,1,1,measure,numeric,ocr_candidate
+field:comboselectionitemqty,comboselectionitemqty,ComboSelectionItemQty,1,1,measure,numeric,ocr_candidate
+field:company_name,company_name,Company Name,1,1,unknown,text,ocr_candidate
+field:complimentary,complimentary,COMPLIMENTARY,3,3,unknown,text,ocr_candidate
+field:complimentary_amount,complimentary_amount,Complimentary Amount,1,1,measure,numeric,ocr_candidate
+field:complimentary_covers,complimentary_covers,COMPLIMENTARY COVERS,1,1,measure,numeric,ocr_candidate
+field:complimentaryamount,complimentaryamount,COMPLIMENTARYAMOUNT,1,1,measure,numeric,ocr_candidate
+field:complimentaryhead,complimentaryhead,COMPLIMENTARYHEAD,1,1,unknown,text,ocr_candidate
+field:complimentaryqty,complimentaryqty,COMPLIMENTARYQTY,1,1,measure,numeric,ocr_candidate
+field:complimentaryremarks,complimentaryremarks,COMPLIMENTARYREMARKS,1,1,unknown,text,ocr_candidate
+field:contribution,contribution,%CONTRIBUTION,2,2,measure,numeric,ocr_candidate
+field:contributioncogs,contributioncogs,%ContributionCOGS,1,1,measure,numeric,ocr_candidate
+field:contributionofnetsales,contributionofnetsales,%CONTRIBUTIONOFNETSALES,1,1,measure,numeric,ocr_candidate
+field:cookies,cookies,COOKIES,2,2,unknown,text,ocr_candidate
+field:coolers,coolers,COOLERS,2,2,unknown,text,ocr_candidate
+field:count,count,Count,1,1,unknown,text,ocr_candidate
+field:country,country,Country,1,1,unknown,text,ocr_candidate
+field:coupon,coupon,Coupon,1,1,unknown,text,ocr_candidate
+field:covers,covers,COVERS,3,3,measure,numeric,ocr_candidate
+field:creditcard,creditcard,CREDITCARD,3,3,unknown,text,ocr_candidate
+field:croissant,croissant,CROISSANT,2,2,unknown,text,ocr_candidate
+field:currency,currency,Currency,1,1,unknown,text,ocr_candidate
+field:currencynet_value_discountamount,currencynet_value_discountamount,CurrencyNet Value DiscountAmount,1,1,measure,numeric,ocr_candidate
+field:currentday,currentday,CurrentDay,1,1,time,date_or_time,ocr_candidate
+field:customer_channel,customer_channel,Customer Channel,1,1,unknown,text,ocr_candidate
+field:customername,customername,CUSTOMERNAME,1,1,unknown,text,ocr_candidate
+field:customernumber,customernumber,CUSTOMERNUMBER,1,1,unknown,text,ocr_candidate
+field:date,date,DATE,24,24,time,date_or_time,ocr_candidate
+field:day,day,Day,2,2,time,date_or_time,ocr_candidate
+field:day_session,day_session,Day Session,1,1,unknown,text,ocr_candidate
+field:daysessions,daysessions,DAYSESSIONS,1,1,time,date_or_time,ocr_candidate
+field:debitcard,debitcard,DEBITCARD,2,2,unknown,text,ocr_candidate
+field:delivery,delivery,DELIVERY,3,3,measure|unknown,numeric|text,ocr_candidate
+field:delivery_sales,delivery_sales,%Delivery Sales,1,1,measure,numeric,ocr_candidate
+field:deliveryrev,deliveryrev,DeliveryRev,1,1,unknown,text,ocr_candidate
+field:deliverysales,deliverysales,DELIVERYSALES,1,1,measure,numeric,ocr_candidate
+field:deployment,deployment,Deployment,10,10,unknown,text,ocr_candidate
+field:deployment_category,deployment_category,Deployment Category,1,1,dimension,text,ocr_candidate
+field:deployment_name,deployment_name,Deployment Name,3,3,unknown,text,ocr_candidate
+field:deploymentname,deploymentname,DEPLOYMENTNAME,5,5,unknown,text,ocr_candidate
+field:description,description,DESCRIPTION,1,1,unknown,text,ocr_candidate
+field:desserts,desserts,DESSERTS,1,1,unknown,text,ocr_candidate
+field:dine_in,dine_in,DINE IN,1,1,unknown,text,ocr_candidate
+field:discount,discount,Discount,20,20,measure,numeric,ocr_candidate
+field:discountamount,discountamount,DISCOUNTAMOUNT,4,4,measure,numeric,ocr_candidate
+field:discountnet_amount,discountnet_amount,DiscountNet Amount,2,2,measure,numeric,ocr_candidate
+field:discountnetamount,discountnetamount,DiscountNetAmount,1,1,measure,numeric,ocr_candidate
+field:discountnetsale,discountnetsale,DiscountNetSale,1,1,measure,numeric,ocr_candidate
+field:discountqty,discountqty,DISCOUNTQTY,1,1,measure,numeric,ocr_candidate
+field:discountremarks,discountremarks,DISCOUNTREMARKS,3,3,measure,numeric,ocr_candidate
+field:drinks,drinks,DRINKS,1,1,unknown,text,ocr_candidate
+field:drinkware,drinkware,DRINKWARE,1,1,unknown,text,ocr_candidate
+field:duration,duration,Duration,1,1,unknown,text,ocr_candidate
+field:ecom,ecom,ECOM,1,1,unknown,text,ocr_candidate
+field:electronicbill,electronicbill,ElectronicBill,1,1,measure,numeric,ocr_candidate
+field:employee,employee,EMPLOYEE,2,2,dimension,text,ocr_candidate
+field:employee_code,employee_code,Employee Code,1,1,dimension,text_or_identifier,ocr_candidate
+field:employee_meal_bills,employee_meal_bills,EMPLOYEE MEAL BILLS,6,6,measure,numeric,ocr_candidate
+field:employee_name,employee_name,Employee Name,1,1,dimension,text,ocr_candidate
+field:employeemeal,employeemeal,EmployeeMeal,1,1,dimension,text,ocr_candidate
+field:flat,flat,FLAT,1,1,unknown,text,ocr_candidate
+field:flat_breads,flat_breads,Flat Breads,1,1,unknown,text,ocr_candidate
+field:foccacia,foccacia,FOCCACIA,1,1,unknown,text,ocr_candidate
+field:foccacia_sandwich,foccacia_sandwich,Foccacia Sandwich,1,1,unknown,text,ocr_candidate
+field:food,food,FOOD,2,2,unknown,text,ocr_candidate
+field:foodsales,foodsales,FOODSALES,1,1,measure,numeric,ocr_candidate
+field:format,format,FORMAT,15,15,dimension,text,ocr_candidate
+field:frappes,frappes,FRAPPES,2,2,unknown,text,ocr_candidate
+field:get_item,get_item,Get Item,1,1,dimension,text,ocr_candidate
+field:get_value,get_value,Get Value,1,1,unknown,text,ocr_candidate
+field:grandtotal,grandtotal,GrandTotal,1,1,unknown,text,ocr_candidate
+field:gross,gross,GROSS,3,3,unknown,text,ocr_candidate
+field:gross_amount,gross_amount,GROSS AMOUNT,10,10,measure,numeric,ocr_candidate
+field:gross_sale,gross_sale,GROSS SALE,1,1,measure,numeric,ocr_candidate
+field:grossamount_bills,grossamount_bills,GrossAmount Bills,1,1,measure,numeric,ocr_candidate
+field:grosssale_ofsales_ofsupercategory,grosssale_ofsales_ofsupercategory,GrossSale%ofSales%ofSuperCategory,1,1,measure,numeric,ocr_candidate
+field:grosssales,grosssales,GROSSSALES,4,4,measure,numeric,ocr_candidate
+field:grosstotal,grosstotal,GROSSTOTAL,1,1,unknown,text,ocr_candidate
+field:gst_18,gst_18,GST@18%,6,6,measure,numeric,ocr_candidate
+field:gst_18_amount,gst_18_amount,GST@18%Amount,1,1,measure,numeric,ocr_candidate
+field:gst_18_gst_5_packaging_charge_cart_swiggy,gst_18_gst_5_packaging_charge_cart_swiggy,GST@18% GST@5%Packaging Charge [CART - SWIGGY],1,1,measure,numeric,ocr_candidate
+field:gst_18_total_tax,gst_18_total_tax,GST@18%Total Tax,1,1,measure,numeric,ocr_candidate
+field:gst_5,gst_5,GST@5%,9,9,measure,numeric,ocr_candidate
+field:gst_5_amount,gst_5_amount,GST@5%Amount,1,1,measure,numeric,ocr_candidate
+field:gst_5_gst_18_totalgstpaymentstatus,gst_5_gst_18_totalgstpaymentstatus,GST@5%GST@18%TotalGSTPaymentStatus,1,1,measure,numeric,ocr_candidate
+field:hojicha,hojicha,HOJICHA,1,1,unknown,text,ocr_candidate
+field:hot,hot,HOT,1,1,unknown,text,ocr_candidate
+field:hot_chocolate,hot_chocolate,Hot Chocolate,1,1,unknown,text,ocr_candidate
+field:hour,hour,HOUR,6,6,time,date_or_time,ocr_candidate
+field:iced,iced,ICED,1,1,unknown,text,ocr_candidate
+field:iced_coffee,iced_coffee,Iced Coffee,1,1,unknown,text,ocr_candidate
+field:iced_matcha_hojicha,iced_matcha_hojicha,Iced Matcha&Hojicha,1,1,unknown,text,ocr_candidate
+field:incidence,incidence,%Incidence,1,1,measure,numeric,ocr_candidate
+field:invoicenodate,invoicenodate,InvoiceNoDate,1,1,time,date_or_time,ocr_candidate
+field:item,item,Item,6,6,dimension,text,ocr_candidate
+field:item_code,item_code,ITEM CODE,1,1,dimension,text_or_identifier,ocr_candidate
+field:item_name,item_name,ITEM NAME,8,8,dimension,text,ocr_candidate
+field:item_no,item_no,Item No.,1,1,dimension,text_or_identifier,ocr_candidate
+field:item_number,item_number,Item Number,1,1,dimension,text,ocr_candidate
+field:item_price_subtotal,item_price_subtotal,Item Price Subtotal,1,1,dimension,text,ocr_candidate
+field:item_qty,item_qty,Item Qty,1,1,measure,numeric,ocr_candidate
+field:itemcodeitemname,itemcodeitemname,ItemCodeItemName,1,1,dimension,text_or_identifier,ocr_candidate
+field:itemcodesection,itemcodesection,ItemCodeSection,1,1,dimension,text_or_identifier,ocr_candidate
+field:itemnumber,itemnumber,ITEMNUMBER,4,4,dimension,text,ocr_candidate
+field:itemqty,itemqty,ItemQty,3,3,measure,numeric,ocr_candidate
+field:items,items,ITEMS,2,2,dimension,text,ocr_candidate
+field:jar,jar,JAR,1,1,unknown,text,ocr_candidate
+field:jardesserts,jardesserts,JarDesserts,1,1,unknown,text,ocr_candidate
+field:level,level,LEVEL,2,2,unknown,text,ocr_candidate
+field:manualdiscount,manualdiscount,MANUALDISCOUNT,1,1,measure,numeric,ocr_candidate
+field:manualdiscount_express,manualdiscount_express,MANUALDISCOUNT(EXPRESS),1,1,measure,numeric,ocr_candidate
+field:matcha,matcha,MATCHA,1,1,unknown,text,ocr_candidate
+field:matcha_hojicha,matcha_hojicha,Matcha&Hojicha,1,1,unknown,text,ocr_candidate
+field:meal,meal,MEAL,1,1,unknown,text,ocr_candidate
+field:meal_period,meal_period,Meal Period,1,1,unknown,text,ocr_candidate
+field:meals,meals,MEALS,1,1,unknown,text,ocr_candidate
+field:merchandise,merchandise,MERCHANDISE,2,2,unknown,text,ocr_candidate
+field:merchandise_gst_0,merchandise_gst_0,Merchandise-GST-0%,1,1,measure,numeric,ocr_candidate
+field:merchandise_gst_18,merchandise_gst_18,Merchandise-GST-18%,2,2,measure,numeric,ocr_candidate
+field:merchandise_gst_5,merchandise_gst_5,MERCHANDISE-GST-5%,1,1,measure,numeric,ocr_candidate
+field:merchandise_gst_5_sales,merchandise_gst_5_sales,MERCHANDISE-GST-5%SALES,1,1,measure,numeric,ocr_candidate
+field:merchandise_gst_o,merchandise_gst_o,MERCHANDISE-GST-O%,1,1,measure,numeric,ocr_candidate
+field:merchandiseac_gst_5,merchandiseac_gst_5,"Merchandiseac""GST-5%",1,1,measure,numeric,ocr_candidate
+field:milk,milk,MILK,1,1,unknown,text,ocr_candidate
+field:modename,modename,ModeName,1,1,unknown,text,ocr_candidate
+field:mom_change,mom_change,MOM%CHANGE,1,1,measure,numeric,ocr_candidate
+field:month,month,Month,1,1,time,date_or_time,ocr_candidate
+field:monthtodate,monthtodate,MONTHTODATE,1,1,time,date_or_time,ocr_candidate
+field:msr_loyalty,msr_loyalty,MSR Loyalty,1,1,unknown,text,ocr_candidate
+field:mtd,mtd,MTD,1,1,unknown,text,ocr_candidate
+field:mtd_cm_pm,mtd_cm_pm,MTD (CM/PM),1,1,unknown,text,ocr_candidate
+field:muffin,muffin,MUFFIN,2,2,unknown,text,ocr_candidate
+field:name,name,NAME,1,1,unknown,text,ocr_candidate
+field:net_amount,net_amount,Net Amount,1,1,measure,numeric,ocr_candidate
+field:net_sale,net_sale,NET SALE,9,9,measure,numeric,ocr_candidate
+field:net_sales,net_sales,NET SALES,9,9,measure,numeric,ocr_candidate
+field:net_sales_bills,net_sales_bills,Net Sales Bills,1,1,measure,numeric,ocr_candidate
+field:net_sales_table,net_sales_table,NET SALES(TABLE),1,1,measure,numeric,ocr_candidate
+field:netamount,netamount,NETAMOUNT,3,3,measure,numeric,ocr_candidate
+field:netamourtotaltax,netamourtotaltax,NetAmourTotalTax,1,1,measure,numeric,ocr_candidate
+field:netsale,netsale,NetSale,4,4,measure,numeric,ocr_candidate
+field:netsales_delivery,netsales_delivery,NETSALES(DELIVERY),1,1,measure,numeric,ocr_candidate
+field:netsales_takeout,netsales_takeout,NETSALES(TAKEOUT),1,1,measure,numeric,ocr_candidate
+field:no_of,no_of,NO OF,1,1,unknown,text_or_identifier,ocr_candidate
+field:no_of_bills,no_of_bills,No Of Bills,3,3,measure,numeric,ocr_candidate
+field:no_of_items,no_of_items,No.of Items,2,2,dimension,text_or_identifier,ocr_candidate
+field:no_of_tickets,no_of_tickets,NO. OF TICKETS,2,2,measure,numeric,ocr_candidate
+field:no_ofbills,no_ofbills,NO.OFBILLS,3,3,measure,numeric,ocr_candidate
+field:no_ofitems,no_ofitems,No OfItems,2,2,dimension,text_or_identifier,ocr_candidate
+field:no_vat_amount_net,no_vat_amount_net,NO VAT AMOUNT (NET),1,1,measure,numeric,ocr_candidate
+field:nob,nob,NOB,1,1,measure,numeric,ocr_candidate
+field:noof,noof,NOOF,1,1,unknown,text_or_identifier,ocr_candidate
+field:noofcovers,noofcovers,NOOFCOVERS,1,1,measure,numeric,ocr_candidate
+field:noofitems,noofitems,NOOFITEMS,1,1,dimension,text_or_identifier,ocr_candidate
+field:novat_amount_net,novat_amount_net,NOVAT AMOUNT (NET),1,1,measure,numeric,ocr_candidate
+field:of,of,OF,1,1,unknown,text,ocr_candidate
+field:off,off,OFF,2,2,unknown,text,ocr_candidate
+field:offercode,offercode,OFFERCODE,2,2,unknown,text_or_identifier,ocr_candidate
+field:offername,offername,OfferName,3,3,unknown,text,ocr_candidate
+field:on,on,ON,1,1,unknown,text,ocr_candidate
+field:online,online,Online,1,1,unknown,text,ocr_candidate
+field:orderld,orderld,Orderld,1,1,dimension,text,ocr_candidate
+field:orders,orders,ORDERS,1,1,dimension,text,ocr_candidate
+field:other,other,Other,1,1,unknown,text,ocr_candidate
+field:others,others,OTHERS,2,2,unknown,text,ocr_candidate
+field:outlet,outlet,Outlet,4,4,dimension,text,ocr_candidate
+field:outlet_name,outlet_name,OUTLET NAME,31,31,dimension,text,ocr_candidate
+field:overall_sales_value,overall_sales_value,Overall Sales Value,1,1,measure,numeric,ocr_candidate
+field:packaged,packaged,PACKAGED,1,1,unknown,text,ocr_candidate
+field:packagedwater,packagedwater,PackagedWater,1,1,unknown,text,ocr_candidate
+field:packagingcharge_cart_swiggy,packagingcharge_cart_swiggy,PACKAGINGCHARGE[CART-SWIGGY],1,1,unknown,text,ocr_candidate
+field:payment_modestaff_meal_bill,payment_modestaff_meal_bill,Payment ModeStaff Meal Bill,1,1,measure,numeric,ocr_candidate
+field:percentageofsales,percentageofsales,PercentageofSales,1,1,measure,numeric,ocr_candidate
+field:pinelabsplutus,pinelabsplutus,PINELABSPLUTUS,1,1,unknown,text,ocr_candidate
+field:pinelabsplutusupi,pinelabsplutusupi,PINELABSPLUTUSUPI,1,1,unknown,text,ocr_candidate
+field:plastic,plastic,PLASTIC,1,1,unknown,text,ocr_candidate
+field:plasticdrinkware,plasticdrinkware,PlasticDrinkware,1,1,unknown,text,ocr_candidate
+field:pos,pos,POS,1,1,unknown,text,ocr_candidate
+field:prevmonth,prevmonth,PREVMONTH,1,1,time,date_or_time,ocr_candidate
+field:product,product,PRODUCT,2,2,unknown,text,ocr_candidate
+field:promodiscount,promodiscount,PROMODISCOUNT,2,2,measure,numeric,ocr_candidate
+field:promotionname,promotionname,PROMOTIONNAME,3,3,unknown,text,ocr_candidate
+field:protein,protein,PROTEIN,1,1,unknown,text,ocr_candidate
+field:proteindrinks,proteindrinks,ProteinDrinks,1,1,unknown,text,ocr_candidate
+field:puff,puff,PUFF,2,2,unknown,text,ocr_candidate
+field:qr,qr,QR,1,1,unknown,text,ocr_candidate
+field:qrcode,qrcode,QRCODE,1,1,unknown,text_or_identifier,ocr_candidate
+field:qty,qty,QTY,11,11,measure,numeric,ocr_candidate
+field:quantity,quantity,QUANTITY,2,2,measure,numeric,ocr_candidate
+field:rate,rate,Rate,6,6,unknown,text,ocr_candidate
+field:razorpay,razorpay,RAZORPAY,5,5,unknown,text,ocr_candidate
+field:razorpaywebsite,razorpaywebsite,RAZORPAYWEBSITE,1,1,unknown,text,ocr_candidate
+field:region,region,Region,4,4,unknown,text,ocr_candidate
+field:region_wise,region_wise,Region Wise,1,1,unknown,text,ocr_candidate
+field:reglon,reglon,Reglon,1,1,unknown,text,ocr_candidate
+field:restaurantpackagingcharges,restaurantpackagingcharges,RESTAURANTPACKAGINGCHARGES,2,2,measure,numeric,ocr_candidate
+field:rolls,rolls,ROLLS,2,2,unknown,text,ocr_candidate
+field:round,round,ROUND,2,2,unknown,text,ocr_candidate
+field:round_off,round_off,Round Off,2,2,unknown,text,ocr_candidate
+field:roundoff,roundoff,RoundOff,2,2,unknown,text,ocr_candidate
+field:s_no,s_no,S.No.,3,3,unknown,text_or_identifier,ocr_candidate
+field:sale,sale,SALE,8,8,measure,numeric,ocr_candidate
+field:sales,sales,SALES,4,4,measure,numeric,ocr_candidate
+field:sandos,sandos,SANDOS,2,2,unknown,text,ocr_candidate
+field:sandwich,sandwich,SANDWICH,1,1,unknown,text,ocr_candidate
+field:section,section,SECTION,1,1,dimension,text,ocr_candidate
+field:segment,segment,SEGMENT,1,1,unknown,text,ocr_candidate
+field:settlement,settlement,SETTLEMENT,1,1,unknown,text,ocr_candidate
+field:settlementmode,settlementmode,SETTLEMENTMODE,1,1,unknown,text,ocr_candidate
+field:settlementmodesubtotal,settlementmodesubtotal,SettlementModeSubtotal,1,1,unknown,text,ocr_candidate
+field:sgst,sgst,SGST(,2,2,measure,numeric,ocr_candidate
+field:sgst_gst_18,sgst_gst_18,SGST(GST@18%),1,1,measure,numeric,ocr_candidate
+field:sgst_gst_5,sgst_gst_5,SGST(GST@5%),1,1,measure,numeric,ocr_candidate
+field:smoothie,smoothie,SMOOTHIE,2,2,unknown,text,ocr_candidate
+field:source,source,Source,9,9,dimension,text,ocr_candidate
+field:sourdough,sourdough,SOURDOUGH,1,1,unknown,text,ocr_candidate
+field:sourdough_sandwich,sourdough_sandwich,Sourdough Sandwich,1,1,unknown,text,ocr_candidate
+field:specialty,specialty,SPECIALTY,1,1,unknown,text,ocr_candidate
+field:specialty_coffee,specialty_coffee,Specialty Coffee,1,1,unknown,text,ocr_candidate
+field:stationery,stationery,STATIONERY,2,2,unknown,text,ocr_candidate
+field:storeid,storeid,STOREID,2,2,unknown,text_or_identifier,ocr_candidate
+field:storeld,storeld,Storeld,1,1,unknown,text,ocr_candidate
+field:storename,storename,StoreName,1,1,unknown,text,ocr_candidate
+field:subtotal,subtotal,SubTotal,6,6,unknown,text,ocr_candidate
+field:super_category,super_category,Super Category,2,2,dimension,text,ocr_candidate
+field:super_category_category_name,super_category_category_name,Super Category Category Name,1,1,dimension,text,ocr_candidate
+field:super_categoryname,super_categoryname,Super CategoryName,2,2,dimension,text,ocr_candidate
+field:super_categorytab_name_source,super_categorytab_name_source,Super CategoryTab Name Source,1,1,dimension,text,ocr_candidate
+field:supercategory,supercategory,SUPERCATEGORY,5,5,dimension,text,ocr_candidate
+field:supercategoryname,supercategoryname,SuperCategoryName,1,1,dimension,text,ocr_candidate
+field:supercategorynamerate,supercategorynamerate,SuperCategoryNameRate,1,1,dimension,text,ocr_candidate
+field:swiggy,swiggy,SWIGGY,6,6,unknown,text,ocr_candidate
+field:tab,tab,TAB,4,4,dimension,text,ocr_candidate
+field:tab_name,tab_name,TAB NAME,2,2,dimension,text,ocr_candidate
+field:tab_name_item_code_section,tab_name_item_code_section,Tab Name Item Code Section,1,1,dimension,text_or_identifier,ocr_candidate
+field:tab_name_section,tab_name_section,Tab Name Section,1,1,dimension,text,ocr_candidate
+field:table,table,TABLE,3,3,dimension|measure,numeric|text,ocr_candidate
+field:table_sales,table_sales,%Table Sales,1,1,measure,numeric,ocr_candidate
+field:tablesales,tablesales,TABLESALES,1,1,measure,numeric,ocr_candidate
+field:tabnameitemcode_section,tabnameitemcode_section,TabNameItemCode Section,1,1,dimension,text_or_identifier,ocr_candidate
+field:tabs,tabs,Tabs,1,1,dimension,text,ocr_candidate
+field:tabtype,tabtype,TABTYPE,1,1,dimension,text,ocr_candidate
+field:takeaway,takeaway,TAKEAWAY,1,1,unknown,text,ocr_candidate
+field:takeout,takeout,TAKEOUT,3,3,measure|unknown,numeric|text,ocr_candidate
+field:takeoutsales,takeoutsales,%TakeoutSales,2,2,measure,numeric,ocr_candidate
+field:tax,tax,TAX,4,4,measure,numeric,ocr_candidate
+field:taxableamount,taxableamount,TAXABLEAMOUNT,2,2,measure,numeric,ocr_candidate
+field:taxamount,taxamount,TAXAMOUNT,2,2,measure,numeric,ocr_candidate
+field:taxes,taxes,TAXES,1,1,measure,numeric,ocr_candidate
+field:taxname,taxname,TAXNAME,2,2,measure,numeric,ocr_candidate
+field:tea,tea,TEA,1,1,unknown,text,ocr_candidate
+field:tea_cake,tea_cake,Tea cake,1,1,unknown,text,ocr_candidate
+field:time_slot,time_slot,TIME SLOT,1,1,time,date_or_time,ocr_candidate
+field:timeslot,timeslot,TIMESLOT,1,1,time,date_or_time,ocr_candidate
+field:tip,tip,TIP,1,1,unknown,text,ocr_candidate
+field:tip_amount,tip_amount,Tip Amount,1,1,measure,numeric,ocr_candidate
+field:toasts,toasts,TOASTS,2,2,unknown,text,ocr_candidate
+field:total,total,TOTAL,7,7,unknown,text,ocr_candidate
+field:total_amount,total_amount,Total Amount,1,1,measure,numeric,ocr_candidate
+field:total_bills,total_bills,TOTAL BILLS,1,1,measure,numeric,ocr_candidate
+field:total_charges,total_charges,Total Charges,1,1,measure,numeric,ocr_candidate
+field:total_discount,total_discount,Total Discount,1,1,measure,numeric,ocr_candidate
+field:total_gross_sale,total_gross_sale,TOTAL GROSS SALE,1,1,measure,numeric,ocr_candidate
+field:total_net_sales,total_net_sales,TOTAL NET SALES,1,1,measure,numeric,ocr_candidate
+field:total_price,total_price,Total Price,1,1,unknown,text,ocr_candidate
+field:total_qty,total_qty,Total Qty,3,3,measure,numeric,ocr_candidate
+field:total_tax,total_tax,TOTAL TAX,1,1,measure,numeric,ocr_candidate
+field:total_taxgrossamount,total_taxgrossamount,Total TaxGrossAmount,1,1,measure,numeric,ocr_candidate
+field:total_taxtotalamountround_off_gross_amount,total_taxtotalamountround_off_gross_amount,Total TaxTotalAmountRound Off Gross Amount,1,1,measure,numeric,ocr_candidate
+field:totalamount,totalamount,TotalAmount,2,2,measure,numeric,ocr_candidate
+field:totalcharges,totalcharges,TOTALCHARGES,1,1,measure,numeric,ocr_candidate
+field:totalorders,totalorders,TOTALORDERS,1,1,dimension,text,ocr_candidate
+field:totalsale,totalsale,TOTALSALE,1,1,measure,numeric,ocr_candidate
+field:totalsettlement,totalsettlement,TOTALSETTLEMENT,1,1,unknown,text,ocr_candidate
+field:totaltax,totaltax,TotalTax,6,6,measure,numeric,ocr_candidate
+field:totalusage,totalusage,TotalUsage,1,1,unknown,text,ocr_candidate
+field:transactiongrowth,transactiongrowth,TransactionGrowth,1,1,unknown,text,ocr_candidate
+field:transactionnumber,transactionnumber,TransactionNumber,1,1,unknown,text,ocr_candidate
+field:ttr,ttr,TTR,1,1,unknown,text,ocr_candidate
+field:undefined,undefined,UNDEFINED,1,1,unknown,text,ocr_candidate
+field:unused,unused,Unused,1,1,unknown,text,ocr_candidate
+field:upi,upi,UPI,1,1,unknown,text,ocr_candidate
+field:used,used,Used,1,1,unknown,text,ocr_candidate
+field:user,user,USER,2,2,dimension,text,ocr_candidate
+field:visa,visa,VISA,1,1,unknown,text,ocr_candidate
+field:water,water,WATER,1,1,unknown,text,ocr_candidate
+field:week,week,Week,1,1,unknown,text,ocr_candidate
+field:wellness,wellness,WELLNESS,1,1,unknown,text,ocr_candidate
+field:wellness_tea,wellness_tea,Wellness Tea,1,1,unknown,text,ocr_candidate
+field:with,with,WITH,1,1,unknown,text,ocr_candidate
+field:wow_cw_pw,wow_cw_pw,WoW(CW/PW),1,1,unknown,text,ocr_candidate
+field:wtd_cw_pw,wtd_cw_pw,WTD (CW/PW),1,1,unknown,text,ocr_candidate
+field:ytd,ytd,YTD,1,1,unknown,text,ocr_candidate
+field:ytd_cy_py,ytd_cy_py,YTD (CY/PY),1,1,unknown,text,ocr_candidate
+field:zomato,zomato,ZOMATO,6,6,unknown,text,ocr_candidate

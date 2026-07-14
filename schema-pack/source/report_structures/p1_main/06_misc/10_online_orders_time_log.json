@@ -1,0 +1,25 @@
+{
+  "report_id": "report:p1_main:06_misc:10_online_orders_time_log",
+  "schema_status": "captured",
+  "verification_status": "needs_review",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Online order event timeline",
+      "kind": "flat_table",
+      "columns": [
+        { "label": "Outlet" }, { "label": "Order Date" }, { "label": "Order Id" },
+        { "label": "POS Bill No" }, { "label": "Device Info" }, { "label": "Status" },
+        { "label": "Sync Reason" }, { "label": "Customer Name" }, { "label": "Source" },
+        { "label": "Tab" }, { "label": "TabType" }, { "label": "Order Time" },
+        { "label": "First Sync Time" }, { "label": "Sync Time" }, { "label": "Accept Time" },
+        { "label": "Reject Time" }, { "label": "Mark Food Ready Time" }, { "label": "Food Preparation Time" },
+        { "label": "Bill Print Time" }, { "label": "Assign Time" }, { "label": "Dispatch Time" },
+        { "label": "Delivered Time" }, { "label": "Settle Time" }, { "label": "Total" },
+        { "label": "Is Edited Order" }, { "label": "Is Rejected Order" }, { "label": "Rejection Reason" }
+      ]
+    }
+  ]
+}

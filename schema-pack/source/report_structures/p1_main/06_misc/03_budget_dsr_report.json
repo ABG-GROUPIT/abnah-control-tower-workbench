@@ -1,0 +1,49 @@
+{
+  "report_id": "report:p1_main:06_misc:03_budget_dsr_report",
+  "schema_status": "captured",
+  "verification_status": "needs_review",
+  "layout_kind": "grouped_rows",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Period groups repeat the same six measures vertically. Outlet values sit under a region and outlet hierarchy with a separate total column.",
+  "data_points": [
+    { "key": "report_date", "label": "Date", "semantic_role": "date", "data_type": "date" },
+    { "key": "period", "label": "Period", "semantic_role": "period_dimension" },
+    { "key": "metric", "label": "Metric", "semantic_role": "metric_dimension" },
+    { "key": "region", "label": "Region", "semantic_role": "location_dimension" },
+    { "key": "outlet", "label": "Outlet", "semantic_role": "outlet_dimension" },
+    { "key": "total_sales", "label": "Total Sales", "semantic_role": "measure", "data_type": "decimal" },
+    { "key": "covers", "label": "Covers", "semantic_role": "measure", "data_type": "integer" },
+    { "key": "transactions", "label": "Transactions", "semantic_role": "measure", "data_type": "integer" },
+    { "key": "employee_meal_bills", "label": "Employee Meal Bills", "semantic_role": "measure", "data_type": "integer" },
+    { "key": "apc", "label": "APC", "semantic_role": "measure", "data_type": "decimal" },
+    { "key": "apt", "label": "APT", "semantic_role": "measure", "data_type": "decimal" },
+    { "key": "metric_value", "label": "Metric Value", "semantic_role": "measure", "data_type": "decimal" }
+  ],
+  "blocks": [
+    {
+      "id": "context",
+      "name": "Report context",
+      "kind": "key_value",
+      "entries": [{ "label": "DATE", "key": "report_date" }]
+    },
+    {
+      "id": "primary",
+      "name": "Outlet sales matrix",
+      "kind": "matrix",
+      "row_headers": ["PERIOD", "METRIC"],
+      "value_columns": [
+        { "label": "REGION", "children": [{ "label": "OUTLET", "key": "outlet_metric_value" }] },
+        { "label": "TOTAL", "key": "total_metric_value" }
+      ],
+      "row_groups": [
+        { "label": "ACTUAL", "metrics": ["TOTAL SALES", "COVERS", "TRANSACTIONS", "EMPLOYEE MEAL BILLS", "APC", "APT"] },
+        { "label": "ACTUAL LAST YEAR", "metrics": ["TOTAL SALES", "COVERS", "TRANSACTIONS", "EMPLOYEE MEAL BILLS", "APC", "APT"] },
+        { "label": "MTD ACTUAL", "metrics": ["TOTAL SALES", "COVERS", "TRANSACTIONS", "EMPLOYEE MEAL BILLS", "APC", "APT"] },
+        { "label": "MTD BUDGET", "metrics": ["TOTAL SALES", "COVERS", "TRANSACTIONS", "EMPLOYEE MEAL BILLS", "APC", "APT"] },
+        { "label": "YTD ACTUAL", "metrics": ["TOTAL SALES", "COVERS", "TRANSACTIONS", "EMPLOYEE MEAL BILLS", "APC", "APT"] },
+        { "label": "YTD BUDGET", "metrics": ["TOTAL SALES", "COVERS", "TRANSACTIONS", "EMPLOYEE MEAL BILLS", "APC", "APT"] },
+        { "label": "YTD ACTUAL LAST YEAR", "metrics": ["TOTAL SALES", "COVERS", "TRANSACTIONS", "EMPLOYEE MEAL BILLS", "APC", "APT"] }
+      ]
+    }
+  ]
+}

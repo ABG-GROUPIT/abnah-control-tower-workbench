@@ -1,0 +1,101 @@
+{
+  "domain_labels": {
+    "inventory_consumption": "Inventory & Consumption",
+    "vendor_procurement": "Vendor & Procurement",
+    "sales_revenue": "Sales & Revenue"
+  },
+  "core_report_keywords": [
+    "enterprise entry",
+    "entry report",
+    "purchase order",
+    "purchase detail",
+    "purchase summary",
+    "inventory closing",
+    "closing stock",
+    "consumption",
+    "variance",
+    "food cost",
+    "re-order",
+    "reorder",
+    "vendor",
+    "indent",
+    "stock return",
+    "stock in stock out",
+    "wastage",
+    "expiry",
+    "late delivery",
+    "bill passing",
+    "movement report",
+    "recipe consumption"
+  ],
+  "api_report_rules": [
+    {
+      "endpoint_packet_id": "RW_API_029",
+      "pages": ["p4_stock_admin"],
+      "keywords": [
+        "stock",
+        "inventory",
+        "entry",
+        "purchase",
+        "vendor",
+        "wastage",
+        "consumption",
+        "variance",
+        "closing",
+        "re-order",
+        "reorder",
+        "bill passing",
+        "expiry",
+        "food cost",
+        "movement"
+      ],
+      "confidence": 0.72,
+      "rationale": "Semantic candidate: the public inventory endpoint exposes stock, PO, vendor and inventory-transaction entities. UAT response fields must confirm exact report equivalence."
+    },
+    {
+      "endpoint_packet_id": "RW_API_030",
+      "pages": ["p4_stock_admin"],
+      "keywords": ["indent", "issue report", "suspense", "bulk return"],
+      "confidence": 0.78,
+      "rationale": "Semantic candidate: the public indent endpoint exposes supplier/receiver store movement and indent item lines. UAT must confirm lifecycle and receipt fields."
+    },
+    {
+      "endpoint_packet_id": "RW_API_001",
+      "pages": ["p1_main", "p2_reports"],
+      "keywords": [
+        "sales",
+        "bill",
+        "item",
+        "category",
+        "hourly",
+        "revenue",
+        "discount",
+        "settlement",
+        "order"
+      ],
+      "confidence": 0.58,
+      "rationale": "Semantic candidate: bill/KOT line data may reproduce parts of this report, but report calculations and filters are not yet verified."
+    },
+    {
+      "endpoint_packet_id": "RW_API_002",
+      "pages": ["p1_main", "p2_reports"],
+      "keywords": ["invoice", "day report", "daily sales summary", "sales summary"],
+      "confidence": 0.62,
+      "rationale": "Semantic candidate: invoice-level API totals may validate this report, subject to UAT grain and return handling."
+    },
+    {
+      "endpoint_packet_id": "RW_API_004",
+      "pages": ["p1_main", "p2_reports", "p4_stock_admin"],
+      "keywords": ["menu", "item master", "item recipe", "recipe report", "category item"],
+      "confidence": 0.55,
+      "rationale": "Semantic candidate: menu sync can enrich menu/item dimensions; it is not assumed to reproduce report measures."
+    },
+    {
+      "endpoint_packet_id": "RW_API_005",
+      "pages": ["p1_main", "p2_reports", "p4_stock_admin"],
+      "keywords": ["out of stock", "re-order", "reorder", "stockout"],
+      "confidence": 0.7,
+      "rationale": "Semantic candidate: online availability can supplement stockout context but cannot replace inventory balances."
+    }
+  ]
+}

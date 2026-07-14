@@ -1,0 +1,211 @@
+{
+  "schema_version": "1.1.0",
+  "generated_at": "2026-07-14T20:59:19+00:00",
+  "portable": true,
+  "source_inputs": {
+    "schema_reference": "external local input; not packaged",
+    "modelling_project": "external local input; not packaged"
+  },
+  "source_snapshots": [
+    {
+      "source_name": "report_master_index.csv",
+      "snapshot_path": "schema-pack/source/catalog/reports.csv",
+      "sha256": "08232fa795e964c02845ee8d6d5e98725d2d70e7131885147b925755f5af6ded",
+      "bytes": 133190,
+      "rows": 319,
+      "logical_name": "reports"
+    },
+    {
+      "source_name": "report_field_index.csv",
+      "snapshot_path": "schema-pack/source/catalog/report_fields.csv",
+      "sha256": "ed6666cb175a1d0ce09d84c454d204997e5c5ca1616111225a23dbe575aedc32",
+      "bytes": 162969,
+      "rows": 783,
+      "logical_name": "report_fields"
+    },
+    {
+      "source_name": "report_to_api_mapping.csv",
+      "snapshot_path": "schema-pack/source/catalog/report_api_mappings.csv",
+      "sha256": "954ef78eaf08226300a287243b0a2b48b020aafcaf79bb0c67bd400415fcccad",
+      "bytes": 112,
+      "rows": 0,
+      "logical_name": "report_api_mappings"
+    },
+    {
+      "source_name": "report_to_model_mapping.csv",
+      "snapshot_path": "schema-pack/source/catalog/report_model_mappings.csv",
+      "sha256": "a0f357f3219db602baf0490f223003fa8d50676b7d7913d90e06464587f8bde7",
+      "bytes": 140,
+      "rows": 0,
+      "logical_name": "report_model_mappings"
+    },
+    {
+      "source_name": "unresolved_questions.csv",
+      "snapshot_path": "schema-pack/source/catalog/questions.csv",
+      "sha256": "9a85d37156feeb05ca7a9b115e3dbc062ad2d895b1d54c74596c73ea7d7480d0",
+      "bytes": 1188,
+      "rows": 6,
+      "logical_name": "questions"
+    },
+    {
+      "source_name": "endpoint_inventory.csv",
+      "snapshot_path": "schema-pack/source/catalog/api_endpoints.csv",
+      "sha256": "77b6dab68cb09ad84dcba344bc26bbc6eaff048d6229c625fb92d412a5514747",
+      "bytes": 6772,
+      "rows": 34,
+      "logical_name": "api_endpoints"
+    },
+    {
+      "source_name": "model_mapping_seed.csv",
+      "snapshot_path": "schema-pack/source/catalog/api_model_seed.csv",
+      "sha256": "d3ef347e3400632cd304f74cb2ea86c8cf20c8557c540a20d55509010d0cee9f",
+      "bytes": 4553,
+      "rows": 12,
+      "logical_name": "api_model_seed"
+    },
+    {
+      "source_name": "mapping_options.csv",
+      "snapshot_path": "schema-pack/source/catalog/mapping_options.csv",
+      "sha256": "ba057ca8d93540231dcbee3a829eda2c68c4264f8599cdd47d5ecd53745ef6d7",
+      "bytes": 127,
+      "rows": 0,
+      "logical_name": "mapping_options"
+    },
+    {
+      "source_name": "validation_tests.csv",
+      "snapshot_path": "schema-pack/source/catalog/validation_tests.csv",
+      "sha256": "ba4fd2725657c611fed8dea2b699d2342d4ef20279fad068f884ded9f72ba014",
+      "bytes": 82,
+      "rows": 0,
+      "logical_name": "validation_tests"
+    }
+  ],
+  "counts": {
+    "reports": 319,
+    "reports_with_fields": 58,
+    "unique_fields": 371,
+    "field_occurrences": 783,
+    "evidence_items": 161,
+    "api_endpoints": 34,
+    "model_objects": 67,
+    "mapping_options": 0,
+    "selected_mappings": 0,
+    "validation_tests": 0,
+    "passed_validation_tests": 0,
+    "candidate_relationships": 224,
+    "unresolved_questions": 6,
+    "node_types": {
+      "page": 3,
+      "domain": 3,
+      "section": 29,
+      "report": 319,
+      "field": 371,
+      "api": 34,
+      "model": 67
+    },
+    "edge_types": {
+      "contains": 348,
+      "classifies": 319,
+      "exposes_field": 782,
+      "api_coverage": 205,
+      "model_depends_on": 77,
+      "api_maps_to_model": 19
+    },
+    "workspace_reports": 319,
+    "structural_blueprints": 17,
+    "approved_kpis": 0,
+    "published_lineage_maps": 0
+  },
+  "quality_status": "usable_with_warnings",
+  "entry_points": {
+    "human": "README.md",
+    "developer": "docs/ARCHITECTURE.md",
+    "ai_agent": "AGENT_HANDOFF.md",
+    "graph_data": "schema-pack/generated/atlas.json",
+    "quality": "schema-pack/generated/quality_report.json",
+    "mapping_registry": "curation/mapping_options.csv",
+    "validation_registry": "curation/validation_tests.csv",
+    "workspace_data": "schema-pack/generated/workspace.json",
+    "kpi_lineage": "schema-pack/generated/kpi-lineage.json"
+  },
+  "workspace_contract_version": "1.0.0",
+  "workspace_source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "workspace_source_files": [
+    {
+      "path": "schema-pack/source/report_structures/p1_main/06_misc/01_void_bill_item_wise.json",
+      "sha256": "665f897563ffdafef847624503574b822983aac4b9ae177302db1a34c478052d"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p1_main/06_misc/02_cashier_report.json",
+      "sha256": "6be22c98fbcf0ffa81f2eb69c594ce342ee977236de09dafa75f7927740d248c"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p1_main/06_misc/03_budget_dsr_report.json",
+      "sha256": "daba0aca826f071735cdc5f33c03ef39109f75e180876c35b63f95146747be59"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p1_main/06_misc/04_crm_report.json",
+      "sha256": "14af6ebc50629b01c4dd215d772eff7295fb5ce67b4f87ebeca9b670c6dd42ba"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p1_main/06_misc/05_voucher_report.json",
+      "sha256": "d8d8ac42edef7219471175fdd465da869d337ac00191d838ed90194d0632daf3"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p1_main/06_misc/06_sales_and_reload_report.json",
+      "sha256": "a8949c9440fe5d68ae6090692a5a6f2e1cb003c4583c61caad5ccec92d0188d5"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p1_main/06_misc/09_super_categories_dsr.json",
+      "sha256": "20acf1e23e3aeb6fa648a83029eaeec3d39bba0101ce4dc5eede71a68501018b"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p1_main/06_misc/10_online_orders_time_log.json",
+      "sha256": "a6aa1e792b0490dc2fb69e9937d7611ed15c706f14dbae4b13435841188ab00a"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p1_main/06_misc/11_entp_edc_report.json",
+      "sha256": "50b0961979cc341031567008a6501fe383f38febf56355ab6ed01632fc89bba6"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p1_main/06_misc/12_entp_day_report.json",
+      "sha256": "5602ff4011843b5a45e28f417ed3ce1b7374dd41166bfbd73003dbe93b704e5b"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p1_main/06_misc/13_entp_reprint_report.json",
+      "sha256": "f2e1a67be142c907b70395d5e01822b855053eeef1965afaecdc0fcce0d7133a"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p1_main/06_misc/15_item_out_of_stock.json",
+      "sha256": "009db2ce449c355f4558af8ea6e6be34cefad02b13303f67508647131357a2c8"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p1_main/06_misc/16_whatsapp_message_report.json",
+      "sha256": "11dec63dc7f621f3928a280e85ec20e79163927277fc1bba6193b75f171d6a33"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p1_main/06_misc/18_item_recipe_report.json",
+      "sha256": "eb02a96c3b35b9f4c54a96a9e8938206e01611d2c5280548d33156f36b6a4916"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p1_main/06_misc/20_shift_report.json",
+      "sha256": "aabc4ca3b50cfa131aa97042a064b7ff3396ae2488185c706b7ad1012fed9fcc"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p1_main/06_misc/23_staff_meal_report.json",
+      "sha256": "49631d02537f6f1f5a7578c40518c4d8498fe340069b4abdff1a9df1dd34024f"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p1_main/06_misc/25_removed_taxes_charges_report.json",
+      "sha256": "fab8ea00df718a3ee7a4fb5ffba4f10dd683f4eb84c9cf8dcd2e8641d4e14d0c"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p1_main/06_misc/_status.json",
+      "sha256": "ca5a4392cce9b1781ac8192172851b5d6127b949e34a8b4b0bfeca75f7614ee3"
+    }
+  ],
+  "kpi_lineage_source": {
+    "path": "schema-pack/source/kpi_lineage/kpi-lineage.json",
+    "sha256": "f2d18659b43c8ab0a9e92b2ff62fb7b03347b43ec4877f45356e209c6f86fe2f"
+  }
+}

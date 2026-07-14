@@ -1,0 +1,29 @@
+{
+  "report_id": "report:p1_main:06_misc:16_whatsapp_message_report",
+  "schema_status": "captured",
+  "verification_status": "needs_review",
+  "layout_kind": "mixed",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Two account-level message counters precede a separate message-delivery table.",
+  "blocks": [
+    {
+      "id": "summary",
+      "name": "Message balance summary",
+      "kind": "key_value",
+      "entries": [
+        { "label": "Balance Messages", "key": "balance_messages" },
+        { "label": "Consumed Messages", "key": "consumed_messages" }
+      ]
+    },
+    {
+      "id": "primary",
+      "name": "Message delivery detail",
+      "kind": "flat_table",
+      "columns": [
+        { "label": "Deployment Name" }, { "label": "Sent Date" }, { "label": "Sent Time" },
+        { "label": "Sent To" }, { "label": "Whatsapp Vendor" }, { "label": "Sent Message" },
+        { "label": "Status" }, { "label": "Error Message" }
+      ]
+    }
+  ]
+}

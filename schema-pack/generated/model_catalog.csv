@@ -1,0 +1,68 @@
+﻿model_id,name,layer,domain,status,source_path,description
+model:dim_competitor,DIM_Competitor,dim,sales_revenue,current,31_dim_competitor.sql,Current DIM object in the synthetic Zoho model.
+model:dim_date,DIM_Date,dim,sales_revenue,current,11_dim_date.sql,Current DIM object in the synthetic Zoho model.
+model:dim_event,DIM_Event,dim,sales_revenue,current,16_dim_event.sql,Current DIM object in the synthetic Zoho model.
+model:dim_holiday,DIM_Holiday,dim,sales_revenue,current,30_dim_holiday.sql,Current DIM object in the synthetic Zoho model.
+model:dim_ingredient,DIM_Ingredient,dim,inventory_consumption,current,15_dim_ingredient.sql,Current DIM object in the synthetic Zoho model.
+model:dim_menu_item,DIM_Menu_Item,dim,sales_revenue,current,13_dim_menu_item.sql,Current DIM object in the synthetic Zoho model.
+model:dim_outlet,DIM_Outlet,dim,sales_revenue,current,12_dim_outlet.sql,Current DIM object in the synthetic Zoho model.
+model:dim_vendor,DIM_Vendor,dim,vendor_procurement,current,14_dim_vendor.sql,Current DIM object in the synthetic Zoho model.
+model:fact_competitor_price_position,FACT_Competitor_Price_Position,fact,sales_revenue,current,24_fact_competitor_price_position.sql,Current FACT object in the synthetic Zoho model.
+model:fact_entry_receipt,FACT_Entry_Receipt,fact,vendor_procurement,current,19_fact_entry_receipt.sql,Current FACT object in the synthetic Zoho model.
+model:fact_event_sales_impact,FACT_Event_Sales_Impact,fact,sales_revenue,current,23_fact_event_sales_impact.sql,Current FACT object in the synthetic Zoho model.
+model:fact_inventory_closing,FACT_Inventory_Closing,fact,inventory_consumption,current,20_fact_inventory_closing.sql,Current FACT object in the synthetic Zoho model.
+model:fact_outlet_daily_health,FACT_Outlet_Daily_Health,fact,sales_revenue,current,25_fact_outlet_daily_health.sql,Current FACT object in the synthetic Zoho model.
+model:fact_po_receipt_comparison,FACT_PO_Receipt_Comparison,fact,vendor_procurement,current,22_fact_po_receipt_comparison.sql,Current FACT object in the synthetic Zoho model.
+model:fact_purchase_order,FACT_Purchase_Order,fact,vendor_procurement,current,18_fact_purchase_order.sql,Current FACT object in the synthetic Zoho model.
+model:fact_sales,FACT_Sales,fact,sales_revenue,current,17_fact_sales.sql,Current FACT object in the synthetic Zoho model.
+model:fact_theoretical_consumption,FACT_Theoretical_Consumption,fact,inventory_consumption,current,21_fact_theoretical_consumption.sql,Current FACT object in the synthetic Zoho model.
+model:fact_vendor_spend,FACT_Vendor_Spend,fact,vendor_procurement,current,32_fact_vendor_spend.sql,Current FACT object in the synthetic Zoho model.
+model:raw_brand_recipe_consumption,RAW_Brand_Recipe_Consumption,raw,inventory_consumption,current,imported RAW source,Imported synthetic RAW source used by one or more current query tables.
+model:raw_competitor_pricing,RAW_Competitor_Pricing,raw,sales_revenue,current,imported RAW source,Imported synthetic RAW source used by one or more current query tables.
+model:raw_entry_report_out001,RAW_Entry_Report_OUT001,raw,vendor_procurement,current,imported RAW source,Imported synthetic RAW source used by one or more current query tables.
+model:raw_entry_report_out002,RAW_Entry_Report_OUT002,raw,vendor_procurement,current,imported RAW source,Imported synthetic RAW source used by one or more current query tables.
+model:raw_entry_report_out003,RAW_Entry_Report_OUT003,raw,vendor_procurement,current,imported RAW source,Imported synthetic RAW source used by one or more current query tables.
+model:raw_indian_calendar_holidays,RAW_Indian_Calendar_Holidays,raw,sales_revenue,current,imported RAW source,Imported synthetic RAW source used by one or more current query tables.
+model:raw_inventory_closing_report_out001,RAW_Inventory_Closing_Report_OUT001,raw,inventory_consumption,current,imported RAW source,Imported synthetic RAW source used by one or more current query tables.
+model:raw_inventory_closing_report_out002,RAW_Inventory_Closing_Report_OUT002,raw,inventory_consumption,current,imported RAW source,Imported synthetic RAW source used by one or more current query tables.
+model:raw_inventory_closing_report_out003,RAW_Inventory_Closing_Report_OUT003,raw,inventory_consumption,current,imported RAW source,Imported synthetic RAW source used by one or more current query tables.
+model:raw_manual_calendar_events,RAW_Manual_Calendar_Events,raw,sales_revenue,current,imported RAW source,Imported synthetic RAW source used by one or more current query tables.
+model:raw_menu_master,RAW_Menu_Master,raw,sales_revenue,current,imported RAW source,Imported synthetic RAW source used by one or more current query tables.
+model:raw_purchase_report_out001,RAW_Purchase_Report_OUT001,raw,vendor_procurement,current,imported RAW source,Imported synthetic RAW source used by one or more current query tables.
+model:raw_purchase_report_out002,RAW_Purchase_Report_OUT002,raw,vendor_procurement,current,imported RAW source,Imported synthetic RAW source used by one or more current query tables.
+model:raw_purchase_report_out003,RAW_Purchase_Report_OUT003,raw,vendor_procurement,current,imported RAW source,Imported synthetic RAW source used by one or more current query tables.
+model:raw_sales_report_out001,RAW_Sales_Report_OUT001,raw,sales_revenue,current,imported RAW source,Imported synthetic RAW source used by one or more current query tables.
+model:raw_sales_report_out002,RAW_Sales_Report_OUT002,raw,sales_revenue,current,imported RAW source,Imported synthetic RAW source used by one or more current query tables.
+model:raw_sales_report_out003,RAW_Sales_Report_OUT003,raw,sales_revenue,current,imported RAW source,Imported synthetic RAW source used by one or more current query tables.
+model:raw_vendor_report,RAW_Vendor_Report,raw,vendor_procurement,current,imported RAW source,Imported synthetic RAW source used by one or more current query tables.
+model:std_competitor_pricing,STD_Competitor_Pricing,std,sales_revenue,current,10_std_competitor_pricing.sql,Current STD object in the synthetic Zoho model.
+model:std_entry_report,STD_Entry_Report,std,vendor_procurement,current,03_std_entry_report.sql,Current STD object in the synthetic Zoho model.
+model:std_holiday_calendar,STD_Holiday_Calendar,std,sales_revenue,current,08_std_holiday_calendar.sql,Current STD object in the synthetic Zoho model.
+model:std_inventory_closing_report,STD_Inventory_Closing_Report,std,inventory_consumption,current,04_std_inventory_closing_report.sql,Current STD object in the synthetic Zoho model.
+model:std_manual_events,STD_Manual_Events,std,sales_revenue,current,09_std_manual_events.sql,Current STD object in the synthetic Zoho model.
+model:std_menu_master,STD_Menu_Master,std,sales_revenue,current,05_std_menu_master.sql,Current STD object in the synthetic Zoho model.
+model:std_purchase_report,STD_Purchase_Report,std,vendor_procurement,current,02_std_purchase_report.sql,Current STD object in the synthetic Zoho model.
+model:std_recipe_bom,STD_Recipe_BOM,std,inventory_consumption,current,07_std_recipe_bom.sql,Current STD object in the synthetic Zoho model.
+model:std_sales_report,STD_Sales_Report,std,sales_revenue,current,01_std_sales_report.sql,Current STD object in the synthetic Zoho model.
+model:std_vendor_report,STD_Vendor_Report,std,vendor_procurement,current,06_std_vendor_report.sql,Current STD object in the synthetic Zoho model.
+model:sum_competitor_positioning,SUM_Competitor_Positioning,sum,sales_revenue,current,29_sum_competitor_positioning.sql,Current SUM object in the synthetic Zoho model.
+model:sum_event_impact,SUM_Event_Impact,sum,sales_revenue,current,28_sum_event_impact.sql,Current SUM object in the synthetic Zoho model.
+model:sum_event_markers,SUM_Event_Markers,sum,sales_revenue,current,37_sum_event_markers.sql,Current SUM object in the synthetic Zoho model.
+model:sum_executive_kpis,SUM_Executive_KPIs,sum,sales_revenue,current,33_sum_executive_kpis.sql,Current SUM object in the synthetic Zoho model.
+model:sum_inventory_risk,SUM_Inventory_Risk,sum,inventory_consumption,current,27_sum_inventory_risk.sql,Current SUM object in the synthetic Zoho model.
+model:sum_menu_item_performance,SUM_Menu_Item_Performance,sum,sales_revenue,current,36_sum_menu_item_performance.sql,Current SUM object in the synthetic Zoho model.
+model:sum_outlet_health,SUM_Outlet_Health,sum,sales_revenue,current,34_sum_outlet_health.sql,Current SUM object in the synthetic Zoho model.
+model:sum_sales_category_mix,SUM_Sales_Category_Mix,sum,sales_revenue,current,35_sum_sales_category_mix.sql,Current SUM object in the synthetic Zoho model.
+model:sum_vendor_share,SUM_Vendor_Share,sum,vendor_procurement,current,26_sum_vendor_share.sql,Current SUM object in the synthetic Zoho model.
+model:fact_inventory_movement,FACT_Inventory_Movement,fact,inventory_consumption,proposed,API model mapping seed,Candidate model object proposed during Restroworks API planning.
+model:fact_physical_stock_count,FACT_Physical_Stock_Count,fact,sales_revenue,proposed,API model mapping seed,Candidate model object proposed during Restroworks API planning.
+model:fact_inventory_wastage,FACT_Inventory_Wastage,fact,inventory_consumption,proposed,API model mapping seed,Candidate model object proposed during Restroworks API planning.
+model:fact_vendor_return,FACT_Vendor_Return,fact,vendor_procurement,proposed,API model mapping seed,Candidate model object proposed during Restroworks API planning.
+model:fact_actual_consumption,FACT_Actual_Consumption,fact,inventory_consumption,proposed,API model mapping seed,Candidate model object proposed during Restroworks API planning.
+model:fact_indent,FACT_Indent,fact,vendor_procurement,proposed,API model mapping seed,Candidate model object proposed during Restroworks API planning.
+model:fact_interstore_transfer_request,FACT_Interstore_Transfer_Request,fact,sales_revenue,proposed,API model mapping seed,Candidate model object proposed during Restroworks API planning.
+model:fact_bill_item_line,FACT_Bill_Item_Line,fact,sales_revenue,proposed,API model mapping seed,Candidate model object proposed during Restroworks API planning.
+model:fact_invoice_summary,FACT_Invoice_Summary,fact,sales_revenue,proposed,API model mapping seed,Candidate model object proposed during Restroworks API planning.
+model:sum_sales_validation,SUM_Sales_Validation,sum,sales_revenue,proposed,API model mapping seed,Candidate model object proposed during Restroworks API planning.
+model:dim_menu_category,DIM_Menu_Category,dim,sales_revenue,proposed,API model mapping seed,Candidate model object proposed during Restroworks API planning.
+model:fact_menu_availability,FACT_Menu_Availability,fact,sales_revenue,proposed,API model mapping seed,Candidate model object proposed during Restroworks API planning.

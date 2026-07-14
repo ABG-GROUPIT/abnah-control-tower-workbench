@@ -1,0 +1,41 @@
+{
+  "report_id": "report:p1_main:06_misc:12_entp_day_report",
+  "schema_status": "captured",
+  "verification_status": "needs_review",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "One wide report split into day-opening, day-closing, sales, cash-flow, and expense column groups.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Enterprise day lifecycle",
+      "kind": "column_tree",
+      "columns": [
+        { "label": "DEPLOYMENT NAME" },
+        { "label": "DAY OPENING", "children": [
+          { "label": "DATE", "key": "opening_date" }, { "label": "USER", "key": "opening_user" },
+          { "label": "INSTANCE", "key": "opening_instance" }, { "label": "POS OPENING CASH" },
+          { "label": "ENTERED OPENING CASH" }, { "label": "VARIANCE", "key": "opening_variance" },
+          { "label": "REASON", "key": "opening_reason" }
+        ] },
+        { "label": "DAY CLOSING", "children": [
+          { "label": "DATE", "key": "closing_date" }, { "label": "USER", "key": "closing_user" },
+          { "label": "INSTANCE", "key": "closing_instance" }, { "label": "POS CLOSING CASH" },
+          { "label": "ENTERED CLOSING CASH" }, { "label": "VARIANCE", "key": "closing_variance" },
+          { "label": "REASON", "key": "closing_reason" }, { "label": "ENVELOPE SAFE DEPOSITS" }
+        ] },
+        { "label": "SALES DATA", "children": [
+          { "label": "TOTAL", "key": "sales_total" }, { "label": "CASH", "key": "sales_cash" },
+          { "label": "CREDIT CARD", "key": "sales_credit_card" }, { "label": "DEBIT CARD", "key": "sales_debit_card" },
+          { "label": "ONLINE", "key": "sales_online" }, { "label": "OTHER", "key": "sales_other" },
+          { "label": "COUPON", "key": "sales_coupon" }, { "label": "VOUCHER/GIFT-CARD SALE" },
+          { "label": "MSR CARD SALE" }
+        ] },
+        { "label": "CASH FLOW", "children": [
+          { "label": "CASH IN" }, { "label": "CASH OUT" }, { "label": "CASH REFUNDS" }
+        ] },
+        { "label": "EXPENSE", "children": [{ "label": "EXPENSE INCURRED" }] }
+      ]
+    }
+  ]
+}

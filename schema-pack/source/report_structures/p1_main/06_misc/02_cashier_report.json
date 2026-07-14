@@ -1,0 +1,73 @@
+{
+  "report_id": "report:p1_main:06_misc:02_cashier_report",
+  "schema_status": "captured",
+  "verification_status": "needs_review",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Wide two-level header. Source-specific sales, discounts, parcel activity, taxes, charges, and service measures are preserved as separate grouped columns.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Cashier daily summary",
+      "kind": "column_tree",
+      "columns": [
+        { "label": "DEPLOYMENT" },
+        { "label": "DATE" },
+        { "label": "CASH SALES" },
+        { "label": "CREDIT CARD SALES", "children": [{ "label": "VISA", "key": "credit_card_sales_visa" }] },
+        { "label": "TOTAL CREDIT CARD SALE" },
+        { "label": "ONLINE SALES", "children": [
+          { "label": "ZOMATO", "key": "online_sales_zomato" },
+          { "label": "SWIGGY", "key": "online_sales_swiggy" }
+        ] },
+        { "label": "TOTAL ONLINE SALE" },
+        { "label": "OTHER SALES", "children": [{ "label": "RAZORPAY", "key": "other_sales_razorpay" }] },
+        { "label": "TOTAL OTHER SALE" },
+        { "label": "GROSS SALES" },
+        { "label": "TOTAL SALES" },
+        { "label": "SOURCE WISE DISCOUNT", "children": [
+          { "label": "ZOMATO", "key": "source_discount_zomato" },
+          { "label": "SWIGGY", "key": "source_discount_swiggy" },
+          { "label": "POS", "key": "source_discount_pos" },
+          { "label": "QR", "key": "source_discount_qr" }
+        ] },
+        { "label": "TOTAL DISCOUNT" },
+        { "label": "TAB WISE DISCOUNT", "children": [
+          { "label": "ECOM", "key": "tab_discount_ecom" },
+          { "label": "TAKEAWAY", "key": "tab_discount_takeaway" },
+          { "label": "DINE IN", "key": "tab_discount_dine_in" },
+          { "label": "QR CODE", "key": "tab_discount_qr_code" }
+        ] },
+        { "label": "NET SALES" },
+        { "label": "TAXES", "children": [{ "label": "GST@5%", "key": "tax_gst_5" }] },
+        { "label": "TOTAL TAX" },
+        { "label": "OTHER CHARGES", "children": [
+          { "label": "RESTAURANT PACKAGING CHARGES" },
+          { "label": "PACKAGING CHARGE [CART - SWIGGY]" }
+        ] },
+        { "label": "SETTLEMENT AMOUNT" },
+        { "label": "ROUND OFF" },
+        { "label": "IN HOUSE PARCEL BILL COUNT", "children": [
+          { "label": "ECOM", "key": "parcel_bill_count_ecom" },
+          { "label": "TAKEAWAY", "key": "parcel_bill_count_takeaway" },
+          { "label": "DINE IN", "key": "parcel_bill_count_dine_in" },
+          { "label": "QR CODE", "key": "parcel_bill_count_qr_code" }
+        ] },
+        { "label": "IN HOUSE PARCEL AMOUNT", "children": [
+          { "label": "ECOM", "key": "parcel_amount_ecom" },
+          { "label": "TAKEAWAY", "key": "parcel_amount_takeaway" },
+          { "label": "DINE IN", "key": "parcel_amount_dine_in" },
+          { "label": "QR CODE", "key": "parcel_amount_qr_code" }
+        ] },
+        { "label": "TOTAL BILL COUNT" },
+        { "label": "AVERAGE TICKET SIZE" },
+        { "label": "COVERS" },
+        { "label": "AVERAGE SEAT TURN AROUND", "children": [
+          { "label": "DINE IN", "key": "average_seat_turnaround_dine_in" },
+          { "label": "QR CODE", "key": "average_seat_turnaround_qr_code" }
+        ] },
+        { "label": "AVERAGE PER PERSON(NET SALES)" }
+      ]
+    }
+  ]
+}

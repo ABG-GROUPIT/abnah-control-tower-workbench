@@ -1,0 +1,24 @@
+{
+  "report_id": "report:p1_main:06_misc:01_void_bill_item_wise",
+  "schema_status": "captured",
+  "verification_status": "needs_review",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Void bill item detail",
+      "kind": "flat_table",
+      "columns": [
+        { "label": "Outlet Name" }, { "label": "Store Id" }, { "label": "Bill Date" },
+        { "label": "Business Date" }, { "label": "Bill Number" }, { "label": "KOT Number" },
+        { "label": "Source" }, { "label": "Tab Name" }, { "label": "Super Category" },
+        { "label": "Category" }, { "label": "Item Code" }, { "label": "Item Name" },
+        { "label": "Bill Created Date" }, { "label": "Bill Created Time" }, { "label": "Void Date" },
+        { "label": "Void Time" }, { "label": "Void User" }, { "label": "Bill Made By" },
+        { "label": "Quantity" }, { "label": "Rate" }, { "label": "Amount" },
+        { "label": "Comment" }, { "label": "Type" }, { "label": "Payment Mode" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+﻿question_id,page,section,report_name,issue,needed_action,priority
+p1_schema_001,p1_main,01_sales_analysis,Brand Sales,filter_and_context_only_needs_schema,capture/paste headers or export if report is still needed,medium
+p1_schema_002,p1_main,03_discounts_offers,Offers Analysis,filter_only_needs_schema,capture/paste headers or export if report is still needed,medium
+p1_schema_003,p1_main,03_discounts_offers,Discount And Complimentary Analysis,screenshot_schema_available_filter_missing_or_common,run OCR later and extract field list,low
+p1_schema_004,p1_main,05_performance,Super Category Tabwise Sourcewise Sales,screenshot_schema_available_filter_missing_or_common,run OCR later and extract field list,low
+p1_misc_005,p1_main,06_misc,Miscellaneous Reports,25 of 27 names known; two names and all useful CSV headers still need capture if relevant,fill only export/header/status values in capture_templates/p1_miscellaneous_schema_readme.md,medium
+p4_api_006,p4_stock_admin,all,Stock Administration Reports,"UI availability confirmed, API/sample response coverage still unknown","after headers are captured, map each high-value report to Restroworks/POSist API samples",high

@@ -1,0 +1,35 @@
+﻿packet_id,folder,endpoint_name,method,path,auth_or_key_params,abnah_priority,primary_dashboard_fit,usefulness,notes
+RW_API_001,Data Integration,GET Bills,GET,/api/v1/pos/bills,"from,to,page,customer_key; API key/auth noted",P1,Sales and Menu Intelligence,High for sales/consumption,"Bill/KOT line detail includes item quantities,categories,taxes,discounts,payments,bill close time and bill identifiers."
+RW_API_002,Data Integration,GET All invoices,GET,/api/v1/pos/get_all_invoices,"customer_key,partner,apiKey,StartDate,EndDate",P1,Sales and Revenue Validation,Medium,"Invoice-level net sales,gross sales,tax,discount and returns. Good for validation totals but less useful than bill/KOT detail."
+RW_API_003,Online Order,Get Outlet Tabs,GET,/api/v1/online_order/deployment_tabs,customer_key,P2,Menu/Channel Context,Medium,"Helps identify order tabs such as dine-in,takeaway,delivery before menu sync."
+RW_API_004,Online Order,Menu Sync API,GET,/api/v1/online_order/menu,"tabtype,customer_key,lastSyncTime,currentSyncTime,tabId",P1,Menu Dimension,High,Menu item/category/tax/addon/combo/variant/active-status fields. Useful for DIM_Menu_Item and category enrichment.
+RW_API_005,Online Order,Out of Stock Items,GET,/api/v1/online_order/out_of_stock_items,"customer_key,tabtype,tabId",P1,Stockout Context,Medium,Returns item-level in-stock/out-of-stock status for online ordering. Context signal only.
+RW_API_006,Online Order,Order push,POST,/api/v1/online_order/push,customer_key,P2,Order Integration,Low,Pushes external online orders into Restroworks. More integration workflow than analytics source.
+RW_API_007,Online Order,Cancel Order,POST,/api/v1/online_order/cancel_order,customer_key,P2,Order Integration,Low,Cancels online order with reason. Not needed for phase-1 inventory/procurement.
+RW_API_008,Online Order,Order Status,GET,/api/v1/online_order/order_status,"customer_key,order_id",P2,Order Integration,Low,Operational order status lookup.
+RW_API_009,Online Order,Standard Menu Menu Sync API V2,GET,not_exposed_in_parsed_request,customer_key/tab context likely,P1,Menu Dimension,High,"Newer menu response contains categories,subcategories,entities,price,taxes,inStock,nutrition,allergens,shelfLife and scheduling fields."
+RW_API_010,Online Order,Out of Stock Via Aggregator Out of Stock Panel,GET,/api/v1/online_order/out_of_stock_items_standard,"customer_key,tabtype,tabId",P1,Stockout Context,Medium,"Standard out-of-stock response uses base item id,type,status."
+RW_API_011,Delivery,Assign Order to delivery,POST,webhook.url,external webhook,P3,Delivery Ops,Low,Webhook/callback style delivery assignment. Not relevant to current inventory/procurement phase.
+RW_API_012,Delivery,Assign Delivery Person,POST,/api/v1/delivery/assign,customer_key,P3,Delivery Ops,Low,"Customer delivery workflow, not vendor procurement logistics."
+RW_API_013,Delivery,Order Delivery Accepted,POST,/api/v1/delivery/accepted,customer_key,P3,Delivery Ops,Low,Customer delivery status update.
+RW_API_014,Delivery,Order Delivery Rejected,POST,/api/v1/delivery/rejected,customer_key,P3,Delivery Ops,Low,Customer delivery status update.
+RW_API_015,Delivery,Order Picked Up,POST,/api/v1/delivery/picked_up,customer_key,P3,Delivery Ops,Low,Customer delivery status update.
+RW_API_016,Delivery,Order Delivered,POST,/api/v1/delivery/delivered,customer_key,P3,Delivery Ops,Low,Customer delivery status update.
+RW_API_017,Delivery,Tracking Url,POST,/api/v1/delivery/tracking,customer_key,P3,Delivery Ops,Low,Customer delivery tracking URL update.
+RW_API_018,Delivery,Get Delivery info,POST,/api/v1/delivery/get_delivery_info,customer_key,P3,Delivery Ops,Low,Customer delivery details. Not vendor route/procurement data.
+RW_API_019,Loyalty Integration,Get Loyalty Customer Details,POST,external_partner_endpoint,partner auth,P3,CRM/Loyalty,Low,Partner-side loyalty callback pattern. Not needed for current phase.
+RW_API_020,Loyalty Integration,POS customer Details,POST,external_partner_endpoint,partner auth,P3,CRM/Loyalty,Low,Customer/loyalty exchange.
+RW_API_021,Loyalty Integration,Authenticate points redemption,POST,external_partner_endpoint,partner auth,P3,CRM/Loyalty,Low,Loyalty redemption workflow.
+RW_API_022,Loyalty Integration,Loyalty Points Redemption,POST,external_partner_endpoint,partner auth,P3,CRM/Loyalty,Low,Loyalty redemption workflow.
+RW_API_023,Loyalty Integration,Get POS Bill Details,POST,external_partner_endpoint,partner auth,P3,CRM/Loyalty,Low,Could overlap bill lookup but not primary analytics source.
+RW_API_024,Loyalty Integration,Coupon/Reward Details,POST,external_partner_endpoint,partner auth,P3,CRM/Loyalty,Low,Coupon/reward workflow.
+RW_API_025,Loyalty Integration,Redeem Coupon,POST,external_partner_endpoint,partner auth,P3,CRM/Loyalty,Low,Coupon redemption workflow.
+RW_API_026,Cloud POS,Get Menu Items,GET,/api/v1/online_order_cloud/menu,customer_key,P2,Menu Dimension,Medium,Cloud POS menu fields can supplement menu master if standard menu API is unavailable.
+RW_API_027,Cloud POS,Push Order to Kitchen,GET,/api/v1/online_order_cloud/push,customer_key,P3,Kitchen Ops,Low,Operational order push.
+RW_API_028,Cloud POS,Update pushed order cancel,GET,/api/v1/online_order_cloud/update_order,customer_key/body,P3,Kitchen Ops,Low,Operational cancellation workflow.
+RW_API_029,Stock,Fetch Inventory Data,GET,/api/v1/pos/fetch_Inventory_data,"Basic auth; customer_key,entity,fromDate,toDate,transactionType,onlyLocalGRNs,tenant_id,page",P0,Inventory and Consumption Intelligence; Vendor and Procurement Analytics,Very high,"Core endpoint for inventory transactions and PO/entity mode. Transaction types include stock_entry,physical_stock,vendor_return,wastage_entry,stock_opening,stock_sale; docs mention stock_transfer,finished_entry,semi_entry as upcoming."
+RW_API_030,Stock,Indent,GET,/api/v1/pos/get_indents,"Basic auth; customer_key,startDate,endDate,deploymentAs",P0,Inventory and Consumption Intelligence; Vendor and Procurement Analytics,Very high,"Indent/requisition data between supplier and receiver deployments/stores with item quantities,status,dates,taxes and store codes."
+RW_API_031,FAQ,Online Order,VIEW,documentation_only,none,P3,Documentation,Low,"FAQ/documentation content, not data endpoint."
+RW_API_032,FAQ,Data integration,VIEW,documentation_only,none,P3,Documentation,Low,"FAQ/documentation content, not data endpoint."
+RW_API_033,Checklist for Production,Online Ordering Standard Menu Checklist,VIEW,documentation_only,none,P3,Implementation Checklist,Low,"Useful for integration go-live checks, not a data source."
+RW_API_034,Checklist for Production,Loyalty Checklist,VIEW,documentation_only,none,P3,Implementation Checklist,Low,"Useful for integration go-live checks, not a data source."

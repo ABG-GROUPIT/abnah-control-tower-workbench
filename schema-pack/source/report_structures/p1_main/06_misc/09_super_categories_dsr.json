@@ -1,0 +1,40 @@
+{
+  "report_id": "report:p1_main:06_misc:09_super_categories_dsr",
+  "schema_status": "captured",
+  "verification_status": "needs_review",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Wide two-level header combining source-wise charges and net sales, super-category sales, taxes, totals, and payment modes.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Super-category daily sales",
+      "kind": "column_tree",
+      "columns": [
+        { "label": "OUTLET NAME" }, { "label": "DATE" }, { "label": "NO OF ITEMS" },
+        { "label": "NO OF BILLS" }, { "label": "SALE" }, { "label": "DISCOUNT" },
+        { "label": "CHARGES", "children": [
+          { "label": "QR", "key": "charges_qr" }, { "label": "POS", "key": "charges_pos" },
+          { "label": "ZOMATO", "key": "charges_zomato" }, { "label": "SWIGGY", "key": "charges_swiggy" }
+        ] },
+        { "label": "NET SALE(SOURCEWISE)", "children": [
+          { "label": "QR", "key": "net_sale_qr" }, { "label": "POS", "key": "net_sale_pos" },
+          { "label": "ZOMATO", "key": "net_sale_zomato" }, { "label": "SWIGGY", "key": "net_sale_swiggy" }
+        ] },
+        { "label": "NET SALE" }, { "label": "MERCHANDISE" }, { "label": "COLD BEVERAGES" },
+        { "label": "ADD-ON" }, { "label": "ALL DAY BREKKIE BOWLS & TOASTS" },
+        { "label": "HOT BEVERAGES" }, { "label": "BREAK SOME BREAD" }, { "label": "DESSERTS" },
+        { "label": "EMPLOYEE MEAL" }, { "label": "BAKERY" }, { "label": "CGST GST@5%" },
+        { "label": "SGST GST@5%" }, { "label": "TOTAL TAX" }, { "label": "TOTAL AMOUNT" },
+        { "label": "ROUND OFF" }, { "label": "GROSS AMOUNT" }, { "label": "CASH" },
+        { "label": "CREDIT CARD", "children": [{ "label": "VISA", "key": "credit_card_visa" }] },
+        { "label": "DEBIT CARD" }, { "label": "COUPON" },
+        { "label": "OTHER", "children": [{ "label": "RAZORPAY", "key": "other_razorpay" }] },
+        { "label": "ONLINE", "children": [
+          { "label": "ZOMATO", "key": "online_zomato" }, { "label": "SWIGGY", "key": "online_swiggy" }
+        ] },
+        { "label": "BTC" }, { "label": "TTR" }, { "label": "TIPS" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+# Bulk Return Report
+
+- Page: `p4_stock_admin`
+- Section: `04_indent_reports`
+- Scaffold folder: `p4_stock_admin/04_indent_reports/07_bulk_return_report`
+- Priority domain: `vendor_procurement`
+- Schema source status: `schema_text_template_ready`
+- Next action: paste CSV headers first; add screenshots only for high-value filters or grouped stock/procurement grain
+
+## Header Capture Placeholder
+
+Use the page-level `00_SCHEMA_CAPTURE_README.md` first. Later this chunk should be updated with normalized CSV headers and field meanings.
+
+```text
+
+```

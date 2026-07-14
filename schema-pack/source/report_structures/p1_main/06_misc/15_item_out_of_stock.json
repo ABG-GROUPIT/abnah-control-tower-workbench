@@ -1,0 +1,29 @@
+{
+  "report_id": "report:p1_main:06_misc:15_item_out_of_stock",
+  "schema_status": "captured",
+  "verification_status": "needs_review",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "structure_notes": "The captured first header reads 'eployment Name'. It is retained exactly and mapped to deployment_name pending source verification.",
+  "data_points": [
+    { "key": "deployment_name", "label": "eployment Name", "notes": "Likely missing the initial D; verify against a future export." },
+    { "label": "Activity Time" }, { "label": "Tab" }, { "label": "Partner Names" },
+    { "label": "Item Name" }, { "label": "Item type" }, { "label": "Activity" },
+    { "label": "User" }, { "label": "From Date" }, { "label": "From Time" },
+    { "label": "To Date" }, { "label": "To Time" }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Out-of-stock activity",
+      "kind": "flat_table",
+      "columns": [
+        { "key": "deployment_name", "label": "eployment Name" }, { "label": "Activity Time" },
+        { "label": "Tab" }, { "label": "Partner Names" }, { "label": "Item Name" },
+        { "label": "Item type" }, { "label": "Activity" }, { "label": "User" },
+        { "label": "From Date" }, { "label": "From Time" }, { "label": "To Date" },
+        { "label": "To Time" }
+      ]
+    }
+  ]
+}

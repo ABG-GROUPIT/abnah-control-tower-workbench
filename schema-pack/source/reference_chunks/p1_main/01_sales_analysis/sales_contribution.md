@@ -1,0 +1,61 @@
+# Sales Contribution
+
+- Page: `p1_main`
+- Section: `01_sales_analysis`
+- Scaffold folder: `p1_main/01_sales_analysis/19_sales_contribution`
+- Priority domain: `sales_revenue`
+- Schema source status: `screenshot_schema_and_filter_available`
+- Next action: run OCR later and extract field list
+
+## Derived Schema Field Candidates
+
+- 1. OUTLET NAME (`outlet_name`)
+- 2. Cluster (`cluster`)
+- 3. Format (`format`)
+- 4. Currency (`currency`)
+- 5. Month (`month`)
+- 6. Overall Sales Value (`overall_sales_value`)
+- 7. %Table Sales (`pct_table_sales`)
+- 8. %TakeoutSales (`pct_takeoutsales`)
+- 9. %Delivery Sales (`pct_delivery_sales`)
+- 10. Brioche Sandwich (`brioche_sandwich`)
+- 11. Rolls (`rolls`)
+- 12. Toasts (`toasts`)
+- 13. Flat Breads (`flat_breads`)
+- 14. Bowls (`bowls`)
+- 15. Brownies (`brownies`)
+- 16. Brekkie (`brekkie`)
+- 17. Coffee (`coffee`)
+- 18. Chai (`chai`)
+- 19. Hot Chocolate (`hot_chocolate`)
+- 20. Specialty Coffee (`specialty_coffee`)
+- 21. Wellness Tea (`wellness_tea`)
+- 22. Coolers (`coolers`)
+- 23. Smoothie (`smoothie`)
+- 24. Matcha&Hojicha (`matcha_hojicha`)
+- 25. Merchandise (`merchandise`)
+- 26. Iced Coffee (`iced_coffee`)
+- 27. Iced Matcha&Hojicha (`iced_matcha_hojicha`)
+- 28. Frappes (`frappes`)
+- 29. Cold Brew (`cold_brew`)
+- 30. ProteinDrinks (`proteindrinks`)
+- 31. Croissant (`croissant`)
+- 32. Puff (`puff`)
+- 33. Muffin (`muffin`)
+- 34. Tea cake (`tea_cake`)
+- 35. Sandos (`sandos`)
+- 36. Foccacia Sandwich (`foccacia_sandwich`)
+- 37. Sourdough Sandwich (`sourdough_sandwich`)
+- 38. Buns (`buns`)
+- 39. Cakes (`cakes`)
+- 40. Cookies (`cookies`)
+- 41. JarDesserts (`jardesserts`)
+- 42. Add-on (`add_on`)
+- 43. PackagedWater (`packagedwater`)
+- 44. Stationery (`stationery`)
+- 45. PlasticDrinkware (`plasticdrinkware`)
+- 46. EmployeeMeal (`employeemeal`)
+- 47. ChoiceofMilk (`choiceofmilk`)
+- 48. APT (`apt`)
+- 49. Bills (`bills`)
+- 50. EMPLOYEE MEAL BILLS (`employee_meal_bills`)

@@ -1,0 +1,21 @@
+{
+  "report_id": "report:p1_main:06_misc:23_staff_meal_report",
+  "schema_status": "captured",
+  "verification_status": "needs_review",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Staff meal consumption",
+      "kind": "flat_table",
+      "columns": [
+        { "label": "Deployment Name" }, { "label": "Bill Time" }, { "label": "Business Date" },
+        { "label": "Employee Name" }, { "label": "Employee Code" }, { "label": "Employee Designation" },
+        { "label": "Rule Name" }, { "label": "Meal Frequency Per Day" }, { "label": "Rule Type" },
+        { "label": "Day Amount" }, { "label": "Monthly Amount" }, { "label": "Min Frequency" },
+        { "label": "Max Frequency" }, { "label": "Bill Amount" }, { "label": "Units Consumed" }
+      ]
+    }
+  ]
+}

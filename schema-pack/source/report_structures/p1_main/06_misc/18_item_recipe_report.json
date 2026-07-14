@@ -1,0 +1,19 @@
+{
+  "report_id": "report:p1_main:06_misc:18_item_recipe_report",
+  "schema_status": "captured",
+  "verification_status": "needs_review",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Item recipe detail",
+      "kind": "flat_table",
+      "columns": [
+        { "label": "ITEM TYPE" }, { "label": "ITEM NUMBER" }, { "label": "ITEM NAME" },
+        { "label": "RECIPE ITEM TYPE" }, { "label": "QTY" }, { "label": "RECIPE UNIT" },
+        { "label": "INGREDIENT CODE" }, { "label": "INGREDIENT NAME" }
+      ]
+    }
+  ]
+}

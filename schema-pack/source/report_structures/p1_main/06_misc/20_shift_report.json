@@ -1,0 +1,52 @@
+{
+  "report_id": "report:p1_main:06_misc:20_shift_report",
+  "schema_status": "captured",
+  "verification_status": "needs_review",
+  "layout_kind": "grouped_columns",
+  "capture_method": "pasted_export_headers_and_manual_schema_reconstruction",
+  "structure_notes": "Two-level wide table. Date is shared, while opening, closing, sales, cash flow, discount, and advance measures retain their displayed groups.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Enterprise shift reconciliation",
+      "kind": "column_tree",
+      "columns": [
+        { "label": "Store Name" }, { "label": "Date" },
+        { "label": "Opening Data", "children": [
+          { "label": "Time", "key": "opening_time" }, { "label": "Username", "key": "opening_username" },
+          { "label": "Instance", "key": "opening_instance" }, { "label": "POS Opening Cash" },
+          { "label": "Entered Opening Cash" }, { "label": "Variance", "key": "opening_variance" },
+          { "label": "Reason", "key": "opening_reason" }
+        ] },
+        { "label": "Closing Data", "children": [
+          { "label": "Time", "key": "closing_time" }, { "label": "Username", "key": "closing_username" },
+          { "label": "Instance", "key": "closing_instance" }, { "label": "POS Closing Cash" },
+          { "label": "Entered Closing Cash" }, { "label": "Variance", "key": "closing_variance" },
+          { "label": "Reason", "key": "closing_reason" }
+        ] },
+        { "label": "Sales Data", "children": [
+          { "label": "Total", "key": "sales_total" }, { "label": "Cash", "key": "sales_cash" },
+          { "label": "Credit Card", "key": "sales_credit_card" }, { "label": "Debit Card", "key": "sales_debit_card" },
+          { "label": "Online", "key": "sales_online" }, { "label": "Other", "key": "sales_other" },
+          { "label": "Coupon", "key": "sales_coupon" }, { "label": "BTC", "key": "sales_btc" }
+        ] },
+        { "label": "Cash Flow", "children": [
+          { "label": "Total Cash In" }, { "label": "Total Cash Out" }, { "label": "Cash Refunds" }
+        ] },
+        { "label": "Voucher/Gift-Card Sale", "children": [
+          { "label": "Voucher/Gift-Card Sale", "key": "voucher_gift_card_sale" }
+        ] },
+        { "label": "MSR Card Reload Sale", "children": [
+          { "label": "MSR Card Reload Sale", "key": "msr_card_reload_sale" }
+        ] },
+        { "label": "Expense", "children": [{ "label": "Expense Incurred" }] },
+        { "label": "Discount", "children": [
+          { "label": "Discounted Amount" }, { "label": "No. of Discounted Bills" }
+        ] },
+        { "label": "Advance", "children": [
+          { "label": "Advance Applied on Bills" }, { "label": "Advance Booking Received" }
+        ] }
+      ]
+    }
+  ]
+}

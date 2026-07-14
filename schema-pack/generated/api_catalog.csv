@@ -1,0 +1,35 @@
+﻿api_id,packet_id,name,method,path,priority,status,report_link_count,model_link_count
+api:rw_api_001,RW_API_001,GET Bills,GET,/api/v1/pos/bills,P1,documented_public_not_uat_verified,149,2
+api:rw_api_002,RW_API_002,GET All invoices,GET,/api/v1/pos/get_all_invoices,P1,documented_public_not_uat_verified,5,2
+api:rw_api_003,RW_API_003,Get Outlet Tabs,GET,/api/v1/online_order/deployment_tabs,P2,documented_public_not_uat_verified,0,0
+api:rw_api_004,RW_API_004,Menu Sync API,GET,/api/v1/online_order/menu,P1,documented_public_not_uat_verified,4,2
+api:rw_api_005,RW_API_005,Out of Stock Items,GET,/api/v1/online_order/out_of_stock_items,P1,documented_public_not_uat_verified,2,1
+api:rw_api_006,RW_API_006,Order push,POST,/api/v1/online_order/push,P2,documented_public_not_uat_verified,0,0
+api:rw_api_007,RW_API_007,Cancel Order,POST,/api/v1/online_order/cancel_order,P2,documented_public_not_uat_verified,0,0
+api:rw_api_008,RW_API_008,Order Status,GET,/api/v1/online_order/order_status,P2,documented_public_not_uat_verified,0,0
+api:rw_api_009,RW_API_009,Standard Menu Menu Sync API V2,GET,not_exposed_in_parsed_request,P1,documented_public_not_uat_verified,0,0
+api:rw_api_010,RW_API_010,Out of Stock Via Aggregator Out of Stock Panel,GET,/api/v1/online_order/out_of_stock_items_standard,P1,documented_public_not_uat_verified,0,0
+api:rw_api_011,RW_API_011,Assign Order to delivery,POST,webhook.url,P3,documented_public_not_uat_verified,0,0
+api:rw_api_012,RW_API_012,Assign Delivery Person,POST,/api/v1/delivery/assign,P3,documented_public_not_uat_verified,0,0
+api:rw_api_013,RW_API_013,Order Delivery Accepted,POST,/api/v1/delivery/accepted,P3,documented_public_not_uat_verified,0,0
+api:rw_api_014,RW_API_014,Order Delivery Rejected,POST,/api/v1/delivery/rejected,P3,documented_public_not_uat_verified,0,0
+api:rw_api_015,RW_API_015,Order Picked Up,POST,/api/v1/delivery/picked_up,P3,documented_public_not_uat_verified,0,0
+api:rw_api_016,RW_API_016,Order Delivered,POST,/api/v1/delivery/delivered,P3,documented_public_not_uat_verified,0,0
+api:rw_api_017,RW_API_017,Tracking Url,POST,/api/v1/delivery/tracking,P3,documented_public_not_uat_verified,0,0
+api:rw_api_018,RW_API_018,Get Delivery info,POST,/api/v1/delivery/get_delivery_info,P3,documented_public_not_uat_verified,0,0
+api:rw_api_019,RW_API_019,Get Loyalty Customer Details,POST,external_partner_endpoint,P3,documented_public_not_uat_verified,0,0
+api:rw_api_020,RW_API_020,POS customer Details,POST,external_partner_endpoint,P3,documented_public_not_uat_verified,0,0
+api:rw_api_021,RW_API_021,Authenticate points redemption,POST,external_partner_endpoint,P3,documented_public_not_uat_verified,0,0
+api:rw_api_022,RW_API_022,Loyalty Points Redemption,POST,external_partner_endpoint,P3,documented_public_not_uat_verified,0,0
+api:rw_api_023,RW_API_023,Get POS Bill Details,POST,external_partner_endpoint,P3,documented_public_not_uat_verified,0,0
+api:rw_api_024,RW_API_024,Coupon/Reward Details,POST,external_partner_endpoint,P3,documented_public_not_uat_verified,0,0
+api:rw_api_025,RW_API_025,Redeem Coupon,POST,external_partner_endpoint,P3,documented_public_not_uat_verified,0,0
+api:rw_api_026,RW_API_026,Get Menu Items,GET,/api/v1/online_order_cloud/menu,P2,documented_public_not_uat_verified,0,0
+api:rw_api_027,RW_API_027,Push Order to Kitchen,GET,/api/v1/online_order_cloud/push,P3,documented_public_not_uat_verified,0,0
+api:rw_api_028,RW_API_028,Update pushed order cancel,GET,/api/v1/online_order_cloud/update_order,P3,documented_public_not_uat_verified,0,0
+api:rw_api_029,RW_API_029,Fetch Inventory Data,GET,/api/v1/pos/fetch_Inventory_data,P0,documented_public_not_uat_verified,36,14
+api:rw_api_030,RW_API_030,Indent,GET,/api/v1/pos/get_indents,P0,documented_public_not_uat_verified,9,2
+api:rw_api_031,RW_API_031,Online Order,VIEW,documentation_only,P3,documented_public_not_uat_verified,0,0
+api:rw_api_032,RW_API_032,Data integration,VIEW,documentation_only,P3,documented_public_not_uat_verified,0,0
+api:rw_api_033,RW_API_033,Online Ordering Standard Menu Checklist,VIEW,documentation_only,P3,documented_public_not_uat_verified,0,0
+api:rw_api_034,RW_API_034,Loyalty Checklist,VIEW,documentation_only,P3,documented_public_not_uat_verified,0,0

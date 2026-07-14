@@ -1,0 +1,8 @@
+# Unknown Miscellaneous Report 26
+
+- Page: `p1_main`
+- Section: `06_misc`
+- Scaffold folder: `p1_main/06_misc/26_unknown_miscellaneous_report_26`
+- Priority domain: `sales_revenue`
+- Schema source status: `not_captured`
+- Next action: capture/paste headers or export if report is still needed

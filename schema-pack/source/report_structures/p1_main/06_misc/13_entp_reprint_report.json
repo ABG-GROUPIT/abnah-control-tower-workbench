@@ -1,0 +1,20 @@
+{
+  "report_id": "report:p1_main:06_misc:13_entp_reprint_report",
+  "schema_status": "captured",
+  "verification_status": "needs_review",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Bill reprint audit",
+      "kind": "flat_table",
+      "columns": [
+        { "label": "Outlet Name" }, { "label": "Date" }, { "label": "Bill No." },
+        { "label": "Originally Printed By" }, { "label": "Re Print Time" }, { "label": "Re Print Bill Amount" },
+        { "label": "Actual Print Time" }, { "label": "Original Bill Amount" }, { "label": "User" },
+        { "label": "Comment" }, { "label": "Customer" }, { "label": "Customer Number" }
+      ]
+    }
+  ]
+}
