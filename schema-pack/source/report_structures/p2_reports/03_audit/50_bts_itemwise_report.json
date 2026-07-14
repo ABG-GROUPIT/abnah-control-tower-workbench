@@ -1,0 +1,245 @@
+{
+  "report_id": "report:p2_reports:03_audit:50_bts_itemwise_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_rows",
+  "capture_method": "manual_visual_evidence_review",
+  "structure_notes": "The item table repeats for each dynamic user and ends with a per-user Total row.",
+  "data_points": [
+    {
+      "key": "user",
+      "label": "User",
+      "semantic_role": "user_dimension"
+    },
+    {
+      "label": "Item Name"
+    },
+    {
+      "label": "Category"
+    },
+    {
+      "label": "Code"
+    },
+    {
+      "label": "Rate"
+    },
+    {
+      "label": "Quantity"
+    },
+    {
+      "label": "Sales"
+    },
+    {
+      "label": "Discount"
+    },
+    {
+      "label": "COGS"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "BTS items by user",
+      "kind": "grid",
+      "rows": 4,
+      "columns": 8,
+      "column_widths": [
+        220,
+        220,
+        140,
+        120,
+        140,
+        140,
+        140,
+        140
+      ],
+      "cells": [
+        {
+          "row": 0,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 8,
+          "text": "DYNAMIC USER",
+          "kind": "group",
+          "fieldId": "user"
+        },
+        {
+          "row": 1,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Item Name",
+          "kind": "field"
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Category",
+          "kind": "field"
+        },
+        {
+          "row": 1,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Code",
+          "kind": "field"
+        },
+        {
+          "row": 1,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Rate",
+          "kind": "field"
+        },
+        {
+          "row": 1,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Quantity",
+          "kind": "field"
+        },
+        {
+          "row": 1,
+          "column": 5,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Sales",
+          "kind": "field"
+        },
+        {
+          "row": 1,
+          "column": 6,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Discount",
+          "kind": "field"
+        },
+        {
+          "row": 1,
+          "column": 7,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "COGS",
+          "kind": "field"
+        },
+        {
+          "row": 2,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 2,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 2,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 2,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 2,
+          "column": 5,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 2,
+          "column": 6,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 2,
+          "column": 7,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 3,
+          "text": "Total",
+          "kind": "label"
+        },
+        {
+          "row": 3,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 5,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 6,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 7,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        }
+      ]
+    }
+  ]
+}

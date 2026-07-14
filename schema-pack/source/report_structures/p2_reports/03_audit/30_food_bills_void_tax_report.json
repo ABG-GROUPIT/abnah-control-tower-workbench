@@ -1,0 +1,37 @@
+{
+  "report_id": "report:p2_reports:03_audit:30_food_bills_void_tax_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Food bills void tax",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "S.No."
+        },
+        {
+          "label": "Series"
+        },
+        {
+          "label": "From To"
+        },
+        {
+          "label": "Cancelled Invoices"
+        },
+        {
+          "label": "Bill Open Time"
+        },
+        {
+          "label": "Type Of Invoice"
+        },
+        {
+          "label": "Count Of Void Invoice"
+        }
+      ]
+    }
+  ]
+}

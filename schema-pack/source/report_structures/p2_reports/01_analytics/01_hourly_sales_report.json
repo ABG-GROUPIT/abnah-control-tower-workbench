@@ -1,0 +1,55 @@
+{
+  "report_id": "report:p2_reports:01_analytics:01_hourly_sales_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "mixed",
+  "capture_method": "pasted_export_headers",
+  "structure_notes": "Business date is dynamic report context. Day Total is a footer for each date rather than a second hourly measure column; the export can span multiple dates.",
+  "blocks": [
+    {
+      "id": "context",
+      "name": "Report context",
+      "kind": "key_value",
+      "entries": [
+        {
+          "label": "DYNAMIC BUSINESS DATE",
+          "key": "business_date"
+        }
+      ]
+    },
+    {
+      "id": "primary",
+      "name": "Hourly sales",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Hour"
+        },
+        {
+          "label": "No Of Tickets"
+        },
+        {
+          "label": "Covers"
+        },
+        {
+          "label": "Charges"
+        },
+        {
+          "label": "SubTotal"
+        },
+        {
+          "label": "Discount"
+        },
+        {
+          "label": "Net Sales"
+        },
+        {
+          "label": "Gross Sales"
+        },
+        {
+          "label": "APT"
+        }
+      ]
+    }
+  ]
+}

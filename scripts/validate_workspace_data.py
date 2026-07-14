@@ -18,6 +18,28 @@ P1_COMPLETION_BASELINE = {
     "active_schema_statuses": {"captured": 76, "unavailable": 9},
     "verification_statuses": {"reviewed": 80, "needs_review": 10},
 }
+P2_BATCH_ONE_BASELINE = {
+    "catalog_reports": 155,
+    "schema_statuses": {"captured": 32, "partial": 3, "pending": 120},
+    "verification_statuses": {"reviewed": 35, "needs_review": 120},
+    "sections": {
+        "01_analytics": {
+            "reports": 10,
+            "schema_statuses": {"captured": 9, "partial": 1},
+            "verification_statuses": {"reviewed": 10},
+        },
+        "02_attendance": {
+            "reports": 2,
+            "schema_statuses": {"pending": 2},
+            "verification_statuses": {"needs_review": 2},
+        },
+        "03_audit": {
+            "reports": 50,
+            "schema_statuses": {"captured": 23, "partial": 2, "pending": 25},
+            "verification_statuses": {"reviewed": 25, "needs_review": 25},
+        },
+    },
+}
 
 
 def main() -> int:
@@ -147,6 +169,62 @@ def main() -> int:
         if status == "unavailable" and not any(note.get("body", "").strip() for note in report.get("notes", [])):
             errors.append(f"Unavailable P1 report needs an evidence reason: {report_id}.")
 
+    p2_reports = [report for report in workspace.get("reports", []) if report.get("page") == "p2_reports"]
+    p2_statuses = Counter(report.get("schemaStatus") for report in p2_reports)
+    p2_verification_statuses = Counter(report.get("verificationStatus") for report in p2_reports)
+
+    if len(p2_reports) != P2_BATCH_ONE_BASELINE["catalog_reports"]:
+        errors.append(
+            "P2 catalogue count changed: "
+            f"expected {P2_BATCH_ONE_BASELINE['catalog_reports']}, found {len(p2_reports)}."
+        )
+    if p2_statuses != Counter(P2_BATCH_ONE_BASELINE["schema_statuses"]):
+        errors.append(
+            "P2 schema-status baseline changed: "
+            f"expected {P2_BATCH_ONE_BASELINE['schema_statuses']}, found {dict(p2_statuses)}."
+        )
+    if p2_verification_statuses != Counter(P2_BATCH_ONE_BASELINE["verification_statuses"]):
+        errors.append(
+            "P2 verification-status baseline changed: "
+            f"expected {P2_BATCH_ONE_BASELINE['verification_statuses']}, "
+            f"found {dict(p2_verification_statuses)}."
+        )
+
+    for section, baseline in P2_BATCH_ONE_BASELINE["sections"].items():
+        section_reports = [report for report in p2_reports if report.get("section") == section]
+        section_statuses = Counter(report.get("schemaStatus") for report in section_reports)
+        section_verification_statuses = Counter(
+            report.get("verificationStatus") for report in section_reports
+        )
+        if len(section_reports) != baseline["reports"]:
+            errors.append(
+                f"P2 {section} count changed: expected {baseline['reports']}, "
+                f"found {len(section_reports)}."
+            )
+        if section_statuses != Counter(baseline["schema_statuses"]):
+            errors.append(
+                f"P2 {section} schema-status baseline changed: "
+                f"expected {baseline['schema_statuses']}, found {dict(section_statuses)}."
+            )
+        if section_verification_statuses != Counter(baseline["verification_statuses"]):
+            errors.append(
+                f"P2 {section} verification-status baseline changed: "
+                f"expected {baseline['verification_statuses']}, "
+                f"found {dict(section_verification_statuses)}."
+            )
+
+    for report in p2_reports:
+        report_id = report.get("id", "")
+        status = report.get("schemaStatus")
+        if status in {"captured", "partial"} and (
+            not report.get("fields") or not report.get("tables")
+        ):
+            errors.append(f"Materialized P2 report has no usable schema: {report_id}.")
+        if status == "partial" and not any(
+            note.get("body", "").strip() for note in report.get("notes", [])
+        ):
+            errors.append(f"Partial P2 report needs a boundary reason: {report_id}.")
+
     if errors:
         print("Workspace validation failed:")
         for error in errors:
@@ -155,6 +233,7 @@ def main() -> int:
 
     print(f"Workspace validation passed: {len(report_ids)} reports.")
     print("P1 completion guard passed: 76 captured, 14 unavailable, 80 reviewed, 0 partial, 0 pending.")
+    print("P2 batch-one guard passed: 32 captured, 3 partial, 35 reviewed, 120 pending.")
     return 0
 
 

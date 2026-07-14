@@ -1,0 +1,214 @@
+{
+  "report_id": "report:p2_reports:03_audit:04_complimentary_report",
+  "schema_status": "partial",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_rows",
+  "capture_method": "manual_visual_evidence_review",
+  "structure_notes": "Rows are grouped by business date and KOT, with a KOT print-time context row and Bill Total footer. The supplied view ends inside Item Name, so any columns to its right remain unknown.",
+  "data_points": [
+    {
+      "key": "business_date",
+      "label": "Business Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "kot_number",
+      "label": "KOT Number",
+      "semantic_role": "document_identifier"
+    },
+    {
+      "key": "kot_print_time",
+      "label": "KOT Print Time",
+      "semantic_role": "time"
+    },
+    {
+      "label": "BILL NUMBER"
+    },
+    {
+      "label": "BILL OPEN TIME"
+    },
+    {
+      "label": "BILL PRINT TIME"
+    },
+    {
+      "label": "BILL SETTLE TIME"
+    },
+    {
+      "label": "SECTION"
+    },
+    {
+      "label": "CATEGORY"
+    },
+    {
+      "label": "ITEM NAME"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Complimentary detail by KOT",
+      "kind": "grid",
+      "rows": 5,
+      "columns": 7,
+      "column_widths": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "cells": [
+        {
+          "row": 0,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "BILL NUMBER",
+          "kind": "field"
+        },
+        {
+          "row": 0,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "BILL OPEN TIME",
+          "kind": "field"
+        },
+        {
+          "row": 0,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "BILL PRINT TIME",
+          "kind": "field"
+        },
+        {
+          "row": 0,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "BILL SETTLE TIME",
+          "kind": "field"
+        },
+        {
+          "row": 0,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "SECTION",
+          "kind": "field"
+        },
+        {
+          "row": 0,
+          "column": 5,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "CATEGORY",
+          "kind": "field"
+        },
+        {
+          "row": 0,
+          "column": 6,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "ITEM NAME",
+          "kind": "field"
+        },
+        {
+          "row": 1,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 7,
+          "text": "DYNAMIC BUSINESS DATE",
+          "kind": "group",
+          "fieldId": "business_date"
+        },
+        {
+          "row": 2,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "DYNAMIC KOT NUMBER",
+          "kind": "context",
+          "fieldId": "kot_number"
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 6,
+          "text": "DYNAMIC KOT PRINT TIME",
+          "kind": "context",
+          "fieldId": "kot_print_time"
+        },
+        {
+          "row": 3,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 5,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 6,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 4,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 7,
+          "text": "BILL TOTAL",
+          "kind": "label"
+        }
+      ]
+    }
+  ]
+}

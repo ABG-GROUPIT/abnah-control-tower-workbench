@@ -1,0 +1,62 @@
+{
+  "report_id": "report:p2_reports:01_analytics:09_kds_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "structure_notes": "Station Name identifies a preparation station such as food or beverage. Source spelling 'Prepration Time' is preserved.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "KDS timing detail",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Date"
+        },
+        {
+          "label": "Bill No."
+        },
+        {
+          "label": "KOT No."
+        },
+        {
+          "label": "Category Name"
+        },
+        {
+          "label": "Item Name"
+        },
+        {
+          "label": "Quantity"
+        },
+        {
+          "label": "Item Punch Time"
+        },
+        {
+          "label": "Bump Time of KDS Screen"
+        },
+        {
+          "label": "Prepration Time"
+        },
+        {
+          "label": "Bump Time of Expo Screen"
+        },
+        {
+          "label": "Bumped By User of Expo Screen"
+        },
+        {
+          "label": "Serving/Packing Time"
+        },
+        {
+          "label": "Item Preparation Time"
+        },
+        {
+          "label": "Session Name"
+        },
+        {
+          "label": "Station Name"
+        }
+      ]
+    }
+  ]
+}

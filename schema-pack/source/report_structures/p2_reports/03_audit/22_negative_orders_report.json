@@ -1,0 +1,61 @@
+{
+  "report_id": "report:p2_reports:03_audit:22_negative_orders_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "mixed",
+  "capture_method": "manual_visual_evidence_review",
+  "structure_notes": "Rejected-order rows are grouped under a dynamic business date.",
+  "blocks": [
+    {
+      "id": "context",
+      "name": "Report context",
+      "kind": "key_value",
+      "entries": [
+        {
+          "label": "DYNAMIC BUSINESS DATE",
+          "key": "business_date"
+        }
+      ]
+    },
+    {
+      "id": "primary",
+      "name": "Negative order detail",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "ORDER ID"
+        },
+        {
+          "label": "SOURCE NAME"
+        },
+        {
+          "label": "PAYMENT TYPE"
+        },
+        {
+          "label": "ORDER SYNC TIME"
+        },
+        {
+          "label": "ORDER REJECT TIME"
+        },
+        {
+          "label": "ORDER REJECT REASON"
+        },
+        {
+          "label": "ORDER REJECT USER"
+        },
+        {
+          "label": "CUSTOMER NAME"
+        },
+        {
+          "label": "CUSTOMER ADDRESS"
+        },
+        {
+          "label": "CUSTOMER NUMBER"
+        },
+        {
+          "label": "BILL AMOUNT"
+        }
+      ]
+    }
+  ]
+}

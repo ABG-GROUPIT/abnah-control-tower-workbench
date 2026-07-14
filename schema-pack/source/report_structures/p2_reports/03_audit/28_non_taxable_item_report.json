@@ -1,0 +1,31 @@
+{
+  "report_id": "report:p2_reports:03_audit:28_non_taxable_item_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Non-taxable item detail",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Item No."
+        },
+        {
+          "label": "Item Name"
+        },
+        {
+          "label": "Item Category"
+        },
+        {
+          "label": "Rate"
+        },
+        {
+          "label": "Quantity"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "report_id": "report:p2_reports:01_analytics:05_average_bill",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Average Bill Amount & Time (Daily)",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Date"
+        },
+        {
+          "label": "Amount"
+        },
+        {
+          "label": "Time"
+        }
+      ]
+    }
+  ]
+}

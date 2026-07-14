@@ -89,62 +89,62 @@ report:p1_main:06_misc:27_unknown_miscellaneous_report_27,Unknown Miscellaneous 
 report:p1_main:06_misc:01_void_bill_item_wise,Void Bill Item Wise,p1_main,06_misc,captured,needs_review,flat,published,24,1,False
 report:p1_main:06_misc:05_voucher_report,Voucher Report,p1_main,06_misc,captured,needs_review,flat,published,21,1,False
 report:p1_main:06_misc:16_whatsapp_message_report,Whatsapp Message Report,p1_main,06_misc,captured,reviewed,mixed,published,10,2,False
-report:p2_reports:01_analytics:05_average_bill,Average Bill,p2_reports,01_analytics,pending,needs_review,flat,published,0,1,False
-report:p2_reports:01_analytics:08_food_cost_report,Food Cost Report,p2_reports,01_analytics,pending,needs_review,flat,published,0,1,False
-report:p2_reports:01_analytics:07_forecast_comparison_report,Forecast Comparison Report,p2_reports,01_analytics,pending,needs_review,flat,published,0,1,False
-report:p2_reports:01_analytics:04_growth_report,Growth Report,p2_reports,01_analytics,pending,needs_review,flat,published,0,1,False
-report:p2_reports:01_analytics:02_half_hourly_sales_report,half_hourly_sales_report,p2_reports,01_analytics,pending,needs_review,flat,published,0,1,False
-report:p2_reports:01_analytics:03_hourly_sales_by_category,Hourly Sales By Category,p2_reports,01_analytics,pending,needs_review,flat,published,0,1,False
-report:p2_reports:01_analytics:01_hourly_sales_report,Hourly Sales Report,p2_reports,01_analytics,pending,needs_review,flat,published,0,1,False
-report:p2_reports:01_analytics:06_income_analysis_report,Income Analysis Report,p2_reports,01_analytics,pending,needs_review,flat,published,0,1,False
-report:p2_reports:01_analytics:09_kds_report,KDS Report,p2_reports,01_analytics,pending,needs_review,flat,published,0,1,False
-report:p2_reports:01_analytics:10_location_wise_sales,Location Wise Sales,p2_reports,01_analytics,pending,needs_review,flat,published,0,1,False
+report:p2_reports:01_analytics:05_average_bill,Average Bill,p2_reports,01_analytics,captured,reviewed,flat,published,3,1,False
+report:p2_reports:01_analytics:08_food_cost_report,Food Cost Report,p2_reports,01_analytics,partial,reviewed,grouped_columns,published,8,1,False
+report:p2_reports:01_analytics:07_forecast_comparison_report,Forecast Comparison Report,p2_reports,01_analytics,captured,reviewed,mixed,published,8,1,False
+report:p2_reports:01_analytics:04_growth_report,Growth Report,p2_reports,01_analytics,captured,reviewed,mixed,published,17,1,False
+report:p2_reports:01_analytics:02_half_hourly_sales_report,half_hourly_sales_report,p2_reports,01_analytics,captured,reviewed,flat,published,15,1,False
+report:p2_reports:01_analytics:03_hourly_sales_by_category,Hourly Sales By Category,p2_reports,01_analytics,captured,reviewed,mixed,published,5,2,False
+report:p2_reports:01_analytics:01_hourly_sales_report,Hourly Sales Report,p2_reports,01_analytics,captured,reviewed,mixed,published,10,2,False
+report:p2_reports:01_analytics:06_income_analysis_report,Income Analysis Report,p2_reports,01_analytics,captured,reviewed,grouped_columns,published,23,1,False
+report:p2_reports:01_analytics:09_kds_report,KDS Report,p2_reports,01_analytics,captured,reviewed,flat,published,15,1,False
+report:p2_reports:01_analytics:10_location_wise_sales,Location Wise Sales,p2_reports,01_analytics,captured,reviewed,flat,published,4,1,False
 report:p2_reports:02_attendance:02_single_user_attendance_report,Single User Attendance Report,p2_reports,02_attendance,pending,needs_review,flat,published,0,1,False
 report:p2_reports:02_attendance:01_user_attendance_report,User Attendance Report,p2_reports,02_attendance,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:38_aggregator_status_report,Aggregator Status Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:41_audit_report,audit_report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:35_bi_logs_report,BI Logs Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
+report:p2_reports:03_audit:38_aggregator_status_report,Aggregator Status Report,p2_reports,03_audit,captured,reviewed,flat,published,8,1,False
+report:p2_reports:03_audit:41_audit_report,audit_report,p2_reports,03_audit,captured,reviewed,flat,published,4,1,False
+report:p2_reports:03_audit:35_bi_logs_report,BI Logs Report,p2_reports,03_audit,captured,reviewed,flat,published,10,1,False
 report:p2_reports:03_audit:40_bill_transfer_in_report,Bill Transfer In Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
 report:p2_reports:03_audit:44_bill_reprint_report,bill_reprint_report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:43_billwise_distribution,billwise_distribution,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:45_billwise_sale_gst,Billwise_sale_GST,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:50_bts_itemwise_report,BTS Itemwise Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
+report:p2_reports:03_audit:43_billwise_distribution,billwise_distribution,p2_reports,03_audit,captured,reviewed,flat,published,10,1,False
+report:p2_reports:03_audit:45_billwise_sale_gst,Billwise_sale_GST,p2_reports,03_audit,captured,reviewed,flat,published,31,1,False
+report:p2_reports:03_audit:50_bts_itemwise_report,BTS Itemwise Report,p2_reports,03_audit,captured,reviewed,grouped_rows,published,9,1,False
 report:p2_reports:03_audit:48_button_disc_detail_report,button_disc_detail_report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
 report:p2_reports:03_audit:23_call_center_report,Call Center Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
 report:p2_reports:03_audit:27_charity_report,Charity Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:05_complimentary_detail_report_headwi,Complimentary Detail Report Headwise,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:04_complimentary_report,Complimentary Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
+report:p2_reports:03_audit:05_complimentary_detail_report_headwi,Complimentary Detail Report Headwise,p2_reports,03_audit,captured,reviewed,grouped_rows,published,10,1,False
+report:p2_reports:03_audit:04_complimentary_report,Complimentary Report,p2_reports,03_audit,partial,reviewed,grouped_rows,published,10,1,False
 report:p2_reports:03_audit:46_cred_note_issued,cred_note_issued,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:39_custom_group_report,Custom Group Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
+report:p2_reports:03_audit:39_custom_group_report,Custom Group Report,p2_reports,03_audit,captured,reviewed,flat,published,6,1,False
 report:p2_reports:03_audit:02_day_opening_variance_report,Day Opening Variance Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:47_day_part_daily_sales,day_part_daily_sales,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:24_delivery_audit_report,Delivery Audit Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:06_discount_report,Discount Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:07_discount_and_voucher_report,discount_and_voucher_report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
+report:p2_reports:03_audit:47_day_part_daily_sales,day_part_daily_sales,p2_reports,03_audit,captured,reviewed,mixed,published,24,5,False
+report:p2_reports:03_audit:24_delivery_audit_report,Delivery Audit Report,p2_reports,03_audit,captured,reviewed,mixed,published,15,2,False
+report:p2_reports:03_audit:06_discount_report,Discount Report,p2_reports,03_audit,captured,reviewed,flat,published,28,1,False
+report:p2_reports:03_audit:07_discount_and_voucher_report,discount_and_voucher_report,p2_reports,03_audit,captured,reviewed,flat,published,16,1,False
 report:p2_reports:03_audit:29_edited_bills_report,Edited Bills Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
 report:p2_reports:03_audit:17_feedback_followup_report,Feedback Followup Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
 report:p2_reports:03_audit:13_feedback_report,Feedback Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
 report:p2_reports:03_audit:16_feedback_report_advance,Feedback Report Advance,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
 report:p2_reports:03_audit:18_feedback_without_bill_report,Feedback Without Bill Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:30_food_bills_void_tax_report,Food Bills Void Tax Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
+report:p2_reports:03_audit:30_food_bills_void_tax_report,Food Bills Void Tax Report,p2_reports,03_audit,captured,reviewed,flat,published,7,1,False
 report:p2_reports:03_audit:32_happy_hour_report,Happy Hour Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:33_item_based_offer_report,Item Based Offer Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:03_kot_delete_history_report,KOT Delete History Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:01_kot_detail_report,KOT Detail Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:10_kot_tracking_report,KOT Tracking Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
+report:p2_reports:03_audit:33_item_based_offer_report,Item Based Offer Report,p2_reports,03_audit,captured,reviewed,grouped_columns,published,11,1,False
+report:p2_reports:03_audit:03_kot_delete_history_report,KOT Delete History Report,p2_reports,03_audit,captured,reviewed,grouped_rows,published,12,1,False
+report:p2_reports:03_audit:01_kot_detail_report,KOT Detail Report,p2_reports,03_audit,captured,reviewed,flat,published,12,1,False
+report:p2_reports:03_audit:10_kot_tracking_report,KOT Tracking Report,p2_reports,03_audit,captured,reviewed,mixed,published,14,3,False
 report:p2_reports:03_audit:42_msr_card_report,msr_card_report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:22_negative_orders_report,Negative Orders Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
+report:p2_reports:03_audit:22_negative_orders_report,Negative Orders Report,p2_reports,03_audit,captured,reviewed,mixed,published,12,2,False
 report:p2_reports:03_audit:14_no_feedback_report,No Feedback Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:28_non_taxable_item_report,Non Taxable Item Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:08_offers_report,Offers Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:37_offline_log_report,Offline Log Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
+report:p2_reports:03_audit:28_non_taxable_item_report,Non Taxable Item Report,p2_reports,03_audit,captured,reviewed,flat,published,5,1,False
+report:p2_reports:03_audit:08_offers_report,Offers Report,p2_reports,03_audit,captured,reviewed,flat,published,6,1,False
+report:p2_reports:03_audit:37_offline_log_report,Offline Log Report,p2_reports,03_audit,captured,reviewed,flat,published,8,1,False
 report:p2_reports:03_audit:20_oms_report_analysis,OMS Report Analysis,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
 report:p2_reports:03_audit:19_oms_report_detail,OMS Report Detail,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:31_online_orders_time_log,Online Orders Time Log,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
+report:p2_reports:03_audit:31_online_orders_time_log,Online Orders Time Log,p2_reports,03_audit,captured,reviewed,flat,published,26,1,False
 report:p2_reports:03_audit:11_removed_taxes_charges_report,Removed Taxes Charges Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:12_report_by_time,Report By Time,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
+report:p2_reports:03_audit:12_report_by_time,Report By Time,p2_reports,03_audit,partial,reviewed,mixed,published,7,3,False
 report:p2_reports:03_audit:09_reprint_report,Reprint Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
-report:p2_reports:03_audit:21_revenue_report,Revenue Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
+report:p2_reports:03_audit:21_revenue_report,Revenue Report,p2_reports,03_audit,captured,reviewed,flat,published,4,1,False
 report:p2_reports:03_audit:36_rms_error_logs_report,RMS Error Logs Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
 report:p2_reports:03_audit:25_service_charge_report,Service Charge Report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False
 report:p2_reports:03_audit:49_staff_meal_report,staff_meal_report,p2_reports,03_audit,pending,needs_review,flat,published,0,1,False

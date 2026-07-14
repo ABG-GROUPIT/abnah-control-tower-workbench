@@ -1,0 +1,793 @@
+{
+  "report_id": "report:p2_reports:01_analytics:07_forecast_comparison_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "mixed",
+  "capture_method": "manual_visual_evidence_review",
+  "structure_notes": "Each dynamic month repeats Sales, Cover, and APC horizontally. Business-day counts sit above each month. Session rows repeat Budgeted, Actual, and Variance; the displayed month pattern can repeat across the financial year.",
+  "data_points": [
+    {
+      "key": "financial_year",
+      "label": "Financial Year",
+      "semantic_role": "period_dimension"
+    },
+    {
+      "key": "business_days",
+      "label": "Business Days",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "month",
+      "label": "Month",
+      "semantic_role": "period_dimension"
+    },
+    {
+      "key": "session",
+      "label": "Sessions",
+      "semantic_role": "channel_dimension"
+    },
+    {
+      "key": "particular",
+      "label": "Particulars",
+      "semantic_role": "scenario_dimension"
+    },
+    {
+      "key": "sales",
+      "label": "Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "cover",
+      "label": "Cover",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "apc",
+      "label": "APC",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Forecast comparison month pattern",
+      "kind": "grid",
+      "rows": 21,
+      "columns": 5,
+      "column_widths": [
+        170,
+        180,
+        140,
+        120,
+        120
+      ],
+      "cells": [
+        {
+          "row": 0,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 0,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "BUSINESS DAYS",
+          "kind": "context",
+          "fieldId": "business_days"
+        },
+        {
+          "row": 0,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 3,
+          "text": "DYNAMIC BUSINESS DAY COUNT",
+          "kind": "context",
+          "fieldId": "business_day_count"
+        },
+        {
+          "row": 1,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "FINANCIAL YEAR",
+          "kind": "context",
+          "fieldId": "financial_year"
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "DYNAMIC FINANCIAL YEAR",
+          "kind": "context",
+          "fieldId": "financial_year_value"
+        },
+        {
+          "row": 1,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 3,
+          "text": "DYNAMIC MONTH",
+          "kind": "group"
+        },
+        {
+          "row": 2,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "SESSIONS",
+          "kind": "context",
+          "fieldId": "session"
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "PARTICULARS",
+          "kind": "context",
+          "fieldId": "particular"
+        },
+        {
+          "row": 2,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "SALES",
+          "kind": "field",
+          "fieldId": "sales"
+        },
+        {
+          "row": 2,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "COVER",
+          "kind": "field",
+          "fieldId": "cover"
+        },
+        {
+          "row": 2,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "APC",
+          "kind": "field",
+          "fieldId": "apc"
+        },
+        {
+          "row": 3,
+          "column": 0,
+          "rowSpan": 3,
+          "columnSpan": 1,
+          "text": "TABLE",
+          "kind": "group"
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "BUDGETED",
+          "kind": "field"
+        },
+        {
+          "row": 3,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 4,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "ACTUAL",
+          "kind": "field"
+        },
+        {
+          "row": 4,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 4,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 4,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 5,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "VARIANCE",
+          "kind": "field"
+        },
+        {
+          "row": 5,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 5,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 5,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 6,
+          "column": 0,
+          "rowSpan": 3,
+          "columnSpan": 1,
+          "text": "QR CODE",
+          "kind": "group"
+        },
+        {
+          "row": 6,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "BUDGETED",
+          "kind": "field"
+        },
+        {
+          "row": 6,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 6,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 6,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 7,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "ACTUAL",
+          "kind": "field"
+        },
+        {
+          "row": 7,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 7,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 7,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 8,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "VARIANCE",
+          "kind": "field"
+        },
+        {
+          "row": 8,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 8,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 8,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 9,
+          "column": 0,
+          "rowSpan": 3,
+          "columnSpan": 1,
+          "text": "TAKEAWAY",
+          "kind": "group"
+        },
+        {
+          "row": 9,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "BUDGETED",
+          "kind": "field"
+        },
+        {
+          "row": 9,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 9,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 9,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 10,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "ACTUAL",
+          "kind": "field"
+        },
+        {
+          "row": 10,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 10,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 10,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 11,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "VARIANCE",
+          "kind": "field"
+        },
+        {
+          "row": 11,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 11,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 11,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 12,
+          "column": 0,
+          "rowSpan": 3,
+          "columnSpan": 1,
+          "text": "DINE IN",
+          "kind": "group"
+        },
+        {
+          "row": 12,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "BUDGETED",
+          "kind": "field"
+        },
+        {
+          "row": 12,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 12,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 12,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 13,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "ACTUAL",
+          "kind": "field"
+        },
+        {
+          "row": 13,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 13,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 13,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 14,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "VARIANCE",
+          "kind": "field"
+        },
+        {
+          "row": 14,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 14,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 14,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 15,
+          "column": 0,
+          "rowSpan": 3,
+          "columnSpan": 1,
+          "text": "ECOM",
+          "kind": "group"
+        },
+        {
+          "row": 15,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "BUDGETED",
+          "kind": "field"
+        },
+        {
+          "row": 15,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 15,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 15,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 16,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "ACTUAL",
+          "kind": "field"
+        },
+        {
+          "row": 16,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 16,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 16,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 17,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "VARIANCE",
+          "kind": "field"
+        },
+        {
+          "row": 17,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 17,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 17,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 18,
+          "column": 0,
+          "rowSpan": 3,
+          "columnSpan": 1,
+          "text": "TOTAL",
+          "kind": "group"
+        },
+        {
+          "row": 18,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "BUDGETED",
+          "kind": "field"
+        },
+        {
+          "row": 18,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 18,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 18,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 19,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "ACTUAL",
+          "kind": "field"
+        },
+        {
+          "row": 19,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 19,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 19,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 20,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "VARIANCE",
+          "kind": "field"
+        },
+        {
+          "row": 20,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 20,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 20,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        }
+      ]
+    }
+  ]
+}

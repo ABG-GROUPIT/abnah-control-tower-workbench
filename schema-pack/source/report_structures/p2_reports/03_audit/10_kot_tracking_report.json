@@ -1,0 +1,124 @@
+{
+  "report_id": "report:p2_reports:03_audit:10_kot_tracking_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "mixed",
+  "capture_method": "manual_visual_evidence_review",
+  "structure_notes": "Business date and instance group each KOT summary. Each KOT expands to an item table and a KOT Total footer.",
+  "data_points": [
+    {
+      "key": "business_date",
+      "label": "Business Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "instance",
+      "label": "Instance",
+      "semantic_role": "instance_dimension"
+    },
+    {
+      "label": "Table Number"
+    },
+    {
+      "label": "KOT Number"
+    },
+    {
+      "label": "KOT Time"
+    },
+    {
+      "label": "Bill Number"
+    },
+    {
+      "label": "Bill Open Time"
+    },
+    {
+      "label": "Bill Print Time"
+    },
+    {
+      "label": "Created By"
+    },
+    {
+      "label": "Item Name"
+    },
+    {
+      "label": "Qty"
+    },
+    {
+      "label": "Rate"
+    },
+    {
+      "label": "Amount"
+    },
+    {
+      "label": "Status"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "context",
+      "name": "KOT grouping context",
+      "kind": "key_value",
+      "entries": [
+        {
+          "label": "DYNAMIC BUSINESS DATE",
+          "key": "business_date"
+        },
+        {
+          "label": "DYNAMIC INSTANCE",
+          "key": "instance"
+        }
+      ]
+    },
+    {
+      "id": "summary",
+      "name": "KOT summary",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "TABLE NUMBER"
+        },
+        {
+          "label": "KOT NUMBER"
+        },
+        {
+          "label": "KOT TIME"
+        },
+        {
+          "label": "BILL NUMBER"
+        },
+        {
+          "label": "BILL OPEN TIME"
+        },
+        {
+          "label": "BILL PRINT TIME"
+        },
+        {
+          "label": "CREATED BY"
+        }
+      ]
+    },
+    {
+      "id": "items",
+      "name": "KOT item detail",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "ITEM NAME"
+        },
+        {
+          "label": "QTY"
+        },
+        {
+          "label": "RATE"
+        },
+        {
+          "label": "AMOUNT"
+        },
+        {
+          "label": "STATUS"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "report_id": "report:p2_reports:03_audit:06_discount_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "structure_notes": "The pasted capture contained the same 28-column header sequence twice; it is represented once as a repeated export header, not as duplicate data fields.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Discount detail",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Bill Number"
+        },
+        {
+          "label": "Covers"
+        },
+        {
+          "label": "Bill Open Time"
+        },
+        {
+          "label": "Table Number"
+        },
+        {
+          "label": "Tab Name"
+        },
+        {
+          "label": "TabType"
+        },
+        {
+          "label": "Source"
+        },
+        {
+          "label": "Bill Close Time"
+        },
+        {
+          "label": "Total Amount"
+        },
+        {
+          "label": "Discount"
+        },
+        {
+          "label": "Discount Percentage"
+        },
+        {
+          "label": "Customer"
+        },
+        {
+          "label": "Offer Name"
+        },
+        {
+          "label": "Offer Code"
+        },
+        {
+          "label": "Waiter-Delivery Boy"
+        },
+        {
+          "label": "Discount User"
+        },
+        {
+          "label": "Comments"
+        },
+        {
+          "label": "GST@5%Amount"
+        },
+        {
+          "label": "GST@5%"
+        },
+        {
+          "label": "GST@3%Amount"
+        },
+        {
+          "label": "GST@3%"
+        },
+        {
+          "label": "GST@18%Amount"
+        },
+        {
+          "label": "GST@18%"
+        },
+        {
+          "label": "Net Amt"
+        },
+        {
+          "label": "Round Off"
+        },
+        {
+          "label": "Gross Total"
+        },
+        {
+          "label": "Cash"
+        },
+        {
+          "label": "Credit Card"
+        }
+      ]
+    }
+  ]
+}

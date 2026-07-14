@@ -1,0 +1,34 @@
+{
+  "report_id": "report:p2_reports:03_audit:08_offers_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Offer summary",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Name"
+        },
+        {
+          "label": "Offer Type"
+        },
+        {
+          "label": "Offer Value"
+        },
+        {
+          "label": "Qty"
+        },
+        {
+          "label": "Amount"
+        },
+        {
+          "label": "%"
+        }
+      ]
+    }
+  ]
+}

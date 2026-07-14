@@ -1,0 +1,119 @@
+{
+  "report_id": "report:p2_reports:01_analytics:08_food_cost_report",
+  "schema_status": "partial",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_visual_evidence_review",
+  "structure_notes": "Unique filters: deployment, start/end date, format, price basis, category, consumption, and kitchen. Only items with a physical stock entry as of report end date are included in Actual Cost unless the Stock Master configuration treats missing physical entries as zero. Formula chart: Ideal Cost = Wastage Cost + Recipe Consumption Cost; Ideal percent = Ideal Cost / (Total Sale + Stock Sale Cost + Indent Sale Cost) * 100; Actual Cost = (Opening + Stock In - Wastage Cost - Recipe Consumption Cost - StockOut) - Physical; Actual percent = Actual Cost / (Total Sale + Stock Sale Cost + Indent Sale Cost) * 100. The supplied header view ends after Sale and one Actual Cost child label is not visible, so the report remains partial.",
+  "data_points": [
+    {
+      "key": "date",
+      "label": "Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "wastage_cost",
+      "label": "Wastage Cost",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "recipe_cost",
+      "label": "Recipe Cost",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "ideal_percent",
+      "label": "Ideal percent",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "actual_cost",
+      "label": "Actual Cost",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "physical_entry_gain_loss",
+      "label": "Cost Through Physical Entry (Gain /Loss)",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "actual_percent",
+      "label": "Actual percent",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "sale",
+      "label": "Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Food cost by date",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "DATE",
+          "key": "date"
+        },
+        {
+          "label": "IDEAL COST",
+          "children": [
+            {
+              "label": "WASTAGE COST",
+              "key": "wastage_cost"
+            },
+            {
+              "label": "RECIPE COST",
+              "key": "recipe_cost"
+            }
+          ]
+        },
+        {
+          "label": "IDEAL PERCENT",
+          "children": [
+            {
+              "label": "TOTAL COST",
+              "key": "ideal_percent"
+            }
+          ]
+        },
+        {
+          "label": "ACTUAL COST",
+          "children": [
+            {
+              "label": "ACTUAL COST",
+              "key": "actual_cost"
+            },
+            {
+              "label": "COST THROUGH PHYSICAL ENTRY (GAIN /LOSS)",
+              "key": "physical_entry_gain_loss"
+            }
+          ]
+        },
+        {
+          "label": "ACTUAL PERCENT",
+          "children": [
+            {
+              "label": "TOTAL COST",
+              "key": "actual_percent"
+            }
+          ]
+        },
+        {
+          "label": "SALE",
+          "key": "sale"
+        }
+      ]
+    }
+  ]
+}

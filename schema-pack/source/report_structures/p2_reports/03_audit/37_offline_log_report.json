@@ -1,0 +1,42 @@
+{
+  "report_id": "report:p2_reports:03_audit:37_offline_log_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Offline log",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Deployment Name"
+        },
+        {
+          "label": "Instance"
+        },
+        {
+          "label": "Date"
+        },
+        {
+          "label": "Type"
+        },
+        {
+          "label": "Offline Start Time"
+        },
+        {
+          "label": "Online Time"
+        },
+        {
+          "label": "Time",
+          "key": "elapsed_time"
+        },
+        {
+          "label": "Time (min)",
+          "key": "elapsed_time_minutes"
+        }
+      ]
+    }
+  ]
+}

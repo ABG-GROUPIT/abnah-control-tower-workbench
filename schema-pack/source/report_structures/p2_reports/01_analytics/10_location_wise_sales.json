@@ -1,0 +1,28 @@
+{
+  "report_id": "report:p2_reports:01_analytics:10_location_wise_sales",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Location-wise sales",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Location"
+        },
+        {
+          "label": "Amount"
+        },
+        {
+          "label": "Number of Bills"
+        },
+        {
+          "label": "Contribution(%)"
+        }
+      ]
+    }
+  ]
+}

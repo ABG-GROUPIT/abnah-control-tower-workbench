@@ -1,0 +1,34 @@
+{
+  "report_id": "report:p2_reports:03_audit:39_custom_group_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Custom group item sales",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Item Name"
+        },
+        {
+          "label": "Rate"
+        },
+        {
+          "label": "Quantity"
+        },
+        {
+          "label": "Subtotal"
+        },
+        {
+          "label": "Discount"
+        },
+        {
+          "label": "Net Sales"
+        }
+      ]
+    }
+  ]
+}

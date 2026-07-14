@@ -1,0 +1,62 @@
+{
+  "report_id": "report:p2_reports:01_analytics:02_half_hourly_sales_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "structure_notes": "Half-hour buckets expose transaction, sales, average-ticket, category count, category IPT, and overall IPT measures.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Half-hourly sales",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Time"
+        },
+        {
+          "label": "Txn"
+        },
+        {
+          "label": "Half Hourly Sales"
+        },
+        {
+          "label": "AT"
+        },
+        {
+          "label": "FOOD Count"
+        },
+        {
+          "label": "FOOD IPT"
+        },
+        {
+          "label": "BEVERAGE Count"
+        },
+        {
+          "label": "BEVERAGE IPT"
+        },
+        {
+          "label": "Merchandise - GST - 0% Count"
+        },
+        {
+          "label": "Merchandise - GST - 0% IPT"
+        },
+        {
+          "label": "Merchandise - GST - 18% Count"
+        },
+        {
+          "label": "Merchandise - GST - 18% IPT"
+        },
+        {
+          "label": "Merchandise - GST - 5% Count"
+        },
+        {
+          "label": "Merchandise - GST - 5% IPT"
+        },
+        {
+          "label": "IPT"
+        }
+      ]
+    }
+  ]
+}

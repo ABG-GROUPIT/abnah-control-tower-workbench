@@ -1,0 +1,70 @@
+{
+  "report_id": "report:p2_reports:03_audit:24_delivery_audit_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "mixed",
+  "capture_method": "pasted_export_headers",
+  "structure_notes": "Business date is a dynamic group context above delivery-rider and order timing details.",
+  "blocks": [
+    {
+      "id": "context",
+      "name": "Report context",
+      "kind": "key_value",
+      "entries": [
+        {
+          "label": "DYNAMIC BUSINESS DATE",
+          "key": "business_date"
+        }
+      ]
+    },
+    {
+      "id": "primary",
+      "name": "Delivery audit",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Delivery Rider Name"
+        },
+        {
+          "label": "Delivery Rider Login"
+        },
+        {
+          "label": "Delivery Rider Logout"
+        },
+        {
+          "label": "Order No"
+        },
+        {
+          "label": "Order Source"
+        },
+        {
+          "label": "KOT time"
+        },
+        {
+          "label": "Dispatch Time"
+        },
+        {
+          "label": "Cash Out Time"
+        },
+        {
+          "label": "Drive Time (hh:mm:ss)"
+        },
+        {
+          "label": "Cashout In (hh:mm:ss)"
+        },
+        {
+          "label": "DSC (hh:mm:ss)"
+        },
+        {
+          "label": "InStore Time (hh:mm:ss)"
+        },
+        {
+          "label": "Customer Phone"
+        },
+        {
+          "label": "Customer Address"
+        }
+      ]
+    }
+  ]
+}

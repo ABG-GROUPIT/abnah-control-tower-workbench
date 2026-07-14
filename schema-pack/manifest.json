@@ -112,7 +112,7 @@
       "api_maps_to_model": 19
     },
     "workspace_reports": 319,
-    "structural_blueprints": 76,
+    "structural_blueprints": 111,
     "approved_kpis": 0,
     "published_lineage_maps": 0
   },
@@ -446,6 +446,146 @@
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/_status.json",
       "sha256": "ca5a4392cce9b1781ac8192172851b5d6127b949e34a8b4b0bfeca75f7614ee3"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/01_analytics/01_hourly_sales_report.json",
+      "sha256": "695032b1e1d3089b9822935ea8e6d738bc14b41ff75d53382ad238fa1f2ee088"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/01_analytics/02_half_hourly_sales_report.json",
+      "sha256": "cf6bcadeca8d49078a7ed9dc8c81980421f255a8f6c53fedd2a9219352329979"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/01_analytics/03_hourly_sales_by_category.json",
+      "sha256": "f1915402f54090d33568ce154d44c18fad16aa7703b81d0e02b5b6b78c1b81c6"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/01_analytics/04_growth_report.json",
+      "sha256": "890adf1e12bcb9e43a3b28662f858ed7302a2ab5c0525796fbefae2e2252db52"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/01_analytics/05_average_bill.json",
+      "sha256": "a91c7378c581430e0e8df4168feff0962731c0996356ad891900d070233543ea"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/01_analytics/06_income_analysis_report.json",
+      "sha256": "ea04aafd200a5eabafbf962075a119e4895e71a52c0d08f889d29e16ad691507"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/01_analytics/07_forecast_comparison_report.json",
+      "sha256": "5b86d2fcc2b11b3f6c69f542fb9153f8f47c427fd422215ce70f2c4c083e0b19"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/01_analytics/08_food_cost_report.json",
+      "sha256": "f837821db016e8e008f873c5e9fb0182d22a3a095e1e19a1f14a5553649c829d"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/01_analytics/09_kds_report.json",
+      "sha256": "e680dd2817cfa02a30eabadcd60f7e14b5185c4a77b88b0511cfdd12d29619a5"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/01_analytics/10_location_wise_sales.json",
+      "sha256": "82880704a147aed5cceb3efc6066e887c3bc5e5d889350945a9f9b937448bbd3"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/01_kot_detail_report.json",
+      "sha256": "fb84f27d8ec9eea4249e3df49ca22a689129c604ed6ee9d0bf764106104bacb5"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/03_kot_delete_history_report.json",
+      "sha256": "1dfb8565cba4ef6e74a12300e6a849599e06f46ffe618eec7023c1bd458afa74"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/04_complimentary_report.json",
+      "sha256": "6fc250bc314ab1cfe895f9a4d5210118a6147bf5de592b64eb7d9bc40a85e6e6"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/05_complimentary_detail_report_headwi.json",
+      "sha256": "c78cc77bd50275f1288abf63f383d41048c4336b55a7cf6751b7babb999cf6ca"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/06_discount_report.json",
+      "sha256": "5c8b0eda2b18d1cd4af172cf234ae9c6cc9047bfcab752c3dff35ccf2df8ee4d"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/07_discount_and_voucher_report.json",
+      "sha256": "c996509a6c01c0789aee0cdc6a7dd90d54a15124782a7a3e0051a400180f97a9"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/08_offers_report.json",
+      "sha256": "584727a6f9215161fca3c6a865c79ba549aa4a12578d1474a8d16cfbba82cd44"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/10_kot_tracking_report.json",
+      "sha256": "d3ce41358ab1277186211f31a1a3d3764d59924f59d227607ca25f04089b08c9"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/12_report_by_time.json",
+      "sha256": "a9e6916dd0b011660269943d98d67a7fb3412f27a938f83688550dca0568efec"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/21_revenue_report.json",
+      "sha256": "59ca4e4a916780fa9008fda472249937071056bfad4ba00a90ecd015fcd50c78"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/22_negative_orders_report.json",
+      "sha256": "546249163311b0855684703661aa7227219b54805cc9a870673675738ec95dd2"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/24_delivery_audit_report.json",
+      "sha256": "151dafc931b3d5d23e95d65862d04bd95a4222f8f555f5334f0ece01919f3233"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/28_non_taxable_item_report.json",
+      "sha256": "5cfbb7ae136391b4538afe5e56eef67a40539f4425d96d2cf0d73ef20520b708"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/30_food_bills_void_tax_report.json",
+      "sha256": "0d14e3d13e5365d8e4b7045c5769702147b2cbb78dfbff5e9c92d2fa05cbc18a"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/31_online_orders_time_log.json",
+      "sha256": "314b9817a6ea38eb763f845aa53d96fb17019e6598cf67c0418926fadbdac94f"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/33_item_based_offer_report.json",
+      "sha256": "b8942fd2a18e69637988f054ec168ee8ac192883c2811d7b58889a43692c2442"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/35_bi_logs_report.json",
+      "sha256": "45dbf29d310ac2dd7a5a5bcf556ebdbee32b0e3b1f8b1834d8b432a7dfc8a8c5"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/37_offline_log_report.json",
+      "sha256": "2d3e13b87beed24e5770677a71cd3b977f27fc67b34529a68159f1a7409ef1ea"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/38_aggregator_status_report.json",
+      "sha256": "f46aa5488b3b833717752461031c7bfb0a8a9e61b9a3a80b7de3dc43c504bb9e"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/39_custom_group_report.json",
+      "sha256": "297a0415093c9c29b7c53a84507d62d84fd200a8fe530268c2a629d57badca17"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/41_audit_report.json",
+      "sha256": "d39c5d2f8087aa570348441e487c922dea38e24d83afd1c557e4700d80c69c6e"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/43_billwise_distribution.json",
+      "sha256": "f71a65f0c10f2a692666f8979518ec0300980631d97bffb17184c228fea02b35"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/45_billwise_sale_gst.json",
+      "sha256": "0d50d5ba7efaea5dbf08da795d34a46bb5a29039fa6ba7b2ac20ae7a70804724"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/47_day_part_daily_sales.json",
+      "sha256": "aa022bcfee5a79397f2104789608a608a14ffcac6c5f70ce98b8254cd034b511"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/03_audit/50_bts_itemwise_report.json",
+      "sha256": "04a8a8d096c9723305a53ece8c05db3535136ddee56511f43f09543495e7ce75"
     }
   ],
   "kpi_lineage_source": {

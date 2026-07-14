@@ -83,3 +83,18 @@ The nine active unavailable reports are one filter-only Discounts & Offers repor
 Dynamic report members such as dates, categories, sources, sections, meal periods, or order types are represented as named repeating groups. Sample member values are never copied into a blueprint.
 
 See `p1_main/README.md` for the section ledger and transfer notes. `scripts/validate_workspace_data.py` locks this baseline so a later build cannot silently reintroduce legacy OCR `partial` states.
+
+## P2 Batch-One Baseline
+
+The first P2 evidence batch was reconciled on 2026-07-15:
+
+- 155 catalogue reports remain in scope.
+- 32 reports are captured, 3 are partial, and 120 remain pending.
+- All 35 materialized reports are reviewed.
+- Analytics is fully assessed: 9 captured and 1 partial.
+- Audit is partly assessed: 23 captured, 2 partial, and 25 pending.
+- Attendance and all later P2 sections remain pending until usable schema evidence is supplied.
+
+The three partial reports have explicit evidence boundaries: Food Cost Report has an incomplete right-hand header continuation, Complimentary Report ends inside Item Name, and Report By Time lacks its lower sections. They must not be guessed complete.
+
+See `p2_reports/README.md` for the report ledger and transfer notes. The P2 guard in `scripts/validate_workspace_data.py` makes every future discovery an intentional baseline update.

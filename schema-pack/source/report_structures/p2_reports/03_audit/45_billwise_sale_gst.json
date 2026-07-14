@@ -1,0 +1,109 @@
+{
+  "report_id": "report:p2_reports:03_audit:45_billwise_sale_gst",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Billwise sale GST",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Company"
+        },
+        {
+          "label": "Sections"
+        },
+        {
+          "label": "Tab Name"
+        },
+        {
+          "label": "GST State"
+        },
+        {
+          "label": "GST Code"
+        },
+        {
+          "label": "Customer Name"
+        },
+        {
+          "label": "Customer GSTIN"
+        },
+        {
+          "label": "Invoice Type"
+        },
+        {
+          "label": "HSN/SAC Code"
+        },
+        {
+          "label": "Category Name"
+        },
+        {
+          "label": "Item Name"
+        },
+        {
+          "label": "Quantity"
+        },
+        {
+          "label": "Invoice No"
+        },
+        {
+          "label": "Invoice Date"
+        },
+        {
+          "label": "Sub Amount."
+        },
+        {
+          "label": "Discount"
+        },
+        {
+          "label": "Taxable Amt."
+        },
+        {
+          "label": "GST Amount @ 5%"
+        },
+        {
+          "label": "CGST Amount @ 2.5%"
+        },
+        {
+          "label": "SGST Amount @ 2.5%"
+        },
+        {
+          "label": "GST Amount @ 18%"
+        },
+        {
+          "label": "CGST Amount @ 9%"
+        },
+        {
+          "label": "SGST Amount @ 9%"
+        },
+        {
+          "label": "IGST %"
+        },
+        {
+          "label": "IGST Amt."
+        },
+        {
+          "label": "Total CGST Amt."
+        },
+        {
+          "label": "Total SGST Amt."
+        },
+        {
+          "label": "Total GST Amount"
+        },
+        {
+          "label": "Gross Amount"
+        },
+        {
+          "label": "BTC Employee"
+        },
+        {
+          "label": "BTC Company"
+        }
+      ]
+    }
+  ]
+}

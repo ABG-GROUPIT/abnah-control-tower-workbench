@@ -1,0 +1,47 @@
+{
+  "report_id": "report:p2_reports:03_audit:35_bi_logs_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "structure_notes": "The capture labels this report 'BILL Logs Report'; the stable catalogue ID is retained.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Bill lifecycle logs",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Bill Number"
+        },
+        {
+          "label": "Device Info"
+        },
+        {
+          "label": "Bill Created On"
+        },
+        {
+          "label": "Bill Printed On"
+        },
+        {
+          "label": "Bill Closed On"
+        },
+        {
+          "label": "Complimentary | Void"
+        },
+        {
+          "label": "Bill Duration (hh:mm:ss)"
+        },
+        {
+          "label": "First KOT Time"
+        },
+        {
+          "label": "Bill Last Updated"
+        },
+        {
+          "label": "Edit Bill Comment"
+        }
+      ]
+    }
+  ]
+}

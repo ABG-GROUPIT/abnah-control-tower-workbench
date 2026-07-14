@@ -1,0 +1,52 @@
+{
+  "report_id": "report:p2_reports:03_audit:12_report_by_time",
+  "schema_status": "partial",
+  "verification_status": "reviewed",
+  "layout_kind": "mixed",
+  "capture_method": "manual_visual_evidence_review",
+  "structure_notes": "The supplied view shows the primary particulars table, a late-KOT-void summary, and the start of a print-to-settlement section. Lower sections and rows are not captured, so the report remains partial.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Time particulars",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "PARTICULARS"
+        },
+        {
+          "label": "VALUE"
+        },
+        {
+          "label": "AVG PER DAY"
+        }
+      ]
+    },
+    {
+      "id": "late_voids",
+      "name": "NUMBER OF KOT VOIDS AFTER 15 MINUTES OF KOT PRINT",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Number of KOTs"
+        },
+        {
+          "label": "Total Amount"
+        }
+      ]
+    },
+    {
+      "id": "settlement",
+      "name": "Print time to settlement",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "PARTICULARS (BETWEEN PRINT TIME AND SETTLEMENT)"
+        },
+        {
+          "label": "COUNT AMOUNT"
+        }
+      ]
+    }
+  ]
+}

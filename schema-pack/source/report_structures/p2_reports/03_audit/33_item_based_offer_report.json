@@ -1,0 +1,68 @@
+{
+  "report_id": "report:p2_reports:03_audit:33_item_based_offer_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_visual_evidence_review",
+  "structure_notes": "Buy Item and Get Item retain separate item, quantity, value, and offer-name groups.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Item-based offer detail",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "DATE"
+        },
+        {
+          "label": "BILL NO."
+        },
+        {
+          "label": "KOT NO."
+        },
+        {
+          "label": "BUY ITEM",
+          "children": [
+            {
+              "label": "ITEM NAME",
+              "key": "buy_item_name"
+            },
+            {
+              "label": "QTY",
+              "key": "buy_quantity"
+            },
+            {
+              "label": "BUY VALUE",
+              "key": "buy_value"
+            },
+            {
+              "label": "OFFER NAME",
+              "key": "buy_offer_name"
+            }
+          ]
+        },
+        {
+          "label": "GET ITEM",
+          "children": [
+            {
+              "label": "ITEM NAME",
+              "key": "get_item_name"
+            },
+            {
+              "label": "QTY",
+              "key": "get_quantity"
+            },
+            {
+              "label": "GET VALUE",
+              "key": "get_value"
+            },
+            {
+              "label": "OFFER NAME",
+              "key": "get_offer_name"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

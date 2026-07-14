@@ -1,0 +1,260 @@
+{
+  "report_id": "report:p2_reports:03_audit:05_complimentary_detail_report_headwi",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_rows",
+  "capture_method": "manual_visual_evidence_review",
+  "structure_notes": "Detail rows repeat under a dynamic complimentary head and business date, followed by DayTotal and HeadTotal rows.",
+  "data_points": [
+    {
+      "key": "complimentary_head",
+      "label": "Complimentary Head",
+      "semantic_role": "offer_dimension"
+    },
+    {
+      "key": "business_date",
+      "label": "Business Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "label": "BILL NUMBER"
+    },
+    {
+      "label": "AMOUNT"
+    },
+    {
+      "label": "SEGMENT"
+    },
+    {
+      "label": "TABLE NO."
+    },
+    {
+      "label": "CONSUMER"
+    },
+    {
+      "label": "USERNAME"
+    },
+    {
+      "label": "COMPLIMENTARY OFFER NAME"
+    },
+    {
+      "label": "COMMENT"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Complimentary detail headwise",
+      "kind": "grid",
+      "rows": 6,
+      "columns": 8,
+      "column_widths": [
+        170,
+        130,
+        140,
+        130,
+        150,
+        190,
+        260,
+        200
+      ],
+      "cells": [
+        {
+          "row": 0,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "BILL NUMBER",
+          "kind": "field"
+        },
+        {
+          "row": 0,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "AMOUNT",
+          "kind": "field"
+        },
+        {
+          "row": 0,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "SEGMENT",
+          "kind": "field"
+        },
+        {
+          "row": 0,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "TABLE NO.",
+          "kind": "field"
+        },
+        {
+          "row": 0,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "CONSUMER",
+          "kind": "field"
+        },
+        {
+          "row": 0,
+          "column": 5,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "USERNAME",
+          "kind": "field"
+        },
+        {
+          "row": 0,
+          "column": 6,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "COMPLIMENTARY OFFER NAME",
+          "kind": "field"
+        },
+        {
+          "row": 0,
+          "column": 7,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "COMMENT",
+          "kind": "field"
+        },
+        {
+          "row": 1,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 8,
+          "text": "DYNAMIC COMPLIMENTARY HEAD",
+          "kind": "group",
+          "fieldId": "complimentary_head"
+        },
+        {
+          "row": 2,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 8,
+          "text": "DYNAMIC BUSINESS DATE",
+          "kind": "group",
+          "fieldId": "business_date"
+        },
+        {
+          "row": 3,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 5,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 6,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 7,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 4,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "DAYTOTAL:",
+          "kind": "label"
+        },
+        {
+          "row": 4,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 4,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 6,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 5,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "HEADTOTAL:",
+          "kind": "label"
+        },
+        {
+          "row": 5,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 5,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 6,
+          "text": "",
+          "kind": "blank"
+        }
+      ]
+    }
+  ]
+}

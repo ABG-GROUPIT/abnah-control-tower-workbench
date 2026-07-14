@@ -1,0 +1,281 @@
+{
+  "report_id": "report:p2_reports:03_audit:03_kot_delete_history_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_rows",
+  "capture_method": "pasted_pivot_structure",
+  "structure_notes": "Detail rows are grouped by Bill Number, followed by Bill Total, Day Total, and Grand Total rows.",
+  "data_points": [
+    {
+      "key": "bill_number",
+      "label": "Bill Number",
+      "semantic_role": "document_identifier"
+    },
+    {
+      "label": "KOT Number"
+    },
+    {
+      "label": "Item"
+    },
+    {
+      "label": "Order Time"
+    },
+    {
+      "label": "Delete Time"
+    },
+    {
+      "label": "Rate"
+    },
+    {
+      "label": "Quantity"
+    },
+    {
+      "label": "Total"
+    },
+    {
+      "label": "Tab Name"
+    },
+    {
+      "label": "TableNo"
+    },
+    {
+      "label": "Comment"
+    },
+    {
+      "label": "Username"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "KOT delete history",
+      "kind": "grid",
+      "rows": 6,
+      "columns": 11,
+      "column_widths": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "cells": [
+        {
+          "row": 0,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "KOT Number",
+          "kind": "field"
+        },
+        {
+          "row": 0,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Item",
+          "kind": "field"
+        },
+        {
+          "row": 0,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Order Time",
+          "kind": "field"
+        },
+        {
+          "row": 0,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Delete Time",
+          "kind": "field"
+        },
+        {
+          "row": 0,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Rate",
+          "kind": "field"
+        },
+        {
+          "row": 0,
+          "column": 5,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Quantity",
+          "kind": "field"
+        },
+        {
+          "row": 0,
+          "column": 6,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Total",
+          "kind": "field"
+        },
+        {
+          "row": 0,
+          "column": 7,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Tab Name",
+          "kind": "field"
+        },
+        {
+          "row": 0,
+          "column": 8,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "TableNo",
+          "kind": "field"
+        },
+        {
+          "row": 0,
+          "column": 9,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Comment",
+          "kind": "field"
+        },
+        {
+          "row": 0,
+          "column": 10,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Username",
+          "kind": "field"
+        },
+        {
+          "row": 1,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 11,
+          "text": "DYNAMIC BILL NUMBER",
+          "kind": "group",
+          "fieldId": "bill_number"
+        },
+        {
+          "row": 2,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 2,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 2,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 2,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 2,
+          "column": 5,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 2,
+          "column": 6,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 2,
+          "column": 7,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 2,
+          "column": 8,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 2,
+          "column": 9,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 2,
+          "column": 10,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 11,
+          "text": "BILL TOTAL",
+          "kind": "label"
+        },
+        {
+          "row": 4,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 11,
+          "text": "DAY TOTAL",
+          "kind": "label"
+        },
+        {
+          "row": 5,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 11,
+          "text": "GRAND TOTAL",
+          "kind": "label"
+        }
+      ]
+    }
+  ]
+}

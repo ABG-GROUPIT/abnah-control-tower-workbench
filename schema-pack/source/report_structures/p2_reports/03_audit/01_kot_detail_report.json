@@ -1,0 +1,52 @@
+{
+  "report_id": "report:p2_reports:03_audit:01_kot_detail_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "KOT detail",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Date"
+        },
+        {
+          "label": "Bill Serial Number"
+        },
+        {
+          "label": "Edit Bill Comment"
+        },
+        {
+          "label": "KOT Number"
+        },
+        {
+          "label": "KOT Date"
+        },
+        {
+          "label": "KOT Time"
+        },
+        {
+          "label": "KOT Comment"
+        },
+        {
+          "label": "Item Name"
+        },
+        {
+          "label": "Rate"
+        },
+        {
+          "label": "Quantity"
+        },
+        {
+          "label": "Amount"
+        },
+        {
+          "label": "Item Comment"
+        }
+      ]
+    }
+  ]
+}

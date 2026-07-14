@@ -1,0 +1,134 @@
+{
+  "report_id": "report:p2_reports:01_analytics:06_income_analysis_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_columns",
+  "capture_method": "pasted_export_headers",
+  "structure_notes": "Monthly and channel-level budget, actual, and variance triplets are preserved as grouped columns.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Income analysis",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "Month"
+        },
+        {
+          "label": "No Of Days"
+        },
+        {
+          "label": "Business Days"
+        },
+        {
+          "label": "Monthly",
+          "children": [
+            {
+              "label": "Budget",
+              "key": "monthly_budget"
+            },
+            {
+              "label": "Actual",
+              "key": "monthly_actual"
+            },
+            {
+              "label": "Variance For The Month",
+              "key": "monthly_variance"
+            }
+          ]
+        },
+        {
+          "label": "TABLE",
+          "children": [
+            {
+              "label": "Budget",
+              "key": "table_budget"
+            },
+            {
+              "label": "Actual",
+              "key": "table_actual"
+            },
+            {
+              "label": "Variance",
+              "key": "table_variance"
+            }
+          ]
+        },
+        {
+          "label": "QR Code",
+          "children": [
+            {
+              "label": "Budget",
+              "key": "qr_code_budget"
+            },
+            {
+              "label": "Actual",
+              "key": "qr_code_actual"
+            },
+            {
+              "label": "Variance",
+              "key": "qr_code_variance"
+            }
+          ]
+        },
+        {
+          "label": "Takeaway",
+          "children": [
+            {
+              "label": "Budget",
+              "key": "takeaway_budget"
+            },
+            {
+              "label": "Actual",
+              "key": "takeaway_actual"
+            },
+            {
+              "label": "Variance",
+              "key": "takeaway_variance"
+            }
+          ]
+        },
+        {
+          "label": "Dine In",
+          "children": [
+            {
+              "label": "Budget",
+              "key": "dine_in_budget"
+            },
+            {
+              "label": "Actual",
+              "key": "dine_in_actual"
+            },
+            {
+              "label": "Variance",
+              "key": "dine_in_variance"
+            }
+          ]
+        },
+        {
+          "label": "Ecom",
+          "children": [
+            {
+              "label": "Budget",
+              "key": "ecom_budget"
+            },
+            {
+              "label": "Actual",
+              "key": "ecom_actual"
+            },
+            {
+              "label": "Variance",
+              "key": "ecom_variance"
+            }
+          ]
+        },
+        {
+          "label": "Avg Daily Revenue"
+        },
+        {
+          "label": "Performance Against Budget"
+        }
+      ]
+    }
+  ]
+}

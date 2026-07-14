@@ -1,0 +1,47 @@
+{
+  "report_id": "report:p2_reports:03_audit:43_billwise_distribution",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "structure_notes": "The capture labels this report 'billwise_CONTRIBUTION'; the stable catalogue ID is retained.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Billwise contribution",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "BillNumber"
+        },
+        {
+          "label": "Bill Date"
+        },
+        {
+          "label": "OpenTime"
+        },
+        {
+          "label": "CloseTime"
+        },
+        {
+          "label": "NetAmount"
+        },
+        {
+          "label": "Discount"
+        },
+        {
+          "label": "TotalTax"
+        },
+        {
+          "label": "Tab"
+        },
+        {
+          "label": "TotalAmountWithRoundOff"
+        },
+        {
+          "label": "IsVoid"
+        }
+      ]
+    }
+  ]
+}

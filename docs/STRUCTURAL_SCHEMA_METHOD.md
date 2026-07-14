@@ -104,6 +104,21 @@ For future changes:
 
 Verification status is intentionally separate from schema completeness. A report may be structurally `captured` while still `needs_review`; it must not be relabelled `partial` for that reason.
 
+## P2 Batch-One Baseline
+
+The first P2 transcription pass covers all 10 Analytics reports and 25 of the 50 Audit reports. It produces 32 captured schemas and 3 explicitly partial schemas; the other 120 P2 catalogue entries remain pending.
+
+The pass demonstrates the supported intake paths:
+
+1. Plain pasted headers become `flat_table` blueprints.
+2. Pasted pivot descriptions become grouped-row or grouped-column structures.
+3. Locally inspected report views become explicit mixed or grid structures when merged headers, repeated groups, context rows, or multiple tables matter.
+4. A document view can clarify table segmentation, but neither the document nor its rendered pages enter the project.
+
+The complex reference reports are Forecast Comparison Report, Food Cost Report, KOT Tracking Report, Report By Time, Item Based Offer Report, day_part_daily_sales, Complimentary Detail Report Headwise, and BTS Itemwise Report. Their source blueprints should be consulted before encoding a structurally similar P2 or P4 report.
+
+The P2 baseline is intentionally strict. When a later batch resolves a pending report or completes one of the three partial reports, update both `p2_reports/README.md` and `P2_BATCH_ONE_BASELINE` in the validator in the same change.
+
 ## Definition of Done for One Report
 
 - Correct stable report ID and navigation location.

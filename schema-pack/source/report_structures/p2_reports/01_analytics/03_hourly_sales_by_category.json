@@ -1,0 +1,41 @@
+{
+  "report_id": "report:p2_reports:01_analytics:03_hourly_sales_by_category",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "mixed",
+  "capture_method": "pasted_export_headers",
+  "structure_notes": "One category and one tab method can be selected at a time; the selected category is context rather than a row value.",
+  "blocks": [
+    {
+      "id": "context",
+      "name": "Selection context",
+      "kind": "key_value",
+      "entries": [
+        {
+          "label": "SELECTED CATEGORY",
+          "key": "selected_category"
+        },
+        {
+          "label": "SELECTED TAB METHOD",
+          "key": "selected_tab_method"
+        }
+      ]
+    },
+    {
+      "id": "primary",
+      "name": "Hourly category sales",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Open Time"
+        },
+        {
+          "label": "Number of Items"
+        },
+        {
+          "label": "Amount"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,618 @@
+{
+  "report_id": "report:p2_reports:01_analytics:04_growth_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "mixed",
+  "capture_method": "pasted_pivot_structure",
+  "structure_notes": "Vertical performance parameters compare dynamic last-week and current-week date ranges with a calculated growth percentage.",
+  "data_points": [
+    {
+      "key": "parameter",
+      "label": "Parameters",
+      "semantic_role": "metric_dimension"
+    },
+    {
+      "key": "last_week_date_range",
+      "label": "Last Week Date Range",
+      "semantic_role": "period_dimension"
+    },
+    {
+      "key": "this_week_date_range",
+      "label": "This Week Date Range",
+      "semantic_role": "period_dimension"
+    },
+    {
+      "key": "growth_percent",
+      "label": "Growth %",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "noofbillstotal",
+      "label": "NoOfBillsTotal",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "noofbillsdinein",
+      "label": "NoOfBillsDineIn",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "noofbillsdelivery",
+      "label": "NoOfBillsDelivery",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "average_bill_value",
+      "label": "Average Bill Value",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "discount_amount",
+      "label": "Discount Amount",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "net_sales",
+      "label": "Net Sales",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "cogs",
+      "label": "COGS",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "cogs",
+      "label": "% COGS",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "gm_gross_margin",
+      "label": "GM(Gross Margin)",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "wastage",
+      "label": "Wastage",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "gm",
+      "label": "% GM",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "contribution",
+      "label": "Contribution",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "total_profit",
+      "label": "Total Profit %",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "revpash",
+      "label": "RevPASH",
+      "semantic_role": "measure"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Weekly growth comparison",
+      "kind": "grid",
+      "rows": 16,
+      "columns": 4,
+      "column_widths": [
+        220,
+        190,
+        190,
+        140
+      ],
+      "cells": [
+        {
+          "row": 0,
+          "column": 0,
+          "rowSpan": 2,
+          "columnSpan": 1,
+          "text": "PARAMETERS",
+          "kind": "context",
+          "fieldId": "parameter"
+        },
+        {
+          "row": 0,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "LAST WEEK",
+          "kind": "group"
+        },
+        {
+          "row": 0,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "THIS WEEK",
+          "kind": "group"
+        },
+        {
+          "row": 0,
+          "column": 3,
+          "rowSpan": 2,
+          "columnSpan": 1,
+          "text": "GROWTH %",
+          "kind": "field",
+          "fieldId": "growth_percent"
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "DYNAMIC DATE RANGE",
+          "kind": "context",
+          "fieldId": "last_week_date_range"
+        },
+        {
+          "row": 1,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "DYNAMIC DATE RANGE",
+          "kind": "context",
+          "fieldId": "this_week_date_range"
+        },
+        {
+          "row": 2,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "NoOfBillsTotal",
+          "kind": "field"
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 2,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 2,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "NoOfBillsDineIn",
+          "kind": "field"
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 4,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "NoOfBillsDelivery",
+          "kind": "field"
+        },
+        {
+          "row": 4,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 4,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 4,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 5,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Average Bill Value",
+          "kind": "field"
+        },
+        {
+          "row": 5,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 5,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 5,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 6,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Discount Amount",
+          "kind": "field"
+        },
+        {
+          "row": 6,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 6,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 6,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 7,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Net Sales",
+          "kind": "field"
+        },
+        {
+          "row": 7,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 7,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 7,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 8,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "COGS",
+          "kind": "field"
+        },
+        {
+          "row": 8,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 8,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 8,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 9,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "% COGS",
+          "kind": "field"
+        },
+        {
+          "row": 9,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 9,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 9,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 10,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "GM(Gross Margin)",
+          "kind": "field"
+        },
+        {
+          "row": 10,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 10,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 10,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 11,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Wastage",
+          "kind": "field"
+        },
+        {
+          "row": 11,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 11,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 11,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 12,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "% GM",
+          "kind": "field"
+        },
+        {
+          "row": 12,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 12,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 12,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 13,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Contribution",
+          "kind": "field"
+        },
+        {
+          "row": 13,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 13,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 13,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 14,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Total Profit %",
+          "kind": "field"
+        },
+        {
+          "row": 14,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 14,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 14,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 15,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "RevPASH",
+          "kind": "field"
+        },
+        {
+          "row": 15,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 15,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 15,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1533 @@
+{
+  "report_id": "report:p2_reports:03_audit:47_day_part_daily_sales",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "mixed",
+  "capture_method": "manual_visual_and_pdf_structure_review",
+  "structure_notes": "Configured day parts repeat horizontally by available channel. The report has five linked regions: headline sales metrics; section quantity/amount; complimentary and void quantity/amount; hourly quantity/amount; and financial revenue by payment mode. Specific day-part names and row members are runtime configuration, so generic repeating members replace captured outlet values. The source label after 'Total Covers (Exc' is visibly truncated and is preserved as 'Total Covers (Exc...)'.",
+  "data_points": [
+    {
+      "key": "day_part",
+      "label": "Day Part",
+      "semantic_role": "period_dimension"
+    },
+    {
+      "key": "channel",
+      "label": "Channel",
+      "semantic_role": "channel_dimension"
+    },
+    {
+      "key": "headline_metric",
+      "label": "Headline Metric",
+      "semantic_role": "metric_dimension"
+    },
+    {
+      "key": "section",
+      "label": "Section",
+      "semantic_role": "category_dimension"
+    },
+    {
+      "key": "complimentary_void_type",
+      "label": "Complimentary / Void Type",
+      "semantic_role": "category_dimension"
+    },
+    {
+      "key": "hour_bucket",
+      "label": "Hour Bucket",
+      "semantic_role": "period_dimension"
+    },
+    {
+      "key": "payment_mode",
+      "label": "Payment Mode",
+      "semantic_role": "payment_dimension"
+    },
+    {
+      "key": "quantity",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "amount",
+      "label": "Amt",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_revenue_amount",
+      "label": "Total Revenue Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "grand_total",
+      "label": "Grand Total",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "ecom_5",
+      "label": "Ecom@5%",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "gst_18",
+      "label": "GST@18%",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "gst_3",
+      "label": "GST@3%",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "gst_5",
+      "label": "GST@5%",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "net_sales",
+      "label": "Net Sales",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "discount",
+      "label": "Discount",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "subtotal",
+      "label": "Subtotal",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "roundoff",
+      "label": "Roundoff",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "total_covers_exc",
+      "label": "Total Covers (Exc...)",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "total_transaction",
+      "label": "Total Transaction",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "avg_per_cover",
+      "label": "Avg. Per Cover",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "avg_per_ticket",
+      "label": "Avg. Per Ticket",
+      "semantic_role": "measure"
+    },
+    {
+      "key": "avg_trans_time",
+      "label": "Avg. Trans. Time",
+      "semantic_role": "measure"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "headline",
+      "name": "Day-part headline metrics",
+      "kind": "grid",
+      "rows": 16,
+      "columns": 5,
+      "column_widths": [
+        220,
+        140,
+        140,
+        140,
+        140
+      ],
+      "cells": [
+        {
+          "row": 0,
+          "column": 0,
+          "rowSpan": 2,
+          "columnSpan": 1,
+          "text": "HEADLINE METRIC",
+          "kind": "context",
+          "fieldId": "headline_metric"
+        },
+        {
+          "row": 0,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 4,
+          "text": "DYNAMIC DAY PART",
+          "kind": "group"
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "DINE IN",
+          "kind": "field"
+        },
+        {
+          "row": 1,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "QR CODE",
+          "kind": "field"
+        },
+        {
+          "row": 1,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "TAKEAWAY",
+          "kind": "field"
+        },
+        {
+          "row": 1,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "ECOM",
+          "kind": "field"
+        },
+        {
+          "row": 2,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Grand Total",
+          "kind": "field"
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 2,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 2,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 2,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Ecom@5%",
+          "kind": "field"
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 4,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "GST@18%",
+          "kind": "field"
+        },
+        {
+          "row": 4,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 4,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 4,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 4,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 5,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "GST@3%",
+          "kind": "field"
+        },
+        {
+          "row": 5,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 5,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 5,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 5,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 6,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "GST@5%",
+          "kind": "field"
+        },
+        {
+          "row": 6,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 6,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 6,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 6,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 7,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Net Sales",
+          "kind": "field"
+        },
+        {
+          "row": 7,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 7,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 7,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 7,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 8,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Discount",
+          "kind": "field"
+        },
+        {
+          "row": 8,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 8,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 8,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 8,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 9,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Subtotal",
+          "kind": "field"
+        },
+        {
+          "row": 9,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 9,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 9,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 9,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 10,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Roundoff",
+          "kind": "field"
+        },
+        {
+          "row": 10,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 10,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 10,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 10,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 11,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Total Covers (Exc...)",
+          "kind": "field"
+        },
+        {
+          "row": 11,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 11,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 11,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 11,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 12,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Total Transaction",
+          "kind": "field"
+        },
+        {
+          "row": 12,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 12,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 12,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 12,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 13,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Avg. Per Cover",
+          "kind": "field"
+        },
+        {
+          "row": 13,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 13,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 13,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 13,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 14,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Avg. Per Ticket",
+          "kind": "field"
+        },
+        {
+          "row": 14,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 14,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 14,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 14,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 15,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "Avg. Trans. Time",
+          "kind": "field"
+        },
+        {
+          "row": 15,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 15,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 15,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 15,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        }
+      ]
+    },
+    {
+      "id": "section",
+      "name": "Section quantity and amount",
+      "kind": "grid",
+      "rows": 4,
+      "columns": 9,
+      "column_widths": [
+        220,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "cells": [
+        {
+          "row": 0,
+          "column": 0,
+          "rowSpan": 3,
+          "columnSpan": 1,
+          "text": "SECTION",
+          "kind": "context"
+        },
+        {
+          "row": 0,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 8,
+          "text": "DYNAMIC DAY PART",
+          "kind": "group"
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 2,
+          "text": "DINE IN",
+          "kind": "group"
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "QTY",
+          "kind": "field",
+          "fieldId": "dine_in_quantity"
+        },
+        {
+          "row": 2,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "AMT",
+          "kind": "field",
+          "fieldId": "dine_in_amount"
+        },
+        {
+          "row": 1,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 2,
+          "text": "QR CODE",
+          "kind": "group"
+        },
+        {
+          "row": 2,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "QTY",
+          "kind": "field",
+          "fieldId": "qr_code_quantity"
+        },
+        {
+          "row": 2,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "AMT",
+          "kind": "field",
+          "fieldId": "qr_code_amount"
+        },
+        {
+          "row": 1,
+          "column": 5,
+          "rowSpan": 1,
+          "columnSpan": 2,
+          "text": "TAKEAWAY",
+          "kind": "group"
+        },
+        {
+          "row": 2,
+          "column": 5,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "QTY",
+          "kind": "field",
+          "fieldId": "takeaway_quantity"
+        },
+        {
+          "row": 2,
+          "column": 6,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "AMT",
+          "kind": "field",
+          "fieldId": "takeaway_amount"
+        },
+        {
+          "row": 1,
+          "column": 7,
+          "rowSpan": 1,
+          "columnSpan": 2,
+          "text": "ECOM",
+          "kind": "group"
+        },
+        {
+          "row": 2,
+          "column": 7,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "QTY",
+          "kind": "field",
+          "fieldId": "ecom_quantity"
+        },
+        {
+          "row": 2,
+          "column": 8,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "AMT",
+          "kind": "field",
+          "fieldId": "ecom_amount"
+        },
+        {
+          "row": 3,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "DYNAMIC SECTION MEMBER",
+          "kind": "field"
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 5,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 6,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 7,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 8,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        }
+      ]
+    },
+    {
+      "id": "complimentary",
+      "name": "Complimentary and void quantity and amount",
+      "kind": "grid",
+      "rows": 4,
+      "columns": 9,
+      "column_widths": [
+        220,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "cells": [
+        {
+          "row": 0,
+          "column": 0,
+          "rowSpan": 3,
+          "columnSpan": 1,
+          "text": "COMPLIMENTARY / VOID TYPE",
+          "kind": "context"
+        },
+        {
+          "row": 0,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 8,
+          "text": "DYNAMIC DAY PART",
+          "kind": "group"
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 2,
+          "text": "DINE IN",
+          "kind": "group"
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "QTY",
+          "kind": "field",
+          "fieldId": "dine_in_quantity"
+        },
+        {
+          "row": 2,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "AMT",
+          "kind": "field",
+          "fieldId": "dine_in_amount"
+        },
+        {
+          "row": 1,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 2,
+          "text": "QR CODE",
+          "kind": "group"
+        },
+        {
+          "row": 2,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "QTY",
+          "kind": "field",
+          "fieldId": "qr_code_quantity"
+        },
+        {
+          "row": 2,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "AMT",
+          "kind": "field",
+          "fieldId": "qr_code_amount"
+        },
+        {
+          "row": 1,
+          "column": 5,
+          "rowSpan": 1,
+          "columnSpan": 2,
+          "text": "TAKEAWAY",
+          "kind": "group"
+        },
+        {
+          "row": 2,
+          "column": 5,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "QTY",
+          "kind": "field",
+          "fieldId": "takeaway_quantity"
+        },
+        {
+          "row": 2,
+          "column": 6,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "AMT",
+          "kind": "field",
+          "fieldId": "takeaway_amount"
+        },
+        {
+          "row": 1,
+          "column": 7,
+          "rowSpan": 1,
+          "columnSpan": 2,
+          "text": "ECOM",
+          "kind": "group"
+        },
+        {
+          "row": 2,
+          "column": 7,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "QTY",
+          "kind": "field",
+          "fieldId": "ecom_quantity"
+        },
+        {
+          "row": 2,
+          "column": 8,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "AMT",
+          "kind": "field",
+          "fieldId": "ecom_amount"
+        },
+        {
+          "row": 3,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "DYNAMIC COMPLIMENTARY / VOID MEMBER",
+          "kind": "field"
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 5,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 6,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 7,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 8,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        }
+      ]
+    },
+    {
+      "id": "hourly",
+      "name": "Hourly quantity and amount",
+      "kind": "grid",
+      "rows": 4,
+      "columns": 9,
+      "column_widths": [
+        220,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "cells": [
+        {
+          "row": 0,
+          "column": 0,
+          "rowSpan": 3,
+          "columnSpan": 1,
+          "text": "HOURLY ANALYSIS",
+          "kind": "context"
+        },
+        {
+          "row": 0,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 8,
+          "text": "DYNAMIC DAY PART",
+          "kind": "group"
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 2,
+          "text": "DINE IN",
+          "kind": "group"
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "QTY",
+          "kind": "field",
+          "fieldId": "dine_in_quantity"
+        },
+        {
+          "row": 2,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "AMT",
+          "kind": "field",
+          "fieldId": "dine_in_amount"
+        },
+        {
+          "row": 1,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 2,
+          "text": "QR CODE",
+          "kind": "group"
+        },
+        {
+          "row": 2,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "QTY",
+          "kind": "field",
+          "fieldId": "qr_code_quantity"
+        },
+        {
+          "row": 2,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "AMT",
+          "kind": "field",
+          "fieldId": "qr_code_amount"
+        },
+        {
+          "row": 1,
+          "column": 5,
+          "rowSpan": 1,
+          "columnSpan": 2,
+          "text": "TAKEAWAY",
+          "kind": "group"
+        },
+        {
+          "row": 2,
+          "column": 5,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "QTY",
+          "kind": "field",
+          "fieldId": "takeaway_quantity"
+        },
+        {
+          "row": 2,
+          "column": 6,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "AMT",
+          "kind": "field",
+          "fieldId": "takeaway_amount"
+        },
+        {
+          "row": 1,
+          "column": 7,
+          "rowSpan": 1,
+          "columnSpan": 2,
+          "text": "ECOM",
+          "kind": "group"
+        },
+        {
+          "row": 2,
+          "column": 7,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "QTY",
+          "kind": "field",
+          "fieldId": "ecom_quantity"
+        },
+        {
+          "row": 2,
+          "column": 8,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "AMT",
+          "kind": "field",
+          "fieldId": "ecom_amount"
+        },
+        {
+          "row": 3,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "DYNAMIC HOUR BUCKET",
+          "kind": "field"
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 5,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 6,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 7,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 8,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        }
+      ]
+    },
+    {
+      "id": "financial",
+      "name": "Financial report",
+      "kind": "grid",
+      "rows": 4,
+      "columns": 5,
+      "column_widths": [
+        220,
+        170,
+        170,
+        170,
+        170
+      ],
+      "cells": [
+        {
+          "row": 0,
+          "column": 0,
+          "rowSpan": 3,
+          "columnSpan": 1,
+          "text": "PAYMENT MODE",
+          "kind": "context",
+          "fieldId": "payment_mode"
+        },
+        {
+          "row": 0,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 4,
+          "text": "DYNAMIC DAY PART",
+          "kind": "group"
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "DINE IN",
+          "kind": "group"
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "TOTAL REVENUE AMOUNT",
+          "kind": "field"
+        },
+        {
+          "row": 1,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "QR CODE",
+          "kind": "group"
+        },
+        {
+          "row": 2,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "TOTAL REVENUE AMOUNT",
+          "kind": "field"
+        },
+        {
+          "row": 1,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "TAKEAWAY",
+          "kind": "group"
+        },
+        {
+          "row": 2,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "TOTAL REVENUE AMOUNT",
+          "kind": "field"
+        },
+        {
+          "row": 1,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "ECOM",
+          "kind": "group"
+        },
+        {
+          "row": 2,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "TOTAL REVENUE AMOUNT",
+          "kind": "field"
+        },
+        {
+          "row": 3,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "DYNAMIC PAYMENT MODE",
+          "kind": "field"
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 2,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 3,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        },
+        {
+          "row": 3,
+          "column": 4,
+          "rowSpan": 1,
+          "columnSpan": 1,
+          "text": "",
+          "kind": "blank"
+        }
+      ]
+    }
+  ]
+}
