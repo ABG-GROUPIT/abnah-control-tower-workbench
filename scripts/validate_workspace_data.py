@@ -3,12 +3,20 @@
 
 from __future__ import annotations
 
+from collections import Counter
 import json
 from pathlib import Path
 
 
 ALLOWED_CELL_KINDS = {"group", "field", "label", "context", "blank"}
 ALLOWED_WORKFLOW = {"draft", "in_review", "published"}
+P1_COMPLETION_BASELINE = {
+    "catalog_reports": 90,
+    "active_reports": 85,
+    "archived_reports": 5,
+    "schema_statuses": {"captured": 76, "unavailable": 14},
+    "active_schema_statuses": {"captured": 76, "unavailable": 9},
+}
 
 
 def main() -> int:
@@ -89,6 +97,48 @@ def main() -> int:
                             errors.append(f"Overlapping cells in {report_id}/{table_id} at {coordinate}.")
                         occupied.add(coordinate)
 
+    p1_reports = [report for report in workspace.get("reports", []) if report.get("page") == "p1_main"]
+    p1_active = [report for report in p1_reports if not report.get("isArchived")]
+    p1_archived = [report for report in p1_reports if report.get("isArchived")]
+    p1_statuses = Counter(report.get("schemaStatus") for report in p1_reports)
+    p1_active_statuses = Counter(report.get("schemaStatus") for report in p1_active)
+
+    if len(p1_reports) != P1_COMPLETION_BASELINE["catalog_reports"]:
+        errors.append(
+            "P1 catalogue count changed: "
+            f"expected {P1_COMPLETION_BASELINE['catalog_reports']}, found {len(p1_reports)}."
+        )
+    if len(p1_active) != P1_COMPLETION_BASELINE["active_reports"]:
+        errors.append(
+            "P1 active count changed: "
+            f"expected {P1_COMPLETION_BASELINE['active_reports']}, found {len(p1_active)}."
+        )
+    if len(p1_archived) != P1_COMPLETION_BASELINE["archived_reports"]:
+        errors.append(
+            "P1 archived count changed: "
+            f"expected {P1_COMPLETION_BASELINE['archived_reports']}, found {len(p1_archived)}."
+        )
+    if p1_statuses != Counter(P1_COMPLETION_BASELINE["schema_statuses"]):
+        errors.append(
+            "P1 schema-status baseline changed: "
+            f"expected {P1_COMPLETION_BASELINE['schema_statuses']}, found {dict(p1_statuses)}."
+        )
+    if p1_active_statuses != Counter(P1_COMPLETION_BASELINE["active_schema_statuses"]):
+        errors.append(
+            "P1 active schema-status baseline changed: "
+            f"expected {P1_COMPLETION_BASELINE['active_schema_statuses']}, found {dict(p1_active_statuses)}."
+        )
+
+    for report in p1_reports:
+        report_id = report.get("id", "")
+        status = report.get("schemaStatus")
+        if status in {"partial", "pending"}:
+            errors.append(f"P1 completion regression: {report_id} returned to {status}.")
+        if status == "captured" and (not report.get("fields") or not report.get("tables")):
+            errors.append(f"Captured P1 report has no usable schema: {report_id}.")
+        if status == "unavailable" and not any(note.get("body", "").strip() for note in report.get("notes", [])):
+            errors.append(f"Unavailable P1 report needs an evidence reason: {report_id}.")
+
     if errors:
         print("Workspace validation failed:")
         for error in errors:
@@ -96,6 +146,7 @@ def main() -> int:
         return 1
 
     print(f"Workspace validation passed: {len(report_ids)} reports.")
+    print("P1 completion guard passed: 76 captured, 14 unavailable, 0 partial, 0 pending.")
     return 0
 
 

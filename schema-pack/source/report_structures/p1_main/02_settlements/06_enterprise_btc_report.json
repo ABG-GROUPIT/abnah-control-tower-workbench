@@ -1,0 +1,59 @@
+{
+  "report_id": "report:p1_main:02_settlements:06_enterprise_btc_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Enterprise BTC report",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Date"
+        },
+        {
+          "label": "Business Date"
+        },
+        {
+          "label": "Deployment Name"
+        },
+        {
+          "label": "Bill No"
+        },
+        {
+          "label": "Company Name"
+        },
+        {
+          "label": "Employee Name"
+        },
+        {
+          "label": "Employee Code"
+        },
+        {
+          "label": "Amount"
+        },
+        {
+          "label": "GST@5%"
+        },
+        {
+          "label": "GST@18%"
+        },
+        {
+          "label": "Total GST"
+        },
+        {
+          "label": "Payment Status"
+        },
+        {
+          "label": "Payment Mode"
+        },
+        {
+          "label": "Staff Meal Bill"
+        }
+      ]
+    }
+  ]
+}

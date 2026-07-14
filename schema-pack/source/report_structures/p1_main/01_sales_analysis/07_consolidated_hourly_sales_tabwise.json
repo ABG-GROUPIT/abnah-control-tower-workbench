@@ -1,0 +1,47 @@
+{
+  "report_id": "report:p1_main:01_sales_analysis:07_consolidated_hourly_sales_tabwise",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Consolidated hourly sales tabwise",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "OUTLET NAME"
+        },
+        {
+          "label": "TAB"
+        },
+        {
+          "label": "TIME SLOT"
+        },
+        {
+          "label": "SALE"
+        },
+        {
+          "label": "DISCOUNT"
+        },
+        {
+          "label": "NET SALES"
+        },
+        {
+          "label": "TOTAL TAX"
+        },
+        {
+          "label": "TOTAL CHARGES"
+        },
+        {
+          "label": "GROSS SALES"
+        },
+        {
+          "label": "NO. OF BILLS"
+        }
+      ]
+    }
+  ]
+}

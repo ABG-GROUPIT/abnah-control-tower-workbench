@@ -1,0 +1,68 @@
+{
+  "report_id": "report:p1_main:01_sales_analysis:02_brand_order_type_sales",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Brand order-type sales",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "BRAND"
+        },
+        {
+          "label": "FORMAT"
+        },
+        {
+          "label": "CLUSTER"
+        },
+        {
+          "label": "DEPLOYMENT"
+        },
+        {
+          "label": "NET SALES"
+        },
+        {
+          "label": "CHARGES"
+        },
+        {
+          "label": "TOTAL TAX"
+        },
+        {
+          "label": "GROSS TOTAL"
+        },
+        {
+          "label": "NO. OF TICKETS"
+        },
+        {
+          "label": "EMPLOYEE MEAL BILLS"
+        },
+        {
+          "label": "NO OF COVERS"
+        },
+        {
+          "label": "NO OF ITEMS"
+        },
+        {
+          "label": "APT"
+        },
+        {
+          "label": "APC"
+        },
+        {
+          "label": "TAKEOUT%"
+        },
+        {
+          "label": "DELIVERY%"
+        },
+        {
+          "label": "TABLE%"
+        }
+      ]
+    }
+  ]
+}

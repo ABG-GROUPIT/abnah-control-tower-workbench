@@ -1,0 +1,68 @@
+{
+  "report_id": "report:p1_main:01_sales_analysis:10_daily_sales_tabwise",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Daily sales tabwise",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Building Type"
+        },
+        {
+          "label": "Area"
+        },
+        {
+          "label": "Region"
+        },
+        {
+          "label": "OUTLET NAME"
+        },
+        {
+          "label": "Date"
+        },
+        {
+          "label": "Tabs"
+        },
+        {
+          "label": "No Of Items"
+        },
+        {
+          "label": "No Of Bills"
+        },
+        {
+          "label": "Sale"
+        },
+        {
+          "label": "Discount"
+        },
+        {
+          "label": "Total Charges"
+        },
+        {
+          "label": "Net Sale"
+        },
+        {
+          "label": "Total Tax"
+        },
+        {
+          "label": "Total Amount"
+        },
+        {
+          "label": "Round Off"
+        },
+        {
+          "label": "Gross Amount"
+        },
+        {
+          "label": "Covers"
+        }
+      ]
+    }
+  ]
+}

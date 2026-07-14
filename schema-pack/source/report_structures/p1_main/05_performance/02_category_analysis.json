@@ -1,0 +1,73 @@
+{
+  "report_id": "report:p1_main:05_performance:02_category_analysis",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "The first grouped header is the selected deployment value, so the portable structure records it as a dynamic deployment group.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Category analysis",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "S. NO."
+        },
+        {
+          "label": "CATEGORY"
+        },
+        {
+          "label": "DYNAMIC DEPLOYMENT",
+          "children": [
+            {
+              "label": "QTY",
+              "key": "deployment_qty"
+            },
+            {
+              "label": "AMOUNT",
+              "key": "deployment_amount"
+            },
+            {
+              "label": "DISCOUNT",
+              "key": "deployment_discount"
+            },
+            {
+              "label": "NET AMOUNT",
+              "key": "deployment_net_amount"
+            },
+            {
+              "label": "% CONTRIBUTION",
+              "key": "deployment_contribution_pct"
+            }
+          ]
+        },
+        {
+          "label": "CATEGORY TOTAL",
+          "children": [
+            {
+              "label": "QTY",
+              "key": "category_total_qty"
+            },
+            {
+              "label": "AMOUNT",
+              "key": "category_total_amount"
+            },
+            {
+              "label": "DISCOUNT",
+              "key": "category_total_discount"
+            },
+            {
+              "label": "NET AMOUNT",
+              "key": "category_total_net_amount"
+            },
+            {
+              "label": "% CONTRIBUTION",
+              "key": "category_total_contribution_pct"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

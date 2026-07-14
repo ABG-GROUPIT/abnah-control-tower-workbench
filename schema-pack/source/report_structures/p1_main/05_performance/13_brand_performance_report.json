@@ -1,0 +1,107 @@
+{
+  "report_id": "report:p1_main:05_performance:13_brand_performance_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Total, Table, Takeout, and Delivery each repeat Sales, Charges, Net Sales, and Bills.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Brand performance",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "OUTLET NAME"
+        },
+        {
+          "label": "DATE"
+        },
+        {
+          "label": "TOTAL",
+          "children": [
+            {
+              "label": "SALES",
+              "key": "total_sales"
+            },
+            {
+              "label": "CHARGES",
+              "key": "total_charges"
+            },
+            {
+              "label": "NET SALES",
+              "key": "total_net_sales"
+            },
+            {
+              "label": "BILLS",
+              "key": "total_bills"
+            }
+          ]
+        },
+        {
+          "label": "TABLE",
+          "children": [
+            {
+              "label": "SALES",
+              "key": "table_sales"
+            },
+            {
+              "label": "CHARGES",
+              "key": "table_charges"
+            },
+            {
+              "label": "NET SALES",
+              "key": "table_net_sales"
+            },
+            {
+              "label": "BILLS",
+              "key": "table_bills"
+            }
+          ]
+        },
+        {
+          "label": "TAKEOUT",
+          "children": [
+            {
+              "label": "SALES",
+              "key": "takeout_sales"
+            },
+            {
+              "label": "CHARGES",
+              "key": "takeout_charges"
+            },
+            {
+              "label": "NET SALES",
+              "key": "takeout_net_sales"
+            },
+            {
+              "label": "BILLS",
+              "key": "takeout_bills"
+            }
+          ]
+        },
+        {
+          "label": "DELIVERY",
+          "children": [
+            {
+              "label": "SALES",
+              "key": "delivery_sales"
+            },
+            {
+              "label": "CHARGES",
+              "key": "delivery_charges"
+            },
+            {
+              "label": "NET SALES",
+              "key": "delivery_net_sales"
+            },
+            {
+              "label": "BILLS",
+              "key": "delivery_bills"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

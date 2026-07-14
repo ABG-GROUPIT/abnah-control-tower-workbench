@@ -1,0 +1,44 @@
+{
+  "report_id": "report:p1_main:03_discounts_offers:01_daily_item_wise_discount",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Daily item-wise discount",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "OUTLET NAME"
+        },
+        {
+          "label": "DATE"
+        },
+        {
+          "label": "ITEM NUMBER"
+        },
+        {
+          "label": "ITEM NAME"
+        },
+        {
+          "label": "DISCOUNT QTY"
+        },
+        {
+          "label": "COMPLIMENTARY QTY"
+        },
+        {
+          "label": "MANUAL DISCOUNT (EXPRESS)"
+        },
+        {
+          "label": "PROMO DISCOUNT"
+        },
+        {
+          "label": "COMPLIMENTARY"
+        }
+      ]
+    }
+  ]
+}

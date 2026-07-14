@@ -1,0 +1,151 @@
+{
+  "report_id": "report:p1_main:05_performance:12_brand_performance_section_wise",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Three merged order-type groups. Table includes Covers and APC; Takeout and Delivery omit those two children in the captured header.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Brand performance section-wise",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "OUTLET NAME"
+        },
+        {
+          "label": "TABLE",
+          "children": [
+            {
+              "label": "FOOD SALES",
+              "key": "table_food_sales"
+            },
+            {
+              "label": "MERCHANDISE - GST - 5% SALES",
+              "key": "table_merchandise_gst_5_sales"
+            },
+            {
+              "label": "BEVERAGE SALES",
+              "key": "table_beverage_sales"
+            },
+            {
+              "label": "TABLE SALES",
+              "key": "table_sales"
+            },
+            {
+              "label": "CHARGES",
+              "key": "table_charges"
+            },
+            {
+              "label": "NET SALES(TABLE)",
+              "key": "table_net_sales"
+            },
+            {
+              "label": "BILLS",
+              "key": "table_bills"
+            },
+            {
+              "label": "EMPLOYEE MEAL BILLS",
+              "key": "table_employee_meal_bills"
+            },
+            {
+              "label": "COVERS",
+              "key": "table_covers"
+            },
+            {
+              "label": "APB",
+              "key": "table_apb"
+            },
+            {
+              "label": "APC",
+              "key": "table_apc"
+            }
+          ]
+        },
+        {
+          "label": "TAKEOUT",
+          "children": [
+            {
+              "label": "FOOD SALES",
+              "key": "takeout_food_sales"
+            },
+            {
+              "label": "MERCHANDISE - GST - 5% SALES",
+              "key": "takeout_merchandise_gst_5_sales"
+            },
+            {
+              "label": "BEVERAGE SALES",
+              "key": "takeout_beverage_sales"
+            },
+            {
+              "label": "TAKEOUT SALES",
+              "key": "takeout_sales"
+            },
+            {
+              "label": "CHARGES",
+              "key": "takeout_charges"
+            },
+            {
+              "label": "NET SALES(TAKEOUT)",
+              "key": "takeout_net_sales"
+            },
+            {
+              "label": "BILLS",
+              "key": "takeout_bills"
+            },
+            {
+              "label": "EMPLOYEE MEAL BILLS",
+              "key": "takeout_employee_meal_bills"
+            },
+            {
+              "label": "APB",
+              "key": "takeout_apb"
+            }
+          ]
+        },
+        {
+          "label": "DELIVERY",
+          "children": [
+            {
+              "label": "FOOD SALES",
+              "key": "delivery_food_sales"
+            },
+            {
+              "label": "MERCHANDISE - GST - 5% SALES",
+              "key": "delivery_merchandise_gst_5_sales"
+            },
+            {
+              "label": "BEVERAGE SALES",
+              "key": "delivery_beverage_sales"
+            },
+            {
+              "label": "DELIVERY SALES",
+              "key": "delivery_sales"
+            },
+            {
+              "label": "CHARGES",
+              "key": "delivery_charges"
+            },
+            {
+              "label": "NET SALES(DELIVERY)",
+              "key": "delivery_net_sales"
+            },
+            {
+              "label": "BILLS",
+              "key": "delivery_bills"
+            },
+            {
+              "label": "EMPLOYEE MEAL BILLS",
+              "key": "delivery_employee_meal_bills"
+            },
+            {
+              "label": "APB",
+              "key": "delivery_apb"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "report_id": "report:p1_main:02_settlements:04_daily_payments_breakup_consolidate",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "The source contains two distinct columns both labelled RAZORPAY; unique keys preserve both positions without renaming the visible labels.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Daily payments breakup consolidated",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "OUTLET NAME"
+        },
+        {
+          "label": "DATE"
+        },
+        {
+          "label": "CASH"
+        },
+        {
+          "label": "CREDIT CARD"
+        },
+        {
+          "label": "DEBIT CARD"
+        },
+        {
+          "label": "ZOMATO"
+        },
+        {
+          "label": "SWIGGY"
+        },
+        {
+          "label": "RAZORPAY",
+          "key": "razorpay_primary"
+        },
+        {
+          "label": "PINELABSPLUTUS"
+        },
+        {
+          "label": "RAZORPAY WEBSITE"
+        },
+        {
+          "label": "PINELABSPLUTUS UPI"
+        },
+        {
+          "label": "UPI"
+        },
+        {
+          "label": "RAZORPAY",
+          "key": "razorpay_secondary"
+        },
+        {
+          "label": "TOTAL"
+        }
+      ]
+    }
+  ]
+}

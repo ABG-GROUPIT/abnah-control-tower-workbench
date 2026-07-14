@@ -1,0 +1,65 @@
+{
+  "report_id": "report:p1_main:03_discounts_offers:08_discount_and_complimentary_analysi",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Discount and complimentary analysis",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "OUTLET NAME"
+        },
+        {
+          "label": "TAB"
+        },
+        {
+          "label": "SOURCE"
+        },
+        {
+          "label": "BUSINESS DATE"
+        },
+        {
+          "label": "BILL NUMBER"
+        },
+        {
+          "label": "BILL DATE"
+        },
+        {
+          "label": "SUBTOTAL"
+        },
+        {
+          "label": "DISCOUNT AMOUNT"
+        },
+        {
+          "label": "DISCOUNT %"
+        },
+        {
+          "label": "GROSS AMOUNT"
+        },
+        {
+          "label": "BILL AMOUNT"
+        },
+        {
+          "label": "DISCOUNT REMARKS"
+        },
+        {
+          "label": "USER"
+        },
+        {
+          "label": "PROMOTION NAME"
+        },
+        {
+          "label": "COMPLIMENTARY AMOUNT"
+        },
+        {
+          "label": "COMPLIMENTARY REMARKS"
+        }
+      ]
+    }
+  ]
+}

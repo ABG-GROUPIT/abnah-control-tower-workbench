@@ -1,0 +1,41 @@
+{
+  "report_id": "report:p1_main:03_discounts_offers:06_offer_code_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Offer code report",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Date"
+        },
+        {
+          "label": "Outlet"
+        },
+        {
+          "label": "Offer Name"
+        },
+        {
+          "label": "Offer Code"
+        },
+        {
+          "label": "Count"
+        },
+        {
+          "label": "Discount Amount"
+        },
+        {
+          "label": "Applicable Net Amount"
+        },
+        {
+          "label": "Applicable Gross Amount"
+        }
+      ]
+    }
+  ]
+}

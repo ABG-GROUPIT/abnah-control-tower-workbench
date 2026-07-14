@@ -89,6 +89,21 @@ Process one portal section at a time:
 
 This prevents one malformed grid from blocking a large 100-200 report batch and keeps review ownership clear.
 
+## P1 Reconciliation Baseline
+
+P1 no longer uses report-level completeness inferred from OCR confidence. All usable local report-output evidence has been transcribed into explicit blueprints, including horizontal continuations and non-flat report shapes.
+
+The locked P1 baseline is 90 catalogue entries, 85 active reports, 76 captured reports, 14 unavailable reports, and zero `partial` or `pending` reports. Five unavailable entries are archived catalogue placeholders; the remaining nine active unavailable reports have explicit evidence reasons.
+
+For future changes:
+
+1. Update the report blueprint or status override.
+2. Update the P1 completion baseline in `scripts/validate_workspace_data.py` only when discovery genuinely changes the catalogue.
+3. Regenerate the workspace contract and run the full validator.
+4. Review at least one flat and every newly introduced complex rendering before publishing.
+
+Verification status is intentionally separate from schema completeness. A report may be structurally `captured` while still `needs_review`; it must not be relabelled `partial` for that reason.
+
 ## Definition of Done for One Report
 
 - Correct stable report ID and navigation location.

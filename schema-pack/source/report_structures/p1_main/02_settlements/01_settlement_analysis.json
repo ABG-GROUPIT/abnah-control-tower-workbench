@@ -1,0 +1,59 @@
+{
+  "report_id": "report:p1_main:02_settlements:01_settlement_analysis",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Settlement analysis",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "DEPLOYMENT"
+        },
+        {
+          "label": "CASH"
+        },
+        {
+          "label": "CASH TIP"
+        },
+        {
+          "label": "OTHERS"
+        },
+        {
+          "label": "OTHERS TIP"
+        },
+        {
+          "label": "RAZORPAY"
+        },
+        {
+          "label": "RAZORPAY TIP"
+        },
+        {
+          "label": "SWIGGY"
+        },
+        {
+          "label": "SWIGGY TIP"
+        },
+        {
+          "label": "ZOMATO"
+        },
+        {
+          "label": "ZOMATO TIP"
+        },
+        {
+          "label": "TOTAL SETTLEMENT"
+        },
+        {
+          "label": "GST@18%"
+        },
+        {
+          "label": "GST@5%"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "report_id": "report:p1_main:02_settlements:02_settlement_analysis_consolidated",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Settlement analysis consolidated",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "DEPLOYMENT"
+        },
+        {
+          "label": "CLUSTER"
+        },
+        {
+          "label": "FORMAT"
+        },
+        {
+          "label": "SWIGGY"
+        },
+        {
+          "label": "ZOMATO"
+        },
+        {
+          "label": "CASH"
+        },
+        {
+          "label": "CREDIT CARD"
+        },
+        {
+          "label": "RAZORPAY"
+        },
+        {
+          "label": "TOTAL SETTLEMENT"
+        },
+        {
+          "label": "GST@18%"
+        },
+        {
+          "label": "GST@5%"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "report_id": "report:p1_main:01_sales_analysis:17_day_part_product_detailed",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Day-part product detail",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Deployment Name"
+        },
+        {
+          "label": "Meal Period"
+        },
+        {
+          "label": "Tab Name"
+        },
+        {
+          "label": "Section"
+        },
+        {
+          "label": "Super Category"
+        },
+        {
+          "label": "Category"
+        },
+        {
+          "label": "Item Code"
+        },
+        {
+          "label": "Item Name"
+        },
+        {
+          "label": "A La Carte Qty"
+        },
+        {
+          "label": "Combo Qty"
+        },
+        {
+          "label": "Total Qty"
+        },
+        {
+          "label": "Item Price"
+        },
+        {
+          "label": "Subtotal"
+        },
+        {
+          "label": "Discount"
+        },
+        {
+          "label": "Net Sale"
+        },
+        {
+          "label": "Total Tax"
+        },
+        {
+          "label": "Gross Sale"
+        },
+        {
+          "label": "% of Sales"
+        },
+        {
+          "label": "% of Super Category"
+        }
+      ]
+    }
+  ]
+}

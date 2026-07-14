@@ -1,0 +1,83 @@
+{
+  "report_id": "report:p1_main:02_settlements:05_billwise_settlement_analysis",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Billwise settlement analysis",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Store Name"
+        },
+        {
+          "label": "Date"
+        },
+        {
+          "label": "Bill Number"
+        },
+        {
+          "label": "Bill Time"
+        },
+        {
+          "label": "Bill User"
+        },
+        {
+          "label": "Customer Channel"
+        },
+        {
+          "label": "Source"
+        },
+        {
+          "label": "Settlement Mode"
+        },
+        {
+          "label": "Subtotal"
+        },
+        {
+          "label": "Discount"
+        },
+        {
+          "label": "Net Sale"
+        },
+        {
+          "label": "GST@18%"
+        },
+        {
+          "label": "GST@5%"
+        },
+        {
+          "label": "Packaging Charge [CART - SWIGGY]"
+        },
+        {
+          "label": "Restaurant Packaging Charges"
+        },
+        {
+          "label": "Gross Amount"
+        },
+        {
+          "label": "Mode Name"
+        },
+        {
+          "label": "Transaction Number"
+        },
+        {
+          "label": "Order Id"
+        },
+        {
+          "label": "Tip Amount"
+        },
+        {
+          "label": "MSR Loyalty"
+        },
+        {
+          "label": "Electronic Bill"
+        }
+      ]
+    }
+  ]
+}

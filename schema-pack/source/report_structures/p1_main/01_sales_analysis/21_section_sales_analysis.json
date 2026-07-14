@@ -1,0 +1,75 @@
+{
+  "report_id": "report:p1_main:01_sales_analysis:21_section_sales_analysis",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Section, tax, charge, and settlement member names are configuration values that become columns. The repeating schema patterns are retained without embedding those values.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Section sales analysis",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "DATE"
+        },
+        {
+          "label": "DEPLOYMENT NAME"
+        },
+        {
+          "label": "CLUSTER"
+        },
+        {
+          "label": "FORMAT"
+        },
+        {
+          "label": "STORE ID"
+        },
+        {
+          "label": "SALES"
+        },
+        {
+          "label": "DISCOUNT"
+        },
+        {
+          "label": "NET SALES"
+        },
+        {
+          "label": "DYNAMIC SECTION COLUMNS",
+          "children": [
+            {
+              "label": "SECTION SALES",
+              "key": "dynamic_section_sales"
+            },
+            {
+              "label": "APPLICABLE TAX",
+              "key": "dynamic_section_tax"
+            }
+          ]
+        },
+        {
+          "label": "DYNAMIC CHARGE COLUMNS",
+          "children": [
+            {
+              "label": "CHARGE AMOUNT",
+              "key": "dynamic_charge_amount"
+            }
+          ]
+        },
+        {
+          "label": "GROSS SALES"
+        },
+        {
+          "label": "DYNAMIC SETTLEMENT COLUMNS",
+          "children": [
+            {
+              "label": "SETTLEMENT AMOUNT",
+              "key": "dynamic_settlement_amount"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "report_id": "report:p1_main:04_tax_analysis:05_tax_summary",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Settlement amount columns are paired with their immediately following No. Of Bills columns to preserve the repeated payment-mode pattern.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Tax summary",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "Deployment"
+        },
+        {
+          "label": "Store Id"
+        },
+        {
+          "label": "Date"
+        },
+        {
+          "label": "No. Of Bills"
+        },
+        {
+          "label": "Amount"
+        },
+        {
+          "label": "Discount"
+        },
+        {
+          "label": "GST@18% Amount"
+        },
+        {
+          "label": "CGST (GST@18%)"
+        },
+        {
+          "label": "SGST (GST@18%)"
+        },
+        {
+          "label": "GST@5% Amount"
+        },
+        {
+          "label": "CGST (GST@5%)"
+        },
+        {
+          "label": "SGST (GST@5%)"
+        },
+        {
+          "label": "Charges"
+        },
+        {
+          "label": "Cash",
+          "children": [
+            {
+              "label": "Amount",
+              "key": "cash_amount"
+            },
+            {
+              "label": "No. Of Bills",
+              "key": "cash_bill_count"
+            }
+          ]
+        },
+        {
+          "label": "Credit Card",
+          "children": [
+            {
+              "label": "Amount",
+              "key": "credit_card_amount"
+            },
+            {
+              "label": "No. Of Bills",
+              "key": "credit_card_bill_count"
+            }
+          ]
+        },
+        {
+          "label": "Debit Card",
+          "children": [
+            {
+              "label": "Amount",
+              "key": "debit_card_amount"
+            },
+            {
+              "label": "No. Of Bills",
+              "key": "debit_card_bill_count"
+            }
+          ]
+        },
+        {
+          "label": "Coupon",
+          "children": [
+            {
+              "label": "Amount",
+              "key": "coupon_amount"
+            },
+            {
+              "label": "No. Of Bills",
+              "key": "coupon_bill_count"
+            }
+          ]
+        },
+        {
+          "label": "Other",
+          "children": [
+            {
+              "label": "Amount",
+              "key": "other_amount"
+            },
+            {
+              "label": "No. Of Bills",
+              "key": "other_bill_count"
+            }
+          ]
+        },
+        {
+          "label": "Online",
+          "children": [
+            {
+              "label": "Amount",
+              "key": "online_amount"
+            },
+            {
+              "label": "No. Of Bills",
+              "key": "online_bill_count"
+            }
+          ]
+        },
+        {
+          "label": "BTC",
+          "children": [
+            {
+              "label": "Amount",
+              "key": "btc_amount"
+            },
+            {
+              "label": "No. Of Bills",
+              "key": "btc_bill_count"
+            }
+          ]
+        },
+        {
+          "label": "TTR",
+          "children": [
+            {
+              "label": "Amount",
+              "key": "ttr_amount"
+            },
+            {
+              "label": "No. Of Bills",
+              "key": "ttr_bill_count"
+            }
+          ]
+        },
+        {
+          "label": "Advance",
+          "children": [
+            {
+              "label": "Amount",
+              "key": "advance_amount"
+            },
+            {
+              "label": "No. Of Bills",
+              "key": "advance_bill_count"
+            }
+          ]
+        },
+        {
+          "label": "Round Off"
+        },
+        {
+          "label": "Grand Total"
+        }
+      ]
+    }
+  ]
+}

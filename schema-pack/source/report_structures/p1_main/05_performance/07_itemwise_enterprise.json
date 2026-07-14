@@ -1,0 +1,36 @@
+{
+  "report_id": "report:p1_main:05_performance:07_itemwise_enterprise",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Each selected business date becomes a parent column with Qty. and Amount children. Captured dates are values and are not stored.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Itemwise enterprise date pivot",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "S. No."
+        },
+        {
+          "label": "Item"
+        },
+        {
+          "label": "DYNAMIC BUSINESS DATE",
+          "children": [
+            {
+              "label": "Qty.",
+              "key": "date_qty"
+            },
+            {
+              "label": "Amount",
+              "key": "date_amount"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

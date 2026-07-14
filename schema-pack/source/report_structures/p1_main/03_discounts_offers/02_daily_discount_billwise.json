@@ -1,0 +1,59 @@
+{
+  "report_id": "report:p1_main:03_discounts_offers:02_daily_discount_billwise",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Daily discount billwise",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "OUTLET NAME"
+        },
+        {
+          "label": "BILL NUMBER"
+        },
+        {
+          "label": "BILL DATE"
+        },
+        {
+          "label": "TAB TYPE"
+        },
+        {
+          "label": "SOURCE"
+        },
+        {
+          "label": "QTY"
+        },
+        {
+          "label": "NET AMOUNT"
+        },
+        {
+          "label": "MANUAL DISCOUNT"
+        },
+        {
+          "label": "DISCOUNT REMARKS"
+        },
+        {
+          "label": "PROMO DISCOUNT"
+        },
+        {
+          "label": "PROMOTION NAME"
+        },
+        {
+          "label": "COMPLIMENTARY"
+        },
+        {
+          "label": "TAX"
+        },
+        {
+          "label": "BILL AMOUNT"
+        }
+      ]
+    }
+  ]
+}

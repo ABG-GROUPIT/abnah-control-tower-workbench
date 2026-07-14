@@ -1,0 +1,113 @@
+{
+  "report_id": "report:p1_main:01_sales_analysis:18_brand_sales",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_rows",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Vertical export with summary rows, repeating order-type rows, repeating category rows, and closing metrics. Captured member names are values and are not stored.",
+  "data_points": [
+    {
+      "label": "Gross Sales"
+    },
+    {
+      "label": "GST@5%"
+    },
+    {
+      "label": "GST@18%"
+    },
+    {
+      "label": "Net Sales"
+    },
+    {
+      "label": "No. Of Bills"
+    },
+    {
+      "label": "Employee Meal Bills"
+    },
+    {
+      "label": "APC"
+    },
+    {
+      "label": "Order Type Amount"
+    },
+    {
+      "label": "Order Type Contribution %"
+    },
+    {
+      "label": "Category Amount"
+    },
+    {
+      "label": "Category Contribution %"
+    },
+    {
+      "label": "Discount"
+    },
+    {
+      "label": "Sales Variance"
+    },
+    {
+      "label": "Sales Average"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Brand sales vertical analysis",
+      "kind": "matrix",
+      "row_headers": [
+        "Section",
+        "Metric"
+      ],
+      "value_columns": [
+        {
+          "label": "Amount",
+          "key": "amount"
+        },
+        {
+          "label": "Contribution %",
+          "key": "contribution_pct"
+        }
+      ],
+      "row_groups": [
+        {
+          "label": "Summary",
+          "metrics": [
+            "Gross Sales",
+            "GST@5%",
+            "GST@18%",
+            "Net Sales",
+            "No. Of Bills",
+            "Employee Meal Bills",
+            "APC"
+          ]
+        },
+        {
+          "label": "Order Type",
+          "metrics": [
+            {
+              "label": "Dynamic Order Type Member",
+              "key": "dynamic_order_type_member"
+            }
+          ]
+        },
+        {
+          "label": "Category",
+          "metrics": [
+            {
+              "label": "Dynamic Category Member",
+              "key": "dynamic_category_member"
+            }
+          ]
+        },
+        {
+          "label": "Closing Metrics",
+          "metrics": [
+            "Discount",
+            "Sales Variance",
+            "Sales Average"
+          ]
+        }
+      ]
+    }
+  ]
+}

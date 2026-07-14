@@ -1,0 +1,51 @@
+{
+  "report_id": "report:p1_main:05_performance:10_highest_and_lowest_selling_items",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "mixed",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Deployment, cluster, and format appear as context rows above the six-column ranking table.",
+  "blocks": [
+    {
+      "id": "context",
+      "name": "Report context",
+      "kind": "key_value",
+      "entries": [
+        {
+          "label": "Deployment"
+        },
+        {
+          "label": "Cluster"
+        },
+        {
+          "label": "Format"
+        }
+      ]
+    },
+    {
+      "id": "primary",
+      "name": "Selling item ranking",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Duration"
+        },
+        {
+          "label": "Item"
+        },
+        {
+          "label": "Quantity"
+        },
+        {
+          "label": "Net Amount"
+        },
+        {
+          "label": "Tax"
+        },
+        {
+          "label": "Gross Amount"
+        }
+      ]
+    }
+  ]
+}

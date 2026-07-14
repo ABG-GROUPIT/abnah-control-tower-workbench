@@ -1,0 +1,71 @@
+{
+  "report_id": "report:p1_main:03_discounts_offers:05_discount_billwise_analysis",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Discount billwise analysis",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "OUTLET NAME"
+        },
+        {
+          "label": "BUSINESS DATE"
+        },
+        {
+          "label": "TAB NAME"
+        },
+        {
+          "label": "SOURCE"
+        },
+        {
+          "label": "BILL NUMBER"
+        },
+        {
+          "label": "BILL DATE"
+        },
+        {
+          "label": "CUSTOMER NAME"
+        },
+        {
+          "label": "CUSTOMER NUMBER"
+        },
+        {
+          "label": "SUBTOTAL"
+        },
+        {
+          "label": "DISCOUNT AMOUNT"
+        },
+        {
+          "label": "DISCOUNT %"
+        },
+        {
+          "label": "GROSS AMOUNT"
+        },
+        {
+          "label": "BILL AMOUNT"
+        },
+        {
+          "label": "DISCOUNT REMARKS"
+        },
+        {
+          "label": "USER"
+        },
+        {
+          "label": "PROMOTION NAME"
+        },
+        {
+          "label": "OFFER CODE"
+        },
+        {
+          "label": "SETTLEMENT MODE"
+        }
+      ]
+    }
+  ]
+}

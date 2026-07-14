@@ -1,0 +1,74 @@
+{
+  "report_id": "report:p1_main:01_sales_analysis:04_hourly_item_sales_analysis",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Hourly item sales",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Outlet Name"
+        },
+        {
+          "label": "Date"
+        },
+        {
+          "label": "Hour"
+        },
+        {
+          "label": "Day"
+        },
+        {
+          "label": "Item Number"
+        },
+        {
+          "label": "Item Name"
+        },
+        {
+          "label": "Category"
+        },
+        {
+          "label": "Super Category"
+        },
+        {
+          "label": "Qty"
+        },
+        {
+          "label": "Amount"
+        },
+        {
+          "label": "Discount"
+        },
+        {
+          "label": "Complimentary"
+        },
+        {
+          "label": "Total Discount"
+        },
+        {
+          "label": "Net Sale"
+        },
+        {
+          "label": "GST@5%"
+        },
+        {
+          "label": "GST@18%"
+        },
+        {
+          "label": "Total Tax"
+        },
+        {
+          "label": "Gross Sales"
+        },
+        {
+          "label": "Bills"
+        }
+      ]
+    }
+  ]
+}

@@ -319,7 +319,7 @@ def derive_points(blueprint: dict[str, Any]) -> list[dict[str, Any]]:
                 "label": item.get("label", key.replace("_", " ").title()),
                 "semanticRole": item.get("semantic_role", "unknown"),
                 "dataType": item.get("data_type", "unknown"),
-                "status": item.get("status", "needs_review"),
+                "status": item.get("status", "captured"),
                 "notes": item.get("notes", ""),
                 "order": index,
             }

@@ -1,0 +1,35 @@
+{
+  "report_id": "report:p1_main:03_discounts_offers:07_offer_code_usage_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Offer code usage report",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "S.No."
+        },
+        {
+          "label": "Code List"
+        },
+        {
+          "label": "Code"
+        },
+        {
+          "label": "Total Usage"
+        },
+        {
+          "label": "Used"
+        },
+        {
+          "label": "Unused"
+        }
+      ]
+    }
+  ]
+}

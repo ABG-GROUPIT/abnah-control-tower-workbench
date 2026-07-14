@@ -1,0 +1,54 @@
+{
+  "report_id": "report:p1_main:03_discounts_offers:09_entp_item_based_offer",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "The deployment name shown above the table is report context, not a column. Buy and get item headers each span three child columns.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Enterprise item-based offer",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "Offer Name"
+        },
+        {
+          "label": "Buy Item",
+          "children": [
+            {
+              "label": "Item Name",
+              "key": "buy_item_name"
+            },
+            {
+              "label": "Qty",
+              "key": "buy_item_qty"
+            },
+            {
+              "label": "Buy Value",
+              "key": "buy_item_value"
+            }
+          ]
+        },
+        {
+          "label": "Get Item",
+          "children": [
+            {
+              "label": "Item Name",
+              "key": "get_item_name"
+            },
+            {
+              "label": "Qty",
+              "key": "get_item_qty"
+            },
+            {
+              "label": "Get Value",
+              "key": "get_item_value"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

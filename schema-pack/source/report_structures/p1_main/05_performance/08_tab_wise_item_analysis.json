@@ -1,0 +1,74 @@
+{
+  "report_id": "report:p1_main:05_performance:08_tab_wise_item_analysis",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Report title and generated-on timestamp rows were excluded; only the complete export header is represented.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Tab-wise item analysis",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Deployment Name"
+        },
+        {
+          "label": "Cluster"
+        },
+        {
+          "label": "Format"
+        },
+        {
+          "label": "Tab Name"
+        },
+        {
+          "label": "Item Code"
+        },
+        {
+          "label": "Section"
+        },
+        {
+          "label": "Super Category Name"
+        },
+        {
+          "label": "Category Name"
+        },
+        {
+          "label": "Item Name"
+        },
+        {
+          "label": "Item Qty"
+        },
+        {
+          "label": "Combo Constituent Qty"
+        },
+        {
+          "label": "Total Qty"
+        },
+        {
+          "label": "Rate"
+        },
+        {
+          "label": "SubTotal"
+        },
+        {
+          "label": "Discount"
+        },
+        {
+          "label": "Net Amount"
+        },
+        {
+          "label": "Total Tax"
+        },
+        {
+          "label": "Gross Amount"
+        },
+        {
+          "label": "Bills"
+        }
+      ]
+    }
+  ]
+}

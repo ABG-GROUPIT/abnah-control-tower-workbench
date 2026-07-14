@@ -1,0 +1,50 @@
+{
+  "report_id": "report:p1_main:01_sales_analysis:22_source_analysis_summary",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Each source repeats the same three measures before the final total sale and order columns.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Source analysis summary",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "DEPLOYMENT"
+        },
+        {
+          "label": "DYNAMIC SOURCE",
+          "children": [
+            {
+              "label": "NET SALES",
+              "key": "source_net_sales"
+            },
+            {
+              "label": "ORDERS",
+              "key": "source_orders"
+            },
+            {
+              "label": "% CONTRIBUTION OF NET SALES",
+              "key": "source_net_sales_contribution_pct"
+            }
+          ]
+        },
+        {
+          "label": "TOTAL SALE",
+          "children": [
+            {
+              "label": "TOTAL SALE",
+              "key": "total_sale"
+            },
+            {
+              "label": "TOTAL ORDERS",
+              "key": "total_orders"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

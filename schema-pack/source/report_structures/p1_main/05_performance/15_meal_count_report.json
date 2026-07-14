@@ -1,0 +1,43 @@
+{
+  "report_id": "report:p1_main:05_performance:15_meal_count_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Each menu item becomes a parent column with Rate, Qty, and Total Price children. Captured item names are values and are not stored.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Meal count",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "Deployment Name"
+        },
+        {
+          "label": "Hour"
+        },
+        {
+          "label": "Tab Name"
+        },
+        {
+          "label": "DYNAMIC ITEM",
+          "children": [
+            {
+              "label": "Rate",
+              "key": "dynamic_item_rate"
+            },
+            {
+              "label": "Qty",
+              "key": "dynamic_item_qty"
+            },
+            {
+              "label": "Total Price",
+              "key": "dynamic_item_total_price"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

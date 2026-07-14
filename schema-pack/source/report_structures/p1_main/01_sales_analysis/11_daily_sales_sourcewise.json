@@ -1,0 +1,68 @@
+{
+  "report_id": "report:p1_main:01_sales_analysis:11_daily_sales_sourcewise",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Daily sales sourcewise",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Building Type"
+        },
+        {
+          "label": "Area"
+        },
+        {
+          "label": "Region"
+        },
+        {
+          "label": "OUTLET NAME"
+        },
+        {
+          "label": "Date"
+        },
+        {
+          "label": "Source"
+        },
+        {
+          "label": "No Of Items"
+        },
+        {
+          "label": "No Of Bills"
+        },
+        {
+          "label": "EMPLOYEE MEAL BILLS"
+        },
+        {
+          "label": "Sale"
+        },
+        {
+          "label": "Discount"
+        },
+        {
+          "label": "Charges"
+        },
+        {
+          "label": "Net Sale"
+        },
+        {
+          "label": "Total Tax"
+        },
+        {
+          "label": "Total Amount"
+        },
+        {
+          "label": "Round Off"
+        },
+        {
+          "label": "Gross Amount"
+        }
+      ]
+    }
+  ]
+}

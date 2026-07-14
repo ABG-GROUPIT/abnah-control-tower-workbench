@@ -1,0 +1,71 @@
+{
+  "report_id": "report:p1_main:01_sales_analysis:20_billwise_section_sales_analysis",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Billwise section sales",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Country"
+        },
+        {
+          "label": "Outlet Name"
+        },
+        {
+          "label": "Invoice No"
+        },
+        {
+          "label": "Date"
+        },
+        {
+          "label": "Week"
+        },
+        {
+          "label": "Bill Time"
+        },
+        {
+          "label": "Hour"
+        },
+        {
+          "label": "Tab"
+        },
+        {
+          "label": "Currency"
+        },
+        {
+          "label": "Net Value"
+        },
+        {
+          "label": "Discount Amount"
+        },
+        {
+          "label": "Delivery Rev"
+        },
+        {
+          "label": "Complimentary Amount"
+        },
+        {
+          "label": "FOOD"
+        },
+        {
+          "label": "BEVERAGE"
+        },
+        {
+          "label": "Merchandise-GST-0%"
+        },
+        {
+          "label": "Merchandise-GST-5%"
+        },
+        {
+          "label": "Merchandise-GST-18%"
+        }
+      ]
+    }
+  ]
+}

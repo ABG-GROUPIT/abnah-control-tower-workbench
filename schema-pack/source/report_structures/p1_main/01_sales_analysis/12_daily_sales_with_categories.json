@@ -1,0 +1,80 @@
+{
+  "report_id": "report:p1_main:01_sales_analysis:12_daily_sales_with_categories",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Category names are dynamic report values that become columns. They are represented as one repeating category-sales pattern instead of storing the captured ABNAH category members.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Daily sales with dynamic categories",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "OUTLET NAME"
+        },
+        {
+          "label": "CLUSTER"
+        },
+        {
+          "label": "FORMAT"
+        },
+        {
+          "label": "DATE"
+        },
+        {
+          "label": "NO OF ITEMS"
+        },
+        {
+          "label": "NO OF BILLS"
+        },
+        {
+          "label": "SALE"
+        },
+        {
+          "label": "DISCOUNT"
+        },
+        {
+          "label": "CHARGES"
+        },
+        {
+          "label": "NET SALE"
+        },
+        {
+          "label": "DYNAMIC CATEGORY COLUMNS",
+          "children": [
+            {
+              "label": "CATEGORY SALES AMOUNT",
+              "key": "dynamic_category_sales_amount"
+            }
+          ]
+        },
+        {
+          "label": "CGST (GST@18%)"
+        },
+        {
+          "label": "SGST (GST@18%)"
+        },
+        {
+          "label": "CGST (GST@5%)"
+        },
+        {
+          "label": "SGST (GST@5%)"
+        },
+        {
+          "label": "TOTAL TAX + PRODUCT LEVEL CHARGES"
+        },
+        {
+          "label": "TOTAL AMOUNT"
+        },
+        {
+          "label": "ROUND OFF"
+        },
+        {
+          "label": "GROSS AMOUNT"
+        }
+      ]
+    }
+  ]
+}

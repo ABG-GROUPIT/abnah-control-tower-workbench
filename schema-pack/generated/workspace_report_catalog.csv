@@ -1,67 +1,67 @@
 ﻿report_id,report_name,page,section,schema_status,verification_status,layout_kind,workflow_status,field_count,table_count,is_archived
-report:p1_main:01_sales_analysis:20_billwise_section_sales_analysis,Billwise Section Sales Analysis,p1_main,01_sales_analysis,partial,needs_review,flat,published,15,1,False
-report:p1_main:01_sales_analysis:02_brand_order_type_sales,Brand Order Type Sales,p1_main,01_sales_analysis,partial,needs_review,flat,published,17,1,False
-report:p1_main:01_sales_analysis:18_brand_sales,Brand Sales,p1_main,01_sales_analysis,pending,needs_review,flat,published,0,1,False
-report:p1_main:01_sales_analysis:06_consolidated_hourly_sales,Consolidated Hourly Sales,p1_main,01_sales_analysis,partial,needs_review,flat,published,6,1,False
-report:p1_main:01_sales_analysis:07_consolidated_hourly_sales_tabwise,Consolidated Hourly Sales Tabwise,p1_main,01_sales_analysis,partial,needs_review,flat,published,10,1,False
-report:p1_main:01_sales_analysis:05_daily_item_sales_analysis,Daily Item Sales Analysis,p1_main,01_sales_analysis,partial,needs_review,flat,published,8,1,False
-report:p1_main:01_sales_analysis:08_daily_sales,Daily Sales,p1_main,01_sales_analysis,partial,needs_review,flat,published,25,1,False
-report:p1_main:01_sales_analysis:09_daily_sales_analysis,Daily Sales Analysis,p1_main,01_sales_analysis,partial,needs_review,flat,published,18,1,False
-report:p1_main:01_sales_analysis:11_daily_sales_sourcewise,Daily Sales Sourcewise,p1_main,01_sales_analysis,partial,needs_review,flat,published,17,1,False
-report:p1_main:01_sales_analysis:10_daily_sales_tabwise,Daily Sales Tabwise,p1_main,01_sales_analysis,partial,needs_review,flat,published,17,1,False
-report:p1_main:01_sales_analysis:12_daily_sales_with_categories,Daily Sales With Categories,p1_main,01_sales_analysis,partial,needs_review,flat,published,74,1,False
-report:p1_main:01_sales_analysis:16_day_part_product_sales,Day Part Product Sales,p1_main,01_sales_analysis,partial,needs_review,flat,published,10,1,False
-report:p1_main:01_sales_analysis:15_day_part_sales,Day Part Sales,p1_main,01_sales_analysis,partial,needs_review,flat,published,12,1,False
-report:p1_main:01_sales_analysis:17_day_part_product_detailed,day_part_product_detailed,p1_main,01_sales_analysis,partial,needs_review,flat,published,13,1,False
-report:p1_main:01_sales_analysis:04_hourly_item_sales_analysis,Hourly Item Sales Analysis,p1_main,01_sales_analysis,partial,needs_review,flat,published,18,1,False
-report:p1_main:01_sales_analysis:03_hourly_sales_analysis,Hourly Sales Analysis,p1_main,01_sales_analysis,partial,needs_review,flat,published,17,1,False
-report:p1_main:01_sales_analysis:14_hourly_sales_by_source,Hourly Sales By Source,p1_main,01_sales_analysis,partial,needs_review,flat,published,7,1,False
-report:p1_main:01_sales_analysis:13_item_hourly_sales_by_tab,Item Hourly Sales By Tab,p1_main,01_sales_analysis,partial,needs_review,flat,published,7,1,False
-report:p1_main:01_sales_analysis:01_outlet_sales,Outlet Sales,p1_main,01_sales_analysis,partial,needs_review,flat,published,17,1,False
-report:p1_main:01_sales_analysis:19_sales_contribution,Sales Contribution,p1_main,01_sales_analysis,partial,needs_review,flat,published,50,1,False
-report:p1_main:01_sales_analysis:21_section_sales_analysis,section_sales_analysis,p1_main,01_sales_analysis,partial,needs_review,flat,published,24,1,False
-report:p1_main:01_sales_analysis:22_source_analysis_summary,source_analysis_summary,p1_main,01_sales_analysis,partial,needs_review,flat,published,10,1,False
-report:p1_main:01_sales_analysis:23_source_wise_tab_wise_item_analysis,source_wise_tab_wise_item_analysis,p1_main,01_sales_analysis,partial,needs_review,flat,published,14,1,False
-report:p1_main:02_settlements:05_billwise_settlement_analysis,Billwise Settlement Analysis,p1_main,02_settlements,partial,needs_review,flat,published,19,1,False
-report:p1_main:02_settlements:03_daily_payments_breakup,Daily Payments Breakup,p1_main,02_settlements,partial,needs_review,flat,published,8,1,False
-report:p1_main:02_settlements:04_daily_payments_breakup_consolidate,Daily Payments Breakup Consolidated,p1_main,02_settlements,partial,needs_review,flat,published,13,1,False
-report:p1_main:02_settlements:06_enterprise_btc_report,Enterprise BTC Report,p1_main,02_settlements,partial,needs_review,flat,published,9,1,False
-report:p1_main:02_settlements:01_settlement_analysis,Settlement Analysis,p1_main,02_settlements,partial,needs_review,flat,published,11,1,False
-report:p1_main:02_settlements:02_settlement_analysis_consolidated,Settlement Analysis Consolidated,p1_main,02_settlements,partial,needs_review,flat,published,11,1,False
-report:p1_main:03_discounts_offers:10_complimentary_head,Complimentary Head,p1_main,03_discounts_offers,pending,needs_review,flat,published,0,1,False
-report:p1_main:03_discounts_offers:11_complimentary_head_itemwise,Complimentary Head Itemwise,p1_main,03_discounts_offers,partial,needs_review,flat,published,9,1,False
-report:p1_main:03_discounts_offers:12_consolidated_item_complimentary,Consolidated Item Complimentary,p1_main,03_discounts_offers,partial,needs_review,flat,published,6,1,False
-report:p1_main:03_discounts_offers:02_daily_discount_billwise,Daily Discount Billwise,p1_main,03_discounts_offers,partial,needs_review,flat,published,14,1,False
-report:p1_main:03_discounts_offers:01_daily_item_wise_discount,Daily Item Wise Discount,p1_main,03_discounts_offers,partial,needs_review,flat,published,9,1,False
-report:p1_main:03_discounts_offers:08_discount_and_complimentary_analysi,Discount And Complimentary Analysis,p1_main,03_discounts_offers,partial,needs_review,flat,published,16,1,False
-report:p1_main:03_discounts_offers:05_discount_billwise_analysis,Discount Billwise Analysis,p1_main,03_discounts_offers,partial,needs_review,flat,published,18,1,False
-report:p1_main:03_discounts_offers:09_entp_item_based_offer,Entp Item Based Offer,p1_main,03_discounts_offers,partial,needs_review,flat,published,8,1,False
-report:p1_main:03_discounts_offers:04_offer_budget,Offer Budget,p1_main,03_discounts_offers,partial,needs_review,flat,published,11,1,False
-report:p1_main:03_discounts_offers:06_offer_code_report,Offer Code Report,p1_main,03_discounts_offers,partial,needs_review,flat,published,8,1,False
-report:p1_main:03_discounts_offers:07_offer_code_usage_report,Offer Code Usage Report,p1_main,03_discounts_offers,partial,needs_review,flat,published,6,1,False
-report:p1_main:03_discounts_offers:03_offers_analysis,Offers Analysis,p1_main,03_discounts_offers,pending,needs_review,flat,published,0,1,False
-report:p1_main:04_tax_analysis:02_daily_no_vat_analysis,Daily No VAT Analysis,p1_main,04_tax_analysis,partial,needs_review,flat,published,3,1,False
-report:p1_main:04_tax_analysis:01_daily_tax_analysis,Daily Tax Analysis,p1_main,04_tax_analysis,partial,needs_review,flat,published,5,1,False
-report:p1_main:04_tax_analysis:03_super_category_wise_daily_taxes,Super Category Wise Daily Taxes,p1_main,04_tax_analysis,partial,needs_review,flat,published,6,1,False
-report:p1_main:04_tax_analysis:04_super_category_wise_no_vat,Super Category Wise No VAT,p1_main,04_tax_analysis,partial,needs_review,flat,published,4,1,False
-report:p1_main:04_tax_analysis:05_tax_summary,Tax Summary,p1_main,04_tax_analysis,partial,needs_review,flat,published,25,1,False
-report:p1_main:05_performance:13_brand_performance_report,Brand Performance Report,p1_main,05_performance,partial,needs_review,flat,published,10,1,False
-report:p1_main:05_performance:12_brand_performance_section_wise,Brand Performance Section Wise,p1_main,05_performance,partial,needs_review,flat,published,19,1,False
-report:p1_main:05_performance:02_category_analysis,Category Analysis,p1_main,05_performance,partial,needs_review,flat,published,9,1,False
-report:p1_main:05_performance:14_combo_report,Combo Report,p1_main,05_performance,partial,needs_review,flat,published,11,1,False
-report:p1_main:05_performance:10_highest_and_lowest_selling_items,Highest And Lowest Selling Items,p1_main,05_performance,partial,needs_review,flat,published,8,1,False
-report:p1_main:05_performance:05_item_analysis,Item Analysis,p1_main,05_performance,partial,needs_review,flat,published,11,1,False
-report:p1_main:05_performance:09_item_incidence,item_incidence,p1_main,05_performance,partial,needs_review,flat,published,9,1,False
-report:p1_main:05_performance:06_item_source_report,item_source_report,p1_main,05_performance,partial,needs_review,flat,published,11,1,False
-report:p1_main:05_performance:07_itemwise_enterprise,itemwise Enterprise,p1_main,05_performance,partial,needs_review,flat,published,4,1,False
-report:p1_main:05_performance:15_meal_count_report,Meal Count Report,p1_main,05_performance,partial,needs_review,flat,published,6,1,False
-report:p1_main:05_performance:01_menu_mix,Menu Mix,p1_main,05_performance,partial,needs_review,flat,published,10,1,False
-report:p1_main:05_performance:03_super_category_sourcewise_sales,Super Category Sourcewise Sales,p1_main,05_performance,partial,needs_review,flat,published,14,1,False
-report:p1_main:05_performance:04_super_category_tabwise_sourcewise,Super Category Tabwise Sourcewise Sales,p1_main,05_performance,partial,needs_review,flat,published,10,1,False
-report:p1_main:05_performance:11_tab_wise_analysis,Tab Wise Analysis,p1_main,05_performance,partial,needs_review,flat,published,12,1,False
-report:p1_main:05_performance:08_tab_wise_item_analysis,Tab Wise Item Analysis,p1_main,05_performance,partial,needs_review,flat,published,13,1,False
-report:p1_main:05_performance:16_user_attendance_report_detailed,user_attendance_report_detailed,p1_main,05_performance,pending,needs_review,flat,published,0,1,False
-report:p1_main:05_performance:17_user_attendance_report_summary,user_attendance_report_summary,p1_main,05_performance,pending,needs_review,flat,published,0,1,False
+report:p1_main:01_sales_analysis:20_billwise_section_sales_analysis,Billwise Section Sales Analysis,p1_main,01_sales_analysis,captured,reviewed,flat,published,18,1,False
+report:p1_main:01_sales_analysis:02_brand_order_type_sales,Brand Order Type Sales,p1_main,01_sales_analysis,captured,reviewed,flat,published,17,1,False
+report:p1_main:01_sales_analysis:18_brand_sales,Brand Sales,p1_main,01_sales_analysis,captured,reviewed,grouped_rows,published,14,1,False
+report:p1_main:01_sales_analysis:06_consolidated_hourly_sales,Consolidated Hourly Sales,p1_main,01_sales_analysis,captured,reviewed,flat,published,6,1,False
+report:p1_main:01_sales_analysis:07_consolidated_hourly_sales_tabwise,Consolidated Hourly Sales Tabwise,p1_main,01_sales_analysis,captured,reviewed,flat,published,10,1,False
+report:p1_main:01_sales_analysis:05_daily_item_sales_analysis,Daily Item Sales Analysis,p1_main,01_sales_analysis,captured,reviewed,flat,published,8,1,False
+report:p1_main:01_sales_analysis:08_daily_sales,Daily Sales,p1_main,01_sales_analysis,captured,reviewed,flat,published,19,1,False
+report:p1_main:01_sales_analysis:09_daily_sales_analysis,Daily Sales Analysis,p1_main,01_sales_analysis,captured,reviewed,grouped_columns,published,20,1,False
+report:p1_main:01_sales_analysis:11_daily_sales_sourcewise,Daily Sales Sourcewise,p1_main,01_sales_analysis,captured,reviewed,flat,published,17,1,False
+report:p1_main:01_sales_analysis:10_daily_sales_tabwise,Daily Sales Tabwise,p1_main,01_sales_analysis,captured,reviewed,flat,published,17,1,False
+report:p1_main:01_sales_analysis:12_daily_sales_with_categories,Daily Sales With Categories,p1_main,01_sales_analysis,captured,reviewed,grouped_columns,published,19,1,False
+report:p1_main:01_sales_analysis:16_day_part_product_sales,Day Part Product Sales,p1_main,01_sales_analysis,captured,reviewed,flat,published,10,1,False
+report:p1_main:01_sales_analysis:15_day_part_sales,Day Part Sales,p1_main,01_sales_analysis,captured,reviewed,mixed,published,13,2,False
+report:p1_main:01_sales_analysis:17_day_part_product_detailed,day_part_product_detailed,p1_main,01_sales_analysis,captured,reviewed,flat,published,19,1,False
+report:p1_main:01_sales_analysis:04_hourly_item_sales_analysis,Hourly Item Sales Analysis,p1_main,01_sales_analysis,captured,reviewed,flat,published,19,1,False
+report:p1_main:01_sales_analysis:03_hourly_sales_analysis,Hourly Sales Analysis,p1_main,01_sales_analysis,captured,reviewed,flat,published,14,1,False
+report:p1_main:01_sales_analysis:14_hourly_sales_by_source,Hourly Sales By Source,p1_main,01_sales_analysis,captured,reviewed,flat,published,7,1,False
+report:p1_main:01_sales_analysis:13_item_hourly_sales_by_tab,Item Hourly Sales By Tab,p1_main,01_sales_analysis,captured,reviewed,flat,published,7,1,False
+report:p1_main:01_sales_analysis:01_outlet_sales,Outlet Sales,p1_main,01_sales_analysis,captured,reviewed,flat,published,17,1,False
+report:p1_main:01_sales_analysis:19_sales_contribution,Sales Contribution,p1_main,01_sales_analysis,captured,reviewed,grouped_columns,published,13,1,False
+report:p1_main:01_sales_analysis:21_section_sales_analysis,section_sales_analysis,p1_main,01_sales_analysis,captured,reviewed,grouped_columns,published,13,1,False
+report:p1_main:01_sales_analysis:22_source_analysis_summary,source_analysis_summary,p1_main,01_sales_analysis,captured,reviewed,grouped_columns,published,6,1,False
+report:p1_main:01_sales_analysis:23_source_wise_tab_wise_item_analysis,source_wise_tab_wise_item_analysis,p1_main,01_sales_analysis,captured,reviewed,flat,published,17,1,False
+report:p1_main:02_settlements:05_billwise_settlement_analysis,Billwise Settlement Analysis,p1_main,02_settlements,captured,reviewed,flat,published,22,1,False
+report:p1_main:02_settlements:03_daily_payments_breakup,Daily Payments Breakup,p1_main,02_settlements,captured,reviewed,flat,published,8,1,False
+report:p1_main:02_settlements:04_daily_payments_breakup_consolidate,Daily Payments Breakup Consolidated,p1_main,02_settlements,captured,reviewed,flat,published,14,1,False
+report:p1_main:02_settlements:06_enterprise_btc_report,Enterprise BTC Report,p1_main,02_settlements,captured,reviewed,flat,published,14,1,False
+report:p1_main:02_settlements:01_settlement_analysis,Settlement Analysis,p1_main,02_settlements,captured,reviewed,flat,published,14,1,False
+report:p1_main:02_settlements:02_settlement_analysis_consolidated,Settlement Analysis Consolidated,p1_main,02_settlements,captured,reviewed,flat,published,11,1,False
+report:p1_main:03_discounts_offers:10_complimentary_head,Complimentary Head,p1_main,03_discounts_offers,unavailable,reviewed,flat,published,0,1,True
+report:p1_main:03_discounts_offers:11_complimentary_head_itemwise,Complimentary Head Itemwise,p1_main,03_discounts_offers,captured,reviewed,flat,published,9,1,False
+report:p1_main:03_discounts_offers:12_consolidated_item_complimentary,Consolidated Item Complimentary,p1_main,03_discounts_offers,captured,reviewed,flat,published,6,1,False
+report:p1_main:03_discounts_offers:02_daily_discount_billwise,Daily Discount Billwise,p1_main,03_discounts_offers,captured,reviewed,flat,published,14,1,False
+report:p1_main:03_discounts_offers:01_daily_item_wise_discount,Daily Item Wise Discount,p1_main,03_discounts_offers,captured,reviewed,flat,published,9,1,False
+report:p1_main:03_discounts_offers:08_discount_and_complimentary_analysi,Discount And Complimentary Analysis,p1_main,03_discounts_offers,captured,reviewed,flat,published,16,1,False
+report:p1_main:03_discounts_offers:05_discount_billwise_analysis,Discount Billwise Analysis,p1_main,03_discounts_offers,captured,reviewed,flat,published,18,1,False
+report:p1_main:03_discounts_offers:09_entp_item_based_offer,Entp Item Based Offer,p1_main,03_discounts_offers,captured,reviewed,grouped_columns,published,7,1,False
+report:p1_main:03_discounts_offers:04_offer_budget,Offer Budget,p1_main,03_discounts_offers,captured,reviewed,flat,published,11,1,False
+report:p1_main:03_discounts_offers:06_offer_code_report,Offer Code Report,p1_main,03_discounts_offers,captured,reviewed,flat,published,8,1,False
+report:p1_main:03_discounts_offers:07_offer_code_usage_report,Offer Code Usage Report,p1_main,03_discounts_offers,captured,reviewed,flat,published,6,1,False
+report:p1_main:03_discounts_offers:03_offers_analysis,Offers Analysis,p1_main,03_discounts_offers,unavailable,reviewed,flat,published,0,1,False
+report:p1_main:04_tax_analysis:02_daily_no_vat_analysis,Daily No VAT Analysis,p1_main,04_tax_analysis,captured,reviewed,flat,published,3,1,False
+report:p1_main:04_tax_analysis:01_daily_tax_analysis,Daily Tax Analysis,p1_main,04_tax_analysis,captured,reviewed,flat,published,5,1,False
+report:p1_main:04_tax_analysis:03_super_category_wise_daily_taxes,Super Category Wise Daily Taxes,p1_main,04_tax_analysis,captured,reviewed,flat,published,6,1,False
+report:p1_main:04_tax_analysis:04_super_category_wise_no_vat,Super Category Wise No VAT,p1_main,04_tax_analysis,captured,reviewed,flat,published,4,1,False
+report:p1_main:04_tax_analysis:05_tax_summary,Tax Summary,p1_main,04_tax_analysis,captured,reviewed,grouped_columns,published,33,1,False
+report:p1_main:05_performance:13_brand_performance_report,Brand Performance Report,p1_main,05_performance,captured,reviewed,grouped_columns,published,18,1,False
+report:p1_main:05_performance:12_brand_performance_section_wise,Brand Performance Section Wise,p1_main,05_performance,captured,reviewed,grouped_columns,published,30,1,False
+report:p1_main:05_performance:02_category_analysis,Category Analysis,p1_main,05_performance,captured,reviewed,grouped_columns,published,12,1,False
+report:p1_main:05_performance:14_combo_report,Combo Report,p1_main,05_performance,captured,reviewed,flat,published,11,1,False
+report:p1_main:05_performance:10_highest_and_lowest_selling_items,Highest And Lowest Selling Items,p1_main,05_performance,captured,reviewed,mixed,published,9,2,False
+report:p1_main:05_performance:05_item_analysis,Item Analysis,p1_main,05_performance,captured,reviewed,flat,published,14,1,False
+report:p1_main:05_performance:09_item_incidence,item_incidence,p1_main,05_performance,captured,reviewed,flat,published,12,1,False
+report:p1_main:05_performance:06_item_source_report,item_source_report,p1_main,05_performance,captured,reviewed,flat,published,16,1,False
+report:p1_main:05_performance:07_itemwise_enterprise,itemwise Enterprise,p1_main,05_performance,captured,reviewed,grouped_columns,published,4,1,False
+report:p1_main:05_performance:15_meal_count_report,Meal Count Report,p1_main,05_performance,captured,reviewed,grouped_columns,published,6,1,False
+report:p1_main:05_performance:01_menu_mix,Menu Mix,p1_main,05_performance,captured,reviewed,flat,published,11,1,False
+report:p1_main:05_performance:03_super_category_sourcewise_sales,Super Category Sourcewise Sales,p1_main,05_performance,captured,reviewed,flat,published,14,1,False
+report:p1_main:05_performance:04_super_category_tabwise_sourcewise,Super Category Tabwise Sourcewise Sales,p1_main,05_performance,captured,reviewed,flat,published,16,1,False
+report:p1_main:05_performance:11_tab_wise_analysis,Tab Wise Analysis,p1_main,05_performance,captured,reviewed,grouped_columns,published,22,1,False
+report:p1_main:05_performance:08_tab_wise_item_analysis,Tab Wise Item Analysis,p1_main,05_performance,captured,reviewed,flat,published,19,1,False
+report:p1_main:05_performance:16_user_attendance_report_detailed,user_attendance_report_detailed,p1_main,05_performance,unavailable,reviewed,flat,published,0,1,True
+report:p1_main:05_performance:17_user_attendance_report_summary,user_attendance_report_summary,p1_main,05_performance,unavailable,reviewed,flat,published,0,1,True
 report:p1_main:06_misc:24_advance_booking_report,Advance Booking Report,p1_main,06_misc,unavailable,reviewed,flat,published,0,1,False
 report:p1_main:06_misc:22_aggregator_status_report,Aggregator Status Report,p1_main,06_misc,unavailable,reviewed,flat,published,0,1,False
 report:p1_main:06_misc:03_budget_dsr_report,Budget DSR Report,p1_main,06_misc,captured,needs_review,grouped_rows,published,12,2,False

@@ -1,0 +1,68 @@
+{
+  "report_id": "report:p1_main:01_sales_analysis:23_source_wise_tab_wise_item_analysis",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Source-wise tab-wise item analysis",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Deployment Name"
+        },
+        {
+          "label": "Source"
+        },
+        {
+          "label": "Tab Name"
+        },
+        {
+          "label": "Item Code"
+        },
+        {
+          "label": "Section"
+        },
+        {
+          "label": "Super Category Name"
+        },
+        {
+          "label": "Category Name"
+        },
+        {
+          "label": "Item Name"
+        },
+        {
+          "label": "Item Qty"
+        },
+        {
+          "label": "Total Qty"
+        },
+        {
+          "label": "Rate"
+        },
+        {
+          "label": "SubTotal"
+        },
+        {
+          "label": "Discount"
+        },
+        {
+          "label": "Net Amount"
+        },
+        {
+          "label": "Total Tax"
+        },
+        {
+          "label": "Gross Amount"
+        },
+        {
+          "label": "Bills"
+        }
+      ]
+    }
+  ]
+}

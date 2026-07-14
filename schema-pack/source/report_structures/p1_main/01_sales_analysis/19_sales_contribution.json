@@ -1,0 +1,62 @@
+{
+  "report_id": "report:p1_main:01_sales_analysis:19_sales_contribution",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Menu category members become columns in this pivot. The repeating category contribution pattern is preserved without storing captured category values.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Sales contribution",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "Outlet Name"
+        },
+        {
+          "label": "Cluster"
+        },
+        {
+          "label": "Format"
+        },
+        {
+          "label": "Currency"
+        },
+        {
+          "label": "Month"
+        },
+        {
+          "label": "Overall Sales Value"
+        },
+        {
+          "label": "% Table Sales"
+        },
+        {
+          "label": "% Takeout Sales"
+        },
+        {
+          "label": "% Delivery Sales"
+        },
+        {
+          "label": "DYNAMIC CATEGORY CONTRIBUTION COLUMNS",
+          "children": [
+            {
+              "label": "CATEGORY CONTRIBUTION %",
+              "key": "dynamic_category_contribution_pct"
+            }
+          ]
+        },
+        {
+          "label": "APT"
+        },
+        {
+          "label": "Bills"
+        },
+        {
+          "label": "Employee Meal Bills"
+        }
+      ]
+    }
+  ]
+}

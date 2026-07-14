@@ -1,0 +1,53 @@
+{
+  "report_id": "report:p1_main:05_performance:09_item_incidence",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Item incidence",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Outlet"
+        },
+        {
+          "label": "Item Code"
+        },
+        {
+          "label": "Section"
+        },
+        {
+          "label": "Super Category"
+        },
+        {
+          "label": "Category Name"
+        },
+        {
+          "label": "Item Name"
+        },
+        {
+          "label": "Item Qty"
+        },
+        {
+          "label": "SubTotal"
+        },
+        {
+          "label": "Discount"
+        },
+        {
+          "label": "Net Sales"
+        },
+        {
+          "label": "Bills"
+        },
+        {
+          "label": "% Incidence"
+        }
+      ]
+    }
+  ]
+}

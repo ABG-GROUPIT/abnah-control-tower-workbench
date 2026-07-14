@@ -1,0 +1,16 @@
+{
+  "status_overrides": {
+    "report:p1_main:05_performance:16_user_attendance_report_detailed": {
+      "schema_status": "unavailable",
+      "verification_status": "reviewed",
+      "is_archived": true,
+      "note": "This catalogue-only entry is not present among the 15 captured P1 Performance reports and has no local report output."
+    },
+    "report:p1_main:05_performance:17_user_attendance_report_summary": {
+      "schema_status": "unavailable",
+      "verification_status": "reviewed",
+      "is_archived": true,
+      "note": "This catalogue-only entry is not present among the 15 captured P1 Performance reports and has no local report output."
+    }
+  }
+}

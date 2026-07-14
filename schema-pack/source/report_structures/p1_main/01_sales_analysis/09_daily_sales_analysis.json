@@ -1,0 +1,110 @@
+{
+  "report_id": "report:p1_main:01_sales_analysis:09_daily_sales_analysis",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Two-level comparison header. Region Wise is retained as the final visible source header even though no child header was shown.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Daily sales comparison",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "Building Type"
+        },
+        {
+          "label": "Area"
+        },
+        {
+          "label": "Region"
+        },
+        {
+          "label": "Cluster"
+        },
+        {
+          "label": "Format"
+        },
+        {
+          "label": "Outlet"
+        },
+        {
+          "label": "Sales",
+          "children": [
+            {
+              "label": "Current Day",
+              "key": "sales_current_day"
+            },
+            {
+              "label": "MTD",
+              "key": "sales_mtd"
+            },
+            {
+              "label": "YTD",
+              "key": "sales_ytd"
+            }
+          ]
+        },
+        {
+          "label": "Average Daily Sales",
+          "children": [
+            {
+              "label": "MTD",
+              "key": "average_daily_sales_mtd"
+            },
+            {
+              "label": "YTD",
+              "key": "average_daily_sales_ytd"
+            }
+          ]
+        },
+        {
+          "label": "Average Daily Sales Growth",
+          "children": [
+            {
+              "label": "WoW (CW/PW)",
+              "key": "average_daily_sales_growth_wow"
+            },
+            {
+              "label": "WTD (CW/PW)",
+              "key": "average_daily_sales_growth_wtd"
+            },
+            {
+              "label": "MTD (CM/PM)",
+              "key": "average_daily_sales_growth_mtd"
+            },
+            {
+              "label": "YTD (CY/PY)",
+              "key": "average_daily_sales_growth_ytd"
+            }
+          ]
+        },
+        {
+          "label": "Transaction Growth",
+          "children": [
+            {
+              "label": "WoW (CW/PW)",
+              "key": "transaction_growth_wow"
+            },
+            {
+              "label": "WTD (CW/PW)",
+              "key": "transaction_growth_wtd"
+            },
+            {
+              "label": "MTD (CM/PM)",
+              "key": "transaction_growth_mtd"
+            },
+            {
+              "label": "YTD (CY/PY)",
+              "key": "transaction_growth_ytd"
+            }
+          ]
+        },
+        {
+          "label": "Region Wise"
+        }
+      ]
+    }
+  ]
+}

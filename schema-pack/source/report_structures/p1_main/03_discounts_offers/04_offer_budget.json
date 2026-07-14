@@ -1,0 +1,53 @@
+{
+  "report_id": "report:p1_main:03_discounts_offers:04_offer_budget",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Offer budget",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "BRAND"
+        },
+        {
+          "label": "FORMAT"
+        },
+        {
+          "label": "CLUSTER"
+        },
+        {
+          "label": "OUTLET NAME"
+        },
+        {
+          "label": "OFFER NAME"
+        },
+        {
+          "label": "BUDGET"
+        },
+        {
+          "label": "SUB TOTAL"
+        },
+        {
+          "label": "DISCOUNT AMOUNT"
+        },
+        {
+          "label": "NET SALES"
+        },
+        {
+          "label": "TAXES"
+        },
+        {
+          "label": "GROSS SALES"
+        },
+        {
+          "label": "BUDGET %"
+        }
+      ]
+    }
+  ]
+}

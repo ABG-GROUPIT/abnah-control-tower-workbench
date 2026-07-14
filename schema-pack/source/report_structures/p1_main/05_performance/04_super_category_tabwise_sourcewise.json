@@ -1,0 +1,65 @@
+{
+  "report_id": "report:p1_main:05_performance:04_super_category_tabwise_sourcewise",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Super-category tabwise sourcewise sales",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Building Type"
+        },
+        {
+          "label": "Area"
+        },
+        {
+          "label": "Region"
+        },
+        {
+          "label": "Outlet Name"
+        },
+        {
+          "label": "Date"
+        },
+        {
+          "label": "Super Category"
+        },
+        {
+          "label": "Tab Name"
+        },
+        {
+          "label": "Source"
+        },
+        {
+          "label": "No. of Items"
+        },
+        {
+          "label": "Sale"
+        },
+        {
+          "label": "Discount"
+        },
+        {
+          "label": "Net Sale"
+        },
+        {
+          "label": "Total Tax"
+        },
+        {
+          "label": "Total Amount"
+        },
+        {
+          "label": "Round Off"
+        },
+        {
+          "label": "Gross Amount"
+        }
+      ]
+    }
+  ]
+}

@@ -67,3 +67,19 @@ Every block compiles into the same runtime grid. The site can then rename cells,
 6. Correct it in the editor, submit it for review, and publish a revision.
 
 The generated runtime contract is `schema-pack/generated/workspace.json`. Do not edit that file manually.
+
+## P1 Completion Baseline
+
+P1 was reconciled against all usable local report-output evidence on 2026-07-15. Its portable baseline is:
+
+- 90 catalogue entries: 85 active and 5 archived placeholders.
+- 76 captured reports and 14 explicitly unavailable reports.
+- 0 partial reports and 0 pending reports.
+- 59 reviewed report blueprints across Sales Analysis, Settlements, Discounts & Offers, Tax Analysis, and Performance.
+- 17 captured Misc blueprints remain `needs_review`; this is a verification state, not an incomplete-schema state.
+
+The nine active unavailable reports are one filter-only Discounts & Offers report and eight Misc reports for which no usable result table or export schema was present. Every unavailable entry carries its reason in a status override.
+
+Dynamic report members such as dates, categories, sources, sections, meal periods, or order types are represented as named repeating groups. Sample member values are never copied into a blueprint.
+
+See `p1_main/README.md` for the section ledger and transfer notes. `scripts/validate_workspace_data.py` locks this baseline so a later build cannot silently reintroduce legacy OCR `partial` states.

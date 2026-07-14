@@ -1,0 +1,50 @@
+{
+  "report_id": "report:p1_main:05_performance:14_combo_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Combo report",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Outlet Name"
+        },
+        {
+          "label": "Combo Name"
+        },
+        {
+          "label": "Combo Subtotal"
+        },
+        {
+          "label": "Combo Discount"
+        },
+        {
+          "label": "Combo Quantity"
+        },
+        {
+          "label": "Combo Selection Items Name"
+        },
+        {
+          "label": "Combo Selection Item Qty"
+        },
+        {
+          "label": "Combo Item Subtotal"
+        },
+        {
+          "label": "Combo Item Discount"
+        },
+        {
+          "label": "Applied Offer Weighted Discount"
+        },
+        {
+          "label": "Combo Item Taxes"
+        }
+      ]
+    }
+  ]
+}

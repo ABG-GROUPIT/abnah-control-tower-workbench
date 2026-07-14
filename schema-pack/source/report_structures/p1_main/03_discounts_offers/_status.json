@@ -1,0 +1,15 @@
+{
+  "status_overrides": {
+    "report:p1_main:03_discounts_offers:03_offers_analysis": {
+      "schema_status": "unavailable",
+      "verification_status": "reviewed",
+      "note": "Only the report filter form was captured; no result table or export header was visible, so no schema can be reconstructed from this evidence."
+    },
+    "report:p1_main:03_discounts_offers:10_complimentary_head": {
+      "schema_status": "unavailable",
+      "verification_status": "reviewed",
+      "is_archived": true,
+      "note": "This catalogue entry has no matching report folder in the captured P1 menu set and is excluded from active P1 discovery."
+    }
+  }
+}

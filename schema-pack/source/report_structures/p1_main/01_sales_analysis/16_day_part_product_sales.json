@@ -1,0 +1,47 @@
+{
+  "report_id": "report:p1_main:01_sales_analysis:16_day_part_product_sales",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Day-part product sales",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "DEPLOYMENT NAME"
+        },
+        {
+          "label": "CLUSTER"
+        },
+        {
+          "label": "FORMAT"
+        },
+        {
+          "label": "BUSINESS DATE"
+        },
+        {
+          "label": "DAY SESSIONS"
+        },
+        {
+          "label": "SUPER CATEGORY"
+        },
+        {
+          "label": "CATEGORY"
+        },
+        {
+          "label": "ITEM CODE"
+        },
+        {
+          "label": "ITEM"
+        },
+        {
+          "label": "QUANTITY"
+        }
+      ]
+    }
+  ]
+}

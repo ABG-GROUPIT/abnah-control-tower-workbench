@@ -1,0 +1,68 @@
+{
+  "report_id": "report:p1_main:01_sales_analysis:01_outlet_sales",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Outlet sales",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "OUTLET NAME"
+        },
+        {
+          "label": "CLUSTER"
+        },
+        {
+          "label": "FORMAT"
+        },
+        {
+          "label": "SALE"
+        },
+        {
+          "label": "DISCOUNT"
+        },
+        {
+          "label": "NET SALES"
+        },
+        {
+          "label": "CHARGES"
+        },
+        {
+          "label": "TOTAL NET SALES"
+        },
+        {
+          "label": "TAX"
+        },
+        {
+          "label": "GROSS AMOUNT"
+        },
+        {
+          "label": "BILLS"
+        },
+        {
+          "label": "EMPLOYEE MEAL BILLS"
+        },
+        {
+          "label": "TOTAL BILLS"
+        },
+        {
+          "label": "AVG PER BILL"
+        },
+        {
+          "label": "COVERS"
+        },
+        {
+          "label": "COMPLIMENTARY COVERS"
+        },
+        {
+          "label": "AVG PER COVER"
+        }
+      ]
+    }
+  ]
+}

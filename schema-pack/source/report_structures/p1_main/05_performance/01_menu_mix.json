@@ -1,0 +1,50 @@
+{
+  "report_id": "report:p1_main:05_performance:01_menu_mix",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Menu mix",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Deployment"
+        },
+        {
+          "label": "Category"
+        },
+        {
+          "label": "Super Category"
+        },
+        {
+          "label": "Item No."
+        },
+        {
+          "label": "Item"
+        },
+        {
+          "label": "Rate"
+        },
+        {
+          "label": "Qty"
+        },
+        {
+          "label": "Amount"
+        },
+        {
+          "label": "Discount"
+        },
+        {
+          "label": "Net Amount"
+        },
+        {
+          "label": "Percentage of Sales"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "report_id": "report:p1_main:05_performance:11_tab_wise_analysis",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Two-level header: Total includes Category plus four comparison measures; each order type repeats the four comparison measures.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Tab-wise analysis",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "DESCRIPTION"
+        },
+        {
+          "label": "TOTAL",
+          "children": [
+            {
+              "label": "CATEGORY",
+              "key": "total_category"
+            },
+            {
+              "label": "DAY",
+              "key": "total_day"
+            },
+            {
+              "label": "MONTH TO DATE",
+              "key": "total_month_to_date"
+            },
+            {
+              "label": "PREV MONTH",
+              "key": "total_prev_month"
+            },
+            {
+              "label": "MOM % CHANGE",
+              "key": "total_mom_change_pct"
+            }
+          ]
+        },
+        {
+          "label": "DINE IN",
+          "children": [
+            {
+              "label": "DAY",
+              "key": "dine_in_day"
+            },
+            {
+              "label": "MONTH TO DATE",
+              "key": "dine_in_month_to_date"
+            },
+            {
+              "label": "PREV MONTH",
+              "key": "dine_in_prev_month"
+            },
+            {
+              "label": "MOM % CHANGE",
+              "key": "dine_in_mom_change_pct"
+            }
+          ]
+        },
+        {
+          "label": "ECOM",
+          "children": [
+            {
+              "label": "DAY",
+              "key": "ecom_day"
+            },
+            {
+              "label": "MONTH TO DATE",
+              "key": "ecom_month_to_date"
+            },
+            {
+              "label": "PREV MONTH",
+              "key": "ecom_prev_month"
+            },
+            {
+              "label": "MOM % CHANGE",
+              "key": "ecom_mom_change_pct"
+            }
+          ]
+        },
+        {
+          "label": "QR CODE",
+          "children": [
+            {
+              "label": "DAY",
+              "key": "qr_code_day"
+            },
+            {
+              "label": "MONTH TO DATE",
+              "key": "qr_code_month_to_date"
+            },
+            {
+              "label": "PREV MONTH",
+              "key": "qr_code_prev_month"
+            },
+            {
+              "label": "MOM % CHANGE",
+              "key": "qr_code_mom_change_pct"
+            }
+          ]
+        },
+        {
+          "label": "TAKEAWAY",
+          "children": [
+            {
+              "label": "DAY",
+              "key": "takeaway_day"
+            },
+            {
+              "label": "MONTH TO DATE",
+              "key": "takeaway_month_to_date"
+            },
+            {
+              "label": "PREV MONTH",
+              "key": "takeaway_prev_month"
+            },
+            {
+              "label": "MOM % CHANGE",
+              "key": "takeaway_mom_change_pct"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

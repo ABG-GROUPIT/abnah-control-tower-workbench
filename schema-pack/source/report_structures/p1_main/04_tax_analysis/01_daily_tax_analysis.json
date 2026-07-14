@@ -1,0 +1,32 @@
+{
+  "report_id": "report:p1_main:04_tax_analysis:01_daily_tax_analysis",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Daily tax analysis",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "OUTLET NAME"
+        },
+        {
+          "label": "DATE"
+        },
+        {
+          "label": "TAX NAME"
+        },
+        {
+          "label": "TAXABLE AMOUNT"
+        },
+        {
+          "label": "TAX AMOUNT"
+        }
+      ]
+    }
+  ]
+}

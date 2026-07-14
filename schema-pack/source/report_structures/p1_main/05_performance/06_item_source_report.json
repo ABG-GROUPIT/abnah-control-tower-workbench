@@ -1,0 +1,65 @@
+{
+  "report_id": "report:p1_main:05_performance:06_item_source_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Item source report",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "OUTLET NAME"
+        },
+        {
+          "label": "Tab"
+        },
+        {
+          "label": "Source"
+        },
+        {
+          "label": "Item Code"
+        },
+        {
+          "label": "Item Name"
+        },
+        {
+          "label": "Category Name"
+        },
+        {
+          "label": "Super Category Name"
+        },
+        {
+          "label": "Rate"
+        },
+        {
+          "label": "Item Qty"
+        },
+        {
+          "label": "Amount"
+        },
+        {
+          "label": "Discount"
+        },
+        {
+          "label": "Net Amount"
+        },
+        {
+          "label": "Total Tax"
+        },
+        {
+          "label": "Gross Amount"
+        },
+        {
+          "label": "% Contribution"
+        },
+        {
+          "label": "COGS"
+        }
+      ]
+    }
+  ]
+}

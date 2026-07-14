@@ -1,0 +1,154 @@
+{
+  "report_id": "report:p1_main:01_sales_analysis:15_day_part_sales",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "mixed",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "The export starts with deployment context and then repeats one merged meal-period row followed by the same eight measures.",
+  "data_points": [
+    {
+      "label": "DEPLOYMENT"
+    },
+    {
+      "label": "CLUSTER"
+    },
+    {
+      "label": "FORMAT"
+    },
+    {
+      "label": "BUSINESS DATE"
+    },
+    {
+      "label": "MEAL PERIOD"
+    },
+    {
+      "label": "NO. OF TICKETS"
+    },
+    {
+      "label": "EMPLOYEE MEAL BILLS"
+    },
+    {
+      "label": "APT"
+    },
+    {
+      "label": "AMOUNT"
+    },
+    {
+      "label": "DISCOUNT"
+    },
+    {
+      "label": "GST@5%"
+    },
+    {
+      "label": "TOTAL GROSS SALE"
+    },
+    {
+      "label": "NET SALE"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "context",
+      "name": "Report context",
+      "kind": "key_value",
+      "entries": [
+        {
+          "label": "DEPLOYMENT"
+        },
+        {
+          "label": "CLUSTER"
+        },
+        {
+          "label": "FORMAT"
+        },
+        {
+          "label": "BUSINESS DATE"
+        }
+      ]
+    },
+    {
+      "id": "day-parts",
+      "name": "Repeating day-part section",
+      "kind": "grid",
+      "rows": 3,
+      "columns": 8,
+      "column_widths": [
+        190,
+        190,
+        120,
+        140,
+        140,
+        130,
+        180,
+        150
+      ],
+      "cells": [
+        {
+          "row": 0,
+          "column": 0,
+          "rowSpan": 1,
+          "columnSpan": 8,
+          "text": "DYNAMIC MEAL PERIOD",
+          "kind": "group",
+          "fieldId": "meal_period"
+        },
+        {
+          "row": 1,
+          "column": 0,
+          "text": "NO. OF TICKETS",
+          "kind": "field",
+          "fieldId": "ticket_count"
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "text": "EMPLOYEE MEAL BILLS",
+          "kind": "field",
+          "fieldId": "employee_meal_bills"
+        },
+        {
+          "row": 1,
+          "column": 2,
+          "text": "APT",
+          "kind": "field",
+          "fieldId": "apt"
+        },
+        {
+          "row": 1,
+          "column": 3,
+          "text": "AMOUNT",
+          "kind": "field",
+          "fieldId": "amount"
+        },
+        {
+          "row": 1,
+          "column": 4,
+          "text": "DISCOUNT",
+          "kind": "field",
+          "fieldId": "discount"
+        },
+        {
+          "row": 1,
+          "column": 5,
+          "text": "GST@5%",
+          "kind": "field",
+          "fieldId": "gst_5"
+        },
+        {
+          "row": 1,
+          "column": 6,
+          "text": "TOTAL GROSS SALE",
+          "kind": "field",
+          "fieldId": "total_gross_sale"
+        },
+        {
+          "row": 1,
+          "column": 7,
+          "text": "NET SALE",
+          "kind": "field",
+          "fieldId": "net_sale"
+        }
+      ]
+    }
+  ]
+}

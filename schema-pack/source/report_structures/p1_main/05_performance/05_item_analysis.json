@@ -1,0 +1,59 @@
+{
+  "report_id": "report:p1_main:05_performance:05_item_analysis",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_schema_reconstruction",
+  "structure_notes": "Complete left-to-right export header reconstructed from the local report output.",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Item analysis",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Deployment Name"
+        },
+        {
+          "label": "Item"
+        },
+        {
+          "label": "Category Name"
+        },
+        {
+          "label": "Super Category Name"
+        },
+        {
+          "label": "Rate"
+        },
+        {
+          "label": "Item Qty"
+        },
+        {
+          "label": "Combo Constituent Qty"
+        },
+        {
+          "label": "Total Qty"
+        },
+        {
+          "label": "Amount"
+        },
+        {
+          "label": "Discount"
+        },
+        {
+          "label": "Net Amount"
+        },
+        {
+          "label": "Total Tax"
+        },
+        {
+          "label": "Gross Amount"
+        },
+        {
+          "label": "% Contribution"
+        }
+      ]
+    }
+  ]
+}
