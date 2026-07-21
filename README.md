@@ -2,7 +2,7 @@
 
 This repository is the portable discovery memory and editable schema workspace for ABNAH's Restroworks/POSist data assessment.
 
-The current phase records what data exists, how each report is structurally arranged, which public API candidates may expose it, and what has actually been tested. It does not invent final KPIs or relational mappings before ABNAH approves the business workflow.
+The current phase records what data exists, how each report is structurally arranged, which public API candidates may expose it, what has actually been tested, and the draft business requirements for ABNAH's four-page Supply Chain Control Tower. Draft formulas are stored separately from source lineage so that an approved calculation is never confused with a proven data connection.
 
 ## Hard Boundary
 
@@ -24,14 +24,17 @@ Do not add screenshots, screenshot paths, client records, credentials, tokens, o
 - 8 P1 Misc reports marked unavailable because their screens returned no usable schema.
 - 2 unknown P1 Misc placeholders archived instead of being guessed.
 - 34 public Restroworks API candidates packeted; none are ABNAH UAT verified yet.
-- 0 approved KPIs and 0 published KPI lineage maps.
+- 35 draft control-tower KPI definitions, 0 approved KPIs, and 0 published KPI lineage maps.
+- Four business pages recorded: Risk Action Center; Procurement, Vendor & Capital Control; Consumption Variance & Menu Profitability; SCM Descriptive Explorer & Data Quality.
+- P2 collection is user-reported through Daily Sales Summary Report; that checkpoint still awaits schema ingestion.
 - Inventory and consumption intelligence plus vendor and procurement remain phase-1 priorities.
 
 ## Product Surfaces
 
 - `Discovery`: searchable report navigator, data points, editable blank structures, notes, report settings, and revision history.
 - `API validation`: endpoint registry and per-report test records with passed, partial, failed, blocked, and not-tested states.
-- `KPI lineage`: intentionally empty, read-only architecture for future approved source-to-chart lineage.
+- `Control tower`: page requirements, draft KPI formulas, prioritized report capture, API gaps, and the model/delivery decision.
+- `KPI lineage`: draft KPI selector with an intentionally empty source-to-chart canvas until schemas and UAT prove the mapping.
 - `Workspace`: editable current revision.
 - `Published`: read-only latest published revision or repository baseline.
 
@@ -39,7 +42,7 @@ Do not add screenshots, screenshot paths, client records, credentials, tokens, o
 
 Developer:
 
-1. Read `docs/ARCHITECTURE.md` and `docs/STRUCTURAL_SCHEMA_METHOD.md`.
+1. Read `docs/ARCHITECTURE.md`, `docs/CONTROL_TOWER_REQUIREMENTS.md`, and `docs/STRUCTURAL_SCHEMA_METHOD.md`.
 2. Run `npm install`.
 3. Run `refresh_atlas.bat` after source changes.
 4. Run `npm run dev`.
@@ -50,8 +53,9 @@ AI agent:
 1. Read `AGENT_HANDOFF.md`.
 2. Read `schema-pack/manifest.json`.
 3. Query `schema-pack/generated/workspace_report_catalog.csv` to narrow the report.
-4. Open only that report's blueprint or reference chunk.
-5. Never infer a KPI, join, grain, or API capability from a similar label.
+4. Read `docs/REPORT_CAPTURE_PRIORITY.md` before continuing P2 or P4 discovery.
+5. Open only that report's blueprint or reference chunk.
+6. Never infer a join, selected source, grain, or API capability from a similar label.
 
 Business reviewer:
 
@@ -72,7 +76,8 @@ ABNAH Schema Atlas/
   schema-pack/
     source/
       report_structures/       portable per-report schema blueprints
-      kpi_lineage/             empty until KPI approval
+      control_tower/            draft business requirements and source plan
+      kpi_lineage/             definitions derived from requirements; mappings still empty
       catalog/                 report, field, API, and decision inputs
       model_sql/               current/proposed model SQL context
       reference_chunks/        text-only report notes and headers

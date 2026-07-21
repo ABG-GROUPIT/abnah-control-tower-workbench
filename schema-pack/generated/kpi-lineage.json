@@ -1,8 +1,504 @@
 {
   "contractVersion": "1.0.0",
-  "status": "awaiting_kpi_approval",
-  "sourcePolicy": "Approved KPI definitions and derived relational lineage only. No screenshots, local paths, credentials, row values, or client records.",
-  "kpis": [],
+  "status": "requirements_received",
+  "sourcePolicy": "Draft or approved KPI definitions and derived relational lineage only. No screenshots, local paths, credentials, row values, or client records.",
+  "kpiDefinitionSource": "schema-pack/source/control_tower/control-tower-requirements.json",
+  "kpis": [
+    {
+      "id": "ct_outlets_at_risk",
+      "pageId": "page_1_risk_action_center",
+      "name": "Outlets at Risk",
+      "businessDefinition": "Distinct active outlets with at least one current purple, red, or amber supply-chain risk.",
+      "owner": "Operations",
+      "approvalStatus": "draft",
+      "validationStatus": "business_rule_received",
+      "grain": "Selected period and filter scope",
+      "formula": "COUNT_DISTINCT(outlet_id WHERE risk_severity IN ('purple','red','amber'))",
+      "caveats": [
+        "Requires a verified active outlet master and one deterministic highest-severity rule per outlet."
+      ]
+    },
+    {
+      "id": "ct_menu_items_at_risk",
+      "pageId": "page_1_risk_action_center",
+      "name": "Menu Items at Risk",
+      "businessDefinition": "Distinct menu items dependent on an ingredient carrying an active supply or expiry risk.",
+      "owner": "Operations",
+      "approvalStatus": "draft",
+      "validationStatus": "business_rule_received",
+      "grain": "Outlet, menu item, as-of date",
+      "formula": "COUNT_DISTINCT(menu_item_id WHERE linked_ingredient_risk_severity IN ('purple','red','amber'))",
+      "caveats": [
+        "Requires stable menu-to-recipe and recipe-to-ingredient identifiers."
+      ]
+    },
+    {
+      "id": "ct_stockout_risk_value",
+      "pageId": "page_1_risk_action_center",
+      "name": "Stockout Risk Value",
+      "businessDefinition": "Forecasted net sales of menu items dependent on ingredients with a positive projected shortage.",
+      "owner": "Operations",
+      "approvalStatus": "draft",
+      "validationStatus": "business_rule_received",
+      "grain": "Outlet, ingredient, forecast horizon",
+      "formula": "SUM(forecast_menu_net_sales WHERE shortage_qty > 0)",
+      "caveats": [
+        "This is revenue exposure, not guaranteed lost sales.",
+        "Forecast horizon and double-count handling need sign-off."
+      ]
+    },
+    {
+      "id": "ct_expiry_risk_value",
+      "pageId": "page_1_risk_action_center",
+      "name": "Expiry Risk Value",
+      "businessDefinition": "Value of stock expected to expire within the approved threshold.",
+      "owner": "Supply Chain",
+      "approvalStatus": "draft",
+      "validationStatus": "business_rule_received",
+      "grain": "Outlet, store, item, batch or estimate date",
+      "formula": "SUM(expiry_qty_at_risk * normalized_average_unit_cost)",
+      "caveats": [
+        "Exact only with batch or expiry data; otherwise label FIFO and shelf-life output estimated."
+      ]
+    },
+    {
+      "id": "ct_open_risky_po_count",
+      "pageId": "page_1_risk_action_center",
+      "name": "Open Risk-Linked PO Count",
+      "businessDefinition": "Distinct open purchase orders linked to ingredients carrying an active risk.",
+      "owner": "Procurement",
+      "approvalStatus": "draft",
+      "validationStatus": "business_rule_received",
+      "grain": "Outlet, PO, as-of date",
+      "formula": "COUNT_DISTINCT(po_number WHERE po_is_open = 1 AND linked_ingredient_risk = 1)",
+      "caveats": [
+        "Needs reliable PO status and ingredient identifiers."
+      ]
+    },
+    {
+      "id": "ct_forecast_menu_qty",
+      "pageId": "page_1_risk_action_center",
+      "name": "Forecast Menu Quantity",
+      "businessDefinition": "Predicted menu-item demand over the selected risk horizon.",
+      "owner": "Operations",
+      "approvalStatus": "draft",
+      "validationStatus": "forecast_method_pending",
+      "grain": "Outlet, menu item, forecast date",
+      "formula": "SUM(forecast_menu_qty)",
+      "caveats": [
+        "Forecast model, horizon, and confidence interval are not yet approved."
+      ]
+    },
+    {
+      "id": "ct_shortage_qty",
+      "pageId": "page_1_risk_action_center",
+      "name": "Projected Shortage Quantity",
+      "businessDefinition": "Ingredient requirement including safety stock that is not covered by current stock and valid open PO quantity.",
+      "owner": "Supply Chain",
+      "approvalStatus": "draft",
+      "validationStatus": "business_rule_received",
+      "grain": "Outlet, store, ingredient, forecast horizon, canonical UOM",
+      "formula": "MAX(0, required_qty_with_safety - (current_stock_qty + valid_open_po_qty))",
+      "caveats": [
+        "Valid PO must arrive before the expected consumption date.",
+        "All quantities require canonical UOM conversion."
+      ]
+    },
+    {
+      "id": "ct_days_cover",
+      "pageId": "page_1_risk_action_center",
+      "name": "Days Cover",
+      "businessDefinition": "Days that available inventory and usable inbound quantity can cover normalized daily consumption.",
+      "owner": "Supply Chain",
+      "approvalStatus": "draft",
+      "validationStatus": "business_rule_received",
+      "grain": "Outlet, store, ingredient, as-of date",
+      "formula": "(current_stock_qty + valid_open_po_qty) / normalized_daily_consumption_qty",
+      "caveats": [
+        "Define the daily-consumption lookback or forecast basis before publication."
+      ]
+    },
+    {
+      "id": "ct_monthly_purchase_value",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Monthly Purchase Value",
+      "businessDefinition": "Value of purchase activity in the selected month using the approved PO or receipt basis.",
+      "owner": "Procurement",
+      "approvalStatus": "draft",
+      "validationStatus": "basis_pending",
+      "grain": "Month, outlet, vendor, item",
+      "formula": "SUM(normalized_purchase_value)",
+      "caveats": [
+        "Business must choose ordered, received, or invoiced value as the primary basis."
+      ]
+    },
+    {
+      "id": "ct_closing_inventory_value",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Closing Inventory Value",
+      "businessDefinition": "Value of normalized closing stock at the selected checkpoint.",
+      "owner": "Finance",
+      "approvalStatus": "draft",
+      "validationStatus": "business_rule_received",
+      "grain": "Closing date, outlet, store, item",
+      "formula": "SUM(closing_qty_canonical * normalized_average_unit_cost)",
+      "caveats": [
+        "Prefer the source closing amount when its costing basis reconciles."
+      ]
+    },
+    {
+      "id": "ct_open_po_liability",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Open PO Liability",
+      "businessDefinition": "Remaining committed purchase value on open or partially received PO lines.",
+      "owner": "Procurement",
+      "approvalStatus": "draft",
+      "validationStatus": "business_rule_received",
+      "grain": "As-of date, outlet, PO line",
+      "formula": "SUM(remaining_qty_canonical * normalized_unit_price)",
+      "caveats": [
+        "Exclude cancelled, closed, and expired commitments based on normalized status."
+      ]
+    },
+    {
+      "id": "ct_working_capital_locked",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Working Capital Locked",
+      "businessDefinition": "Combined view of closing inventory value and open PO liability, with both components still displayed separately.",
+      "owner": "Finance",
+      "approvalStatus": "draft",
+      "validationStatus": "business_rule_received",
+      "grain": "As-of date and selected scope",
+      "formula": "closing_inventory_value + open_po_liability",
+      "caveats": [
+        "Do not hide the two components inside only one total."
+      ]
+    },
+    {
+      "id": "ct_open_po_count",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Open PO Count",
+      "businessDefinition": "Distinct purchase orders with at least one open or partially received line.",
+      "owner": "Procurement",
+      "approvalStatus": "draft",
+      "validationStatus": "business_rule_received",
+      "grain": "As-of date, outlet",
+      "formula": "COUNT_DISTINCT(po_number WHERE normalized_po_status IN ('open','pending','partially_received'))",
+      "caveats": [
+        "Status normalization requires UAT evidence."
+      ]
+    },
+    {
+      "id": "ct_po_fill_rate",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "PO Fill Rate",
+      "businessDefinition": "Share of ordered quantity that was processed or received on comparable closed and partial PO lines.",
+      "owner": "Procurement",
+      "approvalStatus": "draft",
+      "validationStatus": "business_rule_received",
+      "grain": "Vendor, outlet, item, period",
+      "formula": "SUM(processed_qty_canonical) / NULLIF(SUM(ordered_qty_canonical), 0)",
+      "caveats": [
+        "Confirm whether processed quantity equals accepted receipt quantity."
+      ]
+    },
+    {
+      "id": "ct_vendor_otif",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Vendor OTIF",
+      "businessDefinition": "Share of eligible closed PO lines received on or before expected delivery and in full.",
+      "owner": "Procurement",
+      "approvalStatus": "draft",
+      "validationStatus": "po_grn_link_required",
+      "grain": "Vendor, outlet, period",
+      "formula": "COUNT(po_line WHERE on_time = 1 AND in_full = 1) / NULLIF(COUNT(eligible_closed_po_line), 0)",
+      "caveats": [
+        "Cannot be published from approximate vendor-item-date matching.",
+        "Needs PO-line-to-GRN linkage and an approved in-full tolerance."
+      ]
+    },
+    {
+      "id": "ct_lead_time_deviation_days",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Lead Time Deviation",
+      "businessDefinition": "Difference between actual accepted delivery date and expected delivery date.",
+      "owner": "Procurement",
+      "approvalStatus": "draft",
+      "validationStatus": "po_grn_link_required",
+      "grain": "PO line or accepted receipt line",
+      "formula": "DATEDIFF(actual_delivery_date, expected_delivery_date)",
+      "caveats": [
+        "Define treatment of partial receipts and early delivery."
+      ]
+    },
+    {
+      "id": "ct_vendor_return_rate",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Vendor Return Rate",
+      "businessDefinition": "Returned quantity as a share of received plus returned quantity for a vendor.",
+      "owner": "Procurement",
+      "approvalStatus": "draft",
+      "validationStatus": "business_rule_received",
+      "grain": "Vendor, item, outlet, period",
+      "formula": "SUM(return_qty_canonical) / NULLIF(SUM(received_qty_canonical + return_qty_canonical), 0)",
+      "caveats": [
+        "Return reason and original receipt linkage are desirable for diagnosis."
+      ]
+    },
+    {
+      "id": "ct_purchase_price_change_pct",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Purchase Price Change %",
+      "businessDefinition": "Change in comparable normalized unit price from the prior approved period.",
+      "owner": "Procurement",
+      "approvalStatus": "draft",
+      "validationStatus": "uom_conversion_required",
+      "grain": "Item, canonical UOM, vendor or market scope, period",
+      "formula": "(current_normalized_unit_price - previous_normalized_unit_price) / NULLIF(previous_normalized_unit_price, 0)",
+      "caveats": [
+        "Never compare different pack or UOM bases without conversion."
+      ]
+    },
+    {
+      "id": "ct_financial_leakage",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Financial Leakage",
+      "businessDefinition": "Observed return, return tax, expiry, and wastage value within the available source scope.",
+      "owner": "Finance",
+      "approvalStatus": "draft",
+      "validationStatus": "source_coverage_pending",
+      "grain": "Outlet, item, vendor where applicable, period",
+      "formula": "SUM(return_amount + return_tax + expiry_loss_value + wastage_value)",
+      "caveats": [
+        "Display source coverage so missing expiry or wastage does not appear as zero loss."
+      ]
+    },
+    {
+      "id": "ct_net_sales",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Net Sales",
+      "businessDefinition": "Net sales for valid sold menu-item lines in the selected scope.",
+      "owner": "Finance",
+      "approvalStatus": "draft",
+      "validationStatus": "reconciliation_required",
+      "grain": "Date, outlet, menu item",
+      "formula": "SUM(net_sales_amount)",
+      "caveats": [
+        "Void, return, discount, and tax treatment must reconcile to Restroworks totals."
+      ]
+    },
+    {
+      "id": "ct_qty_sold",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Quantity Sold",
+      "businessDefinition": "Valid sold menu-item quantity in the selected scope.",
+      "owner": "Operations",
+      "approvalStatus": "draft",
+      "validationStatus": "reconciliation_required",
+      "grain": "Date, outlet, menu item",
+      "formula": "SUM(sold_qty)",
+      "caveats": [
+        "Combo, modifier, void, and return handling require schema validation."
+      ]
+    },
+    {
+      "id": "ct_theoretical_consumption_qty",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Theoretical Consumption Quantity",
+      "businessDefinition": "Ingredient quantity expected to be consumed from menu-item sales and the effective recipe BOM.",
+      "owner": "Kitchen",
+      "approvalStatus": "draft",
+      "validationStatus": "recipe_and_uom_required",
+      "grain": "Date, outlet, ingredient, canonical UOM",
+      "formula": "SUM(sold_menu_qty * normalized_recipe_ingredient_qty_per_menu_unit)",
+      "caveats": [
+        "Recipe effective dating, base quantity, wastage factor, combos, and modifiers need validation."
+      ]
+    },
+    {
+      "id": "ct_theoretical_cogs",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Theoretical COGS",
+      "businessDefinition": "Expected ingredient cost of sold menu items using normalized recipe quantity and approved average ingredient cost.",
+      "owner": "Finance",
+      "approvalStatus": "draft",
+      "validationStatus": "cost_basis_pending",
+      "grain": "Date, outlet, menu item and ingredient",
+      "formula": "SUM(sold_menu_qty * normalized_recipe_qty_per_unit * normalized_average_ingredient_cost)",
+      "caveats": [
+        "Average cost basis and recipe effective date require sign-off."
+      ]
+    },
+    {
+      "id": "ct_actual_consumption_qty",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Actual Consumption Quantity",
+      "businessDefinition": "Inventory quantity consumed after accounting for opening, receipts, transfers, returns, and closing stock.",
+      "owner": "Supply Chain",
+      "approvalStatus": "draft",
+      "validationStatus": "movement_coverage_required",
+      "grain": "Outlet, store, ingredient, stock-count period, canonical UOM",
+      "formula": "opening_qty + grn_qty + transfer_in_qty - transfer_out_qty - return_qty - closing_qty",
+      "caveats": [
+        "If transfer data is unavailable, use previous closing plus entry minus current closing and label reduced completeness.",
+        "Month-to-date output is provisional without a physical stock count."
+      ]
+    },
+    {
+      "id": "ct_consumption_variance_qty",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Consumption Variance Quantity",
+      "businessDefinition": "Difference between actual and theoretical ingredient consumption.",
+      "owner": "Kitchen",
+      "approvalStatus": "draft",
+      "validationStatus": "actual_and_theoretical_required",
+      "grain": "Outlet, store, ingredient, stock-count period, canonical UOM",
+      "formula": "actual_consumption_qty - theoretical_consumption_qty",
+      "caveats": [
+        "Positive means higher actual usage; negative is a data or process check, not automatically favorable."
+      ]
+    },
+    {
+      "id": "ct_consumption_leakage_value",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Consumption Leakage Value",
+      "businessDefinition": "Value of positive actual-over-theoretical consumption variance.",
+      "owner": "Finance",
+      "approvalStatus": "draft",
+      "validationStatus": "actual_and_theoretical_required",
+      "grain": "Outlet, ingredient, stock-count period",
+      "formula": "MAX(0, consumption_variance_qty) * normalized_average_unit_cost",
+      "caveats": [
+        "Use consumption terminology consistently in every chart and export."
+      ]
+    },
+    {
+      "id": "ct_low_consumption_qty",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Low Consumption Check",
+      "businessDefinition": "Quantity by which actual consumption is below theoretical consumption.",
+      "owner": "Data Quality",
+      "approvalStatus": "draft",
+      "validationStatus": "actual_and_theoretical_required",
+      "grain": "Outlet, ingredient, stock-count period",
+      "formula": "MAX(0, theoretical_consumption_qty - actual_consumption_qty)",
+      "caveats": [
+        "Treat as an amber data, stock-count, recipe, or process exception."
+      ]
+    },
+    {
+      "id": "ct_menu_gross_margin",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Menu Gross Margin",
+      "businessDefinition": "Net sales less theoretical recipe COGS for a menu item.",
+      "owner": "Finance",
+      "approvalStatus": "draft",
+      "validationStatus": "cost_basis_pending",
+      "grain": "Date, outlet, menu item",
+      "formula": "net_sales_amount - theoretical_cogs",
+      "caveats": [
+        "This is recipe gross margin, not full contribution margin."
+      ]
+    },
+    {
+      "id": "ct_menu_gross_margin_pct",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Menu Gross Margin %",
+      "businessDefinition": "Theoretical menu gross margin as a share of net sales.",
+      "owner": "Finance",
+      "approvalStatus": "draft",
+      "validationStatus": "cost_basis_pending",
+      "grain": "Date, outlet, menu item",
+      "formula": "menu_gross_margin / NULLIF(net_sales_amount, 0)",
+      "caveats": [
+        "Exclude or separately handle zero and negative net sales."
+      ]
+    },
+    {
+      "id": "ct_negative_stock_count",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Negative Stock Count",
+      "businessDefinition": "Count of item-location checkpoints with normalized closing quantity below zero.",
+      "owner": "Data Quality",
+      "approvalStatus": "draft",
+      "validationStatus": "business_rule_received",
+      "grain": "Closing date, outlet, store, item",
+      "formula": "COUNT(item_location_checkpoint WHERE closing_qty_canonical < 0)",
+      "caveats": [
+        "Show on Page 1 only when the exception creates actual menu risk."
+      ]
+    },
+    {
+      "id": "ct_zero_stock_with_demand_count",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Zero Stock with Demand Count",
+      "businessDefinition": "Count of item locations with zero stock and positive forecast or approved historical demand evidence.",
+      "owner": "Data Quality",
+      "approvalStatus": "draft",
+      "validationStatus": "demand_basis_pending",
+      "grain": "As-of date, outlet, store, item",
+      "formula": "COUNT(item_location WHERE closing_qty_canonical = 0 AND demand_qty > 0)",
+      "caveats": [
+        "Demand basis must be visible in drilldown."
+      ]
+    },
+    {
+      "id": "ct_sold_items_missing_recipe_count",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Sold Items Missing Recipe Count",
+      "businessDefinition": "Distinct sold menu items without a valid recipe BOM mapping.",
+      "owner": "Data Quality",
+      "approvalStatus": "draft",
+      "validationStatus": "identifier_mapping_required",
+      "grain": "Outlet and selected period",
+      "formula": "COUNT_DISTINCT(menu_item_id WHERE sold_qty > 0 AND recipe_id IS NULL)",
+      "caveats": [
+        "Use stable identifiers; name-only misses may be false exceptions."
+      ]
+    },
+    {
+      "id": "ct_items_missing_master_count",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Operational Items Missing Master Count",
+      "businessDefinition": "Distinct purchase, receipt, movement, or inventory item identifiers absent from the canonical item master.",
+      "owner": "Data Quality",
+      "approvalStatus": "draft",
+      "validationStatus": "item_master_required",
+      "grain": "Source system and item identifier",
+      "formula": "COUNT_DISTINCT(source_item_id WHERE canonical_item_id IS NULL)",
+      "caveats": [
+        "Report source system and source field for every exception."
+      ]
+    },
+    {
+      "id": "ct_uom_mismatch_count",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "UOM Mismatch Count",
+      "businessDefinition": "Distinct items observed in multiple units without a complete approved conversion path.",
+      "owner": "Data Quality",
+      "approvalStatus": "draft",
+      "validationStatus": "uom_conversion_required",
+      "grain": "Item identifier",
+      "formula": "COUNT_DISTINCT(item_id WHERE observed_uom_count > 1 AND canonical_conversion_complete = 0)",
+      "caveats": [
+        "Pack size and density conversions may require item-specific rules."
+      ]
+    },
+    {
+      "id": "ct_open_po_missing_expected_date_count",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Open POs Missing Expected Delivery",
+      "businessDefinition": "Distinct open purchase orders that cannot be delivery-risk scored because expected delivery is absent.",
+      "owner": "Data Quality",
+      "approvalStatus": "draft",
+      "validationStatus": "business_rule_received",
+      "grain": "As-of date, outlet, PO",
+      "formula": "COUNT_DISTINCT(po_number WHERE po_is_open = 1 AND expected_delivery_date IS NULL)",
+      "caveats": [
+        "A PO with every line closed is not an exception even if the header date is blank."
+      ]
+    }
+  ],
   "nodes": [],
   "edges": [],
   "publications": []

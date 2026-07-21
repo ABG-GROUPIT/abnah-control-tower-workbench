@@ -2,7 +2,9 @@
 
 ## Current State
 
-The contract is intentionally empty. No KPI has been approved, so the interface shows zero KPI definitions and zero published lineage maps.
+The business requirements define 35 draft KPIs. They are derived into the generated lineage contract from `schema-pack/source/control_tower/control-tower-requirements.json`.
+
+The lineage map itself remains intentionally empty: zero source nodes, zero edges, zero approved KPIs, and zero publications. A draft formula does not prove a source relationship.
 
 ## Purpose
 
@@ -16,10 +18,10 @@ The lineage view is explanatory and read-only. Discovery and mapping decisions a
 
 ## Required KPI Definition
 
-Before adding a KPI, capture:
+Before approving a KPI, capture:
 
 - stable ID and business name;
-- approved business definition;
+- business definition and current approval state;
 - formula;
 - output grain;
 - owner;
@@ -47,10 +49,11 @@ A publication points to one KPI and version. The future UI should let a viewer s
 
 ## Extension Sequence
 
-1. Approve KPI definitions in the business meeting.
+1. Record the business-supplied definition as draft.
 2. Confirm source reports and API availability in UAT.
-3. Confirm report and payload grain.
-4. Select transformations and joins.
-5. Reconcile output to source totals.
-6. Publish one KPI lineage map.
-7. Add chart reference only after the KPI output is accepted.
+3. Confirm report and payload grain, identifiers, UOM, and completeness.
+4. Compare candidates and select transformations and joins.
+5. Reconcile output to source totals and controlled examples.
+6. Approve definition, thresholds, owner, and caveats.
+7. Publish one KPI lineage map.
+8. Add chart reference only after the KPI output is accepted.

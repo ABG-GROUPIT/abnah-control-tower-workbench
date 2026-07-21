@@ -1,7 +1,8 @@
 {
   "contractVersion": "1.0.0",
-  "status": "awaiting_kpi_approval",
-  "sourcePolicy": "Approved KPI definitions and derived relational lineage only. No screenshots, local paths, credentials, row values, or client records.",
+  "status": "requirements_received",
+  "sourcePolicy": "Draft or approved KPI definitions and derived relational lineage only. No screenshots, local paths, credentials, row values, or client records.",
+  "kpiDefinitionSource": "schema-pack/source/control_tower/control-tower-requirements.json",
   "kpis": [],
   "nodes": [],
   "edges": [],

@@ -28,9 +28,9 @@ Unknown or obsolete reports are archived. Discovery history remains recoverable.
 
 Public endpoints remain candidates until ABNAH authentication, payload shape, grain, filters, and reconciliation are tested.
 
-## D-008: KPI Lineage Waits for Approval
+## D-008: KPI Definitions May Be Draft; Lineage Waits for Evidence
 
-The lineage contract and view exist as an empty architecture. No KPI, formula, join, or chart connection is fabricated before business approval.
+Business-supplied KPI definitions and formulas are recorded as draft. Source nodes, joins, transformations, and chart edges remain empty until report schemas, UAT payloads, reconciliation, and approval prove them.
 
 ## D-009: One KPI Per Lineage View
 
@@ -39,3 +39,23 @@ Future lineage is scoped to a selected KPI across fixed source-to-chart lanes. T
 ## D-010: Backup Export, Controlled Restore
 
 Authenticated users can export all current documents and revisions. Bulk restore is kept out of the UI until overwrite and authorization rules are designed.
+
+## D-011: Consumption Terminology
+
+Page 3 uses consumption, not yield. Source report names are preserved exactly, but `Yield Report` is not assumed to support consumption variance without schema evidence.
+
+## D-012: Revise the Existing Model
+
+Keep the useful 37-query layer convention and core facts. Replace synthetic outlet mappings, name joins, approximate PO/receipt joins, arbitrary low-stock rules, and missing UOM/movement logic. Do not create a separate P4 model.
+
+## D-013: Hybrid Ingestion
+
+Use validated Restroworks APIs where they provide complete grain and fields. Use controlled CSV or scheduled file ingestion for missing source domains. Public API documentation is candidate evidence, not ABNAH availability evidence.
+
+## D-014: Detailed Facts, Aggregate Reconciliation
+
+KPI calculations should use the most detailed stable facts. Summary and report-level aggregates are retained for reconciliation unless they provide a uniquely required grain.
+
+## D-015: Zoho First, Custom Shell by Capability Test
+
+Build and validate the data model, calculations, standard visuals, drilldowns, and exports in Zoho Analytics first. Use embedded or white-label Zoho inside a custom shell only when a documented test shows the native portal cannot meet the required action queue, RAG interaction, map, or presentation behavior.

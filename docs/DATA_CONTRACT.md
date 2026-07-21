@@ -78,11 +78,23 @@ An API test distinguishes documented possibility from observed UAT behavior:
 
 `passed` must describe the actual ABNAH UAT payload, filters, grain, and reconciliation outcome.
 
+## Control Tower Contract
+
+`schema-pack/generated/control-tower-requirements.json` contains:
+
+- four business pages and their required visual modules;
+- draft KPI definitions, formulas, grain, owner, validation state, and caveats;
+- prioritized report-capture groups and explicit deferred areas;
+- documented API candidates and known coverage gaps;
+- model revision and delivery decisions.
+
+It contains no selected report-to-KPI relationships. Requirements and evidence are separate contracts.
+
 ## KPI Lineage Contract
 
-The empty lineage contract contains four collections:
+The lineage contract contains four collections:
 
-- `kpis`: approved business definitions, formula, grain, and owner;
+- `kpis`: draft or approved business definitions derived from the control-tower authority;
 - `nodes`: one KPI-scoped reference per source/model/KPI/chart object;
 - `edges`: transformations, join keys, rationale, and decision state;
 - `publications`: immutable publication metadata.
@@ -93,6 +105,7 @@ No relationship is implied by lane position or similar names.
 
 - `schema-pack/generated/workspace.json`
 - `schema-pack/generated/workspace_report_catalog.csv`
+- `schema-pack/generated/control-tower-requirements.json`
 - `schema-pack/generated/kpi-lineage.json`
 - browser copies under `public/data/`
 

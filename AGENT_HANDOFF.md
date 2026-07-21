@@ -2,7 +2,7 @@
 
 ## Objective
 
-Maintain a screenshot-free, evidence-disciplined understanding of ABNAH's Restroworks report schemas. Extend it through P2, Stock Administration/P4, UAT API testing, and later approved KPI lineage without forcing another team to repeat discovery.
+Maintain a screenshot-free, evidence-disciplined understanding of ABNAH's Restroworks report schemas and four-page Supply Chain Control Tower requirements. Extend it through targeted P2/P4 discovery, UAT API testing, model revision, and approved KPI lineage without forcing another team to repeat discovery.
 
 ## Non-Negotiable Rules
 
@@ -11,7 +11,7 @@ Maintain a screenshot-free, evidence-disciplined understanding of ABNAH's Restro
 3. Store structural labels and relationships only; never copy report row values or client records.
 4. Preserve source labels exactly, including suspected spelling errors. Put corrections in notes.
 5. Do not claim API coverage until ABNAH UAT access has been tested.
-6. Do not create KPIs, joins, formulas, or selected mappings without explicit business approval.
+6. Business-supplied KPI definitions may be stored as `draft`; do not create selected sources, joins, transformations, thresholds, or published mappings without evidence and approval.
 7. Empty and unavailable reports remain explicit states; do not fabricate columns.
 8. Archive unknown duplicate placeholders rather than deleting or guessing them.
 
@@ -20,11 +20,15 @@ Maintain a screenshot-free, evidence-disciplined understanding of ABNAH's Restro
 1. `README.md`
 2. `schema-pack/manifest.json`
 3. `docs/STRUCTURAL_SCHEMA_METHOD.md`
-4. `docs/DATA_CONTRACT.md`
-5. `schema-pack/generated/workspace_report_catalog.csv`
-6. The selected report file under `schema-pack/source/report_structures/`
-7. Relevant text chunk under `schema-pack/source/reference_chunks/`
-8. `docs/KPI_LINEAGE_CONTRACT.md` only when KPI approval work begins
+4. `docs/CONTROL_TOWER_REQUIREMENTS.md`
+5. `docs/REPORT_CAPTURE_PRIORITY.md`
+6. `docs/MODEL_REVISION_PLAN.md`
+7. `schema-pack/source/control_tower/control-tower-requirements.json`
+8. `docs/DATA_CONTRACT.md`
+9. `schema-pack/generated/workspace_report_catalog.csv`
+10. The selected report file under `schema-pack/source/report_structures/`
+11. Relevant text chunk under `schema-pack/source/reference_chunks/`
+12. `docs/KPI_LINEAGE_CONTRACT.md` before source selection or publication
 
 ## Truth Model
 
@@ -45,13 +49,15 @@ For the live site, use the latest D1 current document. For a clean rebuild or te
 
 ## Adding P2 or P4
 
-1. Classify the layout: flat, grouped columns, grouped rows, mixed, or freeform.
-2. Create one JSON blueprint under the matching page/section.
-3. Record exact labels and blank structure only.
-4. Add semantic data points separately when the visual structure does not fully express them.
-5. Run `refresh_atlas.bat`.
-6. Review the generated grid and all validation output.
-7. Save, submit for review, and publish in the workspace only after manual checking.
+1. Check `docs/REPORT_CAPTURE_PRIORITY.md`; do not expand the current queue from a similar report name alone.
+2. Classify the layout: flat, grouped columns, grouped rows, mixed, or freeform.
+3. Create one JSON blueprint under the matching page/section.
+4. Record exact labels and blank structure only.
+5. Add semantic data points separately when the visual structure does not fully express them.
+6. Compare overlapping report variants and record their role: primary, fallback, reconciliation, validation, or deferred.
+7. Run `refresh_atlas.bat`.
+8. Review the generated grid and all validation output.
+9. Save, submit for review, and publish in the workspace only after manual checking.
 
 ## Current P1 Misc Structural Coverage
 
@@ -70,6 +76,7 @@ Eight reports with no usable result are marked `unavailable`; two unknown placeh
 ```powershell
 py -3 scripts/build_workspace_data.py
 py -3 scripts/validate_workspace_data.py
+py -3 scripts/validate_control_tower.py
 npm run typecheck
 npm run lint
 npm test
@@ -85,4 +92,6 @@ Ask for evidence instead of proceeding when:
 - horizontal or vertical continuation is missing;
 - a report has multiple tables but their boundary is unclear;
 - an API path is documented but payload grain is unknown;
-- a KPI formula or business grain has not been approved.
+- a draft KPI lacks source fields at its required grain;
+- UOM, PO-to-GRN, stock-count, recipe, or outlet identity cannot be reconciled;
+- a formula, threshold, source selection, or business owner has not been approved for publication.

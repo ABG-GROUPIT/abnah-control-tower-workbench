@@ -7,6 +7,7 @@ import {
   Eye,
   FileSpreadsheet,
   GitMerge,
+  LayoutDashboard,
   Pencil,
 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -20,7 +21,9 @@ import type {
   WorkspaceSeed,
 } from "../lib/workspace-types";
 import type { KpiLineageContract } from "../lib/lineage-types";
+import type { ControlTowerRequirements } from "../lib/control-tower-types";
 import { ApiRegistry } from "./ApiRegistry";
+import { ControlTowerWorkspace } from "./ControlTowerWorkspace";
 import { KpiLineageWorkspace } from "./KpiLineageWorkspace";
 import { ReportNavigator } from "./ReportNavigator";
 import { ReportWorkspacePanel, type ReportTab } from "./ReportWorkspacePanel";
@@ -29,9 +32,10 @@ interface AtlasWorkspaceProps {
   atlas: AtlasData;
   workspaceSeed: WorkspaceSeed;
   lineage: KpiLineageContract;
+  controlTower: ControlTowerRequirements;
 }
 
-type Surface = "discovery" | "api" | "lineage";
+type Surface = "discovery" | "api" | "control_tower" | "lineage";
 
 const defaultReportId = "report:p1_main:06_misc:03_budget_dsr_report";
 
@@ -92,7 +96,7 @@ function customReport(page: string, section: string): ReportWorkspaceDocument {
   };
 }
 
-export function AtlasWorkspace({ atlas, workspaceSeed, lineage }: AtlasWorkspaceProps) {
+export function AtlasWorkspace({ atlas, workspaceSeed, lineage, controlTower }: AtlasWorkspaceProps) {
   const baseline = useMemo(() => documentRecord(workspaceSeed.reports), [workspaceSeed.reports]);
   const [documents, setDocuments] = useState<Record<string, ReportWorkspaceDocument>>(() => documentRecord(workspaceSeed.reports));
   const [publishedDocuments, setPublishedDocuments] = useState<Record<string, ReportWorkspaceDocument>>({});
@@ -268,6 +272,12 @@ export function AtlasWorkspace({ atlas, workspaceSeed, lineage }: AtlasWorkspace
     setActiveTab("api");
   };
 
+  const openDiscoveryReport = (reportId: string) => {
+    selectReport(reportId);
+    setSurface("discovery");
+    setActiveTab("structure");
+  };
+
   const exportBackup = async () => {
     setMessage("");
     try {
@@ -297,6 +307,7 @@ export function AtlasWorkspace({ atlas, workspaceSeed, lineage }: AtlasWorkspace
         <nav className="app-nav" aria-label="Workspace surfaces">
           <button type="button" className={surface === "discovery" ? "is-active" : ""} onClick={() => setSurface("discovery")}><FileSpreadsheet aria-hidden="true" size={15} /> Discovery</button>
           <button type="button" className={surface === "api" ? "is-active" : ""} onClick={() => setSurface("api")}><Braces aria-hidden="true" size={15} /> API validation</button>
+          <button type="button" className={surface === "control_tower" ? "is-active" : ""} onClick={() => setSurface("control_tower")}><LayoutDashboard aria-hidden="true" size={15} /> Control tower</button>
           <button type="button" className={surface === "lineage" ? "is-active" : ""} onClick={() => setSurface("lineage")}><GitMerge aria-hidden="true" size={15} /> KPI lineage</button>
         </nav>
         <div className="app-summary"><span><b>{atlas.summary.reports}</b> reports</span><span><b>{workspaceSeed.reports.filter((report) => report.schemaStatus === "captured").length}</b> captured</span><span className={`persistence-indicator state-${persistenceState}`}>{persistenceState === "ready" ? "Stored" : persistenceState === "loading" ? "Connecting" : "Baseline only"}</span></div>
@@ -347,6 +358,7 @@ export function AtlasWorkspace({ atlas, workspaceSeed, lineage }: AtlasWorkspace
         </div>
       )}
       {surface === "api" && <ApiRegistry reports={reports.filter((report) => !report.isArchived)} onOpenReport={openApiReport} />}
+      {surface === "control_tower" && <ControlTowerWorkspace requirements={controlTower} onOpenReport={openDiscoveryReport} />}
       {surface === "lineage" && <KpiLineageWorkspace atlas={atlas} lineage={lineage} />}
     </main>
   );

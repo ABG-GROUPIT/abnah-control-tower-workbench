@@ -2,7 +2,7 @@
 
 ## System Boundary
 
-The application is a schema discovery and review workspace. It is not a report viewer and does not host raw screenshots or operational data.
+The application is a schema discovery, control-tower requirements, and review workspace. It is not a report viewer and does not host raw screenshots or operational data.
 
 ```text
 local screenshot or local CSV header inspection
@@ -35,15 +35,17 @@ read-only baseline      editable web workspace
 
 `schema-pack/source/report_structures/` contains one small blueprint per report. High-level block types describe common structures; an explicit grid is the escape hatch.
 
-`schema-pack/source/kpi_lineage/kpi-lineage.json` is an empty, versioned contract reserved for approved KPI lineage.
+`schema-pack/source/control_tower/control-tower-requirements.json` is the authority for draft business definitions, page modules, capture priorities, API gaps, and model decisions.
+
+`schema-pack/source/kpi_lineage/kpi-lineage.json` owns lineage state, nodes, edges, and publications. Generated draft KPI definitions are derived from the control-tower contract; the mapping collections remain empty until evidence supports them.
 
 ### Build Layer
 
 `scripts/build_atlas_data.py` builds the report/API/model discovery catalog.
 
-`scripts/build_workspace_data.py` overlays explicit structural blueprints on that catalog, compiles every shape into a universal editable grid, and emits workspace and lineage contracts.
+`scripts/build_workspace_data.py` overlays explicit structural blueprints on that catalog, compiles every shape into a universal editable grid, and emits workspace, control-tower, and lineage contracts.
 
-`scripts/validate_workspace_data.py` checks contract versions, IDs, dimensions, spans, overlap, source policy, and lineage collection shape.
+`scripts/validate_workspace_data.py` checks workspace contract versions, IDs, dimensions, spans, overlap, and source policy. `scripts/validate_control_tower.py` cross-checks pages, draft KPIs, report candidates, API candidates, terminology, and empty mapping state.
 
 ### Application Layer
 
@@ -54,7 +56,8 @@ read-only baseline      editable web workspace
 - `DataPointEditor`: semantic field metadata.
 - `ApiTestEditor` and `ApiRegistry`: endpoint candidates and UAT outcomes.
 - `NotesEditor`: engineering, source, decision, and issue notes.
-- `KpiLineageWorkspace`: read-only placeholder until approved contracts exist.
+- `ControlTowerWorkspace`: read-only business requirements, source plan, and delivery decision browser.
+- `KpiLineageWorkspace`: draft KPI selector and read-only mapping canvas.
 
 ### Persistence Layer
 
@@ -88,4 +91,4 @@ Deploy privately. Authentication at the hosting boundary is required for confide
 
 P2 and P4 require new blueprint files, not new React components. A genuinely new structural shape should first be represented with `grid`; only add a compiler primitive after the pattern repeats and reduces real complexity.
 
-Future KPI work uses a separate contract and read-only single-KPI lineage view. Discovery documents remain factual even if mapping decisions change.
+KPI work uses a separate requirements contract and read-only single-KPI lineage view. Discovery documents remain factual even if definitions or mapping decisions change.

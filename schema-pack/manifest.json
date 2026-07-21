@@ -114,7 +114,8 @@
     "workspace_reports": 319,
     "structural_blueprints": 111,
     "approved_kpis": 0,
-    "published_lineage_maps": 0
+    "published_lineage_maps": 0,
+    "draft_kpis": 35
   },
   "quality_status": "usable_with_warnings",
   "entry_points": {
@@ -126,7 +127,8 @@
     "mapping_registry": "curation/mapping_options.csv",
     "validation_registry": "curation/validation_tests.csv",
     "workspace_data": "schema-pack/generated/workspace.json",
-    "kpi_lineage": "schema-pack/generated/kpi-lineage.json"
+    "kpi_lineage": "schema-pack/generated/kpi-lineage.json",
+    "control_tower_requirements": "schema-pack/generated/control-tower-requirements.json"
   },
   "workspace_contract_version": "1.0.0",
   "workspace_source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
@@ -590,6 +592,10 @@
   ],
   "kpi_lineage_source": {
     "path": "schema-pack/source/kpi_lineage/kpi-lineage.json",
-    "sha256": "f2d18659b43c8ab0a9e92b2ff62fb7b03347b43ec4877f45356e209c6f86fe2f"
+    "sha256": "e9558d3714165e241206c0cd72632a97493bc6b6492bd1f0a84f039b92bcba39"
+  },
+  "control_tower_source": {
+    "path": "schema-pack/source/control_tower/control-tower-requirements.json",
+    "sha256": "c8f244d6bb8a49a24a26b8806db6e456a46fd58c86123963bf6de120df94d659"
   }
 }

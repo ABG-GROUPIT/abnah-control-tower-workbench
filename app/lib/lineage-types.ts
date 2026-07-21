@@ -10,12 +10,15 @@ export type LineageNodeKind =
 
 export interface KpiDefinition {
   id: string;
+  pageId: string;
   name: string;
   businessDefinition: string;
   owner: string;
   approvalStatus: "draft" | "approved" | "retired";
+  validationStatus: string;
   grain: string;
   formula: string;
+  caveats: string[];
 }
 
 export interface LineageNode {
@@ -49,8 +52,9 @@ export interface LineagePublication {
 
 export interface KpiLineageContract {
   contractVersion: string;
-  status: "awaiting_kpi_approval" | "active";
+  status: "awaiting_kpi_approval" | "requirements_received" | "active";
   sourcePolicy: string;
+  kpiDefinitionSource?: string;
   kpis: KpiDefinition[];
   nodes: LineageNode[];
   edges: LineageEdge[];

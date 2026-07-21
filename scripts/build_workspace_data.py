@@ -433,6 +433,7 @@ def build(root: Path) -> dict[str, Any]:
     generated_root = root / "schema-pack" / "generated"
     blueprint_root = root / "schema-pack" / "source" / "report_structures"
     lineage_source = root / "schema-pack" / "source" / "kpi_lineage" / "kpi-lineage.json"
+    control_tower_source = root / "schema-pack" / "source" / "control_tower" / "control-tower-requirements.json"
     atlas = json.loads((generated_root / "atlas.json").read_text(encoding="utf-8"))
     fields = {item["id"]: item for item in atlas["fields"]}
     endpoints = {item["id"]: item for item in atlas["api_endpoints"]}
@@ -481,12 +482,36 @@ def build(root: Path) -> dict[str, Any]:
     write_json(generated_root / "workspace.json", workspace)
     write_json(root / "public" / "data" / "workspace.json", workspace)
 
+    control_tower = json.loads(control_tower_source.read_text(encoding="utf-8"))
+    if control_tower.get("contractVersion") != "1.0.0":
+        raise ValueError("Unexpected control-tower requirements contract version.")
+    for collection in ("pages", "kpis"):
+        if not isinstance(control_tower.get(collection), list):
+            raise ValueError(f"Control-tower {collection} must be a list.")
+    write_json(generated_root / "control-tower-requirements.json", control_tower)
+    write_json(root / "public" / "data" / "control-tower-requirements.json", control_tower)
+
     lineage = json.loads(lineage_source.read_text(encoding="utf-8"))
     if lineage.get("contractVersion") != "1.0.0":
         raise ValueError("Unexpected KPI lineage contract version.")
     for collection in ("kpis", "nodes", "edges", "publications"):
         if not isinstance(lineage.get(collection), list):
             raise ValueError(f"KPI lineage {collection} must be a list.")
+    lineage["kpis"] = [
+        {
+            "id": item["id"],
+            "pageId": item["pageId"],
+            "name": item["name"],
+            "businessDefinition": item["businessDefinition"],
+            "owner": item["owner"],
+            "approvalStatus": item["approvalStatus"],
+            "validationStatus": item["validationStatus"],
+            "grain": item["grain"],
+            "formula": item["formula"],
+            "caveats": item.get("caveats", []),
+        }
+        for item in control_tower["kpis"]
+    ]
     write_json(generated_root / "kpi-lineage.json", lineage)
     write_json(root / "public" / "data" / "kpi-lineage.json", lineage)
     write_csv(
@@ -529,13 +554,23 @@ def build(root: Path) -> dict[str, Any]:
     manifest["workspace_source_files"] = source_files
     manifest.setdefault("entry_points", {})["workspace_data"] = "schema-pack/generated/workspace.json"
     manifest["entry_points"]["kpi_lineage"] = "schema-pack/generated/kpi-lineage.json"
+    manifest["entry_points"]["control_tower_requirements"] = "schema-pack/generated/control-tower-requirements.json"
     manifest["kpi_lineage_source"] = {
         "path": lineage_source.relative_to(root).as_posix(),
         "sha256": sha256(lineage_source),
     }
+    manifest["control_tower_source"] = {
+        "path": control_tower_source.relative_to(root).as_posix(),
+        "sha256": sha256(control_tower_source),
+    }
     manifest["counts"]["workspace_reports"] = len(workspace["reports"])
     manifest["counts"]["structural_blueprints"] = sum(1 for item in source_files if not Path(item["path"]).name.startswith("_"))
-    manifest["counts"]["approved_kpis"] = len(lineage["kpis"])
+    manifest["counts"]["draft_kpis"] = sum(
+        1 for item in lineage["kpis"] if item.get("approvalStatus") == "draft"
+    )
+    manifest["counts"]["approved_kpis"] = sum(
+        1 for item in lineage["kpis"] if item.get("approvalStatus") == "approved"
+    )
     manifest["counts"]["published_lineage_maps"] = len(lineage["publications"])
     write_json(manifest_path, manifest)
     return workspace

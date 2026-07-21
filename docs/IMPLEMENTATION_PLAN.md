@@ -11,18 +11,22 @@
 - P1 Misc explicit structural blueprints: 17 captured, 8 unavailable, 2 archived unknown.
 - Empty, versioned KPI-lineage contract.
 - Screenshot-free source policy and validators.
+- Versioned four-page control-tower requirements contract with 35 draft KPIs.
+- Read-only control-tower site surface for page logic, source capture, API gaps, and model decisions.
+- P2/P4 capture queue narrowed to reports that can support the agreed control-tower requirements.
 
-## Next: P2 Schema Intake
+## Next: Targeted Schema Intake
 
-1. Complete simple reports from exact text/CSV headers.
-2. Identify grouped, matrix, mixed, and freeform exceptions.
-3. Encode one portal section per batch.
-4. Review complex blank structures individually.
-5. Publish only completed sections.
+1. Ingest the P2 schemas already collected through Daily Sales Summary Report.
+2. Capture Daily Sales Report Detailed and Gross Sale Wastage Report.
+3. Inspect the P2 comparison headers listed in `REPORT_CAPTURE_PRIORITY.md`; materialize only unique structures.
+4. Capture the P4 PO/GRN and inventory/consumption P0 groups.
+5. Compare enterprise and operational variants before selecting any primary source.
+6. Review complex blank structures individually and publish only completed sections.
 
 ## Next: P4 Stock Administration Intake
 
-Prioritize reports supporting inventory, consumption, vendor, procurement, purchase order, receipt/entry, variance, wastage, food cost, and re-order analysis. Use the same structural method; do not create a second data model for P4.
+Use the exact groups in `REPORT_CAPTURE_PRIORITY.md`. Keep overlapping enterprise and operational report names until their fields and grain are compared. Use the same structural method and one shared model.
 
 ## UAT API Phase
 
@@ -33,9 +37,13 @@ Prioritize reports supporting inventory, consumption, vendor, procurement, purch
 5. Mark passed, partial, failed, or blocked with concrete evidence notes.
 6. Select API-backed sources only after verification.
 
+## Model Revision Phase
+
+Revise the existing 37-query model after the P0 schemas are available. Replace hardcoded outlets, name-based joins, approximate PO/receipt linkage, arbitrary low-stock flags, and missing UOM/movement logic. Add actual consumption, variance, wastage, risk, action, vendor-performance, and data-quality layers as described in `MODEL_REVISION_PLAN.md`.
+
 ## KPI and Relational Mapping Phase
 
-Start only after the ABNAH meeting confirms KPIs and workflow. For each KPI, document the definition and grain, compare possible sources, select relationships, record joins and transformations, reconcile output, then publish one lineage map.
+Business definitions are now recorded as draft. For each KPI, compare possible sources, select relationships only after schema/UAT validation, record joins and transformations, reconcile output, obtain formula and threshold approval, then publish one lineage map.
 
 ## Later Hardening
 

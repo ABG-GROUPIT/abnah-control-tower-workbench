@@ -24,6 +24,7 @@ test("server-renders the editable ABNAH schema workspace", async () => {
   assert.match(html, /Schema Workspace/);
   assert.match(html, /Discovery/);
   assert.match(html, /API validation/);
+  assert.match(html, /Control tower/);
   assert.match(html, /KPI lineage/);
   assert.match(html, /Budget DSR Report/);
   assert.match(html, /Blank table structure/);
@@ -31,15 +32,19 @@ test("server-renders the editable ABNAH schema workspace", async () => {
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
 });
 
-test("ships a screenshot-free structural workspace contract", async () => {
-  const [workspaceText, atlasText, migration, packageJson] = await Promise.all([
+test("ships screenshot-free workspace and control-tower contracts", async () => {
+  const [workspaceText, atlasText, controlTowerText, lineageText, migration, packageJson] = await Promise.all([
     readFile(new URL("../schema-pack/generated/workspace.json", import.meta.url), "utf8"),
     readFile(new URL("../schema-pack/generated/atlas.json", import.meta.url), "utf8"),
+    readFile(new URL("../schema-pack/generated/control-tower-requirements.json", import.meta.url), "utf8"),
+    readFile(new URL("../schema-pack/generated/kpi-lineage.json", import.meta.url), "utf8"),
     readFile(new URL("../drizzle/0000_faulty_leader.sql", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
   ]);
   const workspace = JSON.parse(workspaceText);
   const atlas = JSON.parse(atlasText);
+  const controlTower = JSON.parse(controlTowerText);
+  const lineage = JSON.parse(lineageText);
   const misc = workspace.reports.filter((report) => report.page === "p1_main" && report.section === "06_misc");
 
   assert.equal(workspace.contractVersion, "1.0.0");
@@ -48,6 +53,14 @@ test("ships a screenshot-free structural workspace contract", async () => {
   assert.equal(misc.filter((report) => report.schemaStatus === "unavailable" && !report.isArchived).length, 8);
   assert.equal(misc.filter((report) => report.isArchived).length, 2);
   assert.doesNotMatch(workspaceText, /\.png\b|AppData\\Local\\Temp|Downloads\\06_misc/i);
+  assert.equal(controlTower.pages.length, 4);
+  assert.equal(controlTower.kpis.length, 35);
+  assert.equal(controlTower.terminology.preferredTerm, "consumption");
+  assert.equal(lineage.status, "requirements_received");
+  assert.equal(lineage.kpis.filter((kpi) => kpi.approvalStatus === "draft").length, 35);
+  assert.equal(lineage.nodes.length, 0);
+  assert.equal(lineage.edges.length, 0);
+  assert.doesNotMatch(controlTowerText, /\.png\b|AppData\\Local\\Temp|Downloads\\/i);
 
   const budget = workspace.reports.find((report) => report.id === "report:p1_main:06_misc:03_budget_dsr_report");
   const cashier = workspace.reports.find((report) => report.id === "report:p1_main:06_misc:02_cashier_report");
