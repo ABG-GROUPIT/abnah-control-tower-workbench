@@ -39,13 +39,15 @@ read-only baseline      editable web workspace
 
 `schema-pack/source/kpi_lineage/kpi-lineage.json` owns lineage state, nodes, edges, and publications. Generated draft KPI definitions are derived from the control-tower contract; the mapping collections remain empty until evidence supports them.
 
+`schema-pack/source/architecture/control-tower-architecture.json` is the versioned feasible design used for demonstrations and engineering planning. It contains the selected 21-report set, two required masters, planned RAW/STD/DIM/FACT/SUM nodes, KPI routes, alternatives, and decision register. It is intentionally separate from reviewed KPI lineage: a planned route is not evidence that a source join or value rule has passed UAT.
+
 ### Build Layer
 
 `scripts/build_atlas_data.py` builds the report/API/model discovery catalog.
 
-`scripts/build_workspace_data.py` overlays explicit structural blueprints on that catalog, compiles every shape into a universal editable grid, and emits workspace, control-tower, and lineage contracts.
+`scripts/build_workspace_data.py` overlays explicit structural blueprints on that catalog, compiles every shape into a universal editable grid, and emits workspace, control-tower, planned-architecture, and lineage contracts.
 
-`scripts/validate_workspace_data.py` checks workspace contract versions, IDs, dimensions, spans, overlap, and source policy. `scripts/validate_control_tower.py` cross-checks pages, draft KPIs, report candidates, API candidates, terminology, and empty mapping state.
+`scripts/validate_workspace_data.py` checks workspace contract versions, IDs, dimensions, spans, overlap, and source policy. `scripts/validate_control_tower.py` cross-checks pages, draft KPIs, report candidates, API candidates, terminology, empty reviewed-lineage state, source counts, graph integrity, layer order, report IDs, and complete one-to-one KPI routing in the planned architecture.
 
 ### Application Layer
 
@@ -57,7 +59,8 @@ read-only baseline      editable web workspace
 - `ApiTestEditor` and `ApiRegistry`: endpoint candidates and UAT outcomes.
 - `NotesEditor`: engineering, source, decision, and issue notes.
 - `ControlTowerWorkspace`: read-only business requirements, source plan, and delivery decision browser.
-- `KpiLineageWorkspace`: draft KPI selector and read-only mapping canvas.
+- `ArchitectureGraphWorkspace`: movable executive and engineering views of the feasible source-to-page architecture, with path tracing and report drillback.
+- `KpiLineageWorkspace`: retained implementation for a future reviewed-lineage surface; the current reviewed mapping contract remains empty.
 
 ### Persistence Layer
 
@@ -91,4 +94,4 @@ Deploy privately. Authentication at the hosting boundary is required for confide
 
 P2 and P4 require new blueprint files, not new React components. A genuinely new structural shape should first be represented with `grid`; only add a compiler primitive after the pattern repeats and reduces real complexity.
 
-KPI work uses a separate requirements contract and read-only single-KPI lineage view. Discovery documents remain factual even if definitions or mapping decisions change.
+Planned architecture additions are data changes: add source or model nodes and their inputs in the architecture contract, then route summary nodes to KPI IDs. The React graph lays them out automatically. Actual lineage is promoted separately only after local structural and value-integrity evidence passes review. Discovery documents remain factual even if planned definitions or mapping decisions change.

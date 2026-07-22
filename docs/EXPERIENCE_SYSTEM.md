@@ -6,12 +6,12 @@ This is an operational data workspace, not a marketing site. The interface is de
 
 ## Navigation
 
-- First level: Discovery, API validation, KPI lineage.
+- First level: Discovery, API validation, Control tower, Architecture.
 - Discovery hierarchy: page, section, report.
 - Search and schema-status filters narrow the navigator.
 - One selected report owns the main workspace at a time.
 
-The report navigator is the primary discovery mechanism. A network graph is reserved for future approved lineage where relationships are meaningful.
+The report navigator is the primary factual discovery mechanism. The Architecture surface visualizes the current feasible plan and is explicitly labeled as under validation; it does not claim reviewed production lineage.
 
 ## Report Workspace
 
@@ -34,10 +34,17 @@ The editor is for structure, not operational data entry.
 
 The header always exposes workflow state, version, dirty state, persistence connection, and available actions. Conflicts and validation errors are explicit. Published view removes editing affordances.
 
-## Future Lineage
+## Architecture Graph
 
-The lineage surface uses fixed left-to-right lanes and one KPI selection. It must not render every report/model relationship at once. Candidate, selected, rejected, and deferred relationships require explicit records and labels.
+The graph provides two levels:
+
+- Executive groups nodes by layer and business domain for presentation.
+- Engineering expands every report, master, model table, KPI, and dashboard page.
+
+Users can focus one control-tower page, search data points, pan, zoom, move nodes, select a node to trace upstream and downstream paths, inspect transformation logic and fallbacks, and open catalogued source schemas. Layer, state, source count, and the current validation gate are always visible.
+
+The planned architecture contract and reviewed lineage contract remain separate. Candidate or feasible relationships belong in the architecture graph. Only evidence-backed, reviewed mappings can enter lineage publications.
 
 ## Responsive Behavior
 
-Desktop prioritizes navigator plus editor. Smaller screens stack navigation and report workspace, keep tabs reachable, and allow wide schema tables to scroll within their tool surface. Text and controls must not overlap or change fixed table geometry.
+Desktop prioritizes navigator plus editor or controls plus graph plus inspector. Smaller screens stack controls, retain a fixed-height movable canvas, then place the inspector below it. Wide schema tables continue to scroll within their tool surface. Text and controls must not overlap or change fixed table geometry.

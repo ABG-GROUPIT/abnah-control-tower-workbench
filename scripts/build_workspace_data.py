@@ -434,6 +434,7 @@ def build(root: Path) -> dict[str, Any]:
     blueprint_root = root / "schema-pack" / "source" / "report_structures"
     lineage_source = root / "schema-pack" / "source" / "kpi_lineage" / "kpi-lineage.json"
     control_tower_source = root / "schema-pack" / "source" / "control_tower" / "control-tower-requirements.json"
+    architecture_source = root / "schema-pack" / "source" / "architecture" / "control-tower-architecture.json"
     atlas = json.loads((generated_root / "atlas.json").read_text(encoding="utf-8"))
     fields = {item["id"]: item for item in atlas["fields"]}
     endpoints = {item["id"]: item for item in atlas["api_endpoints"]}
@@ -490,6 +491,15 @@ def build(root: Path) -> dict[str, Any]:
             raise ValueError(f"Control-tower {collection} must be a list.")
     write_json(generated_root / "control-tower-requirements.json", control_tower)
     write_json(root / "public" / "data" / "control-tower-requirements.json", control_tower)
+
+    architecture = json.loads(architecture_source.read_text(encoding="utf-8"))
+    if architecture.get("contractVersion") != "1.0.0":
+        raise ValueError("Unexpected control-tower architecture contract version.")
+    for collection in ("layers", "groups", "sourceNodes", "modelNodes", "kpiRoutes", "decisions"):
+        if not isinstance(architecture.get(collection), list):
+            raise ValueError(f"Control-tower architecture {collection} must be a list.")
+    write_json(generated_root / "control-tower-architecture.json", architecture)
+    write_json(root / "public" / "data" / "control-tower-architecture.json", architecture)
 
     lineage = json.loads(lineage_source.read_text(encoding="utf-8"))
     if lineage.get("contractVersion") != "1.0.0":
@@ -555,6 +565,7 @@ def build(root: Path) -> dict[str, Any]:
     manifest.setdefault("entry_points", {})["workspace_data"] = "schema-pack/generated/workspace.json"
     manifest["entry_points"]["kpi_lineage"] = "schema-pack/generated/kpi-lineage.json"
     manifest["entry_points"]["control_tower_requirements"] = "schema-pack/generated/control-tower-requirements.json"
+    manifest["entry_points"]["control_tower_architecture"] = "schema-pack/generated/control-tower-architecture.json"
     manifest["kpi_lineage_source"] = {
         "path": lineage_source.relative_to(root).as_posix(),
         "sha256": sha256(lineage_source),
@@ -562,6 +573,10 @@ def build(root: Path) -> dict[str, Any]:
     manifest["control_tower_source"] = {
         "path": control_tower_source.relative_to(root).as_posix(),
         "sha256": sha256(control_tower_source),
+    }
+    manifest["control_tower_architecture_source"] = {
+        "path": architecture_source.relative_to(root).as_posix(),
+        "sha256": sha256(architecture_source),
     }
     manifest["counts"]["workspace_reports"] = len(workspace["reports"])
     manifest["counts"]["structural_blueprints"] = sum(1 for item in source_files if not Path(item["path"]).name.startswith("_"))
@@ -572,6 +587,8 @@ def build(root: Path) -> dict[str, Any]:
         1 for item in lineage["kpis"] if item.get("approvalStatus") == "approved"
     )
     manifest["counts"]["published_lineage_maps"] = len(lineage["publications"])
+    manifest["counts"]["planned_architecture_sources"] = len(architecture["sourceNodes"])
+    manifest["counts"]["planned_architecture_model_nodes"] = len(architecture["modelNodes"])
     write_json(manifest_path, manifest)
     return workspace
 

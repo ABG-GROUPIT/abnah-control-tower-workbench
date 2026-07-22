@@ -56,3 +56,15 @@ The refresh command rebuilds both the discovery catalog and structural workspace
 Use the `Backup` action in the top bar while authenticated. It exports all D1 current documents and revision payloads as JSON. Store that export in the approved secure handoff location, not in this repository when it contains internal notes.
 
 Source JSON plus the backup export is the complete transfer package. Source JSON alone omits browser-only revisions.
+
+## H. Apply A Local CSV Audit Packet
+
+1. Keep the raw CSV run outside this repository.
+2. Validate only `CODEX_PACKET.zip` with
+   `py -3 scripts/validate_audit_packet.py <packet>`.
+3. Follow `docs/LOCAL_AUDIT_PACKET_WORKFLOW.md` and reconcile deterministic schema
+   changes against the stable report ID.
+4. Treat zero, blank, negative and outlier findings as value-quality evidence; they
+   do not change a blank schema unless the packet proves a structural difference.
+5. Edit `schema-pack/source`, refresh, run all checks, and manually review the
+   rendered report before publication.

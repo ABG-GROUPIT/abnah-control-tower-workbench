@@ -115,7 +115,9 @@
     "structural_blueprints": 111,
     "approved_kpis": 0,
     "published_lineage_maps": 0,
-    "draft_kpis": 35
+    "draft_kpis": 35,
+    "planned_architecture_sources": 23,
+    "planned_architecture_model_nodes": 58
   },
   "quality_status": "usable_with_warnings",
   "entry_points": {
@@ -128,7 +130,8 @@
     "validation_registry": "curation/validation_tests.csv",
     "workspace_data": "schema-pack/generated/workspace.json",
     "kpi_lineage": "schema-pack/generated/kpi-lineage.json",
-    "control_tower_requirements": "schema-pack/generated/control-tower-requirements.json"
+    "control_tower_requirements": "schema-pack/generated/control-tower-requirements.json",
+    "control_tower_architecture": "schema-pack/generated/control-tower-architecture.json"
   },
   "workspace_contract_version": "1.0.0",
   "workspace_source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
@@ -597,5 +600,9 @@
   "control_tower_source": {
     "path": "schema-pack/source/control_tower/control-tower-requirements.json",
     "sha256": "c8f244d6bb8a49a24a26b8806db6e456a46fd58c86123963bf6de120df94d659"
+  },
+  "control_tower_architecture_source": {
+    "path": "schema-pack/source/architecture/control-tower-architecture.json",
+    "sha256": "de4e20f27395829930428e116d02f8d6dd1cc56e0654736df338432882c61625"
   }
 }

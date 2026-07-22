@@ -24,6 +24,9 @@ def main() -> int:
         (generated / "control-tower-requirements.json").read_text(encoding="utf-8")
     )
     lineage = json.loads((generated / "kpi-lineage.json").read_text(encoding="utf-8"))
+    architecture = json.loads(
+        (generated / "control-tower-architecture.json").read_text(encoding="utf-8")
+    )
     atlas = json.loads((generated / "atlas.json").read_text(encoding="utf-8"))
     errors: list[str] = []
 
@@ -105,6 +108,78 @@ def main() -> int:
     if any(lineage.get(collection) for collection in ("nodes", "edges", "publications")):
         errors.append("Lineage nodes, edges, and publications must remain empty until source mapping is selected.")
 
+    if architecture.get("contractVersion") != "1.0.0":
+        errors.append("Unexpected planned architecture contract version.")
+    if architecture.get("status") != "planned_architecture_under_feasibility_validation":
+        errors.append("Unexpected planned architecture status.")
+    architecture_text = json.dumps(architecture)
+    if "No screenshots" not in architecture.get("sourcePolicy", ""):
+        errors.append("Planned architecture source policy must explicitly exclude screenshots.")
+    if any(token in architecture_text for token in (".png", ".jpeg", ".jpg", "AppData\\\\Local", "Downloads\\\\")):
+        errors.append("Planned architecture contains a screenshot or local-path reference.")
+
+    expected_layers = ["source", "raw", "standardized", "dimension", "fact", "summary", "kpi", "experience"]
+    layers = architecture.get("layers", [])
+    layer_ids = [item.get("id", "") for item in layers]
+    if layer_ids != expected_layers:
+        errors.append(f"Planned architecture layers are missing or out of order: {layer_ids}")
+    layer_order = {item.get("id"): item.get("order", 0) for item in layers}
+
+    source_nodes = architecture.get("sourceNodes", [])
+    model_nodes = architecture.get("modelNodes", [])
+    architecture_nodes = source_nodes + model_nodes
+    architecture_node_ids = [item.get("id", "") for item in architecture_nodes]
+    architecture_node_set = set(architecture_node_ids)
+    if "" in architecture_node_ids or duplicates(architecture_node_ids):
+        errors.append(f"Architecture node ids are empty or duplicated: {duplicates(architecture_node_ids)}")
+    if len([item for item in source_nodes if item.get("kind") == "report"]) != 21:
+        errors.append("Planned architecture must contain exactly 21 selected/control report screens.")
+    if len([item for item in source_nodes if item.get("kind") == "master"]) != 2:
+        errors.append("Planned architecture must contain Outlet Master and Vendor Master.")
+    if any(item.get("label") == "Enterprise Purchase Order" for item in source_nodes):
+        errors.append("Empty Enterprise Purchase Order must not be a planned source node.")
+    if not any(item.get("id") == "src_purchase_order" for item in source_nodes):
+        errors.append("Purchase Order Report must be the planned PO source authority.")
+
+    group_ids = {item.get("id") for item in architecture.get("groups", [])}
+    for node in architecture_nodes:
+        node_id = node.get("id", "")
+        if node.get("layerId") not in layer_order:
+            errors.append(f"Architecture node {node_id} references an unknown layer.")
+        if node.get("groupId") not in group_ids:
+            errors.append(f"Architecture node {node_id} references an unknown group.")
+        if not node.get("pages") or set(node.get("pages", [])) - page_id_set:
+            errors.append(f"Architecture node {node_id} has invalid page coverage.")
+        if not all(node.get(field) for field in ("label", "description", "status", "role", "logic")):
+            errors.append(f"Architecture node {node_id} is missing presentation metadata.")
+        missing_inputs = set(node.get("inputs", [])) - architecture_node_set
+        if missing_inputs:
+            errors.append(f"Architecture node {node_id} references missing inputs: {sorted(missing_inputs)}")
+        for input_id in node.get("inputs", []):
+            upstream = next((item for item in architecture_nodes if item.get("id") == input_id), None)
+            if upstream and layer_order.get(upstream.get("layerId"), 0) > layer_order.get(node.get("layerId"), 0):
+                errors.append(f"Architecture edge {input_id} -> {node_id} runs backwards across layers.")
+        report_id = node.get("reportId")
+        if report_id and report_id not in report_ids:
+            errors.append(f"Architecture source {node_id} references unknown report: {report_id}")
+        if node.get("kind") == "report" and not report_id and node.get("catalogState") != "external_reference":
+            errors.append(f"Architecture report {node_id} needs a catalog id or external-reference state.")
+
+    routed_kpis: list[str] = []
+    for route in architecture.get("kpiRoutes", []):
+        summary_id = route.get("summaryNodeId", "")
+        if summary_id not in architecture_node_set:
+            errors.append(f"KPI route references missing summary node: {summary_id}")
+        elif next(item for item in architecture_nodes if item.get("id") == summary_id).get("layerId") != "summary":
+            errors.append(f"KPI route source is not a summary node: {summary_id}")
+        routed_kpis.extend(route.get("kpiIds", []))
+    if set(routed_kpis) != kpi_id_set or duplicates(routed_kpis):
+        errors.append("Planned architecture must route every control-tower KPI exactly once.")
+
+    decision_ids = [item.get("id", "") for item in architecture.get("decisions", [])]
+    if "" in decision_ids or duplicates(decision_ids):
+        errors.append("Planned architecture decisions need unique non-empty ids.")
+
     if errors:
         print("Control-tower validation failed:")
         for error in errors:
@@ -115,7 +190,8 @@ def main() -> int:
     print(
         "Control-tower validation passed: "
         f"{len(pages)} pages, {len(kpis)} draft KPIs, {capture_count} report candidates, "
-        f"{len(requirements['apiAssessment']['endpoints'])} API candidates."
+        f"{len(requirements['apiAssessment']['endpoints'])} API candidates, "
+        f"{len(source_nodes)} architecture sources and {len(model_nodes)} planned model nodes."
     )
     return 0
 

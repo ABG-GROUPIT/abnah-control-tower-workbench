@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "ABNAH Schema Workspace",
   description:
-    "Editable Restroworks report schemas, structural tables, API evidence and versioned discovery for ABNAH.",
+    "ABNAH report discovery, planned control-tower architecture, KPI requirements, API evidence and versioned schema review.",
 };
 
 export default function RootLayout({

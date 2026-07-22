@@ -25,10 +25,11 @@ Maintain a screenshot-free, evidence-disciplined understanding of ABNAH's Restro
 6. `docs/MODEL_REVISION_PLAN.md`
 7. `schema-pack/source/control_tower/control-tower-requirements.json`
 8. `docs/DATA_CONTRACT.md`
-9. `schema-pack/generated/workspace_report_catalog.csv`
-10. The selected report file under `schema-pack/source/report_structures/`
-11. Relevant text chunk under `schema-pack/source/reference_chunks/`
-12. `docs/KPI_LINEAGE_CONTRACT.md` before source selection or publication
+9. `docs/LOCAL_AUDIT_PACKET_WORKFLOW.md` when a local CSV packet is supplied
+10. `schema-pack/generated/workspace_report_catalog.csv`
+11. The selected report file under `schema-pack/source/report_structures/`
+12. Relevant text chunk under `schema-pack/source/reference_chunks/`
+13. `docs/KPI_LINEAGE_CONTRACT.md` before source selection or publication
 
 ## Truth Model
 

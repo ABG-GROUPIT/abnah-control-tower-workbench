@@ -25,7 +25,7 @@ test("server-renders the editable ABNAH schema workspace", async () => {
   assert.match(html, /Discovery/);
   assert.match(html, /API validation/);
   assert.match(html, /Control tower/);
-  assert.match(html, /KPI lineage/);
+  assert.match(html, /Architecture/);
   assert.match(html, /Budget DSR Report/);
   assert.match(html, /Blank table structure/);
   assert.match(html, /319/);
@@ -33,10 +33,11 @@ test("server-renders the editable ABNAH schema workspace", async () => {
 });
 
 test("ships screenshot-free workspace and control-tower contracts", async () => {
-  const [workspaceText, atlasText, controlTowerText, lineageText, migration, packageJson] = await Promise.all([
+  const [workspaceText, atlasText, controlTowerText, architectureText, lineageText, migration, packageJson] = await Promise.all([
     readFile(new URL("../schema-pack/generated/workspace.json", import.meta.url), "utf8"),
     readFile(new URL("../schema-pack/generated/atlas.json", import.meta.url), "utf8"),
     readFile(new URL("../schema-pack/generated/control-tower-requirements.json", import.meta.url), "utf8"),
+    readFile(new URL("../schema-pack/generated/control-tower-architecture.json", import.meta.url), "utf8"),
     readFile(new URL("../schema-pack/generated/kpi-lineage.json", import.meta.url), "utf8"),
     readFile(new URL("../drizzle/0000_faulty_leader.sql", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
@@ -44,6 +45,7 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   const workspace = JSON.parse(workspaceText);
   const atlas = JSON.parse(atlasText);
   const controlTower = JSON.parse(controlTowerText);
+  const architecture = JSON.parse(architectureText);
   const lineage = JSON.parse(lineageText);
   const misc = workspace.reports.filter((report) => report.page === "p1_main" && report.section === "06_misc");
 
@@ -56,11 +58,19 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   assert.equal(controlTower.pages.length, 4);
   assert.equal(controlTower.kpis.length, 35);
   assert.equal(controlTower.terminology.preferredTerm, "consumption");
+  assert.equal(architecture.status, "planned_architecture_under_feasibility_validation");
+  assert.equal(architecture.sourceNodes.filter((node) => node.kind === "report").length, 21);
+  assert.equal(architecture.sourceNodes.filter((node) => node.kind === "master").length, 2);
+  assert.equal(architecture.modelNodes.length, 58);
+  assert.equal(new Set(architecture.kpiRoutes.flatMap((route) => route.kpiIds)).size, 35);
+  assert.ok(architecture.sourceNodes.some((node) => node.id === "src_purchase_order"));
+  assert.ok(!architecture.sourceNodes.some((node) => node.label === "Enterprise Purchase Order"));
   assert.equal(lineage.status, "requirements_received");
   assert.equal(lineage.kpis.filter((kpi) => kpi.approvalStatus === "draft").length, 35);
   assert.equal(lineage.nodes.length, 0);
   assert.equal(lineage.edges.length, 0);
   assert.doesNotMatch(controlTowerText, /\.png\b|AppData\\Local\\Temp|Downloads\\/i);
+  assert.doesNotMatch(architectureText, /\.png\b|\.jpe?g\b|AppData\\Local\\Temp|Downloads\\/i);
 
   const budget = workspace.reports.find((report) => report.id === "report:p1_main:06_misc:03_budget_dsr_report");
   const cashier = workspace.reports.find((report) => report.id === "report:p1_main:06_misc:02_cashier_report");

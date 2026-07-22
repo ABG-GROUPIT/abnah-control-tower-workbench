@@ -7,7 +7,9 @@
     "app/**/*.ts",
     "app/**/*.tsx",
     "schema-pack/generated/atlas.json",
-    "schema-pack/generated/workspace.json"
+    "schema-pack/generated/workspace.json",
+    "schema-pack/generated/control-tower-architecture.json",
+    "schema-pack/generated/control-tower-requirements.json"
   ],
   "exclude": [
     "node_modules",

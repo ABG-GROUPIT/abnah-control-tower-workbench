@@ -53,9 +53,10 @@ AI agent:
 1. Read `AGENT_HANDOFF.md`.
 2. Read `schema-pack/manifest.json`.
 3. Query `schema-pack/generated/workspace_report_catalog.csv` to narrow the report.
-4. Read `docs/REPORT_CAPTURE_PRIORITY.md` before continuing P2 or P4 discovery.
-5. Open only that report's blueprint or reference chunk.
-6. Never infer a join, selected source, grain, or API capability from a similar label.
+4. Read `docs/LOCAL_AUDIT_PACKET_WORKFLOW.md` before applying a CSV audit packet.
+5. Read `docs/REPORT_CAPTURE_PRIORITY.md` before continuing P2 or P4 discovery.
+6. Open only that report's blueprint or reference chunk.
+7. Never infer a join, selected source, grain, or API capability from a similar label.
 
 Business reviewer:
 

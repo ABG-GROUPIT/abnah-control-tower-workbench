@@ -6,8 +6,8 @@ import {
   Download,
   Eye,
   FileSpreadsheet,
-  GitMerge,
   LayoutDashboard,
+  Network,
   Pencil,
 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -20,22 +20,22 @@ import type {
   WorkspaceRevision,
   WorkspaceSeed,
 } from "../lib/workspace-types";
-import type { KpiLineageContract } from "../lib/lineage-types";
+import type { ControlTowerArchitecture } from "../lib/architecture-types";
 import type { ControlTowerRequirements } from "../lib/control-tower-types";
 import { ApiRegistry } from "./ApiRegistry";
+import { ArchitectureGraphWorkspace } from "./ArchitectureGraphWorkspace";
 import { ControlTowerWorkspace } from "./ControlTowerWorkspace";
-import { KpiLineageWorkspace } from "./KpiLineageWorkspace";
 import { ReportNavigator } from "./ReportNavigator";
 import { ReportWorkspacePanel, type ReportTab } from "./ReportWorkspacePanel";
 
 interface AtlasWorkspaceProps {
   atlas: AtlasData;
   workspaceSeed: WorkspaceSeed;
-  lineage: KpiLineageContract;
+  architecture: ControlTowerArchitecture;
   controlTower: ControlTowerRequirements;
 }
 
-type Surface = "discovery" | "api" | "control_tower" | "lineage";
+type Surface = "discovery" | "api" | "control_tower" | "architecture";
 
 const defaultReportId = "report:p1_main:06_misc:03_budget_dsr_report";
 
@@ -96,7 +96,7 @@ function customReport(page: string, section: string): ReportWorkspaceDocument {
   };
 }
 
-export function AtlasWorkspace({ atlas, workspaceSeed, lineage, controlTower }: AtlasWorkspaceProps) {
+export function AtlasWorkspace({ atlas, workspaceSeed, architecture, controlTower }: AtlasWorkspaceProps) {
   const baseline = useMemo(() => documentRecord(workspaceSeed.reports), [workspaceSeed.reports]);
   const [documents, setDocuments] = useState<Record<string, ReportWorkspaceDocument>>(() => documentRecord(workspaceSeed.reports));
   const [publishedDocuments, setPublishedDocuments] = useState<Record<string, ReportWorkspaceDocument>>({});
@@ -308,7 +308,7 @@ export function AtlasWorkspace({ atlas, workspaceSeed, lineage, controlTower }: 
           <button type="button" className={surface === "discovery" ? "is-active" : ""} onClick={() => setSurface("discovery")}><FileSpreadsheet aria-hidden="true" size={15} /> Discovery</button>
           <button type="button" className={surface === "api" ? "is-active" : ""} onClick={() => setSurface("api")}><Braces aria-hidden="true" size={15} /> API validation</button>
           <button type="button" className={surface === "control_tower" ? "is-active" : ""} onClick={() => setSurface("control_tower")}><LayoutDashboard aria-hidden="true" size={15} /> Control tower</button>
-          <button type="button" className={surface === "lineage" ? "is-active" : ""} onClick={() => setSurface("lineage")}><GitMerge aria-hidden="true" size={15} /> KPI lineage</button>
+          <button type="button" className={surface === "architecture" ? "is-active" : ""} onClick={() => setSurface("architecture")}><Network aria-hidden="true" size={15} /> Architecture</button>
         </nav>
         <div className="app-summary"><span><b>{atlas.summary.reports}</b> reports</span><span><b>{workspaceSeed.reports.filter((report) => report.schemaStatus === "captured").length}</b> captured</span><span className={`persistence-indicator state-${persistenceState}`}>{persistenceState === "ready" ? "Stored" : persistenceState === "loading" ? "Connecting" : "Baseline only"}</span></div>
         <button type="button" className="backup-button" onClick={() => void exportBackup()} disabled={persistenceState !== "ready"} title="Export current documents and revision history"><Download aria-hidden="true" size={14} /> Backup</button>
@@ -359,7 +359,7 @@ export function AtlasWorkspace({ atlas, workspaceSeed, lineage, controlTower }: 
       )}
       {surface === "api" && <ApiRegistry reports={reports.filter((report) => !report.isArchived)} onOpenReport={openApiReport} />}
       {surface === "control_tower" && <ControlTowerWorkspace requirements={controlTower} onOpenReport={openDiscoveryReport} />}
-      {surface === "lineage" && <KpiLineageWorkspace atlas={atlas} lineage={lineage} />}
+      {surface === "architecture" && <ArchitectureGraphWorkspace architecture={architecture} requirements={controlTower} onOpenReport={openDiscoveryReport} />}
     </main>
   );
 }
