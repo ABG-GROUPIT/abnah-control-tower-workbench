@@ -1,0 +1,196 @@
+{
+  "report_id": "report:p2_reports:07_sales:01_payment_details_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_rows",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Bill rows are grouped by business date and end with a day-total row.",
+  "data_points": [
+    {
+      "key": "store_id",
+      "label": "Store ID",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "bill_number",
+      "label": "Bill Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "advance_number",
+      "label": "Advance Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "sync_time",
+      "label": "Sync Time",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "open_time",
+      "label": "Open Time",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "table_number",
+      "label": "Table Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "tab_name",
+      "label": "Tab Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "tab_type",
+      "label": "Tab Type",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "covers",
+      "label": "Covers",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "print_time",
+      "label": "Print Time",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "close_time",
+      "label": "Close Time",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "total_amount",
+      "label": "Total Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "discount",
+      "label": "Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "net_sales",
+      "label": "Net Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "ecom_5_amount",
+      "label": "ECOM@5% Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "ecom_5",
+      "label": "ECOM@5%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_5_amount",
+      "label": "GST@5% Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "business_date",
+      "label": "Business Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Bill payment details",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Store ID",
+          "key": "store_id"
+        },
+        {
+          "label": "Bill Number",
+          "key": "bill_number"
+        },
+        {
+          "label": "Advance Number",
+          "key": "advance_number"
+        },
+        {
+          "label": "Sync Time",
+          "key": "sync_time"
+        },
+        {
+          "label": "Open Time",
+          "key": "open_time"
+        },
+        {
+          "label": "Table Number",
+          "key": "table_number"
+        },
+        {
+          "label": "Tab Name",
+          "key": "tab_name"
+        },
+        {
+          "label": "Tab Type",
+          "key": "tab_type"
+        },
+        {
+          "label": "Covers",
+          "key": "covers"
+        },
+        {
+          "label": "Print Time",
+          "key": "print_time"
+        },
+        {
+          "label": "Close Time",
+          "key": "close_time"
+        },
+        {
+          "label": "Total Amount",
+          "key": "total_amount"
+        },
+        {
+          "label": "Discount",
+          "key": "discount"
+        },
+        {
+          "label": "Net Sales",
+          "key": "net_sales"
+        },
+        {
+          "label": "ECOM@5% Amount",
+          "key": "ecom_5_amount"
+        },
+        {
+          "label": "ECOM@5%",
+          "key": "ecom_5"
+        },
+        {
+          "label": "GST@5% Amount",
+          "key": "gst_5_amount"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "report_id": "report:p4_stock_admin:01_enterprise_reports:07_enterprise_consolidated_indent",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Repeated Subtotal headers are positionally paired with requested, supplied, received, and suspicious quantities.",
+  "data_points": [
+    {
+      "key": "supplier",
+      "label": "Supplier",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "receiver",
+      "label": "Receiver",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "supercategory",
+      "label": "SuperCategory",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "category",
+      "label": "Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "item_code",
+      "label": "Item Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "master_preferred_unit",
+      "label": "Master Preferred Unit",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "requested_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "requested_subtotal",
+      "label": "Subtotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "supplied_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "supplied_subtotal",
+      "label": "Subtotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "received_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "received_subtotal",
+      "label": "Subtotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "suspicious_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "suspicious_subtotal",
+      "label": "Subtotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Enterprise consolidated indent",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "Supplier",
+          "key": "supplier"
+        },
+        {
+          "label": "Receiver",
+          "key": "receiver"
+        },
+        {
+          "label": "SuperCategory",
+          "key": "supercategory"
+        },
+        {
+          "label": "Category",
+          "key": "category"
+        },
+        {
+          "label": "Item Code",
+          "key": "item_code"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Master Preferred Unit",
+          "key": "master_preferred_unit"
+        },
+        {
+          "label": "Requested",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "requested_qty"
+            },
+            {
+              "label": "Subtotal",
+              "key": "requested_subtotal"
+            }
+          ]
+        },
+        {
+          "label": "Supplied",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "supplied_qty"
+            },
+            {
+              "label": "Subtotal",
+              "key": "supplied_subtotal"
+            }
+          ]
+        },
+        {
+          "label": "Received",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "received_qty"
+            },
+            {
+              "label": "Subtotal",
+              "key": "received_subtotal"
+            }
+          ]
+        },
+        {
+          "label": "Suspicious",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "suspicious_qty"
+            },
+            {
+              "label": "Subtotal",
+              "key": "suspicious_subtotal"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "report_id": "report:p4_stock_admin:01_enterprise_reports:02_erp_vendor_price",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "data_points": [
+    {
+      "key": "erp_doc_id",
+      "label": "ERP Doc ID",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "vendor_id",
+      "label": "Vendor ID",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "vendor_name",
+      "label": "Vendor Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "outlet",
+      "label": "Outlet #",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "outlet_name",
+      "label": "Outlet Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "status",
+      "label": "Status",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "published",
+      "label": "Published",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "received_on",
+      "label": "Received On",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "inserted_by",
+      "label": "Inserted By",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "comment",
+      "label": "Comment",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "updated_on",
+      "label": "Updated On",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "item_id",
+      "label": "Item ID",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "uom",
+      "label": "UOM",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "unit_price",
+      "label": "Unit Price",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "ERP Vendor Price export",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "ERP Doc ID",
+          "key": "erp_doc_id"
+        },
+        {
+          "label": "Vendor ID",
+          "key": "vendor_id"
+        },
+        {
+          "label": "Vendor Name",
+          "key": "vendor_name"
+        },
+        {
+          "label": "Outlet #",
+          "key": "outlet"
+        },
+        {
+          "label": "Outlet Name",
+          "key": "outlet_name"
+        },
+        {
+          "label": "Status",
+          "key": "status"
+        },
+        {
+          "label": "Published",
+          "key": "published"
+        },
+        {
+          "label": "Received On",
+          "key": "received_on"
+        },
+        {
+          "label": "Inserted By",
+          "key": "inserted_by"
+        },
+        {
+          "label": "Comment",
+          "key": "comment"
+        },
+        {
+          "label": "Updated On",
+          "key": "updated_on"
+        },
+        {
+          "label": "Item ID",
+          "key": "item_id"
+        },
+        {
+          "label": "UOM",
+          "key": "uom"
+        },
+        {
+          "label": "Unit Price",
+          "key": "unit_price"
+        }
+      ]
+    }
+  ]
+}

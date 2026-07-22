@@ -1,0 +1,170 @@
+{
+  "report_id": "report:p2_reports:04_category_item:17_hourly_item_detail_billwise_with_s",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "data_points": [
+    {
+      "key": "s_no",
+      "label": "S.No.",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "bill_no",
+      "label": "Bill No",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "date",
+      "label": "Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "deployment",
+      "label": "Deployment",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "total",
+      "label": "Total",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "discount",
+      "label": "Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "subtotal",
+      "label": "Subtotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "taxes",
+      "label": "Taxes",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "payment_mode_s",
+      "label": "Payment Mode(s)",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "product_item_number",
+      "label": "Product Item Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "product_item",
+      "label": "Product Item",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "category",
+      "label": "Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "super_category",
+      "label": "Super Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "section",
+      "label": "Section",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "hour",
+      "label": "Hour",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Hourly Item Detail Billwise With Settlement Mode export",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "S.No.",
+          "key": "s_no"
+        },
+        {
+          "label": "Bill No",
+          "key": "bill_no"
+        },
+        {
+          "label": "Date",
+          "key": "date"
+        },
+        {
+          "label": "Deployment",
+          "key": "deployment"
+        },
+        {
+          "label": "Total",
+          "key": "total"
+        },
+        {
+          "label": "Discount",
+          "key": "discount"
+        },
+        {
+          "label": "Subtotal",
+          "key": "subtotal"
+        },
+        {
+          "label": "Taxes",
+          "key": "taxes"
+        },
+        {
+          "label": "Payment Mode(s)",
+          "key": "payment_mode_s"
+        },
+        {
+          "label": "Product Item Number",
+          "key": "product_item_number"
+        },
+        {
+          "label": "Product Item",
+          "key": "product_item"
+        },
+        {
+          "label": "Category",
+          "key": "category"
+        },
+        {
+          "label": "Super Category",
+          "key": "super_category"
+        },
+        {
+          "label": "Section",
+          "key": "section"
+        },
+        {
+          "label": "Hour",
+          "key": "hour"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,473 @@
+{
+  "report_id": "report:p2_reports:07_sales:17_daily_sales_summary_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "mixed",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "A multi-block daily summary covers legacy tax sections, GST, tab totals, collections, tender subtypes, tips, counts, and gross/net averages.",
+  "data_points": [
+    {
+      "key": "vat_break_up",
+      "label": "VAT Break-Up",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "taxable_sale",
+      "label": "Taxable Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "service_charge",
+      "label": "Service Charge",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "total",
+      "label": "Total",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "vat_amount",
+      "label": "VAT Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "service_tax_break_up",
+      "label": "Service Tax Break-Up",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "service_tax_amount",
+      "label": "Service Tax Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_rate",
+      "label": "GST Rate",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_amount",
+      "label": "GST Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "tab",
+      "label": "Tab",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "vat",
+      "label": "VAT",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "gst",
+      "label": "GST",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "service_tax",
+      "label": "Service Tax",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "charges",
+      "label": "Charges",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "cash",
+      "label": "Cash",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "credit_card",
+      "label": "Credit Card",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "debit_card",
+      "label": "Debit Card",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "coupon",
+      "label": "Coupon",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "btc",
+      "label": "BTC",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "ttr",
+      "label": "TTR",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "smart_card",
+      "label": "Smart Card",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "round_off",
+      "label": "Round Off",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gross_sales",
+      "label": "Gross Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "card_type",
+      "label": "Card Type",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "amount",
+      "label": "Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "cash_type",
+      "label": "Cash Type",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "particular",
+      "label": "Particular",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "count",
+      "label": "Count",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "cover",
+      "label": "Cover",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "no_of_hd_ta_bills",
+      "label": "No. Of HD/TA Bills",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "number_of_bills",
+      "label": "Number Of Bills",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "metric",
+      "label": "Metric",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "on_gross_sale",
+      "label": "On Gross Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "on_net_sale",
+      "label": "On Net Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gross_sales_without_round_off",
+      "label": "Gross Sales Without Round Off",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "vat",
+      "name": "VAT breakup",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "VAT Break-Up",
+          "key": "vat_break_up"
+        },
+        {
+          "label": "Taxable Sale",
+          "key": "taxable_sale"
+        },
+        {
+          "label": "Service Charge",
+          "key": "service_charge"
+        },
+        {
+          "label": "Total",
+          "key": "total"
+        },
+        {
+          "label": "VAT Amount",
+          "key": "vat_amount"
+        }
+      ]
+    },
+    {
+      "id": "service_tax",
+      "name": "Service tax breakup",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Service Tax Break-Up",
+          "key": "service_tax_break_up"
+        },
+        {
+          "label": "Taxable Sale",
+          "key": "taxable_sale"
+        },
+        {
+          "label": "Service Charge",
+          "key": "service_charge"
+        },
+        {
+          "label": "Total",
+          "key": "total"
+        },
+        {
+          "label": "Service Tax Amount",
+          "key": "service_tax_amount"
+        }
+      ]
+    },
+    {
+      "id": "gst",
+      "name": "GST breakup",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "GST Rate",
+          "key": "gst_rate"
+        },
+        {
+          "label": "Taxable Sale",
+          "key": "taxable_sale"
+        },
+        {
+          "label": "Service Charge",
+          "key": "service_charge"
+        },
+        {
+          "label": "Total",
+          "key": "total"
+        },
+        {
+          "label": "GST Amount",
+          "key": "gst_amount"
+        }
+      ]
+    },
+    {
+      "id": "tab",
+      "name": "Tab-wise breakup",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Tab",
+          "key": "tab"
+        },
+        {
+          "label": "Taxable Sale",
+          "key": "taxable_sale"
+        },
+        {
+          "label": "Service Charge",
+          "key": "service_charge"
+        },
+        {
+          "label": "Total",
+          "key": "total"
+        },
+        {
+          "label": "VAT",
+          "key": "vat"
+        },
+        {
+          "label": "GST",
+          "key": "gst"
+        },
+        {
+          "label": "Service Tax",
+          "key": "service_tax"
+        },
+        {
+          "label": "Charges",
+          "key": "charges"
+        }
+      ]
+    },
+    {
+      "id": "collection",
+      "name": "Collection breakup",
+      "kind": "key_value",
+      "entries": [
+        {
+          "label": "Cash",
+          "key": "cash"
+        },
+        {
+          "label": "Credit Card",
+          "key": "credit_card"
+        },
+        {
+          "label": "Debit Card",
+          "key": "debit_card"
+        },
+        {
+          "label": "Coupon",
+          "key": "coupon"
+        },
+        {
+          "label": "BTC",
+          "key": "btc"
+        },
+        {
+          "label": "TTR",
+          "key": "ttr"
+        },
+        {
+          "label": "Smart Card",
+          "key": "smart_card"
+        },
+        {
+          "label": "Round Off",
+          "key": "round_off"
+        },
+        {
+          "label": "Gross Sales",
+          "key": "gross_sales"
+        }
+      ]
+    },
+    {
+      "id": "credit_card",
+      "name": "Credit card breakup",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Card Type",
+          "key": "card_type"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        }
+      ]
+    },
+    {
+      "id": "cash",
+      "name": "Cash breakup",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Cash Type",
+          "key": "cash_type"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        }
+      ]
+    },
+    {
+      "id": "tips",
+      "name": "Tips",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Particular",
+          "key": "particular"
+        },
+        {
+          "label": "Count",
+          "key": "count"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        }
+      ]
+    },
+    {
+      "id": "bill_counts",
+      "name": "Covers and bill counts",
+      "kind": "key_value",
+      "entries": [
+        {
+          "label": "Cover",
+          "key": "cover"
+        },
+        {
+          "label": "No. Of HD/TA Bills",
+          "key": "no_of_hd_ta_bills"
+        },
+        {
+          "label": "Number Of Bills",
+          "key": "number_of_bills"
+        }
+      ]
+    },
+    {
+      "id": "averages",
+      "name": "Average metrics",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Metric",
+          "key": "metric"
+        },
+        {
+          "label": "On Gross Sale",
+          "key": "on_gross_sale"
+        },
+        {
+          "label": "On Net Sale",
+          "key": "on_net_sale"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "report_id": "report:p2_reports:07_sales:02_payments_breakup_detailed",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "data_points": [
+    {
+      "key": "business_date",
+      "label": "Business Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "store_name",
+      "label": "Store Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "payment_type",
+      "label": "Payment Type",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "type",
+      "label": "Type",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "online_name",
+      "label": "Online Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "online_type",
+      "label": "Online Type",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "total_payment",
+      "label": "Total Payment",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "payments_qty",
+      "label": "Payments Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "payments_breakup_detailed export",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Business Date",
+          "key": "business_date"
+        },
+        {
+          "label": "Store Name",
+          "key": "store_name"
+        },
+        {
+          "label": "Payment Type",
+          "key": "payment_type"
+        },
+        {
+          "label": "Type",
+          "key": "type"
+        },
+        {
+          "label": "Online Name",
+          "key": "online_name"
+        },
+        {
+          "label": "Online Type",
+          "key": "online_type"
+        },
+        {
+          "label": "Total Payment",
+          "key": "total_payment"
+        },
+        {
+          "label": "Payments Qty",
+          "key": "payments_qty"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "report_id": "report:p4_stock_admin:02_transactional_reports:01_entry_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "The line table uses a merged GST Tax header over CGST and SGST. A footer carries charge, tax-on-charge, amount, discount, tax, and grand-total values.",
+  "data_points": [
+    {
+      "key": "item_code",
+      "label": "Item Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "quantity",
+      "label": "Quantity",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "unit",
+      "label": "Unit",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "unit_price",
+      "label": "Unit Price",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "amount",
+      "label": "Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "discount",
+      "label": "Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "cgst_tax",
+      "label": "CGST Tax",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "sgst_tax",
+      "label": "SGST Tax",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "igst_tax",
+      "label": "IGST Tax",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "non_gst_tax",
+      "label": "Non GST Tax",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total",
+      "label": "Total",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_charge",
+      "label": "Total Charge",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_tax_on_charge",
+      "label": "Total Tax On Charge",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Stock entry item lines",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "Item Code",
+          "key": "item_code"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Quantity",
+          "key": "quantity"
+        },
+        {
+          "label": "Unit",
+          "key": "unit"
+        },
+        {
+          "label": "Unit Price",
+          "key": "unit_price"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        },
+        {
+          "label": "Discount",
+          "key": "discount"
+        },
+        {
+          "label": "GST Tax",
+          "children": [
+            {
+              "label": "CGST Tax",
+              "key": "cgst_tax"
+            },
+            {
+              "label": "SGST Tax",
+              "key": "sgst_tax"
+            }
+          ]
+        },
+        {
+          "label": "IGST Tax",
+          "key": "igst_tax"
+        },
+        {
+          "label": "Non GST Tax",
+          "key": "non_gst_tax"
+        },
+        {
+          "label": "Total",
+          "key": "total"
+        }
+      ]
+    }
+  ]
+}

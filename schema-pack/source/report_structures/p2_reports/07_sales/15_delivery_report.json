@@ -1,0 +1,300 @@
+{
+  "report_id": "report:p2_reports:07_sales:15_delivery_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "data_points": [
+    {
+      "key": "bill_number",
+      "label": "Bill Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "bill_date",
+      "label": "Bill Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "kot_time",
+      "label": "Kot Time",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "guest_name",
+      "label": "Guest Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "mobile_number",
+      "label": "Mobile Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "address",
+      "label": "Address",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "location",
+      "label": "Location",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "product",
+      "label": "Product",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "category",
+      "label": "Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "delivery_rider",
+      "label": "Delivery Rider",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "dispatch_time",
+      "label": "Dispatch Time",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "delivery_time",
+      "label": "Delivery Time",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "delivery_duration_hh_mm",
+      "label": "Delivery Duration(hh:mm)",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "amount",
+      "label": "Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "discount",
+      "label": "Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "tax_amount",
+      "label": "Tax Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_charges",
+      "label": "Total Charges",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "net_amount",
+      "label": "Net Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "cash",
+      "label": "Cash",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "debitcard",
+      "label": "DebitCard",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "creditcard",
+      "label": "CreditCard",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "other",
+      "label": "Other",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "online",
+      "label": "Online",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "coupon",
+      "label": "Coupon",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "btc",
+      "label": "BTC",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "ttr",
+      "label": "TTR",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "smartcard",
+      "label": "SmartCard",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "nature",
+      "label": "Nature",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Delivery Report export",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Bill Number",
+          "key": "bill_number"
+        },
+        {
+          "label": "Bill Date",
+          "key": "bill_date"
+        },
+        {
+          "label": "Kot Time",
+          "key": "kot_time"
+        },
+        {
+          "label": "Guest Name",
+          "key": "guest_name"
+        },
+        {
+          "label": "Mobile Number",
+          "key": "mobile_number"
+        },
+        {
+          "label": "Address",
+          "key": "address"
+        },
+        {
+          "label": "Location",
+          "key": "location"
+        },
+        {
+          "label": "Product",
+          "key": "product"
+        },
+        {
+          "label": "Category",
+          "key": "category"
+        },
+        {
+          "label": "Delivery Rider",
+          "key": "delivery_rider"
+        },
+        {
+          "label": "Dispatch Time",
+          "key": "dispatch_time"
+        },
+        {
+          "label": "Delivery Time",
+          "key": "delivery_time"
+        },
+        {
+          "label": "Delivery Duration(hh:mm)",
+          "key": "delivery_duration_hh_mm"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        },
+        {
+          "label": "Discount",
+          "key": "discount"
+        },
+        {
+          "label": "Tax Amount",
+          "key": "tax_amount"
+        },
+        {
+          "label": "Total Charges",
+          "key": "total_charges"
+        },
+        {
+          "label": "Net Amount",
+          "key": "net_amount"
+        },
+        {
+          "label": "Cash",
+          "key": "cash"
+        },
+        {
+          "label": "DebitCard",
+          "key": "debitcard"
+        },
+        {
+          "label": "CreditCard",
+          "key": "creditcard"
+        },
+        {
+          "label": "Other",
+          "key": "other"
+        },
+        {
+          "label": "Online",
+          "key": "online"
+        },
+        {
+          "label": "Coupon",
+          "key": "coupon"
+        },
+        {
+          "label": "BTC",
+          "key": "btc"
+        },
+        {
+          "label": "TTR",
+          "key": "ttr"
+        },
+        {
+          "label": "SmartCard",
+          "key": "smartcard"
+        },
+        {
+          "label": "Nature",
+          "key": "nature"
+        }
+      ]
+    }
+  ]
+}

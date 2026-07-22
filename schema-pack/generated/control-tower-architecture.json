@@ -129,7 +129,8 @@
       "alternatives": [
         "Bill Item Detail supplies timing and classification if a margin attribute is unavailable."
       ],
-      "catalogState": "external_reference"
+      "reportId": "report:p2_reports:07_sales:33_food_sold_report",
+      "catalogState": "catalogued"
     },
     {
       "id": "src_bill_item_detail",

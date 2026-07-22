@@ -26,10 +26,11 @@ Maintain a screenshot-free, evidence-disciplined understanding of ABNAH's Restro
 7. `schema-pack/source/control_tower/control-tower-requirements.json`
 8. `docs/DATA_CONTRACT.md`
 9. `docs/LOCAL_AUDIT_PACKET_WORKFLOW.md` when a local CSV packet is supplied
-10. `schema-pack/generated/workspace_report_catalog.csv`
-11. The selected report file under `schema-pack/source/report_structures/`
-12. Relevant text chunk under `schema-pack/source/reference_chunks/`
-13. `docs/KPI_LINEAGE_CONTRACT.md` before source selection or publication
+10. `docs/SCHEMA_CAPTURE_IMPORT.md` when a local schema-capture README is supplied
+11. `schema-pack/generated/workspace_report_catalog.csv`
+12. The selected report file under `schema-pack/source/report_structures/`
+13. Relevant text chunk under `schema-pack/source/reference_chunks/`
+14. `docs/KPI_LINEAGE_CONTRACT.md` before source selection or publication
 
 ## Truth Model
 
@@ -52,13 +53,21 @@ For the live site, use the latest D1 current document. For a clean rebuild or te
 
 1. Check `docs/REPORT_CAPTURE_PRIORITY.md`; do not expand the current queue from a similar report name alone.
 2. Classify the layout: flat, grouped columns, grouped rows, mixed, or freeform.
-3. Create one JSON blueprint under the matching page/section.
+3. For a batch README, run `scripts/import_schema_captures.py`; for one report, create one JSON blueprint under the matching page/section.
 4. Record exact labels and blank structure only.
 5. Add semantic data points separately when the visual structure does not fully express them.
 6. Compare overlapping report variants and record their role: primary, fallback, reconciliation, validation, or deferred.
 7. Run `refresh_atlas.bat`.
 8. Review the generated grid and all validation output.
 9. Save, submit for review, and publish in the workspace only after manual checking.
+
+## Current P2/P4 Coverage
+
+- P2: 73 captured, 3 partial, 79 pending. Category/Item has 17 of 18 captured; Sales has 24 of 41 captured.
+- P4: 24 captured, 50 pending. Enterprise Reports has 15 of 15 captured.
+- Consumption Report has four independent mode tables; do not merge their fields by label.
+- Enterprise Consumption, Variance, Wastage, Consolidated Indent, and Stock In/Out use position-aware keys for repeated quantity, amount, and subtotal labels.
+- The stable legacy IDs for Gross/Net Margin, Source Analysis Summary, and Daily Sales Revenue are intentionally retained even though their display names were corrected.
 
 ## Current P1 Misc Structural Coverage
 

@@ -1,0 +1,192 @@
+{
+  "report_id": "report:p2_reports:07_sales:14_instance_wise_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_rows",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Bill rows are grouped by business date and POS instance.",
+  "data_points": [
+    {
+      "key": "invoice_number",
+      "label": "Invoice Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "open_time",
+      "label": "Open Time",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "covers",
+      "label": "Covers",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "total_amount",
+      "label": "Total Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "discount",
+      "label": "Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "gst_5_amount",
+      "label": "GST@5% Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_5",
+      "label": "GST@5%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_18_amount",
+      "label": "GST@18% Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_18",
+      "label": "GST@18%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_3_amount",
+      "label": "GST@3% Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_3",
+      "label": "GST@3%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "net_amount",
+      "label": "Net Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "round_off",
+      "label": "Round Off",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gross_total",
+      "label": "Gross Total",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "cash",
+      "label": "Cash",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "others",
+      "label": "Others",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "business_date",
+      "label": "Business Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "instance",
+      "label": "Instance",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Instance-wise bill sales",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Invoice Number",
+          "key": "invoice_number"
+        },
+        {
+          "label": "Open Time",
+          "key": "open_time"
+        },
+        {
+          "label": "Covers",
+          "key": "covers"
+        },
+        {
+          "label": "Total Amount",
+          "key": "total_amount"
+        },
+        {
+          "label": "Discount",
+          "key": "discount"
+        },
+        {
+          "label": "GST@5% Amount",
+          "key": "gst_5_amount"
+        },
+        {
+          "label": "GST@5%",
+          "key": "gst_5"
+        },
+        {
+          "label": "GST@18% Amount",
+          "key": "gst_18_amount"
+        },
+        {
+          "label": "GST@18%",
+          "key": "gst_18"
+        },
+        {
+          "label": "GST@3% Amount",
+          "key": "gst_3_amount"
+        },
+        {
+          "label": "GST@3%",
+          "key": "gst_3"
+        },
+        {
+          "label": "Net Amount",
+          "key": "net_amount"
+        },
+        {
+          "label": "Round Off",
+          "key": "round_off"
+        },
+        {
+          "label": "Gross Total",
+          "key": "gross_total"
+        },
+        {
+          "label": "Cash",
+          "key": "cash"
+        },
+        {
+          "label": "Others",
+          "key": "others"
+        }
+      ]
+    }
+  ]
+}

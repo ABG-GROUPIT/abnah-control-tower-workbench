@@ -1,0 +1,782 @@
+{
+  "report_id": "report:p2_reports:07_sales:18_day_wise_sales_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "matrix",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Dates are dynamic columns with a weekday subheader. Rows form several measure bands covering sessions, sections, APC, MTD, tax, delivery, and takeout.",
+  "data_points": [
+    {
+      "key": "business_date",
+      "label": "Business Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "breakfast_cover",
+      "label": "Breakfast Cover",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "lunch_cover",
+      "label": "Lunch Cover",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "high_tea_cover",
+      "label": "High Tea Cover",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "dinner_cover",
+      "label": "Dinner Cover",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "extended_hours_cover",
+      "label": "Extended Hours Cover",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "na_cover",
+      "label": "NA Cover",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "total_covers",
+      "label": "Total Covers",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "session_net_food_sales",
+      "label": "Session Net Food Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "session_net_beverage_sales",
+      "label": "Session Net Beverage Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "session_net_merchandise_gst_18_sales",
+      "label": "Session Net Merchandise GST 18% Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "session_net_merchandise_gst_3_sales",
+      "label": "Session Net Merchandise GST 3% Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "session_net_merchandise_gst_0_sales",
+      "label": "Session Net Merchandise GST 0% Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "session_net_merchandise_gst_5_sales",
+      "label": "Session Net Merchandise GST 5% Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "session_apc_food",
+      "label": "Session APC Food",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "session_apc_beverage",
+      "label": "Session APC Beverage",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "session_apc_merchandise_gst_18",
+      "label": "Session APC Merchandise GST 18%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "session_apc_merchandise_gst_3",
+      "label": "Session APC Merchandise GST 3%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "session_apc_merchandise_gst_0",
+      "label": "Session APC Merchandise GST 0%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "session_apc_merchandise_gst_5",
+      "label": "Session APC Merchandise GST 5%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "breakfast_sale",
+      "label": "Breakfast Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "lunch_sale",
+      "label": "Lunch Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "high_tea_sale",
+      "label": "High Tea Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "dinner_sale",
+      "label": "Dinner Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "extended_hours_sale",
+      "label": "Extended Hours Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "na_sale",
+      "label": "NA Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "breakfast_apc",
+      "label": "Breakfast APC",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "lunch_apc",
+      "label": "Lunch APC",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "high_tea_apc",
+      "label": "High Tea APC",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "dinner_apc",
+      "label": "Dinner APC",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "extended_hours_apc",
+      "label": "Extended Hours APC",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "na_apc",
+      "label": "NA APC",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "food_sale",
+      "label": "Food Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "beverage_sale",
+      "label": "Beverage Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "merchandise_gst_18_sale",
+      "label": "Merchandise GST 18% Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "merchandise_gst_3_sale",
+      "label": "Merchandise GST 3% Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "merchandise_gst_0_sale",
+      "label": "Merchandise GST 0% Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "merchandise_gst_5_sale",
+      "label": "Merchandise GST 5% Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "food_apc",
+      "label": "Food APC",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "beverage_apc",
+      "label": "Beverage APC",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "merchandise_gst_18_apc",
+      "label": "Merchandise GST 18% APC",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "merchandise_gst_3_apc",
+      "label": "Merchandise GST 3% APC",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "merchandise_gst_0_apc",
+      "label": "Merchandise GST 0% APC",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "merchandise_gst_5_apc",
+      "label": "Merchandise GST 5% APC",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "net_sales",
+      "label": "Net Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "number_of_bills",
+      "label": "Number Of Bills",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "number_of_tables",
+      "label": "Number Of Tables",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "average_net_sale",
+      "label": "Average Net Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "breakfast_mtd_net_sale",
+      "label": "Breakfast MTD Net Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "lunch_mtd_net_sale",
+      "label": "Lunch MTD Net Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "high_tea_mtd_net_sale",
+      "label": "High Tea MTD Net Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "dinner_mtd_net_sale",
+      "label": "Dinner MTD Net Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "extended_hours_mtd_net_sale",
+      "label": "Extended Hours MTD Net Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "na_mtd_net_sale",
+      "label": "NA MTD Net Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "mtd_net_sale",
+      "label": "MTD Net Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "mtd_total_avg_sale",
+      "label": "MTD Total Avg Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_5",
+      "label": "GST@5%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_18",
+      "label": "GST@18%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_3",
+      "label": "GST@3%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_tax_amount",
+      "label": "Total Tax Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "delivery_net_amount",
+      "label": "Delivery Net Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "delivery_mtd_amount",
+      "label": "Delivery MTD Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "delivery_taxes",
+      "label": "Delivery Taxes",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "delivery_total_tax_amount",
+      "label": "Delivery Total Tax Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "takeout_net_amount",
+      "label": "Takeout Net Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "takeout_mtd_amount",
+      "label": "Takeout MTD Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "takeout_taxes",
+      "label": "Takeout Taxes",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "takeout_gst_5",
+      "label": "Takeout GST@5%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "takeout_gst_18",
+      "label": "Takeout GST@18%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "takeout_total_tax_amount",
+      "label": "Takeout Total Tax Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "business_date_value",
+      "label": "Business Date (dynamic)",
+      "semantic_role": "date",
+      "data_type": "date"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Day-wise sales matrix",
+      "kind": "matrix",
+      "row_headers": [
+        "Section",
+        "Metric"
+      ],
+      "value_columns": [
+        {
+          "label": "Business Date (dynamic)",
+          "key": "business_date_value"
+        }
+      ],
+      "row_groups": [
+        {
+          "label": "Covers",
+          "metrics": [
+            {
+              "label": "Breakfast Cover",
+              "key": "breakfast_cover"
+            },
+            {
+              "label": "Lunch Cover",
+              "key": "lunch_cover"
+            },
+            {
+              "label": "High Tea Cover",
+              "key": "high_tea_cover"
+            },
+            {
+              "label": "Dinner Cover",
+              "key": "dinner_cover"
+            },
+            {
+              "label": "Extended Hours Cover",
+              "key": "extended_hours_cover"
+            },
+            {
+              "label": "NA Cover",
+              "key": "na_cover"
+            },
+            {
+              "label": "Total Covers",
+              "key": "total_covers"
+            }
+          ]
+        },
+        {
+          "label": "Session-section net sales",
+          "metrics": [
+            {
+              "label": "Session Net Food Sales",
+              "key": "session_net_food_sales"
+            },
+            {
+              "label": "Session Net Beverage Sales",
+              "key": "session_net_beverage_sales"
+            },
+            {
+              "label": "Session Net Merchandise GST 18% Sales",
+              "key": "session_net_merchandise_gst_18_sales"
+            },
+            {
+              "label": "Session Net Merchandise GST 3% Sales",
+              "key": "session_net_merchandise_gst_3_sales"
+            },
+            {
+              "label": "Session Net Merchandise GST 0% Sales",
+              "key": "session_net_merchandise_gst_0_sales"
+            },
+            {
+              "label": "Session Net Merchandise GST 5% Sales",
+              "key": "session_net_merchandise_gst_5_sales"
+            }
+          ]
+        },
+        {
+          "label": "Session-section APC",
+          "metrics": [
+            {
+              "label": "Session APC Food",
+              "key": "session_apc_food"
+            },
+            {
+              "label": "Session APC Beverage",
+              "key": "session_apc_beverage"
+            },
+            {
+              "label": "Session APC Merchandise GST 18%",
+              "key": "session_apc_merchandise_gst_18"
+            },
+            {
+              "label": "Session APC Merchandise GST 3%",
+              "key": "session_apc_merchandise_gst_3"
+            },
+            {
+              "label": "Session APC Merchandise GST 0%",
+              "key": "session_apc_merchandise_gst_0"
+            },
+            {
+              "label": "Session APC Merchandise GST 5%",
+              "key": "session_apc_merchandise_gst_5"
+            }
+          ]
+        },
+        {
+          "label": "Session totals",
+          "metrics": [
+            {
+              "label": "Breakfast Sale",
+              "key": "breakfast_sale"
+            },
+            {
+              "label": "Lunch Sale",
+              "key": "lunch_sale"
+            },
+            {
+              "label": "High Tea Sale",
+              "key": "high_tea_sale"
+            },
+            {
+              "label": "Dinner Sale",
+              "key": "dinner_sale"
+            },
+            {
+              "label": "Extended Hours Sale",
+              "key": "extended_hours_sale"
+            },
+            {
+              "label": "NA Sale",
+              "key": "na_sale"
+            },
+            {
+              "label": "Breakfast APC",
+              "key": "breakfast_apc"
+            },
+            {
+              "label": "Lunch APC",
+              "key": "lunch_apc"
+            },
+            {
+              "label": "High Tea APC",
+              "key": "high_tea_apc"
+            },
+            {
+              "label": "Dinner APC",
+              "key": "dinner_apc"
+            },
+            {
+              "label": "Extended Hours APC",
+              "key": "extended_hours_apc"
+            },
+            {
+              "label": "NA APC",
+              "key": "na_apc"
+            }
+          ]
+        },
+        {
+          "label": "Section totals",
+          "metrics": [
+            {
+              "label": "Food Sale",
+              "key": "food_sale"
+            },
+            {
+              "label": "Beverage Sale",
+              "key": "beverage_sale"
+            },
+            {
+              "label": "Merchandise GST 18% Sale",
+              "key": "merchandise_gst_18_sale"
+            },
+            {
+              "label": "Merchandise GST 3% Sale",
+              "key": "merchandise_gst_3_sale"
+            },
+            {
+              "label": "Merchandise GST 0% Sale",
+              "key": "merchandise_gst_0_sale"
+            },
+            {
+              "label": "Merchandise GST 5% Sale",
+              "key": "merchandise_gst_5_sale"
+            },
+            {
+              "label": "Food APC",
+              "key": "food_apc"
+            },
+            {
+              "label": "Beverage APC",
+              "key": "beverage_apc"
+            },
+            {
+              "label": "Merchandise GST 18% APC",
+              "key": "merchandise_gst_18_apc"
+            },
+            {
+              "label": "Merchandise GST 3% APC",
+              "key": "merchandise_gst_3_apc"
+            },
+            {
+              "label": "Merchandise GST 0% APC",
+              "key": "merchandise_gst_0_apc"
+            },
+            {
+              "label": "Merchandise GST 5% APC",
+              "key": "merchandise_gst_5_apc"
+            }
+          ]
+        },
+        {
+          "label": "Daily summary",
+          "metrics": [
+            {
+              "label": "Net Sales",
+              "key": "net_sales"
+            },
+            {
+              "label": "Number Of Bills",
+              "key": "number_of_bills"
+            },
+            {
+              "label": "Number Of Tables",
+              "key": "number_of_tables"
+            },
+            {
+              "label": "Average Net Sale",
+              "key": "average_net_sale"
+            }
+          ]
+        },
+        {
+          "label": "Month to date",
+          "metrics": [
+            {
+              "label": "Breakfast MTD Net Sale",
+              "key": "breakfast_mtd_net_sale"
+            },
+            {
+              "label": "Lunch MTD Net Sale",
+              "key": "lunch_mtd_net_sale"
+            },
+            {
+              "label": "High Tea MTD Net Sale",
+              "key": "high_tea_mtd_net_sale"
+            },
+            {
+              "label": "Dinner MTD Net Sale",
+              "key": "dinner_mtd_net_sale"
+            },
+            {
+              "label": "Extended Hours MTD Net Sale",
+              "key": "extended_hours_mtd_net_sale"
+            },
+            {
+              "label": "NA MTD Net Sale",
+              "key": "na_mtd_net_sale"
+            },
+            {
+              "label": "MTD Net Sale",
+              "key": "mtd_net_sale"
+            },
+            {
+              "label": "MTD Total Avg Sale",
+              "key": "mtd_total_avg_sale"
+            }
+          ]
+        },
+        {
+          "label": "Taxes",
+          "metrics": [
+            {
+              "label": "GST@5%",
+              "key": "gst_5"
+            },
+            {
+              "label": "GST@18%",
+              "key": "gst_18"
+            },
+            {
+              "label": "GST@3%",
+              "key": "gst_3"
+            },
+            {
+              "label": "Total Tax Amount",
+              "key": "total_tax_amount"
+            }
+          ]
+        },
+        {
+          "label": "Delivery",
+          "metrics": [
+            {
+              "label": "Delivery Net Amount",
+              "key": "delivery_net_amount"
+            },
+            {
+              "label": "Delivery MTD Amount",
+              "key": "delivery_mtd_amount"
+            },
+            {
+              "label": "Delivery Taxes",
+              "key": "delivery_taxes"
+            },
+            {
+              "label": "Delivery Total Tax Amount",
+              "key": "delivery_total_tax_amount"
+            }
+          ]
+        },
+        {
+          "label": "Takeout",
+          "metrics": [
+            {
+              "label": "Takeout Net Amount",
+              "key": "takeout_net_amount"
+            },
+            {
+              "label": "Takeout MTD Amount",
+              "key": "takeout_mtd_amount"
+            },
+            {
+              "label": "Takeout Taxes",
+              "key": "takeout_taxes"
+            },
+            {
+              "label": "Takeout GST@5%",
+              "key": "takeout_gst_5"
+            },
+            {
+              "label": "Takeout GST@18%",
+              "key": "takeout_gst_18"
+            },
+            {
+              "label": "Takeout Total Tax Amount",
+              "key": "takeout_total_tax_amount"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

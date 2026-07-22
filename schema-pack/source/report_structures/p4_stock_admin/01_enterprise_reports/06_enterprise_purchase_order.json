@@ -1,0 +1,290 @@
+{
+  "report_id": "report:p4_stock_admin:01_enterprise_reports:06_enterprise_purchase_order",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "The enterprise PO schema is captured, but the ABNAH UAT result was empty. It is retained for comparison only; the operational Purchase Order report is the planned authority unless populated evidence proves otherwise.",
+  "data_points": [
+    {
+      "key": "deployment",
+      "label": "Deployment",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "store_name",
+      "label": "Store Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "vendor_name",
+      "label": "Vendor Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "po_number",
+      "label": "PO Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "pr_number",
+      "label": "PR Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "pr_deployment",
+      "label": "PR Deployment",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "po_date",
+      "label": "PO Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "expected_delivery",
+      "label": "Expected Delivery",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "po_close_date_partial_recieve_date",
+      "label": "PO Close Date/Partial Recieve Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "po_status",
+      "label": "PO Status",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "item_code",
+      "label": "Item Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "item_brand",
+      "label": "Item Brand",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "category_name",
+      "label": "Category Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "super_category_name",
+      "label": "Super Category Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "comment",
+      "label": "Comment",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "total_processed_qty",
+      "label": "Total Processed Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "remaining_balance_qty",
+      "label": "Remaining Balance Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "quantity",
+      "label": "Quantity",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "unit",
+      "label": "Unit",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "unit_price",
+      "label": "Unit Price",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "subtotal",
+      "label": "Subtotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "item_wise_discount_amount",
+      "label": "Item Wise Discount Amount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "bill_wise_discount_amount",
+      "label": "Bill Wise Discount Amount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "new_subtotal",
+      "label": "New Subtotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "tax",
+      "label": "Tax",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_item_cost",
+      "label": "Total Item Cost",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Enterprise purchase order lines",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Deployment",
+          "key": "deployment"
+        },
+        {
+          "label": "Store Name",
+          "key": "store_name"
+        },
+        {
+          "label": "Vendor Name",
+          "key": "vendor_name"
+        },
+        {
+          "label": "PO Number",
+          "key": "po_number"
+        },
+        {
+          "label": "PR Number",
+          "key": "pr_number"
+        },
+        {
+          "label": "PR Deployment",
+          "key": "pr_deployment"
+        },
+        {
+          "label": "PO Date",
+          "key": "po_date"
+        },
+        {
+          "label": "Expected Delivery",
+          "key": "expected_delivery"
+        },
+        {
+          "label": "PO Close Date/Partial Recieve Date",
+          "key": "po_close_date_partial_recieve_date"
+        },
+        {
+          "label": "PO Status",
+          "key": "po_status"
+        },
+        {
+          "label": "Item Code",
+          "key": "item_code"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Item Brand",
+          "key": "item_brand"
+        },
+        {
+          "label": "Category Name",
+          "key": "category_name"
+        },
+        {
+          "label": "Super Category Name",
+          "key": "super_category_name"
+        },
+        {
+          "label": "Comment",
+          "key": "comment"
+        },
+        {
+          "label": "Total Processed Qty",
+          "key": "total_processed_qty"
+        },
+        {
+          "label": "Remaining Balance Qty",
+          "key": "remaining_balance_qty"
+        },
+        {
+          "label": "Quantity",
+          "key": "quantity"
+        },
+        {
+          "label": "Unit",
+          "key": "unit"
+        },
+        {
+          "label": "Unit Price",
+          "key": "unit_price"
+        },
+        {
+          "label": "Subtotal",
+          "key": "subtotal"
+        },
+        {
+          "label": "Item Wise Discount Amount",
+          "key": "item_wise_discount_amount"
+        },
+        {
+          "label": "Bill Wise Discount Amount",
+          "key": "bill_wise_discount_amount"
+        },
+        {
+          "label": "New Subtotal",
+          "key": "new_subtotal"
+        },
+        {
+          "label": "Tax",
+          "key": "tax"
+        },
+        {
+          "label": "Total Item Cost",
+          "key": "total_item_cost"
+        }
+      ]
+    }
+  ]
+}

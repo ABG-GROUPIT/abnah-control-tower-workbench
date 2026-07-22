@@ -1,0 +1,130 @@
+{
+  "report_id": "report:p2_reports:04_category_item:10_item_incidence_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "data_points": [
+    {
+      "key": "item_code",
+      "label": "Item Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "section",
+      "label": "Section",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "super_category",
+      "label": "Super Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "category",
+      "label": "Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "quantity",
+      "label": "Quantity",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "subtotal",
+      "label": "Subtotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "discount",
+      "label": "Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "net_sales",
+      "label": "Net sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "no_of_bills",
+      "label": "No of bills",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "incidence",
+      "label": "% Incidence",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "item_incidence_report export",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Item Code",
+          "key": "item_code"
+        },
+        {
+          "label": "Section",
+          "key": "section"
+        },
+        {
+          "label": "Super Category",
+          "key": "super_category"
+        },
+        {
+          "label": "Category",
+          "key": "category"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Quantity",
+          "key": "quantity"
+        },
+        {
+          "label": "Subtotal",
+          "key": "subtotal"
+        },
+        {
+          "label": "Discount",
+          "key": "discount"
+        },
+        {
+          "label": "Net sales",
+          "key": "net_sales"
+        },
+        {
+          "label": "No of bills",
+          "key": "no_of_bills"
+        },
+        {
+          "label": "% Incidence",
+          "key": "incidence"
+        }
+      ]
+    }
+  ]
+}

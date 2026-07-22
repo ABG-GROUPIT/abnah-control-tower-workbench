@@ -1,0 +1,60 @@
+{
+  "report_id": "report:p2_reports:04_category_item:12_product_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "data_points": [
+    {
+      "key": "item_number",
+      "label": "Item Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "business_date_dynamic",
+      "label": "Business Date (dynamic)",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "total",
+      "label": "Total",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Product Report export",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Item Number",
+          "key": "item_number"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Business Date (dynamic)",
+          "key": "business_date_dynamic"
+        },
+        {
+          "label": "Total",
+          "key": "total"
+        }
+      ]
+    }
+  ]
+}

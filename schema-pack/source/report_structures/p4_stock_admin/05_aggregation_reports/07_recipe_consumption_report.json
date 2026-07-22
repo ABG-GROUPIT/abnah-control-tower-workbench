@@ -1,0 +1,130 @@
+{
+  "report_id": "report:p4_stock_admin:05_aggregation_reports:07_recipe_consumption_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "data_points": [
+    {
+      "key": "type",
+      "label": "Type",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "item_code",
+      "label": "Item Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "parent_item_quantity",
+      "label": "Parent Item Quantity",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "parent_price_per_unit",
+      "label": "Parent Price Per Unit",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "parent_subtotal",
+      "label": "Parent Subtotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "consumed_quantity",
+      "label": "Consumed Quantity",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "unit",
+      "label": "Unit",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "price_per_unit",
+      "label": "Price Per Unit",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "subtotal",
+      "label": "Subtotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "consumption_source",
+      "label": "Consumption Source",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Recipe Consumption Report export",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Type",
+          "key": "type"
+        },
+        {
+          "label": "Item Code",
+          "key": "item_code"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Parent Item Quantity",
+          "key": "parent_item_quantity"
+        },
+        {
+          "label": "Parent Price Per Unit",
+          "key": "parent_price_per_unit"
+        },
+        {
+          "label": "Parent Subtotal",
+          "key": "parent_subtotal"
+        },
+        {
+          "label": "Consumed Quantity",
+          "key": "consumed_quantity"
+        },
+        {
+          "label": "Unit",
+          "key": "unit"
+        },
+        {
+          "label": "Price Per Unit",
+          "key": "price_per_unit"
+        },
+        {
+          "label": "Subtotal",
+          "key": "subtotal"
+        },
+        {
+          "label": "Consumption Source",
+          "key": "consumption_source"
+        }
+      ]
+    }
+  ]
+}

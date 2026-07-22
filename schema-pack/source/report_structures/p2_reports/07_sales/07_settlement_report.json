@@ -1,0 +1,140 @@
+{
+  "report_id": "report:p2_reports:07_sales:07_settlement_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "data_points": [
+    {
+      "key": "date",
+      "label": "Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "bill_number",
+      "label": "Bill Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "customer_name",
+      "label": "Customer Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "amount",
+      "label": "Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "bank_name",
+      "label": "Bank Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "bank_type",
+      "label": "Bank Type",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "card_number",
+      "label": "Card Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "expiry_date",
+      "label": "Expiry Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "transaction_number",
+      "label": "Transaction Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "manual_edc_reason",
+      "label": "Manual EDC Reason",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "table_number",
+      "label": "Table Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "user",
+      "label": "User",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Settlement Report export",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Date",
+          "key": "date"
+        },
+        {
+          "label": "Bill Number",
+          "key": "bill_number"
+        },
+        {
+          "label": "Customer Name",
+          "key": "customer_name"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        },
+        {
+          "label": "Bank Name",
+          "key": "bank_name"
+        },
+        {
+          "label": "Bank Type",
+          "key": "bank_type"
+        },
+        {
+          "label": "Card Number",
+          "key": "card_number"
+        },
+        {
+          "label": "Expiry Date",
+          "key": "expiry_date"
+        },
+        {
+          "label": "Transaction Number",
+          "key": "transaction_number"
+        },
+        {
+          "label": "Manual EDC Reason",
+          "key": "manual_edc_reason"
+        },
+        {
+          "label": "Table Number",
+          "key": "table_number"
+        },
+        {
+          "label": "User",
+          "key": "user"
+        }
+      ]
+    }
+  ]
+}

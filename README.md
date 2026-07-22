@@ -25,8 +25,10 @@ Do not add screenshots, screenshot paths, client records, credentials, tokens, o
 - 2 unknown P1 Misc placeholders archived instead of being guessed.
 - 34 public Restroworks API candidates packeted; none are ABNAH UAT verified yet.
 - 35 draft control-tower KPI definitions, 0 approved KPIs, and 0 published KPI lineage maps.
+- P2 now has 73 captured schemas, 3 bounded partial schemas, and 79 pending reports.
+- P4 now has 24 captured schemas and 50 pending reports, including all 15 Enterprise reports and four explicit Consumption Report modes.
 - Four business pages recorded: Risk Action Center; Procurement, Vendor & Capital Control; Consumption Variance & Menu Profitability; SCM Descriptive Explorer & Data Quality.
-- P2 collection is user-reported through Daily Sales Summary Report; that checkpoint still awaits schema ingestion.
+- The current P2/P4 schema capture checkpoint is compiled into the website baseline; CSV value and structural-integrity validation remains pending.
 - Inventory and consumption intelligence plus vendor and procurement remain phase-1 priorities.
 
 ## Product Surfaces
@@ -54,9 +56,10 @@ AI agent:
 2. Read `schema-pack/manifest.json`.
 3. Query `schema-pack/generated/workspace_report_catalog.csv` to narrow the report.
 4. Read `docs/LOCAL_AUDIT_PACKET_WORKFLOW.md` before applying a CSV audit packet.
-5. Read `docs/REPORT_CAPTURE_PRIORITY.md` before continuing P2 or P4 discovery.
-6. Open only that report's blueprint or reference chunk.
-7. Never infer a join, selected source, grain, or API capability from a similar label.
+5. Read `docs/SCHEMA_CAPTURE_IMPORT.md` before importing another P2/P4 capture batch.
+6. Read `docs/REPORT_CAPTURE_PRIORITY.md` before continuing P2 or P4 discovery.
+7. Open only that report's blueprint or reference chunk.
+8. Never infer a join, selected source, grain, or API capability from a similar label.
 
 Business reviewer:
 
@@ -98,6 +101,7 @@ Editing in the site does not automatically rewrite source JSON. Export a backup 
 
 ```powershell
 refresh_atlas.bat
+py -3 scripts/import_schema_captures.py --p2 "<P2 README>" --p4 "<P4 README>"
 npm run dev
 npm run data:validate
 npm run typecheck

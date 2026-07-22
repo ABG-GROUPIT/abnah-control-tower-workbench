@@ -1,4 +1,4 @@
-# Source Wise Analysis Report
+# Source Analysis Summary
 
 - Page: `p2_reports`
 - Section: `07_sales`

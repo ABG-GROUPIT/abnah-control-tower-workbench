@@ -1,0 +1,130 @@
+{
+  "report_id": "report:p2_reports:04_category_item:01_item_by_source_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "data_points": [
+    {
+      "key": "item_number",
+      "label": "ITEM Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "item",
+      "label": "ITEM",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "category",
+      "label": "CATEGORY",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "store_name",
+      "label": "STORE NAME",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "sales_channel",
+      "label": "SALES CHANNEL",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "sub_sales_channel",
+      "label": "SUB SALES CHANNEL",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "qty",
+      "label": "QTY",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "rate",
+      "label": "RATE",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "sales",
+      "label": "SALES",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "discount",
+      "label": "DISCOUNT",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "net_sales",
+      "label": "Net Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Item By Source Report export",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "ITEM Number",
+          "key": "item_number"
+        },
+        {
+          "label": "ITEM",
+          "key": "item"
+        },
+        {
+          "label": "CATEGORY",
+          "key": "category"
+        },
+        {
+          "label": "STORE NAME",
+          "key": "store_name"
+        },
+        {
+          "label": "SALES CHANNEL",
+          "key": "sales_channel"
+        },
+        {
+          "label": "SUB SALES CHANNEL",
+          "key": "sub_sales_channel"
+        },
+        {
+          "label": "QTY",
+          "key": "qty"
+        },
+        {
+          "label": "RATE",
+          "key": "rate"
+        },
+        {
+          "label": "SALES",
+          "key": "sales"
+        },
+        {
+          "label": "DISCOUNT",
+          "key": "discount"
+        },
+        {
+          "label": "Net Sales",
+          "key": "net_sales"
+        }
+      ]
+    }
+  ]
+}

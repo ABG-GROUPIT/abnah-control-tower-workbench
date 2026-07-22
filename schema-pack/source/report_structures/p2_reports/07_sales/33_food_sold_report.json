@@ -1,0 +1,280 @@
+{
+  "report_id": "report:p2_reports:07_sales:33_food_sold_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "data_points": [
+    {
+      "key": "store_name",
+      "label": "Store Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "date",
+      "label": "Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "bill_number",
+      "label": "Bill Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "tab_type",
+      "label": "Tab Type",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "source",
+      "label": "Source",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "customer_name",
+      "label": "Customer Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "customer_number",
+      "label": "Customer Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "super_category",
+      "label": "Super Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "category",
+      "label": "Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "sac_hsn_number",
+      "label": "SAC/HSN Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "sku_code_item_number",
+      "label": "SKU Code / Item Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "sku_item_name",
+      "label": "SKU / Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "item_rate",
+      "label": "Item Rate",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "item_qty",
+      "label": "Item Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "item_subtotal",
+      "label": "Item Subtotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "offer",
+      "label": "Offer",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "discount_amount",
+      "label": "Discount Amount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "complimentary_amount",
+      "label": "Complimentary Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_discount",
+      "label": "Total Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "net_sale_value",
+      "label": "Net Sale Value",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "tax_amount",
+      "label": "Tax Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gross_sale_value",
+      "label": "Gross Sale Value",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "purchase_rate",
+      "label": "Purchase Rate",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "purchase_value",
+      "label": "Purchase Value",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "net_margin",
+      "label": "Net Margin%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gross_margin",
+      "label": "Gross Margin%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Gross/Net Margin Report export",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Store Name",
+          "key": "store_name"
+        },
+        {
+          "label": "Date",
+          "key": "date"
+        },
+        {
+          "label": "Bill Number",
+          "key": "bill_number"
+        },
+        {
+          "label": "Tab Type",
+          "key": "tab_type"
+        },
+        {
+          "label": "Source",
+          "key": "source"
+        },
+        {
+          "label": "Customer Name",
+          "key": "customer_name"
+        },
+        {
+          "label": "Customer Number",
+          "key": "customer_number"
+        },
+        {
+          "label": "Super Category",
+          "key": "super_category"
+        },
+        {
+          "label": "Category",
+          "key": "category"
+        },
+        {
+          "label": "SAC/HSN Number",
+          "key": "sac_hsn_number"
+        },
+        {
+          "label": "SKU Code / Item Number",
+          "key": "sku_code_item_number"
+        },
+        {
+          "label": "SKU / Item Name",
+          "key": "sku_item_name"
+        },
+        {
+          "label": "Item Rate",
+          "key": "item_rate"
+        },
+        {
+          "label": "Item Qty",
+          "key": "item_qty"
+        },
+        {
+          "label": "Item Subtotal",
+          "key": "item_subtotal"
+        },
+        {
+          "label": "Offer",
+          "key": "offer"
+        },
+        {
+          "label": "Discount Amount",
+          "key": "discount_amount"
+        },
+        {
+          "label": "Complimentary Amount",
+          "key": "complimentary_amount"
+        },
+        {
+          "label": "Total Discount",
+          "key": "total_discount"
+        },
+        {
+          "label": "Net Sale Value",
+          "key": "net_sale_value"
+        },
+        {
+          "label": "Tax Amount",
+          "key": "tax_amount"
+        },
+        {
+          "label": "Gross Sale Value",
+          "key": "gross_sale_value"
+        },
+        {
+          "label": "Purchase Rate",
+          "key": "purchase_rate"
+        },
+        {
+          "label": "Purchase Value",
+          "key": "purchase_value"
+        },
+        {
+          "label": "Net Margin%",
+          "key": "net_margin"
+        },
+        {
+          "label": "Gross Margin%",
+          "key": "gross_margin"
+        }
+      ]
+    }
+  ]
+}

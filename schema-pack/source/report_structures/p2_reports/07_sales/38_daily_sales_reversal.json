@@ -1,0 +1,124 @@
+{
+  "report_id": "report:p2_reports:07_sales:38_daily_sales_reversal",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "matrix",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "The source screen is Daily Sales Revenue despite the legacy catalogue label. Rows cover sales, covers, bills, cover turn, APC, APT, and contribution; the selected business date is a dynamic value column.",
+  "data_points": [
+    {
+      "key": "particulars",
+      "label": "Particulars",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "session",
+      "label": "Session",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "section",
+      "label": "Section",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "business_date_value",
+      "label": "Business Date (dynamic)",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "total",
+      "label": "Total",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "business_date",
+      "label": "Business Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "sales",
+      "label": "Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "covers",
+      "label": "Covers",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "bills",
+      "label": "Bills",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "covers_turn",
+      "label": "Covers Turn",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "apc",
+      "label": "APC",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "apt",
+      "label": "APT",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "contribution",
+      "label": "Contribution",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "contribution_percent",
+      "label": "Contribution %",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Daily sales revenue",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Particulars",
+          "key": "particulars"
+        },
+        {
+          "label": "Session",
+          "key": "session"
+        },
+        {
+          "label": "Section",
+          "key": "section"
+        },
+        {
+          "label": "Business Date (dynamic)",
+          "key": "business_date_value"
+        },
+        {
+          "label": "Total",
+          "key": "total"
+        }
+      ]
+    }
+  ]
+}

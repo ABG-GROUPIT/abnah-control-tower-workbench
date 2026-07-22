@@ -1,0 +1,330 @@
+{
+  "report_id": "report:p2_reports:07_sales:09_payments_breakup_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Taxable values, tax amounts, payments, and advance types are separate merged-header groups.",
+  "data_points": [
+    {
+      "key": "bill_number",
+      "label": "Bill Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "bill_date",
+      "label": "Bill Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "table_number",
+      "label": "Table Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "covers",
+      "label": "Covers",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "sales_subtotal",
+      "label": "Sales Subtotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "discount",
+      "label": "Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "gst_5_sales",
+      "label": "GST@5% Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_3_sales",
+      "label": "GST@3% Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_18_sales",
+      "label": "GST@18% Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_taxable_sales",
+      "label": "Total Taxable Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_5_amount",
+      "label": "GST@5% Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_3_amount",
+      "label": "GST@3% Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_18_amount",
+      "label": "GST@18% Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_tax",
+      "label": "Total Tax",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "non_taxable_sales",
+      "label": "Non Taxable Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "net_sales",
+      "label": "Net Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gross_sales",
+      "label": "Gross Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "round_off",
+      "label": "Round Off",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "grand_total",
+      "label": "Grand Total",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "payment_cash",
+      "label": "Payment Cash",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "payment_debit_card",
+      "label": "Payment Debitcard",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "payment_credit_card",
+      "label": "Payment Creditcard",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "payment_other",
+      "label": "Payment Other",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "payment_coupon",
+      "label": "Payment Coupon",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "payment_btc",
+      "label": "Payment BTC",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "payment_smart_card",
+      "label": "Payment Smartcard",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "advance_cash",
+      "label": "Advance Cash",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "advance_credit_card",
+      "label": "Advance Credit Card",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "advance_debit_card",
+      "label": "Advance Debit Card",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Payment and tax breakup",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "Bill Number",
+          "key": "bill_number"
+        },
+        {
+          "label": "Bill Date",
+          "key": "bill_date"
+        },
+        {
+          "label": "Table Number",
+          "key": "table_number"
+        },
+        {
+          "label": "Covers",
+          "key": "covers"
+        },
+        {
+          "label": "Sales Subtotal",
+          "key": "sales_subtotal"
+        },
+        {
+          "label": "Discount",
+          "key": "discount"
+        },
+        {
+          "label": "Taxable Value",
+          "children": [
+            {
+              "label": "GST@5% Sales",
+              "key": "gst_5_sales"
+            },
+            {
+              "label": "GST@3% Sales",
+              "key": "gst_3_sales"
+            },
+            {
+              "label": "GST@18% Sales",
+              "key": "gst_18_sales"
+            }
+          ]
+        },
+        {
+          "label": "Total Taxable Sales",
+          "key": "total_taxable_sales"
+        },
+        {
+          "label": "Tax Value",
+          "children": [
+            {
+              "label": "GST@5% Amount",
+              "key": "gst_5_amount"
+            },
+            {
+              "label": "GST@3% Amount",
+              "key": "gst_3_amount"
+            },
+            {
+              "label": "GST@18% Amount",
+              "key": "gst_18_amount"
+            }
+          ]
+        },
+        {
+          "label": "Total Tax",
+          "key": "total_tax"
+        },
+        {
+          "label": "Non Taxable Sales",
+          "key": "non_taxable_sales"
+        },
+        {
+          "label": "Net Sales",
+          "key": "net_sales"
+        },
+        {
+          "label": "Gross Sales",
+          "key": "gross_sales"
+        },
+        {
+          "label": "Round Off",
+          "key": "round_off"
+        },
+        {
+          "label": "Grand Total",
+          "key": "grand_total"
+        },
+        {
+          "label": "Payments",
+          "children": [
+            {
+              "label": "Payment Cash",
+              "key": "payment_cash"
+            },
+            {
+              "label": "Payment Debitcard",
+              "key": "payment_debit_card"
+            },
+            {
+              "label": "Payment Creditcard",
+              "key": "payment_credit_card"
+            },
+            {
+              "label": "Payment Other",
+              "key": "payment_other"
+            },
+            {
+              "label": "Payment Coupon",
+              "key": "payment_coupon"
+            },
+            {
+              "label": "Payment BTC",
+              "key": "payment_btc"
+            },
+            {
+              "label": "Payment Smartcard",
+              "key": "payment_smart_card"
+            }
+          ]
+        },
+        {
+          "label": "Types Of Advances",
+          "children": [
+            {
+              "label": "Advance Cash",
+              "key": "advance_cash"
+            },
+            {
+              "label": "Advance Credit Card",
+              "key": "advance_credit_card"
+            },
+            {
+              "label": "Advance Debit Card",
+              "key": "advance_debit_card"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

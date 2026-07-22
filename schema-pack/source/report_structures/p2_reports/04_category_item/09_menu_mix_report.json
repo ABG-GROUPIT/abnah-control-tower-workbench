@@ -1,0 +1,166 @@
+{
+  "report_id": "report:p2_reports:04_category_item:09_menu_mix_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_rows",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Item rows are grouped by super category and category with subtotal rows.",
+  "data_points": [
+    {
+      "key": "super_category",
+      "label": "Super Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "number",
+      "label": "Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "comp_qty",
+      "label": "Comp Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "noncomp_qty",
+      "label": "Noncomp Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "number_sold",
+      "label": "Number Sold",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "price_sold",
+      "label": "Price Sold",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "amount",
+      "label": "Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "comp_amount",
+      "label": "Comp Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "discount_amount",
+      "label": "Discount Amount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "total_discount",
+      "label": "Total Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "net_sales",
+      "label": "Net Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "of_sales",
+      "label": "% Of Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "of_super_category",
+      "label": "% Of Super Category",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "category",
+      "label": "Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Menu mix",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Super Category",
+          "key": "super_category"
+        },
+        {
+          "label": "Number",
+          "key": "number"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Comp Qty",
+          "key": "comp_qty"
+        },
+        {
+          "label": "Noncomp Qty",
+          "key": "noncomp_qty"
+        },
+        {
+          "label": "Number Sold",
+          "key": "number_sold"
+        },
+        {
+          "label": "Price Sold",
+          "key": "price_sold"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        },
+        {
+          "label": "Comp Amount",
+          "key": "comp_amount"
+        },
+        {
+          "label": "Discount Amount",
+          "key": "discount_amount"
+        },
+        {
+          "label": "Total Discount",
+          "key": "total_discount"
+        },
+        {
+          "label": "Net Sales",
+          "key": "net_sales"
+        },
+        {
+          "label": "% Of Sales",
+          "key": "of_sales"
+        },
+        {
+          "label": "% Of Super Category",
+          "key": "of_super_category"
+        }
+      ]
+    }
+  ]
+}

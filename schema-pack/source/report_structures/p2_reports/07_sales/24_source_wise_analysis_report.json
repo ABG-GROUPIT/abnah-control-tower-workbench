@@ -1,0 +1,477 @@
+{
+  "report_id": "report:p2_reports:07_sales:24_source_wise_analysis_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "mixed",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "The visible report is a deployment/date summary with POS and total-sale groups. The export also exposes a richer source-order and item-level detail schema; both grains are retained separately.",
+  "data_points": [
+    {
+      "key": "deployment",
+      "label": "Deployment",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "date",
+      "label": "Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "net_sales",
+      "label": "Net Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "orders",
+      "label": "Orders",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "cancel_orders",
+      "label": "Cancel Orders",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "vs_total_sales",
+      "label": "% Vs Total Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "overall_total_sale",
+      "label": "Total Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "overall_total_order",
+      "label": "Total Order",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "brand",
+      "label": "Brand",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "format",
+      "label": "Format",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "cluster",
+      "label": "Cluster",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "deployment_name",
+      "label": "Deployment Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "state",
+      "label": "State",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "city",
+      "label": "City",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "tab_name",
+      "label": "Tab Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "source_order_no",
+      "label": "Source Order No.",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "source_order_date",
+      "label": "Source Order Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "invoice_number",
+      "label": "Invoice Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "invoice_date",
+      "label": "Invoice Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "source",
+      "label": "Source",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "section",
+      "label": "Section",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "super_category",
+      "label": "Super Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "category",
+      "label": "Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "quantity",
+      "label": "Quantity",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "hsn_sac_code",
+      "label": "HSN/SAC Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "rate",
+      "label": "Rate",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "amount",
+      "label": "Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "discount",
+      "label": "Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "net_amount",
+      "label": "Net Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total",
+      "label": "Total",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "status",
+      "label": "Status",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "payment_via",
+      "label": "Payment Via",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "delivered_via",
+      "label": "Delivered Via",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "order_time",
+      "label": "Order Time",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "source_sync_time",
+      "label": "Source Sync Time",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "accept_time",
+      "label": "Accept Time",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "reject_time",
+      "label": "Reject Time",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "mark_food_ready_time",
+      "label": "Mark Food Ready Time",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "food_preparation_time",
+      "label": "Food Preparation Time",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "bill_print_time",
+      "label": "Bill Print Time",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "dispatch_time",
+      "label": "Dispatch Time",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "delivered_time",
+      "label": "Delivered Time",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "settle_time",
+      "label": "Settle Time",
+      "semantic_role": "time",
+      "data_type": "time"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "summary",
+      "name": "Source analysis summary",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "Deployment",
+          "key": "deployment"
+        },
+        {
+          "label": "Date",
+          "key": "date"
+        },
+        {
+          "label": "POS",
+          "children": [
+            {
+              "label": "Net Sales",
+              "key": "net_sales"
+            },
+            {
+              "label": "Orders",
+              "key": "orders"
+            },
+            {
+              "label": "Cancel Orders",
+              "key": "cancel_orders"
+            },
+            {
+              "label": "% Vs Total Sales",
+              "key": "vs_total_sales"
+            }
+          ]
+        },
+        {
+          "label": "Total Sale",
+          "children": [
+            {
+              "label": "Total Sale",
+              "key": "overall_total_sale"
+            },
+            {
+              "label": "Total Order",
+              "key": "overall_total_order"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail_export",
+      "name": "Source-wise detailed export",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Brand",
+          "key": "brand"
+        },
+        {
+          "label": "Format",
+          "key": "format"
+        },
+        {
+          "label": "Cluster",
+          "key": "cluster"
+        },
+        {
+          "label": "Deployment Name",
+          "key": "deployment_name"
+        },
+        {
+          "label": "State",
+          "key": "state"
+        },
+        {
+          "label": "City",
+          "key": "city"
+        },
+        {
+          "label": "Tab Name",
+          "key": "tab_name"
+        },
+        {
+          "label": "Source Order No.",
+          "key": "source_order_no"
+        },
+        {
+          "label": "Source Order Date",
+          "key": "source_order_date"
+        },
+        {
+          "label": "Invoice Number",
+          "key": "invoice_number"
+        },
+        {
+          "label": "Invoice Date",
+          "key": "invoice_date"
+        },
+        {
+          "label": "Source",
+          "key": "source"
+        },
+        {
+          "label": "Section",
+          "key": "section"
+        },
+        {
+          "label": "Super Category",
+          "key": "super_category"
+        },
+        {
+          "label": "Category",
+          "key": "category"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Quantity",
+          "key": "quantity"
+        },
+        {
+          "label": "HSN/SAC Code",
+          "key": "hsn_sac_code"
+        },
+        {
+          "label": "Rate",
+          "key": "rate"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        },
+        {
+          "label": "Discount",
+          "key": "discount"
+        },
+        {
+          "label": "Net Amount",
+          "key": "net_amount"
+        },
+        {
+          "label": "Total",
+          "key": "total"
+        },
+        {
+          "label": "Status",
+          "key": "status"
+        },
+        {
+          "label": "Payment Via",
+          "key": "payment_via"
+        },
+        {
+          "label": "Delivered Via",
+          "key": "delivered_via"
+        },
+        {
+          "label": "Order Time",
+          "key": "order_time"
+        },
+        {
+          "label": "Source Sync Time",
+          "key": "source_sync_time"
+        },
+        {
+          "label": "Accept Time",
+          "key": "accept_time"
+        },
+        {
+          "label": "Reject Time",
+          "key": "reject_time"
+        },
+        {
+          "label": "Mark Food Ready Time",
+          "key": "mark_food_ready_time"
+        },
+        {
+          "label": "Food Preparation Time",
+          "key": "food_preparation_time"
+        },
+        {
+          "label": "Bill Print Time",
+          "key": "bill_print_time"
+        },
+        {
+          "label": "Dispatch Time",
+          "key": "dispatch_time"
+        },
+        {
+          "label": "Delivered Time",
+          "key": "delivered_time"
+        },
+        {
+          "label": "Settle Time",
+          "key": "settle_time"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,360 @@
+{
+  "report_id": "report:p4_stock_admin:01_enterprise_reports:11_enterprise_credit_note_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "data_points": [
+    {
+      "key": "deployment_name",
+      "label": "Deployment Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "vendor_code",
+      "label": "Vendor Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "vendor_name",
+      "label": "Vendor Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "po_date",
+      "label": "PO Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "po_number",
+      "label": "PO Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "invoice_date",
+      "label": "Invoice Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "invoice_number",
+      "label": "Invoice Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "grn_date",
+      "label": "GRN Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "grn_number",
+      "label": "GRN Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "hsn_code",
+      "label": "HSN Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "item_category",
+      "label": "Item Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "item_code",
+      "label": "Item Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "bill_passing_qty",
+      "label": "Bill Passing Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "bill_passing_uom",
+      "label": "Bill Passing UOM",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "bill_passing_unit_cost",
+      "label": "Bill Passing Unit Cost",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "bill_passing_subtotal",
+      "label": "Bill Passing Subtotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "bill_passing_discount",
+      "label": "Bill Passing Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "bill_passing_nettotal",
+      "label": "Bill Passing NetTotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "bill_passing_gst",
+      "label": "Bill Passing GST%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "bill_passing_other_tax",
+      "label": "Bill Passing Other Tax%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "bill_passing_gst_amount",
+      "label": "Bill Passing GST Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "bill_passing_other_tax_amount",
+      "label": "Bill Passing Other Tax Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "bill_passing_gross_total",
+      "label": "Bill Passing Gross Total",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "grn_qty",
+      "label": "GRN Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "grn_uom",
+      "label": "GRN UOM",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "grn_unit_cost",
+      "label": "GRN Unit Cost",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "grn_subtoal",
+      "label": "GRN Subtoal",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "grn_discount",
+      "label": "GRN Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "grn_nettotal",
+      "label": "GRN NetTotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "grn_gst_amount",
+      "label": "GRN GST Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "grn_other_tax_amount",
+      "label": "GRN Other Tax Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "grn_gross_total",
+      "label": "GRN Gross Total",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "credit_note_value",
+      "label": "Credit Note Value",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Enterprise Credit Note Report export",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Deployment Name",
+          "key": "deployment_name"
+        },
+        {
+          "label": "Vendor Code",
+          "key": "vendor_code"
+        },
+        {
+          "label": "Vendor Name",
+          "key": "vendor_name"
+        },
+        {
+          "label": "PO Date",
+          "key": "po_date"
+        },
+        {
+          "label": "PO Number",
+          "key": "po_number"
+        },
+        {
+          "label": "Invoice Date",
+          "key": "invoice_date"
+        },
+        {
+          "label": "Invoice Number",
+          "key": "invoice_number"
+        },
+        {
+          "label": "GRN Date",
+          "key": "grn_date"
+        },
+        {
+          "label": "GRN Number",
+          "key": "grn_number"
+        },
+        {
+          "label": "HSN Code",
+          "key": "hsn_code"
+        },
+        {
+          "label": "Item Category",
+          "key": "item_category"
+        },
+        {
+          "label": "Item Code",
+          "key": "item_code"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Bill Passing Qty",
+          "key": "bill_passing_qty"
+        },
+        {
+          "label": "Bill Passing UOM",
+          "key": "bill_passing_uom"
+        },
+        {
+          "label": "Bill Passing Unit Cost",
+          "key": "bill_passing_unit_cost"
+        },
+        {
+          "label": "Bill Passing Subtotal",
+          "key": "bill_passing_subtotal"
+        },
+        {
+          "label": "Bill Passing Discount",
+          "key": "bill_passing_discount"
+        },
+        {
+          "label": "Bill Passing NetTotal",
+          "key": "bill_passing_nettotal"
+        },
+        {
+          "label": "Bill Passing GST%",
+          "key": "bill_passing_gst"
+        },
+        {
+          "label": "Bill Passing Other Tax%",
+          "key": "bill_passing_other_tax"
+        },
+        {
+          "label": "Bill Passing GST Amount",
+          "key": "bill_passing_gst_amount"
+        },
+        {
+          "label": "Bill Passing Other Tax Amount",
+          "key": "bill_passing_other_tax_amount"
+        },
+        {
+          "label": "Bill Passing Gross Total",
+          "key": "bill_passing_gross_total"
+        },
+        {
+          "label": "GRN Qty",
+          "key": "grn_qty"
+        },
+        {
+          "label": "GRN UOM",
+          "key": "grn_uom"
+        },
+        {
+          "label": "GRN Unit Cost",
+          "key": "grn_unit_cost"
+        },
+        {
+          "label": "GRN Subtoal",
+          "key": "grn_subtoal"
+        },
+        {
+          "label": "GRN Discount",
+          "key": "grn_discount"
+        },
+        {
+          "label": "GRN NetTotal",
+          "key": "grn_nettotal"
+        },
+        {
+          "label": "GRN GST Amount",
+          "key": "grn_gst_amount"
+        },
+        {
+          "label": "GRN Other Tax Amount",
+          "key": "grn_other_tax_amount"
+        },
+        {
+          "label": "GRN Gross Total",
+          "key": "grn_gross_total"
+        },
+        {
+          "label": "Credit Note Value",
+          "key": "credit_note_value"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "report_id": "report:p4_stock_admin:01_enterprise_reports:01_enterprise_entry",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "data_points": [
+    {
+      "key": "deployment_name",
+      "label": "Deployment Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "store_kitchen_name",
+      "label": "Store/Kitchen Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "user_name",
+      "label": "User Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "date",
+      "label": "Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "transaction_number",
+      "label": "Transaction Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "item_code",
+      "label": "Item Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "item_brand",
+      "label": "Item Brand",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "category_name",
+      "label": "Category Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "super_category_name",
+      "label": "Super Category Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "comment",
+      "label": "Comment",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "quantity",
+      "label": "Quantity",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "unit",
+      "label": "Unit",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "unit_price",
+      "label": "Unit Price",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "amount",
+      "label": "Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "source",
+      "label": "Source",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Enterprise Entry export",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Deployment Name",
+          "key": "deployment_name"
+        },
+        {
+          "label": "Store/Kitchen Name",
+          "key": "store_kitchen_name"
+        },
+        {
+          "label": "User Name",
+          "key": "user_name"
+        },
+        {
+          "label": "Date",
+          "key": "date"
+        },
+        {
+          "label": "Transaction Number",
+          "key": "transaction_number"
+        },
+        {
+          "label": "Item Code",
+          "key": "item_code"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Item Brand",
+          "key": "item_brand"
+        },
+        {
+          "label": "Category Name",
+          "key": "category_name"
+        },
+        {
+          "label": "Super Category Name",
+          "key": "super_category_name"
+        },
+        {
+          "label": "Comment",
+          "key": "comment"
+        },
+        {
+          "label": "Quantity",
+          "key": "quantity"
+        },
+        {
+          "label": "Unit",
+          "key": "unit"
+        },
+        {
+          "label": "Unit Price",
+          "key": "unit_price"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        },
+        {
+          "label": "Source",
+          "key": "source"
+        }
+      ]
+    }
+  ]
+}

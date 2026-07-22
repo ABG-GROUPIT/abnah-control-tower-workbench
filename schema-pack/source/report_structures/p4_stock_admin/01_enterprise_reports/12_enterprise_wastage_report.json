@@ -1,0 +1,297 @@
+{
+  "report_id": "report:p4_stock_admin:01_enterprise_reports:12_enterprise_wastage_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "mixed",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Normal wastage is item-level with paired quantity and amount groups; Master wastage is a separate higher-level summary mode.",
+  "data_points": [
+    {
+      "key": "deployment_name",
+      "label": "Deployment Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "store_kitchen_name",
+      "label": "Store Kitchen Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "item_code",
+      "label": "Item Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "category_name",
+      "label": "Category Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "super_category_name",
+      "label": "Super Category Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "unit",
+      "label": "Unit",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "average_price",
+      "label": "Average Price",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "stock_wastage_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "stock_wastage_amount",
+      "label": "Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "consumption_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "consumption_amount",
+      "label": "Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "billing_wastage_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "billing_wastage_amount",
+      "label": "Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "total_wastage_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "total_wastage_amount",
+      "label": "Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "percentage_wastage",
+      "label": "Percentage Wastage",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "deployment",
+      "label": "Deployment",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "store_kitchen",
+      "label": "Store/Kitchen",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "category",
+      "label": "Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "opening",
+      "label": "Opening",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "stock_in",
+      "label": "Stock In",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "total_stock",
+      "label": "Total Stock",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "wastage",
+      "label": "Wastage",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "wastage_percentage",
+      "label": "Wastage Percentage",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "normal",
+      "name": "Normal wastage",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "Deployment Name",
+          "key": "deployment_name"
+        },
+        {
+          "label": "Store Kitchen Name",
+          "key": "store_kitchen_name"
+        },
+        {
+          "label": "Item Code",
+          "key": "item_code"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Category Name",
+          "key": "category_name"
+        },
+        {
+          "label": "Super Category Name",
+          "key": "super_category_name"
+        },
+        {
+          "label": "Unit",
+          "key": "unit"
+        },
+        {
+          "label": "Average Price",
+          "key": "average_price"
+        },
+        {
+          "label": "Stock Wastage",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "stock_wastage_qty"
+            },
+            {
+              "label": "Amt",
+              "key": "stock_wastage_amount"
+            }
+          ]
+        },
+        {
+          "label": "Consumption",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "consumption_qty"
+            },
+            {
+              "label": "Amt",
+              "key": "consumption_amount"
+            }
+          ]
+        },
+        {
+          "label": "Billing Wastage",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "billing_wastage_qty"
+            },
+            {
+              "label": "Amt",
+              "key": "billing_wastage_amount"
+            }
+          ]
+        },
+        {
+          "label": "Total Wastage",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "total_wastage_qty"
+            },
+            {
+              "label": "Amt",
+              "key": "total_wastage_amount"
+            }
+          ]
+        },
+        {
+          "label": "Percentage Wastage",
+          "key": "percentage_wastage"
+        }
+      ]
+    },
+    {
+      "id": "master",
+      "name": "Master wastage",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Deployment",
+          "key": "deployment"
+        },
+        {
+          "label": "Store/Kitchen",
+          "key": "store_kitchen"
+        },
+        {
+          "label": "Category",
+          "key": "category"
+        },
+        {
+          "label": "Opening",
+          "key": "opening"
+        },
+        {
+          "label": "Stock In",
+          "key": "stock_in"
+        },
+        {
+          "label": "Total Stock",
+          "key": "total_stock"
+        },
+        {
+          "label": "Wastage",
+          "key": "wastage"
+        },
+        {
+          "label": "Wastage Percentage",
+          "key": "wastage_percentage"
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-# Daily Sales Reversal
+# Daily Sales Revenue
 
 - Page: `p2_reports`
 - Section: `07_sales`

@@ -1,0 +1,217 @@
+{
+  "report_id": "report:p2_reports:07_sales:05_category_wise_sales_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "matrix",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Each business date contains category, charge, collection, and reconciliation rows across the same sales measures.",
+  "data_points": [
+    {
+      "key": "business_date",
+      "label": "Business Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "category_member",
+      "label": "Category member",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "category_total",
+      "label": "Category total",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "charge_member",
+      "label": "Charge member",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "total_charges",
+      "label": "Total Charges",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "payment_mode_member",
+      "label": "Payment mode member",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "total_collection",
+      "label": "Total Collection",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "check",
+      "label": "Check",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "total_sales",
+      "label": "Total Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "service_charge",
+      "label": "Service Charge",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "discount",
+      "label": "Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "gst_5",
+      "label": "GST@5%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_18",
+      "label": "GST@18%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_3",
+      "label": "GST@3%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gross_sales",
+      "label": "Gross Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "net_sales",
+      "label": "Net Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "net_sales_with_charges",
+      "label": "Net Sales With Charges",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "complimentary",
+      "label": "Complimentary",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Category-wise sales and collection",
+      "kind": "matrix",
+      "row_headers": [
+        "Section",
+        "Metric"
+      ],
+      "value_columns": [
+        {
+          "label": "Total Sales",
+          "key": "total_sales"
+        },
+        {
+          "label": "Service Charge",
+          "key": "service_charge"
+        },
+        {
+          "label": "Discount",
+          "key": "discount"
+        },
+        {
+          "label": "GST@5%",
+          "key": "gst_5"
+        },
+        {
+          "label": "GST@18%",
+          "key": "gst_18"
+        },
+        {
+          "label": "GST@3%",
+          "key": "gst_3"
+        },
+        {
+          "label": "Gross Sales",
+          "key": "gross_sales"
+        },
+        {
+          "label": "Net Sales",
+          "key": "net_sales"
+        },
+        {
+          "label": "Net Sales With Charges",
+          "key": "net_sales_with_charges"
+        },
+        {
+          "label": "Complimentary",
+          "key": "complimentary"
+        }
+      ],
+      "row_groups": [
+        {
+          "label": "Category sales",
+          "metrics": [
+            {
+              "label": "Category member",
+              "key": "category_member"
+            },
+            {
+              "label": "Category total",
+              "key": "category_total"
+            }
+          ]
+        },
+        {
+          "label": "Charges",
+          "metrics": [
+            {
+              "label": "Charge member",
+              "key": "charge_member"
+            },
+            {
+              "label": "Total Charges",
+              "key": "total_charges"
+            }
+          ]
+        },
+        {
+          "label": "Collections",
+          "metrics": [
+            {
+              "label": "Payment mode member",
+              "key": "payment_mode_member"
+            },
+            {
+              "label": "Total Collection",
+              "key": "total_collection"
+            },
+            {
+              "label": "Check",
+              "key": "check"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "report_id": "report:p4_stock_admin:01_enterprise_reports:13_enterprise_purchase_summary_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "data_points": [
+    {
+      "key": "deploymentname",
+      "label": "DeploymentName",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "vendorcode",
+      "label": "vendorCode",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "vendorname",
+      "label": "vendorName",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "subtotal",
+      "label": "subTotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "discount",
+      "label": "discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "totaltax",
+      "label": "totalTax",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total",
+      "label": "Total",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Enterprise Purchase Summary Report export",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "DeploymentName",
+          "key": "deploymentname"
+        },
+        {
+          "label": "vendorCode",
+          "key": "vendorcode"
+        },
+        {
+          "label": "vendorName",
+          "key": "vendorname"
+        },
+        {
+          "label": "subTotal",
+          "key": "subtotal"
+        },
+        {
+          "label": "discount",
+          "key": "discount"
+        },
+        {
+          "label": "totalTax",
+          "key": "totaltax"
+        },
+        {
+          "label": "Total",
+          "key": "total"
+        }
+      ]
+    }
+  ]
+}

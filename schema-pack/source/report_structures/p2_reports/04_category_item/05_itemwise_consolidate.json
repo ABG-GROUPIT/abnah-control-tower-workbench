@@ -1,0 +1,172 @@
+{
+  "report_id": "report:p2_reports:04_category_item:05_itemwise_consolidate",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_rows",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Rows are grouped by super category and category, with category and super-category total rows.",
+  "data_points": [
+    {
+      "key": "number",
+      "label": "Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "rate",
+      "label": "Rate",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "complimentary",
+      "label": "Complimentary",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "non_complimentary",
+      "label": "Non-Complimentary",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "discount_amount",
+      "label": "Discount Amount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "complimentary_amount",
+      "label": "Complimentary Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_discount",
+      "label": "Total Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "net_amt",
+      "label": "Net Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "total_tax",
+      "label": "Total Tax",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gross_amount",
+      "label": "Gross Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "round_off",
+      "label": "Round Off",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "g_total",
+      "label": "G. Total",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "super_category",
+      "label": "Super Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "category",
+      "label": "Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Consolidated item sales",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Number",
+          "key": "number"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Rate",
+          "key": "rate"
+        },
+        {
+          "label": "Qty",
+          "key": "qty"
+        },
+        {
+          "label": "Complimentary",
+          "key": "complimentary"
+        },
+        {
+          "label": "Non-Complimentary",
+          "key": "non_complimentary"
+        },
+        {
+          "label": "Discount Amount",
+          "key": "discount_amount"
+        },
+        {
+          "label": "Complimentary Amount",
+          "key": "complimentary_amount"
+        },
+        {
+          "label": "Total Discount",
+          "key": "total_discount"
+        },
+        {
+          "label": "Net Amt",
+          "key": "net_amt"
+        },
+        {
+          "label": "Total Tax",
+          "key": "total_tax"
+        },
+        {
+          "label": "Gross Amount",
+          "key": "gross_amount"
+        },
+        {
+          "label": "Round Off",
+          "key": "round_off"
+        },
+        {
+          "label": "G. Total",
+          "key": "g_total"
+        }
+      ]
+    }
+  ]
+}

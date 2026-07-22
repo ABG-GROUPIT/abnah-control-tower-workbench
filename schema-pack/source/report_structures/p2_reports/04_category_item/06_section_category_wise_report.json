@@ -1,0 +1,56 @@
+{
+  "report_id": "report:p2_reports:04_category_item:06_section_category_wise_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_rows",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Category rows are nested under dynamic section headings and include section totals.",
+  "data_points": [
+    {
+      "key": "category",
+      "label": "Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "amount",
+      "label": "Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "quantity",
+      "label": "Quantity",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "section",
+      "label": "Section",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Section and category sales",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Category",
+          "key": "category"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        },
+        {
+          "label": "Quantity",
+          "key": "quantity"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "report_id": "report:p2_reports:07_sales:06_bill_item_detail_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_rows",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Rows are grouped by business date and bill, with a bill-total row after each bill.",
+  "data_points": [
+    {
+      "key": "state",
+      "label": "State",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "deployment",
+      "label": "Deployment",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "order_id",
+      "label": "Order Id",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "bill_number",
+      "label": "Bill Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "day_serial",
+      "label": "Day Serial",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "tab",
+      "label": "Tab",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "table_number",
+      "label": "Table Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "open_time",
+      "label": "Open Time",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "close_time",
+      "label": "Close Time",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "category_name",
+      "label": "Category Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "item_number",
+      "label": "Item Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "item_section",
+      "label": "Item Section",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "item_classification",
+      "label": "Item Classification",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "rate",
+      "label": "Rate",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "amount",
+      "label": "Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "business_date",
+      "label": "Business Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Bill item detail",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "State",
+          "key": "state"
+        },
+        {
+          "label": "Deployment",
+          "key": "deployment"
+        },
+        {
+          "label": "Order Id",
+          "key": "order_id"
+        },
+        {
+          "label": "Bill Number",
+          "key": "bill_number"
+        },
+        {
+          "label": "Day Serial",
+          "key": "day_serial"
+        },
+        {
+          "label": "Tab",
+          "key": "tab"
+        },
+        {
+          "label": "Table Number",
+          "key": "table_number"
+        },
+        {
+          "label": "Open Time",
+          "key": "open_time"
+        },
+        {
+          "label": "Close Time",
+          "key": "close_time"
+        },
+        {
+          "label": "Category Name",
+          "key": "category_name"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Item Number",
+          "key": "item_number"
+        },
+        {
+          "label": "Item Section",
+          "key": "item_section"
+        },
+        {
+          "label": "Item Classification",
+          "key": "item_classification"
+        },
+        {
+          "label": "Rate",
+          "key": "rate"
+        },
+        {
+          "label": "Qty",
+          "key": "qty"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        }
+      ]
+    }
+  ]
+}

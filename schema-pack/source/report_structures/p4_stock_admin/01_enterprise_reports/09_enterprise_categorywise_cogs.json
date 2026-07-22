@@ -1,0 +1,140 @@
+{
+  "report_id": "report:p4_stock_admin:01_enterprise_reports:09_enterprise_categorywise_cogs",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "data_points": [
+    {
+      "key": "deployment",
+      "label": "Deployment",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "super_category",
+      "label": "Super Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "category",
+      "label": "Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "wastage_amount",
+      "label": "Wastage Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "consumption_amount",
+      "label": "Consumption Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "closing_amount",
+      "label": "Closing Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "physical_amount",
+      "label": "Physical Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_sale",
+      "label": "Total Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "actual_cost",
+      "label": "Actual Cost",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "actual_cogs",
+      "label": "Actual COGS",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "ideal_cost",
+      "label": "Ideal Cost",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "ideal_cogs",
+      "label": "Ideal COGS",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Enterprise categorywise cogs export",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Deployment",
+          "key": "deployment"
+        },
+        {
+          "label": "Super Category",
+          "key": "super_category"
+        },
+        {
+          "label": "Category",
+          "key": "category"
+        },
+        {
+          "label": "Wastage Amount",
+          "key": "wastage_amount"
+        },
+        {
+          "label": "Consumption Amount",
+          "key": "consumption_amount"
+        },
+        {
+          "label": "Closing Amount",
+          "key": "closing_amount"
+        },
+        {
+          "label": "Physical Amount",
+          "key": "physical_amount"
+        },
+        {
+          "label": "Total Sale",
+          "key": "total_sale"
+        },
+        {
+          "label": "Actual Cost",
+          "key": "actual_cost"
+        },
+        {
+          "label": "Actual COGS",
+          "key": "actual_cogs"
+        },
+        {
+          "label": "Ideal Cost",
+          "key": "ideal_cost"
+        },
+        {
+          "label": "Ideal COGS",
+          "key": "ideal_cogs"
+        }
+      ]
+    }
+  ]
+}

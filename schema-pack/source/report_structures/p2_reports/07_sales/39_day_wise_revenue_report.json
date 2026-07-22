@@ -1,0 +1,432 @@
+{
+  "report_id": "report:p2_reports:07_sales:39_day_wise_revenue_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "matrix",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Business dates and weekdays are dynamic columns. Revenue rows repeat by session and order channel, followed by APT, transaction, and contribution bands.",
+  "data_points": [
+    {
+      "key": "business_date",
+      "label": "Business Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "dine_in_sale",
+      "label": "Dine In Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "dine_in_consolidated_sale",
+      "label": "Dine In Consolidated Sale",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "dine_in_covers",
+      "label": "Dine In Covers",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "dine_in_bills",
+      "label": "Dine In Bills",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "ecom_sale",
+      "label": "Ecom Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "ecom_consolidated_sale",
+      "label": "Ecom Consolidated Sale",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "ecom_covers",
+      "label": "Ecom Covers",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "ecom_bills",
+      "label": "Ecom Bills",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "online_payment_sales",
+      "label": "Online-Payment Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "online_payment_bills",
+      "label": "Online-Payment Bills",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "qr_code_sale",
+      "label": "QR Code Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "qr_code_consolidated_sale",
+      "label": "QR Code Consolidated Sale",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "qr_code_covers",
+      "label": "QR Code Covers",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "qr_code_bills",
+      "label": "QR Code Bills",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "takeaway_sale",
+      "label": "Takeaway Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "takeaway_consolidated_sale",
+      "label": "Takeaway Consolidated Sale",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "takeaway_covers",
+      "label": "Takeaway Covers",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "takeaway_bills",
+      "label": "Takeaway Bills",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "cover_turns",
+      "label": "Cover Turns",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "na_apt",
+      "label": "NA APT",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "breakfast_apt",
+      "label": "Breakfast APT",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "lunch_apt",
+      "label": "Lunch APT",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "high_tea_apt",
+      "label": "High Tea APT",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "dinner_apt",
+      "label": "Dinner APT",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "extended_hours_apt",
+      "label": "Extended Hours APT",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "total_apt",
+      "label": "Total APT",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "na_transaction",
+      "label": "NA Transaction",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "breakfast_transaction",
+      "label": "Breakfast Transaction",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "lunch_transaction",
+      "label": "Lunch Transaction",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "high_tea_transaction",
+      "label": "High Tea Transaction",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "dinner_transaction",
+      "label": "Dinner Transaction",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "extended_hours_transaction",
+      "label": "Extended Hours Transaction",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "total_transaction",
+      "label": "Total Transaction",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "na_amount",
+      "label": "NA Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "na_count",
+      "label": "NA Count",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "na_to_covers",
+      "label": "NA To Covers",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "contribution",
+      "label": "Contribution %",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "business_date_value",
+      "label": "Business Date (dynamic)",
+      "semantic_role": "date",
+      "data_type": "date"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Day-wise revenue",
+      "kind": "matrix",
+      "row_headers": [
+        "Section",
+        "Metric"
+      ],
+      "value_columns": [
+        {
+          "label": "Business Date (dynamic)",
+          "key": "business_date_value"
+        }
+      ],
+      "row_groups": [
+        {
+          "label": "Session and channel revenue",
+          "metrics": [
+            {
+              "label": "Dine In Sale",
+              "key": "dine_in_sale"
+            },
+            {
+              "label": "Dine In Consolidated Sale",
+              "key": "dine_in_consolidated_sale"
+            },
+            {
+              "label": "Dine In Covers",
+              "key": "dine_in_covers"
+            },
+            {
+              "label": "Dine In Bills",
+              "key": "dine_in_bills"
+            },
+            {
+              "label": "Ecom Sale",
+              "key": "ecom_sale"
+            },
+            {
+              "label": "Ecom Consolidated Sale",
+              "key": "ecom_consolidated_sale"
+            },
+            {
+              "label": "Ecom Covers",
+              "key": "ecom_covers"
+            },
+            {
+              "label": "Ecom Bills",
+              "key": "ecom_bills"
+            },
+            {
+              "label": "Online-Payment Sales",
+              "key": "online_payment_sales"
+            },
+            {
+              "label": "Online-Payment Bills",
+              "key": "online_payment_bills"
+            },
+            {
+              "label": "QR Code Sale",
+              "key": "qr_code_sale"
+            },
+            {
+              "label": "QR Code Consolidated Sale",
+              "key": "qr_code_consolidated_sale"
+            },
+            {
+              "label": "QR Code Covers",
+              "key": "qr_code_covers"
+            },
+            {
+              "label": "QR Code Bills",
+              "key": "qr_code_bills"
+            },
+            {
+              "label": "Takeaway Sale",
+              "key": "takeaway_sale"
+            },
+            {
+              "label": "Takeaway Consolidated Sale",
+              "key": "takeaway_consolidated_sale"
+            },
+            {
+              "label": "Takeaway Covers",
+              "key": "takeaway_covers"
+            },
+            {
+              "label": "Takeaway Bills",
+              "key": "takeaway_bills"
+            },
+            {
+              "label": "Cover Turns",
+              "key": "cover_turns"
+            }
+          ]
+        },
+        {
+          "label": "APT",
+          "metrics": [
+            {
+              "label": "NA APT",
+              "key": "na_apt"
+            },
+            {
+              "label": "Breakfast APT",
+              "key": "breakfast_apt"
+            },
+            {
+              "label": "Lunch APT",
+              "key": "lunch_apt"
+            },
+            {
+              "label": "High Tea APT",
+              "key": "high_tea_apt"
+            },
+            {
+              "label": "Dinner APT",
+              "key": "dinner_apt"
+            },
+            {
+              "label": "Extended Hours APT",
+              "key": "extended_hours_apt"
+            },
+            {
+              "label": "Total APT",
+              "key": "total_apt"
+            }
+          ]
+        },
+        {
+          "label": "Transactions",
+          "metrics": [
+            {
+              "label": "NA Transaction",
+              "key": "na_transaction"
+            },
+            {
+              "label": "Breakfast Transaction",
+              "key": "breakfast_transaction"
+            },
+            {
+              "label": "Lunch Transaction",
+              "key": "lunch_transaction"
+            },
+            {
+              "label": "High Tea Transaction",
+              "key": "high_tea_transaction"
+            },
+            {
+              "label": "Dinner Transaction",
+              "key": "dinner_transaction"
+            },
+            {
+              "label": "Extended Hours Transaction",
+              "key": "extended_hours_transaction"
+            },
+            {
+              "label": "Total Transaction",
+              "key": "total_transaction"
+            }
+          ]
+        },
+        {
+          "label": "Contribution",
+          "metrics": [
+            {
+              "label": "NA Amount",
+              "key": "na_amount"
+            },
+            {
+              "label": "NA Count",
+              "key": "na_count"
+            },
+            {
+              "label": "NA To Covers",
+              "key": "na_to_covers"
+            },
+            {
+              "label": "Contribution %",
+              "key": "contribution"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

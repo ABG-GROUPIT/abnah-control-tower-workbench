@@ -18,10 +18,10 @@ P1_COMPLETION_BASELINE = {
     "active_schema_statuses": {"captured": 76, "unavailable": 9},
     "verification_statuses": {"reviewed": 80, "needs_review": 10},
 }
-P2_BATCH_ONE_BASELINE = {
+P2_CAPTURE_BASELINE = {
     "catalog_reports": 155,
-    "schema_statuses": {"captured": 32, "partial": 3, "pending": 120},
-    "verification_statuses": {"reviewed": 35, "needs_review": 120},
+    "schema_statuses": {"captured": 73, "partial": 3, "pending": 79},
+    "verification_statuses": {"reviewed": 76, "needs_review": 79},
     "sections": {
         "01_analytics": {
             "reports": 10,
@@ -38,6 +38,27 @@ P2_BATCH_ONE_BASELINE = {
             "schema_statuses": {"captured": 23, "partial": 2, "pending": 25},
             "verification_statuses": {"reviewed": 25, "needs_review": 25},
         },
+        "04_category_item": {
+            "reports": 18,
+            "schema_statuses": {"captured": 17, "pending": 1},
+            "verification_statuses": {"reviewed": 17, "needs_review": 1},
+        },
+        "07_sales": {
+            "reports": 41,
+            "schema_statuses": {"captured": 24, "pending": 17},
+            "verification_statuses": {"reviewed": 24, "needs_review": 17},
+        },
+    },
+}
+P4_CAPTURE_BASELINE = {
+    "catalog_reports": 74,
+    "schema_statuses": {"captured": 24, "pending": 50},
+    "verification_statuses": {"reviewed": 24, "needs_review": 50},
+    "sections": {
+        "01_enterprise_reports": {"reports": 15, "captured": 15},
+        "02_transactional_reports": {"reports": 10, "captured": 6},
+        "03_po_so_reports": {"reports": 6, "captured": 1},
+        "05_aggregation_reports": {"reports": 7, "captured": 2},
     },
 }
 
@@ -173,24 +194,24 @@ def main() -> int:
     p2_statuses = Counter(report.get("schemaStatus") for report in p2_reports)
     p2_verification_statuses = Counter(report.get("verificationStatus") for report in p2_reports)
 
-    if len(p2_reports) != P2_BATCH_ONE_BASELINE["catalog_reports"]:
+    if len(p2_reports) != P2_CAPTURE_BASELINE["catalog_reports"]:
         errors.append(
             "P2 catalogue count changed: "
-            f"expected {P2_BATCH_ONE_BASELINE['catalog_reports']}, found {len(p2_reports)}."
+            f"expected {P2_CAPTURE_BASELINE['catalog_reports']}, found {len(p2_reports)}."
         )
-    if p2_statuses != Counter(P2_BATCH_ONE_BASELINE["schema_statuses"]):
+    if p2_statuses != Counter(P2_CAPTURE_BASELINE["schema_statuses"]):
         errors.append(
             "P2 schema-status baseline changed: "
-            f"expected {P2_BATCH_ONE_BASELINE['schema_statuses']}, found {dict(p2_statuses)}."
+            f"expected {P2_CAPTURE_BASELINE['schema_statuses']}, found {dict(p2_statuses)}."
         )
-    if p2_verification_statuses != Counter(P2_BATCH_ONE_BASELINE["verification_statuses"]):
+    if p2_verification_statuses != Counter(P2_CAPTURE_BASELINE["verification_statuses"]):
         errors.append(
             "P2 verification-status baseline changed: "
-            f"expected {P2_BATCH_ONE_BASELINE['verification_statuses']}, "
+            f"expected {P2_CAPTURE_BASELINE['verification_statuses']}, "
             f"found {dict(p2_verification_statuses)}."
         )
 
-    for section, baseline in P2_BATCH_ONE_BASELINE["sections"].items():
+    for section, baseline in P2_CAPTURE_BASELINE["sections"].items():
         section_reports = [report for report in p2_reports if report.get("section") == section]
         section_statuses = Counter(report.get("schemaStatus") for report in section_reports)
         section_verification_statuses = Counter(
@@ -225,6 +246,60 @@ def main() -> int:
         ):
             errors.append(f"Partial P2 report needs a boundary reason: {report_id}.")
 
+    p4_reports = [report for report in workspace.get("reports", []) if report.get("page") == "p4_stock_admin"]
+    p4_statuses = Counter(report.get("schemaStatus") for report in p4_reports)
+    p4_verification_statuses = Counter(report.get("verificationStatus") for report in p4_reports)
+    if len(p4_reports) != P4_CAPTURE_BASELINE["catalog_reports"]:
+        errors.append(
+            f"P4 catalogue count changed: expected {P4_CAPTURE_BASELINE['catalog_reports']}, "
+            f"found {len(p4_reports)}."
+        )
+    if p4_statuses != Counter(P4_CAPTURE_BASELINE["schema_statuses"]):
+        errors.append(
+            f"P4 schema-status baseline changed: expected {P4_CAPTURE_BASELINE['schema_statuses']}, "
+            f"found {dict(p4_statuses)}."
+        )
+    if p4_verification_statuses != Counter(P4_CAPTURE_BASELINE["verification_statuses"]):
+        errors.append(
+            "P4 verification-status baseline changed: "
+            f"expected {P4_CAPTURE_BASELINE['verification_statuses']}, "
+            f"found {dict(p4_verification_statuses)}."
+        )
+    for section, baseline in P4_CAPTURE_BASELINE["sections"].items():
+        section_reports = [report for report in p4_reports if report.get("section") == section]
+        captured = [report for report in section_reports if report.get("schemaStatus") == "captured"]
+        if len(section_reports) != baseline["reports"] or len(captured) != baseline["captured"]:
+            errors.append(
+                f"P4 {section} baseline changed: expected {baseline}, "
+                f"found reports={len(section_reports)}, captured={len(captured)}."
+            )
+    for report in p4_reports:
+        if report.get("schemaStatus") == "captured" and (
+            not report.get("fields") or not report.get("tables")
+        ):
+            errors.append(f"Captured P4 report has no usable schema: {report.get('id', '')}.")
+
+    report_lookup = {report.get("id", ""): report for report in workspace.get("reports", [])}
+    enterprise_consumption = report_lookup.get(
+        "report:p4_stock_admin:01_enterprise_reports:04_enterprise_consumption", {}
+    )
+    enterprise_keys = {field.get("key") for field in enterprise_consumption.get("fields", [])}
+    required_positional_keys = {
+        "purchase_qty", "purchase_amount", "consumption_qty", "consumption_amount",
+        "closing_qty", "closing_amount", "physical_adjusted_closing_qty",
+        "physical_adjusted_closing_amount",
+    }
+    if not required_positional_keys.issubset(enterprise_keys):
+        errors.append("Enterprise Consumption lost one or more position-aware quantity/amount keys.")
+    consumption_modes = report_lookup.get(
+        "report:p4_stock_admin:05_aggregation_reports:02_consumption_report", {}
+    )
+    if len(consumption_modes.get("tables", [])) != 4:
+        errors.append("Consumption Report must retain four separately modelled report modes.")
+    margin_report = report_lookup.get("report:p2_reports:07_sales:33_food_sold_report", {})
+    if margin_report.get("name") != "Gross/Net Margin Report" or len(margin_report.get("fields", [])) != 26:
+        errors.append("Gross/Net Margin Report alias or 26-field schema is missing.")
+
     if errors:
         print("Workspace validation failed:")
         for error in errors:
@@ -233,7 +308,8 @@ def main() -> int:
 
     print(f"Workspace validation passed: {len(report_ids)} reports.")
     print("P1 completion guard passed: 76 captured, 14 unavailable, 80 reviewed, 0 partial, 0 pending.")
-    print("P2 batch-one guard passed: 32 captured, 3 partial, 35 reviewed, 120 pending.")
+    print("P2 capture guard passed: 73 captured, 3 partial, 76 reviewed, 79 pending.")
+    print("P4 capture guard passed: 24 captured, 24 reviewed, 50 pending.")
     return 0
 
 

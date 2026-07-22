@@ -1,0 +1,250 @@
+{
+  "report_id": "report:p4_stock_admin:01_enterprise_reports:14_enterprise_internal_indent_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "data_points": [
+    {
+      "key": "deploymentname",
+      "label": "DeploymentName",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "indent_number",
+      "label": "Indent Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "indent_status",
+      "label": "Indent Status",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "supplier",
+      "label": "Supplier",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "receiver",
+      "label": "Receiver",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "requested_date",
+      "label": "Requested Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "expected_delivery",
+      "label": "Expected Delivery",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "super_category",
+      "label": "Super Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "category",
+      "label": "Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "itemname",
+      "label": "ItemName",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "unitprice",
+      "label": "UnitPrice",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "unit",
+      "label": "Unit",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "requested_user",
+      "label": "Requested User",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "requested_qty",
+      "label": "Requested Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "requested_subtotal",
+      "label": "Requested Subtotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "supply_date",
+      "label": "Supply Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "supply_user",
+      "label": "Supply User",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "supply_qty",
+      "label": "Supply Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "supply_subtotal",
+      "label": "Supply Subtotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "receive_date",
+      "label": "Receive Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "receive_user",
+      "label": "Receive User",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "receive_qty",
+      "label": "Receive Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "receive_subtotal",
+      "label": "Receive Subtotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Enterprise Internal Indent Report export",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "DeploymentName",
+          "key": "deploymentname"
+        },
+        {
+          "label": "Indent Number",
+          "key": "indent_number"
+        },
+        {
+          "label": "Indent Status",
+          "key": "indent_status"
+        },
+        {
+          "label": "Supplier",
+          "key": "supplier"
+        },
+        {
+          "label": "Receiver",
+          "key": "receiver"
+        },
+        {
+          "label": "Requested Date",
+          "key": "requested_date"
+        },
+        {
+          "label": "Expected Delivery",
+          "key": "expected_delivery"
+        },
+        {
+          "label": "Super Category",
+          "key": "super_category"
+        },
+        {
+          "label": "Category",
+          "key": "category"
+        },
+        {
+          "label": "ItemName",
+          "key": "itemname"
+        },
+        {
+          "label": "UnitPrice",
+          "key": "unitprice"
+        },
+        {
+          "label": "Unit",
+          "key": "unit"
+        },
+        {
+          "label": "Requested User",
+          "key": "requested_user"
+        },
+        {
+          "label": "Requested Qty",
+          "key": "requested_qty"
+        },
+        {
+          "label": "Requested Subtotal",
+          "key": "requested_subtotal"
+        },
+        {
+          "label": "Supply Date",
+          "key": "supply_date"
+        },
+        {
+          "label": "Supply User",
+          "key": "supply_user"
+        },
+        {
+          "label": "Supply Qty",
+          "key": "supply_qty"
+        },
+        {
+          "label": "Supply Subtotal",
+          "key": "supply_subtotal"
+        },
+        {
+          "label": "Receive Date",
+          "key": "receive_date"
+        },
+        {
+          "label": "Receive User",
+          "key": "receive_user"
+        },
+        {
+          "label": "Receive Qty",
+          "key": "receive_qty"
+        },
+        {
+          "label": "Receive Subtotal",
+          "key": "receive_subtotal"
+        }
+      ]
+    }
+  ]
+}

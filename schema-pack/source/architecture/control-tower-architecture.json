@@ -32,7 +32,7 @@
       "id": "src_gross_net_margin", "layerId": "source", "groupId": "sales_menu", "kind": "report", "label": "Gross/Net Margin Report",
       "description": "Primary item-level sales and menu-margin source.", "status": "selected_for_validation", "role": "Primary sales and profitability fact", "pages": ["page_1_risk_action_center", "page_3_consumption_menu_profitability", "page_4_scm_explorer_data_quality"],
       "dataPoints": ["Bill and business date", "Outlet", "Menu item", "Quantity", "Discount", "Gross and net sales", "Purchase value", "Gross and net margin"], "inputs": [],
-      "logic": "Keep settled item-level rows; exclude customer name and phone from normalized output.", "alternatives": ["Bill Item Detail supplies timing and classification if a margin attribute is unavailable."], "catalogState": "external_reference"
+      "logic": "Keep settled item-level rows; exclude customer name and phone from normalized output.", "alternatives": ["Bill Item Detail supplies timing and classification if a margin attribute is unavailable."], "reportId": "report:p2_reports:07_sales:33_food_sold_report", "catalogState": "catalogued"
     },
     {
       "id": "src_bill_item_detail", "layerId": "source", "groupId": "sales_menu", "kind": "report", "label": "Bill Item Detail Report",

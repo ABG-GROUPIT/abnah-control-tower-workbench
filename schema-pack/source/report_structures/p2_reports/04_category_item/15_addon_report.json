@@ -1,0 +1,175 @@
+{
+  "report_id": "report:p2_reports:04_category_item:15_addon_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "mixed",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Each parent item is immediately followed by its addon-item table; the two grains must remain separate.",
+  "data_points": [
+    {
+      "key": "item_number",
+      "label": "Item Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "item_quantity",
+      "label": "Item Quantity",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "item_subtotal",
+      "label": "Item Subtotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "item_discount",
+      "label": "Item Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "item_taxes",
+      "label": "Item Taxes",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "cost_incurred",
+      "label": "Cost Incurred",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "profit_per_item",
+      "label": "Profit Per Item",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "addon_number",
+      "label": "Addon Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "addon_name",
+      "label": "Addon Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "addon_quantity",
+      "label": "Addon Quantity",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "addon_subtotal",
+      "label": "Addon Subtotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "addon_discount",
+      "label": "Addon Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "addon_taxes",
+      "label": "Addon Taxes",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "items",
+      "name": "Parent items",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Item Number",
+          "key": "item_number"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Item Quantity",
+          "key": "item_quantity"
+        },
+        {
+          "label": "Item Subtotal",
+          "key": "item_subtotal"
+        },
+        {
+          "label": "Item Discount",
+          "key": "item_discount"
+        },
+        {
+          "label": "Item Taxes",
+          "key": "item_taxes"
+        },
+        {
+          "label": "Cost Incurred",
+          "key": "cost_incurred"
+        },
+        {
+          "label": "Profit Per Item",
+          "key": "profit_per_item"
+        }
+      ]
+    },
+    {
+      "id": "addons",
+      "name": "Addon items",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Addon Number",
+          "key": "addon_number"
+        },
+        {
+          "label": "Addon Name",
+          "key": "addon_name"
+        },
+        {
+          "label": "Addon Quantity",
+          "key": "addon_quantity"
+        },
+        {
+          "label": "Addon Subtotal",
+          "key": "addon_subtotal"
+        },
+        {
+          "label": "Addon Discount",
+          "key": "addon_discount"
+        },
+        {
+          "label": "Addon Taxes",
+          "key": "addon_taxes"
+        },
+        {
+          "label": "Cost Incurred",
+          "key": "cost_incurred"
+        },
+        {
+          "label": "Profit Per Item",
+          "key": "profit_per_item"
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1.0",
-  "generated_at": "2026-07-14T20:59:19+00:00",
+  "generated_at": "2026-07-22T09:58:15+00:00",
   "portable": true,
   "source_inputs": {
     "schema_reference": "external local input; not packaged",
@@ -10,8 +10,8 @@
     {
       "source_name": "report_master_index.csv",
       "snapshot_path": "schema-pack/source/catalog/reports.csv",
-      "sha256": "08232fa795e964c02845ee8d6d5e98725d2d70e7131885147b925755f5af6ded",
-      "bytes": 133190,
+      "sha256": "74d94a044175223c8b9164efefdc2620e7c740fd023adf88adca140d1fedb250",
+      "bytes": 133192,
       "rows": 319,
       "logical_name": "reports"
     },
@@ -112,10 +112,10 @@
       "api_maps_to_model": 19
     },
     "workspace_reports": 319,
-    "structural_blueprints": 111,
+    "structural_blueprints": 176,
+    "draft_kpis": 35,
     "approved_kpis": 0,
     "published_lineage_maps": 0,
-    "draft_kpis": 35,
     "planned_architecture_sources": 23,
     "planned_architecture_model_nodes": 58
   },
@@ -591,6 +591,266 @@
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/50_bts_itemwise_report.json",
       "sha256": "04a8a8d096c9723305a53ece8c05db3535136ddee56511f43f09543495e7ce75"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/04_category_item/01_item_by_source_report.json",
+      "sha256": "a5c229272ff293830fdef1986639a2fdef7c206c0d30699049d08d60170c5d45"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/04_category_item/02_item_wise_enterprise_report.json",
+      "sha256": "7523a2dd18fd1fd7bb7cc2d310070f5ab85695a02b97b81e424ce89300673c8d"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/04_category_item/03_sale_by_item_category.json",
+      "sha256": "1f2a3288852e76d0fbb4c00db84ed10afd51c0c9eb7df80a7d006956624d4fb2"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/04_category_item/04_item_comment_wise_consolidated_rep.json",
+      "sha256": "dda1ba287a596a5f17f306abdf73cd62e9517e0d1189431beaa2f42252837c44"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/04_category_item/05_itemwise_consolidate.json",
+      "sha256": "9653a0e68d7351e420df84202c96e005dadd79d087ad99357109bfd66962ecdc"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/04_category_item/06_section_category_wise_report.json",
+      "sha256": "08caa8b43abd873feec564bc065740ca71980c2151f87bf178308d9c72e6e497"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/04_category_item/07_section_tabwise_sales_report.json",
+      "sha256": "ede0485f4003fd2a64f88f979fb8511c0ecc6aaa4c05083e642625fc1f5d69ca"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/04_category_item/08_itemwise_contribution.json",
+      "sha256": "ecedb11403f1eed027c67a4074a7e701321787d672223bde5f0869242592abda"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/04_category_item/09_menu_mix_report.json",
+      "sha256": "49ae6ea7c455a2d37b6bbcf919012a7a4ebcbfe041b5f57a2c24296ced26b439"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/04_category_item/10_item_incidence_report.json",
+      "sha256": "83d8019dae7f7c015f822b0e2fb47fb917a68444c8fd5adf92bd93ddcceda9ef"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/04_category_item/11_sessionwise_item_sale.json",
+      "sha256": "c22562db8631550b2d03e8c3b5ebfe6e21cf4633001b50a86418b30d5fb614b4"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/04_category_item/12_product_report.json",
+      "sha256": "c38ccff2d5c3208d9b9a3d94bcdc2f4138147cd6d666623b49321510e667e23f"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/04_category_item/13_combo_report.json",
+      "sha256": "1864a4fc6448750ebb567e1aba628ab4e7e2e79212b6afda9ea95bad60596c7b"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/04_category_item/15_addon_report.json",
+      "sha256": "69c07d0ce13aac25c718bae8e84d65cc66c554ed5ec98c8f45364019456fa2b4"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/04_category_item/16_product_price_variation_report.json",
+      "sha256": "baaf678071af2af584113e05fed570592085c4ed1e344e48e48496be60ed5ab3"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/04_category_item/17_hourly_item_detail_billwise_with_s.json",
+      "sha256": "abb366a9170a4fa777bffe2d3ed8844493f388a8ee7989eaff67402edcb67668"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/04_category_item/18_item_stock_status_report.json",
+      "sha256": "d487ae873ffd4ff6ad3bd5040c39b29d79ddc08b24b811b17c6967b34b94187f"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/07_sales/01_payment_details_report.json",
+      "sha256": "564151fe186880dcb7df8bbaf64de6cb57aff2636c4be5fad2eb2afb2c141cb1"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/07_sales/02_payments_breakup_detailed.json",
+      "sha256": "e7ee2e0bb1d1b73993301f7d5bc603e54b3df0a406f4005bc83912a8f9cf39ea"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/07_sales/03_tax_summary_report.json",
+      "sha256": "05f84075df7cd053de7eb21dfbfb7e790b0b90627bfbb64f25fced676616e64d"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/07_sales/04_taxation_sale_report.json",
+      "sha256": "b938bc7b80c11e2852f9f6f35b2aa04d400b5335043bd63a261765336c53f06d"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/07_sales/05_category_wise_sales_report.json",
+      "sha256": "2b4b60df10002c06ea7fc0a8f21718db82769bf951bdf12bfbb99940680e0bed"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/07_sales/06_bill_item_detail_report.json",
+      "sha256": "6f16481592e5da0ee906c49eb79835ad72a526f6717e01d9682a735cf17138f2"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/07_sales/07_settlement_report.json",
+      "sha256": "6dfe9474ee64134639e8dade42403cd3bf92ec63f9a7a229cd179b357dd10972"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/07_sales/09_payments_breakup_report.json",
+      "sha256": "0ae6bf28829ea246c6e392bd7a36842d16eed2be7290ccc077f0989663085a89"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/07_sales/10_btc_settlement_report.json",
+      "sha256": "4e6f4ae48a1fc7fd95d68dcabddd9eab627ef7a1a5a30c91134cb7c241acc633"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/07_sales/11_online_other_payment_detail_report.json",
+      "sha256": "260b82744565445b9b7d6470294b273ffc86f0e7e879b2a8ea2359bd79c43285"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/07_sales/12_online_other_payment_consolidated.json",
+      "sha256": "9b42b3b441125061bc256a8709080b4e3473cfb7250a5e8d8543b615bd45a831"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/07_sales/14_instance_wise_report.json",
+      "sha256": "49262d08f0ed27e3d55238a69deca5ca495f52352bd85b2d481f4cf11d156789"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/07_sales/15_delivery_report.json",
+      "sha256": "f0379f8ffa896baeaf4cd822aa50a7f7ec83813d2ea236d97aeb65ffd0e4bfac"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/07_sales/16_daily_sales_report.json",
+      "sha256": "012383b4fe93eed819d29c03e4f48eec3c121c7725a1929590b6ece5d9edce0f"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/07_sales/17_daily_sales_summary_report.json",
+      "sha256": "4977c5590720d0855ad8f9d261ba5adc31949875497210f259fd7733efe2a808"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/07_sales/18_day_wise_sales_report.json",
+      "sha256": "4f4d46b6a45d6fde8629153ed81a377b570259b621a6bb80e0314db4d1e3ff9f"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/07_sales/19_daily_sales_report_detailed.json",
+      "sha256": "344ac796dceeb8e601833d5d4919371a08b4b2359894c4a109d78094c3dcdeab"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/07_sales/20_day_closing_report.json",
+      "sha256": "de6fddf3ba681178a3d9358c476baf0e6fab3df4966a36504fd05267793a7731"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/07_sales/24_source_wise_analysis_report.json",
+      "sha256": "86f89fcbe864bfc08ec0547f3fd479f3b62070f63c3b41fd46da65230ded8352"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/07_sales/25_bill_no_wise_report.json",
+      "sha256": "17aa968fc18a09529b884f899a370b94b28c4246e5d295135555b20faecd0920"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/07_sales/31_online_orders_report.json",
+      "sha256": "2cdf2993e41270b73132b235efe60a955cbe33e8a8cc48031219eb5eb186fe21"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/07_sales/33_food_sold_report.json",
+      "sha256": "ff2d6531f4cac110fec8ac8e84eb8335452882ab474882abbf3c8f649a76bcf0"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/07_sales/38_daily_sales_reversal.json",
+      "sha256": "a3bb5ab69beb97ad965b50de20aa0ba1cb8a495ca93acf6e76248b84a6395f89"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p2_reports/07_sales/39_day_wise_revenue_report.json",
+      "sha256": "a2422a7750ee1912d327f38495a8e01f48d0492c0b8f6669407e5512b7b1d0fe"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/01_enterprise_entry.json",
+      "sha256": "8890884928132af7c62395ff781c746c6caf191246911790e59b4bbcf94b483e"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/02_erp_vendor_price.json",
+      "sha256": "b3457b69bef934b87b3271d29fa28e6d13fc87644634c4d58f672f2f2854854a"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/03_enterprise_stock_return.json",
+      "sha256": "6a073471d87a7ea810c20abe21b5f49beb1bce89a11c4e4c92ecf67816104555"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/04_enterprise_consumption.json",
+      "sha256": "44ad8f1e980c2429afa4a8c2dda4285d369d18a0cec5b9751d49701c25bd0684"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/05_enterprise_stock_re_order.json",
+      "sha256": "0f2c7da8d18a87f7b71b8c726bddf67bbc96204bb796890984c6ba9959cd3b08"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/06_enterprise_purchase_order.json",
+      "sha256": "e24f594679566603cc7ba1d70745bd9ef8833b1779d5abf874649778b40ff0d4"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/07_enterprise_consolidated_indent.json",
+      "sha256": "43accd1f96b16c232695ae7553fe4bdf2547d6fc7775f946b9a6aaf5f52dd920"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/08_enterprise_variance.json",
+      "sha256": "a36e9048deca4390fe3d2eaf5e8b4a786435b2219b702155fed78502628c0c70"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/09_enterprise_categorywise_cogs.json",
+      "sha256": "01dbca0b23eba61970999df6367f60eb166925c5d9545523eb821e2b50a8bb4e"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/10_enterprise_bill_passing.json",
+      "sha256": "c3140d69de2dc5c286fb746a4b64fc3df55c0759a2dc3d44171bd3554e38edc7"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/11_enterprise_credit_note_report.json",
+      "sha256": "3d167db9ea6f2bf00e358c12563129cf31a8b4d4220c9c79870a865473b5552d"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/12_enterprise_wastage_report.json",
+      "sha256": "3a0a581a6008c05bc652bfad4156022070e994376fafd6e3500259209d79b20a"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/13_enterprise_purchase_summary_report.json",
+      "sha256": "85066c01b244df29ec75d452976b5621ff7483337eaa568b40796f91fb83ae80"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/14_enterprise_internal_indent_report.json",
+      "sha256": "40990f8bc32b09f4f2be0bffbaa04a2e04d6ba97517c43fe18e3af84d857c3ee"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/15_enterprise_food_cost_report.json",
+      "sha256": "ba075786c9f36b364f579e5236cc392b47e735a18904f760b25ebed1d1f53fc9"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/02_transactional_reports/01_entry_report.json",
+      "sha256": "206d6a7bcba2c336791fae92ecefe0ba2fdee29dc459cef41dcc7e79c4ca9afc"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/02_transactional_reports/02_entry_sync_report.json",
+      "sha256": "b81143ff5eb646c691a90918f70160c741dab2cb7be0ecaafaa8cd4c99dc5772"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/02_transactional_reports/03_payment_report.json",
+      "sha256": "9875a909156f2a3674eafaa3f88e22d9564160c1368caf274bffbacfe1f79242"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/02_transactional_reports/05_purchase_detail.json",
+      "sha256": "3c3349ef17280ff23bd34a731ac7d50b42aaa9a198431176db5dca0f26ae2790"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/02_transactional_reports/06_purchase_detail_consolidated.json",
+      "sha256": "bccce85b94d4fc48f9f464ab049ba3184edd74f456616f70799075dabd690fcf"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/02_transactional_reports/10_stock_in_stock_out_report.json",
+      "sha256": "7690445398f7f727c6959c8978c179aa477123945116cc884f8b8c1376831046"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/03_po_so_reports/01_purchase_order.json",
+      "sha256": "29bfea3d0c72bc9f6273818744d8b81f53f9596883b1e10bba59b6ce93d64f75"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/05_aggregation_reports/02_consumption_report.json",
+      "sha256": "b30eb6cfcfa8ca03f686616eb85ffdd83f0cb0f34f2dd47778469f8f0e1d7e6b"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/05_aggregation_reports/07_recipe_consumption_report.json",
+      "sha256": "f170a7eab90311ae9adb276b649ed23b3b4b40befb919f14410b2e49acb373ea"
     }
   ],
   "kpi_lineage_source": {
@@ -599,10 +859,10 @@
   },
   "control_tower_source": {
     "path": "schema-pack/source/control_tower/control-tower-requirements.json",
-    "sha256": "c8f244d6bb8a49a24a26b8806db6e456a46fd58c86123963bf6de120df94d659"
+    "sha256": "a12fe23c90c31d1930c1e70b914edb54182180d53db2ec348282a62c670fd8f9"
   },
   "control_tower_architecture_source": {
     "path": "schema-pack/source/architecture/control-tower-architecture.json",
-    "sha256": "de4e20f27395829930428e116d02f8d6dd1cc56e0654736df338432882c61625"
+    "sha256": "1808f7507d08489e97c790c1335a32eb3004bed816cb8a2b7e165343578015f0"
   }
 }

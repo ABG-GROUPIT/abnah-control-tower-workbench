@@ -1,0 +1,106 @@
+{
+  "report_id": "report:p2_reports:04_category_item:02_item_wise_enterprise_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Business-date columns repeat dynamically across the selected period; each date and the final total contain quantity and amount children.",
+  "data_points": [
+    {
+      "key": "s_no",
+      "label": "S.No.",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "item",
+      "label": "Item",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "tab_type",
+      "label": "Tab Type",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "business_date_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "business_date_amount",
+      "label": "Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "total_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "total_amount",
+      "label": "Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "business_date",
+      "label": "Business Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Item sales by business date",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "S.No.",
+          "key": "s_no"
+        },
+        {
+          "label": "Item",
+          "key": "item"
+        },
+        {
+          "label": "Tab Type",
+          "key": "tab_type"
+        },
+        {
+          "label": "Business Date (dynamic)",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "business_date_qty"
+            },
+            {
+              "label": "Amt",
+              "key": "business_date_amount"
+            }
+          ]
+        },
+        {
+          "label": "Total",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "total_qty"
+            },
+            {
+              "label": "Amt",
+              "key": "total_amount"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

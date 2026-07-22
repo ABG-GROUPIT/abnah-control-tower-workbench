@@ -1,0 +1,160 @@
+{
+  "report_id": "report:p4_stock_admin:02_transactional_reports:10_stock_in_stock_out_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Repeated Subtotal fields are positionally paired with the Stock In and Stock Out movement groups.",
+  "data_points": [
+    {
+      "key": "date",
+      "label": "Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "store_kitchen",
+      "label": "Store/Kitchen",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "supplier",
+      "label": "Supplier",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "receiver",
+      "label": "Receiver",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "unit",
+      "label": "Unit",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "unit_price",
+      "label": "Unit Price",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "stock_in_reference",
+      "label": "Reference",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "stock_in_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "stock_in_subtotal",
+      "label": "Subtotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "stock_out_reference",
+      "label": "Reference",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "stock_out_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "stock_out_subtotal",
+      "label": "Subtotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Stock in and stock out",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "Date",
+          "key": "date"
+        },
+        {
+          "label": "Store/Kitchen",
+          "key": "store_kitchen"
+        },
+        {
+          "label": "Supplier",
+          "key": "supplier"
+        },
+        {
+          "label": "Receiver",
+          "key": "receiver"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Unit",
+          "key": "unit"
+        },
+        {
+          "label": "Unit Price",
+          "key": "unit_price"
+        },
+        {
+          "label": "Stock In",
+          "children": [
+            {
+              "label": "Reference",
+              "key": "stock_in_reference"
+            },
+            {
+              "label": "Qty",
+              "key": "stock_in_qty"
+            },
+            {
+              "label": "Subtotal",
+              "key": "stock_in_subtotal"
+            }
+          ]
+        },
+        {
+          "label": "Stock Out",
+          "children": [
+            {
+              "label": "Reference",
+              "key": "stock_out_reference"
+            },
+            {
+              "label": "Qty",
+              "key": "stock_out_qty"
+            },
+            {
+              "label": "Subtotal",
+              "key": "stock_out_subtotal"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

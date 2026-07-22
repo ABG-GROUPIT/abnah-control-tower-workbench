@@ -1,0 +1,450 @@
+{
+  "report_id": "report:p2_reports:07_sales:20_day_closing_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "mixed",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "A period sale summary is followed by parallel order-type and source analyses, then coupon/BTC and offer/complimentary tables.",
+  "data_points": [
+    {
+      "key": "total_sales",
+      "label": "Total Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "discount",
+      "label": "Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "tax",
+      "label": "Tax",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "net_sales",
+      "label": "Net Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_with_charges",
+      "label": "Total With Charges",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "round_off",
+      "label": "Round Off",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gross_sales",
+      "label": "Gross Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "tab_name",
+      "label": "Tab Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "total_charges",
+      "label": "Total Charges",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "tax_excluded_sales",
+      "label": "Tax Excluded Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_tax",
+      "label": "Total Tax",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "no_of_bills",
+      "label": "No. Of Bills",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "average_per_bill",
+      "label": "Average Per Bill",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "no_of_covers",
+      "label": "No. Of Covers",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "average_cover",
+      "label": "Average Cover",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "order",
+      "label": "Order %",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "sale",
+      "label": "Sale %",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "cash",
+      "label": "Cash",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "online",
+      "label": "Online",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "visa",
+      "label": "Visa",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "void_bill_count",
+      "label": "No. Of Bills",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "void_amount",
+      "label": "Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "source",
+      "label": "Source",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "name",
+      "label": "Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "amount",
+      "label": "Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "deployment",
+      "label": "Deployment",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "period_from",
+      "label": "Period From",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "period_to",
+      "label": "Period To",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "sale_summary",
+      "name": "Sale summary",
+      "kind": "key_value",
+      "entries": [
+        {
+          "label": "Total Sales",
+          "key": "total_sales"
+        },
+        {
+          "label": "Discount",
+          "key": "discount"
+        },
+        {
+          "label": "Tax",
+          "key": "tax"
+        },
+        {
+          "label": "Net Sales",
+          "key": "net_sales"
+        },
+        {
+          "label": "Total With Charges",
+          "key": "total_with_charges"
+        },
+        {
+          "label": "Round Off",
+          "key": "round_off"
+        },
+        {
+          "label": "Gross Sales",
+          "key": "gross_sales"
+        }
+      ]
+    },
+    {
+      "id": "order_type",
+      "name": "Order type analysis",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "Tab Name",
+          "key": "tab_name"
+        },
+        {
+          "label": "Sale By Dimension",
+          "children": [
+            {
+              "label": "Total Sales",
+              "key": "total_sales"
+            },
+            {
+              "label": "Discount",
+              "key": "discount"
+            },
+            {
+              "label": "Total Charges",
+              "key": "total_charges"
+            },
+            {
+              "label": "Tax Excluded Sales",
+              "key": "tax_excluded_sales"
+            },
+            {
+              "label": "Total Tax",
+              "key": "total_tax"
+            },
+            {
+              "label": "Round Off",
+              "key": "round_off"
+            },
+            {
+              "label": "Gross Sales",
+              "key": "gross_sales"
+            },
+            {
+              "label": "No. Of Bills",
+              "key": "no_of_bills"
+            },
+            {
+              "label": "Average Per Bill",
+              "key": "average_per_bill"
+            },
+            {
+              "label": "No. Of Covers",
+              "key": "no_of_covers"
+            },
+            {
+              "label": "Average Cover",
+              "key": "average_cover"
+            },
+            {
+              "label": "Order %",
+              "key": "order"
+            },
+            {
+              "label": "Sale %",
+              "key": "sale"
+            }
+          ]
+        },
+        {
+          "label": "Payment",
+          "children": [
+            {
+              "label": "Cash",
+              "key": "cash"
+            },
+            {
+              "label": "Online",
+              "key": "online"
+            },
+            {
+              "label": "Visa",
+              "key": "visa"
+            }
+          ]
+        },
+        {
+          "label": "Voids & Cancellations",
+          "children": [
+            {
+              "label": "No. Of Bills",
+              "key": "void_bill_count"
+            },
+            {
+              "label": "Amount",
+              "key": "void_amount"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "source",
+      "name": "Source analysis",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "Source",
+          "key": "source"
+        },
+        {
+          "label": "Sale By Dimension",
+          "children": [
+            {
+              "label": "Total Sales",
+              "key": "total_sales"
+            },
+            {
+              "label": "Discount",
+              "key": "discount"
+            },
+            {
+              "label": "Total Charges",
+              "key": "total_charges"
+            },
+            {
+              "label": "Tax Excluded Sales",
+              "key": "tax_excluded_sales"
+            },
+            {
+              "label": "Total Tax",
+              "key": "total_tax"
+            },
+            {
+              "label": "Round Off",
+              "key": "round_off"
+            },
+            {
+              "label": "Gross Sales",
+              "key": "gross_sales"
+            },
+            {
+              "label": "No. Of Bills",
+              "key": "no_of_bills"
+            },
+            {
+              "label": "Average Per Bill",
+              "key": "average_per_bill"
+            },
+            {
+              "label": "No. Of Covers",
+              "key": "no_of_covers"
+            },
+            {
+              "label": "Average Cover",
+              "key": "average_cover"
+            },
+            {
+              "label": "Order %",
+              "key": "order"
+            },
+            {
+              "label": "Sale %",
+              "key": "sale"
+            }
+          ]
+        },
+        {
+          "label": "Payment",
+          "children": [
+            {
+              "label": "Cash",
+              "key": "cash"
+            },
+            {
+              "label": "Online",
+              "key": "online"
+            },
+            {
+              "label": "Visa",
+              "key": "visa"
+            }
+          ]
+        },
+        {
+          "label": "Voids & Cancellations",
+          "children": [
+            {
+              "label": "No. Of Bills",
+              "key": "void_bill_count"
+            },
+            {
+              "label": "Amount",
+              "key": "void_amount"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "coupon_btc",
+      "name": "Coupon and BTC",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name"
+        },
+        {
+          "label": "No. Of Bills",
+          "key": "no_of_bills"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        }
+      ]
+    },
+    {
+      "id": "offers",
+      "name": "Offers and complimentary",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name"
+        },
+        {
+          "label": "No. Of Bills",
+          "key": "no_of_bills"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "report_id": "report:p4_stock_admin:02_transactional_reports:02_entry_sync_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Entry synchronization audit rows include transaction flags, history access, and an invoice attachment indicator; attachment content is not retained.",
+  "data_points": [
+    {
+      "key": "field",
+      "label": "#",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "temp_number",
+      "label": "Temp Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "transaction_number",
+      "label": "Transaction Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "transaction_date",
+      "label": "Transaction Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "sync_date",
+      "label": "Sync Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "current_user",
+      "label": "Current User",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "back_date_transaction",
+      "label": "Back Date Transaction",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "is_edited",
+      "label": "Is Edited",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "is_direct_issue",
+      "label": "Is Direct Issue",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "history",
+      "label": "History",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "invoice",
+      "label": "Invoice",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Entry synchronization audit",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "#",
+          "key": "field"
+        },
+        {
+          "label": "Temp Number",
+          "key": "temp_number"
+        },
+        {
+          "label": "Transaction Number",
+          "key": "transaction_number"
+        },
+        {
+          "label": "Transaction Date",
+          "key": "transaction_date"
+        },
+        {
+          "label": "Sync Date",
+          "key": "sync_date"
+        },
+        {
+          "label": "Current User",
+          "key": "current_user"
+        },
+        {
+          "label": "Back Date Transaction",
+          "key": "back_date_transaction"
+        },
+        {
+          "label": "Is Edited",
+          "key": "is_edited"
+        },
+        {
+          "label": "Is Direct Issue",
+          "key": "is_direct_issue"
+        },
+        {
+          "label": "History",
+          "key": "history"
+        },
+        {
+          "label": "Invoice",
+          "key": "invoice"
+        }
+      ]
+    }
+  ]
+}

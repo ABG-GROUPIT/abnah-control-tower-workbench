@@ -1,0 +1,570 @@
+{
+  "report_id": "report:p4_stock_admin:01_enterprise_reports:04_enterprise_consumption",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Repeated Amt headers are positionally paired with their movement quantity or checkpoint. Yield Wastage is retained as a source field label and is not treated as the Page 3 KPI terminology. Pairing must be checked again against the CSV export.",
+  "data_points": [
+    {
+      "key": "deployment_name",
+      "label": "Deployment Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "storekitchen_name",
+      "label": "StoreKitchen Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "item_code",
+      "label": "Item Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "category_name",
+      "label": "Category Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "super_category_name",
+      "label": "Super Category Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "average_price",
+      "label": "Average Price",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "opening_date",
+      "label": "Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "opening_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "opening_unit",
+      "label": "Unit",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "opening_amount",
+      "label": "Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "purchase_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "purchase_amount",
+      "label": "Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "indent_receive_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "indent_receive_amount",
+      "label": "Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "indent_dispatch_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "indent_dispatch_amount",
+      "label": "Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "internal_indent_receive_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "internal_indent_receive_amount",
+      "label": "Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "internal_indent_dispatch_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "internal_indent_dispatch_amount",
+      "label": "Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "stock_in_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "stock_in_amount",
+      "label": "Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "consumption_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "consumption_amount",
+      "label": "Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "yield_wastage_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "yield_wastage_amount",
+      "label": "Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "stock_out_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "stock_out_amount",
+      "label": "Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "stock_out_plus_consumption_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "stock_out_plus_consumption_amount",
+      "label": "Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "wastage_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "wastage_amount",
+      "label": "Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "reuse_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "reuse_amount",
+      "label": "Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "return_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "return_amount",
+      "label": "Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "closing_date",
+      "label": "Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "closing_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "closing_amount",
+      "label": "Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "physical_gain_loss_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "physical_gain_loss_amount",
+      "label": "Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "ideal_closing_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "ideal_closing_amount",
+      "label": "Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "physical_adjusted_closing_qty",
+      "label": "Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "physical_adjusted_closing_amount",
+      "label": "Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Enterprise consumption lifecycle",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "Deployment Name",
+          "key": "deployment_name"
+        },
+        {
+          "label": "StoreKitchen Name",
+          "key": "storekitchen_name"
+        },
+        {
+          "label": "Item Code",
+          "key": "item_code"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Category Name",
+          "key": "category_name"
+        },
+        {
+          "label": "Super Category Name",
+          "key": "super_category_name"
+        },
+        {
+          "label": "Average Price",
+          "key": "average_price"
+        },
+        {
+          "label": "Opening",
+          "children": [
+            {
+              "label": "Date",
+              "key": "opening_date"
+            },
+            {
+              "label": "Qty",
+              "key": "opening_qty"
+            },
+            {
+              "label": "Unit",
+              "key": "opening_unit"
+            },
+            {
+              "label": "Amt",
+              "key": "opening_amount"
+            }
+          ]
+        },
+        {
+          "label": "Purchase",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "purchase_qty"
+            },
+            {
+              "label": "Amt",
+              "key": "purchase_amount"
+            }
+          ]
+        },
+        {
+          "label": "Indent Receive",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "indent_receive_qty"
+            },
+            {
+              "label": "Amt",
+              "key": "indent_receive_amount"
+            }
+          ]
+        },
+        {
+          "label": "Indent Dispatch",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "indent_dispatch_qty"
+            },
+            {
+              "label": "Amt",
+              "key": "indent_dispatch_amount"
+            }
+          ]
+        },
+        {
+          "label": "Internal Indent Receive",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "internal_indent_receive_qty"
+            },
+            {
+              "label": "Amt",
+              "key": "internal_indent_receive_amount"
+            }
+          ]
+        },
+        {
+          "label": "Internal Indent Dispatch",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "internal_indent_dispatch_qty"
+            },
+            {
+              "label": "Amt",
+              "key": "internal_indent_dispatch_amount"
+            }
+          ]
+        },
+        {
+          "label": "Stock In",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "stock_in_qty"
+            },
+            {
+              "label": "Amt",
+              "key": "stock_in_amount"
+            }
+          ]
+        },
+        {
+          "label": "Consumption",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "consumption_qty"
+            },
+            {
+              "label": "Amt",
+              "key": "consumption_amount"
+            }
+          ]
+        },
+        {
+          "label": "Yield Wastage",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "yield_wastage_qty"
+            },
+            {
+              "label": "Amt",
+              "key": "yield_wastage_amount"
+            }
+          ]
+        },
+        {
+          "label": "Stock Out",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "stock_out_qty"
+            },
+            {
+              "label": "Amt",
+              "key": "stock_out_amount"
+            }
+          ]
+        },
+        {
+          "label": "Total (Stock Out + Consumption Qty)",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "stock_out_plus_consumption_qty"
+            },
+            {
+              "label": "Amt",
+              "key": "stock_out_plus_consumption_amount"
+            }
+          ]
+        },
+        {
+          "label": "Wastage",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "wastage_qty"
+            },
+            {
+              "label": "Amt",
+              "key": "wastage_amount"
+            }
+          ]
+        },
+        {
+          "label": "Reuse",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "reuse_qty"
+            },
+            {
+              "label": "Amt",
+              "key": "reuse_amount"
+            }
+          ]
+        },
+        {
+          "label": "Return",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "return_qty"
+            },
+            {
+              "label": "Amt",
+              "key": "return_amount"
+            }
+          ]
+        },
+        {
+          "label": "Closing",
+          "children": [
+            {
+              "label": "Date",
+              "key": "closing_date"
+            },
+            {
+              "label": "Qty",
+              "key": "closing_qty"
+            },
+            {
+              "label": "Amt",
+              "key": "closing_amount"
+            }
+          ]
+        },
+        {
+          "label": "Physical Gain/Loss",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "physical_gain_loss_qty"
+            },
+            {
+              "label": "Amt",
+              "key": "physical_gain_loss_amount"
+            }
+          ]
+        },
+        {
+          "label": "Ideal Closing",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "ideal_closing_qty"
+            },
+            {
+              "label": "Amt",
+              "key": "ideal_closing_amount"
+            }
+          ]
+        },
+        {
+          "label": "Physical Adjusted Closing",
+          "children": [
+            {
+              "label": "Qty",
+              "key": "physical_adjusted_closing_qty"
+            },
+            {
+              "label": "Amt",
+              "key": "physical_adjusted_closing_amount"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

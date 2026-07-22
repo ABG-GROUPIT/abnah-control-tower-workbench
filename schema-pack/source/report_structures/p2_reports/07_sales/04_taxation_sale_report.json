@@ -1,0 +1,292 @@
+{
+  "report_id": "report:p2_reports:07_sales:04_taxation_sale_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "matrix",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "A dynamic date matrix combines category sales, tax, charge, collection, and gross-sales statistic sections with a final period total.",
+  "data_points": [
+    {
+      "key": "business_date",
+      "label": "Business Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "category_member",
+      "label": "Category member",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "net_sales",
+      "label": "Net Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "tax_rate_row",
+      "label": "Tax rate row",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "tax_breakup_total",
+      "label": "Tax Breakup Total",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "charge_row",
+      "label": "Charge row",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "charges_breakup_total",
+      "label": "Charges Breakup Total",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "net_sales_with_charges",
+      "label": "Net Sales With Charges",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gross_sales_without_round_off",
+      "label": "Gross Sales Without Round Off",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "round_off",
+      "label": "Round Off",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gross_sales_with_round_off",
+      "label": "Gross Sales With Round Off",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "payment_mode_row",
+      "label": "Payment mode row",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "total_collection",
+      "label": "Total Collection",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "covers",
+      "label": "Covers",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "covers_excluding_complimentary",
+      "label": "Covers Excluding Complimentary",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "average_per_cover_on_gross_sale",
+      "label": "Average Per Cover On Gross Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "average_per_cover_on_net_sale",
+      "label": "Average Per Cover On Net Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "cover_turn_ratio",
+      "label": "Cover Turn Ratio",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "number_of_bills",
+      "label": "Number Of Bills",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "number_of_bills_excluding_complimentary",
+      "label": "Number Of Bills Excluding Complimentary",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "average_per_bill",
+      "label": "Average Per Bill",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "average_per_bill_excluding_complimentary",
+      "label": "Average Per Bill Excluding Complimentary",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "business_date_value",
+      "label": "Business Date (dynamic)",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "period_total",
+      "label": "Period Total",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Taxation sale by date",
+      "kind": "matrix",
+      "row_headers": [
+        "Section",
+        "Metric"
+      ],
+      "value_columns": [
+        {
+          "label": "Business Date (dynamic)",
+          "key": "business_date_value"
+        },
+        {
+          "label": "Period Total",
+          "key": "period_total"
+        }
+      ],
+      "row_groups": [
+        {
+          "label": "Category sales",
+          "metrics": [
+            {
+              "label": "Category member",
+              "key": "category_member"
+            },
+            {
+              "label": "Net Sales",
+              "key": "net_sales"
+            }
+          ]
+        },
+        {
+          "label": "Tax breakup",
+          "metrics": [
+            {
+              "label": "Tax rate row",
+              "key": "tax_rate_row"
+            },
+            {
+              "label": "Tax Breakup Total",
+              "key": "tax_breakup_total"
+            }
+          ]
+        },
+        {
+          "label": "Charges",
+          "metrics": [
+            {
+              "label": "Charge row",
+              "key": "charge_row"
+            },
+            {
+              "label": "Charges Breakup Total",
+              "key": "charges_breakup_total"
+            }
+          ]
+        },
+        {
+          "label": "Sales totals",
+          "metrics": [
+            {
+              "label": "Net Sales With Charges",
+              "key": "net_sales_with_charges"
+            },
+            {
+              "label": "Gross Sales Without Round Off",
+              "key": "gross_sales_without_round_off"
+            },
+            {
+              "label": "Round Off",
+              "key": "round_off"
+            },
+            {
+              "label": "Gross Sales With Round Off",
+              "key": "gross_sales_with_round_off"
+            }
+          ]
+        },
+        {
+          "label": "Collection breakup",
+          "metrics": [
+            {
+              "label": "Payment mode row",
+              "key": "payment_mode_row"
+            },
+            {
+              "label": "Total Collection",
+              "key": "total_collection"
+            }
+          ]
+        },
+        {
+          "label": "Gross sales statistics",
+          "metrics": [
+            {
+              "label": "Covers",
+              "key": "covers"
+            },
+            {
+              "label": "Covers Excluding Complimentary",
+              "key": "covers_excluding_complimentary"
+            },
+            {
+              "label": "Average Per Cover On Gross Sale",
+              "key": "average_per_cover_on_gross_sale"
+            },
+            {
+              "label": "Average Per Cover On Net Sale",
+              "key": "average_per_cover_on_net_sale"
+            },
+            {
+              "label": "Cover Turn Ratio",
+              "key": "cover_turn_ratio"
+            },
+            {
+              "label": "Number Of Bills",
+              "key": "number_of_bills"
+            },
+            {
+              "label": "Number Of Bills Excluding Complimentary",
+              "key": "number_of_bills_excluding_complimentary"
+            },
+            {
+              "label": "Average Per Bill",
+              "key": "average_per_bill"
+            },
+            {
+              "label": "Average Per Bill Excluding Complimentary",
+              "key": "average_per_bill_excluding_complimentary"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

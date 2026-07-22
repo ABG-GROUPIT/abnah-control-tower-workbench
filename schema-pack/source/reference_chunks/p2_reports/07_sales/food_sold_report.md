@@ -1,4 +1,4 @@
-# Food Sold Report
+# Gross/Net Margin Report
 
 - Page: `p2_reports`
 - Section: `07_sales`

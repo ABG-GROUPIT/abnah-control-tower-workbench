@@ -1,0 +1,122 @@
+{
+  "report_id": "report:p4_stock_admin:01_enterprise_reports:15_enterprise_food_cost_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Wastage Cost appears twice in the captured sequence. Both positions are retained with separate keys; their exact business distinction remains a CSV/value-validation question.",
+  "data_points": [
+    {
+      "key": "deployment_name",
+      "label": "Deployment Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "recipe_cost",
+      "label": "Recipe Cost",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "wastage_cost_position_1",
+      "label": "Wastage Cost (position 1)",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "ideal_cost",
+      "label": "Ideal Cost",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "ideal_percent",
+      "label": "Ideal Percent",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "wastage_cost_position_2",
+      "label": "Wastage Cost (position 2)",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "cost_through_physical_entry_gain_loss",
+      "label": "Cost Through Physical Entry (Gain /Loss)",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "actual_cost",
+      "label": "Actual Cost",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "actual_percent",
+      "label": "Actual Percent",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_sale",
+      "label": "Total Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Enterprise food cost",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Deployment Name",
+          "key": "deployment_name"
+        },
+        {
+          "label": "Recipe Cost",
+          "key": "recipe_cost"
+        },
+        {
+          "label": "Wastage Cost",
+          "key": "wastage_cost_position_1",
+          "point_label": "Wastage Cost (position 1)"
+        },
+        {
+          "label": "Ideal Cost",
+          "key": "ideal_cost"
+        },
+        {
+          "label": "Ideal Percent",
+          "key": "ideal_percent"
+        },
+        {
+          "label": "Wastage Cost",
+          "key": "wastage_cost_position_2",
+          "point_label": "Wastage Cost (position 2)"
+        },
+        {
+          "label": "Cost Through Physical Entry (Gain /Loss)",
+          "key": "cost_through_physical_entry_gain_loss"
+        },
+        {
+          "label": "Actual Cost",
+          "key": "actual_cost"
+        },
+        {
+          "label": "Actual Percent",
+          "key": "actual_percent"
+        },
+        {
+          "label": "Total Sale",
+          "key": "total_sale"
+        }
+      ]
+    }
+  ]
+}

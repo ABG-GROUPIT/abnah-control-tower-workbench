@@ -1,0 +1,384 @@
+{
+  "report_id": "report:p2_reports:07_sales:16_daily_sales_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "mixed",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "The report is a seven-block daily pack: session sales, grand totals, collection, tax, discount, charge, and order-source breakups. Each repeating session block includes a session-total row.",
+  "data_points": [
+    {
+      "key": "session",
+      "label": "Session",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "time_slot",
+      "label": "Time Slot",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "sale_type",
+      "label": "Sale Type",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "amount",
+      "label": "Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gross_amount",
+      "label": "Gross Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_beverage_sale",
+      "label": "Total Beverage Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_food_sale",
+      "label": "Total Food Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_sale",
+      "label": "Total Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_discount",
+      "label": "Total Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "total_charge_amount",
+      "label": "Total Charge Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_source_amount",
+      "label": "Total Source Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "roundoff",
+      "label": "Roundoff",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "total_gross",
+      "label": "Total Gross",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_bills",
+      "label": "Total Bills",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "total_covers",
+      "label": "Total Covers",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "total_apc",
+      "label": "Total APC",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "session_name",
+      "label": "Session Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "mode",
+      "label": "Mode",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "tax_name",
+      "label": "Tax Name",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "rate",
+      "label": "Rate",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "discount_name",
+      "label": "Discount Name",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "discount_rate",
+      "label": "Discount Rate",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "discount_amount",
+      "label": "Discount Amount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "charge_name",
+      "label": "Charge Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "charge_rate",
+      "label": "Charge Rate",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "charge_amount",
+      "label": "Charge Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "source_name",
+      "label": "Source Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "source_amount",
+      "label": "Source Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "session_covers",
+      "label": "Session Covers",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "session_bills",
+      "label": "Session Bills",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "session_apc",
+      "label": "Session APC",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "session_sales",
+      "name": "Daily sales by session",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Session",
+          "key": "session"
+        },
+        {
+          "label": "Time Slot",
+          "key": "time_slot"
+        },
+        {
+          "label": "Sale Type",
+          "key": "sale_type"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        },
+        {
+          "label": "Gross Amount",
+          "key": "gross_amount"
+        }
+      ]
+    },
+    {
+      "id": "grand_total",
+      "name": "Grand total",
+      "kind": "key_value",
+      "entries": [
+        {
+          "label": "Total Beverage Sale",
+          "key": "total_beverage_sale"
+        },
+        {
+          "label": "Total Food Sale",
+          "key": "total_food_sale"
+        },
+        {
+          "label": "Total Sale",
+          "key": "total_sale"
+        },
+        {
+          "label": "Total Discount",
+          "key": "total_discount"
+        },
+        {
+          "label": "Total Charge Amount",
+          "key": "total_charge_amount"
+        },
+        {
+          "label": "Total Source Amount",
+          "key": "total_source_amount"
+        },
+        {
+          "label": "Roundoff",
+          "key": "roundoff"
+        },
+        {
+          "label": "Total Gross",
+          "key": "total_gross"
+        },
+        {
+          "label": "Total Bills",
+          "key": "total_bills"
+        },
+        {
+          "label": "Total Covers",
+          "key": "total_covers"
+        },
+        {
+          "label": "Total APC",
+          "key": "total_apc"
+        }
+      ]
+    },
+    {
+      "id": "collection",
+      "name": "Session-wise collection breakup",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Session Name",
+          "key": "session_name"
+        },
+        {
+          "label": "Mode",
+          "key": "mode"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        }
+      ]
+    },
+    {
+      "id": "tax",
+      "name": "Session-wise tax breakup",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Session Name",
+          "key": "session_name"
+        },
+        {
+          "label": "Tax Name",
+          "key": "tax_name"
+        },
+        {
+          "label": "Rate",
+          "key": "rate"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        }
+      ]
+    },
+    {
+      "id": "discount",
+      "name": "Session-wise discount breakup",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Session Name",
+          "key": "session_name"
+        },
+        {
+          "label": "Discount Name",
+          "key": "discount_name"
+        },
+        {
+          "label": "Discount Rate",
+          "key": "discount_rate"
+        },
+        {
+          "label": "Discount Amount",
+          "key": "discount_amount"
+        }
+      ]
+    },
+    {
+      "id": "charge",
+      "name": "Session-wise charge breakup",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Session Name",
+          "key": "session_name"
+        },
+        {
+          "label": "Charge Name",
+          "key": "charge_name"
+        },
+        {
+          "label": "Charge Rate",
+          "key": "charge_rate"
+        },
+        {
+          "label": "Charge Amount",
+          "key": "charge_amount"
+        }
+      ]
+    },
+    {
+      "id": "source",
+      "name": "Session-wise source breakup",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Session Name",
+          "key": "session_name"
+        },
+        {
+          "label": "Source Name",
+          "key": "source_name"
+        },
+        {
+          "label": "Source Amount",
+          "key": "source_amount"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "p2_reports/07_sales/24_source_wise_analysis_report": {
+    "report_name": "Source Analysis Summary"
+  },
+  "p2_reports/07_sales/33_food_sold_report": {
+    "report_name": "Gross/Net Margin Report"
+  },
+  "p2_reports/07_sales/38_daily_sales_reversal": {
+    "report_name": "Daily Sales Revenue"
+  }
+}

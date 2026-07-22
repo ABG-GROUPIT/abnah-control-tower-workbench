@@ -1,0 +1,290 @@
+{
+  "report_id": "report:p4_stock_admin:02_transactional_reports:06_purchase_detail_consolidated",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "data_points": [
+    {
+      "key": "item_code",
+      "label": "Item Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "company",
+      "label": "Company",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "deployment",
+      "label": "Deployment",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "date",
+      "label": "Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "invoice_date",
+      "label": "Invoice Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "po_date",
+      "label": "PO Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "po_number",
+      "label": "Po Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "transaction_number",
+      "label": "Transaction Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "vendor_code",
+      "label": "Vendor Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "vendor_name",
+      "label": "Vendor Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "invoice_number",
+      "label": "Invoice Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "batch_number",
+      "label": "Batch Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "category_code",
+      "label": "Category Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "category_name",
+      "label": "Category Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "super_category_code",
+      "label": "Super Category Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "super_category_name",
+      "label": "Super Category Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "quantity",
+      "label": "Quantity",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "unit",
+      "label": "Unit",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "unit_price",
+      "label": "Unit Price",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "amount",
+      "label": "Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "discount",
+      "label": "Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "cgst_tax",
+      "label": "CGST Tax",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "sgst_tax",
+      "label": "SGST Tax",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "igst_tax",
+      "label": "IGST Tax",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "other_tax",
+      "label": "Other Tax",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total",
+      "label": "Total",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Purchase Detail Consolidated export",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Item Code",
+          "key": "item_code"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Company",
+          "key": "company"
+        },
+        {
+          "label": "Deployment",
+          "key": "deployment"
+        },
+        {
+          "label": "Date",
+          "key": "date"
+        },
+        {
+          "label": "Invoice Date",
+          "key": "invoice_date"
+        },
+        {
+          "label": "PO Date",
+          "key": "po_date"
+        },
+        {
+          "label": "Po Number",
+          "key": "po_number"
+        },
+        {
+          "label": "Transaction Number",
+          "key": "transaction_number"
+        },
+        {
+          "label": "Vendor Code",
+          "key": "vendor_code"
+        },
+        {
+          "label": "Vendor Name",
+          "key": "vendor_name"
+        },
+        {
+          "label": "Invoice Number",
+          "key": "invoice_number"
+        },
+        {
+          "label": "Batch Number",
+          "key": "batch_number"
+        },
+        {
+          "label": "Category Code",
+          "key": "category_code"
+        },
+        {
+          "label": "Category Name",
+          "key": "category_name"
+        },
+        {
+          "label": "Super Category Code",
+          "key": "super_category_code"
+        },
+        {
+          "label": "Super Category Name",
+          "key": "super_category_name"
+        },
+        {
+          "label": "Quantity",
+          "key": "quantity"
+        },
+        {
+          "label": "Unit",
+          "key": "unit"
+        },
+        {
+          "label": "Unit Price",
+          "key": "unit_price"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        },
+        {
+          "label": "Discount",
+          "key": "discount"
+        },
+        {
+          "label": "CGST Tax",
+          "key": "cgst_tax"
+        },
+        {
+          "label": "SGST Tax",
+          "key": "sgst_tax"
+        },
+        {
+          "label": "IGST Tax",
+          "key": "igst_tax"
+        },
+        {
+          "label": "Other Tax",
+          "key": "other_tax"
+        },
+        {
+          "label": "Total",
+          "key": "total"
+        }
+      ]
+    }
+  ]
+}

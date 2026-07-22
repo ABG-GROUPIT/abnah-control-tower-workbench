@@ -1,0 +1,140 @@
+{
+  "report_id": "report:p4_stock_admin:02_transactional_reports:03_payment_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "data_points": [
+    {
+      "key": "date",
+      "label": "Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "vendor",
+      "label": "Vendor",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "transaction_number",
+      "label": "Transaction Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "invoice_number",
+      "label": "Invoice Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "batch_number",
+      "label": "Batch Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "payment_mode",
+      "label": "Payment Mode",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "payment_date",
+      "label": "Payment Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "paid_amount",
+      "label": "Paid Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "due_amount",
+      "label": "Due Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "transaction_amount",
+      "label": "Transaction Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "return_amount",
+      "label": "Return Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "user",
+      "label": "User",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Payment Report export",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Date",
+          "key": "date"
+        },
+        {
+          "label": "Vendor",
+          "key": "vendor"
+        },
+        {
+          "label": "Transaction Number",
+          "key": "transaction_number"
+        },
+        {
+          "label": "Invoice Number",
+          "key": "invoice_number"
+        },
+        {
+          "label": "Batch Number",
+          "key": "batch_number"
+        },
+        {
+          "label": "Payment Mode",
+          "key": "payment_mode"
+        },
+        {
+          "label": "Payment Date",
+          "key": "payment_date"
+        },
+        {
+          "label": "Paid Amount",
+          "key": "paid_amount"
+        },
+        {
+          "label": "Due Amount",
+          "key": "due_amount"
+        },
+        {
+          "label": "Transaction Amount",
+          "key": "transaction_amount"
+        },
+        {
+          "label": "Return Amount",
+          "key": "return_amount"
+        },
+        {
+          "label": "User",
+          "key": "user"
+        }
+      ]
+    }
+  ]
+}

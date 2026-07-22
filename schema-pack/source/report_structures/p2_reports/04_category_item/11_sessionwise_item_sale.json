@@ -1,0 +1,116 @@
+{
+  "report_id": "report:p2_reports:04_category_item:11_sessionwise_item_sale",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_rows",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "The same item table repeats for each dynamic day session and ends with a session total.",
+  "data_points": [
+    {
+      "key": "item_number",
+      "label": "Item Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "category",
+      "label": "Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "super_category",
+      "label": "Super Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "price_sold",
+      "label": "Price Sold",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "number_sold",
+      "label": "Number Sold",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "amount",
+      "label": "Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "discount",
+      "label": "Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "fixed_cost",
+      "label": "Fixed Cost",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "session",
+      "label": "Session",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Item sales by session",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Item Number",
+          "key": "item_number"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Category",
+          "key": "category"
+        },
+        {
+          "label": "Super Category",
+          "key": "super_category"
+        },
+        {
+          "label": "Price Sold",
+          "key": "price_sold"
+        },
+        {
+          "label": "Number Sold",
+          "key": "number_sold"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        },
+        {
+          "label": "Discount",
+          "key": "discount"
+        },
+        {
+          "label": "Fixed Cost",
+          "key": "fixed_cost"
+        }
+      ]
+    }
+  ]
+}

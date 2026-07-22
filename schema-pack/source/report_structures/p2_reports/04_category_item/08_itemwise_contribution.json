@@ -1,0 +1,200 @@
+{
+  "report_id": "report:p2_reports:04_category_item:08_itemwise_contribution",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "data_points": [
+    {
+      "key": "item_no",
+      "label": "Item No.",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "super_category_name",
+      "label": "Super Category Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "category_name",
+      "label": "Category Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "rate",
+      "label": "Rate",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "item_quantity",
+      "label": "Item Quantity",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "amount",
+      "label": "Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "discount",
+      "label": "Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "net_amount",
+      "label": "Net Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "contributionbyamount",
+      "label": "ContributionByAmount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "cumulativecontributionbyamount",
+      "label": "CumulativeContributionByAmount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "contributionbyquantity",
+      "label": "ContributionByQuantity",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "cumulativecontributionbyquantity",
+      "label": "CumulativeContributionByQuantity",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "cost_incurred",
+      "label": "Cost Incurred",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "profit_per_item",
+      "label": "Profit Per Item",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "total_profit",
+      "label": "Total Profit",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "profit_category",
+      "label": "Profit Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "profit",
+      "label": "Profit %",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Itemwise Contribution export",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Item No.",
+          "key": "item_no"
+        },
+        {
+          "label": "Super Category Name",
+          "key": "super_category_name"
+        },
+        {
+          "label": "Category Name",
+          "key": "category_name"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Rate",
+          "key": "rate"
+        },
+        {
+          "label": "Item Quantity",
+          "key": "item_quantity"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        },
+        {
+          "label": "Discount",
+          "key": "discount"
+        },
+        {
+          "label": "Net Amount",
+          "key": "net_amount"
+        },
+        {
+          "label": "ContributionByAmount",
+          "key": "contributionbyamount"
+        },
+        {
+          "label": "CumulativeContributionByAmount",
+          "key": "cumulativecontributionbyamount"
+        },
+        {
+          "label": "ContributionByQuantity",
+          "key": "contributionbyquantity"
+        },
+        {
+          "label": "CumulativeContributionByQuantity",
+          "key": "cumulativecontributionbyquantity"
+        },
+        {
+          "label": "Cost Incurred",
+          "key": "cost_incurred"
+        },
+        {
+          "label": "Profit Per Item",
+          "key": "profit_per_item"
+        },
+        {
+          "label": "Total Profit",
+          "key": "total_profit"
+        },
+        {
+          "label": "Profit Category",
+          "key": "profit_category"
+        },
+        {
+          "label": "Profit %",
+          "key": "profit"
+        }
+      ]
+    }
+  ]
+}

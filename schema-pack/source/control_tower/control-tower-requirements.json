@@ -267,7 +267,7 @@
         "reports": [
           {"reportId": "report:p2_reports:07_sales:18_day_wise_sales_report", "name": "Day Wise Sales Report", "role": "reconciliation_candidate", "reason": "Daily trend fallback and total reconciliation."},
           {"reportId": "report:p2_reports:07_sales:21_week_cost_report", "name": "Week Cost Report", "role": "comparison_candidate", "reason": "May provide cost context for Page 3 before P4 food-cost reports are validated."},
-          {"reportId": "report:p2_reports:07_sales:33_food_sold_report", "name": "Food Sold Report", "role": "comparison_candidate", "reason": "May expose a cleaner sold-item grain or food classification."},
+          {"reportId": "report:p2_reports:07_sales:33_food_sold_report", "name": "Gross/Net Margin Report", "role": "primary_candidate", "reason": "Captured item-level quantity, gross and net sales, purchase value, and gross/net margin fields make this the planned profitability source pending CSV validation."},
           {"reportId": "report:p2_reports:07_sales:37_dsh_item_wise_report", "name": "DSH Item Wise Report", "role": "comparison_candidate", "reason": "Unknown item-wise context; inspect headers before deciding whether it duplicates item sales."},
           {"reportId": "report:p2_reports:07_sales:20_day_closing_report", "name": "Day Closing Report", "role": "reconciliation_candidate", "reason": "Use only for sales-period close validation, not as a primary SCM fact."},
           {"reportId": "report:p2_reports:07_sales:29_day_check_close_report", "name": "Day Check Close Report", "role": "reconciliation_candidate", "reason": "Alternative close-control context if Day Closing lacks the required status or totals."}

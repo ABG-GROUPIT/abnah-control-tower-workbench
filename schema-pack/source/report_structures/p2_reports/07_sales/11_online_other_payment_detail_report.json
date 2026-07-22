@@ -1,0 +1,92 @@
+{
+  "report_id": "report:p2_reports:07_sales:11_online_other_payment_detail_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_rows",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Rows are grouped first by online source and then by business date.",
+  "data_points": [
+    {
+      "key": "bill_number",
+      "label": "Bill Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "cod",
+      "label": "COD",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "online_payment",
+      "label": "Online Payment",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "online_cod",
+      "label": "Online-COD",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "transaction_number",
+      "label": "Transaction Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "order_id",
+      "label": "Order ID",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "online_source",
+      "label": "Online Source",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "business_date",
+      "label": "Business Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Online payment detail",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Bill Number",
+          "key": "bill_number"
+        },
+        {
+          "label": "COD",
+          "key": "cod"
+        },
+        {
+          "label": "Online Payment",
+          "key": "online_payment"
+        },
+        {
+          "label": "Online-COD",
+          "key": "online_cod"
+        },
+        {
+          "label": "Transaction Number",
+          "key": "transaction_number"
+        },
+        {
+          "label": "Order ID",
+          "key": "order_id"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,290 @@
+{
+  "report_id": "report:p2_reports:07_sales:03_tax_summary_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "data_points": [
+    {
+      "key": "date",
+      "label": "Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "no_of_bills",
+      "label": "No of Bills",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "amount",
+      "label": "Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "discount",
+      "label": "Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "net_amount",
+      "label": "Net Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_5_amount",
+      "label": "GST@5% Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_5",
+      "label": "GST@5%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_3_amount",
+      "label": "GST@3% Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_3",
+      "label": "GST@3%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_18_amount",
+      "label": "GST@18% Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_18",
+      "label": "GST@18%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "restaurant_packaging_charges",
+      "label": "Restaurant Packaging Charges",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "packaging_charge_cart_swiggy",
+      "label": "Packaging Charge [CART - SWIGGY]",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "net_amount_with_charges",
+      "label": "Net Amount (With Charges)",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gross_amount",
+      "label": "Gross Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "roundoff",
+      "label": "RoundOff",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "grosstotal",
+      "label": "grossTotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "cash",
+      "label": "Cash",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "credit_card",
+      "label": "Credit Card",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "debit_card",
+      "label": "Debit Card",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "other",
+      "label": "Other",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "coupon",
+      "label": "Coupon",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "online",
+      "label": "Online",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "btc",
+      "label": "BTC",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "ttr",
+      "label": "TTR",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "smart_card",
+      "label": "Smart Card",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "total_void_bills",
+      "label": "Total Void Bills",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Tax Summary Report export",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Date",
+          "key": "date"
+        },
+        {
+          "label": "No of Bills",
+          "key": "no_of_bills"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        },
+        {
+          "label": "Discount",
+          "key": "discount"
+        },
+        {
+          "label": "Net Amount",
+          "key": "net_amount"
+        },
+        {
+          "label": "GST@5% Amount",
+          "key": "gst_5_amount"
+        },
+        {
+          "label": "GST@5%",
+          "key": "gst_5"
+        },
+        {
+          "label": "GST@3% Amount",
+          "key": "gst_3_amount"
+        },
+        {
+          "label": "GST@3%",
+          "key": "gst_3"
+        },
+        {
+          "label": "GST@18% Amount",
+          "key": "gst_18_amount"
+        },
+        {
+          "label": "GST@18%",
+          "key": "gst_18"
+        },
+        {
+          "label": "Restaurant Packaging Charges",
+          "key": "restaurant_packaging_charges"
+        },
+        {
+          "label": "Packaging Charge [CART - SWIGGY]",
+          "key": "packaging_charge_cart_swiggy"
+        },
+        {
+          "label": "Net Amount (With Charges)",
+          "key": "net_amount_with_charges"
+        },
+        {
+          "label": "Gross Amount",
+          "key": "gross_amount"
+        },
+        {
+          "label": "RoundOff",
+          "key": "roundoff"
+        },
+        {
+          "label": "grossTotal",
+          "key": "grosstotal"
+        },
+        {
+          "label": "Cash",
+          "key": "cash"
+        },
+        {
+          "label": "Credit Card",
+          "key": "credit_card"
+        },
+        {
+          "label": "Debit Card",
+          "key": "debit_card"
+        },
+        {
+          "label": "Other",
+          "key": "other"
+        },
+        {
+          "label": "Coupon",
+          "key": "coupon"
+        },
+        {
+          "label": "Online",
+          "key": "online"
+        },
+        {
+          "label": "BTC",
+          "key": "btc"
+        },
+        {
+          "label": "TTR",
+          "key": "ttr"
+        },
+        {
+          "label": "Smart Card",
+          "key": "smart_card"
+        },
+        {
+          "label": "Total Void Bills",
+          "key": "total_void_bills"
+        }
+      ]
+    }
+  ]
+}

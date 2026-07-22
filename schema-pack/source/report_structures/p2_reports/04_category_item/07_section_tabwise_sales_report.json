@@ -1,0 +1,90 @@
+{
+  "report_id": "report:p2_reports:04_category_item:07_section_tabwise_sales_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_rows",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Each tab expands into section rows and summary rows for revenue, bills, revenue per bill, covers, and revenue per cover.",
+  "data_points": [
+    {
+      "key": "tabs",
+      "label": "Tabs",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "sections",
+      "label": "Sections",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "day_sale",
+      "label": "Day Sale",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "month_to_date",
+      "label": "Month To Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "total_revenue",
+      "label": "Total Revenue",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_bills",
+      "label": "Total Bills",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "average_revenue_per_bill",
+      "label": "Average Revenue Per Bill",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_covers",
+      "label": "Total Covers",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "average_revenue_per_cover",
+      "label": "Average Revenue Per Cover",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Section sales by tab",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Tabs",
+          "key": "tabs"
+        },
+        {
+          "label": "Sections",
+          "key": "sections"
+        },
+        {
+          "label": "Day Sale",
+          "key": "day_sale"
+        },
+        {
+          "label": "Month To Date",
+          "key": "month_to_date"
+        }
+      ]
+    }
+  ]
+}

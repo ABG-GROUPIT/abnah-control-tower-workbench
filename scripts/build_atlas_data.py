@@ -20,7 +20,7 @@ MODEL_TOKEN_RE = re.compile(r"\b(?:RAW|STD|DIM|FACT|SUM)_[A-Za-z0-9_]+\b")
 MODEL_FILE_RE = re.compile(r"^\d{2}_(std|dim|fact|sum)_(.+)\.sql$", re.IGNORECASE)
 ACRONYMS = {"bom": "BOM", "po": "PO", "kpis": "KPIs", "gst": "GST", "crm": "CRM"}
 IMAGE_REFERENCE_RE = re.compile(r"\.(?:png|jpe?g|webp|gif|bmp|tiff?)(?:\b|$)", re.IGNORECASE)
-LOCAL_PATH_RE = re.compile(r"(?:^|\s)[A-Za-z]:\\")
+LOCAL_PATH_RE = re.compile(r"(?<![A-Za-z0-9])[A-Za-z]:\\")
 SCALAR_VALUE_RE = re.compile(r"^[₹$€£]?\s*[-+]?\d[\d,]*(?:\.\d+)?\s*%?$")
 DATE_VALUE_RE = re.compile(r"^\d{1,4}[-/]\d{1,2}[-/]\d{1,4}$")
 REPORT_STAMP_RE = re.compile(r"(?:generated\s*0?n|report\s*\()[^)]*\d{4}", re.IGNORECASE)
@@ -36,6 +36,21 @@ def read_csv(path: Path) -> list[dict[str, str]]:
         return []
     with path.open("r", encoding="utf-8-sig", newline="") as handle:
         return list(csv.DictReader(handle))
+
+
+def apply_report_overrides(
+    rows: list[dict[str, str]], overrides: dict[str, dict[str, str]]
+) -> list[dict[str, str]]:
+    updated: list[dict[str, str]] = []
+    known_folders = {row.get("report_folder", "") for row in rows}
+    unknown_folders = sorted(set(overrides) - known_folders)
+    if unknown_folders:
+        raise ValueError(f"Report overrides reference unknown folders: {unknown_folders}")
+    for source in rows:
+        row = dict(source)
+        row.update(overrides.get(row.get("report_folder", ""), {}))
+        updated.append(row)
+    return updated
 
 
 def write_csv(path: Path, rows: Iterable[dict[str, Any]], columns: list[str]) -> None:
@@ -222,6 +237,20 @@ def sanitize_reference_chunk(text: str) -> str:
     return "\n".join(compact).strip() + "\n"
 
 
+def apply_reference_chunk_override(
+    text: str, overrides: dict[str, dict[str, str]]
+) -> str:
+    lines = text.splitlines()
+    for folder, override in overrides.items():
+        marker = f"Scaffold folder: `{folder}`"
+        if marker not in text or not override.get("report_name"):
+            continue
+        if lines and lines[0].startswith("# "):
+            lines[0] = f"# {override['report_name']}"
+        break
+    return "\n".join(lines).strip() + "\n"
+
+
 def report_id(row: dict[str, str]) -> str:
     folder = row.get("report_folder", "").strip("/")
     if folder:
@@ -386,6 +415,9 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
     public_root = atlas_root / "public" / "data"
 
     curation = json.loads((atlas_root / "config" / "curation.json").read_text(encoding="utf-8"))
+    report_overrides = json.loads(
+        (atlas_root / "config" / "report_overrides.json").read_text(encoding="utf-8")
+    )
     core_keywords = curation["core_report_keywords"]
     domain_labels = curation["domain_labels"]
 
@@ -415,7 +447,7 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
     if missing:
         raise FileNotFoundError("Required source files are missing:\n" + "\n".join(missing))
 
-    reports_raw = read_csv(reference_files["reports"])
+    reports_raw = apply_report_overrides(read_csv(reference_files["reports"]), report_overrides)
     fields_raw = [
         sanitized
         for row in read_csv(reference_files["report_fields"])
@@ -1036,11 +1068,24 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         if logical_name == "evidence":
             continue
         destination = source_root / "catalog" / f"{logical_name}{source_path.suffix.lower()}"
-        snapshot = (
+        if logical_name == "reports":
             sanitized_csv_snapshot(source_path, destination, logical_name)
-            if source_path.suffix.lower() == ".csv"
-            else copy_snapshot(source_path, destination)
-        )
+            sanitized_reports = apply_report_overrides(read_csv(destination), report_overrides)
+            columns = list(sanitized_reports[0]) if sanitized_reports else []
+            write_csv(destination, sanitized_reports, columns)
+            snapshot = {
+                "source_name": source_path.name,
+                "snapshot_path": destination.as_posix(),
+                "sha256": sha256(destination),
+                "bytes": destination.stat().st_size,
+                "rows": len(sanitized_reports),
+            }
+        else:
+            snapshot = (
+                sanitized_csv_snapshot(source_path, destination, logical_name)
+                if source_path.suffix.lower() == ".csv"
+                else copy_snapshot(source_path, destination)
+            )
         snapshot["snapshot_path"] = destination.relative_to(atlas_root).as_posix()
         snapshot["logical_name"] = logical_name
         snapshot_records.append(snapshot)
@@ -1054,9 +1099,9 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
             destination = chunk_destination / source_path.relative_to(chunk_source)
             destination.parent.mkdir(parents=True, exist_ok=True)
             if source_path.suffix.lower() == ".md":
+                sanitized = sanitize_reference_chunk(source_path.read_text(encoding="utf-8"))
                 destination.write_text(
-                    sanitize_reference_chunk(source_path.read_text(encoding="utf-8")),
-                    encoding="utf-8",
+                    apply_reference_chunk_override(sanitized, report_overrides), encoding="utf-8"
                 )
             else:
                 shutil.copy2(source_path, destination)

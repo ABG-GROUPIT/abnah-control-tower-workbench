@@ -1,0 +1,70 @@
+{
+  "report_id": "report:p2_reports:07_sales:12_online_other_payment_consolidated",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "data_points": [
+    {
+      "key": "sl_no",
+      "label": "Sl. No.",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "source",
+      "label": "Source",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "type",
+      "label": "Type",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "amount",
+      "label": "Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "number_of_bills",
+      "label": "Number of Bills",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Online Other Payment Consolidated Report export",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Sl. No.",
+          "key": "sl_no"
+        },
+        {
+          "label": "Source",
+          "key": "source"
+        },
+        {
+          "label": "Type",
+          "key": "type"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        },
+        {
+          "label": "Number of Bills",
+          "key": "number_of_bills"
+        }
+      ]
+    }
+  ]
+}

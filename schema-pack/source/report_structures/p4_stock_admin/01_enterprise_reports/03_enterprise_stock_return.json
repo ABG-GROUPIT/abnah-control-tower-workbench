@@ -1,0 +1,380 @@
+{
+  "report_id": "report:p4_stock_admin:01_enterprise_reports:03_enterprise_stock_return",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "data_points": [
+    {
+      "key": "deployment_name",
+      "label": "Deployment Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "store_name",
+      "label": "Store Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "stock_entry_date",
+      "label": "Stock Entry Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "transaction_number",
+      "label": "Transaction Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "invoice_number",
+      "label": "Invoice Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "batch_number",
+      "label": "Batch Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "vendor_code",
+      "label": "Vendor Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "vendor_name",
+      "label": "Vendor Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "super_category_code",
+      "label": "Super Category Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "super_category_name",
+      "label": "Super Category Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "category_code",
+      "label": "Category Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "category_name",
+      "label": "Category Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "item_code",
+      "label": "Item Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "comment",
+      "label": "Comment",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "unit",
+      "label": "Unit",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "entry_qty",
+      "label": "Entry Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "unit_price",
+      "label": "Unit Price",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "sub_total",
+      "label": "Sub Total",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "discount",
+      "label": "Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "cgst",
+      "label": "CGST",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "sgst",
+      "label": "SGST",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "igst",
+      "label": "IGST",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "non_gst",
+      "label": "Non GST",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "entry_amt",
+      "label": "Entry Amt",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "return_date",
+      "label": "Return Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "return_unit",
+      "label": "Return Unit",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "return_qty",
+      "label": "Return Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "return_subtotal",
+      "label": "Return SubTotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "return_discount",
+      "label": "Return Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "return_cgst",
+      "label": "Return CGST",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "return_sgst",
+      "label": "Return SGST",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "return_igst",
+      "label": "Return IGST",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "return_non_gst",
+      "label": "Return Non GST",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "return_amount",
+      "label": "Return Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "transaction_status",
+      "label": "Transaction Status",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Enterprise Stock Return export",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Deployment Name",
+          "key": "deployment_name"
+        },
+        {
+          "label": "Store Name",
+          "key": "store_name"
+        },
+        {
+          "label": "Stock Entry Date",
+          "key": "stock_entry_date"
+        },
+        {
+          "label": "Transaction Number",
+          "key": "transaction_number"
+        },
+        {
+          "label": "Invoice Number",
+          "key": "invoice_number"
+        },
+        {
+          "label": "Batch Number",
+          "key": "batch_number"
+        },
+        {
+          "label": "Vendor Code",
+          "key": "vendor_code"
+        },
+        {
+          "label": "Vendor Name",
+          "key": "vendor_name"
+        },
+        {
+          "label": "Super Category Code",
+          "key": "super_category_code"
+        },
+        {
+          "label": "Super Category Name",
+          "key": "super_category_name"
+        },
+        {
+          "label": "Category Code",
+          "key": "category_code"
+        },
+        {
+          "label": "Category Name",
+          "key": "category_name"
+        },
+        {
+          "label": "Item Code",
+          "key": "item_code"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Comment",
+          "key": "comment"
+        },
+        {
+          "label": "Unit",
+          "key": "unit"
+        },
+        {
+          "label": "Entry Qty",
+          "key": "entry_qty"
+        },
+        {
+          "label": "Unit Price",
+          "key": "unit_price"
+        },
+        {
+          "label": "Sub Total",
+          "key": "sub_total"
+        },
+        {
+          "label": "Discount",
+          "key": "discount"
+        },
+        {
+          "label": "CGST",
+          "key": "cgst"
+        },
+        {
+          "label": "SGST",
+          "key": "sgst"
+        },
+        {
+          "label": "IGST",
+          "key": "igst"
+        },
+        {
+          "label": "Non GST",
+          "key": "non_gst"
+        },
+        {
+          "label": "Entry Amt",
+          "key": "entry_amt"
+        },
+        {
+          "label": "Return Date",
+          "key": "return_date"
+        },
+        {
+          "label": "Return Unit",
+          "key": "return_unit"
+        },
+        {
+          "label": "Return Qty",
+          "key": "return_qty"
+        },
+        {
+          "label": "Return SubTotal",
+          "key": "return_subtotal"
+        },
+        {
+          "label": "Return Discount",
+          "key": "return_discount"
+        },
+        {
+          "label": "Return CGST",
+          "key": "return_cgst"
+        },
+        {
+          "label": "Return SGST",
+          "key": "return_sgst"
+        },
+        {
+          "label": "Return IGST",
+          "key": "return_igst"
+        },
+        {
+          "label": "Return Non GST",
+          "key": "return_non_gst"
+        },
+        {
+          "label": "Return Amount",
+          "key": "return_amount"
+        },
+        {
+          "label": "Transaction Status",
+          "key": "transaction_status"
+        }
+      ]
+    }
+  ]
+}

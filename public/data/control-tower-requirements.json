@@ -1100,9 +1100,9 @@
           },
           {
             "reportId": "report:p2_reports:07_sales:33_food_sold_report",
-            "name": "Food Sold Report",
-            "role": "comparison_candidate",
-            "reason": "May expose a cleaner sold-item grain or food classification."
+            "name": "Gross/Net Margin Report",
+            "role": "primary_candidate",
+            "reason": "Captured item-level quantity, gross and net sales, purchase value, and gross/net margin fields make this the planned profitability source pending CSV validation."
           },
           {
             "reportId": "report:p2_reports:07_sales:37_dsh_item_wise_report",

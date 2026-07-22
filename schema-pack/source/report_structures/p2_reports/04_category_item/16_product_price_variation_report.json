@@ -1,0 +1,255 @@
+{
+  "report_id": "report:p2_reports:04_category_item:16_product_price_variation_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Measures are partitioned into a-la-carte, combo, and dynamic-price sales groups.",
+  "data_points": [
+    {
+      "key": "super_category",
+      "label": "Super Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "category",
+      "label": "Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "section",
+      "label": "Section",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "item_code",
+      "label": "Item Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "a_la_carte_qty_sold",
+      "label": "Qty Sold",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "a_la_carte_price",
+      "label": "Price",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "a_la_carte_taxes",
+      "label": "Taxes",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "a_la_carte_discount",
+      "label": "Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "a_la_carte_net_sales",
+      "label": "Net Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "combo_qty_sold",
+      "label": "Qty Sold",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "combo_mrp",
+      "label": "MRP",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "combo_price",
+      "label": "Price In Combo",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "combo_taxes",
+      "label": "Taxes",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "combo_discount",
+      "label": "Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "combo_net_sales",
+      "label": "Net Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "dynamic_qty_sold",
+      "label": "Qty Sold",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "dynamic_mrp",
+      "label": "MRP",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "dynamic_price",
+      "label": "Dynamic Pricing",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "dynamic_taxes",
+      "label": "Taxes",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "dynamic_discount",
+      "label": "Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "dynamic_net_sales",
+      "label": "Net Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Product price variation",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "Super Category",
+          "key": "super_category"
+        },
+        {
+          "label": "Category",
+          "key": "category"
+        },
+        {
+          "label": "Section",
+          "key": "section"
+        },
+        {
+          "label": "Item Code",
+          "key": "item_code"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "A La Carte Sales",
+          "children": [
+            {
+              "label": "Qty Sold",
+              "key": "a_la_carte_qty_sold"
+            },
+            {
+              "label": "Price",
+              "key": "a_la_carte_price"
+            },
+            {
+              "label": "Taxes",
+              "key": "a_la_carte_taxes"
+            },
+            {
+              "label": "Discount",
+              "key": "a_la_carte_discount"
+            },
+            {
+              "label": "Net Sales",
+              "key": "a_la_carte_net_sales"
+            }
+          ]
+        },
+        {
+          "label": "Combo Sales",
+          "children": [
+            {
+              "label": "Qty Sold",
+              "key": "combo_qty_sold"
+            },
+            {
+              "label": "MRP",
+              "key": "combo_mrp"
+            },
+            {
+              "label": "Price In Combo",
+              "key": "combo_price"
+            },
+            {
+              "label": "Taxes",
+              "key": "combo_taxes"
+            },
+            {
+              "label": "Discount",
+              "key": "combo_discount"
+            },
+            {
+              "label": "Net Sales",
+              "key": "combo_net_sales"
+            }
+          ]
+        },
+        {
+          "label": "Sales Via Dynamic Price",
+          "children": [
+            {
+              "label": "Qty Sold",
+              "key": "dynamic_qty_sold"
+            },
+            {
+              "label": "MRP",
+              "key": "dynamic_mrp"
+            },
+            {
+              "label": "Dynamic Pricing",
+              "key": "dynamic_price"
+            },
+            {
+              "label": "Taxes",
+              "key": "dynamic_taxes"
+            },
+            {
+              "label": "Discount",
+              "key": "dynamic_discount"
+            },
+            {
+              "label": "Net Sales",
+              "key": "dynamic_net_sales"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

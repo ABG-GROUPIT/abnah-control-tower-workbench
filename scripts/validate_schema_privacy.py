@@ -11,7 +11,7 @@ from pathlib import Path
 IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".bmp", ".tif", ".tiff"}
 TEXT_SUFFIXES = {".csv", ".json", ".md", ".txt", ".sql"}
 IMAGE_REFERENCE_RE = re.compile(r"\.(?:png|jpe?g|webp|gif|bmp|tiff?)(?:\b|$)", re.IGNORECASE)
-LOCAL_PATH_RE = re.compile(r"(?:^|\s)[A-Za-z]:\\")
+LOCAL_PATH_RE = re.compile(r"(?<![A-Za-z0-9])[A-Za-z]:\\")
 SCALAR_VALUE_RE = re.compile(r"^[₹$€£]?\s*[-+]?\d[\d,]*(?:\.\d+)?\s*%?$")
 DATE_VALUE_RE = re.compile(r"^\d{1,4}[-/]\d{1,2}[-/]\d{1,4}$")
 

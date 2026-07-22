@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1.0",
-  "generated_at": "2026-07-14T20:59:19+00:00",
+  "generated_at": "2026-07-22T09:58:15+00:00",
   "title": "ABNAH Data Discovery Atlas",
   "summary": {
     "reports": 319,
@@ -3437,14 +3437,14 @@
     {
       "id": "report:p2_reports:07_sales:24_source_wise_analysis_report",
       "type": "report",
-      "label": "Source Wise Analysis Report",
+      "label": "Source Analysis Summary",
       "status": "schema_text_template_ready",
       "priority": "P2",
       "domain": "sales_revenue",
       "is_core": false,
       "page": "p2_reports",
       "section": "07_sales",
-      "description": "Source Wise Analysis Report in 07 sales.",
+      "description": "Source Analysis Summary in 07 sales.",
       "evidence_count": 0,
       "field_count": 0,
       "schema_ready": false
@@ -3572,14 +3572,14 @@
     {
       "id": "report:p2_reports:07_sales:33_food_sold_report",
       "type": "report",
-      "label": "Food Sold Report",
+      "label": "Gross/Net Margin Report",
       "status": "schema_text_template_ready",
       "priority": "P2",
       "domain": "sales_revenue",
       "is_core": false,
       "page": "p2_reports",
       "section": "07_sales",
-      "description": "Food Sold Report in 07 sales.",
+      "description": "Gross/Net Margin Report in 07 sales.",
       "evidence_count": 0,
       "field_count": 0,
       "schema_ready": false
@@ -3647,14 +3647,14 @@
     {
       "id": "report:p2_reports:07_sales:38_daily_sales_reversal",
       "type": "report",
-      "label": "Daily Sales Reversal",
+      "label": "Daily Sales Revenue",
       "status": "schema_text_template_ready",
       "priority": "P2",
       "domain": "sales_revenue",
       "is_core": false,
       "page": "p2_reports",
       "section": "07_sales",
-      "description": "Daily Sales Reversal in 07 sales.",
+      "description": "Daily Sales Revenue in 07 sales.",
       "evidence_count": 0,
       "field_count": 0,
       "schema_ready": false
@@ -32235,7 +32235,7 @@
     },
     {
       "id": "report:p2_reports:07_sales:24_source_wise_analysis_report",
-      "name": "Source Wise Analysis Report",
+      "name": "Source Analysis Summary",
       "page": "p2_reports",
       "section": "07_sales",
       "report_folder": "p2_reports/07_sales/24_source_wise_analysis_report",
@@ -32415,7 +32415,7 @@
     },
     {
       "id": "report:p2_reports:07_sales:33_food_sold_report",
-      "name": "Food Sold Report",
+      "name": "Gross/Net Margin Report",
       "page": "p2_reports",
       "section": "07_sales",
       "report_folder": "p2_reports/07_sales/33_food_sold_report",
@@ -32515,7 +32515,7 @@
     },
     {
       "id": "report:p2_reports:07_sales:38_daily_sales_reversal",
-      "name": "Daily Sales Reversal",
+      "name": "Daily Sales Revenue",
       "page": "p2_reports",
       "section": "07_sales",
       "report_folder": "p2_reports/07_sales/38_daily_sales_reversal",

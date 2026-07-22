@@ -1,0 +1,100 @@
+{
+  "report_id": "report:p4_stock_admin:01_enterprise_reports:05_enterprise_stock_re_order",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "data_points": [
+    {
+      "key": "deployment_name",
+      "label": "Deployment Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "store_name",
+      "label": "Store Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "item_code",
+      "label": "Item Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "re_order_level",
+      "label": "Re-Order Level",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "minimum_order_level",
+      "label": "Minimum-Order Level",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "available_qty",
+      "label": "Available Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "unit_name",
+      "label": "Unit Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Enterprise Stock Re-Order export",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Deployment Name",
+          "key": "deployment_name"
+        },
+        {
+          "label": "Store Name",
+          "key": "store_name"
+        },
+        {
+          "label": "Item Code",
+          "key": "item_code"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Re-Order Level",
+          "key": "re_order_level"
+        },
+        {
+          "label": "Minimum-Order Level",
+          "key": "minimum_order_level"
+        },
+        {
+          "label": "Available Qty",
+          "key": "available_qty"
+        },
+        {
+          "label": "Unit Name",
+          "key": "unit_name"
+        }
+      ]
+    }
+  ]
+}

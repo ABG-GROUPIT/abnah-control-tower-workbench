@@ -1,0 +1,390 @@
+{
+  "report_id": "report:p2_reports:07_sales:25_bill_no_wise_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "key_value",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "The captured field list was repeated twice in the staging text. One structural sequence is retained; beverage and food CGST/SGST positions use contextual keys rather than being collapsed.",
+  "data_points": [
+    {
+      "key": "deployment",
+      "label": "Deployment",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "bill_number",
+      "label": "Bill Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "advance_number",
+      "label": "Advance Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "order_id",
+      "label": "Order Id",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "bill_date",
+      "label": "Bill Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "bill_open_time",
+      "label": "Bill Open Time",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "print_time",
+      "label": "Print Time",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "close_time",
+      "label": "Close Time",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "tab_name",
+      "label": "Tab Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "table_number",
+      "label": "Table Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "covers",
+      "label": "Covers",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "sales",
+      "label": "Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "discount",
+      "label": "Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "net_sales",
+      "label": "Net Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gross_bill_amount",
+      "label": "Gross Bill Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "packaging_charge_cart_swiggy",
+      "label": "Packaging Charge [CART - SWIGGY]",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "restaurant_packaging_charges",
+      "label": "Restaurant Packaging Charges",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "beverage_sales",
+      "label": "BEVERAGE",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "beverage_cgst",
+      "label": "CGST",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "beverage_sgst",
+      "label": "SGST",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "food_sales",
+      "label": "FOOD",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "food_cgst",
+      "label": "CGST",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "food_sgst",
+      "label": "SGST",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "total_service_charge",
+      "label": "Total Service Charge",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "round_off",
+      "label": "Round Off",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "cash",
+      "label": "Cash",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "credit_card",
+      "label": "Credit Card",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "debit_card",
+      "label": "Debit Card",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "coupon",
+      "label": "Coupon",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "btc",
+      "label": "BTC",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "ttr",
+      "label": "TTR",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "smart_card",
+      "label": "Smart Card",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "swiggy",
+      "label": "Swiggy",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "zomato",
+      "label": "Zomato",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "tip_amount",
+      "label": "Tip Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "offer_code",
+      "label": "Offer Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "electronic_bill",
+      "label": "Electronic Bill",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Bill-wise summary fields",
+      "kind": "key_value",
+      "entries": [
+        {
+          "label": "Deployment",
+          "key": "deployment"
+        },
+        {
+          "label": "Bill Number",
+          "key": "bill_number"
+        },
+        {
+          "label": "Advance Number",
+          "key": "advance_number"
+        },
+        {
+          "label": "Order Id",
+          "key": "order_id"
+        },
+        {
+          "label": "Bill Date",
+          "key": "bill_date"
+        },
+        {
+          "label": "Bill Open Time",
+          "key": "bill_open_time"
+        },
+        {
+          "label": "Print Time",
+          "key": "print_time"
+        },
+        {
+          "label": "Close Time",
+          "key": "close_time"
+        },
+        {
+          "label": "Tab Name",
+          "key": "tab_name"
+        },
+        {
+          "label": "Table Number",
+          "key": "table_number"
+        },
+        {
+          "label": "Covers",
+          "key": "covers"
+        },
+        {
+          "label": "Sales",
+          "key": "sales"
+        },
+        {
+          "label": "Discount",
+          "key": "discount"
+        },
+        {
+          "label": "Net Sales",
+          "key": "net_sales"
+        },
+        {
+          "label": "Gross Bill Amount",
+          "key": "gross_bill_amount"
+        },
+        {
+          "label": "Packaging Charge [CART - SWIGGY]",
+          "key": "packaging_charge_cart_swiggy"
+        },
+        {
+          "label": "Restaurant Packaging Charges",
+          "key": "restaurant_packaging_charges"
+        },
+        {
+          "label": "BEVERAGE",
+          "key": "beverage_sales"
+        },
+        {
+          "label": "CGST",
+          "key": "beverage_cgst"
+        },
+        {
+          "label": "SGST",
+          "key": "beverage_sgst"
+        },
+        {
+          "label": "FOOD",
+          "key": "food_sales"
+        },
+        {
+          "label": "CGST",
+          "key": "food_cgst"
+        },
+        {
+          "label": "SGST",
+          "key": "food_sgst"
+        },
+        {
+          "label": "Total Service Charge",
+          "key": "total_service_charge"
+        },
+        {
+          "label": "Round Off",
+          "key": "round_off"
+        },
+        {
+          "label": "Cash",
+          "key": "cash"
+        },
+        {
+          "label": "Credit Card",
+          "key": "credit_card"
+        },
+        {
+          "label": "Debit Card",
+          "key": "debit_card"
+        },
+        {
+          "label": "Coupon",
+          "key": "coupon"
+        },
+        {
+          "label": "BTC",
+          "key": "btc"
+        },
+        {
+          "label": "TTR",
+          "key": "ttr"
+        },
+        {
+          "label": "Smart Card",
+          "key": "smart_card"
+        },
+        {
+          "label": "Swiggy",
+          "key": "swiggy"
+        },
+        {
+          "label": "Zomato",
+          "key": "zomato"
+        },
+        {
+          "label": "Tip Amount",
+          "key": "tip_amount"
+        },
+        {
+          "label": "Offer Code",
+          "key": "offer_code"
+        },
+        {
+          "label": "Electronic Bill",
+          "key": "electronic_bill"
+        }
+      ]
+    }
+  ]
+}

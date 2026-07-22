@@ -1,0 +1,325 @@
+{
+  "report_id": "report:p2_reports:07_sales:31_online_orders_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "grouped_columns",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Order-level context is followed by an Ordered Items group and payment/delivery fields. The export can repeat order context for item lines.",
+  "data_points": [
+    {
+      "key": "date",
+      "label": "Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "bill_number",
+      "label": "Bill Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "time",
+      "label": "Time",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "outlet_name",
+      "label": "Outlet Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "order_id",
+      "label": "Order ID",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "order_status",
+      "label": "Order Status",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "order_type",
+      "label": "Order Type",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "tab_type",
+      "label": "Tab Type",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "order_source",
+      "label": "Order Source",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "customer_name",
+      "label": "Customer Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "customer_address",
+      "label": "Customer Address",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "customer_phone",
+      "label": "Customer Phone",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "item",
+      "label": "Item",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "rate",
+      "label": "Rate",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "quantity",
+      "label": "Quantity",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "subtotal",
+      "label": "Subtotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "category",
+      "label": "Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "super_category",
+      "label": "Super Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "comment",
+      "label": "Comment",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "total_discount_amount",
+      "label": "Total Discount Amount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "amount",
+      "label": "Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "restaurant_packaging_charges",
+      "label": "Restaurant Packaging Charges",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "packaging_charge_cart_swiggy",
+      "label": "Packaging Charge [CART - SWIGGY]",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "net_amount",
+      "label": "Net Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "round_off",
+      "label": "Round Off",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "g_total",
+      "label": "G Total",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "payment_mode",
+      "label": "Payment Mode",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "executive_name",
+      "label": "Executive Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "delivery_rider_name",
+      "label": "Delivery Rider Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "delivery_boy_mobile",
+      "label": "Delivery Boy Mobile",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Online order detail",
+      "kind": "column_tree",
+      "columns": [
+        {
+          "label": "Date",
+          "key": "date"
+        },
+        {
+          "label": "Bill Number",
+          "key": "bill_number"
+        },
+        {
+          "label": "Time",
+          "key": "time"
+        },
+        {
+          "label": "Outlet Name",
+          "key": "outlet_name"
+        },
+        {
+          "label": "Order ID",
+          "key": "order_id"
+        },
+        {
+          "label": "Order Status",
+          "key": "order_status"
+        },
+        {
+          "label": "Order Type",
+          "key": "order_type"
+        },
+        {
+          "label": "Tab Type",
+          "key": "tab_type"
+        },
+        {
+          "label": "Order Source",
+          "key": "order_source"
+        },
+        {
+          "label": "Customer Name",
+          "key": "customer_name"
+        },
+        {
+          "label": "Customer Address",
+          "key": "customer_address"
+        },
+        {
+          "label": "Customer Phone",
+          "key": "customer_phone"
+        },
+        {
+          "label": "Ordered Items",
+          "children": [
+            {
+              "label": "Item",
+              "key": "item"
+            },
+            {
+              "label": "Rate",
+              "key": "rate"
+            },
+            {
+              "label": "Quantity",
+              "key": "quantity"
+            },
+            {
+              "label": "Subtotal",
+              "key": "subtotal"
+            },
+            {
+              "label": "Category",
+              "key": "category"
+            },
+            {
+              "label": "Super Category",
+              "key": "super_category"
+            },
+            {
+              "label": "Comment",
+              "key": "comment"
+            }
+          ]
+        },
+        {
+          "label": "Total Discount Amount",
+          "key": "total_discount_amount"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        },
+        {
+          "label": "Restaurant Packaging Charges",
+          "key": "restaurant_packaging_charges"
+        },
+        {
+          "label": "Packaging Charge [CART - SWIGGY]",
+          "key": "packaging_charge_cart_swiggy"
+        },
+        {
+          "label": "Net Amount",
+          "key": "net_amount"
+        },
+        {
+          "label": "Round Off",
+          "key": "round_off"
+        },
+        {
+          "label": "G Total",
+          "key": "g_total"
+        },
+        {
+          "label": "Payment Mode",
+          "key": "payment_mode"
+        },
+        {
+          "label": "Executive Name",
+          "key": "executive_name"
+        },
+        {
+          "label": "Delivery Rider Name",
+          "key": "delivery_rider_name"
+        },
+        {
+          "label": "Delivery Boy Mobile",
+          "key": "delivery_boy_mobile"
+        }
+      ]
+    }
+  ]
+}

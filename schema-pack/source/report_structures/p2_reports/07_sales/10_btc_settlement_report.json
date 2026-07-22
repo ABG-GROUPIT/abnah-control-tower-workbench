@@ -1,0 +1,181 @@
+{
+  "report_id": "report:p2_reports:07_sales:10_btc_settlement_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "mixed",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "A payment-mode summary precedes the bill-level BTC settlement detail.",
+  "data_points": [
+    {
+      "key": "payment_mode",
+      "label": "Payment Mode",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "payment_received",
+      "label": "Payment Received",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "outstanding_amount",
+      "label": "Outstanding Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "date",
+      "label": "Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "bill_number",
+      "label": "Bill Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "bill_type",
+      "label": "Bill Type",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "company_name",
+      "label": "Company Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "company_code",
+      "label": "Company Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "employee_name",
+      "label": "Employee Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "employee_code",
+      "label": "Employee Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "gross_amount",
+      "label": "Gross Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "payment_status",
+      "label": "Payment Status",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "payment_date",
+      "label": "Payment Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "payment_user",
+      "label": "Payment User",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "staff_meal_bill",
+      "label": "Staff Meal Bill",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "summary",
+      "name": "BTC settlement summary",
+      "kind": "key_value",
+      "entries": [
+        {
+          "label": "Payment Mode",
+          "key": "payment_mode"
+        },
+        {
+          "label": "Payment Received",
+          "key": "payment_received"
+        },
+        {
+          "label": "Outstanding Amount",
+          "key": "outstanding_amount"
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "name": "BTC bill detail",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Date",
+          "key": "date"
+        },
+        {
+          "label": "Bill Number",
+          "key": "bill_number"
+        },
+        {
+          "label": "Bill Type",
+          "key": "bill_type"
+        },
+        {
+          "label": "Company Name",
+          "key": "company_name"
+        },
+        {
+          "label": "Company Code",
+          "key": "company_code"
+        },
+        {
+          "label": "Employee Name",
+          "key": "employee_name"
+        },
+        {
+          "label": "Employee Code",
+          "key": "employee_code"
+        },
+        {
+          "label": "Gross Amount",
+          "key": "gross_amount"
+        },
+        {
+          "label": "Payment Status",
+          "key": "payment_status"
+        },
+        {
+          "label": "Payment Mode",
+          "key": "payment_mode"
+        },
+        {
+          "label": "Payment Date",
+          "key": "payment_date"
+        },
+        {
+          "label": "Payment User",
+          "key": "payment_user"
+        },
+        {
+          "label": "Staff Meal Bill",
+          "key": "staff_meal_bill"
+        }
+      ]
+    }
+  ]
+}

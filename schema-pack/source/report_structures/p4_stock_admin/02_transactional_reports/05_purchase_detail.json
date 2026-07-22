@@ -1,0 +1,340 @@
+{
+  "report_id": "report:p4_stock_admin:02_transactional_reports:05_purchase_detail",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "flat",
+  "capture_method": "pasted_export_headers",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "data_points": [
+    {
+      "key": "item_code",
+      "label": "Item Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "company",
+      "label": "Company",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "deployment",
+      "label": "Deployment",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "date",
+      "label": "Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "invoice_date",
+      "label": "Invoice Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "po_date",
+      "label": "PO Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "po_number",
+      "label": "Po Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "transaction_number",
+      "label": "Transaction Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "vendor_code",
+      "label": "Vendor Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "vendor_name",
+      "label": "Vendor Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "invoice_number",
+      "label": "Invoice Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "batch_number",
+      "label": "Batch Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "category_code",
+      "label": "Category Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "category_name",
+      "label": "Category Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "super_category_code",
+      "label": "Super Category Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "super_category_name",
+      "label": "Super Category Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "po_qty",
+      "label": "PO Qty",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "po_unit",
+      "label": "PO Unit",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "po_unit_price",
+      "label": "PO Unit Price",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "po_amount",
+      "label": "PO Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "po_comment",
+      "label": "PO Comment",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "purchase_quantity",
+      "label": "Purchase Quantity",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "purchase_unit",
+      "label": "Purchase Unit",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "purchase_unit_price",
+      "label": "Purchase Unit Price",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "purchase_amount",
+      "label": "Purchase Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "discount",
+      "label": "Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "cgst_tax",
+      "label": "CGST Tax",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "sgst_tax",
+      "label": "SGST Tax",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "igst_tax",
+      "label": "IGST Tax",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "other_taxes",
+      "label": "Other Taxes",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total",
+      "label": "Total",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "Purchase Detail export",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Item Code",
+          "key": "item_code"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Company",
+          "key": "company"
+        },
+        {
+          "label": "Deployment",
+          "key": "deployment"
+        },
+        {
+          "label": "Date",
+          "key": "date"
+        },
+        {
+          "label": "Invoice Date",
+          "key": "invoice_date"
+        },
+        {
+          "label": "PO Date",
+          "key": "po_date"
+        },
+        {
+          "label": "Po Number",
+          "key": "po_number"
+        },
+        {
+          "label": "Transaction Number",
+          "key": "transaction_number"
+        },
+        {
+          "label": "Vendor Code",
+          "key": "vendor_code"
+        },
+        {
+          "label": "Vendor Name",
+          "key": "vendor_name"
+        },
+        {
+          "label": "Invoice Number",
+          "key": "invoice_number"
+        },
+        {
+          "label": "Batch Number",
+          "key": "batch_number"
+        },
+        {
+          "label": "Category Code",
+          "key": "category_code"
+        },
+        {
+          "label": "Category Name",
+          "key": "category_name"
+        },
+        {
+          "label": "Super Category Code",
+          "key": "super_category_code"
+        },
+        {
+          "label": "Super Category Name",
+          "key": "super_category_name"
+        },
+        {
+          "label": "PO Qty",
+          "key": "po_qty"
+        },
+        {
+          "label": "PO Unit",
+          "key": "po_unit"
+        },
+        {
+          "label": "PO Unit Price",
+          "key": "po_unit_price"
+        },
+        {
+          "label": "PO Amount",
+          "key": "po_amount"
+        },
+        {
+          "label": "PO Comment",
+          "key": "po_comment"
+        },
+        {
+          "label": "Purchase Quantity",
+          "key": "purchase_quantity"
+        },
+        {
+          "label": "Purchase Unit",
+          "key": "purchase_unit"
+        },
+        {
+          "label": "Purchase Unit Price",
+          "key": "purchase_unit_price"
+        },
+        {
+          "label": "Purchase Amount",
+          "key": "purchase_amount"
+        },
+        {
+          "label": "Discount",
+          "key": "discount"
+        },
+        {
+          "label": "CGST Tax",
+          "key": "cgst_tax"
+        },
+        {
+          "label": "SGST Tax",
+          "key": "sgst_tax"
+        },
+        {
+          "label": "IGST Tax",
+          "key": "igst_tax"
+        },
+        {
+          "label": "Other Taxes",
+          "key": "other_taxes"
+        },
+        {
+          "label": "Total",
+          "key": "total"
+        }
+      ]
+    }
+  ]
+}

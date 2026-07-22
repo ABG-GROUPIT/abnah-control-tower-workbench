@@ -1,0 +1,167 @@
+{
+  "report_id": "report:p2_reports:04_category_item:13_combo_report",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "mixed",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "Each combo item is followed by a separate constituent-item table.",
+  "data_points": [
+    {
+      "key": "number",
+      "label": "Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "name",
+      "label": "Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "category",
+      "label": "Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "quantity",
+      "label": "Quantity",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "subtotal",
+      "label": "Subtotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "discount",
+      "label": "Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "item_number",
+      "label": "Item Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "item_category",
+      "label": "Item Category",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "item_quantity",
+      "label": "Item Quantity",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "item_subtotal",
+      "label": "Item Subtotal",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "item_discount",
+      "label": "Item Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "applied_offer_weighted_discount",
+      "label": "Applied Offer Weighted Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "item_taxes",
+      "label": "Item Taxes",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "combo",
+      "name": "Combo item",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Number",
+          "key": "number"
+        },
+        {
+          "label": "Name",
+          "key": "name"
+        },
+        {
+          "label": "Category",
+          "key": "category"
+        },
+        {
+          "label": "Quantity",
+          "key": "quantity"
+        },
+        {
+          "label": "Subtotal",
+          "key": "subtotal"
+        },
+        {
+          "label": "Discount",
+          "key": "discount"
+        }
+      ]
+    },
+    {
+      "id": "constituents",
+      "name": "Constituent items",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Item Number",
+          "key": "item_number"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Item Category",
+          "key": "item_category"
+        },
+        {
+          "label": "Item Quantity",
+          "key": "item_quantity"
+        },
+        {
+          "label": "Item Subtotal",
+          "key": "item_subtotal"
+        },
+        {
+          "label": "Item Discount",
+          "key": "item_discount"
+        },
+        {
+          "label": "Applied Offer Weighted Discount",
+          "key": "applied_offer_weighted_discount"
+        },
+        {
+          "label": "Item Taxes",
+          "key": "item_taxes"
+        }
+      ]
+    }
+  ]
+}

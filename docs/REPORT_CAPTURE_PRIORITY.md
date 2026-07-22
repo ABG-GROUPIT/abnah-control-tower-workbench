@@ -21,7 +21,7 @@ The objective is the smallest set that preserves all required detail. Overlappin
 | --- | --- |
 | Day Wise Sales Report | Daily trend and reconciliation fallback. |
 | Week Cost Report | Cost context before P4 food-cost sources are confirmed. |
-| Food Sold Report | Potentially cleaner sold-item grain or food classification. |
+| Gross/Net Margin Report | Captured item-level quantity, sales, purchase value, and gross/net margin; validate as the primary menu-profitability source. |
 | DSH Item Wise Report | Unknown item-wise context; retain until headers show duplication. |
 | Day Closing Report | Close-period sales reconciliation. |
 | Day Check Close Report | Alternate close-control fields or totals. |

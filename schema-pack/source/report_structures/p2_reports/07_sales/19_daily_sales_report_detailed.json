@@ -1,0 +1,594 @@
+{
+  "report_id": "report:p2_reports:07_sales:19_daily_sales_report_detailed",
+  "schema_status": "captured",
+  "verification_status": "reviewed",
+  "layout_kind": "mixed",
+  "capture_method": "manual_visual_structure_review",
+  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "structure_notes": "The detailed report is a dashboard-style pack of revenue, void, order, section, tender, discount, tax, bill, and cover structures rather than one rectangular export.",
+  "data_points": [
+    {
+      "key": "net_sales",
+      "label": "Net Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "charge_total",
+      "label": "Charge Total",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "service_charge",
+      "label": "Service Charge",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "product_level_charges",
+      "label": "Product Level Charges",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "tax_collected",
+      "label": "Tax Collected",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "round_off",
+      "label": "Round Off",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_revenue",
+      "label": "Total Revenue",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "item_discount",
+      "label": "Item Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "subtotal_discount",
+      "label": "Subtotal Discount",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "total_discounts",
+      "label": "Total Discounts",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "total_discounts_complimentary",
+      "label": "Total Discounts Complimentary",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "total_discounts_non_complimentary",
+      "label": "Total Discounts Non-Complimentary",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "voids",
+      "label": "Voids",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "manager_voids",
+      "label": "Manager Voids",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "other_voids",
+      "label": "Other Voids",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "order_type",
+      "label": "Order Type",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "of_total_sales",
+      "label": "% Of Total Sales",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "guest",
+      "label": "Guest",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "of_total_guests",
+      "label": "% Of Total Guests",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "avg_guest",
+      "label": "Avg/Guest",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "checks",
+      "label": "Checks",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "of_total_checks",
+      "label": "% Of Total Checks",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "avg_check",
+      "label": "Avg/Check",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "tables",
+      "label": "Tables",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "of_total_tables",
+      "label": "% Of Total Tables",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "avg_table",
+      "label": "Avg/Table",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "turn_time_min",
+      "label": "Turn Time (Min.)",
+      "semantic_role": "time",
+      "data_type": "time"
+    },
+    {
+      "key": "order_source",
+      "label": "Order Source",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "particulars",
+      "label": "Particulars",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "items",
+      "label": "Items",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "amount",
+      "label": "Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "bills",
+      "label": "Bills",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "count",
+      "label": "Count",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "taxable_amount",
+      "label": "Taxable Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "covers",
+      "label": "Covers",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "kots_settled_bills",
+      "label": "KOTs (Settled Bills)",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "type",
+      "label": "Type",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "deployment",
+      "label": "Deployment",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "period_from",
+      "label": "Period From",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "period_to",
+      "label": "Period To",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "tips_count",
+      "label": "Tips Count",
+      "semantic_role": "measure",
+      "data_type": "integer"
+    },
+    {
+      "key": "tips_amount",
+      "label": "Tips Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "revenue",
+      "name": "Revenue and discounts",
+      "kind": "key_value",
+      "entries": [
+        {
+          "label": "Net Sales",
+          "key": "net_sales"
+        },
+        {
+          "label": "Charge Total",
+          "key": "charge_total"
+        },
+        {
+          "label": "Service Charge",
+          "key": "service_charge"
+        },
+        {
+          "label": "Product Level Charges",
+          "key": "product_level_charges"
+        },
+        {
+          "label": "Tax Collected",
+          "key": "tax_collected"
+        },
+        {
+          "label": "Round Off",
+          "key": "round_off"
+        },
+        {
+          "label": "Total Revenue",
+          "key": "total_revenue"
+        },
+        {
+          "label": "Item Discount",
+          "key": "item_discount"
+        },
+        {
+          "label": "Subtotal Discount",
+          "key": "subtotal_discount"
+        },
+        {
+          "label": "Total Discounts",
+          "key": "total_discounts"
+        },
+        {
+          "label": "Total Discounts Complimentary",
+          "key": "total_discounts_complimentary"
+        },
+        {
+          "label": "Total Discounts Non-Complimentary",
+          "key": "total_discounts_non_complimentary"
+        }
+      ]
+    },
+    {
+      "id": "voids",
+      "name": "Void summary",
+      "kind": "key_value",
+      "entries": [
+        {
+          "label": "Voids",
+          "key": "voids"
+        },
+        {
+          "label": "Manager Voids",
+          "key": "manager_voids"
+        },
+        {
+          "label": "Other Voids",
+          "key": "other_voids"
+        }
+      ]
+    },
+    {
+      "id": "order_type",
+      "name": "Order type performance",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Order Type",
+          "key": "order_type"
+        },
+        {
+          "label": "Net Sales",
+          "key": "net_sales"
+        },
+        {
+          "label": "% Of Total Sales",
+          "key": "of_total_sales"
+        },
+        {
+          "label": "Guest",
+          "key": "guest"
+        },
+        {
+          "label": "% Of Total Guests",
+          "key": "of_total_guests"
+        },
+        {
+          "label": "Avg/Guest",
+          "key": "avg_guest"
+        },
+        {
+          "label": "Checks",
+          "key": "checks"
+        },
+        {
+          "label": "% Of Total Checks",
+          "key": "of_total_checks"
+        },
+        {
+          "label": "Avg/Check",
+          "key": "avg_check"
+        },
+        {
+          "label": "Tables",
+          "key": "tables"
+        },
+        {
+          "label": "% Of Total Tables",
+          "key": "of_total_tables"
+        },
+        {
+          "label": "Avg/Table",
+          "key": "avg_table"
+        },
+        {
+          "label": "Turn Time (Min.)",
+          "key": "turn_time_min"
+        }
+      ]
+    },
+    {
+      "id": "order_source",
+      "name": "Order source performance",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Order Source",
+          "key": "order_source"
+        },
+        {
+          "label": "Net Sales",
+          "key": "net_sales"
+        },
+        {
+          "label": "% Of Total Sales",
+          "key": "of_total_sales"
+        },
+        {
+          "label": "Guest",
+          "key": "guest"
+        },
+        {
+          "label": "% Of Total Guests",
+          "key": "of_total_guests"
+        },
+        {
+          "label": "Avg/Guest",
+          "key": "avg_guest"
+        },
+        {
+          "label": "Checks",
+          "key": "checks"
+        },
+        {
+          "label": "% Of Total Checks",
+          "key": "of_total_checks"
+        },
+        {
+          "label": "Avg/Check",
+          "key": "avg_check"
+        },
+        {
+          "label": "Tables",
+          "key": "tables"
+        },
+        {
+          "label": "% Of Total Tables",
+          "key": "of_total_tables"
+        },
+        {
+          "label": "Avg/Table",
+          "key": "avg_table"
+        },
+        {
+          "label": "Turn Time (Min.)",
+          "key": "turn_time_min"
+        }
+      ]
+    },
+    {
+      "id": "section",
+      "name": "Section tracking",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Particulars",
+          "key": "particulars"
+        },
+        {
+          "label": "Items",
+          "key": "items"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        }
+      ]
+    },
+    {
+      "id": "super_category",
+      "name": "Super category tracking",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Particulars",
+          "key": "particulars"
+        },
+        {
+          "label": "Items",
+          "key": "items"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        }
+      ]
+    },
+    {
+      "id": "collection",
+      "name": "Collection breakup",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Particulars",
+          "key": "particulars"
+        },
+        {
+          "label": "Bills",
+          "key": "bills"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        }
+      ]
+    },
+    {
+      "id": "discounts",
+      "name": "Discounts",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Particulars",
+          "key": "particulars"
+        },
+        {
+          "label": "Count",
+          "key": "count"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        }
+      ]
+    },
+    {
+      "id": "taxes",
+      "name": "Taxes tracking",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Particulars",
+          "key": "particulars"
+        },
+        {
+          "label": "Taxable Amount",
+          "key": "taxable_amount"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        }
+      ]
+    },
+    {
+      "id": "bills_covers",
+      "name": "Bills and covers",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Particulars",
+          "key": "particulars"
+        },
+        {
+          "label": "Bills",
+          "key": "bills"
+        },
+        {
+          "label": "Covers",
+          "key": "covers"
+        },
+        {
+          "label": "KOTs (Settled Bills)",
+          "key": "kots_settled_bills"
+        }
+      ]
+    },
+    {
+      "id": "bill_void",
+      "name": "Bill void segregation",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Type",
+          "key": "type"
+        },
+        {
+          "label": "Count",
+          "key": "count"
+        },
+        {
+          "label": "Amount",
+          "key": "amount"
+        }
+      ]
+    }
+  ]
+}
