@@ -1,0 +1,125 @@
+{
+  "contract_version": "1.1.0",
+  "report_id": "p4.purchase_detail.po_enabled",
+  "display_name": "Purchase Detail - PO details enabled",
+  "canonical_filename_prefix": "purchase_detail",
+  "workbench": {
+    "target_report_id": "report:p4_stock_admin:02_transactional_reports:05_purchase_detail",
+    "blueprint_path": "schema-pack/source/report_structures/p4_stock_admin/02_transactional_reports/05_purchase_detail.json",
+    "variant": "po_details_enabled",
+    "layout_kind": "flat"
+  },
+  "filename_regexes": ["(?i)^(?!.*consolidated).*purchase[ _-]*detail.*\\.csv$"],
+  "schema_status": "schema_captured_from_uat_ui_business_rules_pending_populated_export",
+  "grain": "one row per purchase transaction and item, with linked PO attributes when available",
+  "filter_profile": {
+    "po_details": true,
+    "summary": "none",
+    "abc_analysis": false,
+    "include_voided": false
+  },
+  "max_trailing_empty_fields": 1,
+  "header_search_rows": 10,
+  "auxiliary_when_all_blank_positions": [0, 1, 3, 8, 10],
+  "expected_header": [
+    "Item Code", "Item Name", "Company", "Deployment", "Date", "Invoice Date", "PO Date",
+    "Po Number", "Transaction Number", "Vendor Code", "Vendor Name", "Invoice Number",
+    "Batch Number", "Category Code", "Category Name", "Super Category Code",
+    "Super Category Name", "PO Qty", "PO Unit", "PO Unit Price", "PO Amount", "PO Comment",
+    "Purchase Quantity", "Purchase Unit", "Purchase Unit Price", "Purchase Amount", "Discount",
+    "CGST Tax", "SGST Tax", "IGST Tax", "Other Taxes", "Total"
+  ],
+  "row_columns": [
+    {"name": "item_code", "type": "text", "required": true},
+    {"name": "item_name", "type": "text", "required": true},
+    {"name": "company_name", "type": "text"},
+    {"name": "deployment_name", "type": "text", "required": true},
+    {"name": "transaction_date", "type": "date", "required": true},
+    {"name": "invoice_date", "type": "date"},
+    {"name": "po_date", "type": "date"},
+    {"name": "po_number", "type": "text"},
+    {"name": "transaction_number", "type": "text", "required": true},
+    {"name": "vendor_code", "type": "text"},
+    {"name": "vendor_name", "type": "text", "required": true},
+    {"name": "invoice_number", "type": "text"},
+    {"name": "batch_number", "type": "text"},
+    {"name": "category_code", "type": "text"},
+    {"name": "category_name", "type": "text"},
+    {"name": "super_category_code", "type": "text"},
+    {"name": "super_category_name", "type": "text"},
+    {"name": "po_qty", "type": "decimal"},
+    {"name": "po_unit", "type": "text"},
+    {"name": "po_unit_price", "type": "decimal"},
+    {"name": "po_amount", "type": "decimal"},
+    {"name": "po_comment", "type": "text"},
+    {"name": "purchase_qty", "type": "decimal"},
+    {"name": "purchase_unit", "type": "text"},
+    {"name": "purchase_unit_price", "type": "decimal"},
+    {"name": "purchase_amount", "type": "decimal"},
+    {"name": "discount_amt", "type": "decimal"},
+    {"name": "cgst_tax_amt", "type": "decimal"},
+    {"name": "sgst_tax_amt", "type": "decimal"},
+    {"name": "igst_tax_amt", "type": "decimal"},
+    {"name": "other_tax_amt", "type": "decimal"},
+    {"name": "total_amt", "type": "decimal"}
+  ],
+  "rules": [
+    {
+      "id": "po_amount_from_qty_price",
+      "type": "product_equals",
+      "target": "po_amount",
+      "left": "po_qty",
+      "right": "po_unit_price",
+      "display_rounding": {
+        "left_decimals": 3,
+        "right_decimals": 2,
+        "target_decimals": 2
+      },
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "PO amount differs from PO quantity multiplied by PO unit price."
+    },
+    {
+      "id": "purchase_amount_from_qty_price",
+      "type": "product_equals",
+      "target": "purchase_amount",
+      "left": "purchase_qty",
+      "right": "purchase_unit_price",
+      "display_rounding": {
+        "left_decimals": 3,
+        "right_decimals": 2,
+        "target_decimals": 2
+      },
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "Purchase amount differs from purchase quantity multiplied by purchase unit price."
+    },
+    {
+      "id": "purchase_total_bridge",
+      "type": "sum_equals",
+      "target": "total_amt",
+      "terms": [
+        {"field": "purchase_amount", "coefficient": 1},
+        {"field": "discount_amt", "coefficient": -1, "null_as_zero": true},
+        {"field": "cgst_tax_amt", "coefficient": 1, "null_as_zero": true},
+        {"field": "sgst_tax_amt", "coefficient": 1, "null_as_zero": true},
+        {"field": "igst_tax_amt", "coefficient": 1, "null_as_zero": true},
+        {"field": "other_tax_amt", "coefficient": 1, "null_as_zero": true}
+      ],
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "Purchase total differs from purchase amount less discount plus tax components."
+    },
+    {
+      "id": "transaction_after_po",
+      "type": "date_order",
+      "earlier": "po_date",
+      "later": "transaction_date",
+      "severity": "review",
+      "message": "Purchase transaction date precedes the linked PO date."
+    }
+  ]
+}

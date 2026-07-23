@@ -1,0 +1,6 @@
+﻿Deployment Name,Store/Kitchen Name,User Name,Date,Transaction Number,Item Code,Item Name,Category Name,Super Category Name,Comment,Quantity,Unit,Source
+ABNAH Cafe Connaught Place,Main Store,ops.cp,2026-03-04,BRT-OUT001-260304-0373,ING036,Cold Cup,Packaging,Consumable,,35.875,pcs,
+ABNAH Cafe Connaught Place,Main Store,ops.cp,2026-03-10,BRT-OUT001-260310-0404,ING008,Egg,Protein,Raw Material,,12.625,pcs,
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-03-16,BRT-OUT001-260316-0466,ING039,Straw,Packaging,Consumable,,19.375,pcs,
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-03-22,BRT-OUT001-260322-0497,ING009,Bread,Bakery,Raw Material,,12.5,pcs,
+ABNAH Cafe Connaught Place,Main Store,ops.cp,2026-03-28,BRT-OUT001-260328-0528,ING001,Coffee Beans,Coffee Inputs,Raw Material,,0.3543,kg,

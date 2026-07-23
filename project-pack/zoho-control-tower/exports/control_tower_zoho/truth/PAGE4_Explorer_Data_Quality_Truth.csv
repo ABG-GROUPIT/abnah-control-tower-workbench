@@ -1,0 +1,17 @@
+﻿scope_type,source_period_code,outlet_code,closing_inventory_value,open_po_liability,net_sales,actual_consumption_value,consumption_variance_value,consumption_leakage_value,negative_stock_count,zero_stock_with_demand_count,sold_items_missing_recipe_count,operational_items_missing_master_count,uom_mismatch_without_conversion_count,open_po_missing_expected_delivery_count
+one_period_one_outlet,month_01,OUT001,481736.23,74241.51,626349.57,108922.34,1864.95,2152.33,0,0,0,0,0,0
+one_period_one_outlet,month_01,OUT002,517544.46,85176.77,626542.86,113174.16,2476.83,4180.68,0,0,0,0,0,0
+one_period_one_outlet,month_01,OUT003,460785.23,43304.02,692296.57,130023.11,2797.93,4535.08,0,0,0,0,0,0
+one_period_all_outlets,month_01,ALL,1460065.92,202722.3,1945189.0,352119.61,7139.72,10868.09,0,0,0,0,0,0
+one_period_one_outlet,month_02,OUT001,756099.86,40711.74,636829.85,82138.52,-28874.61,1429.43,0,0,0,0,0,0
+one_period_one_outlet,month_02,OUT002,821907.6,44904.03,595382.62,113004.39,5380.41,5497.04,0,0,0,0,0,0
+one_period_one_outlet,month_02,OUT003,809484.63,45644.72,657164.5,123447.76,1202.79,2961.58,0,0,0,0,0,0
+one_period_all_outlets,month_02,ALL,2387492.09,131260.49,1889376.97,318590.67,-22291.41,9888.05,0,0,0,0,0,0
+one_period_one_outlet,month_03,OUT001,1179354.29,62631.64,691079.68,103757.89,-25391.2,1704.91,0,1,0,0,0,1
+one_period_one_outlet,month_03,OUT002,1158285.9,50677.14,672641.36,121022.7,-1560.07,4689.52,0,1,0,0,0,1
+one_period_one_outlet,month_03,OUT003,1006597.25,63836.61,828754.44,152839.59,4844.4,32237.94,1,0,0,0,0,1
+one_period_all_outlets,month_03,ALL,3344237.44,177145.39,2192475.48,377620.18,-22106.87,38632.37,1,2,0,0,0,3
+all_periods_one_outlet,ALL,OUT001,2417190.38,177584.89,1954259.1,294818.75,-52400.86,5286.67,0,1,0,0,0,1
+all_periods_one_outlet,ALL,OUT002,2497737.96,180757.93,1894566.84,347201.25,6297.17,14367.24,0,1,0,0,0,1
+all_periods_one_outlet,ALL,OUT003,2276867.11,152785.35,2178215.51,406310.46,8845.13,39734.6,1,0,0,0,0,1
+all_periods_all_outlets,ALL,ALL,7191795.45,511128.17,6027041.45,1048330.46,-37258.56,59388.51,1,2,0,0,0,3

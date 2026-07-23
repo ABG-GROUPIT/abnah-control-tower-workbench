@@ -1,0 +1,379 @@
+﻿source_period_code,outlet_code,outlet_name,item_name,theoretical_qty,item_code,category_name,super_category_name,unit,average_price
+month_01,OUT001,ABNAH Cafe Connaught Place,Coffee Beans,34.602,ING001,Coffee Inputs,Raw Material,kg,980.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Milk,283.117,ING002,Dairy,Raw Material,litre,72.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Oat Milk,16.029,ING003,Dairy Alternative,Raw Material,litre,185.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Cream,7.117800000000001,ING004,Dairy,Raw Material,litre,210.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Paneer,7.5600000000000005,ING005,Dairy,Raw Material,kg,360.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Cheese,6.475,ING006,Dairy,Raw Material,kg,480.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Chicken,9.65,ING007,Protein,Raw Material,kg,330.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Egg,22.0,ING008,Protein,Raw Material,pcs,7.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Bread,266.0,ING009,Bakery,Raw Material,pcs,12.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Bagel,34.0,ING010,Bakery,Raw Material,pcs,28.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Tortilla,32.0,ING011,Bakery,Raw Material,pcs,15.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Croissant Base,109.0,ING012,Bakery,Raw Material,pcs,42.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Brownie Base,19.0,ING013,Dessert Inputs,Raw Material,pcs,34.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Cake Base,134.95,ING014,Dessert Inputs,Raw Material,pcs,46.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Cheesecake Base,11.0,ING015,Dessert Inputs,Raw Material,pcs,72.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Chocolate Sauce,13.134,ING016,Syrups & Sauces,Raw Material,litre,260.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Caramel Syrup,3.7127000000000003,ING017,Syrups & Sauces,Raw Material,litre,250.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Vanilla Syrup,2.5921,ING018,Syrups & Sauces,Raw Material,litre,240.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Sugar Syrup,32.7913,ING019,Syrups & Sauces,Raw Material,litre,90.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Tea Leaves,0.45539999999999997,ING020,Tea Inputs,Raw Material,kg,620.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Ice,80.82600000000001,ING022,Beverage Inputs,Raw Material,kg,12.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Lemon,3.7168,ING023,Produce,Raw Material,kg,110.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Hibiscus Concentrate,1.7597,ING024,Beverage Inputs,Raw Material,litre,390.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Mixed Berry Pulp,3.644,ING025,Fruit Inputs,Raw Material,kg,420.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Banana,2.814,ING026,Produce,Raw Material,kg,72.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Butter,2.54,ING027,Dairy,Raw Material,kg,520.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Lettuce,3.0100000000000002,ING028,Produce,Raw Material,kg,95.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Onion,0.64,ING029,Produce,Raw Material,kg,42.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Capsicum,0.8,ING030,Produce,Raw Material,kg,84.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Tomato,3.29,ING031,Produce,Raw Material,kg,54.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Pesto Sauce,0.8300000000000001,ING032,Syrups & Sauces,Raw Material,kg,340.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Chipotle Sauce,2.38,ING033,Syrups & Sauces,Raw Material,kg,280.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Salsa,0.125,ING034,Syrups & Sauces,Raw Material,kg,190.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Aioli,0.55,ING035,Syrups & Sauces,Raw Material,kg,310.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Cold Cup,596.0,ING036,Packaging,Consumable,pcs,3.2
+month_01,OUT001,ABNAH Cafe Connaught Place,Hot Cup,1325.0,ING037,Packaging,Consumable,pcs,2.8
+month_01,OUT001,ABNAH Cafe Connaught Place,Lid,1921.0,ING038,Packaging,Consumable,pcs,1.1
+month_01,OUT001,ABNAH Cafe Connaught Place,Straw,596.0,ING039,Packaging,Consumable,pcs,0.55
+month_01,OUT001,ABNAH Cafe Connaught Place,Napkin,2767.0,ING040,Packaging,Consumable,pcs,0.32
+month_01,OUT001,ABNAH Cafe Connaught Place,Dessert Box,269.0,ING041,Packaging,Consumable,pcs,5.0
+month_01,OUT001,ABNAH Cafe Connaught Place,Sandwich Box,210.0,ING042,Packaging,Consumable,pcs,6.5
+month_01,OUT001,ABNAH Cafe Connaught Place,Wrap Packaging,32.0,ING043,Packaging,Consumable,pcs,5.8
+month_01,OUT002,ABNAH Cafe Hauz Khas,Coffee Beans,30.8856,ING001,Coffee Inputs,Raw Material,kg,980.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Milk,258.831,ING002,Dairy,Raw Material,litre,72.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Oat Milk,12.933,ING003,Dairy Alternative,Raw Material,litre,185.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Cream,7.4287,ING004,Dairy,Raw Material,litre,210.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Paneer,8.98,ING005,Dairy,Raw Material,kg,360.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Cheese,6.525,ING006,Dairy,Raw Material,kg,480.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Chicken,10.96,ING007,Protein,Raw Material,kg,330.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Egg,26.0,ING008,Protein,Raw Material,pcs,7.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Bread,244.0,ING009,Bakery,Raw Material,pcs,12.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Bagel,22.0,ING010,Bakery,Raw Material,pcs,28.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Tortilla,61.0,ING011,Bakery,Raw Material,pcs,15.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Croissant Base,156.0,ING012,Bakery,Raw Material,pcs,42.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Brownie Base,19.0,ING013,Dessert Inputs,Raw Material,pcs,34.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Cake Base,160.25,ING014,Dessert Inputs,Raw Material,pcs,46.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Cheesecake Base,21.0,ING015,Dessert Inputs,Raw Material,pcs,72.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Chocolate Sauce,13.6803,ING016,Syrups & Sauces,Raw Material,litre,260.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Caramel Syrup,4.4324,ING017,Syrups & Sauces,Raw Material,litre,250.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Vanilla Syrup,1.7975,ING018,Syrups & Sauces,Raw Material,litre,240.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Sugar Syrup,30.673099999999998,ING019,Syrups & Sauces,Raw Material,litre,90.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Tea Leaves,0.7034,ING020,Tea Inputs,Raw Material,kg,620.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Ice,103.62,ING022,Beverage Inputs,Raw Material,kg,12.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Lemon,4.5205,ING023,Produce,Raw Material,kg,110.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Hibiscus Concentrate,2.7032000000000003,ING024,Beverage Inputs,Raw Material,litre,390.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Mixed Berry Pulp,3.572,ING025,Fruit Inputs,Raw Material,kg,420.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Banana,3.868,ING026,Produce,Raw Material,kg,72.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Butter,3.8850000000000002,ING027,Dairy,Raw Material,kg,520.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Lettuce,3.365,ING028,Produce,Raw Material,kg,95.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Onion,1.22,ING029,Produce,Raw Material,kg,42.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Capsicum,1.5250000000000001,ING030,Produce,Raw Material,kg,84.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Tomato,2.73,ING031,Produce,Raw Material,kg,54.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Pesto Sauce,1.0,ING032,Syrups & Sauces,Raw Material,kg,340.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Chipotle Sauce,2.685,ING033,Syrups & Sauces,Raw Material,kg,280.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Salsa,0.45,ING034,Syrups & Sauces,Raw Material,kg,190.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Aioli,0.48,ING035,Syrups & Sauces,Raw Material,kg,310.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Cold Cup,772.0,ING036,Packaging,Consumable,pcs,3.2
+month_01,OUT002,ABNAH Cafe Hauz Khas,Hot Cup,1040.0,ING037,Packaging,Consumable,pcs,2.8
+month_01,OUT002,ABNAH Cafe Hauz Khas,Lid,1812.0,ING038,Packaging,Consumable,pcs,1.1
+month_01,OUT002,ABNAH Cafe Hauz Khas,Straw,772.0,ING039,Packaging,Consumable,pcs,0.55
+month_01,OUT002,ABNAH Cafe Hauz Khas,Napkin,2826.0,ING040,Packaging,Consumable,pcs,0.32
+month_01,OUT002,ABNAH Cafe Hauz Khas,Dessert Box,357.0,ING041,Packaging,Consumable,pcs,5.0
+month_01,OUT002,ABNAH Cafe Hauz Khas,Sandwich Box,210.0,ING042,Packaging,Consumable,pcs,6.5
+month_01,OUT002,ABNAH Cafe Hauz Khas,Wrap Packaging,61.0,ING043,Packaging,Consumable,pcs,5.8
+month_01,OUT003,ABNAH Cafe Saket Premium,Coffee Beans,34.2099,ING001,Coffee Inputs,Raw Material,kg,980.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Milk,296.509,ING002,Dairy,Raw Material,litre,72.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Oat Milk,22.518,ING003,Dairy Alternative,Raw Material,litre,185.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Cream,10.4292,ING004,Dairy,Raw Material,litre,210.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Paneer,8.0,ING005,Dairy,Raw Material,kg,360.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Cheese,6.0600000000000005,ING006,Dairy,Raw Material,kg,480.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Chicken,10.770000000000001,ING007,Protein,Raw Material,kg,330.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Egg,36.0,ING008,Protein,Raw Material,pcs,7.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Bread,230.0,ING009,Bakery,Raw Material,pcs,12.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Bagel,25.0,ING010,Bakery,Raw Material,pcs,28.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Tortilla,57.0,ING011,Bakery,Raw Material,pcs,15.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Croissant Base,162.0,ING012,Bakery,Raw Material,pcs,42.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Brownie Base,31.0,ING013,Dessert Inputs,Raw Material,pcs,34.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Cake Base,218.15,ING014,Dessert Inputs,Raw Material,pcs,46.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Cheesecake Base,34.0,ING015,Dessert Inputs,Raw Material,pcs,72.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Chocolate Sauce,16.3486,ING016,Syrups & Sauces,Raw Material,litre,260.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Caramel Syrup,5.2626,ING017,Syrups & Sauces,Raw Material,litre,250.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Vanilla Syrup,2.5044,ING018,Syrups & Sauces,Raw Material,litre,240.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Sugar Syrup,33.3661,ING019,Syrups & Sauces,Raw Material,litre,90.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Tea Leaves,0.4676,ING020,Tea Inputs,Raw Material,kg,620.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Ice,106.644,ING022,Beverage Inputs,Raw Material,kg,12.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Lemon,4.1717,ING023,Produce,Raw Material,kg,110.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Hibiscus Concentrate,1.2993000000000001,ING024,Beverage Inputs,Raw Material,litre,390.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Mixed Berry Pulp,4.748,ING025,Fruit Inputs,Raw Material,kg,420.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Banana,5.998,ING026,Produce,Raw Material,kg,72.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Butter,4.325,ING027,Dairy,Raw Material,kg,520.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Lettuce,3.2150000000000003,ING028,Produce,Raw Material,kg,95.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Onion,1.1400000000000001,ING029,Produce,Raw Material,kg,42.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Capsicum,1.425,ING030,Produce,Raw Material,kg,84.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Tomato,2.67,ING031,Produce,Raw Material,kg,54.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Pesto Sauce,0.76,ING032,Syrups & Sauces,Raw Material,kg,340.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Chipotle Sauce,2.665,ING033,Syrups & Sauces,Raw Material,kg,280.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Salsa,0.25,ING034,Syrups & Sauces,Raw Material,kg,190.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Aioli,0.37,ING035,Syrups & Sauces,Raw Material,kg,310.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Cold Cup,787.0,ING036,Packaging,Consumable,pcs,3.2
+month_01,OUT003,ABNAH Cafe Saket Premium,Hot Cup,1163.0,ING037,Packaging,Consumable,pcs,2.8
+month_01,OUT003,ABNAH Cafe Saket Premium,Lid,1950.0,ING038,Packaging,Consumable,pcs,1.1
+month_01,OUT003,ABNAH Cafe Saket Premium,Straw,787.0,ING039,Packaging,Consumable,pcs,0.55
+month_01,OUT003,ABNAH Cafe Saket Premium,Napkin,3035.0,ING040,Packaging,Consumable,pcs,0.32
+month_01,OUT003,ABNAH Cafe Saket Premium,Dessert Box,458.0,ING041,Packaging,Consumable,pcs,5.0
+month_01,OUT003,ABNAH Cafe Saket Premium,Sandwich Box,187.0,ING042,Packaging,Consumable,pcs,6.5
+month_01,OUT003,ABNAH Cafe Saket Premium,Wrap Packaging,57.0,ING043,Packaging,Consumable,pcs,5.8
+month_02,OUT001,ABNAH Cafe Connaught Place,Coffee Beans,34.9206,ING001,Coffee Inputs,Raw Material,kg,980.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Milk,290.632,ING002,Dairy,Raw Material,litre,72.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Oat Milk,13.707,ING003,Dairy Alternative,Raw Material,litre,185.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Cream,6.587000000000001,ING004,Dairy,Raw Material,litre,210.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Paneer,8.3,ING005,Dairy,Raw Material,kg,360.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Cheese,6.83,ING006,Dairy,Raw Material,kg,480.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Chicken,9.690000000000001,ING007,Protein,Raw Material,kg,330.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Egg,32.0,ING008,Protein,Raw Material,pcs,7.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Bread,280.0,ING009,Bakery,Raw Material,pcs,12.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Bagel,41.0,ING010,Bakery,Raw Material,pcs,28.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Tortilla,29.0,ING011,Bakery,Raw Material,pcs,15.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Croissant Base,124.0,ING012,Bakery,Raw Material,pcs,42.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Brownie Base,9.0,ING013,Dessert Inputs,Raw Material,pcs,34.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Cake Base,117.85000000000001,ING014,Dessert Inputs,Raw Material,pcs,46.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Cheesecake Base,11.0,ING015,Dessert Inputs,Raw Material,pcs,72.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Chocolate Sauce,13.3678,ING016,Syrups & Sauces,Raw Material,litre,260.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Caramel Syrup,3.9315,ING017,Syrups & Sauces,Raw Material,litre,250.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Vanilla Syrup,2.2172,ING018,Syrups & Sauces,Raw Material,litre,240.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Sugar Syrup,33.439,ING019,Syrups & Sauces,Raw Material,litre,90.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Tea Leaves,0.5794,ING020,Tea Inputs,Raw Material,kg,620.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Ice,82.33800000000001,ING022,Beverage Inputs,Raw Material,kg,12.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Lemon,4.2846,ING023,Produce,Raw Material,kg,110.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Hibiscus Concentrate,1.8297,ING024,Beverage Inputs,Raw Material,litre,390.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Mixed Berry Pulp,3.468,ING025,Fruit Inputs,Raw Material,kg,420.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Banana,3.088,ING026,Produce,Raw Material,kg,72.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Butter,3.195,ING027,Dairy,Raw Material,kg,520.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Lettuce,3.115,ING028,Produce,Raw Material,kg,95.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Onion,0.58,ING029,Produce,Raw Material,kg,42.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Capsicum,0.7250000000000001,ING030,Produce,Raw Material,kg,84.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Tomato,3.56,ING031,Produce,Raw Material,kg,54.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Pesto Sauce,0.735,ING032,Syrups & Sauces,Raw Material,kg,340.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Chipotle Sauce,2.4050000000000002,ING033,Syrups & Sauces,Raw Material,kg,280.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Salsa,0.225,ING034,Syrups & Sauces,Raw Material,kg,190.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Aioli,0.43,ING035,Syrups & Sauces,Raw Material,kg,310.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Cold Cup,611.0,ING036,Packaging,Consumable,pcs,3.2
+month_02,OUT001,ABNAH Cafe Connaught Place,Hot Cup,1349.0,ING037,Packaging,Consumable,pcs,2.8
+month_02,OUT001,ABNAH Cafe Connaught Place,Lid,1960.0,ING038,Packaging,Consumable,pcs,1.1
+month_02,OUT001,ABNAH Cafe Connaught Place,Straw,611.0,ING039,Packaging,Consumable,pcs,0.55
+month_02,OUT001,ABNAH Cafe Connaught Place,Napkin,2838.0,ING040,Packaging,Consumable,pcs,0.32
+month_02,OUT001,ABNAH Cafe Connaught Place,Dessert Box,262.0,ING041,Packaging,Consumable,pcs,5.0
+month_02,OUT001,ABNAH Cafe Connaught Place,Sandwich Box,225.0,ING042,Packaging,Consumable,pcs,6.5
+month_02,OUT001,ABNAH Cafe Connaught Place,Wrap Packaging,29.0,ING043,Packaging,Consumable,pcs,5.8
+month_02,OUT002,ABNAH Cafe Hauz Khas,Coffee Beans,29.836199999999998,ING001,Coffee Inputs,Raw Material,kg,980.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Milk,250.714,ING002,Dairy,Raw Material,litre,72.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Oat Milk,11.511,ING003,Dairy Alternative,Raw Material,litre,185.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Cream,6.8399,ING004,Dairy,Raw Material,litre,210.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Paneer,8.19,ING005,Dairy,Raw Material,kg,360.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Cheese,5.885,ING006,Dairy,Raw Material,kg,480.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Chicken,8.56,ING007,Protein,Raw Material,kg,330.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Egg,22.0,ING008,Protein,Raw Material,pcs,7.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Bread,218.0,ING009,Bakery,Raw Material,pcs,12.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Bagel,24.0,ING010,Bakery,Raw Material,pcs,28.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Tortilla,51.0,ING011,Bakery,Raw Material,pcs,15.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Croissant Base,151.0,ING012,Bakery,Raw Material,pcs,42.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Brownie Base,24.0,ING013,Dessert Inputs,Raw Material,pcs,34.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Cake Base,153.4,ING014,Dessert Inputs,Raw Material,pcs,46.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Cheesecake Base,25.0,ING015,Dessert Inputs,Raw Material,pcs,72.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Chocolate Sauce,12.2156,ING016,Syrups & Sauces,Raw Material,litre,260.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Caramel Syrup,4.5485,ING017,Syrups & Sauces,Raw Material,litre,250.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Vanilla Syrup,1.3341,ING018,Syrups & Sauces,Raw Material,litre,240.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Sugar Syrup,29.1201,ING019,Syrups & Sauces,Raw Material,litre,90.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Tea Leaves,0.6768,ING020,Tea Inputs,Raw Material,kg,620.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Ice,105.27,ING022,Beverage Inputs,Raw Material,kg,12.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Lemon,4.7289,ING023,Produce,Raw Material,kg,110.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Hibiscus Concentrate,2.4178,ING024,Beverage Inputs,Raw Material,litre,390.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Mixed Berry Pulp,2.512,ING025,Fruit Inputs,Raw Material,kg,420.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Banana,2.8000000000000003,ING026,Produce,Raw Material,kg,72.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Butter,3.7600000000000002,ING027,Dairy,Raw Material,kg,520.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Lettuce,3.025,ING028,Produce,Raw Material,kg,95.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Onion,1.02,ING029,Produce,Raw Material,kg,42.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Capsicum,1.2750000000000001,ING030,Produce,Raw Material,kg,84.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Tomato,2.58,ING031,Produce,Raw Material,kg,54.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Pesto Sauce,0.85,ING032,Syrups & Sauces,Raw Material,kg,340.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Chipotle Sauce,2.255,ING033,Syrups & Sauces,Raw Material,kg,280.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Salsa,0.325,ING034,Syrups & Sauces,Raw Material,kg,190.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Aioli,0.55,ING035,Syrups & Sauces,Raw Material,kg,310.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Cold Cup,785.0,ING036,Packaging,Consumable,pcs,3.2
+month_02,OUT002,ABNAH Cafe Hauz Khas,Hot Cup,948.0,ING037,Packaging,Consumable,pcs,2.8
+month_02,OUT002,ABNAH Cafe Hauz Khas,Lid,1733.0,ING038,Packaging,Consumable,pcs,1.1
+month_02,OUT002,ABNAH Cafe Hauz Khas,Straw,785.0,ING039,Packaging,Consumable,pcs,0.55
+month_02,OUT002,ABNAH Cafe Hauz Khas,Napkin,2679.0,ING040,Packaging,Consumable,pcs,0.32
+month_02,OUT002,ABNAH Cafe Hauz Khas,Dessert Box,360.0,ING041,Packaging,Consumable,pcs,5.0
+month_02,OUT002,ABNAH Cafe Hauz Khas,Sandwich Box,183.0,ING042,Packaging,Consumable,pcs,6.5
+month_02,OUT002,ABNAH Cafe Hauz Khas,Wrap Packaging,51.0,ING043,Packaging,Consumable,pcs,5.8
+month_02,OUT003,ABNAH Cafe Saket Premium,Coffee Beans,31.747799999999998,ING001,Coffee Inputs,Raw Material,kg,980.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Milk,280.62,ING002,Dairy,Raw Material,litre,72.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Oat Milk,17.775,ING003,Dairy Alternative,Raw Material,litre,185.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Cream,9.770800000000001,ING004,Dairy,Raw Material,litre,210.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Paneer,7.21,ING005,Dairy,Raw Material,kg,360.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Cheese,6.16,ING006,Dairy,Raw Material,kg,480.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Chicken,10.39,ING007,Protein,Raw Material,kg,330.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Egg,22.0,ING008,Protein,Raw Material,pcs,7.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Bread,229.0,ING009,Bakery,Raw Material,pcs,12.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Bagel,23.0,ING010,Bakery,Raw Material,pcs,28.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Tortilla,47.0,ING011,Bakery,Raw Material,pcs,15.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Croissant Base,169.0,ING012,Bakery,Raw Material,pcs,42.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Brownie Base,26.0,ING013,Dessert Inputs,Raw Material,pcs,34.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Cake Base,203.3,ING014,Dessert Inputs,Raw Material,pcs,46.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Cheesecake Base,22.0,ING015,Dessert Inputs,Raw Material,pcs,72.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Chocolate Sauce,15.221,ING016,Syrups & Sauces,Raw Material,litre,260.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Caramel Syrup,5.542,ING017,Syrups & Sauces,Raw Material,litre,250.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Vanilla Syrup,2.9293,ING018,Syrups & Sauces,Raw Material,litre,240.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Sugar Syrup,31.2572,ING019,Syrups & Sauces,Raw Material,litre,90.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Tea Leaves,0.5204,ING020,Tea Inputs,Raw Material,kg,620.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Ice,98.83200000000001,ING022,Beverage Inputs,Raw Material,kg,12.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Lemon,3.8834,ING023,Produce,Raw Material,kg,110.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Hibiscus Concentrate,1.8402,ING024,Beverage Inputs,Raw Material,litre,390.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Mixed Berry Pulp,4.616,ING025,Fruit Inputs,Raw Material,kg,420.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Banana,5.676,ING026,Produce,Raw Material,kg,72.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Butter,4.69,ING027,Dairy,Raw Material,kg,520.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Lettuce,2.995,ING028,Produce,Raw Material,kg,95.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Onion,0.9400000000000001,ING029,Produce,Raw Material,kg,42.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Capsicum,1.175,ING030,Produce,Raw Material,kg,84.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Tomato,2.6999999999999997,ING031,Produce,Raw Material,kg,54.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Pesto Sauce,0.61,ING032,Syrups & Sauces,Raw Material,kg,340.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Chipotle Sauce,2.455,ING033,Syrups & Sauces,Raw Material,kg,280.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Salsa,0.25,ING034,Syrups & Sauces,Raw Material,kg,190.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Aioli,0.62,ING035,Syrups & Sauces,Raw Material,kg,310.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Cold Cup,733.0,ING036,Packaging,Consumable,pcs,3.2
+month_02,OUT003,ABNAH Cafe Saket Premium,Hot Cup,1118.0,ING037,Packaging,Consumable,pcs,2.8
+month_02,OUT003,ABNAH Cafe Saket Premium,Lid,1851.0,ING038,Packaging,Consumable,pcs,1.1
+month_02,OUT003,ABNAH Cafe Saket Premium,Straw,733.0,ING039,Packaging,Consumable,pcs,0.55
+month_02,OUT003,ABNAH Cafe Saket Premium,Napkin,2896.0,ING040,Packaging,Consumable,pcs,0.32
+month_02,OUT003,ABNAH Cafe Saket Premium,Dessert Box,441.0,ING041,Packaging,Consumable,pcs,5.0
+month_02,OUT003,ABNAH Cafe Saket Premium,Sandwich Box,182.0,ING042,Packaging,Consumable,pcs,6.5
+month_02,OUT003,ABNAH Cafe Saket Premium,Wrap Packaging,47.0,ING043,Packaging,Consumable,pcs,5.8
+month_03,OUT001,ABNAH Cafe Connaught Place,Coffee Beans,37.0038,ING001,Coffee Inputs,Raw Material,kg,980.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Milk,305.118,ING002,Dairy,Raw Material,litre,72.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Oat Milk,18.171,ING003,Dairy Alternative,Raw Material,litre,185.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Cream,7.518000000000001,ING004,Dairy,Raw Material,litre,210.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Paneer,8.52,ING005,Dairy,Raw Material,kg,360.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Cheese,8.785,ING006,Dairy,Raw Material,kg,480.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Chicken,13.790000000000001,ING007,Protein,Raw Material,kg,330.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Egg,40.0,ING008,Protein,Raw Material,pcs,7.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Bread,362.0,ING009,Bakery,Raw Material,pcs,12.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Bagel,40.0,ING010,Bakery,Raw Material,pcs,28.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Tortilla,30.0,ING011,Bakery,Raw Material,pcs,15.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Croissant Base,155.0,ING012,Bakery,Raw Material,pcs,42.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Brownie Base,15.0,ING013,Dessert Inputs,Raw Material,pcs,34.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Cake Base,125.65,ING014,Dessert Inputs,Raw Material,pcs,46.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Cheesecake Base,16.0,ING015,Dessert Inputs,Raw Material,pcs,72.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Chocolate Sauce,14.0756,ING016,Syrups & Sauces,Raw Material,litre,260.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Caramel Syrup,4.0136,ING017,Syrups & Sauces,Raw Material,litre,250.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Vanilla Syrup,2.4845,ING018,Syrups & Sauces,Raw Material,litre,240.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Sugar Syrup,35.0342,ING019,Syrups & Sauces,Raw Material,litre,90.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Tea Leaves,0.5122,ING020,Tea Inputs,Raw Material,kg,620.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Ice,88.254,ING022,Beverage Inputs,Raw Material,kg,12.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Lemon,3.8744,ING023,Produce,Raw Material,kg,110.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Hibiscus Concentrate,1.2817,ING024,Beverage Inputs,Raw Material,litre,390.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Mixed Berry Pulp,3.432,ING025,Fruit Inputs,Raw Material,kg,420.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Banana,4.2940000000000005,ING026,Produce,Raw Material,kg,72.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Butter,3.54,ING027,Dairy,Raw Material,kg,520.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Lettuce,3.72,ING028,Produce,Raw Material,kg,95.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Onion,0.6,ING029,Produce,Raw Material,kg,42.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Capsicum,0.75,ING030,Produce,Raw Material,kg,84.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Tomato,4.43,ING031,Produce,Raw Material,kg,54.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Pesto Sauce,0.9450000000000001,ING032,Syrups & Sauces,Raw Material,kg,340.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Chipotle Sauce,2.95,ING033,Syrups & Sauces,Raw Material,kg,280.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Salsa,0.37500000000000006,ING034,Syrups & Sauces,Raw Material,kg,190.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Aioli,0.59,ING035,Syrups & Sauces,Raw Material,kg,310.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Cold Cup,654.0,ING036,Packaging,Consumable,pcs,3.2
+month_03,OUT001,ABNAH Cafe Connaught Place,Hot Cup,1416.0,ING037,Packaging,Consumable,pcs,2.8
+month_03,OUT001,ABNAH Cafe Connaught Place,Lid,2070.0,ING038,Packaging,Consumable,pcs,1.1
+month_03,OUT001,ABNAH Cafe Connaught Place,Straw,654.0,ING039,Packaging,Consumable,pcs,0.55
+month_03,OUT001,ABNAH Cafe Connaught Place,Napkin,3127.0,ING040,Packaging,Consumable,pcs,0.32
+month_03,OUT001,ABNAH Cafe Connaught Place,Dessert Box,307.0,ING041,Packaging,Consumable,pcs,5.0
+month_03,OUT001,ABNAH Cafe Connaught Place,Sandwich Box,280.0,ING042,Packaging,Consumable,pcs,6.5
+month_03,OUT001,ABNAH Cafe Connaught Place,Wrap Packaging,30.0,ING043,Packaging,Consumable,pcs,5.8
+month_03,OUT002,ABNAH Cafe Hauz Khas,Coffee Beans,34.2228,ING001,Coffee Inputs,Raw Material,kg,980.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Milk,292.451,ING002,Dairy,Raw Material,litre,72.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Oat Milk,10.962,ING003,Dairy Alternative,Raw Material,litre,185.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Cream,8.142000000000001,ING004,Dairy,Raw Material,litre,210.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Paneer,7.78,ING005,Dairy,Raw Material,kg,360.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Cheese,6.43,ING006,Dairy,Raw Material,kg,480.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Chicken,11.15,ING007,Protein,Raw Material,kg,330.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Egg,30.0,ING008,Protein,Raw Material,pcs,7.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Bread,213.0,ING009,Bakery,Raw Material,pcs,12.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Bagel,37.0,ING010,Bakery,Raw Material,pcs,28.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Tortilla,66.0,ING011,Bakery,Raw Material,pcs,15.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Croissant Base,126.0,ING012,Bakery,Raw Material,pcs,42.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Brownie Base,20.0,ING013,Dessert Inputs,Raw Material,pcs,34.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Cake Base,173.7,ING014,Dessert Inputs,Raw Material,pcs,46.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Cheesecake Base,20.0,ING015,Dessert Inputs,Raw Material,pcs,72.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Chocolate Sauce,15.2026,ING016,Syrups & Sauces,Raw Material,litre,260.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Caramel Syrup,4.9659,ING017,Syrups & Sauces,Raw Material,litre,250.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Vanilla Syrup,2.0712,ING018,Syrups & Sauces,Raw Material,litre,240.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Sugar Syrup,33.4793,ING019,Syrups & Sauces,Raw Material,litre,90.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Tea Leaves,0.8072,ING020,Tea Inputs,Raw Material,kg,620.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Ice,117.57600000000001,ING022,Beverage Inputs,Raw Material,kg,12.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Lemon,4.9185,ING023,Produce,Raw Material,kg,110.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Hibiscus Concentrate,3.309,ING024,Beverage Inputs,Raw Material,litre,390.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Mixed Berry Pulp,3.064,ING025,Fruit Inputs,Raw Material,kg,420.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Banana,3.8360000000000003,ING026,Produce,Raw Material,kg,72.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Butter,3.23,ING027,Dairy,Raw Material,kg,520.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Lettuce,3.1500000000000004,ING028,Produce,Raw Material,kg,95.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Onion,1.32,ING029,Produce,Raw Material,kg,42.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Capsicum,1.6500000000000001,ING030,Produce,Raw Material,kg,84.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Tomato,2.23,ING031,Produce,Raw Material,kg,54.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Pesto Sauce,0.65,ING032,Syrups & Sauces,Raw Material,kg,340.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Chipotle Sauce,2.73,ING033,Syrups & Sauces,Raw Material,kg,280.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Salsa,0.42500000000000004,ING034,Syrups & Sauces,Raw Material,kg,190.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Aioli,0.54,ING035,Syrups & Sauces,Raw Material,kg,310.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Cold Cup,879.0,ING036,Packaging,Consumable,pcs,3.2
+month_03,OUT002,ABNAH Cafe Hauz Khas,Hot Cup,1115.0,ING037,Packaging,Consumable,pcs,2.8
+month_03,OUT002,ABNAH Cafe Hauz Khas,Lid,1994.0,ING038,Packaging,Consumable,pcs,1.1
+month_03,OUT002,ABNAH Cafe Hauz Khas,Straw,879.0,ING039,Packaging,Consumable,pcs,0.55
+month_03,OUT002,ABNAH Cafe Hauz Khas,Napkin,2974.0,ING040,Packaging,Consumable,pcs,0.32
+month_03,OUT002,ABNAH Cafe Hauz Khas,Dessert Box,338.0,ING041,Packaging,Consumable,pcs,5.0
+month_03,OUT002,ABNAH Cafe Hauz Khas,Sandwich Box,212.0,ING042,Packaging,Consumable,pcs,6.5
+month_03,OUT002,ABNAH Cafe Hauz Khas,Wrap Packaging,66.0,ING043,Packaging,Consumable,pcs,5.8
+month_03,OUT003,ABNAH Cafe Saket Premium,Coffee Beans,40.7112,ING001,Coffee Inputs,Raw Material,kg,980.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Milk,351.317,ING002,Dairy,Raw Material,litre,72.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Oat Milk,24.795,ING003,Dairy Alternative,Raw Material,litre,185.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Cream,12.695400000000001,ING004,Dairy,Raw Material,litre,210.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Paneer,7.75,ING005,Dairy,Raw Material,kg,360.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Cheese,7.415,ING006,Dairy,Raw Material,kg,480.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Chicken,12.02,ING007,Protein,Raw Material,kg,330.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Egg,42.0,ING008,Protein,Raw Material,pcs,7.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Bread,289.0,ING009,Bakery,Raw Material,pcs,12.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Bagel,23.0,ING010,Bakery,Raw Material,pcs,28.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Tortilla,39.0,ING011,Bakery,Raw Material,pcs,15.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Croissant Base,207.0,ING012,Bakery,Raw Material,pcs,42.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Brownie Base,31.0,ING013,Dessert Inputs,Raw Material,pcs,34.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Cake Base,263.1,ING014,Dessert Inputs,Raw Material,pcs,46.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Cheesecake Base,37.0,ING015,Dessert Inputs,Raw Material,pcs,72.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Chocolate Sauce,19.0919,ING016,Syrups & Sauces,Raw Material,litre,260.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Caramel Syrup,6.4285000000000005,ING017,Syrups & Sauces,Raw Material,litre,250.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Vanilla Syrup,3.5528,ING018,Syrups & Sauces,Raw Material,litre,240.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Sugar Syrup,39.8426,ING019,Syrups & Sauces,Raw Material,litre,90.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Tea Leaves,0.5712,ING020,Tea Inputs,Raw Material,kg,620.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Ice,124.47,ING022,Beverage Inputs,Raw Material,kg,12.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Lemon,5.0844000000000005,ING023,Produce,Raw Material,kg,110.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Hibiscus Concentrate,1.6493,ING024,Beverage Inputs,Raw Material,litre,390.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Mixed Berry Pulp,7.4559999999999995,ING025,Fruit Inputs,Raw Material,kg,420.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Banana,6.496,ING026,Produce,Raw Material,kg,72.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Butter,5.535,ING027,Dairy,Raw Material,kg,520.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Lettuce,3.1950000000000003,ING028,Produce,Raw Material,kg,95.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Onion,0.78,ING029,Produce,Raw Material,kg,42.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Capsicum,0.9750000000000001,ING030,Produce,Raw Material,kg,84.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Tomato,3.3,ING031,Produce,Raw Material,kg,54.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Pesto Sauce,0.665,ING032,Syrups & Sauces,Raw Material,kg,340.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Chipotle Sauce,2.575,ING033,Syrups & Sauces,Raw Material,kg,280.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Salsa,0.25,ING034,Syrups & Sauces,Raw Material,kg,190.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Aioli,0.84,ING035,Syrups & Sauces,Raw Material,kg,310.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Cold Cup,918.0,ING036,Packaging,Consumable,pcs,3.2
+month_03,OUT003,ABNAH Cafe Saket Premium,Hot Cup,1429.0,ING037,Packaging,Consumable,pcs,2.8
+month_03,OUT003,ABNAH Cafe Saket Premium,Lid,2347.0,ING038,Packaging,Consumable,pcs,1.1
+month_03,OUT003,ABNAH Cafe Saket Premium,Straw,918.0,ING039,Packaging,Consumable,pcs,0.55
+month_03,OUT003,ABNAH Cafe Saket Premium,Napkin,3610.0,ING040,Packaging,Consumable,pcs,0.32
+month_03,OUT003,ABNAH Cafe Saket Premium,Dessert Box,562.0,ING041,Packaging,Consumable,pcs,5.0
+month_03,OUT003,ABNAH Cafe Saket Premium,Sandwich Box,226.0,ING042,Packaging,Consumable,pcs,6.5
+month_03,OUT003,ABNAH Cafe Saket Premium,Wrap Packaging,39.0,ING043,Packaging,Consumable,pcs,5.8

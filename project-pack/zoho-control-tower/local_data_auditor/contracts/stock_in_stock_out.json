@@ -1,0 +1,74 @@
+{
+  "contract_version": "1.1.0",
+  "report_id": "p4.stock_in_stock_out.item",
+  "display_name": "Stock In Stock Out Report - movement detail",
+  "canonical_filename_prefix": "stock_in_stock_out",
+  "workbench": {
+    "target_report_id": "report:p4_stock_admin:02_transactional_reports:10_stock_in_stock_out_report",
+    "blueprint_path": "schema-pack/source/report_structures/p4_stock_admin/02_transactional_reports/10_stock_in_stock_out_report.json",
+    "variant": "movement_detail",
+    "layout_kind": "grouped_columns"
+  },
+  "filename_regexes": ["(?i).*stock[ _-]*in[ _-]*stock[ _-]*out[ _-]*report.*\\.csv$"],
+  "schema_status": "grouped_ui_schema_captured_business_rules_pending_populated_export",
+  "grain": "one row per dated item movement between supplier and receiver",
+  "filter_profile": {
+    "movement_types": "stock in and stock out",
+    "item_level": true
+  },
+  "max_trailing_empty_fields": 1,
+  "expected_header": [
+    "Date", "Store/Kitchen", "Supplier", "Receiver", "Item Name", "Unit", "Unit Price",
+    "Stock In Reference", "Stock In Qty", "Subtotal", "Stock Out Reference", "Stock Out Qty",
+    "Subtotal"
+  ],
+  "row_columns": [
+    {"name": "movement_date", "type": "date", "required": true},
+    {"name": "store_kitchen_name", "type": "text", "required": true},
+    {"name": "supplier_name", "type": "text"},
+    {"name": "receiver_name", "type": "text"},
+    {"name": "item_name", "type": "text", "required": true},
+    {"name": "unit", "type": "text"},
+    {"name": "unit_price", "type": "decimal"},
+    {"name": "stock_in_reference", "type": "text"},
+    {"name": "stock_in_qty", "type": "decimal"},
+    {"name": "stock_in_subtotal", "type": "decimal"},
+    {"name": "stock_out_reference", "type": "text"},
+    {"name": "stock_out_qty", "type": "decimal"},
+    {"name": "stock_out_subtotal", "type": "decimal"}
+  ],
+  "rules": [
+    {
+      "id": "stock_in_subtotal_from_qty_price",
+      "type": "product_equals",
+      "target": "stock_in_subtotal",
+      "left": "stock_in_qty",
+      "right": "unit_price",
+      "display_rounding": {
+        "left_decimals": 3,
+        "right_decimals": 2,
+        "target_decimals": 2
+      },
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "Stock-in subtotal differs from stock-in quantity multiplied by unit price."
+    },
+    {
+      "id": "stock_out_subtotal_from_qty_price",
+      "type": "product_equals",
+      "target": "stock_out_subtotal",
+      "left": "stock_out_qty",
+      "right": "unit_price",
+      "display_rounding": {
+        "left_decimals": 3,
+        "right_decimals": 2,
+        "target_decimals": 2
+      },
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "Stock-out subtotal differs from stock-out quantity multiplied by unit price."
+    }
+  ]
+}

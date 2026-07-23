@@ -1,0 +1,137 @@
+{
+  "contract_version": "1.1.0",
+  "report_id": "p4.enterprise_stock_return.item",
+  "display_name": "Enterprise Stock Return",
+  "canonical_filename_prefix": "enterprise_stock_return",
+  "workbench": {
+    "target_report_id": "report:p4_stock_admin:01_enterprise_reports:03_enterprise_stock_return",
+    "blueprint_path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/03_enterprise_stock_return.json",
+    "variant": "item_detail",
+    "layout_kind": "flat"
+  },
+  "filename_regexes": [
+    "(?i).*enterprise[ _-]*stock[ _-]*return.*\\.csv$",
+    "(?i).*stock[ _-]*entry[ _-]*return[ _-]*report.*\\.csv$"
+  ],
+  "schema_status": "header_validated_from_uat_csv_business_rules_pending_populated_export",
+  "grain": "one row per original stock-entry item and its vendor return",
+  "filter_profile": {
+    "transaction_status": "all",
+    "item_level": true
+  },
+  "max_trailing_empty_fields": 1,
+  "expected_header": [
+    "Deployment Name", "Store Name", "Stock Entry Date", "Transaction Number", "Invoice Number",
+    "Batch Number", "Vendor Code", "Vendor Name", "Super Category Code", "Super Category Name",
+    "Category Code", "Category Name", "Item Code", "Item Name", "Comment", "Unit", "Entry Qty",
+    "Unit Price", "Sub Total", "Discount", "CGST", "SGST", "IGST", "Non GST", "Entry Amt",
+    "Return Date", "Return Unit", "Return Qty", "Return SubTotal", "Return Discount", "Return CGST",
+    "Return SGST", "Return IGST", "Return Non GST", "Return Amount", "Transaction Status", ""
+  ],
+  "row_columns": [
+    {"name": "deployment_name", "type": "text", "required": true},
+    {"name": "store_name", "type": "text", "required": true},
+    {"name": "stock_entry_date", "type": "date", "required": true},
+    {"name": "transaction_number", "type": "text", "required": true},
+    {"name": "invoice_number", "type": "text"},
+    {"name": "batch_number", "type": "text"},
+    {"name": "vendor_code", "type": "text"},
+    {"name": "vendor_name", "type": "text", "required": true},
+    {"name": "super_category_code", "type": "text"},
+    {"name": "super_category_name", "type": "text"},
+    {"name": "category_code", "type": "text"},
+    {"name": "category_name", "type": "text"},
+    {"name": "item_code", "type": "text", "required": true},
+    {"name": "item_name", "type": "text", "required": true},
+    {"name": "comment", "type": "text"},
+    {"name": "entry_unit", "type": "text"},
+    {"name": "entry_qty", "type": "decimal"},
+    {"name": "unit_price", "type": "decimal"},
+    {"name": "entry_subtotal", "type": "decimal"},
+    {"name": "entry_discount_amt", "type": "decimal"},
+    {"name": "entry_cgst_amt", "type": "decimal"},
+    {"name": "entry_sgst_amt", "type": "decimal"},
+    {"name": "entry_igst_amt", "type": "decimal"},
+    {"name": "entry_non_gst_amt", "type": "decimal"},
+    {"name": "entry_amt", "type": "decimal"},
+    {"name": "return_date", "type": "date"},
+    {"name": "return_unit", "type": "text"},
+    {"name": "return_qty", "type": "decimal"},
+    {"name": "return_subtotal", "type": "decimal"},
+    {"name": "return_discount_amt", "type": "decimal"},
+    {"name": "return_cgst_amt", "type": "decimal"},
+    {"name": "return_sgst_amt", "type": "decimal"},
+    {"name": "return_igst_amt", "type": "decimal"},
+    {"name": "return_non_gst_amt", "type": "decimal"},
+    {"name": "return_amt", "type": "decimal"},
+    {"name": "transaction_status", "type": "text"}
+  ],
+  "rules": [
+    {
+      "id": "entry_subtotal_from_qty_price",
+      "type": "product_equals",
+      "target": "entry_subtotal",
+      "left": "entry_qty",
+      "right": "unit_price",
+      "display_rounding": {
+        "left_decimals": 3,
+        "right_decimals": 2,
+        "target_decimals": 2
+      },
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "Entry subtotal differs from entry quantity multiplied by unit price."
+    },
+    {
+      "id": "entry_amount_bridge",
+      "type": "sum_equals",
+      "target": "entry_amt",
+      "terms": [
+        {"field": "entry_subtotal", "coefficient": 1},
+        {"field": "entry_discount_amt", "coefficient": -1, "null_as_zero": true},
+        {"field": "entry_cgst_amt", "coefficient": 1, "null_as_zero": true},
+        {"field": "entry_sgst_amt", "coefficient": 1, "null_as_zero": true},
+        {"field": "entry_igst_amt", "coefficient": 1, "null_as_zero": true},
+        {"field": "entry_non_gst_amt", "coefficient": 1, "null_as_zero": true}
+      ],
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "Entry amount differs from subtotal less discount plus tax components."
+    },
+    {
+      "id": "return_amount_bridge",
+      "type": "sum_equals",
+      "target": "return_amt",
+      "terms": [
+        {"field": "return_subtotal", "coefficient": 1},
+        {"field": "return_discount_amt", "coefficient": -1, "null_as_zero": true},
+        {"field": "return_cgst_amt", "coefficient": 1, "null_as_zero": true},
+        {"field": "return_sgst_amt", "coefficient": 1, "null_as_zero": true},
+        {"field": "return_igst_amt", "coefficient": 1, "null_as_zero": true},
+        {"field": "return_non_gst_amt", "coefficient": 1, "null_as_zero": true}
+      ],
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "Return amount differs from return subtotal less return discount plus tax components."
+    },
+    {
+      "id": "return_after_entry",
+      "type": "date_order",
+      "earlier": "stock_entry_date",
+      "later": "return_date",
+      "severity": "warning",
+      "message": "Return date precedes the original stock-entry date."
+    },
+    {
+      "id": "return_not_above_entry_qty",
+      "type": "less_or_equal",
+      "left": "return_qty",
+      "right": "entry_qty",
+      "severity": "review",
+      "message": "Return quantity exceeds the entry quantity in the same exported row."
+    }
+  ]
+}

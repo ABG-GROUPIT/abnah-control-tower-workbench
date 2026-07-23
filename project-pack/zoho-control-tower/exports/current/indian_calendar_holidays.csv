@@ -1,0 +1,10 @@
+row_id,calendar_date,holiday_name,holiday_type,region,is_public_holiday,is_bank_holiday,expected_business_impact,impact_direction,notes
+HROW00001,2026-01-01,New Year Day,Commercial,India/Delhi,False,False,Leisure cafe footfall improves; offices muted,Mixed,Synthetic configurable calendar row
+HROW00002,2026-01-14,Makar Sankranti / Lohri Season,Regional/Commercial,North India,False,False,Evening social demand can improve,Up,Synthetic regional relevance
+HROW00003,2026-01-26,Republic Day,National,India,True,True,Corporate demand dips; leisure outlets improve,Mixed,Configured for demo; verify official calendar in production
+HROW00004,2026-02-14,Valentine Weekend,Commercial,India/Delhi,False,False,"Dessert, cold beverage, and social cafe demand improves",Up,"Commercial event, not a public holiday"
+HROW00005,2026-02-19,University Event Season,Commercial,Delhi,False,False,Student area demand can improve,Up,Synthetic business calendar marker
+HROW00006,2026-03-04,Holi,National/Regional,India/Delhi,True,True,Corporate outlet softens; leisure beverages and desserts improve,Mixed,Configured for demo; verify official calendar in production
+HROW00007,2026-03-08,International Womens Day,Commercial,India/Delhi,False,False,Cafe social visits and dessert demand can improve,Up,Commercial analytics annotation
+HROW00008,2026-03-20,Spring Retail Weekend,Commercial,Delhi,False,False,Mall and premium outlet demand improves,Up,Synthetic retail calendar marker
+HROW00009,2026-03-27,Long Weekend Travel Window,Commercial,Delhi NCR,False,False,Office demand softens; tourist/leisure demand improves,Mixed,Synthetic demand planning row

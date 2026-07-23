@@ -12,6 +12,7 @@ This repository and the hosted workspace may contain only:
 
 - derived report names, headers, merged-header relationships, row groups, and semantic notes;
 - blank structural tables with no report values;
+- explicitly labelled synthetic demo rows, truth packs, and validation outputs;
 - a separately generated Control Tower evidence contract containing only
   issue-relevant, non-sensitive numeric/date cells and source row numbers;
 - API documentation metadata and UAT test outcomes;
@@ -33,6 +34,9 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
   source field set, formula, lookup, filter, and Zoho report configuration.
 - 38 exact Control Tower v2 Query Tables are searchable in the hosted model
   library with their dependency levels and complete SQL.
+- One self-contained `project-pack/zoho-control-tower/` now carries all 710
+  tracked synthetic-data, Zoho implementation, SQL, validation, local-auditor,
+  API-packet, generator, test, and handoff files in this ABG repository.
 - P2 now has 73 captured schemas, 3 bounded partial schemas, and 79 pending reports.
 - P4 now has 26 captured schemas and 48 pending reports, including all 15 Enterprise reports, four explicit Consumption Report modes, Bulk Return, and Closing Stock.
 - The private CSV audit checkpoint covers 26 exports, 20 report contracts, and
@@ -69,7 +73,7 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
 
 Developer:
 
-1. Read `docs/ARCHITECTURE.md`,
+1. Read `project-pack/README.md`, `docs/ARCHITECTURE.md`,
    `docs/CONTROL_TOWER_KPI_AND_CHART_LINEAGE_HANDBOOK.md`,
    `docs/PRESENTATION_SAFE_ACTUAL_DATA_ISSUES.md`, and
    `docs/STRUCTURAL_SCHEMA_METHOD.md`.
@@ -105,6 +109,9 @@ ABNAH Schema Atlas/
   db/                          D1 current-document and revision storage
   drizzle/                     database migration history
   docs/                        architecture, intake, operations, transfer
+  project-pack/
+    zoho-control-tower/        complete synthetic demo and Zoho implementation
+    PROJECT_PACK_MANIFEST.csv  SHA-256 inventory of every bundled project file
   scripts/                     builders and validators
   schema-pack/
     source/
@@ -138,12 +145,14 @@ npm run data:validate
 npm run typecheck
 npm run lint
 npm test
+py -3 scripts/validate_project_pack.py
 ```
 
 Generated files under `schema-pack/generated/` and `public/data/` must not be edited manually.
 
-`npm run data:refresh` first runs the synthetic-demo presentation generator
-when the sibling project is available. That one command resynchronizes the
+`npm run data:refresh` first runs the presentation generator from the bundled
+`project-pack/zoho-control-tower/` implementation, with the historical sibling
+repository retained only as a fallback. That one command resynchronizes the
 76-story contract, both handbooks, the model catalog, and all 38 SQL files
 before rebuilding the browser data.
 

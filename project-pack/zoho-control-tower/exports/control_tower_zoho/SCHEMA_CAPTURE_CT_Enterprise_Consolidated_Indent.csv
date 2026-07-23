@@ -1,0 +1,26 @@
+﻿Supplier,Receiver,SuperCategory,Category,Item Code,Item Name,Master Preferred Unit,Requested Qty,Requested Subtotal,Supplied Qty,Supplied Subtotal,Received Qty,Received Subtotal,Suspicious Qty,Suspicious Subtotal
+BeanCraft Roasters Delhi,ABNAH Cafe Connaught Place,Raw Material,Coffee Inputs,ING001,Coffee Beans,kg,15.3645,15057.21,13.0598,12798.6,12.5374,12286.65,0.5224,511.95
+Delhi Bakery Supply Co,ABNAH Cafe Connaught Place,Raw Material,Bakery,ING012,Croissant Base,pcs,92.052,3866.18,78.2442,3286.26,75.1144,3154.8,3.1298,131.45
+PackPro Disposables,ABNAH Cafe Connaught Place,Consumable,Packaging,ING038,Lid,pcs,1330.844,1463.93,1131.2174,1244.34,1085.9687,1194.57,45.2487,49.77
+BeanCraft Roasters Delhi,ABNAH Cafe Hauz Khas,Raw Material,Coffee Inputs,ING001,Coffee Beans,kg,9.1705,8987.09,7.7949,7639.0,7.4831,7333.44,0.3118,305.56
+FreshDairy Foods NCR,ABNAH Cafe Hauz Khas,Raw Material,Dairy,ING002,Milk,litre,110.2021,7934.55,93.6718,6744.37,89.9249,6474.59,3.7469,269.78
+PackPro Disposables,ABNAH Cafe Hauz Khas,Consumable,Packaging,ING040,Napkin,pcs,951.724,304.55,808.9654,258.87,776.6068,248.51,32.3586,10.35
+BeanCraft Roasters Delhi,ABNAH Cafe Saket Premium,Raw Material,Coffee Inputs,ING001,Coffee Beans,kg,14.6484,14355.43,12.4511,12202.08,11.9531,11714.04,0.498,488.04
+FreshDairy Foods NCR,ABNAH Cafe Saket Premium,Raw Material,Dairy,ING002,Milk,litre,67.5201,4861.45,57.3921,4132.23,55.0964,3966.94,2.2957,165.29
+FreshDairy Foods NCR,ABNAH Cafe Saket Premium,Raw Material,Dairy Alternative,ING003,Oat Milk,litre,20.371,3768.63,17.3153,3203.33,16.6227,3075.2,0.6926,128.13
+Delhi Bakery Supply Co,ABNAH Cafe Saket Premium,Raw Material,Bakery,ING009,Bread,pcs,205.84,2470.08,174.964,2099.57,167.9654,2015.58,6.9986,83.98
+BeanCraft Roasters Delhi,ABNAH Cafe Connaught Place,Raw Material,Coffee Inputs,ING001,Coffee Beans,kg,15.8171,15733.27,13.4445,13373.24,12.9067,12838.29,0.5378,534.95
+PackPro Disposables,ABNAH Cafe Connaught Place,Consumable,Packaging,ING038,Lid,pcs,1322.0898,1461.57,1123.7763,1242.33,1078.8252,1192.64,44.9511,49.69
+FreshDairy Foods NCR,ABNAH Cafe Hauz Khas,Raw Material,Dairy,ING002,Milk,litre,66.4558,4880.51,56.4874,4148.43,54.2279,3982.5,2.2595,165.94
+FreshDairy Foods NCR,ABNAH Cafe Hauz Khas,Raw Material,Dairy Alternative,ING003,Oat Milk,litre,22.5944,4221.76,19.2052,3588.49,18.437,3444.95,0.7682,143.54
+PackPro Disposables,ABNAH Cafe Hauz Khas,Consumable,Packaging,ING039,Straw,pcs,976.1274,539.55,829.7083,458.62,796.52,440.28,33.1883,18.34
+BeanCraft Roasters Delhi,ABNAH Cafe Saket Premium,Raw Material,Coffee Inputs,ING001,Coffee Beans,kg,14.7329,14654.82,12.523,12456.63,12.0221,11958.38,0.5009,498.25
+FreshDairy Foods NCR,ABNAH Cafe Saket Premium,Raw Material,Dairy,ING002,Milk,litre,108.5588,7972.56,92.275,6776.68,88.584,6505.61,3.691,271.07
+FreshDairy Foods NCR,ABNAH Cafe Saket Premium,Raw Material,Dairy Alternative,ING003,Oat Milk,litre,14.9604,2795.35,12.7163,2376.04,12.2076,2280.99,0.5087,95.05
+BeanCraft Roasters Delhi,ABNAH Cafe Connaught Place,Raw Material,Coffee Inputs,ING001,Coffee Beans,kg,16.0,16150.4,13.6,13727.84,13.056,13178.73,0.544,549.11
+PackPro Disposables,ABNAH Cafe Connaught Place,Consumable,Packaging,ING040,Napkin,pcs,1687.7632,548.19,1434.5987,465.96,1377.2148,447.32,57.3839,18.64
+FreshDairy Foods NCR,ABNAH Cafe Hauz Khas,Raw Material,Dairy,ING002,Milk,litre,120.0,9028.8,102.0,7674.48,97.92,7367.5,4.08,306.98
+Delhi Bakery Supply Co,ABNAH Cafe Hauz Khas,Raw Material,Dessert Inputs,ING014,Cake Base,pcs,77.8201,3651.32,66.1471,3103.62,63.5012,2979.48,2.6459,124.15
+BeanCraft Roasters Delhi,ABNAH Cafe Saket Premium,Raw Material,Coffee Inputs,ING001,Coffee Beans,kg,15.3166,15460.58,13.0191,13141.48,12.4983,12615.78,0.5208,525.7
+FreshDairy Foods NCR,ABNAH Cafe Saket Premium,Raw Material,Dairy,ING002,Milk,litre,106.9668,8048.18,90.9218,6840.96,87.2849,6567.32,3.6369,273.64
+FreshDairy Foods NCR,ABNAH Cafe Saket Premium,Raw Material,Dairy,ING004,Cream,litre,22.0,4827.9,18.7,4103.71,17.952,3939.57,0.748,164.15

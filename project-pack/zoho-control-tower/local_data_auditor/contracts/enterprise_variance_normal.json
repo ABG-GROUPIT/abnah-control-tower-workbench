@@ -1,0 +1,105 @@
+{
+  "contract_version": "1.1.0",
+  "report_id": "p4.enterprise_variance.normal",
+  "display_name": "Enterprise Variance Report - normal detailed CSV",
+  "canonical_filename_prefix": "enterprise_variance_normal",
+  "workbench": {
+    "target_report_id": "report:p4_stock_admin:01_enterprise_reports:08_enterprise_variance",
+    "blueprint_path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/08_enterprise_variance.json",
+    "variant": "normal_detailed_csv",
+    "layout_kind": "grouped_columns"
+  },
+  "filename_regexes": ["(?i).*enterprise[ _-]*variance[ _-]*report.*\\.csv$"],
+  "schema_status": "validated_from_populated_uat_csv",
+  "grain": "one row per deployment, store/kitchen and item over the selected variance period",
+  "filter_profile": {
+    "report_tab": "Variance Report",
+    "price_for_report": "Average Price"
+  },
+  "max_trailing_empty_fields": 1,
+  "expected_header": [
+    "Deployment Name", "StoreKitchen Name", "Item Code", "Item Name", "Category Name",
+    "Super Category Name", "Average Price", "Opening Date", "Opening Qty", "Unit", "Amt",
+    "Purchase Qty", "Amt", "Stock In Qty", "Amt", "Consumption Qty", "Amt",
+    "Yield Wastage", "Amt", "Stock Out Qty", "Amt", "Total (Stock Out + Consumption Qty)",
+    "Amt", "Wastage Qty", "Amt", "Reuse Qty", "Amt", "Return Qty", "Amt",
+    "Closing Date", "Closing Qty", "Amt", "Latest Physical", "Physical Qty", "Physical Amt",
+    "Variance Qty", "Variance Amt", "Variance Percent", "PhysicalGain/Loss Qty", "Amt",
+    "Actual Consumption", "Amt", "Ideal Closing Qty", "Amt",
+    "Physical Adjusted Closing Qty", "Amt"
+  ],
+  "row_columns": [
+    {"name": "deployment_name", "type": "text", "required": true},
+    {"name": "store_kitchen_name", "type": "text", "required": true},
+    {"name": "item_code", "type": "text", "required": true},
+    {"name": "item_name", "type": "text", "required": true},
+    {"name": "category_name", "type": "text"},
+    {"name": "super_category_name", "type": "text"},
+    {"name": "average_price", "type": "decimal"},
+    {"name": "opening_date", "type": "date"},
+    {"name": "opening_qty", "type": "decimal"},
+    {"name": "unit", "type": "text"},
+    {"name": "opening_amt", "type": "decimal"},
+    {"name": "purchase_qty", "type": "decimal"},
+    {"name": "purchase_amt", "type": "decimal"},
+    {"name": "stock_in_qty", "type": "decimal"},
+    {"name": "stock_in_amt", "type": "decimal"},
+    {"name": "consumption_qty", "type": "decimal"},
+    {"name": "consumption_amt", "type": "decimal"},
+    {"name": "source_yield_wastage_qty", "type": "decimal"},
+    {"name": "source_yield_wastage_amt", "type": "decimal"},
+    {"name": "stock_out_qty", "type": "decimal"},
+    {"name": "stock_out_amt", "type": "decimal"},
+    {"name": "stock_out_plus_consumption_qty", "type": "decimal"},
+    {"name": "stock_out_plus_consumption_amt", "type": "decimal"},
+    {"name": "wastage_qty", "type": "decimal"},
+    {"name": "wastage_amt", "type": "decimal"},
+    {"name": "reuse_qty", "type": "decimal"},
+    {"name": "reuse_amt", "type": "decimal"},
+    {"name": "return_qty", "type": "decimal"},
+    {"name": "return_amt", "type": "decimal"},
+    {"name": "closing_date", "type": "date"},
+    {"name": "closing_qty", "type": "decimal"},
+    {"name": "closing_amt", "type": "decimal"},
+    {"name": "latest_physical_date", "type": "date"},
+    {"name": "physical_qty", "type": "decimal"},
+    {"name": "physical_amt", "type": "decimal"},
+    {"name": "variance_qty", "type": "decimal"},
+    {"name": "variance_amt", "type": "decimal"},
+    {"name": "variance_percent", "type": "decimal"},
+    {"name": "physical_gain_loss_qty", "type": "decimal"},
+    {"name": "physical_gain_loss_amt", "type": "decimal"},
+    {"name": "actual_consumption_qty", "type": "decimal"},
+    {"name": "actual_consumption_amt", "type": "decimal"},
+    {"name": "ideal_closing_qty", "type": "decimal"},
+    {"name": "ideal_closing_amt", "type": "decimal"},
+    {"name": "physical_adjusted_closing_qty", "type": "decimal"},
+    {"name": "physical_adjusted_closing_amt", "type": "decimal"}
+  ],
+  "rules": [
+    {
+      "id": "total_outflow_qty",
+      "type": "sum_equals",
+      "target": "stock_out_plus_consumption_qty",
+      "terms": [
+        {"field": "stock_out_qty", "coefficient": 1, "null_as_zero": true},
+        {"field": "consumption_qty", "coefficient": 1, "null_as_zero": true}
+      ],
+      "tolerance": 0.001,
+      "severity": "error",
+      "message": "Total outflow quantity must equal stock-out plus consumption."
+    },
+    {
+      "id": "total_outflow_amt",
+      "type": "sum_equals",
+      "target": "stock_out_plus_consumption_amt",
+      "terms": [
+        {"field": "stock_out_amt", "coefficient": 1, "null_as_zero": true},
+        {"field": "consumption_amt", "coefficient": 1, "null_as_zero": true}
+      ],
+      "tolerance": 0.05,
+      "severity": "error",
+      "message": "Total outflow amount must equal stock-out amount plus consumption amount."
+    }
+  ]
+}

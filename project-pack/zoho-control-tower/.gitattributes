@@ -1,0 +1,3 @@
+# Preserve the final implementation package byte-for-byte so its SHA-256
+# manifest remains valid after cloning or downloading from GitHub.
+/FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/** -text

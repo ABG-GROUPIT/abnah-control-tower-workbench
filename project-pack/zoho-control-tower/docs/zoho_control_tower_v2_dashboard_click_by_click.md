@@ -1,0 +1,548 @@
+# Zoho Control Tower v2 - Dashboard Build
+
+## Objective
+
+Build one Zoho Analytics dashboard with four tabs:
+
+1. Risk Action Center
+2. Procurement, Vendor & Capital Control
+3. Consumption Variance & Menu Profitability
+4. SCM Descriptive Explorer & Data Quality
+
+Use **consumption**, not yield, on Page 3.
+
+## Physical Query Table Names
+
+The uppercase table names used below are logical model labels. In Zoho, select
+the corresponding numbered `.sql` Query Table. Resolve each label through
+`logical_model_name` in `zoho_control_tower_v2_sql/QUERY_TABLE_MANIFEST.csv`;
+for example, `FACT_CT_Inventory_Risk` is
+`27_fact_ct_inventory_risk.sql`.
+
+Native Zoho charts are sufficient for the current design. Zoho supports KPI
+widgets, maps, bar, stacked, line, combination, funnel, bubble and heat-map
+charts. Use JavaScript only if the finished dashboard is later embedded in a
+separate custom application.
+
+Official chart reference:
+https://www.zoho.com/analytics/help/chart/chart-types.html
+
+## Prerequisites
+
+Before creating reports:
+
+- All 38 active Query Tables exist.
+- Query Table validation is complete.
+- The full checklist in
+  `ZOHO_LOOKUPS_AGGREGATE_FORMULAS_AND_PRE_DASHBOARD_SETUP.md` passes.
+- All required lookups, row formula columns and aggregate formulas exist.
+- `13_dim_ct_outlet.sql` contains `OUT001`, `OUT002` and `OUT003`.
+- Every synthetic outlet has a resolved map point in
+  `37_dim_ct_outlet_enriched.sql`.
+- Truth files have been generated.
+
+## Lookup Columns
+
+Do not improvise lookup relationships while creating reports. Use the exact
+physical child-to-parent matrix in
+`ZOHO_LOOKUPS_AGGREGATE_FORMULAS_AND_PRE_DASHBOARD_SETUP.md`. In particular,
+sales `item_code` maps to the menu-item dimension, Query 34 has no outlet/item
+lookups, and Query 37 is the canonical outlet parent.
+
+## Reusable Formula Columns
+
+### Risk Severity Rank
+
+Query 27 now publishes `risk_severity_rank` directly. Do not recreate it as a
+formula column. Its fixed ordering is:
+
+```text
+PURPLE = 4
+RED = 3
+AMBER = 2
+GREEN = 1
+```
+
+### Signed Consumption Bridge
+
+Create on `FACT_CT_Actual_Consumption`:
+
+```text
+bridge_transfer_out = -1 * "transfer_out_qty"
+bridge_return = -1 * "return_qty"
+bridge_closing = -1 * "closing_qty"
+```
+
+These fields make the inventory bridge readable in a combination chart. They do
+not replace the final `calculated_actual_consumption_qty`.
+
+## Aggregation Contract
+
+Create these as reusable aggregate formulas before any KPI widget:
+
+| Business metric | Formula |
+| --- | --- |
+| Working Capital Locked | `sum("closing_stock_value") + sum("open_po_value")` |
+| PO Fill Rate % | `if(sum("ordered_qty") <> 0, sum("received_qty") / sum("ordered_qty") * 100, null)` |
+| Vendor OTIF % | `if(sum("eligible_closed_line_flag") <> 0, sum("otif_success_flag") / sum("eligible_closed_line_flag") * 100, null)` |
+| Weighted Unit Price | `if(sum("received_qty") <> 0, sum("receipt_subtotal") / sum("received_qty"), null)` |
+| Menu Gross Margin % | `if(sum("net_sales") <> 0, sum("gross_margin_value") / sum("net_sales") * 100, null)` |
+| Category Sales Contribution % | `sum("net_sales") / sum("net_sales" over the current report total) * 100`, configured as percent-of-total in the chart |
+| Stockout Sales At Risk | `sum(if("shortage_qty" > 0, "allocated_forecast_net_sales_at_risk", 0))` |
+| Expiry Risk Value - Demo | `sum("expiry_risk_value")` |
+
+Do not average percentages, sum row unit prices, or add quantities across kg,
+litre and pieces. Counts of POs, outlets, items and menu items use distinct
+count at their stated identifier.
+
+## Create A Report
+
+For each report below:
+
+1. Click **Create**.
+2. Select the stated report type.
+3. Choose the stated source table.
+4. Drag dimensions and measures to the listed shelves.
+5. Apply the listed report filters.
+6. Set the sort.
+7. Add tooltip fields.
+8. Save with the exact report name.
+
+Use the saved reports as components in the dashboard. Do not build calculations
+directly inside only one dashboard component when the same metric is reused.
+
+# Page 1 - Risk Action Center
+
+## KPI Widgets
+
+| Report name | Source | Measure | Filter |
+| --- | --- | --- | --- |
+| `CT_P1_KPI_Outlets_At_Stockout_Risk` | `FACT_CT_Inventory_Risk` | Outlets At Stockout Risk | `risk_severity <> GREEN` |
+| `CT_P1_KPI_Menu_Items_At_Risk` | `FACT_CT_Menu_Impact` | Menu Items At Risk | none |
+| `CT_P1_KPI_Stockout_Risk_Value` | `FACT_CT_Menu_Impact` | Stockout Risk Value | `shortage_qty > 0` |
+| `CT_P1_KPI_Expiry_Risk_Value_Demo` | `FACT_CT_Expiry_Risk` | Expiry Risk Value - Demo Estimate | none |
+| `CT_P1_KPI_Open_Risky_PO` | `FACT_CT_Risky_PO` | Open Risky PO Count | none |
+
+Format values as:
+
+- Counts: whole number
+- Values: INR currency with compact notation
+- Subtitle the expiry widget **Synthetic estimate - no POSIST batch/expiry
+  source**. Never remove this qualifier.
+
+## Outlet Risk Location
+
+Create `CT_P1_Outlet_Risk_Map` from `FACT_CT_Inventory_Risk`.
+
+- Location: outlet through the lookup to `DIM_CT_Outlet_Enriched`
+- Latitude/longitude: enriched outlet fields
+- Color: maximum `risk_severity_rank`
+- Tooltip: outlet, distinct stockout-risk item count, shortage cost, days cover
+  and maximum stockout severity
+- Fixed report filter: `risk_severity <> GREEN`
+- Use as filter: enabled
+
+The map is valid for the synthetic three-outlet demonstration only. Production
+must replace the enriched outlet table with an approved ABNAH reference.
+
+## Priority And Action Views
+
+| Report | Type | Source | Configuration |
+| --- | --- | --- | --- |
+| `CT_P1_Stockout_Priority_Stack` | Horizontal stacked bar | `FACT_CT_Inventory_Risk` | Y: outlet; X: sum shortage cost value; color: severity; sort severity rank then value |
+| `CT_P1_Action_Center` | Tabular | `FACT_CT_Inventory_Risk` | action ID, outlet, item, severity, shortage, recommended action, owner and due band |
+| `CT_P1_Stockout_Risk_Detail` | Tabular | `FACT_CT_Inventory_Risk` | item, stock, forecast, safety requirement, inbound, shortage, days cover, cost and severity |
+| `CT_P1_Menu_Impact_Detail` | Tabular | `FACT_CT_Menu_Impact` | ingredient, menu item, severity, forecast menu quantity, allocated sales at risk |
+| `CT_P1_Expiry_Risk_Detail_Demo` | Tabular | `FACT_CT_Expiry_Risk` | outlet, item, batch, receipt date, GRN, PO, vendor, receipt-source status, item closing quantity, FIFO tranche, expected consumption, quantity/value at risk, estimated date, severity and method |
+| `CT_P1_Vendor_PO_Risk` | Tabular | `FACT_CT_Risky_PO` | PO, vendor, expected date, remaining quantity, liability, severity |
+
+For `CT_P1_Action_Center`, filter out green rows and sort:
+
+1. Severity rank descending
+2. Total risk value descending
+3. Due band ascending
+
+Enable **View Underlying Data**.
+
+## Page 1 Layout
+
+```text
+Row 1: five KPI widgets
+Row 2: India risk map (7 columns) | risk priority stack (5 columns)
+Row 3: action center (12 columns)
+Row 4: stockout detail (6) | menu impact (6)
+Row 5: expiry demo detail (6) | vendor/PO risk (6)
+```
+
+# Page 2 - Procurement, Vendor & Capital Control
+
+## KPI Widgets
+
+| Report | Source | Measure |
+| --- | --- | --- |
+| `CT_P2_KPI_Monthly_Purchase` | `SUM_CT_Procurement_Funnel` | sum ordered value |
+| `CT_P2_KPI_Closing_Inventory` | `SUM_CT_SCM_Monthly` | sum closing stock value |
+| `CT_P2_KPI_Open_PO_Liability` | `SUM_CT_Procurement_Funnel` | sum pending value |
+| `CT_P2_KPI_Working_Capital` | `SUM_CT_SCM_Monthly` | sum closing stock value + sum open PO value |
+| `CT_P2_KPI_Open_PO_Count` | `SUM_CT_Procurement_Funnel` | sum open PO count |
+| `CT_P2_KPI_Fill_Rate` | `FACT_CT_PO_Receipt_Line` | PO Fill Rate % |
+| `CT_P2_KPI_OTIF` | `FACT_CT_PO_Receipt_Line` | Formula demo only; production blocked by sparse PO-to-GRN linkage |
+
+Label monthly purchase as **Ordered Gross Value** until ABNAH approves ordered,
+received or invoiced value as the production basis.
+
+## Procurement Flow
+
+Report: `CT_P2_Procurement_Funnel`
+
+- Type: Funnel
+- Source: `SUM_CT_Procurement_Funnel`
+- Stage values:
+  - Ordered: sum ordered value
+  - Processed: sum processed value
+  - Pending: sum pending value
+  - Delayed: sum delayed value
+- Tooltip: PO count and open PO count
+
+If the report designer cannot use four measure names as stages, create a small
+four-row reporting table from the same summary or use a grouped horizontal bar.
+Do not use an unsupported custom chart.
+
+## Vendor And PO Reports
+
+| Report | Type | Source | Configuration |
+| --- | --- | --- | --- |
+| `CT_P2_PO_Status_Distribution` | Stacked bar | `FACT_CT_Purchase_Order` | X: PO status; Y: distinct PO count and open liability |
+| `CT_P2_Pending_By_Vendor` | Horizontal bar | `SUM_CT_Procurement_Funnel` | Y: vendor; X: pending value; sort descending |
+| `CT_P2_Pending_Ingredient_Risk` | Tabular | `FACT_CT_Risky_PO` | PO, vendor, ingredient, remaining quantity/value, expected date and severity; link the ingredient drill to Page 1 menu impact |
+| `CT_P2_Expected_Delivery_Breach` | Tabular | `FACT_CT_Purchase_Order` | filter delayed flag=1; show PO, vendor, item, expected date, remaining qty/value |
+| `CT_P2_Vendor_Performance_Matrix` | Bubble | `SUM_CT_Vendor_Scorecard` | X: OTIF%; Y: average lead-time deviation; size: open PO value; text: vendor |
+| `CT_P2_Vendor_Scorecard` | Tabular | `SUM_CT_Vendor_Scorecard` | purchase, open liability, OTIF, fill, lead deviation, delayed lines |
+| `CT_P2_Ingredient_Price_Trend` | Line | `FACT_CT_Purchase_Receipt` | X: source period; Y: weighted unit price; color: item; vendor as user filter |
+| `CT_P2_Vendor_Price_Comparison` | Grouped bar | `FACT_CT_Purchase_Receipt` | X: vendor; Y: weighted unit price; require one item and one UOM |
+| `CT_P2_Top_Price_Movement` | Divergent or horizontal bar | `SUM_CT_Price_Movement` | Y: item; X: price change%; color positive/negative; sort absolute change |
+| `CT_P2_Inventory_Value` | Stacked bar | `STD_CT_Inventory_Snapshot` | X: outlet; Y: closing value; color: category |
+| `CT_P2_High_Value_Slow_Stock` | Tabular | `FACT_CT_Inventory_Risk` | closing value, days cover, forecast demand and severity |
+| `CT_P2_Observed_Wastage` | Column | `SUM_CT_Financial_Leakage` | X: period; Y: observed wastage value |
+| `CT_P2_Expiry_Exposure_Demo` | Column | `FACT_CT_Expiry_Risk` | X: period; Y: expiry risk value; subtitle must state synthetic estimate |
+
+Vendor return rate and vendor-return leakage are intentionally omitted while
+`Enterprise Stock Return` remains header-only. Do not display `0%` or `INR 0`
+as a performance result; restore these measures only after populated return
+evidence passes the PO/GRN/item linkage check.
+
+Keep OTIF and lead-time deviation visibly marked as synthetic formula
+demonstrations. Do not present them as feasible actual-data KPIs until PO number
+coverage in Enterprise Entry materially improves beyond the audited 2 of 562
+rows.
+
+Do not add a standing-PO tracker until standing and release PO identifiers are
+available.
+
+## Page 2 Layout
+
+```text
+Row 1: seven KPI widgets
+Row 2: procurement funnel (5) | vendor performance matrix (7)
+Row 3: PO status (4) | pending by vendor (4) | expected breach (4)
+Row 4: pending ingredient risk (6) | vendor price comparison (6)
+Row 5: vendor scorecard (12)
+Row 6: price trend (7) | top price movement (5)
+Row 7: inventory value (6) | high-value/ageing stock (6)
+Row 8: observed wastage (6) | expiry exposure demo (6)
+```
+
+# Page 3 - Consumption Variance & Menu Profitability
+
+## KPI Widgets
+
+| Report | Source | Measure |
+| --- | --- | --- |
+| `CT_P3_KPI_Net_Sales` | `FACT_CT_Menu_Profitability` | Net Sales |
+| `CT_P3_KPI_Quantity_Sold` | `FACT_CT_Menu_Profitability` | Quantity Sold |
+| `CT_P3_KPI_Theoretical_COGS` | `FACT_CT_Menu_Profitability` | Theoretical COGS |
+| `CT_P3_KPI_Consumption_Leakage` | `FACT_CT_Consumption_Variance` | Consumption Leakage Value |
+| `CT_P3_KPI_Menu_Gross_Margin` | `FACT_CT_Menu_Profitability` | Menu Gross Margin % |
+
+Use value, not a mixed-UOM total quantity, for the all-item leakage widget.
+
+## Consumption Reports
+
+| Report | Type | Source | Configuration |
+| --- | --- | --- | --- |
+| `CT_P3_Consumption_Bridge` | Combination | `FACT_CT_Actual_Consumption` | X: period; bars: opening, receipt, transfer in, signed transfer out, signed return, signed closing; line: calculated actual consumption |
+| `CT_P3_Theoretical_Consumption_Detail` | Tabular | `FACT_CT_Theoretical_Consumption` | outlet, ingredient, theoretical quantity/value, UOM and average cost |
+| `CT_P3_Actual_vs_Theoretical` | Grouped bar | `FACT_CT_Consumption_Variance` | X: ingredient; Y: actual qty and theoretical qty; require one UOM filter |
+| `CT_P3_Consumption_Leakage_Rank` | Horizontal bar | `FACT_CT_Consumption_Variance` | Y: ingredient; X: leakage value; sort descending |
+| `CT_P3_Low_Consumption_Check` | Tabular | `FACT_CT_Consumption_Variance` | filter low consumption qty>0; show outlet, ingredient, actual, theoretical, delta and UOM |
+
+Title the last report as a **data/process check**, not a favorable saving.
+
+## Menu Profitability Reports
+
+| Report | Type | Source | Configuration |
+| --- | --- | --- | --- |
+| `CT_P3_Menu_BCG` | Bubble | `SUM_CT_Menu_Profitability` | X: sold qty; Y: gross margin%; size: net sales; text: menu item; color: quadrant |
+| `CT_P3_Menu_COGS_Detail` | Tabular | `FACT_CT_Menu_Profitability` | menu item, sold quantity, theoretical cost per unit, COGS, net sales and margin |
+| `CT_P3_Menu_Margin_Rank` | Horizontal bar | `SUM_CT_Menu_Profitability` | Y: menu item; X: gross margin value; tooltip COGS and margin% |
+| `CT_P3_Sales_Trend` | Line | `FACT_CT_Sales` | X: sales date; Y: net sales and sold qty |
+| `CT_P3_Category_Contribution` | Stacked bar or ring | `FACT_CT_Menu_Profitability` | category contribution to net sales |
+| `CT_P3_Top_Slow_Menu_Ranking` | Horizontal bar | `SUM_CT_Menu_Profitability` | menu item ranked by selected sold quantity, net sales, COGS or margin metric |
+| `CT_P3_Outlet_Item_Heatmap` | Heat map | `FACT_CT_Menu_Profitability` | X: menu item or category; Y: outlet; color: net sales or sold qty |
+
+BCG thresholds in the synthetic query are demo thresholds. Move them to approved
+variables or formula rules before production publication.
+
+The supplied workbook requests a veg/non-veg split. Do not build it yet because
+the active profitability fact has no approved veg/non-veg classification.
+Restore that visual only after an exact menu-master flag is validated.
+
+## Page 3 Layout
+
+```text
+Row 1: five KPI widgets
+Row 2: consumption bridge (7) | actual vs theoretical (5)
+Row 3: theoretical consumption detail (6) | low-consumption check (6)
+Row 4: leakage rank (6) | menu COGS detail (6)
+Row 5: menu BCG (7) | menu margin rank (5)
+Row 6: sales trend (4) | category contribution (4) | top/slow ranking (4)
+Row 7: outlet-item heatmap (12)
+```
+
+# Page 4 - SCM Descriptive Explorer & Data Quality
+
+## Descriptive KPI Widgets
+
+| Report | Source | Measure |
+| --- | --- | --- |
+| `CT_P4_KPI_Closing_Stock` | `SUM_CT_SCM_Monthly` | closing stock value |
+| `CT_P4_KPI_Open_PO` | `SUM_CT_SCM_Monthly` | open PO value |
+| `CT_P4_KPI_Net_Sales` | `SUM_CT_SCM_Monthly` | net sales |
+| `CT_P4_KPI_Actual_Consumption` | `SUM_CT_SCM_Monthly` | actual consumption value |
+| `CT_P4_KPI_Consumption_Variance` | `FACT_CT_Consumption_Variance` | signed variance value or leakage value |
+| `CT_P4_KPI_Quantity_Sold` | `FACT_CT_Sales` | sum sold quantity |
+| `CT_P4_KPI_Active_Menu_Items` | `FACT_CT_Sales` | distinct menu item code |
+| `CT_P4_KPI_Open_PO_Lines` | `FACT_CT_Purchase_Order` | count lines with `is_open_po = 1`; show pending quantity only in UOM-filtered detail |
+| `CT_P4_KPI_GRN_Value` | `FACT_CT_Purchase_Receipt` | sum receipt total |
+| `CT_P4_KPI_Active_Vendors` | `FACT_CT_Purchase_Order` | distinct vendor name in the selected period/outlet |
+
+These are descriptive totals. Do not attach action severity to high values by
+default.
+
+## Trend And Explorer
+
+| Report | Type | Source | Configuration |
+| --- | --- | --- | --- |
+| `CT_P4_SCM_Monthly_Trend` | Combination | `SUM_CT_SCM_Monthly` | X: period; bars: stock and open PO; lines: sales and actual consumption |
+| `CT_P4_Consumption_Variance_Trend` | Bar/line | `FACT_CT_Consumption_Variance` | X: period; Y: signed variance value and leakage value |
+| `CT_P4_Descriptive_Explorer` | Pivot or tabular | `SUM_CT_SCM_Monthly` plus drill reports | period, outlet, metric, value; enable export |
+| `CT_P4_Sales_Explorer` | Tabular | `FACT_CT_Sales` | date, outlet, menu item/category, sold quantity, net sales and realized unit price |
+| `CT_P4_Item_Explorer` | Tabular | `FACT_CT_Inventory_Risk` | outlet, item, category, stock, cost, forecast, PO and severity |
+| `CT_P4_PO_Explorer` | Tabular | `FACT_CT_PO_Receipt_Line` | PO, vendor, item, ordered, received, remaining, expected, actual and status |
+| `CT_P4_GRN_Explorer` | Tabular | `FACT_CT_Purchase_Receipt` | receipt date, GRN, PO, vendor, item, received quantity, subtotal, tax/total and return-source status |
+| `CT_P4_Vendor_Explorer` | Tabular | `SUM_CT_Vendor_Scorecard` | vendor, ordered/received value, open liability, fill, eligible OTIF, lead deviation and delayed lines |
+| `CT_P4_Expiry_Explorer_Demo` | Tabular | `FACT_CT_Expiry_Risk` | outlet, item, scenario inputs, estimated date, quantity/value and production-use label |
+
+## Data-Quality Tiles
+
+Create six KPI widgets from `FACT_CT_Data_Quality_Exception`. For each widget,
+use `sum(exception_count)` and filter one `exception_type`:
+
+1. `NEGATIVE_STOCK`
+2. `ZERO_STOCK_WITH_DEMAND`
+3. `SOLD_ITEM_MISSING_RECIPE`
+4. `OPERATIONAL_ITEM_MISSING_MASTER`
+5. `UOM_MISMATCH_WITHOUT_CONVERSION`
+6. `OPEN_PO_MISSING_EXPECTED_DELIVERY`
+
+Create `CT_P4_Data_Quality_Detail` as a tabular report with:
+
+- exception type
+- period
+- outlet
+- record key
+- item code
+- PO/reference number
+- definition
+
+Enable underlying data and export. Clicking a tile must filter this table to the
+same exception type.
+
+## Page 4 Layout
+
+```text
+Row 1: sales, sold quantity, menu item, stock and open-PO KPI widgets
+Row 2: consumption, variance, pending quantity, GRN and vendor KPI widgets
+Row 3: monthly trend (7) | variance trend (5)
+Row 4: six data-quality tiles
+Row 5: data-quality detail (12)
+Row 6: sales explorer (6) | item explorer (6)
+Row 7: PO explorer (4) | GRN explorer (4) | vendor explorer (4)
+Row 8: descriptive/export explorer (12)
+Row 9: expiry scenario explorer (12)
+```
+
+# Supplied Reference Coverage
+
+| Reference requirement | Delivery decision |
+| --- | --- |
+| Four pages, KPI strips, map, funnel, vendor matrix, price trend, consumption bridge, BCG, heatmap and data-quality explorer | Build with native Zoho reports and dashboard tabs |
+| Expiry map/detail/value | Build from Query 38 as a synthetic batch-linked demonstrator scenario with a permanent source warning; it is an at-risk tranche register, not a complete POSIST batch ledger |
+| Multi-outlet geography and new/matured filters | Build from Query 37 for the three synthetic outlets; replace before production |
+| OTIF and lead-time deviation | Formula demonstration only until actual PO-to-GRN linkage improves |
+| Whole-page Stockout/Expiry/Vendor source toggle | Keep Query 27 stockout, Query 38 expiry and vendor/PO reports separate in native Zoho; exact source-switching needs a custom embedded shell |
+| Standing PO tracker | Defer because standing/release PO identifiers are unavailable |
+| Veg/non-veg split | Defer because no approved classification is present in the active fact |
+| Vendor return rate | Defer because Enterprise Stock Return is header-only |
+| Exact expiry or batch ageing | Defer until a populated expiry/batch source is validated |
+
+# Dashboard Implementation Sequence
+
+Build in this order even though the final tab order starts with Page 1:
+
+1. **Foundation**: import the two new AUX files, replace Query 27, create
+   Queries 37-38, create lookups, formulas and the two global filters.
+2. **Page 4**: build descriptive totals, trends and data-quality drill tables.
+   This proves the model before any action-oriented interpretation.
+3. **Page 3**: build menu sales/margin first, then theoretical versus actual
+   consumption, then variance and BCG.
+4. **Page 2**: build PO and receipt totals first, then funnel, pending/delay,
+   vendor performance and price movement.
+5. **Page 1**: build the stockout action table first, then commercial menu
+   impact, the separate expiry demo detail, risky PO detail and finally the
+   stockout map.
+6. **Assembly**: place the saved reports into the four final tabs and test
+   global/page filters.
+
+At every page gate:
+
+1. Reconcile the unfiltered `month_03` total to the corresponding truth CSV.
+2. Test OUT001, OUT002 and OUT003 separately.
+3. Clear all page filters and confirm the two global filters still work.
+4. Click each report-as-filter component and confirm it affects only the
+   intended reports.
+5. Export the detail behind one KPI and trace it to the Query Table.
+
+Do not begin final styling until all four page gates pass.
+
+# Assemble The Four-Tab Dashboard
+
+1. Click **Create**.
+2. Select **New Dashboard**.
+3. Name it `ABNAH Supply Chain Control Tower v2`.
+4. Add four tabs with the exact page names.
+5. Drag the saved reports into each tab using the layouts above.
+6. Keep the KPI row at a stable height.
+7. Give tables more vertical space than charts.
+8. Enable smart alignment.
+9. Do not place explanatory text cards between working reports.
+10. Save after completing each tab.
+
+Zoho supports multi-tab dashboards and common user filters. Current filter
+documentation:
+https://www.zoho.com/analytics/help/dashboard/filter.html
+
+## Global Filters
+
+Create only two dashboard-global filters:
+
+| Filter | Configuration | Reason |
+| --- | --- | --- |
+| Source period | Single-select; default `month_03`; map to `source_period_code` or the equivalent forecast period on every component | Inventory is a checkpoint. Allowing all three months would add three snapshots as if simultaneous. |
+| Outlet | Multi-select; default All; map by `outlet_code`, not display name | Outlet code is the conformed key across all facts. |
+
+Steps:
+
+1. Open the dashboard in edit mode.
+2. Open **User Filters**.
+3. Add `source_period_code`.
+4. Map it to every report's equivalent period field.
+5. Make it single-select and set `month_03` as the default.
+6. Add outlet and map `outlet_code`.
+7. Select **Make User Filters Global** and choose **Make Common Filters as
+   Global**. Do not choose **Make Current Tab Filters as Global**, because that
+   option would remove the tab-specific filter design.
+8. For a report whose period column has a different name, open the report's
+   dashboard **Options**, keep **Apply Dashboard Filters** enabled, select
+   **Customize**, and map Source period to that report's equivalent period
+   column.
+9. Test every component under each outlet and period before adding page filters.
+
+Do not make category, vendor, PO status, risk type, severity, UOM, region or
+new/matured global. Those fields are absent or have different meanings in some
+facts and will blank unrelated widgets.
+
+## Page And Report Filter Matrix
+
+| Scope | User filters | Fixed report filters |
+| --- | --- | --- |
+| Page 1 | Region, new/matured, stockout severity, action owner, ingredient category | Stockout risk/action reports: `risk_severity <> GREEN`; stockout commercial impact: `shortage_qty > 0`; expiry detail: `production_use_status = demo_only_no_posist_batch_or_expiry_source` |
+| Page 2 | Region, vendor, ingredient category, item, PO status | Breach table: `delayed_po_flag = 1`; pending reports: `is_open_po = 1`; OTIF: eligible denominator only; price charts: received quantity `> 0` |
+| Page 3 | Region, menu category, menu item, ingredient category, ingredient, canonical UOM | Quantity comparisons: exactly one UOM; low-consumption table: `low_consumption_qty > 0`; leakage rank: `leakage_value > 0` |
+| Page 4 | Region, item, vendor, exception type, explorer source | Each quality tile has one fixed `exception_type`; descriptive totals have no severity filter |
+
+Region and new/matured come from the lookup to
+`37_dim_ct_outlet_enriched.sql`. They are synthetic demonstrator attributes.
+
+### Risk Toggle Boundary
+
+The supplied HTML uses one toggle to replace Stockout, Expiry and Vendor
+content. Native Zoho user filters cannot safely switch unrelated report data
+sources. Query 27 supplies stockout map/action views, Query 38 supplies the
+visibly synthetic expiry views, and the vendor/PO facts supply vendor risk.
+Keep those sections visibly separate. A true whole-page source-switching toggle
+requires a custom embedded shell and is outside the native dashboard.
+
+### Filters That Must Stay Inside Reports
+
+- Keep `risk_severity <> GREEN` inside action reports so clearing a user filter
+  cannot turn the action page into a healthy-item listing.
+- Keep `is_open_po = 1` and `delayed_po_flag = 1` inside their PO reports; PO
+  status remains a page user filter for narrower analysis.
+- Keep one-UOM enforcement inside quantity charts. Do not apply a UOM filter to
+  currency widgets.
+- Keep each data-quality tile's exception type fixed. Clicking the tile may
+  filter the shared detail table, but a global exception filter must not alter
+  unrelated pages.
+- Keep `is_estimated = 1` and the demo source label visible on every expiry
+  report.
+
+## Report-As-Filter Behavior
+
+Enable **Use as Filter** for:
+
+- Page 1 risk map and priority stack
+- Page 2 vendor matrix and price movement
+- Page 3 menu BCG and heatmap
+- Page 4 data-quality tiles
+
+Keep the user able to clear the selection. Do not enable report filtering on
+every component; that creates unpredictable cross-filter chains.
+
+## RAG And Styling
+
+Use one consistent severity palette:
+
+| State | Color |
+| --- | --- |
+| Purple | `#6C3B8C` |
+| Red | `#C63D3D` |
+| Amber | `#D49A22` |
+| Green | `#2E7D5B` |
+| Grey/no data | `#7C8793` |
+
+Use a neutral dashboard background and reserve severity colors for actual
+states. Do not color descriptive Page 4 values red merely because they are
+large.
+
+## JavaScript Boundary
+
+Do not attempt to inject JavaScript into the native dashboard to recolor or
+rebuild charts. Use native chart settings and conditional formatting first.
+
+Zoho's JavaScript API controls reports embedded in an external application:
+https://www.zoho.com/analytics/js-api/
+
+If a later custom portal is approved, embed the published dashboard there and
+use the API for host-controlled filters, refresh and export. That is a separate
+delivery from the native Zoho dashboard.

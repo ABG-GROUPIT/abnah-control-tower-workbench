@@ -1,0 +1,60 @@
+{
+  "contract_version": "1.1.0",
+  "report_id": "p4.enterprise_transfer.from_item",
+  "display_name": "Enterprise Transfer Report - Transfer From",
+  "canonical_filename_prefix": "enterprise_transfer_from",
+  "workbench": {
+    "target_report_id": "report:p4_stock_admin:01_enterprise_reports:01_enterprise_entry",
+    "blueprint_path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/01_enterprise_entry.json",
+    "variant": "transfer_from_csv",
+    "layout_kind": "flat"
+  },
+  "filename_regexes": ["(?i).*enterprise[ _-]*transfer[ _-]*report.*transfer[ _-]*from.*\\.csv$"],
+  "schema_status": "captured_uat_csv_variant",
+  "grain": "one row per supplier-to-receiver transfer transaction and item",
+  "max_trailing_empty_fields": 1,
+  "expected_header": [
+    "Deployment Name", "Supplier Store/Kitchen Code", "Supplier Store/Kitchen Name",
+    "Receiver Store/Kitchen Code", "Receiver Store/Kitchen Name", "User Name", "Date",
+    "Transaction Number", "Item Code", "Item Name", "Category Name", "Super Category Name",
+    "Comment", "Quantity", "Unit", "Unit Price", "Amount", "Source"
+  ],
+  "row_columns": [
+    {"name": "deployment_name", "type": "text", "required": true},
+    {"name": "supplier_store_kitchen_code", "type": "text"},
+    {"name": "supplier_store_kitchen_name", "type": "text", "required": true},
+    {"name": "receiver_store_kitchen_code", "type": "text"},
+    {"name": "receiver_store_kitchen_name", "type": "text"},
+    {"name": "user_name", "type": "text", "sensitive": true},
+    {"name": "transfer_date", "type": "date", "required": true},
+    {"name": "transaction_number", "type": "text", "required": true},
+    {"name": "item_code", "type": "text", "required": true},
+    {"name": "item_name", "type": "text", "required": true},
+    {"name": "category_name", "type": "text"},
+    {"name": "super_category_name", "type": "text"},
+    {"name": "comment", "type": "text"},
+    {"name": "transfer_qty", "type": "decimal"},
+    {"name": "unit", "type": "text"},
+    {"name": "unit_price", "type": "decimal"},
+    {"name": "transfer_amt", "type": "decimal"},
+    {"name": "source", "type": "text"}
+  ],
+  "rules": [
+    {
+      "id": "transfer_amount_from_qty_price",
+      "type": "product_equals",
+      "target": "transfer_amt",
+      "left": "transfer_qty",
+      "right": "unit_price",
+      "display_rounding": {
+        "left_decimals": 3,
+        "right_decimals": 2,
+        "target_decimals": 2
+      },
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "Transfer amount differs from quantity multiplied by unit price."
+    }
+  ]
+}

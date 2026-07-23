@@ -1,0 +1,17 @@
+﻿scope_type,source_period_code,outlet_code,negative_stock_count,zero_stock_with_demand_count,sold_items_missing_recipe_count,operational_items_missing_master_count,uom_mismatch_without_conversion_count,open_po_missing_expected_delivery_count
+one_period_one_outlet,month_01,OUT001,0,0,0,0,0,0
+one_period_one_outlet,month_01,OUT002,0,0,0,0,0,0
+one_period_one_outlet,month_01,OUT003,0,0,0,0,0,0
+one_period_all_outlets,month_01,ALL,0,0,0,0,0,0
+one_period_one_outlet,month_02,OUT001,0,0,0,0,0,0
+one_period_one_outlet,month_02,OUT002,0,0,0,0,0,0
+one_period_one_outlet,month_02,OUT003,0,0,0,0,0,0
+one_period_all_outlets,month_02,ALL,0,0,0,0,0,0
+one_period_one_outlet,month_03,OUT001,0,1,0,0,0,1
+one_period_one_outlet,month_03,OUT002,0,1,0,0,0,1
+one_period_one_outlet,month_03,OUT003,1,0,0,0,0,1
+one_period_all_outlets,month_03,ALL,1,2,0,0,0,3
+all_periods_one_outlet,ALL,OUT001,0,1,0,0,0,1
+all_periods_one_outlet,ALL,OUT002,0,1,0,0,0,1
+all_periods_one_outlet,ALL,OUT003,1,0,0,0,0,1
+all_periods_all_outlets,ALL,ALL,1,2,0,0,0,3

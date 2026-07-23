@@ -1,0 +1,67 @@
+{
+  "contract_version": "1.1.0",
+  "report_id": "p4.recipe_consumption.item",
+  "display_name": "Recipe Consumption Report",
+  "canonical_filename_prefix": "recipe_consumption",
+  "workbench": {
+    "target_report_id": "report:p4_stock_admin:05_aggregation_reports:07_recipe_consumption_report",
+    "blueprint_path": "schema-pack/source/report_structures/p4_stock_admin/05_aggregation_reports/07_recipe_consumption_report.json",
+    "variant": "item_consumption_csv",
+    "layout_kind": "flat"
+  },
+  "filename_regexes": ["(?i).*recipe[ _-]*consumption[ _-]*report.*\\.csv$"],
+  "schema_status": "validated_from_two_populated_and_two_header_only_uat_exports",
+  "grain": "one row per parent item and consumed recipe item",
+  "expected_header": [
+    "Type", "Item Code", "Item Name", "Parent Item Quantity", "Parent Price Per Unit",
+    "Parent Subtotal", "Consumed Quantity", "Unit", "Price Per Unit", "Subtotal",
+    "Consumption Source"
+  ],
+  "row_columns": [
+    {"name": "item_type", "type": "text"},
+    {"name": "item_code", "type": "text"},
+    {"name": "item_name", "type": "text", "required": true},
+    {"name": "parent_item_qty", "type": "decimal"},
+    {"name": "parent_unit_price", "type": "decimal"},
+    {"name": "parent_subtotal", "type": "decimal"},
+    {"name": "consumed_qty", "type": "decimal"},
+    {"name": "consumed_unit", "type": "text"},
+    {"name": "consumed_unit_price", "type": "decimal"},
+    {"name": "consumed_subtotal", "type": "decimal"},
+    {"name": "consumption_source", "type": "text"}
+  ],
+  "rules": [
+    {
+      "id": "parent_subtotal_from_qty_price",
+      "type": "product_equals",
+      "target": "parent_subtotal",
+      "left": "parent_item_qty",
+      "right": "parent_unit_price",
+      "display_rounding": {
+        "left_decimals": 3,
+        "right_decimals": 2,
+        "target_decimals": 2
+      },
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "Parent subtotal differs from parent quantity multiplied by parent unit price."
+    },
+    {
+      "id": "consumed_subtotal_from_qty_price",
+      "type": "product_equals",
+      "target": "consumed_subtotal",
+      "left": "consumed_qty",
+      "right": "consumed_unit_price",
+      "display_rounding": {
+        "left_decimals": 3,
+        "right_decimals": 2,
+        "target_decimals": 2
+      },
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "Consumed subtotal differs from consumed quantity multiplied by consumed unit price."
+    }
+  ]
+}

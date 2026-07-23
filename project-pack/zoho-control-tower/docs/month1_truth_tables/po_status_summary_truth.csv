@@ -1,0 +1,12 @@
+outlet_name,po_status,po_lines,po_raised_value,ordered_qty,processed_qty,remaining_qty,remaining_value_est
+ABNAH Cafe Connaught Place,Closed,56,373174.09,21050.28,21050.28,0.0,0.0
+ABNAH Cafe Connaught Place,Partially Received,14,100895.13,2089.21,1521.55,567.6600000000001,33839.1181053605
+ABNAH Cafe Connaught Place,Pending,8,46625.03,2593.37,0.0,2593.37,46625.03
+ABNAH Cafe Hauz Khas,Cancelled,1,16342.17,44.8,0.0,0.0,0.0
+ABNAH Cafe Hauz Khas,Closed,55,453255.31,21576.81,21576.81,0.0,0.0
+ABNAH Cafe Hauz Khas,Partially Received,8,70489.48,1075.6,559.04,516.5600000000001,28459.450711223595
+ABNAH Cafe Hauz Khas,Pending,8,64703.4,2638.19,0.0,2638.19,64703.4
+ABNAH Cafe Saket Premium,Cancelled,4,25008.190000000002,615.84,0.0,0.0,0.0
+ABNAH Cafe Saket Premium,Closed,54,379995.53,21795.63,21795.63,0.0,0.0
+ABNAH Cafe Saket Premium,Partially Received,14,82421.65,8978.43,5910.34,3068.09,32844.4550649571
+ABNAH Cafe Saket Premium,Pending,2,14421.060000000001,59.660000000000004,0.0,59.660000000000004,14421.060000000001

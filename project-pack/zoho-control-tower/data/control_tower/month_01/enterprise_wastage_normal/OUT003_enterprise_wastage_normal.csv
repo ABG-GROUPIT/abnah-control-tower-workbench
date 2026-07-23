@@ -1,0 +1,13 @@
+﻿Deployment Name,Store/Kitchen Name,User Name,Date,Transaction Number,Item Code,Item Name,Category Name,Super Category Name,Comment,Quantity,Unit,Unit Price,Amount,Source
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-01-09,WST-OUT003-01-001,ING040,Napkin,Packaging,Consumable,Quality rejection,33.385,pcs,0.32,10.68,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-01-10,WST-OUT003-01-002,ING038,Lid,Packaging,Consumable,Quality rejection,21.45,pcs,1.1,23.6,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-01-11,WST-OUT003-01-003,ING037,Hot Cup,Packaging,Consumable,Quality rejection,12.793,pcs,2.8,35.82,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-01-12,WST-OUT003-01-004,ING036,Cold Cup,Packaging,Consumable,Preparation loss,8.657,pcs,3.2,27.7,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-01-13,WST-OUT003-01-005,ING039,Straw,Packaging,Consumable,Preparation loss,8.657,pcs,0.55,4.76,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-01-14,WST-OUT003-01-006,ING041,Dessert Box,Packaging,Consumable,Preparation loss,5.038,pcs,5.0,25.19,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-01-15,WST-OUT003-01-007,ING002,Milk,Dairy,Raw Material,Preparation loss,5.0407,litre,72.0,362.93,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-01-16,WST-OUT003-01-008,ING009,Bread,Bakery,Raw Material,Shelf-life loss,2.53,pcs,12.0,30.36,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-01-17,WST-OUT003-01-009,ING014,Cake Base,Dessert Inputs,Raw Material,Quality rejection,2.3996,pcs,46.0,110.38,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-01-18,WST-OUT003-01-010,ING042,Sandwich Box,Packaging,Consumable,Quality rejection,2.057,pcs,6.5,13.37,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-01-19,WST-OUT003-01-011,ING012,Croissant Base,Bakery,Raw Material,Shelf-life loss,1.782,pcs,42.0,74.84,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-01-20,WST-OUT003-01-012,ING022,Ice,Beverage Inputs,Raw Material,Shelf-life loss,1.1731,kg,12.0,14.08,

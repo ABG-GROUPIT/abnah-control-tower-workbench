@@ -1,0 +1,55 @@
+market_area,competitor_category,price_position,mapped_items,avg_price_index,avg_price_difference,avg_expected_sales_impact,competitor_examples,outlet_name
+Connaught Place,Iced Tea,Premium vs competitor,1,1.125,25.0,0.0,Chaayos CP,ABNAH Cafe Connaught Place
+Connaught Place,Cold Coffee,Premium vs competitor,1,1.103,30.0,0.0,Starbucks CP,ABNAH Cafe Connaught Place
+Connaught Place,Coffee Classics,Premium vs competitor,2,1.1,22.5,0.0,"Blue Tokai CP, Chaayos CP",ABNAH Cafe Connaught Place
+Connaught Place,Desserts,Premium vs competitor,2,1.0915,20.0,0.0,"Chaayos CP, Starbucks CP",ABNAH Cafe Connaught Place
+Connaught Place,Shake,Premium vs competitor,2,1.0865,25.0,0.0,Blue Tokai CP,ABNAH Cafe Connaught Place
+Connaught Place,Cold Brew,Premium vs competitor,3,1.0703333333333334,16.666666666666668,0.0,"Chaayos CP, Local Brew Bar CP",ABNAH Cafe Connaught Place
+Connaught Place,Baked Goods,Premium vs competitor,1,1.065,15.0,0.0,Chaayos CP,ABNAH Cafe Connaught Place
+Connaught Place,Shake,At parity,2,1.039,12.5,0.0,Chaayos CP,ABNAH Cafe Connaught Place
+Connaught Place,Signature Coffee,At parity,1,1.017,5.0,0.0,Chaayos CP,ABNAH Cafe Connaught Place
+Connaught Place,Coffee Classics,At parity,8,1.011375,2.5,0.0,"Blue Tokai CP, Chaayos CP, Local Brew Bar CP, Starbucks CP",ABNAH Cafe Connaught Place
+Connaught Place,Cold Coffee,At parity,3,1.0053333333333334,1.6666666666666667,0.0,"Blue Tokai CP, Local Brew Bar CP, Starbucks CP",ABNAH Cafe Connaught Place
+Connaught Place,Cold Brew,At parity,2,1.0030000000000001,0.0,0.0,"Blue Tokai CP, Starbucks CP",ABNAH Cafe Connaught Place
+Connaught Place,Baked Goods,At parity,4,0.98325,-3.75,0.0,"Blue Tokai CP, Starbucks CP",ABNAH Cafe Connaught Place
+Connaught Place,Iced Tea,At parity,1,0.979,-5.0,0.0,Chaayos CP,ABNAH Cafe Connaught Place
+Connaught Place,Sandwiches,At parity,1,0.952,-15.0,0.0,Starbucks CP,ABNAH Cafe Connaught Place
+Connaught Place,Cold Coffee,Below competitor,2,0.9315,-20.0,0.0,"Local Brew Bar CP, Starbucks CP",ABNAH Cafe Connaught Place
+Connaught Place,Sandwiches,Below competitor,3,0.93,-23.333333333333332,0.0,"Blue Tokai CP, Chaayos CP, Local Brew Bar CP",ABNAH Cafe Connaught Place
+Connaught Place,Iced Tea,Below competitor,2,0.927,-17.5,0.0,"Local Brew Bar CP, Starbucks CP",ABNAH Cafe Connaught Place
+Connaught Place,Cold Brew,Below competitor,1,0.911,-25.0,0.0,Blue Tokai CP,ABNAH Cafe Connaught Place
+Hauz Khas,Sandwiches,Premium vs competitor,2,1.1644999999999999,42.5,0.0,Campus Brew House,ABNAH Cafe Hauz Khas
+Hauz Khas,Shake,Premium vs competitor,3,1.1486666666666665,40.0,0.0,"Blue Tokai HKV, Campus Brew House, Third Wave Hauz Khas",ABNAH Cafe Hauz Khas
+Hauz Khas,Desserts,Premium vs competitor,1,1.147,25.0,0.0,Third Wave Hauz Khas,ABNAH Cafe Hauz Khas
+Hauz Khas,Baked Goods,Premium vs competitor,3,1.1423333333333334,31.666666666666668,0.0,"Blue Tokai HKV, Social Coffee HK",ABNAH Cafe Hauz Khas
+Hauz Khas,Iced Tea,Premium vs competitor,4,1.116,23.75,0.0,"Blue Tokai HKV, Campus Brew House, Third Wave Hauz Khas",ABNAH Cafe Hauz Khas
+Hauz Khas,Cold Coffee,Premium vs competitor,3,1.1016666666666666,26.666666666666668,0.0,"Blue Tokai HKV, Campus Brew House",ABNAH Cafe Hauz Khas
+Hauz Khas,Cold Brew,Premium vs competitor,4,1.09925,22.5,0.0,"Blue Tokai HKV, Social Coffee HK, Third Wave Hauz Khas",ABNAH Cafe Hauz Khas
+Hauz Khas,Coffee Classics,Premium vs competitor,7,1.0982857142857143,21.428571428571427,0.0,"Blue Tokai HKV, Campus Brew House, Social Coffee HK",ABNAH Cafe Hauz Khas
+Hauz Khas,Coffee Classics,At parity,3,1.04,8.333333333333334,0.0,"Social Coffee HK, Third Wave Hauz Khas",ABNAH Cafe Hauz Khas
+Hauz Khas,Shake,At parity,1,1.031,10.0,0.0,Campus Brew House,ABNAH Cafe Hauz Khas
+Hauz Khas,Sandwiches,At parity,2,1.0185,5.0,0.0,"Blue Tokai HKV, Third Wave Hauz Khas",ABNAH Cafe Hauz Khas
+Hauz Khas,Desserts,At parity,1,1.016,5.0,0.0,Social Coffee HK,ABNAH Cafe Hauz Khas
+Hauz Khas,Baked Goods,At parity,2,1.013,2.5,0.0,"Campus Brew House, Third Wave Hauz Khas",ABNAH Cafe Hauz Khas
+Hauz Khas,Cold Brew,At parity,2,1.0115,2.5,0.0,"Campus Brew House, Social Coffee HK",ABNAH Cafe Hauz Khas
+Hauz Khas,Cold Coffee,At parity,3,0.9836666666666667,-5.0,0.0,"Campus Brew House, Social Coffee HK, Third Wave Hauz Khas",ABNAH Cafe Hauz Khas
+Hauz Khas,Signature Coffee,At parity,1,0.983,-5.0,0.0,Third Wave Hauz Khas,ABNAH Cafe Hauz Khas
+Saket,Coffee Classics,Premium vs competitor,1,1.059,15.0,0.0,Coffee Bean Saket,ABNAH Cafe Saket Premium
+Saket,Cold Coffee,Premium vs competitor,1,1.056,15.0,0.0,Coffee Bean Saket,ABNAH Cafe Saket Premium
+Saket,Signature Coffee,At parity,1,1.035,10.0,0.0,Starbucks Select Citywalk,ABNAH Cafe Saket Premium
+Saket,Cold Coffee,At parity,2,1.0345,10.0,0.0,"Starbucks Select Citywalk, Third Wave Saket",ABNAH Cafe Saket Premium
+Saket,Baked Goods,At parity,3,1.01,1.6666666666666667,0.0,"Coffee Bean Saket, Starbucks Select Citywalk, Third Wave Saket",ABNAH Cafe Saket Premium
+Saket,Desserts,At parity,1,1.0,0.0,0.0,Artisan Dessert Cafe Saket,ABNAH Cafe Saket Premium
+Saket,Sandwiches,At parity,2,0.9994999999999999,0.0,0.0,"Artisan Dessert Cafe Saket, Coffee Bean Saket",ABNAH Cafe Saket Premium
+Saket,Shake,At parity,2,0.9924999999999999,-2.5,0.0,"Coffee Bean Saket, Third Wave Saket",ABNAH Cafe Saket Premium
+Saket,Coffee Classics,At parity,4,0.98475,-3.75,0.0,"Artisan Dessert Cafe Saket, Coffee Bean Saket",ABNAH Cafe Saket Premium
+Saket,Cold Brew,At parity,1,0.98,-5.0,0.0,Starbucks Select Citywalk,ABNAH Cafe Saket Premium
+Saket,Iced Tea,At parity,1,0.978,-5.0,0.0,Artisan Dessert Cafe Saket,ABNAH Cafe Saket Premium
+Saket,Iced Tea,Below competitor,3,0.9253333333333332,-18.333333333333332,0.0,"Artisan Dessert Cafe Saket, Coffee Bean Saket, Starbucks Select Citywalk",ABNAH Cafe Saket Premium
+Saket,Coffee Classics,Below competitor,5,0.9114000000000001,-23.0,0.0,"Artisan Dessert Cafe Saket, Coffee Bean Saket, Starbucks Select Citywalk, Third Wave Saket",ABNAH Cafe Saket Premium
+Saket,Cold Coffee,Below competitor,3,0.9083333333333333,-30.0,0.0,"Coffee Bean Saket, Starbucks Select Citywalk",ABNAH Cafe Saket Premium
+Saket,Sandwiches,Below competitor,2,0.907,-32.5,0.0,"Coffee Bean Saket, Third Wave Saket",ABNAH Cafe Saket Premium
+Saket,Baked Goods,Below competitor,2,0.893,-30.0,0.0,"Coffee Bean Saket, Starbucks Select Citywalk",ABNAH Cafe Saket Premium
+Saket,Cold Brew,Below competitor,5,0.8869999999999999,-32.0,0.0,"Artisan Dessert Cafe Saket, Starbucks Select Citywalk, Third Wave Saket",ABNAH Cafe Saket Premium
+Saket,Shake,Below competitor,2,0.884,-40.0,0.0,"Starbucks Select Citywalk, Third Wave Saket",ABNAH Cafe Saket Premium
+Saket,Desserts,Below competitor,1,0.867,-30.0,0.0,Third Wave Saket,ABNAH Cafe Saket Premium

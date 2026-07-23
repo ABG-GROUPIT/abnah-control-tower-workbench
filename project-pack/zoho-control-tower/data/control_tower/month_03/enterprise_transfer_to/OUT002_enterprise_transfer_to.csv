@@ -1,0 +1,4 @@
+﻿Deployment Name,Transferred To Store Name,From Store Name,User Name,Date,Transaction Number,Item Code,Item Name,Category Name,Super Category Name,Comment,Quantity,Unit,Unit Price,Amount,Source
+ABNAH Cafe Hauz Khas,ABNAH Cafe Hauz Khas Main Store,ABNAH Cafe Connaught Place Main Store,inventory.lead,2026-03-15,TRF-03-OUT001-OUT002-001,ING002,Milk,Dairy,Raw Material,,13.92,litre,75.24,1047.34,
+ABNAH Cafe Hauz Khas,ABNAH Cafe Hauz Khas Main Store,ABNAH Cafe Connaught Place Main Store,inventory.lead,2026-03-15,TRF-03-OUT001-OUT002-002,ING036,Cold Cup,Packaging,Consumable,,162.4,pcs,3.25,527.8,
+ABNAH Cafe Hauz Khas,ABNAH Cafe Hauz Khas Main Store,ABNAH Cafe Saket Premium Main Store,inventory.lead,2026-03-15,TRF-03-OUT003-OUT002-003,ING013,Brownie Base,Dessert Inputs,Raw Material,,20.88,pcs,34.68,724.12,

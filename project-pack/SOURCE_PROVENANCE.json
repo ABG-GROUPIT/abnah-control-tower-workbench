@@ -1,0 +1,8 @@
+{
+  "source_repository": "https://github.com/arnavkadhe/abnah-zoho-synthetic-demo",
+  "source_branch": "main",
+  "source_commit": "c364bef92eac98566975f333f205648a34ce2b14",
+  "destination": "project-pack/zoho-control-tower",
+  "tracked_files_imported": 710,
+  "content_policy": "Tracked synthetic, documentation, code, schema, and validation artifacts only. Screenshots, real operational exports, local audit runtime data, credentials, and environment values are excluded."
+}

@@ -1,0 +1,4 @@
+﻿outlet_code,outlet_name,region,city,market_area,latitude,longitude,new_matured_flag,active_status,source_evidence,is_synthetic,production_use_status
+OUT001,ABNAH Cafe Connaught Place,North,Delhi,Connaught Place,28.6315,77.2167,Matured,Active,synthetic_demo_reference_correlated_to_operational_outlet_keys,1,replace_with_approved_abnah_outlet_reference
+OUT002,ABNAH Cafe Hauz Khas,North,Delhi,Hauz Khas,28.5494,77.2001,Matured,Active,synthetic_demo_reference_correlated_to_operational_outlet_keys,1,replace_with_approved_abnah_outlet_reference
+OUT003,ABNAH Cafe Saket Premium,North,Delhi,Saket,28.5245,77.2066,New,Active,synthetic_demo_reference_correlated_to_operational_outlet_keys,1,replace_with_approved_abnah_outlet_reference

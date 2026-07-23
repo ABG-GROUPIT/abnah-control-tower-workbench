@@ -1,0 +1,13 @@
+﻿Deployment Name,Store/Kitchen Name,User Name,Date,Transaction Number,Item Code,Item Name,Category Name,Super Category Name,Comment,Quantity,Unit,Unit Price,Amount,Source
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-02-09,WST-OUT001-02-001,ING040,Napkin,Packaging,Consumable,Quality rejection,21.4553,pcs,0.32,6.87,
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-02-10,WST-OUT001-02-002,ING038,Lid,Packaging,Consumable,Quality rejection,14.8176,pcs,1.11,16.45,
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-02-11,WST-OUT001-02-003,ING037,Hot Cup,Packaging,Consumable,Preparation loss,10.1984,pcs,2.81,28.66,
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-02-12,WST-OUT001-02-004,ING036,Cold Cup,Packaging,Consumable,Shelf-life loss,4.6192,pcs,3.22,14.87,
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-02-13,WST-OUT001-02-005,ING039,Straw,Packaging,Consumable,Preparation loss,4.6192,pcs,0.55,2.54,
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-02-14,WST-OUT001-02-006,ING002,Milk,Dairy,Raw Material,Shelf-life loss,4.0805,litre,73.44,299.67,
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-02-15,WST-OUT001-02-007,ING009,Bread,Bakery,Raw Material,Preparation loss,2.1168,pcs,12.12,25.66,
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-02-16,WST-OUT001-02-008,ING041,Dessert Box,Packaging,Consumable,Quality rejection,1.9807,pcs,5.02,9.94,
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-02-17,WST-OUT001-02-009,ING042,Sandwich Box,Packaging,Consumable,Quality rejection,1.701,pcs,6.53,11.11,
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-02-18,WST-OUT001-02-010,ING012,Croissant Base,Bakery,Raw Material,Shelf-life loss,0.9374,pcs,42.42,39.76,
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-02-19,WST-OUT001-02-011,ING014,Cake Base,Dessert Inputs,Raw Material,Quality rejection,0.8909,pcs,46.46,41.39,
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-02-20,WST-OUT001-02-012,ING022,Ice,Beverage Inputs,Raw Material,Preparation loss,0.6225,kg,12.12,7.54,

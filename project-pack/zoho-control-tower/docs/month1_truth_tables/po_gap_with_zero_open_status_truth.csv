@@ -1,0 +1,11 @@
+outlet_code,outlet_name,market_area,vendor_name,po_raised_value,receipt_booked_value,po_line_count,receipt_line_count,open_or_partial_status_count,pending_or_partial_flag_count,remaining_value_est,po_vs_receipt_gap,receipt_coverage_pct
+OUT003,ABNAH Cafe Saket Premium,Saket,Delhi Bakery Supply Co,75127.93,60470.35,9,7,0,0,0.0,14657.579999999994,80.48983913173171
+OUT003,ABNAH Cafe Saket Premium,Saket,SweetBase Foods,41604.25,27392.56,5,3,0,0,0.0,14211.689999999999,65.84077347867105
+OUT002,ABNAH Cafe Hauz Khas,Hauz Khas,BeanCraft Roasters Delhi,23944.489999999998,11709.24,2,1,0,0,0.0,12235.249999999998,48.90160533801305
+OUT001,ABNAH Cafe Connaught Place,Connaught Place,ChocoCraft Ingredients,34596.82,26228.329999999998,4,3,0,0,0.0,8368.490000000002,75.81138960170327
+OUT002,ABNAH Cafe Hauz Khas,Hauz Khas,TeaLeaf Traders NCR,40925.97,36258.79,2,2,0,0,0.0,4667.18,88.59604305041518
+OUT001,ABNAH Cafe Connaught Place,Connaught Place,TeaLeaf Traders NCR,26527.27,24206.03,2,2,0,0,0.0,2321.2400000000016,91.24960842182402
+OUT002,ABNAH Cafe Hauz Khas,Hauz Khas,Delhi Bakery Supply Co,90045.64,88822.57,13,13,0,0,0.0,1223.0699999999924,98.64172213113262
+OUT001,ABNAH Cafe Connaught Place,Connaught Place,BeanCraft Roasters Delhi,8068.53,7971.05,1,1,0,0,0.0,97.47999999999956,98.79184932075607
+OUT002,ABNAH Cafe Hauz Khas,Hauz Khas,FrozenBerry Traders,44588.34,44492.78,3,3,0,0,0.0,95.55999999999767,99.78568388058403
+OUT003,ABNAH Cafe Saket Premium,Saket,Metro Wholesale Delhi,4579.06,4564.59,1,1,0,0,0.0,14.470000000000255,99.68399627871221

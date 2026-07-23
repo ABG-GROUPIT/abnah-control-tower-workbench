@@ -1,0 +1,13 @@
+﻿Deployment Name,Store/Kitchen Name,User Name,Date,Transaction Number,Item Code,Item Name,Category Name,Super Category Name,Comment,Quantity,Unit,Unit Price,Amount,Source
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-01-09,WST-OUT002-01-001,ING040,Napkin,Packaging,Consumable,Shelf-life loss,39.564,pcs,0.32,12.66,
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-01-10,WST-OUT002-01-002,ING038,Lid,Packaging,Consumable,Shelf-life loss,25.368,pcs,1.1,27.9,
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-01-11,WST-OUT002-01-003,ING037,Hot Cup,Packaging,Consumable,Quality rejection,14.56,pcs,2.8,40.77,
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-01-12,WST-OUT002-01-004,ING036,Cold Cup,Packaging,Consumable,Preparation loss,10.808,pcs,3.2,34.59,
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-01-13,WST-OUT002-01-005,ING039,Straw,Packaging,Consumable,Shelf-life loss,10.808,pcs,0.55,5.94,
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-01-14,WST-OUT002-01-006,ING041,Dessert Box,Packaging,Consumable,Shelf-life loss,4.998,pcs,5.0,24.99,
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-01-15,WST-OUT002-01-007,ING002,Milk,Dairy,Raw Material,Quality rejection,5.1766,litre,72.0,372.72,
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-01-16,WST-OUT002-01-008,ING009,Bread,Bakery,Raw Material,Shelf-life loss,3.416,pcs,12.0,40.99,
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-01-17,WST-OUT002-01-009,ING042,Sandwich Box,Packaging,Consumable,Preparation loss,2.94,pcs,6.5,19.11,
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-01-18,WST-OUT002-01-010,ING014,Cake Base,Dessert Inputs,Raw Material,Quality rejection,2.2435,pcs,46.0,103.2,
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-01-19,WST-OUT002-01-011,ING012,Croissant Base,Bakery,Raw Material,Shelf-life loss,2.184,pcs,42.0,91.73,
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-01-20,WST-OUT002-01-012,ING022,Ice,Beverage Inputs,Raw Material,Shelf-life loss,1.4507,kg,12.0,17.41,

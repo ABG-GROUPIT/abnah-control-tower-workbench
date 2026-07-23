@@ -1,0 +1,37 @@
+﻿Date,Store/Kitchen,Supplier,Receiver,Item Name,Unit,Unit Price,Stock In Reference,Stock In Qty,Subtotal,Stock Out Reference,Stock Out Qty,Subtotal
+2026-01-13,ABNAH Cafe Connaught Place Main Store,ABNAH Cafe Connaught Place,ABNAH Cafe Hauz Khas,Milk,litre,72.0,,0.0,0.0,TRF-01-OUT001-OUT002-001,12.0,864.0
+2026-01-13,ABNAH Cafe Hauz Khas Main Store,ABNAH Cafe Connaught Place,ABNAH Cafe Hauz Khas,Milk,litre,72.0,TRF-01-OUT001-OUT002-001,12.0,864.0,,0.0,0.0
+2026-01-13,ABNAH Cafe Connaught Place Main Store,ABNAH Cafe Connaught Place,ABNAH Cafe Hauz Khas,Cold Cup,pcs,3.2,,0.0,0.0,TRF-01-OUT001-OUT002-002,140.0,448.0
+2026-01-13,ABNAH Cafe Hauz Khas Main Store,ABNAH Cafe Connaught Place,ABNAH Cafe Hauz Khas,Cold Cup,pcs,3.2,TRF-01-OUT001-OUT002-002,140.0,448.0,,0.0,0.0
+2026-01-13,ABNAH Cafe Saket Premium Main Store,ABNAH Cafe Saket Premium,ABNAH Cafe Hauz Khas,Brownie Base,pcs,34.0,,0.0,0.0,TRF-01-OUT003-OUT002-003,18.0,612.0
+2026-01-13,ABNAH Cafe Hauz Khas Main Store,ABNAH Cafe Saket Premium,ABNAH Cafe Hauz Khas,Brownie Base,pcs,34.0,TRF-01-OUT003-OUT002-003,18.0,612.0,,0.0,0.0
+2026-01-13,ABNAH Cafe Connaught Place Main Store,ABNAH Cafe Connaught Place,ABNAH Cafe Saket Premium,Coffee Beans,kg,980.0,,0.0,0.0,TRF-01-OUT001-OUT003-004,3.0,2940.0
+2026-01-13,ABNAH Cafe Saket Premium Main Store,ABNAH Cafe Connaught Place,ABNAH Cafe Saket Premium,Coffee Beans,kg,980.0,TRF-01-OUT001-OUT003-004,3.0,2940.0,,0.0,0.0
+2026-01-13,ABNAH Cafe Hauz Khas Main Store,ABNAH Cafe Hauz Khas,ABNAH Cafe Connaught Place,Wrap Packaging,pcs,5.8,,0.0,0.0,TRF-01-OUT002-OUT001-005,35.0,203.0
+2026-01-13,ABNAH Cafe Connaught Place Main Store,ABNAH Cafe Hauz Khas,ABNAH Cafe Connaught Place,Wrap Packaging,pcs,5.8,TRF-01-OUT002-OUT001-005,35.0,203.0,,0.0,0.0
+2026-01-13,ABNAH Cafe Saket Premium Main Store,ABNAH Cafe Saket Premium,ABNAH Cafe Connaught Place,Cream,litre,210.0,,0.0,0.0,TRF-01-OUT003-OUT001-006,5.0,1050.0
+2026-01-13,ABNAH Cafe Connaught Place Main Store,ABNAH Cafe Saket Premium,ABNAH Cafe Connaught Place,Cream,litre,210.0,TRF-01-OUT003-OUT001-006,5.0,1050.0,,0.0,0.0
+2026-02-14,ABNAH Cafe Connaught Place Main Store,ABNAH Cafe Connaught Place,ABNAH Cafe Hauz Khas,Milk,litre,73.44,,0.0,0.0,TRF-02-OUT001-OUT002-001,12.96,951.78
+2026-02-14,ABNAH Cafe Hauz Khas Main Store,ABNAH Cafe Connaught Place,ABNAH Cafe Hauz Khas,Milk,litre,73.44,TRF-02-OUT001-OUT002-001,12.96,951.78,,0.0,0.0
+2026-02-14,ABNAH Cafe Connaught Place Main Store,ABNAH Cafe Connaught Place,ABNAH Cafe Hauz Khas,Cold Cup,pcs,3.22,,0.0,0.0,TRF-02-OUT001-OUT002-002,151.2,486.86
+2026-02-14,ABNAH Cafe Hauz Khas Main Store,ABNAH Cafe Connaught Place,ABNAH Cafe Hauz Khas,Cold Cup,pcs,3.22,TRF-02-OUT001-OUT002-002,151.2,486.86,,0.0,0.0
+2026-02-14,ABNAH Cafe Saket Premium Main Store,ABNAH Cafe Saket Premium,ABNAH Cafe Hauz Khas,Brownie Base,pcs,34.34,,0.0,0.0,TRF-02-OUT003-OUT002-003,19.44,667.57
+2026-02-14,ABNAH Cafe Hauz Khas Main Store,ABNAH Cafe Saket Premium,ABNAH Cafe Hauz Khas,Brownie Base,pcs,34.34,TRF-02-OUT003-OUT002-003,19.44,667.57,,0.0,0.0
+2026-02-14,ABNAH Cafe Connaught Place Main Store,ABNAH Cafe Connaught Place,ABNAH Cafe Saket Premium,Coffee Beans,kg,994.7,,0.0,0.0,TRF-02-OUT001-OUT003-004,3.24,3222.83
+2026-02-14,ABNAH Cafe Saket Premium Main Store,ABNAH Cafe Connaught Place,ABNAH Cafe Saket Premium,Coffee Beans,kg,994.7,TRF-02-OUT001-OUT003-004,3.24,3222.83,,0.0,0.0
+2026-02-14,ABNAH Cafe Hauz Khas Main Store,ABNAH Cafe Hauz Khas,ABNAH Cafe Connaught Place,Wrap Packaging,pcs,5.83,,0.0,0.0,TRF-02-OUT002-OUT001-005,37.8,220.37
+2026-02-14,ABNAH Cafe Connaught Place Main Store,ABNAH Cafe Hauz Khas,ABNAH Cafe Connaught Place,Wrap Packaging,pcs,5.83,TRF-02-OUT002-OUT001-005,37.8,220.37,,0.0,0.0
+2026-02-14,ABNAH Cafe Saket Premium Main Store,ABNAH Cafe Saket Premium,ABNAH Cafe Connaught Place,Cream,litre,214.2,,0.0,0.0,TRF-02-OUT003-OUT001-006,5.4,1156.68
+2026-02-14,ABNAH Cafe Connaught Place Main Store,ABNAH Cafe Saket Premium,ABNAH Cafe Connaught Place,Cream,litre,214.2,TRF-02-OUT003-OUT001-006,5.4,1156.68,,0.0,0.0
+2026-03-15,ABNAH Cafe Connaught Place Main Store,ABNAH Cafe Connaught Place,ABNAH Cafe Hauz Khas,Milk,litre,75.24,,0.0,0.0,TRF-03-OUT001-OUT002-001,13.92,1047.34
+2026-03-15,ABNAH Cafe Hauz Khas Main Store,ABNAH Cafe Connaught Place,ABNAH Cafe Hauz Khas,Milk,litre,75.24,TRF-03-OUT001-OUT002-001,13.92,1047.34,,0.0,0.0
+2026-03-15,ABNAH Cafe Connaught Place Main Store,ABNAH Cafe Connaught Place,ABNAH Cafe Hauz Khas,Cold Cup,pcs,3.25,,0.0,0.0,TRF-03-OUT001-OUT002-002,162.4,527.8
+2026-03-15,ABNAH Cafe Hauz Khas Main Store,ABNAH Cafe Connaught Place,ABNAH Cafe Hauz Khas,Cold Cup,pcs,3.25,TRF-03-OUT001-OUT002-002,162.4,527.8,,0.0,0.0
+2026-03-15,ABNAH Cafe Saket Premium Main Store,ABNAH Cafe Saket Premium,ABNAH Cafe Hauz Khas,Brownie Base,pcs,34.68,,0.0,0.0,TRF-03-OUT003-OUT002-003,20.88,724.12
+2026-03-15,ABNAH Cafe Hauz Khas Main Store,ABNAH Cafe Saket Premium,ABNAH Cafe Hauz Khas,Brownie Base,pcs,34.68,TRF-03-OUT003-OUT002-003,20.88,724.12,,0.0,0.0
+2026-03-15,ABNAH Cafe Connaught Place Main Store,ABNAH Cafe Connaught Place,ABNAH Cafe Saket Premium,Coffee Beans,kg,1009.4,,0.0,0.0,TRF-03-OUT001-OUT003-004,3.48,3512.71
+2026-03-15,ABNAH Cafe Saket Premium Main Store,ABNAH Cafe Connaught Place,ABNAH Cafe Saket Premium,Coffee Beans,kg,1009.4,TRF-03-OUT001-OUT003-004,3.48,3512.71,,0.0,0.0
+2026-03-15,ABNAH Cafe Hauz Khas Main Store,ABNAH Cafe Hauz Khas,ABNAH Cafe Connaught Place,Wrap Packaging,pcs,5.89,,0.0,0.0,TRF-03-OUT002-OUT001-005,40.6,239.13
+2026-03-15,ABNAH Cafe Connaught Place Main Store,ABNAH Cafe Hauz Khas,ABNAH Cafe Connaught Place,Wrap Packaging,pcs,5.89,TRF-03-OUT002-OUT001-005,40.6,239.13,,0.0,0.0
+2026-03-15,ABNAH Cafe Saket Premium Main Store,ABNAH Cafe Saket Premium,ABNAH Cafe Connaught Place,Cream,litre,219.45,,0.0,0.0,TRF-03-OUT003-OUT001-006,5.8,1272.81
+2026-03-15,ABNAH Cafe Connaught Place Main Store,ABNAH Cafe Saket Premium,ABNAH Cafe Connaught Place,Cream,litre,219.45,TRF-03-OUT003-OUT001-006,5.8,1272.81,,0.0,0.0

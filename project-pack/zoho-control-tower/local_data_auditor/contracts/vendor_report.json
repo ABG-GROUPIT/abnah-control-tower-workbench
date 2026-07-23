@@ -1,0 +1,75 @@
+{
+  "contract_version": "1.0.0",
+  "report_id": "historical.vendor_report.master",
+  "display_name": "Vendor Report",
+  "canonical_filename_prefix": "vendor_report",
+  "workbench": {
+    "target_report_id": "",
+    "blueprint_path": "",
+    "variant": "historical_vendor_master_export",
+    "layout_kind": "flat",
+    "catalog_state": "historical_external_reference"
+  },
+  "filename_regexes": [
+    "(?i)^vendor[ _-]*report.*\\.csv$"
+  ],
+  "schema_status": "validated_from_historical_abnah_export_and_existing_synthetic_contract",
+  "evidence_scope": "historical_abnah_export",
+  "grain": "one row per vendor master record",
+  "max_trailing_empty_fields": 1,
+  "expected_header": [
+    "vendorName",
+    "vendorCode",
+    "description",
+    "contactPerson",
+    "contactNumber",
+    "email",
+    "tinNumber",
+    "serviceTaxNumber",
+    "gstInNumber",
+    "msme",
+    "fssaiNumber",
+    "panNumber",
+    "fromDate",
+    "toDate",
+    "state",
+    "address"
+  ],
+  "row_columns": [
+    {"name": "vendor_name", "type": "text", "required": true},
+    {"name": "vendor_code", "type": "text"},
+    {"name": "description", "type": "text"},
+    {"name": "contact_person", "type": "text", "sensitive": true},
+    {"name": "contact_number", "type": "text", "sensitive": true},
+    {"name": "email", "type": "text", "sensitive": true},
+    {"name": "tin_number", "type": "text", "sensitive": true},
+    {"name": "service_tax_number", "type": "text", "sensitive": true},
+    {"name": "gstin_number", "type": "text", "sensitive": true},
+    {"name": "msme", "type": "text"},
+    {"name": "fssai_number", "type": "text", "sensitive": true},
+    {"name": "pan_number", "type": "text", "sensitive": true},
+    {"name": "from_date", "type": "date"},
+    {"name": "to_date", "type": "date"},
+    {"name": "state", "type": "text"},
+    {"name": "address", "type": "text", "sensitive": true}
+  ],
+  "documented_quality_gates": [
+    {
+      "issue_code": "PHONE_OVERFLOW_MERGED",
+      "description": "Multiple phone-number cells can shift all following vendor columns."
+    },
+    {
+      "issue_code": "ADDRESS_CONTINUATION_MERGED",
+      "description": "Long addresses can continue on a following physical row."
+    },
+    {
+      "issue_code": "ROW_TOO_LONG_REPAIRED",
+      "description": "Unquoted commas or overflow address text can create more cells than the schema."
+    },
+    {
+      "issue_code": "INVALID_COMPLIANCE_FORMAT",
+      "description": "GSTIN, PAN and FSSAI values require local format validation before import."
+    }
+  ],
+  "rules": []
+}

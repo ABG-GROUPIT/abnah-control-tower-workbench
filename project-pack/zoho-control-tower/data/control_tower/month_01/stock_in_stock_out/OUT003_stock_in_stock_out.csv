@@ -1,0 +1,4 @@
+﻿Date,Store/Kitchen,Supplier,Receiver,Item Name,Unit,Unit Price,Stock In Reference,Stock In Qty,Subtotal,Stock Out Reference,Stock Out Qty,Subtotal
+2026-01-13,ABNAH Cafe Saket Premium Main Store,ABNAH Cafe Saket Premium,ABNAH Cafe Hauz Khas,Brownie Base,pcs,34.0,,0.0,0.0,TRF-01-OUT003-OUT002-003,18.0,612.0
+2026-01-13,ABNAH Cafe Saket Premium Main Store,ABNAH Cafe Connaught Place,ABNAH Cafe Saket Premium,Coffee Beans,kg,980.0,TRF-01-OUT001-OUT003-004,3.0,2940.0,,0.0,0.0
+2026-01-13,ABNAH Cafe Saket Premium Main Store,ABNAH Cafe Saket Premium,ABNAH Cafe Connaught Place,Cream,litre,210.0,,0.0,0.0,TRF-01-OUT003-OUT001-006,5.0,1050.0

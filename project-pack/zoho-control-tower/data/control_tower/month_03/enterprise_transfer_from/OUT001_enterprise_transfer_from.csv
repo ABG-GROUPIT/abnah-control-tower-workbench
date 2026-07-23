@@ -1,0 +1,4 @@
+﻿Deployment Name,Supplier Store/Kitchen Code,Supplier Store/Kitchen Name,Receiver Store/Kitchen Code,Receiver Store/Kitchen Name,User Name,Date,Transaction Number,Item Code,Item Name,Category Name,Super Category Name,Comment,Quantity,Unit,Unit Price,Amount,Source
+ABNAH Cafe Connaught Place,,ABNAH Cafe Connaught Place Main Store,OUT002-MAIN,,inventory.lead,2026-03-15,TRF-03-OUT001-OUT002-001,ING002,Milk,Dairy,Raw Material,,13.92,litre,75.24,1047.34,
+ABNAH Cafe Connaught Place,,ABNAH Cafe Connaught Place Main Store,OUT002-MAIN,,inventory.lead,2026-03-15,TRF-03-OUT001-OUT002-002,ING036,Cold Cup,Packaging,Consumable,,162.4,pcs,3.25,527.8,
+ABNAH Cafe Connaught Place,,ABNAH Cafe Connaught Place Main Store,OUT003-MAIN,,inventory.lead,2026-03-15,TRF-03-OUT001-OUT003-004,ING001,Coffee Beans,Coffee Inputs,Raw Material,,3.48,kg,1009.4,3512.71,

@@ -1,0 +1,131 @@
+{
+  "contract_version": "1.1.0",
+  "report_id": "p4.enterprise_purchase_order.item",
+  "display_name": "Enterprise Purchase Order Report - item detail",
+  "canonical_filename_prefix": "enterprise_purchase_order",
+  "workbench": {
+    "target_report_id": "report:p4_stock_admin:01_enterprise_reports:06_enterprise_purchase_order",
+    "blueprint_path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/06_enterprise_purchase_order.json",
+    "variant": "item_detail",
+    "layout_kind": "flat"
+  },
+  "filename_regexes": ["(?i).*ent(?:erprise|p)[ _-]*purchase[ _-]*order[ _-]*report.*\\.csv$"],
+  "schema_status": "header_validated_from_uat_csv_business_rules_pending_populated_export",
+  "grain": "one row per purchase order and item",
+  "filter_profile": {
+    "po_status": "all statuses",
+    "date_basis": "PO date",
+    "item_level": true
+  },
+  "max_trailing_empty_fields": 1,
+  "expected_header": [
+    "Deployment", "Store Name", "Vendor Name", "PO Number", "PR Number", "PR Deployment",
+    "PO Date", "Expected Delivery", "PO Close Date/Partial Recieve Date", "PO Status",
+    "Item Code", "Item Name", "Item Brand", "Category Name", "Super Category Name",
+    "Comment", "Total Processed Qty", "Remaining Balance Qty", "Quantity", "Unit",
+    "Unit Price", "Subtotal", "Item Wise Discount Amount", "Bill Wise Discount Amount",
+    "New Subtotal", "Tax", "Total Item Cost", ""
+  ],
+  "row_columns": [
+    {"name": "deployment_name", "type": "text", "required": true},
+    {"name": "store_name", "type": "text", "required": true},
+    {"name": "vendor_name", "type": "text", "required": true},
+    {"name": "po_number", "type": "text", "required": true},
+    {"name": "pr_number", "type": "text"},
+    {"name": "pr_deployment", "type": "text"},
+    {"name": "po_date", "type": "date", "required": true},
+    {"name": "expected_delivery_date", "type": "date"},
+    {"name": "po_close_or_partial_receive_date", "type": "date"},
+    {"name": "po_status", "type": "text", "required": true},
+    {"name": "item_code", "type": "text", "required": true},
+    {"name": "item_name", "type": "text", "required": true},
+    {"name": "item_brand", "type": "text"},
+    {"name": "category_name", "type": "text"},
+    {"name": "super_category_name", "type": "text"},
+    {"name": "comment", "type": "text"},
+    {"name": "processed_qty", "type": "decimal"},
+    {"name": "remaining_balance_qty", "type": "decimal"},
+    {"name": "ordered_qty", "type": "decimal"},
+    {"name": "unit", "type": "text"},
+    {"name": "unit_price", "type": "decimal"},
+    {"name": "subtotal", "type": "decimal"},
+    {"name": "item_discount_amt", "type": "decimal"},
+    {"name": "bill_discount_amt", "type": "decimal"},
+    {"name": "new_subtotal", "type": "decimal"},
+    {"name": "tax_amt", "type": "decimal"},
+    {"name": "total_item_cost", "type": "decimal"}
+  ],
+  "rules": [
+    {
+      "id": "ordered_qty_bridge",
+      "type": "sum_equals",
+      "target": "ordered_qty",
+      "terms": [
+        {"field": "processed_qty", "coefficient": 1, "null_as_zero": true},
+        {"field": "remaining_balance_qty", "coefficient": 1, "null_as_zero": true}
+      ],
+      "tolerance": 0.001,
+      "severity": "review",
+      "message": "Ordered quantity differs from processed plus remaining quantity. This rule remains review-only until a populated UAT export validates status semantics."
+    },
+    {
+      "id": "subtotal_from_order",
+      "type": "product_equals",
+      "target": "subtotal",
+      "left": "ordered_qty",
+      "right": "unit_price",
+      "display_rounding": {
+        "left_decimals": 3,
+        "right_decimals": 2,
+        "target_decimals": 2
+      },
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "PO subtotal differs from ordered quantity multiplied by unit price."
+    },
+    {
+      "id": "discounted_subtotal",
+      "type": "sum_equals",
+      "target": "new_subtotal",
+      "terms": [
+        {"field": "subtotal", "coefficient": 1},
+        {"field": "item_discount_amt", "coefficient": -1, "null_as_zero": true},
+        {"field": "bill_discount_amt", "coefficient": -1, "null_as_zero": true}
+      ],
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "New subtotal differs from subtotal less item-wise and bill-wise discounts."
+    },
+    {
+      "id": "item_cost_with_tax",
+      "type": "sum_equals",
+      "target": "total_item_cost",
+      "terms": [
+        {"field": "new_subtotal", "coefficient": 1},
+        {"field": "tax_amt", "coefficient": 1, "null_as_zero": true}
+      ],
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "Total item cost differs from new subtotal plus tax."
+    },
+    {
+      "id": "expected_delivery_after_po",
+      "type": "date_order",
+      "earlier": "po_date",
+      "later": "expected_delivery_date",
+      "severity": "warning",
+      "message": "Expected delivery precedes the PO date."
+    },
+    {
+      "id": "close_after_po",
+      "type": "date_order",
+      "earlier": "po_date",
+      "later": "po_close_or_partial_receive_date",
+      "severity": "warning",
+      "message": "PO close or partial-receipt date precedes the PO date."
+    }
+  ]
+}

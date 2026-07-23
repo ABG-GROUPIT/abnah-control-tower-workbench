@@ -1,0 +1,13 @@
+﻿Deployment Name,Store/Kitchen Name,User Name,Date,Transaction Number,Item Code,Item Name,Category Name,Super Category Name,Comment,Quantity,Unit,Unit Price,Amount,Source
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-01-09,WST-OUT001-01-001,ING040,Napkin,Packaging,Consumable,Shelf-life loss,19.369,pcs,0.32,6.2,
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-01-10,WST-OUT001-01-002,ING038,Lid,Packaging,Consumable,Shelf-life loss,13.447,pcs,1.1,14.79,
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-01-11,WST-OUT001-01-003,ING037,Hot Cup,Packaging,Consumable,Quality rejection,9.275,pcs,2.8,25.97,
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-01-12,WST-OUT001-01-004,ING036,Cold Cup,Packaging,Consumable,Preparation loss,4.172,pcs,3.2,13.35,
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-01-13,WST-OUT001-01-005,ING039,Straw,Packaging,Consumable,Quality rejection,4.172,pcs,0.55,2.29,
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-01-14,WST-OUT001-01-006,ING002,Milk,Dairy,Raw Material,Shelf-life loss,3.6805,litre,72.0,265.0,
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-01-15,WST-OUT001-01-007,ING041,Dessert Box,Packaging,Consumable,Quality rejection,1.883,pcs,5.0,9.41,
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-01-16,WST-OUT001-01-008,ING009,Bread,Bakery,Raw Material,Preparation loss,1.862,pcs,12.0,22.34,
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-01-17,WST-OUT001-01-009,ING042,Sandwich Box,Packaging,Consumable,Quality rejection,1.47,pcs,6.5,9.55,
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-01-18,WST-OUT001-01-010,ING014,Cake Base,Dessert Inputs,Raw Material,Quality rejection,0.9446,pcs,46.0,43.45,
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-01-19,WST-OUT001-01-011,ING012,Croissant Base,Bakery,Raw Material,Shelf-life loss,0.763,pcs,42.0,32.05,
+ABNAH Cafe Connaught Place,Main Store,inventory.lead,2026-01-20,WST-OUT001-01-012,ING022,Ice,Beverage Inputs,Raw Material,Quality rejection,0.5658,kg,12.0,6.79,

@@ -1,0 +1,10 @@
+﻿check_id,observed,expected,tolerance,status
+negative_stock_count,1.0,1.0,0.0,PASS
+zero_stock_with_demand_count,2.0,2.0,0.0,PASS
+open_po_missing_expected_delivery_count,3.0,3.0,0.0,PASS
+sold_items_missing_recipe_count,0.0,0.0,0.0,PASS
+operational_items_missing_master_count,0.0,0.0,0.0,PASS
+query_table_count,38.0,38.0,0.0,PASS
+maximum_query_dependency_level,3.0,3.0,0.0,PASS
+all_period_stockout_risk_value_reference,976271.72,976271.72,0.01,PASS
+expiry_demo_value_present,1.0,1.0,0.0,PASS

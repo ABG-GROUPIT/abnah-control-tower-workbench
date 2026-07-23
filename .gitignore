@@ -30,6 +30,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!/project-pack/zoho-control-tower/.env.example
 
 # vercel
 .vercel

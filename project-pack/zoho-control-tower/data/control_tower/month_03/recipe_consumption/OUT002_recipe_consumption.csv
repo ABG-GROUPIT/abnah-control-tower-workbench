@@ -1,0 +1,724 @@
+﻿Type,Item Code,Item Name,Parent Item Quantity,Parent Price Per Unit,Parent Subtotal,Consumed Quantity,Unit,Price Per Unit,Subtotal,Consumption Source
+Menu Item,MENU0001,Espresso Shot - Solo,,,,0.0192,kg,980.0,18.82,Recipe:ING001
+Menu Item,MENU0001,Espresso Shot - Solo,,,,2.0,pcs,2.8,5.6,Recipe:ING037
+Menu Item,MENU0001,Espresso Shot - Solo,,,,2.0,pcs,1.1,2.2,Recipe:ING038
+Menu Item,MENU0001,Espresso Shot - Solo,,,,2.0,pcs,0.32,0.64,Recipe:ING040
+Menu Item,MENU0002,Espresso Shot - Doppio,,,,0.1044,kg,980.0,102.31,Recipe:ING001
+Menu Item,MENU0002,Espresso Shot - Doppio,,,,6.0,pcs,2.8,16.8,Recipe:ING037
+Menu Item,MENU0002,Espresso Shot - Doppio,,,,6.0,pcs,1.1,6.6,Recipe:ING038
+Menu Item,MENU0002,Espresso Shot - Doppio,,,,6.0,pcs,0.32,1.92,Recipe:ING040
+Menu Item,MENU0003,Americano - Regular,,,,1.008,kg,980.0,987.84,Recipe:ING001
+Menu Item,MENU0003,Americano - Regular,,,,56.0,pcs,2.8,156.8,Recipe:ING037
+Menu Item,MENU0003,Americano - Regular,,,,56.0,pcs,1.1,61.6,Recipe:ING038
+Menu Item,MENU0003,Americano - Regular,,,,56.0,pcs,0.32,17.92,Recipe:ING040
+Menu Item,MENU0003,Americano - Regular,,,,0.84,litre,90.0,75.6,Recipe:ING019
+Menu Item,MENU0004,Americano - Medium,,,,1.035,kg,980.0,1014.3,Recipe:ING001
+Menu Item,MENU0004,Americano - Medium,,,,50.0,pcs,2.8,140.0,Recipe:ING037
+Menu Item,MENU0004,Americano - Medium,,,,50.0,pcs,1.1,55.0,Recipe:ING038
+Menu Item,MENU0004,Americano - Medium,,,,50.0,pcs,0.32,16.0,Recipe:ING040
+Menu Item,MENU0004,Americano - Medium,,,,0.86,litre,90.0,77.4,Recipe:ING019
+Menu Item,MENU0005,Americano - Large,,,,1.053,kg,980.0,1031.94,Recipe:ING001
+Menu Item,MENU0005,Americano - Large,,,,45.0,pcs,2.8,126.0,Recipe:ING037
+Menu Item,MENU0005,Americano - Large,,,,45.0,pcs,1.1,49.5,Recipe:ING038
+Menu Item,MENU0005,Americano - Large,,,,45.0,pcs,0.32,14.4,Recipe:ING040
+Menu Item,MENU0005,Americano - Large,,,,0.8775,litre,90.0,78.97,Recipe:ING019
+Menu Item,MENU0006,Latte - Regular,,,,1.098,kg,980.0,1076.04,Recipe:ING001
+Menu Item,MENU0006,Latte - Regular,,,,61.0,pcs,2.8,170.8,Recipe:ING037
+Menu Item,MENU0006,Latte - Regular,,,,61.0,pcs,1.1,67.1,Recipe:ING038
+Menu Item,MENU0006,Latte - Regular,,,,10.98,litre,72.0,790.56,Recipe:ING002
+Menu Item,MENU0006,Latte - Regular,,,,61.0,pcs,0.32,19.52,Recipe:ING040
+Menu Item,MENU0006,Latte - Regular,,,,0.915,litre,90.0,82.35,Recipe:ING019
+Menu Item,MENU0007,Latte - Medium,,,,1.035,kg,980.0,1014.3,Recipe:ING001
+Menu Item,MENU0007,Latte - Medium,,,,50.0,pcs,2.8,140.0,Recipe:ING037
+Menu Item,MENU0007,Latte - Medium,,,,50.0,pcs,1.1,55.0,Recipe:ING038
+Menu Item,MENU0007,Latte - Medium,,,,10.35,litre,72.0,745.2,Recipe:ING002
+Menu Item,MENU0007,Latte - Medium,,,,50.0,pcs,0.32,16.0,Recipe:ING040
+Menu Item,MENU0007,Latte - Medium,,,,0.86,litre,90.0,77.4,Recipe:ING019
+Menu Item,MENU0008,Latte - Large,,,,1.0062,kg,980.0,986.08,Recipe:ING001
+Menu Item,MENU0008,Latte - Large,,,,43.0,pcs,2.8,120.4,Recipe:ING037
+Menu Item,MENU0008,Latte - Large,,,,43.0,pcs,1.1,47.3,Recipe:ING038
+Menu Item,MENU0008,Latte - Large,,,,10.062,litre,72.0,724.46,Recipe:ING002
+Menu Item,MENU0008,Latte - Large,,,,43.0,pcs,0.32,13.76,Recipe:ING040
+Menu Item,MENU0008,Latte - Large,,,,0.8385,litre,90.0,75.47,Recipe:ING019
+Menu Item,MENU0009,Cappuccino - Regular,,,,1.152,kg,980.0,1128.96,Recipe:ING001
+Menu Item,MENU0009,Cappuccino - Regular,,,,64.0,pcs,2.8,179.2,Recipe:ING037
+Menu Item,MENU0009,Cappuccino - Regular,,,,64.0,pcs,1.1,70.4,Recipe:ING038
+Menu Item,MENU0009,Cappuccino - Regular,,,,11.52,litre,72.0,829.44,Recipe:ING002
+Menu Item,MENU0009,Cappuccino - Regular,,,,64.0,pcs,0.32,20.48,Recipe:ING040
+Menu Item,MENU0009,Cappuccino - Regular,,,,0.96,litre,90.0,86.4,Recipe:ING019
+Menu Item,MENU0010,Cappuccino - Medium,,,,1.3869,kg,980.0,1359.16,Recipe:ING001
+Menu Item,MENU0010,Cappuccino - Medium,,,,67.0,pcs,2.8,187.6,Recipe:ING037
+Menu Item,MENU0010,Cappuccino - Medium,,,,67.0,pcs,1.1,73.7,Recipe:ING038
+Menu Item,MENU0010,Cappuccino - Medium,,,,13.869,litre,72.0,998.57,Recipe:ING002
+Menu Item,MENU0010,Cappuccino - Medium,,,,67.0,pcs,0.32,21.44,Recipe:ING040
+Menu Item,MENU0010,Cappuccino - Medium,,,,1.1524,litre,90.0,103.72,Recipe:ING019
+Menu Item,MENU0011,Cappuccino - Large,,,,0.6552,kg,980.0,642.1,Recipe:ING001
+Menu Item,MENU0011,Cappuccino - Large,,,,28.0,pcs,2.8,78.4,Recipe:ING037
+Menu Item,MENU0011,Cappuccino - Large,,,,28.0,pcs,1.1,30.8,Recipe:ING038
+Menu Item,MENU0011,Cappuccino - Large,,,,6.552,litre,72.0,471.74,Recipe:ING002
+Menu Item,MENU0011,Cappuccino - Large,,,,28.0,pcs,0.32,8.96,Recipe:ING040
+Menu Item,MENU0011,Cappuccino - Large,,,,0.546,litre,90.0,49.14,Recipe:ING019
+Menu Item,MENU0012,Flat White - Regular,,,,0.9,kg,980.0,882.0,Recipe:ING001
+Menu Item,MENU0012,Flat White - Regular,,,,50.0,pcs,2.8,140.0,Recipe:ING037
+Menu Item,MENU0012,Flat White - Regular,,,,50.0,pcs,1.1,55.0,Recipe:ING038
+Menu Item,MENU0012,Flat White - Regular,,,,9.0,litre,72.0,648.0,Recipe:ING002
+Menu Item,MENU0012,Flat White - Regular,,,,50.0,pcs,0.32,16.0,Recipe:ING040
+Menu Item,MENU0012,Flat White - Regular,,,,0.75,litre,90.0,67.5,Recipe:ING019
+Menu Item,MENU0013,Flat White - Medium,,,,0.8901,kg,980.0,872.3,Recipe:ING001
+Menu Item,MENU0013,Flat White - Medium,,,,43.0,pcs,2.8,120.4,Recipe:ING037
+Menu Item,MENU0013,Flat White - Medium,,,,43.0,pcs,1.1,47.3,Recipe:ING038
+Menu Item,MENU0013,Flat White - Medium,,,,8.901,litre,72.0,640.87,Recipe:ING002
+Menu Item,MENU0013,Flat White - Medium,,,,43.0,pcs,0.32,13.76,Recipe:ING040
+Menu Item,MENU0013,Flat White - Medium,,,,0.7396,litre,90.0,66.56,Recipe:ING019
+Menu Item,MENU0014,Flat White - Large,,,,0.7254,kg,980.0,710.89,Recipe:ING001
+Menu Item,MENU0014,Flat White - Large,,,,31.0,pcs,2.8,86.8,Recipe:ING037
+Menu Item,MENU0014,Flat White - Large,,,,31.0,pcs,1.1,34.1,Recipe:ING038
+Menu Item,MENU0014,Flat White - Large,,,,7.254,litre,72.0,522.29,Recipe:ING002
+Menu Item,MENU0014,Flat White - Large,,,,31.0,pcs,0.32,9.92,Recipe:ING040
+Menu Item,MENU0014,Flat White - Large,,,,0.6045,litre,90.0,54.41,Recipe:ING019
+Menu Item,MENU0015,Mocha - Regular,,,,1.05,litre,260.0,273.0,Recipe:ING016
+Menu Item,MENU0015,Mocha - Regular,,,,0.756,kg,980.0,740.88,Recipe:ING001
+Menu Item,MENU0015,Mocha - Regular,,,,42.0,pcs,2.8,117.6,Recipe:ING037
+Menu Item,MENU0015,Mocha - Regular,,,,42.0,pcs,1.1,46.2,Recipe:ING038
+Menu Item,MENU0015,Mocha - Regular,,,,7.56,litre,72.0,544.32,Recipe:ING002
+Menu Item,MENU0015,Mocha - Regular,,,,42.0,pcs,0.32,13.44,Recipe:ING040
+Menu Item,MENU0015,Mocha - Regular,,,,0.63,litre,90.0,56.7,Recipe:ING019
+Menu Item,MENU0016,Mocha - Medium,,,,1.7507,litre,260.0,455.18,Recipe:ING016
+Menu Item,MENU0016,Mocha - Medium,,,,1.2627,kg,980.0,1237.45,Recipe:ING001
+Menu Item,MENU0016,Mocha - Medium,,,,61.0,pcs,2.8,170.8,Recipe:ING037
+Menu Item,MENU0016,Mocha - Medium,,,,61.0,pcs,1.1,67.1,Recipe:ING038
+Menu Item,MENU0016,Mocha - Medium,,,,12.627,litre,72.0,909.14,Recipe:ING002
+Menu Item,MENU0016,Mocha - Medium,,,,61.0,pcs,0.32,19.52,Recipe:ING040
+Menu Item,MENU0016,Mocha - Medium,,,,1.0492,litre,90.0,94.43,Recipe:ING019
+Menu Item,MENU0017,Mocha - Large,,,,1.105,litre,260.0,287.3,Recipe:ING016
+Menu Item,MENU0017,Mocha - Large,,,,0.7956,kg,980.0,779.69,Recipe:ING001
+Menu Item,MENU0017,Mocha - Large,,,,34.0,pcs,2.8,95.2,Recipe:ING037
+Menu Item,MENU0017,Mocha - Large,,,,34.0,pcs,1.1,37.4,Recipe:ING038
+Menu Item,MENU0017,Mocha - Large,,,,7.956,litre,72.0,572.83,Recipe:ING002
+Menu Item,MENU0017,Mocha - Large,,,,34.0,pcs,0.32,10.88,Recipe:ING040
+Menu Item,MENU0017,Mocha - Large,,,,0.663,litre,90.0,59.67,Recipe:ING019
+Menu Item,MENU0018,Sea Salt Mocha - Regular,,,,0.525,litre,260.0,136.5,Recipe:ING016
+Menu Item,MENU0018,Sea Salt Mocha - Regular,,,,0.378,kg,980.0,370.44,Recipe:ING001
+Menu Item,MENU0018,Sea Salt Mocha - Regular,,,,21.0,pcs,2.8,58.8,Recipe:ING037
+Menu Item,MENU0018,Sea Salt Mocha - Regular,,,,21.0,pcs,1.1,23.1,Recipe:ING038
+Menu Item,MENU0018,Sea Salt Mocha - Regular,,,,3.78,litre,72.0,272.16,Recipe:ING002
+Menu Item,MENU0018,Sea Salt Mocha - Regular,,,,21.0,pcs,0.32,6.72,Recipe:ING040
+Menu Item,MENU0018,Sea Salt Mocha - Regular,,,,0.315,litre,90.0,28.35,Recipe:ING019
+Menu Item,MENU0019,Sea Salt Mocha - Medium,,,,0.6601,litre,260.0,171.63,Recipe:ING016
+Menu Item,MENU0019,Sea Salt Mocha - Medium,,,,0.4761,kg,980.0,466.58,Recipe:ING001
+Menu Item,MENU0019,Sea Salt Mocha - Medium,,,,23.0,pcs,2.8,64.4,Recipe:ING037
+Menu Item,MENU0019,Sea Salt Mocha - Medium,,,,23.0,pcs,1.1,25.3,Recipe:ING038
+Menu Item,MENU0019,Sea Salt Mocha - Medium,,,,4.761,litre,72.0,342.79,Recipe:ING002
+Menu Item,MENU0019,Sea Salt Mocha - Medium,,,,23.0,pcs,0.32,7.36,Recipe:ING040
+Menu Item,MENU0019,Sea Salt Mocha - Medium,,,,0.3956,litre,90.0,35.6,Recipe:ING019
+Menu Item,MENU0020,Sea Salt Mocha - Large,,,,0.2925,litre,260.0,76.05,Recipe:ING016
+Menu Item,MENU0020,Sea Salt Mocha - Large,,,,0.2106,kg,980.0,206.39,Recipe:ING001
+Menu Item,MENU0020,Sea Salt Mocha - Large,,,,9.0,pcs,2.8,25.2,Recipe:ING037
+Menu Item,MENU0020,Sea Salt Mocha - Large,,,,9.0,pcs,1.1,9.9,Recipe:ING038
+Menu Item,MENU0020,Sea Salt Mocha - Large,,,,2.106,litre,72.0,151.63,Recipe:ING002
+Menu Item,MENU0020,Sea Salt Mocha - Large,,,,9.0,pcs,0.32,2.88,Recipe:ING040
+Menu Item,MENU0020,Sea Salt Mocha - Large,,,,0.1755,litre,90.0,15.79,Recipe:ING019
+Menu Item,MENU0021,Orange Zest Mocha - Regular,,,,0.675,litre,260.0,175.5,Recipe:ING016
+Menu Item,MENU0021,Orange Zest Mocha - Regular,,,,0.486,kg,980.0,476.28,Recipe:ING001
+Menu Item,MENU0021,Orange Zest Mocha - Regular,,,,27.0,pcs,2.8,75.6,Recipe:ING037
+Menu Item,MENU0021,Orange Zest Mocha - Regular,,,,27.0,pcs,1.1,29.7,Recipe:ING038
+Menu Item,MENU0021,Orange Zest Mocha - Regular,,,,4.86,litre,72.0,349.92,Recipe:ING002
+Menu Item,MENU0021,Orange Zest Mocha - Regular,,,,27.0,pcs,0.32,8.64,Recipe:ING040
+Menu Item,MENU0021,Orange Zest Mocha - Regular,,,,0.405,litre,90.0,36.45,Recipe:ING019
+Menu Item,MENU0022,Orange Zest Mocha - Medium,,,,0.574,litre,260.0,149.24,Recipe:ING016
+Menu Item,MENU0022,Orange Zest Mocha - Medium,,,,0.414,kg,980.0,405.72,Recipe:ING001
+Menu Item,MENU0022,Orange Zest Mocha - Medium,,,,20.0,pcs,2.8,56.0,Recipe:ING037
+Menu Item,MENU0022,Orange Zest Mocha - Medium,,,,20.0,pcs,1.1,22.0,Recipe:ING038
+Menu Item,MENU0022,Orange Zest Mocha - Medium,,,,4.14,litre,72.0,298.08,Recipe:ING002
+Menu Item,MENU0022,Orange Zest Mocha - Medium,,,,20.0,pcs,0.32,6.4,Recipe:ING040
+Menu Item,MENU0022,Orange Zest Mocha - Medium,,,,0.344,litre,90.0,30.96,Recipe:ING019
+Menu Item,MENU0023,Orange Zest Mocha - Large,,,,0.325,litre,260.0,84.5,Recipe:ING016
+Menu Item,MENU0023,Orange Zest Mocha - Large,,,,0.234,kg,980.0,229.32,Recipe:ING001
+Menu Item,MENU0023,Orange Zest Mocha - Large,,,,10.0,pcs,2.8,28.0,Recipe:ING037
+Menu Item,MENU0023,Orange Zest Mocha - Large,,,,10.0,pcs,1.1,11.0,Recipe:ING038
+Menu Item,MENU0023,Orange Zest Mocha - Large,,,,2.34,litre,72.0,168.48,Recipe:ING002
+Menu Item,MENU0023,Orange Zest Mocha - Large,,,,10.0,pcs,0.32,3.2,Recipe:ING040
+Menu Item,MENU0023,Orange Zest Mocha - Large,,,,0.195,litre,90.0,17.55,Recipe:ING019
+Menu Item,MENU0024,Caramel Macchiato - Regular,,,,0.5,litre,250.0,125.0,Recipe:ING017
+Menu Item,MENU0024,Caramel Macchiato - Regular,,,,0.36,kg,980.0,352.8,Recipe:ING001
+Menu Item,MENU0024,Caramel Macchiato - Regular,,,,20.0,pcs,2.8,56.0,Recipe:ING037
+Menu Item,MENU0024,Caramel Macchiato - Regular,,,,20.0,pcs,1.1,22.0,Recipe:ING038
+Menu Item,MENU0024,Caramel Macchiato - Regular,,,,3.6,litre,72.0,259.2,Recipe:ING002
+Menu Item,MENU0024,Caramel Macchiato - Regular,,,,20.0,pcs,0.32,6.4,Recipe:ING040
+Menu Item,MENU0024,Caramel Macchiato - Regular,,,,0.3,litre,90.0,27.0,Recipe:ING019
+Menu Item,MENU0025,Caramel Macchiato - Medium,,,,0.5166,litre,250.0,129.15,Recipe:ING017
+Menu Item,MENU0025,Caramel Macchiato - Medium,,,,0.3726,kg,980.0,365.15,Recipe:ING001
+Menu Item,MENU0025,Caramel Macchiato - Medium,,,,18.0,pcs,2.8,50.4,Recipe:ING037
+Menu Item,MENU0025,Caramel Macchiato - Medium,,,,18.0,pcs,1.1,19.8,Recipe:ING038
+Menu Item,MENU0025,Caramel Macchiato - Medium,,,,3.726,litre,72.0,268.27,Recipe:ING002
+Menu Item,MENU0025,Caramel Macchiato - Medium,,,,18.0,pcs,0.32,5.76,Recipe:ING040
+Menu Item,MENU0025,Caramel Macchiato - Medium,,,,0.3096,litre,90.0,27.86,Recipe:ING019
+Menu Item,MENU0026,Caramel Macchiato - Large,,,,0.325,litre,250.0,81.25,Recipe:ING017
+Menu Item,MENU0026,Caramel Macchiato - Large,,,,0.234,kg,980.0,229.32,Recipe:ING001
+Menu Item,MENU0026,Caramel Macchiato - Large,,,,10.0,pcs,2.8,28.0,Recipe:ING037
+Menu Item,MENU0026,Caramel Macchiato - Large,,,,10.0,pcs,1.1,11.0,Recipe:ING038
+Menu Item,MENU0026,Caramel Macchiato - Large,,,,2.34,litre,72.0,168.48,Recipe:ING002
+Menu Item,MENU0026,Caramel Macchiato - Large,,,,10.0,pcs,0.32,3.2,Recipe:ING040
+Menu Item,MENU0026,Caramel Macchiato - Large,,,,0.195,litre,90.0,17.55,Recipe:ING019
+Menu Item,MENU0027,French Vanilla Latte - Regular,,,,0.486,kg,980.0,476.28,Recipe:ING001
+Menu Item,MENU0027,French Vanilla Latte - Regular,,,,27.0,pcs,2.8,75.6,Recipe:ING037
+Menu Item,MENU0027,French Vanilla Latte - Regular,,,,27.0,pcs,1.1,29.7,Recipe:ING038
+Menu Item,MENU0027,French Vanilla Latte - Regular,,,,4.86,litre,72.0,349.92,Recipe:ING002
+Menu Item,MENU0027,French Vanilla Latte - Regular,,,,27.0,pcs,0.32,8.64,Recipe:ING040
+Menu Item,MENU0027,French Vanilla Latte - Regular,,,,0.405,litre,90.0,36.45,Recipe:ING019
+Menu Item,MENU0027,French Vanilla Latte - Regular,,,,0.675,litre,240.0,162.0,Recipe:ING018
+Menu Item,MENU0028,French Vanilla Latte - Medium,,,,0.5382,kg,980.0,527.44,Recipe:ING001
+Menu Item,MENU0028,French Vanilla Latte - Medium,,,,26.0,pcs,2.8,72.8,Recipe:ING037
+Menu Item,MENU0028,French Vanilla Latte - Medium,,,,26.0,pcs,1.1,28.6,Recipe:ING038
+Menu Item,MENU0028,French Vanilla Latte - Medium,,,,5.382,litre,72.0,387.5,Recipe:ING002
+Menu Item,MENU0028,French Vanilla Latte - Medium,,,,26.0,pcs,0.32,8.32,Recipe:ING040
+Menu Item,MENU0028,French Vanilla Latte - Medium,,,,0.4472,litre,90.0,40.25,Recipe:ING019
+Menu Item,MENU0028,French Vanilla Latte - Medium,,,,0.7462,litre,240.0,179.09,Recipe:ING018
+Menu Item,MENU0029,French Vanilla Latte - Large,,,,0.468,kg,980.0,458.64,Recipe:ING001
+Menu Item,MENU0029,French Vanilla Latte - Large,,,,20.0,pcs,2.8,56.0,Recipe:ING037
+Menu Item,MENU0029,French Vanilla Latte - Large,,,,20.0,pcs,1.1,22.0,Recipe:ING038
+Menu Item,MENU0029,French Vanilla Latte - Large,,,,4.68,litre,72.0,336.96,Recipe:ING002
+Menu Item,MENU0029,French Vanilla Latte - Large,,,,20.0,pcs,0.32,6.4,Recipe:ING040
+Menu Item,MENU0029,French Vanilla Latte - Large,,,,0.39,litre,90.0,35.1,Recipe:ING019
+Menu Item,MENU0029,French Vanilla Latte - Large,,,,0.65,litre,240.0,156.0,Recipe:ING018
+Menu Item,MENU0030,Vegan Iced Latte - Regular,,,,0.36,kg,980.0,352.8,Recipe:ING001
+Menu Item,MENU0030,Vegan Iced Latte - Regular,,,,20.0,pcs,3.2,64.0,Recipe:ING036
+Menu Item,MENU0030,Vegan Iced Latte - Regular,,,,2.4,kg,12.0,28.8,Recipe:ING022
+Menu Item,MENU0030,Vegan Iced Latte - Regular,,,,20.0,pcs,1.1,22.0,Recipe:ING038
+Menu Item,MENU0030,Vegan Iced Latte - Regular,,,,20.0,pcs,0.32,6.4,Recipe:ING040
+Menu Item,MENU0030,Vegan Iced Latte - Regular,,,,3.6,litre,185.0,666.0,Recipe:ING003
+Menu Item,MENU0030,Vegan Iced Latte - Regular,,,,20.0,pcs,0.55,11.0,Recipe:ING039
+Menu Item,MENU0030,Vegan Iced Latte - Regular,,,,0.3,litre,90.0,27.0,Recipe:ING019
+Menu Item,MENU0031,Vegan Iced Latte - Medium,,,,0.4554,kg,980.0,446.29,Recipe:ING001
+Menu Item,MENU0031,Vegan Iced Latte - Medium,,,,22.0,pcs,3.2,70.4,Recipe:ING036
+Menu Item,MENU0031,Vegan Iced Latte - Medium,,,,3.036,kg,12.0,36.43,Recipe:ING022
+Menu Item,MENU0031,Vegan Iced Latte - Medium,,,,22.0,pcs,1.1,24.2,Recipe:ING038
+Menu Item,MENU0031,Vegan Iced Latte - Medium,,,,22.0,pcs,0.32,7.04,Recipe:ING040
+Menu Item,MENU0031,Vegan Iced Latte - Medium,,,,4.554,litre,185.0,842.49,Recipe:ING003
+Menu Item,MENU0031,Vegan Iced Latte - Medium,,,,22.0,pcs,0.55,12.1,Recipe:ING039
+Menu Item,MENU0031,Vegan Iced Latte - Medium,,,,0.3784,litre,90.0,34.06,Recipe:ING019
+Menu Item,MENU0032,Vegan Iced Latte - Large,,,,0.2808,kg,980.0,275.18,Recipe:ING001
+Menu Item,MENU0032,Vegan Iced Latte - Large,,,,12.0,pcs,3.2,38.4,Recipe:ING036
+Menu Item,MENU0032,Vegan Iced Latte - Large,,,,1.872,kg,12.0,22.46,Recipe:ING022
+Menu Item,MENU0032,Vegan Iced Latte - Large,,,,12.0,pcs,1.1,13.2,Recipe:ING038
+Menu Item,MENU0032,Vegan Iced Latte - Large,,,,12.0,pcs,0.32,3.84,Recipe:ING040
+Menu Item,MENU0032,Vegan Iced Latte - Large,,,,2.808,litre,185.0,519.48,Recipe:ING003
+Menu Item,MENU0032,Vegan Iced Latte - Large,,,,12.0,pcs,0.55,6.6,Recipe:ING039
+Menu Item,MENU0032,Vegan Iced Latte - Large,,,,0.234,litre,90.0,21.06,Recipe:ING019
+Menu Item,MENU0033,Classic Cold Brew - Regular,,,,0.378,kg,980.0,370.44,Recipe:ING001
+Menu Item,MENU0033,Classic Cold Brew - Regular,,,,21.0,pcs,3.2,67.2,Recipe:ING036
+Menu Item,MENU0033,Classic Cold Brew - Regular,,,,2.52,kg,12.0,30.24,Recipe:ING022
+Menu Item,MENU0033,Classic Cold Brew - Regular,,,,21.0,pcs,1.1,23.1,Recipe:ING038
+Menu Item,MENU0033,Classic Cold Brew - Regular,,,,21.0,pcs,0.32,6.72,Recipe:ING040
+Menu Item,MENU0033,Classic Cold Brew - Regular,,,,21.0,pcs,0.55,11.55,Recipe:ING039
+Menu Item,MENU0033,Classic Cold Brew - Regular,,,,0.315,litre,90.0,28.35,Recipe:ING019
+Menu Item,MENU0034,Classic Cold Brew - Medium,,,,0.4554,kg,980.0,446.29,Recipe:ING001
+Menu Item,MENU0034,Classic Cold Brew - Medium,,,,22.0,pcs,3.2,70.4,Recipe:ING036
+Menu Item,MENU0034,Classic Cold Brew - Medium,,,,3.036,kg,12.0,36.43,Recipe:ING022
+Menu Item,MENU0034,Classic Cold Brew - Medium,,,,22.0,pcs,1.1,24.2,Recipe:ING038
+Menu Item,MENU0034,Classic Cold Brew - Medium,,,,22.0,pcs,0.32,7.04,Recipe:ING040
+Menu Item,MENU0034,Classic Cold Brew - Medium,,,,22.0,pcs,0.55,12.1,Recipe:ING039
+Menu Item,MENU0034,Classic Cold Brew - Medium,,,,0.3784,litre,90.0,34.06,Recipe:ING019
+Menu Item,MENU0035,Classic Cold Brew - Large,,,,0.234,kg,980.0,229.32,Recipe:ING001
+Menu Item,MENU0035,Classic Cold Brew - Large,,,,10.0,pcs,3.2,32.0,Recipe:ING036
+Menu Item,MENU0035,Classic Cold Brew - Large,,,,1.56,kg,12.0,18.72,Recipe:ING022
+Menu Item,MENU0035,Classic Cold Brew - Large,,,,10.0,pcs,1.1,11.0,Recipe:ING038
+Menu Item,MENU0035,Classic Cold Brew - Large,,,,10.0,pcs,0.32,3.2,Recipe:ING040
+Menu Item,MENU0035,Classic Cold Brew - Large,,,,10.0,pcs,0.55,5.5,Recipe:ING039
+Menu Item,MENU0035,Classic Cold Brew - Large,,,,0.195,litre,90.0,17.55,Recipe:ING019
+Menu Item,MENU0036,Coffee Lemonade - Regular,,,,0.36,kg,980.0,352.8,Recipe:ING001
+Menu Item,MENU0036,Coffee Lemonade - Regular,,,,20.0,pcs,3.2,64.0,Recipe:ING036
+Menu Item,MENU0036,Coffee Lemonade - Regular,,,,2.4,kg,12.0,28.8,Recipe:ING022
+Menu Item,MENU0036,Coffee Lemonade - Regular,,,,0.7,kg,110.0,77.0,Recipe:ING023
+Menu Item,MENU0036,Coffee Lemonade - Regular,,,,20.0,pcs,1.1,22.0,Recipe:ING038
+Menu Item,MENU0036,Coffee Lemonade - Regular,,,,20.0,pcs,0.32,6.4,Recipe:ING040
+Menu Item,MENU0036,Coffee Lemonade - Regular,,,,20.0,pcs,0.55,11.0,Recipe:ING039
+Menu Item,MENU0036,Coffee Lemonade - Regular,,,,0.3,litre,90.0,27.0,Recipe:ING019
+Menu Item,MENU0037,Coffee Lemonade - Medium,,,,0.4761,kg,980.0,466.58,Recipe:ING001
+Menu Item,MENU0037,Coffee Lemonade - Medium,,,,23.0,pcs,3.2,73.6,Recipe:ING036
+Menu Item,MENU0037,Coffee Lemonade - Medium,,,,3.174,kg,12.0,38.09,Recipe:ING022
+Menu Item,MENU0037,Coffee Lemonade - Medium,,,,0.9269,kg,110.0,101.96,Recipe:ING023
+Menu Item,MENU0037,Coffee Lemonade - Medium,,,,23.0,pcs,1.1,25.3,Recipe:ING038
+Menu Item,MENU0037,Coffee Lemonade - Medium,,,,23.0,pcs,0.32,7.36,Recipe:ING040
+Menu Item,MENU0037,Coffee Lemonade - Medium,,,,23.0,pcs,0.55,12.65,Recipe:ING039
+Menu Item,MENU0037,Coffee Lemonade - Medium,,,,0.3956,litre,90.0,35.6,Recipe:ING019
+Menu Item,MENU0038,Coffee Lemonade - Large,,,,0.2106,kg,980.0,206.39,Recipe:ING001
+Menu Item,MENU0038,Coffee Lemonade - Large,,,,9.0,pcs,3.2,28.8,Recipe:ING036
+Menu Item,MENU0038,Coffee Lemonade - Large,,,,1.404,kg,12.0,16.85,Recipe:ING022
+Menu Item,MENU0038,Coffee Lemonade - Large,,,,0.4095,kg,110.0,45.04,Recipe:ING023
+Menu Item,MENU0038,Coffee Lemonade - Large,,,,9.0,pcs,1.1,9.9,Recipe:ING038
+Menu Item,MENU0038,Coffee Lemonade - Large,,,,9.0,pcs,0.32,2.88,Recipe:ING040
+Menu Item,MENU0038,Coffee Lemonade - Large,,,,9.0,pcs,0.55,4.95,Recipe:ING039
+Menu Item,MENU0038,Coffee Lemonade - Large,,,,0.1755,litre,90.0,15.79,Recipe:ING019
+Menu Item,MENU0039,Vietnamese Shakerato - Regular,,,,0.468,kg,980.0,458.64,Recipe:ING001
+Menu Item,MENU0039,Vietnamese Shakerato - Regular,,,,26.0,pcs,3.2,83.2,Recipe:ING036
+Menu Item,MENU0039,Vietnamese Shakerato - Regular,,,,3.12,kg,12.0,37.44,Recipe:ING022
+Menu Item,MENU0039,Vietnamese Shakerato - Regular,,,,26.0,pcs,1.1,28.6,Recipe:ING038
+Menu Item,MENU0039,Vietnamese Shakerato - Regular,,,,26.0,pcs,0.32,8.32,Recipe:ING040
+Menu Item,MENU0039,Vietnamese Shakerato - Regular,,,,26.0,pcs,0.55,14.3,Recipe:ING039
+Menu Item,MENU0039,Vietnamese Shakerato - Regular,,,,0.39,litre,90.0,35.1,Recipe:ING019
+Menu Item,MENU0040,Vietnamese Shakerato - Medium,,,,0.414,kg,980.0,405.72,Recipe:ING001
+Menu Item,MENU0040,Vietnamese Shakerato - Medium,,,,20.0,pcs,3.2,64.0,Recipe:ING036
+Menu Item,MENU0040,Vietnamese Shakerato - Medium,,,,2.76,kg,12.0,33.12,Recipe:ING022
+Menu Item,MENU0040,Vietnamese Shakerato - Medium,,,,20.0,pcs,1.1,22.0,Recipe:ING038
+Menu Item,MENU0040,Vietnamese Shakerato - Medium,,,,20.0,pcs,0.32,6.4,Recipe:ING040
+Menu Item,MENU0040,Vietnamese Shakerato - Medium,,,,20.0,pcs,0.55,11.0,Recipe:ING039
+Menu Item,MENU0040,Vietnamese Shakerato - Medium,,,,0.344,litre,90.0,30.96,Recipe:ING019
+Menu Item,MENU0041,Vietnamese Shakerato - Large,,,,0.2808,kg,980.0,275.18,Recipe:ING001
+Menu Item,MENU0041,Vietnamese Shakerato - Large,,,,12.0,pcs,3.2,38.4,Recipe:ING036
+Menu Item,MENU0041,Vietnamese Shakerato - Large,,,,1.872,kg,12.0,22.46,Recipe:ING022
+Menu Item,MENU0041,Vietnamese Shakerato - Large,,,,12.0,pcs,1.1,13.2,Recipe:ING038
+Menu Item,MENU0041,Vietnamese Shakerato - Large,,,,12.0,pcs,0.32,3.84,Recipe:ING040
+Menu Item,MENU0041,Vietnamese Shakerato - Large,,,,12.0,pcs,0.55,6.6,Recipe:ING039
+Menu Item,MENU0041,Vietnamese Shakerato - Large,,,,0.234,litre,90.0,21.06,Recipe:ING019
+Menu Item,MENU0042,Classic Cold Coffee - Regular,,,,1.242,kg,980.0,1217.16,Recipe:ING001
+Menu Item,MENU0042,Classic Cold Coffee - Regular,,,,69.0,pcs,3.2,220.8,Recipe:ING036
+Menu Item,MENU0042,Classic Cold Coffee - Regular,,,,8.28,kg,12.0,99.36,Recipe:ING022
+Menu Item,MENU0042,Classic Cold Coffee - Regular,,,,69.0,pcs,1.1,75.9,Recipe:ING038
+Menu Item,MENU0042,Classic Cold Coffee - Regular,,,,12.42,litre,72.0,894.24,Recipe:ING002
+Menu Item,MENU0042,Classic Cold Coffee - Regular,,,,69.0,pcs,0.32,22.08,Recipe:ING040
+Menu Item,MENU0042,Classic Cold Coffee - Regular,,,,69.0,pcs,0.55,37.95,Recipe:ING039
+Menu Item,MENU0042,Classic Cold Coffee - Regular,,,,1.035,litre,90.0,93.15,Recipe:ING019
+Menu Item,MENU0043,Classic Cold Coffee - Medium,,,,1.2627,kg,980.0,1237.45,Recipe:ING001
+Menu Item,MENU0043,Classic Cold Coffee - Medium,,,,61.0,pcs,3.2,195.2,Recipe:ING036
+Menu Item,MENU0043,Classic Cold Coffee - Medium,,,,8.418,kg,12.0,101.02,Recipe:ING022
+Menu Item,MENU0043,Classic Cold Coffee - Medium,,,,61.0,pcs,1.1,67.1,Recipe:ING038
+Menu Item,MENU0043,Classic Cold Coffee - Medium,,,,12.627,litre,72.0,909.14,Recipe:ING002
+Menu Item,MENU0043,Classic Cold Coffee - Medium,,,,61.0,pcs,0.32,19.52,Recipe:ING040
+Menu Item,MENU0043,Classic Cold Coffee - Medium,,,,61.0,pcs,0.55,33.55,Recipe:ING039
+Menu Item,MENU0043,Classic Cold Coffee - Medium,,,,1.0492,litre,90.0,94.43,Recipe:ING019
+Menu Item,MENU0044,Classic Cold Coffee - Large,,,,0.702,kg,980.0,687.96,Recipe:ING001
+Menu Item,MENU0044,Classic Cold Coffee - Large,,,,30.0,pcs,3.2,96.0,Recipe:ING036
+Menu Item,MENU0044,Classic Cold Coffee - Large,,,,4.68,kg,12.0,56.16,Recipe:ING022
+Menu Item,MENU0044,Classic Cold Coffee - Large,,,,30.0,pcs,1.1,33.0,Recipe:ING038
+Menu Item,MENU0044,Classic Cold Coffee - Large,,,,7.02,litre,72.0,505.44,Recipe:ING002
+Menu Item,MENU0044,Classic Cold Coffee - Large,,,,30.0,pcs,0.32,9.6,Recipe:ING040
+Menu Item,MENU0044,Classic Cold Coffee - Large,,,,30.0,pcs,0.55,16.5,Recipe:ING039
+Menu Item,MENU0044,Classic Cold Coffee - Large,,,,0.585,litre,90.0,52.65,Recipe:ING019
+Menu Item,MENU0045,Mocha Cold Coffee - Regular,,,,1.45,litre,260.0,377.0,Recipe:ING016
+Menu Item,MENU0045,Mocha Cold Coffee - Regular,,,,1.044,kg,980.0,1023.12,Recipe:ING001
+Menu Item,MENU0045,Mocha Cold Coffee - Regular,,,,58.0,pcs,3.2,185.6,Recipe:ING036
+Menu Item,MENU0045,Mocha Cold Coffee - Regular,,,,6.96,kg,12.0,83.52,Recipe:ING022
+Menu Item,MENU0045,Mocha Cold Coffee - Regular,,,,58.0,pcs,1.1,63.8,Recipe:ING038
+Menu Item,MENU0045,Mocha Cold Coffee - Regular,,,,10.44,litre,72.0,751.68,Recipe:ING002
+Menu Item,MENU0045,Mocha Cold Coffee - Regular,,,,58.0,pcs,0.32,18.56,Recipe:ING040
+Menu Item,MENU0045,Mocha Cold Coffee - Regular,,,,58.0,pcs,0.55,31.9,Recipe:ING039
+Menu Item,MENU0045,Mocha Cold Coffee - Regular,,,,0.87,litre,90.0,78.3,Recipe:ING019
+Menu Item,MENU0046,Mocha Cold Coffee - Medium,,,,1.2054,litre,260.0,313.4,Recipe:ING016
+Menu Item,MENU0046,Mocha Cold Coffee - Medium,,,,0.8694,kg,980.0,852.01,Recipe:ING001
+Menu Item,MENU0046,Mocha Cold Coffee - Medium,,,,42.0,pcs,3.2,134.4,Recipe:ING036
+Menu Item,MENU0046,Mocha Cold Coffee - Medium,,,,5.796,kg,12.0,69.55,Recipe:ING022
+Menu Item,MENU0046,Mocha Cold Coffee - Medium,,,,42.0,pcs,1.1,46.2,Recipe:ING038
+Menu Item,MENU0046,Mocha Cold Coffee - Medium,,,,8.694,litre,72.0,625.97,Recipe:ING002
+Menu Item,MENU0046,Mocha Cold Coffee - Medium,,,,42.0,pcs,0.32,13.44,Recipe:ING040
+Menu Item,MENU0046,Mocha Cold Coffee - Medium,,,,42.0,pcs,0.55,23.1,Recipe:ING039
+Menu Item,MENU0046,Mocha Cold Coffee - Medium,,,,0.7224,litre,90.0,65.02,Recipe:ING019
+Menu Item,MENU0047,Mocha Cold Coffee - Large,,,,0.845,litre,260.0,219.7,Recipe:ING016
+Menu Item,MENU0047,Mocha Cold Coffee - Large,,,,0.6084,kg,980.0,596.23,Recipe:ING001
+Menu Item,MENU0047,Mocha Cold Coffee - Large,,,,26.0,pcs,3.2,83.2,Recipe:ING036
+Menu Item,MENU0047,Mocha Cold Coffee - Large,,,,4.056,kg,12.0,48.67,Recipe:ING022
+Menu Item,MENU0047,Mocha Cold Coffee - Large,,,,26.0,pcs,1.1,28.6,Recipe:ING038
+Menu Item,MENU0047,Mocha Cold Coffee - Large,,,,6.084,litre,72.0,438.05,Recipe:ING002
+Menu Item,MENU0047,Mocha Cold Coffee - Large,,,,26.0,pcs,0.32,8.32,Recipe:ING040
+Menu Item,MENU0047,Mocha Cold Coffee - Large,,,,26.0,pcs,0.55,14.3,Recipe:ING039
+Menu Item,MENU0047,Mocha Cold Coffee - Large,,,,0.507,litre,90.0,45.63,Recipe:ING019
+Menu Item,MENU0048,Caramel Cold Coffee - Regular,,,,1.375,litre,250.0,343.75,Recipe:ING017
+Menu Item,MENU0048,Caramel Cold Coffee - Regular,,,,0.99,kg,980.0,970.2,Recipe:ING001
+Menu Item,MENU0048,Caramel Cold Coffee - Regular,,,,55.0,pcs,3.2,176.0,Recipe:ING036
+Menu Item,MENU0048,Caramel Cold Coffee - Regular,,,,6.6,kg,12.0,79.2,Recipe:ING022
+Menu Item,MENU0048,Caramel Cold Coffee - Regular,,,,55.0,pcs,1.1,60.5,Recipe:ING038
+Menu Item,MENU0048,Caramel Cold Coffee - Regular,,,,9.9,litre,72.0,712.8,Recipe:ING002
+Menu Item,MENU0048,Caramel Cold Coffee - Regular,,,,55.0,pcs,0.32,17.6,Recipe:ING040
+Menu Item,MENU0048,Caramel Cold Coffee - Regular,,,,55.0,pcs,0.55,30.25,Recipe:ING039
+Menu Item,MENU0048,Caramel Cold Coffee - Regular,,,,0.825,litre,90.0,74.25,Recipe:ING019
+Menu Item,MENU0049,Caramel Cold Coffee - Medium,,,,1.1193,litre,250.0,279.82,Recipe:ING017
+Menu Item,MENU0049,Caramel Cold Coffee - Medium,,,,0.8073,kg,980.0,791.15,Recipe:ING001
+Menu Item,MENU0049,Caramel Cold Coffee - Medium,,,,39.0,pcs,3.2,124.8,Recipe:ING036
+Menu Item,MENU0049,Caramel Cold Coffee - Medium,,,,5.382,kg,12.0,64.58,Recipe:ING022
+Menu Item,MENU0049,Caramel Cold Coffee - Medium,,,,39.0,pcs,1.1,42.9,Recipe:ING038
+Menu Item,MENU0049,Caramel Cold Coffee - Medium,,,,8.073,litre,72.0,581.26,Recipe:ING002
+Menu Item,MENU0049,Caramel Cold Coffee - Medium,,,,39.0,pcs,0.32,12.48,Recipe:ING040
+Menu Item,MENU0049,Caramel Cold Coffee - Medium,,,,39.0,pcs,0.55,21.45,Recipe:ING039
+Menu Item,MENU0049,Caramel Cold Coffee - Medium,,,,0.6708,litre,90.0,60.37,Recipe:ING019
+Menu Item,MENU0050,Caramel Cold Coffee - Large,,,,0.65,litre,250.0,162.5,Recipe:ING017
+Menu Item,MENU0050,Caramel Cold Coffee - Large,,,,0.468,kg,980.0,458.64,Recipe:ING001
+Menu Item,MENU0050,Caramel Cold Coffee - Large,,,,20.0,pcs,3.2,64.0,Recipe:ING036
+Menu Item,MENU0050,Caramel Cold Coffee - Large,,,,3.12,kg,12.0,37.44,Recipe:ING022
+Menu Item,MENU0050,Caramel Cold Coffee - Large,,,,20.0,pcs,1.1,22.0,Recipe:ING038
+Menu Item,MENU0050,Caramel Cold Coffee - Large,,,,4.68,litre,72.0,336.96,Recipe:ING002
+Menu Item,MENU0050,Caramel Cold Coffee - Large,,,,20.0,pcs,0.32,6.4,Recipe:ING040
+Menu Item,MENU0050,Caramel Cold Coffee - Large,,,,20.0,pcs,0.55,11.0,Recipe:ING039
+Menu Item,MENU0050,Caramel Cold Coffee - Large,,,,0.39,litre,90.0,35.1,Recipe:ING019
+Menu Item,MENU0051,Masala Chai Latte - Regular,,,,0.522,kg,980.0,511.56,Recipe:ING001
+Menu Item,MENU0051,Masala Chai Latte - Regular,,,,29.0,pcs,2.8,81.2,Recipe:ING037
+Menu Item,MENU0051,Masala Chai Latte - Regular,,,,29.0,pcs,1.1,31.9,Recipe:ING038
+Menu Item,MENU0051,Masala Chai Latte - Regular,,,,5.22,litre,72.0,375.84,Recipe:ING002
+Menu Item,MENU0051,Masala Chai Latte - Regular,,,,29.0,pcs,0.32,9.28,Recipe:ING040
+Menu Item,MENU0051,Masala Chai Latte - Regular,,,,0.435,litre,90.0,39.15,Recipe:ING019
+Menu Item,MENU0052,Masala Chai Latte - Medium,,,,0.3519,kg,980.0,344.86,Recipe:ING001
+Menu Item,MENU0052,Masala Chai Latte - Medium,,,,17.0,pcs,2.8,47.6,Recipe:ING037
+Menu Item,MENU0052,Masala Chai Latte - Medium,,,,17.0,pcs,1.1,18.7,Recipe:ING038
+Menu Item,MENU0052,Masala Chai Latte - Medium,,,,3.519,litre,72.0,253.37,Recipe:ING002
+Menu Item,MENU0052,Masala Chai Latte - Medium,,,,17.0,pcs,0.32,5.44,Recipe:ING040
+Menu Item,MENU0052,Masala Chai Latte - Medium,,,,0.2924,litre,90.0,26.32,Recipe:ING019
+Menu Item,MENU0053,Masala Chai Latte - Large,,,,0.2808,kg,980.0,275.18,Recipe:ING001
+Menu Item,MENU0053,Masala Chai Latte - Large,,,,12.0,pcs,2.8,33.6,Recipe:ING037
+Menu Item,MENU0053,Masala Chai Latte - Large,,,,12.0,pcs,1.1,13.2,Recipe:ING038
+Menu Item,MENU0053,Masala Chai Latte - Large,,,,2.808,litre,72.0,202.18,Recipe:ING002
+Menu Item,MENU0053,Masala Chai Latte - Large,,,,12.0,pcs,0.32,3.84,Recipe:ING040
+Menu Item,MENU0053,Masala Chai Latte - Large,,,,0.234,litre,90.0,21.06,Recipe:ING019
+Menu Item,MENU0054,Himalayan Green Tea,,,,20.0,pcs,2.8,56.0,Recipe:ING037
+Menu Item,MENU0054,Himalayan Green Tea,,,,20.0,pcs,1.1,22.0,Recipe:ING038
+Menu Item,MENU0054,Himalayan Green Tea,,,,20.0,pcs,0.32,6.4,Recipe:ING040
+Menu Item,MENU0054,Himalayan Green Tea,,,,0.3,litre,90.0,27.0,Recipe:ING019
+Menu Item,MENU0054,Himalayan Green Tea,,,,0.1,kg,620.0,62.0,Recipe:ING020
+Menu Item,MENU0055,Japanese Matcha Latte - Regular,,,,0.45,kg,980.0,441.0,Recipe:ING001
+Menu Item,MENU0055,Japanese Matcha Latte - Regular,,,,25.0,pcs,2.8,70.0,Recipe:ING037
+Menu Item,MENU0055,Japanese Matcha Latte - Regular,,,,25.0,pcs,1.1,27.5,Recipe:ING038
+Menu Item,MENU0055,Japanese Matcha Latte - Regular,,,,4.5,litre,72.0,324.0,Recipe:ING002
+Menu Item,MENU0055,Japanese Matcha Latte - Regular,,,,25.0,pcs,0.32,8.0,Recipe:ING040
+Menu Item,MENU0055,Japanese Matcha Latte - Regular,,,,0.375,litre,90.0,33.75,Recipe:ING019
+Menu Item,MENU0056,Japanese Matcha Latte - Medium,,,,0.2898,kg,980.0,284.0,Recipe:ING001
+Menu Item,MENU0056,Japanese Matcha Latte - Medium,,,,14.0,pcs,2.8,39.2,Recipe:ING037
+Menu Item,MENU0056,Japanese Matcha Latte - Medium,,,,14.0,pcs,1.1,15.4,Recipe:ING038
+Menu Item,MENU0056,Japanese Matcha Latte - Medium,,,,2.898,litre,72.0,208.66,Recipe:ING002
+Menu Item,MENU0056,Japanese Matcha Latte - Medium,,,,14.0,pcs,0.32,4.48,Recipe:ING040
+Menu Item,MENU0056,Japanese Matcha Latte - Medium,,,,0.2408,litre,90.0,21.67,Recipe:ING019
+Menu Item,MENU0057,Japanese Matcha Latte - Large,,,,0.4212,kg,980.0,412.78,Recipe:ING001
+Menu Item,MENU0057,Japanese Matcha Latte - Large,,,,18.0,pcs,2.8,50.4,Recipe:ING037
+Menu Item,MENU0057,Japanese Matcha Latte - Large,,,,18.0,pcs,1.1,19.8,Recipe:ING038
+Menu Item,MENU0057,Japanese Matcha Latte - Large,,,,4.212,litre,72.0,303.26,Recipe:ING002
+Menu Item,MENU0057,Japanese Matcha Latte - Large,,,,18.0,pcs,0.32,5.76,Recipe:ING040
+Menu Item,MENU0057,Japanese Matcha Latte - Large,,,,0.351,litre,90.0,31.59,Recipe:ING019
+Menu Item,MENU0058,Lemon Iced Tea - Regular,,,,26.0,pcs,3.2,83.2,Recipe:ING036
+Menu Item,MENU0058,Lemon Iced Tea - Regular,,,,3.12,kg,12.0,37.44,Recipe:ING022
+Menu Item,MENU0058,Lemon Iced Tea - Regular,,,,0.91,kg,110.0,100.1,Recipe:ING023
+Menu Item,MENU0058,Lemon Iced Tea - Regular,,,,26.0,pcs,1.1,28.6,Recipe:ING038
+Menu Item,MENU0058,Lemon Iced Tea - Regular,,,,26.0,pcs,0.32,8.32,Recipe:ING040
+Menu Item,MENU0058,Lemon Iced Tea - Regular,,,,26.0,pcs,0.55,14.3,Recipe:ING039
+Menu Item,MENU0058,Lemon Iced Tea - Regular,,,,0.39,litre,90.0,35.1,Recipe:ING019
+Menu Item,MENU0058,Lemon Iced Tea - Regular,,,,0.104,kg,620.0,64.48,Recipe:ING020
+Menu Item,MENU0059,Lemon Iced Tea - Medium,,,,32.0,pcs,3.2,102.4,Recipe:ING036
+Menu Item,MENU0059,Lemon Iced Tea - Medium,,,,4.416,kg,12.0,52.99,Recipe:ING022
+Menu Item,MENU0059,Lemon Iced Tea - Medium,,,,1.2896,kg,110.0,141.86,Recipe:ING023
+Menu Item,MENU0059,Lemon Iced Tea - Medium,,,,32.0,pcs,1.1,35.2,Recipe:ING038
+Menu Item,MENU0059,Lemon Iced Tea - Medium,,,,32.0,pcs,0.32,10.24,Recipe:ING040
+Menu Item,MENU0059,Lemon Iced Tea - Medium,,,,32.0,pcs,0.55,17.6,Recipe:ING039
+Menu Item,MENU0059,Lemon Iced Tea - Medium,,,,0.5504,litre,90.0,49.54,Recipe:ING019
+Menu Item,MENU0059,Lemon Iced Tea - Medium,,,,0.1472,kg,620.0,91.26,Recipe:ING020
+Menu Item,MENU0060,Lemon Iced Tea - Large,,,,15.0,pcs,3.2,48.0,Recipe:ING036
+Menu Item,MENU0060,Lemon Iced Tea - Large,,,,2.34,kg,12.0,28.08,Recipe:ING022
+Menu Item,MENU0060,Lemon Iced Tea - Large,,,,0.6825,kg,110.0,75.08,Recipe:ING023
+Menu Item,MENU0060,Lemon Iced Tea - Large,,,,15.0,pcs,1.1,16.5,Recipe:ING038
+Menu Item,MENU0060,Lemon Iced Tea - Large,,,,15.0,pcs,0.32,4.8,Recipe:ING040
+Menu Item,MENU0060,Lemon Iced Tea - Large,,,,15.0,pcs,0.55,8.25,Recipe:ING039
+Menu Item,MENU0060,Lemon Iced Tea - Large,,,,0.2925,litre,90.0,26.32,Recipe:ING019
+Menu Item,MENU0060,Lemon Iced Tea - Large,,,,0.078,kg,620.0,48.36,Recipe:ING020
+Menu Item,MENU0061,Hibiscus Lime Iced Tea - Regular,,,,34.0,pcs,3.2,108.8,Recipe:ING036
+Menu Item,MENU0061,Hibiscus Lime Iced Tea - Regular,,,,1.19,litre,390.0,464.1,Recipe:ING024
+Menu Item,MENU0061,Hibiscus Lime Iced Tea - Regular,,,,4.08,kg,12.0,48.96,Recipe:ING022
+Menu Item,MENU0061,Hibiscus Lime Iced Tea - Regular,,,,34.0,pcs,1.1,37.4,Recipe:ING038
+Menu Item,MENU0061,Hibiscus Lime Iced Tea - Regular,,,,34.0,pcs,0.32,10.88,Recipe:ING040
+Menu Item,MENU0061,Hibiscus Lime Iced Tea - Regular,,,,34.0,pcs,0.55,18.7,Recipe:ING039
+Menu Item,MENU0061,Hibiscus Lime Iced Tea - Regular,,,,0.51,litre,90.0,45.9,Recipe:ING019
+Menu Item,MENU0061,Hibiscus Lime Iced Tea - Regular,,,,0.136,kg,620.0,84.32,Recipe:ING020
+Menu Item,MENU0062,Hibiscus Lime Iced Tea - Medium,,,,30.0,pcs,3.2,96.0,Recipe:ING036
+Menu Item,MENU0062,Hibiscus Lime Iced Tea - Medium,,,,1.209,litre,390.0,471.51,Recipe:ING024
+Menu Item,MENU0062,Hibiscus Lime Iced Tea - Medium,,,,4.14,kg,12.0,49.68,Recipe:ING022
+Menu Item,MENU0062,Hibiscus Lime Iced Tea - Medium,,,,30.0,pcs,1.1,33.0,Recipe:ING038
+Menu Item,MENU0062,Hibiscus Lime Iced Tea - Medium,,,,30.0,pcs,0.32,9.6,Recipe:ING040
+Menu Item,MENU0062,Hibiscus Lime Iced Tea - Medium,,,,30.0,pcs,0.55,16.5,Recipe:ING039
+Menu Item,MENU0062,Hibiscus Lime Iced Tea - Medium,,,,0.516,litre,90.0,46.44,Recipe:ING019
+Menu Item,MENU0062,Hibiscus Lime Iced Tea - Medium,,,,0.138,kg,620.0,85.56,Recipe:ING020
+Menu Item,MENU0063,Hibiscus Lime Iced Tea - Large,,,,20.0,pcs,3.2,64.0,Recipe:ING036
+Menu Item,MENU0063,Hibiscus Lime Iced Tea - Large,,,,0.91,litre,390.0,354.9,Recipe:ING024
+Menu Item,MENU0063,Hibiscus Lime Iced Tea - Large,,,,3.12,kg,12.0,37.44,Recipe:ING022
+Menu Item,MENU0063,Hibiscus Lime Iced Tea - Large,,,,20.0,pcs,1.1,22.0,Recipe:ING038
+Menu Item,MENU0063,Hibiscus Lime Iced Tea - Large,,,,20.0,pcs,0.32,6.4,Recipe:ING040
+Menu Item,MENU0063,Hibiscus Lime Iced Tea - Large,,,,20.0,pcs,0.55,11.0,Recipe:ING039
+Menu Item,MENU0063,Hibiscus Lime Iced Tea - Large,,,,0.39,litre,90.0,35.1,Recipe:ING019
+Menu Item,MENU0063,Hibiscus Lime Iced Tea - Large,,,,0.104,kg,620.0,64.48,Recipe:ING020
+Menu Item,MENU0064,Hot Chocolate - Regular,,,,0.24,litre,260.0,62.4,Recipe:ING016
+Menu Item,MENU0064,Hot Chocolate - Regular,,,,4.0,pcs,2.8,11.2,Recipe:ING037
+Menu Item,MENU0064,Hot Chocolate - Regular,,,,4.0,pcs,1.1,4.4,Recipe:ING038
+Menu Item,MENU0064,Hot Chocolate - Regular,,,,0.8,litre,72.0,57.6,Recipe:ING002
+Menu Item,MENU0064,Hot Chocolate - Regular,,,,4.0,pcs,0.32,1.28,Recipe:ING040
+Menu Item,MENU0064,Hot Chocolate - Regular,,,,0.06,litre,90.0,5.4,Recipe:ING019
+Menu Item,MENU0065,Hot Chocolate - Medium,,,,0.276,litre,260.0,71.76,Recipe:ING016
+Menu Item,MENU0065,Hot Chocolate - Medium,,,,4.0,pcs,2.8,11.2,Recipe:ING037
+Menu Item,MENU0065,Hot Chocolate - Medium,,,,4.0,pcs,1.1,4.4,Recipe:ING038
+Menu Item,MENU0065,Hot Chocolate - Medium,,,,0.92,litre,72.0,66.24,Recipe:ING002
+Menu Item,MENU0065,Hot Chocolate - Medium,,,,4.0,pcs,0.32,1.28,Recipe:ING040
+Menu Item,MENU0065,Hot Chocolate - Medium,,,,0.0688,litre,90.0,6.19,Recipe:ING019
+Menu Item,MENU0066,Hot Chocolate - Large,,,,0.156,litre,260.0,40.56,Recipe:ING016
+Menu Item,MENU0066,Hot Chocolate - Large,,,,2.0,pcs,2.8,5.6,Recipe:ING037
+Menu Item,MENU0066,Hot Chocolate - Large,,,,2.0,pcs,1.1,2.2,Recipe:ING038
+Menu Item,MENU0066,Hot Chocolate - Large,,,,0.52,litre,72.0,37.44,Recipe:ING002
+Menu Item,MENU0066,Hot Chocolate - Large,,,,2.0,pcs,0.32,0.64,Recipe:ING040
+Menu Item,MENU0066,Hot Chocolate - Large,,,,0.039,litre,90.0,3.51,Recipe:ING019
+Menu Item,MENU0067,Babyccino - Regular,,,,6.0,pcs,2.8,16.8,Recipe:ING037
+Menu Item,MENU0067,Babyccino - Regular,,,,6.0,pcs,1.1,6.6,Recipe:ING038
+Menu Item,MENU0067,Babyccino - Regular,,,,0.72,litre,72.0,51.84,Recipe:ING002
+Menu Item,MENU0067,Babyccino - Regular,,,,6.0,pcs,0.32,1.92,Recipe:ING040
+Menu Item,MENU0067,Babyccino - Regular,,,,0.09,litre,90.0,8.1,Recipe:ING019
+Menu Item,MENU0068,Choco Chip Shake - Regular,,,,0.475,litre,260.0,123.5,Recipe:ING016
+Menu Item,MENU0068,Choco Chip Shake - Regular,,,,19.0,pcs,3.2,60.8,Recipe:ING036
+Menu Item,MENU0068,Choco Chip Shake - Regular,,,,0.475,litre,210.0,99.75,Recipe:ING004
+Menu Item,MENU0068,Choco Chip Shake - Regular,,,,2.28,kg,12.0,27.36,Recipe:ING022
+Menu Item,MENU0068,Choco Chip Shake - Regular,,,,19.0,pcs,1.1,20.9,Recipe:ING038
+Menu Item,MENU0068,Choco Chip Shake - Regular,,,,3.8,litre,72.0,273.6,Recipe:ING002
+Menu Item,MENU0068,Choco Chip Shake - Regular,,,,19.0,pcs,0.32,6.08,Recipe:ING040
+Menu Item,MENU0068,Choco Chip Shake - Regular,,,,19.0,pcs,0.55,10.45,Recipe:ING039
+Menu Item,MENU0068,Choco Chip Shake - Regular,,,,0.285,litre,90.0,25.65,Recipe:ING019
+Menu Item,MENU0069,Choco Chip Shake - Medium,,,,0.4879,litre,260.0,126.85,Recipe:ING016
+Menu Item,MENU0069,Choco Chip Shake - Medium,,,,17.0,pcs,3.2,54.4,Recipe:ING036
+Menu Item,MENU0069,Choco Chip Shake - Medium,,,,0.4879,litre,210.0,102.46,Recipe:ING004
+Menu Item,MENU0069,Choco Chip Shake - Medium,,,,2.346,kg,12.0,28.15,Recipe:ING022
+Menu Item,MENU0069,Choco Chip Shake - Medium,,,,17.0,pcs,1.1,18.7,Recipe:ING038
+Menu Item,MENU0069,Choco Chip Shake - Medium,,,,3.91,litre,72.0,281.52,Recipe:ING002
+Menu Item,MENU0069,Choco Chip Shake - Medium,,,,17.0,pcs,0.32,5.44,Recipe:ING040
+Menu Item,MENU0069,Choco Chip Shake - Medium,,,,17.0,pcs,0.55,9.35,Recipe:ING039
+Menu Item,MENU0069,Choco Chip Shake - Medium,,,,0.2924,litre,90.0,26.32,Recipe:ING019
+Menu Item,MENU0070,Choco Chip Shake - Large,,,,0.26,litre,260.0,67.6,Recipe:ING016
+Menu Item,MENU0070,Choco Chip Shake - Large,,,,8.0,pcs,3.2,25.6,Recipe:ING036
+Menu Item,MENU0070,Choco Chip Shake - Large,,,,0.26,litre,210.0,54.6,Recipe:ING004
+Menu Item,MENU0070,Choco Chip Shake - Large,,,,1.248,kg,12.0,14.98,Recipe:ING022
+Menu Item,MENU0070,Choco Chip Shake - Large,,,,8.0,pcs,1.1,8.8,Recipe:ING038
+Menu Item,MENU0070,Choco Chip Shake - Large,,,,2.08,litre,72.0,149.76,Recipe:ING002
+Menu Item,MENU0070,Choco Chip Shake - Large,,,,8.0,pcs,0.32,2.56,Recipe:ING040
+Menu Item,MENU0070,Choco Chip Shake - Large,,,,8.0,pcs,0.55,4.4,Recipe:ING039
+Menu Item,MENU0070,Choco Chip Shake - Large,,,,0.156,litre,90.0,14.04,Recipe:ING019
+Menu Item,MENU0071,Mixed Berry Shake - Regular,,,,18.0,pcs,3.2,57.6,Recipe:ING036
+Menu Item,MENU0071,Mixed Berry Shake - Regular,,,,0.45,litre,210.0,94.5,Recipe:ING004
+Menu Item,MENU0071,Mixed Berry Shake - Regular,,,,2.16,kg,12.0,25.92,Recipe:ING022
+Menu Item,MENU0071,Mixed Berry Shake - Regular,,,,18.0,pcs,1.1,19.8,Recipe:ING038
+Menu Item,MENU0071,Mixed Berry Shake - Regular,,,,3.6,litre,72.0,259.2,Recipe:ING002
+Menu Item,MENU0071,Mixed Berry Shake - Regular,,,,1.44,kg,420.0,604.8,Recipe:ING025
+Menu Item,MENU0071,Mixed Berry Shake - Regular,,,,18.0,pcs,0.32,5.76,Recipe:ING040
+Menu Item,MENU0071,Mixed Berry Shake - Regular,,,,18.0,pcs,0.55,9.9,Recipe:ING039
+Menu Item,MENU0071,Mixed Berry Shake - Regular,,,,0.27,litre,90.0,24.3,Recipe:ING019
+Menu Item,MENU0072,Mixed Berry Shake - Medium,,,,12.0,pcs,3.2,38.4,Recipe:ING036
+Menu Item,MENU0072,Mixed Berry Shake - Medium,,,,0.3444,litre,210.0,72.32,Recipe:ING004
+Menu Item,MENU0072,Mixed Berry Shake - Medium,,,,1.656,kg,12.0,19.87,Recipe:ING022
+Menu Item,MENU0072,Mixed Berry Shake - Medium,,,,12.0,pcs,1.1,13.2,Recipe:ING038
+Menu Item,MENU0072,Mixed Berry Shake - Medium,,,,2.76,litre,72.0,198.72,Recipe:ING002
+Menu Item,MENU0072,Mixed Berry Shake - Medium,,,,1.104,kg,420.0,463.68,Recipe:ING025
+Menu Item,MENU0072,Mixed Berry Shake - Medium,,,,12.0,pcs,0.32,3.84,Recipe:ING040
+Menu Item,MENU0072,Mixed Berry Shake - Medium,,,,12.0,pcs,0.55,6.6,Recipe:ING039
+Menu Item,MENU0072,Mixed Berry Shake - Medium,,,,0.2064,litre,90.0,18.58,Recipe:ING019
+Menu Item,MENU0073,Mixed Berry Shake - Large,,,,5.0,pcs,3.2,16.0,Recipe:ING036
+Menu Item,MENU0073,Mixed Berry Shake - Large,,,,0.1625,litre,210.0,34.12,Recipe:ING004
+Menu Item,MENU0073,Mixed Berry Shake - Large,,,,0.78,kg,12.0,9.36,Recipe:ING022
+Menu Item,MENU0073,Mixed Berry Shake - Large,,,,5.0,pcs,1.1,5.5,Recipe:ING038
+Menu Item,MENU0073,Mixed Berry Shake - Large,,,,1.3,litre,72.0,93.6,Recipe:ING002
+Menu Item,MENU0073,Mixed Berry Shake - Large,,,,0.52,kg,420.0,218.4,Recipe:ING025
+Menu Item,MENU0073,Mixed Berry Shake - Large,,,,5.0,pcs,0.32,1.6,Recipe:ING040
+Menu Item,MENU0073,Mixed Berry Shake - Large,,,,5.0,pcs,0.55,2.75,Recipe:ING039
+Menu Item,MENU0073,Mixed Berry Shake - Large,,,,0.0975,litre,90.0,8.78,Recipe:ING019
+Menu Item,MENU0074,Seasonal Smoothie - Regular,,,,1.12,kg,72.0,80.64,Recipe:ING026
+Menu Item,MENU0074,Seasonal Smoothie - Regular,,,,14.0,pcs,3.2,44.8,Recipe:ING036
+Menu Item,MENU0074,Seasonal Smoothie - Regular,,,,0.35,litre,210.0,73.5,Recipe:ING004
+Menu Item,MENU0074,Seasonal Smoothie - Regular,,,,1.68,kg,12.0,20.16,Recipe:ING022
+Menu Item,MENU0074,Seasonal Smoothie - Regular,,,,14.0,pcs,1.1,15.4,Recipe:ING038
+Menu Item,MENU0074,Seasonal Smoothie - Regular,,,,2.8,litre,72.0,201.6,Recipe:ING002
+Menu Item,MENU0074,Seasonal Smoothie - Regular,,,,14.0,pcs,0.32,4.48,Recipe:ING040
+Menu Item,MENU0074,Seasonal Smoothie - Regular,,,,14.0,pcs,0.55,7.7,Recipe:ING039
+Menu Item,MENU0074,Seasonal Smoothie - Regular,,,,0.21,litre,90.0,18.9,Recipe:ING019
+Menu Item,MENU0075,Seasonal Smoothie - Medium,,,,0.552,kg,72.0,39.74,Recipe:ING026
+Menu Item,MENU0075,Seasonal Smoothie - Medium,,,,6.0,pcs,3.2,19.2,Recipe:ING036
+Menu Item,MENU0075,Seasonal Smoothie - Medium,,,,0.1722,litre,210.0,36.16,Recipe:ING004
+Menu Item,MENU0075,Seasonal Smoothie - Medium,,,,0.828,kg,12.0,9.94,Recipe:ING022
+Menu Item,MENU0075,Seasonal Smoothie - Medium,,,,6.0,pcs,1.1,6.6,Recipe:ING038
+Menu Item,MENU0075,Seasonal Smoothie - Medium,,,,1.38,litre,72.0,99.36,Recipe:ING002
+Menu Item,MENU0075,Seasonal Smoothie - Medium,,,,6.0,pcs,0.32,1.92,Recipe:ING040
+Menu Item,MENU0075,Seasonal Smoothie - Medium,,,,6.0,pcs,0.55,3.3,Recipe:ING039
+Menu Item,MENU0075,Seasonal Smoothie - Medium,,,,0.1032,litre,90.0,9.29,Recipe:ING019
+Menu Item,MENU0076,Seasonal Smoothie - Large,,,,0.624,kg,72.0,44.93,Recipe:ING026
+Menu Item,MENU0076,Seasonal Smoothie - Large,,,,6.0,pcs,3.2,19.2,Recipe:ING036
+Menu Item,MENU0076,Seasonal Smoothie - Large,,,,0.195,litre,210.0,40.95,Recipe:ING004
+Menu Item,MENU0076,Seasonal Smoothie - Large,,,,0.936,kg,12.0,11.23,Recipe:ING022
+Menu Item,MENU0076,Seasonal Smoothie - Large,,,,6.0,pcs,1.1,6.6,Recipe:ING038
+Menu Item,MENU0076,Seasonal Smoothie - Large,,,,1.56,litre,72.0,112.32,Recipe:ING002
+Menu Item,MENU0076,Seasonal Smoothie - Large,,,,6.0,pcs,0.32,1.92,Recipe:ING040
+Menu Item,MENU0076,Seasonal Smoothie - Large,,,,6.0,pcs,0.55,3.3,Recipe:ING039
+Menu Item,MENU0076,Seasonal Smoothie - Large,,,,0.117,litre,90.0,10.53,Recipe:ING019
+Menu Item,MENU0077,Spicy Paneer Wrap,,,,0.7,kg,84.0,58.8,Recipe:ING030
+Menu Item,MENU0077,Spicy Paneer Wrap,,,,0.7,kg,280.0,196.0,Recipe:ING033
+Menu Item,MENU0077,Spicy Paneer Wrap,,,,0.7,kg,95.0,66.5,Recipe:ING028
+Menu Item,MENU0077,Spicy Paneer Wrap,,,,56.0,pcs,0.32,17.92,Recipe:ING040
+Menu Item,MENU0077,Spicy Paneer Wrap,,,,0.56,kg,42.0,23.52,Recipe:ING029
+Menu Item,MENU0077,Spicy Paneer Wrap,,,,3.08,kg,360.0,1108.8,Recipe:ING005
+Menu Item,MENU0077,Spicy Paneer Wrap,,,,28.0,pcs,15.0,420.0,Recipe:ING011
+Menu Item,MENU0077,Spicy Paneer Wrap,,,,28.0,pcs,5.8,162.4,Recipe:ING043
+Menu Item,MENU0078,Shredded Chicken Wrap,,,,0.95,kg,84.0,79.8,Recipe:ING030
+Menu Item,MENU0078,Shredded Chicken Wrap,,,,4.18,kg,330.0,1379.4,Recipe:ING007
+Menu Item,MENU0078,Shredded Chicken Wrap,,,,0.95,kg,280.0,266.0,Recipe:ING033
+Menu Item,MENU0078,Shredded Chicken Wrap,,,,0.95,kg,95.0,90.25,Recipe:ING028
+Menu Item,MENU0078,Shredded Chicken Wrap,,,,76.0,pcs,0.32,24.32,Recipe:ING040
+Menu Item,MENU0078,Shredded Chicken Wrap,,,,0.76,kg,42.0,31.92,Recipe:ING029
+Menu Item,MENU0078,Shredded Chicken Wrap,,,,38.0,pcs,15.0,570.0,Recipe:ING011
+Menu Item,MENU0078,Shredded Chicken Wrap,,,,38.0,pcs,5.8,220.4,Recipe:ING043
+Menu Item,MENU0079,Smoked Chipotle Paneer Sandwich,,,,40.0,pcs,12.0,480.0,Recipe:ING009
+Menu Item,MENU0079,Smoked Chipotle Paneer Sandwich,,,,0.6,kg,480.0,288.0,Recipe:ING006
+Menu Item,MENU0079,Smoked Chipotle Paneer Sandwich,,,,0.4,kg,280.0,112.0,Recipe:ING033
+Menu Item,MENU0079,Smoked Chipotle Paneer Sandwich,,,,0.4,kg,95.0,38.0,Recipe:ING028
+Menu Item,MENU0079,Smoked Chipotle Paneer Sandwich,,,,40.0,pcs,0.32,12.8,Recipe:ING040
+Menu Item,MENU0079,Smoked Chipotle Paneer Sandwich,,,,2.0,kg,360.0,720.0,Recipe:ING005
+Menu Item,MENU0079,Smoked Chipotle Paneer Sandwich,,,,20.0,pcs,6.5,130.0,Recipe:ING042
+Menu Item,MENU0079,Smoked Chipotle Paneer Sandwich,,,,0.6,kg,54.0,32.4,Recipe:ING031
+Menu Item,MENU0080,Pesto Veg Sandwich,,,,30.0,pcs,12.0,360.0,Recipe:ING009
+Menu Item,MENU0080,Pesto Veg Sandwich,,,,0.45,kg,480.0,216.0,Recipe:ING006
+Menu Item,MENU0080,Pesto Veg Sandwich,,,,0.3,kg,95.0,28.5,Recipe:ING028
+Menu Item,MENU0080,Pesto Veg Sandwich,,,,30.0,pcs,0.32,9.6,Recipe:ING040
+Menu Item,MENU0080,Pesto Veg Sandwich,,,,1.5,kg,360.0,540.0,Recipe:ING005
+Menu Item,MENU0080,Pesto Veg Sandwich,,,,0.3,kg,340.0,102.0,Recipe:ING032
+Menu Item,MENU0080,Pesto Veg Sandwich,,,,15.0,pcs,6.5,97.5,Recipe:ING042
+Menu Item,MENU0080,Pesto Veg Sandwich,,,,0.45,kg,54.0,24.3,Recipe:ING031
+Menu Item,MENU0081,Pepper Chicken Sandwich,,,,28.0,pcs,12.0,336.0,Recipe:ING009
+Menu Item,MENU0081,Pepper Chicken Sandwich,,,,0.42,kg,480.0,201.6,Recipe:ING006
+Menu Item,MENU0081,Pepper Chicken Sandwich,,,,1.4,kg,330.0,462.0,Recipe:ING007
+Menu Item,MENU0081,Pepper Chicken Sandwich,,,,0.28,kg,280.0,78.4,Recipe:ING033
+Menu Item,MENU0081,Pepper Chicken Sandwich,,,,0.28,kg,95.0,26.6,Recipe:ING028
+Menu Item,MENU0081,Pepper Chicken Sandwich,,,,28.0,pcs,0.32,8.96,Recipe:ING040
+Menu Item,MENU0081,Pepper Chicken Sandwich,,,,14.0,pcs,6.5,91.0,Recipe:ING042
+Menu Item,MENU0081,Pepper Chicken Sandwich,,,,0.42,kg,54.0,22.68,Recipe:ING031
+Menu Item,MENU0082,Tandoori Chicken Sandwich,,,,40.0,pcs,12.0,480.0,Recipe:ING009
+Menu Item,MENU0082,Tandoori Chicken Sandwich,,,,0.6,kg,480.0,288.0,Recipe:ING006
+Menu Item,MENU0082,Tandoori Chicken Sandwich,,,,2.0,kg,330.0,660.0,Recipe:ING007
+Menu Item,MENU0082,Tandoori Chicken Sandwich,,,,0.4,kg,280.0,112.0,Recipe:ING033
+Menu Item,MENU0082,Tandoori Chicken Sandwich,,,,0.4,kg,95.0,38.0,Recipe:ING028
+Menu Item,MENU0082,Tandoori Chicken Sandwich,,,,40.0,pcs,0.32,12.8,Recipe:ING040
+Menu Item,MENU0082,Tandoori Chicken Sandwich,,,,20.0,pcs,6.5,130.0,Recipe:ING042
+Menu Item,MENU0082,Tandoori Chicken Sandwich,,,,0.6,kg,54.0,32.4,Recipe:ING031
+Menu Item,MENU0083,Chilli Cheese Garlic Toast,,,,0.26,kg,310.0,80.6,Recipe:ING035
+Menu Item,MENU0083,Chilli Cheese Garlic Toast,,,,13.0,pcs,12.0,156.0,Recipe:ING009
+Menu Item,MENU0083,Chilli Cheese Garlic Toast,,,,0.455,kg,480.0,218.4,Recipe:ING006
+Menu Item,MENU0083,Chilli Cheese Garlic Toast,,,,26.0,pcs,0.32,8.32,Recipe:ING040
+Menu Item,MENU0083,Chilli Cheese Garlic Toast,,,,13.0,pcs,6.5,84.5,Recipe:ING042
+Menu Item,MENU0084,Chicken Pepperoni Avocado Toast,,,,0.16,kg,310.0,49.6,Recipe:ING035
+Menu Item,MENU0084,Chicken Pepperoni Avocado Toast,,,,8.0,pcs,12.0,96.0,Recipe:ING009
+Menu Item,MENU0084,Chicken Pepperoni Avocado Toast,,,,0.28,kg,480.0,134.4,Recipe:ING006
+Menu Item,MENU0084,Chicken Pepperoni Avocado Toast,,,,0.64,kg,330.0,211.2,Recipe:ING007
+Menu Item,MENU0084,Chicken Pepperoni Avocado Toast,,,,16.0,pcs,0.32,5.12,Recipe:ING040
+Menu Item,MENU0084,Chicken Pepperoni Avocado Toast,,,,8.0,pcs,6.5,52.0,Recipe:ING042
+Menu Item,MENU0085,Hummus and Pita Platter,,,,0.12,kg,310.0,37.2,Recipe:ING035
+Menu Item,MENU0085,Hummus and Pita Platter,,,,8.0,pcs,12.0,96.0,Recipe:ING009
+Menu Item,MENU0085,Hummus and Pita Platter,,,,0.12,kg,95.0,11.4,Recipe:ING028
+Menu Item,MENU0085,Hummus and Pita Platter,,,,8.0,pcs,0.32,2.56,Recipe:ING040
+Menu Item,MENU0085,Hummus and Pita Platter,,,,4.0,pcs,6.5,26.0,Recipe:ING042
+Menu Item,MENU0085,Hummus and Pita Platter,,,,0.16,kg,54.0,8.64,Recipe:ING031
+Menu Item,MENU0086,Breakfast Pancakes,,,,0.15,kg,520.0,78.0,Recipe:ING027
+Menu Item,MENU0086,Breakfast Pancakes,,,,6.0,pcs,46.0,276.0,Recipe:ING014
+Menu Item,MENU0086,Breakfast Pancakes,,,,6.0,pcs,5.0,30.0,Recipe:ING041
+Menu Item,MENU0086,Breakfast Pancakes,,,,12.0,pcs,0.32,3.84,Recipe:ING040
+Menu Item,MENU0086,Breakfast Pancakes,,,,0.15,litre,90.0,13.5,Recipe:ING019
+Menu Item,MENU0087,Cream Cheese Bagel,,,,19.0,pcs,28.0,532.0,Recipe:ING010
+Menu Item,MENU0087,Cream Cheese Bagel,,,,0.475,kg,480.0,228.0,Recipe:ING006
+Menu Item,MENU0087,Cream Cheese Bagel,,,,0.665,litre,210.0,139.65,Recipe:ING004
+Menu Item,MENU0087,Cream Cheese Bagel,,,,38.0,pcs,0.32,12.16,Recipe:ING040
+Menu Item,MENU0087,Cream Cheese Bagel,,,,19.0,pcs,6.5,123.5,Recipe:ING042
+Menu Item,MENU0088,Scallion Pepper Cream Cheese Bagel,,,,18.0,pcs,28.0,504.0,Recipe:ING010
+Menu Item,MENU0088,Scallion Pepper Cream Cheese Bagel,,,,0.45,kg,480.0,216.0,Recipe:ING006
+Menu Item,MENU0088,Scallion Pepper Cream Cheese Bagel,,,,0.63,litre,210.0,132.3,Recipe:ING004
+Menu Item,MENU0088,Scallion Pepper Cream Cheese Bagel,,,,36.0,pcs,0.32,11.52,Recipe:ING040
+Menu Item,MENU0088,Scallion Pepper Cream Cheese Bagel,,,,18.0,pcs,6.5,117.0,Recipe:ING042
+Menu Item,MENU0089,Masala Egg Bun,,,,15.0,pcs,12.0,180.0,Recipe:ING009
+Menu Item,MENU0089,Masala Egg Bun,,,,0.3,kg,480.0,144.0,Recipe:ING006
+Menu Item,MENU0089,Masala Egg Bun,,,,30.0,pcs,7.0,210.0,Recipe:ING008
+Menu Item,MENU0089,Masala Egg Bun,,,,30.0,pcs,0.32,9.6,Recipe:ING040
+Menu Item,MENU0089,Masala Egg Bun,,,,15.0,pcs,6.5,97.5,Recipe:ING042
+Menu Item,MENU0090,Marinara Cheese Pin Wheels,,,,17.0,pcs,12.0,204.0,Recipe:ING009
+Menu Item,MENU0090,Marinara Cheese Pin Wheels,,,,0.51,kg,480.0,244.8,Recipe:ING006
+Menu Item,MENU0090,Marinara Cheese Pin Wheels,,,,34.0,pcs,0.32,10.88,Recipe:ING040
+Menu Item,MENU0090,Marinara Cheese Pin Wheels,,,,0.425,kg,190.0,80.75,Recipe:ING034
+Menu Item,MENU0090,Marinara Cheese Pin Wheels,,,,17.0,pcs,6.5,110.5,Recipe:ING042
+Menu Item,MENU0091,Pesto Sundried Tomato Pin Wheel,,,,14.0,pcs,12.0,168.0,Recipe:ING009
+Menu Item,MENU0091,Pesto Sundried Tomato Pin Wheel,,,,0.42,kg,480.0,201.6,Recipe:ING006
+Menu Item,MENU0091,Pesto Sundried Tomato Pin Wheel,,,,28.0,pcs,0.32,8.96,Recipe:ING040
+Menu Item,MENU0091,Pesto Sundried Tomato Pin Wheel,,,,0.35,kg,340.0,119.0,Recipe:ING032
+Menu Item,MENU0091,Pesto Sundried Tomato Pin Wheel,,,,14.0,pcs,6.5,91.0,Recipe:ING042
+Menu Item,MENU0092,Turnover with Brioche Dough Chicken,,,,0.5,kg,480.0,240.0,Recipe:ING006
+Menu Item,MENU0092,Turnover with Brioche Dough Chicken,,,,1.6,kg,330.0,528.0,Recipe:ING007
+Menu Item,MENU0092,Turnover with Brioche Dough Chicken,,,,20.0,pcs,42.0,840.0,Recipe:ING012
+Menu Item,MENU0092,Turnover with Brioche Dough Chicken,,,,40.0,pcs,0.32,12.8,Recipe:ING040
+Menu Item,MENU0092,Turnover with Brioche Dough Chicken,,,,20.0,pcs,6.5,130.0,Recipe:ING042
+Menu Item,MENU0093,Turnover with Brioche Dough Veg,,,,0.375,kg,480.0,180.0,Recipe:ING006
+Menu Item,MENU0093,Turnover with Brioche Dough Veg,,,,15.0,pcs,42.0,630.0,Recipe:ING012
+Menu Item,MENU0093,Turnover with Brioche Dough Veg,,,,30.0,pcs,0.32,9.6,Recipe:ING040
+Menu Item,MENU0093,Turnover with Brioche Dough Veg,,,,1.2,kg,360.0,432.0,Recipe:ING005
+Menu Item,MENU0093,Turnover with Brioche Dough Veg,,,,15.0,pcs,6.5,97.5,Recipe:ING042
+Menu Item,MENU0094,Butter Croissant,,,,0.18,kg,520.0,93.6,Recipe:ING027
+Menu Item,MENU0094,Butter Croissant,,,,9.0,pcs,42.0,378.0,Recipe:ING012
+Menu Item,MENU0094,Butter Croissant,,,,9.0,pcs,5.0,45.0,Recipe:ING041
+Menu Item,MENU0094,Butter Croissant,,,,18.0,pcs,0.32,5.76,Recipe:ING040
+Menu Item,MENU0095,Almond Croissant,,,,0.3,kg,520.0,156.0,Recipe:ING027
+Menu Item,MENU0095,Almond Croissant,,,,15.0,pcs,42.0,630.0,Recipe:ING012
+Menu Item,MENU0095,Almond Croissant,,,,15.0,pcs,5.0,75.0,Recipe:ING041
+Menu Item,MENU0095,Almond Croissant,,,,30.0,pcs,0.32,9.6,Recipe:ING040
+Menu Item,MENU0096,Chocolate Croissant,,,,0.4,kg,520.0,208.0,Recipe:ING027
+Menu Item,MENU0096,Chocolate Croissant,,,,0.5,litre,260.0,130.0,Recipe:ING016
+Menu Item,MENU0096,Chocolate Croissant,,,,20.0,pcs,42.0,840.0,Recipe:ING012
+Menu Item,MENU0096,Chocolate Croissant,,,,20.0,pcs,5.0,100.0,Recipe:ING041
+Menu Item,MENU0096,Chocolate Croissant,,,,40.0,pcs,0.32,12.8,Recipe:ING040
+Menu Item,MENU0097,Mushroom Cheese Croissant,,,,0.34,kg,520.0,176.8,Recipe:ING027
+Menu Item,MENU0097,Mushroom Cheese Croissant,,,,0.595,kg,480.0,285.6,Recipe:ING006
+Menu Item,MENU0097,Mushroom Cheese Croissant,,,,17.0,pcs,42.0,714.0,Recipe:ING012
+Menu Item,MENU0097,Mushroom Cheese Croissant,,,,17.0,pcs,5.0,85.0,Recipe:ING041
+Menu Item,MENU0097,Mushroom Cheese Croissant,,,,34.0,pcs,0.32,10.88,Recipe:ING040
+Menu Item,MENU0098,Sriracha Chicken Croissant,,,,0.38,kg,520.0,197.6,Recipe:ING027
+Menu Item,MENU0098,Sriracha Chicken Croissant,,,,1.33,kg,330.0,438.9,Recipe:ING007
+Menu Item,MENU0098,Sriracha Chicken Croissant,,,,19.0,pcs,42.0,798.0,Recipe:ING012
+Menu Item,MENU0098,Sriracha Chicken Croissant,,,,19.0,pcs,5.0,95.0,Recipe:ING041
+Menu Item,MENU0098,Sriracha Chicken Croissant,,,,38.0,pcs,0.32,12.16,Recipe:ING040
+Menu Item,MENU0099,Cinnamon Roll with Cream Cheese,,,,0.275,litre,210.0,57.75,Recipe:ING004
+Menu Item,MENU0099,Cinnamon Roll with Cream Cheese,,,,11.0,pcs,42.0,462.0,Recipe:ING012
+Menu Item,MENU0099,Cinnamon Roll with Cream Cheese,,,,11.0,pcs,5.0,55.0,Recipe:ING041
+Menu Item,MENU0099,Cinnamon Roll with Cream Cheese,,,,11.0,pcs,0.32,3.52,Recipe:ING040
+Menu Item,MENU0100,Banana Walnut Tea Cake,,,,1.54,kg,72.0,110.88,Recipe:ING026
+Menu Item,MENU0100,Banana Walnut Tea Cake,,,,22.0,pcs,46.0,1012.0,Recipe:ING014
+Menu Item,MENU0100,Banana Walnut Tea Cake,,,,0.55,litre,210.0,115.5,Recipe:ING004
+Menu Item,MENU0100,Banana Walnut Tea Cake,,,,22.0,pcs,5.0,110.0,Recipe:ING041
+Menu Item,MENU0100,Banana Walnut Tea Cake,,,,22.0,pcs,0.32,7.04,Recipe:ING040
+Menu Item,MENU0101,Lemon Raspberry Tea Cake,,,,15.0,pcs,46.0,690.0,Recipe:ING014
+Menu Item,MENU0101,Lemon Raspberry Tea Cake,,,,0.375,litre,210.0,78.75,Recipe:ING004
+Menu Item,MENU0101,Lemon Raspberry Tea Cake,,,,15.0,pcs,5.0,75.0,Recipe:ING041
+Menu Item,MENU0101,Lemon Raspberry Tea Cake,,,,15.0,pcs,0.32,4.8,Recipe:ING040
+Menu Item,MENU0102,Double Chocolate Truffle Cake,,,,30.0,pcs,46.0,1380.0,Recipe:ING014
+Menu Item,MENU0102,Double Chocolate Truffle Cake,,,,0.75,litre,260.0,195.0,Recipe:ING016
+Menu Item,MENU0102,Double Chocolate Truffle Cake,,,,0.75,litre,210.0,157.5,Recipe:ING004
+Menu Item,MENU0102,Double Chocolate Truffle Cake,,,,30.0,pcs,5.0,150.0,Recipe:ING041
+Menu Item,MENU0102,Double Chocolate Truffle Cake,,,,30.0,pcs,0.32,9.6,Recipe:ING040
+Menu Item,MENU0103,Banoffee Pie,,,,19.0,pcs,46.0,874.0,Recipe:ING014
+Menu Item,MENU0103,Banoffee Pie,,,,0.475,litre,210.0,99.75,Recipe:ING004
+Menu Item,MENU0103,Banoffee Pie,,,,19.0,pcs,5.0,95.0,Recipe:ING041
+Menu Item,MENU0103,Banoffee Pie,,,,19.0,pcs,0.32,6.08,Recipe:ING040
+Menu Item,MENU0104,Classic Chocolate Fudge Brownie,,,,20.0,pcs,34.0,680.0,Recipe:ING013
+Menu Item,MENU0104,Classic Chocolate Fudge Brownie,,,,0.9,litre,260.0,234.0,Recipe:ING016
+Menu Item,MENU0104,Classic Chocolate Fudge Brownie,,,,20.0,pcs,5.0,100.0,Recipe:ING041
+Menu Item,MENU0104,Classic Chocolate Fudge Brownie,,,,20.0,pcs,0.32,6.4,Recipe:ING040
+Menu Item,MENU0105,Soft-Centred Caramel Cookie,,,,0.48,kg,520.0,249.6,Recipe:ING027
+Menu Item,MENU0105,Soft-Centred Caramel Cookie,,,,13.2,pcs,46.0,607.2,Recipe:ING014
+Menu Item,MENU0105,Soft-Centred Caramel Cookie,,,,0.48,litre,250.0,120.0,Recipe:ING017
+Menu Item,MENU0105,Soft-Centred Caramel Cookie,,,,24.0,pcs,5.0,120.0,Recipe:ING041
+Menu Item,MENU0105,Soft-Centred Caramel Cookie,,,,24.0,pcs,0.32,7.68,Recipe:ING040
+Menu Item,MENU0106,Death by Chocolate Cookie,,,,0.56,kg,520.0,291.2,Recipe:ING027
+Menu Item,MENU0106,Death by Chocolate Cookie,,,,15.4,pcs,46.0,708.4,Recipe:ING014
+Menu Item,MENU0106,Death by Chocolate Cookie,,,,0.7,litre,260.0,182.0,Recipe:ING016
+Menu Item,MENU0106,Death by Chocolate Cookie,,,,28.0,pcs,5.0,140.0,Recipe:ING041
+Menu Item,MENU0106,Death by Chocolate Cookie,,,,28.0,pcs,0.32,8.96,Recipe:ING040
+Menu Item,MENU0107,Jaggery Parmesan Cookie,,,,0.44,kg,520.0,228.8,Recipe:ING027
+Menu Item,MENU0107,Jaggery Parmesan Cookie,,,,12.1,pcs,46.0,556.6,Recipe:ING014
+Menu Item,MENU0107,Jaggery Parmesan Cookie,,,,22.0,pcs,5.0,110.0,Recipe:ING041
+Menu Item,MENU0107,Jaggery Parmesan Cookie,,,,22.0,pcs,0.32,7.04,Recipe:ING040
+Menu Item,MENU0108,Apple Pie,,,,25.0,pcs,46.0,1150.0,Recipe:ING014
+Menu Item,MENU0108,Apple Pie,,,,0.625,litre,210.0,131.25,Recipe:ING004
+Menu Item,MENU0108,Apple Pie,,,,25.0,pcs,5.0,125.0,Recipe:ING041
+Menu Item,MENU0108,Apple Pie,,,,25.0,pcs,0.32,8.0,Recipe:ING040
+Menu Item,MENU0109,Basque Cheesecake,,,,20.0,pcs,72.0,1440.0,Recipe:ING015
+Menu Item,MENU0109,Basque Cheesecake,,,,0.5,litre,210.0,105.0,Recipe:ING004
+Menu Item,MENU0109,Basque Cheesecake,,,,20.0,pcs,5.0,100.0,Recipe:ING041
+Menu Item,MENU0109,Basque Cheesecake,,,,20.0,pcs,0.32,6.4,Recipe:ING040
+Menu Item,MENU0110,Multigrain Walnut Tea Cake,,,,16.0,pcs,46.0,736.0,Recipe:ING014
+Menu Item,MENU0110,Multigrain Walnut Tea Cake,,,,0.4,litre,210.0,84.0,Recipe:ING004
+Menu Item,MENU0110,Multigrain Walnut Tea Cake,,,,16.0,pcs,5.0,80.0,Recipe:ING041
+Menu Item,MENU0110,Multigrain Walnut Tea Cake,,,,16.0,pcs,0.32,5.12,Recipe:ING040

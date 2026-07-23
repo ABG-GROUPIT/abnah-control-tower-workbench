@@ -1,0 +1,13 @@
+﻿Deployment Name,Store/Kitchen Name,User Name,Date,Transaction Number,Item Code,Item Name,Category Name,Super Category Name,Comment,Quantity,Unit,Unit Price,Amount,Source
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-02-09,WST-OUT002-02-001,ING040,Napkin,Packaging,Consumable,Preparation loss,40.5065,pcs,0.32,12.96,
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-02-10,WST-OUT002-02-002,ING038,Lid,Packaging,Consumable,Quality rejection,26.203,pcs,1.11,29.09,
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-02-11,WST-OUT002-02-003,ING037,Hot Cup,Packaging,Consumable,Shelf-life loss,14.3338,pcs,2.81,40.28,
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-02-12,WST-OUT002-02-004,ING036,Cold Cup,Packaging,Consumable,Quality rejection,11.8692,pcs,3.22,38.22,
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-02-13,WST-OUT002-02-005,ING039,Straw,Packaging,Consumable,Quality rejection,11.8692,pcs,0.55,6.53,
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-02-14,WST-OUT002-02-006,ING041,Dessert Box,Packaging,Consumable,Quality rejection,5.4432,pcs,5.02,27.32,
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-02-15,WST-OUT002-02-007,ING002,Milk,Dairy,Raw Material,Quality rejection,5.4154,litre,73.44,397.71,
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-02-16,WST-OUT002-02-008,ING009,Bread,Bakery,Raw Material,Quality rejection,3.2962,pcs,12.12,39.95,
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-02-17,WST-OUT002-02-009,ING042,Sandwich Box,Packaging,Consumable,Shelf-life loss,2.767,pcs,6.53,18.07,
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-02-18,WST-OUT002-02-010,ING014,Cake Base,Dessert Inputs,Raw Material,Preparation loss,2.3194,pcs,46.46,107.76,
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-02-19,WST-OUT002-02-011,ING012,Croissant Base,Bakery,Raw Material,Quality rejection,2.2831,pcs,42.42,96.85,
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-02-20,WST-OUT002-02-012,ING022,Ice,Beverage Inputs,Raw Material,Shelf-life loss,1.5917,kg,12.12,19.29,

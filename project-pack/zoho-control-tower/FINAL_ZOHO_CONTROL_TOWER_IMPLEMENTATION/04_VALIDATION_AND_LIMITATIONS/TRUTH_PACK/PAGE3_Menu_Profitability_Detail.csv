@@ -1,0 +1,990 @@
+﻿source_period_code,outlet_code,outlet_name,menu_item_code,menu_item_name,super_category_name,category_name,sold_qty,net_sales,source_reported_purchase_value,theoretical_cost_per_menu_unit,recipe_ingredient_count,theoretical_cogs,gross_margin_value,gross_margin_percent
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0001,Espresso Shot - Solo,Beverage,Espresso,4.0,574.3,54.52,13.74,4,54.97,519.33,90.4291
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0002,Espresso Shot - Doppio,Beverage,Espresso,3.0,557.59,63.81,21.51,4,64.52,493.07,88.4293
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0003,Americano - Regular,Beverage,Coffee Classics,85.0,15475.94,1972.85,23.49,5,1996.42,13479.52,87.0998
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0004,Americano - Medium,Beverage,Coffee Classics,69.0,14117.43,1797.45,26.38,5,1820.08,12297.35,87.1076
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0005,Americano - Large,Beverage,Coffee Classics,55.0,12683.01,1590.05,29.28,5,1610.28,11072.73,87.3036
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0006,Latte - Regular,Beverage,Coffee Classics,65.0,14417.57,2351.05,36.78,6,2390.41,12027.16,83.4202
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0007,Latte - Medium,Beverage,Coffee Classics,64.0,15752.06,2621.44,41.66,6,2666.2,13085.86,83.074
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0008,Latte - Large,Beverage,Coffee Classics,45.0,12136.03,2059.2,46.55,6,2094.86,10041.17,82.7385
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0009,Cappuccino - Regular,Beverage,Coffee Classics,65.0,14314.77,2351.05,36.78,6,2390.41,11924.36,83.3011
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0010,Cappuccino - Medium,Beverage,Coffee Classics,73.0,17849.06,2990.08,41.66,6,3041.13,14807.93,82.9619
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0011,Cappuccino - Large,Beverage,Coffee Classics,41.0,11031.85,1876.16,46.55,6,1908.65,9123.2,82.6987
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0012,Flat White - Regular,Beverage,Coffee Classics,59.0,13679.63,2134.03,36.78,6,2169.75,11509.88,84.1388
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0013,Flat White - Medium,Beverage,Coffee Classics,64.0,16380.29,2621.44,41.66,6,2666.2,13714.09,83.7231
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0014,Flat White - Large,Beverage,Coffee Classics,38.0,10529.14,1738.88,46.55,6,1768.99,8760.15,83.1991
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0015,Mocha - Regular,Beverage,Coffee Classics,65.0,15631.91,2773.55,42.61,7,2769.93,12861.98,82.2803
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0016,Mocha - Medium,Beverage,Coffee Classics,59.0,15483.27,2856.78,48.36,7,2853.37,12629.9,81.5713
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0017,Mocha - Large,Beverage,Coffee Classics,28.0,8007.67,1517.88,54.14,7,1516.0,6491.67,81.0682
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0018,Sea Salt Mocha - Regular,Beverage,Signature Coffee,35.0,9522.92,1493.45,42.61,7,1491.5,8031.42,84.3378
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0019,Sea Salt Mocha - Medium,Beverage,Signature Coffee,20.0,5961.57,968.4,48.36,7,967.24,4994.33,83.7753
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0020,Sea Salt Mocha - Large,Beverage,Signature Coffee,10.0,3283.24,542.1,54.14,7,541.43,2741.81,83.5093
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0021,Orange Zest Mocha - Regular,Beverage,Signature Coffee,20.0,5254.54,853.4,42.61,7,852.28,4402.26,83.78
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0022,Orange Zest Mocha - Medium,Beverage,Signature Coffee,22.0,6492.73,1065.24,48.36,7,1063.97,5428.76,83.6129
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0023,Orange Zest Mocha - Large,Beverage,Signature Coffee,17.0,5514.85,921.57,54.14,7,920.43,4594.42,83.31
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0024,Caramel Macchiato - Regular,Beverage,Signature Coffee,31.0,8170.57,1315.02,43.1,7,1336.21,6834.36,83.6461
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0025,Caramel Macchiato - Medium,Beverage,Signature Coffee,26.0,7459.96,1251.38,48.92,7,1272.02,6187.94,82.9487
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0026,Caramel Macchiato - Large,Beverage,Signature Coffee,7.0,2251.96,377.16,54.78,7,383.45,1868.51,82.9725
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0027,French Vanilla Latte - Regular,Beverage,Signature Coffee,32.0,8306.85,1349.44,42.17,7,1349.28,6957.57,83.757
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0028,French Vanilla Latte - Medium,Beverage,Signature Coffee,33.0,9485.21,1579.05,47.85,7,1578.94,7906.27,83.3537
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0029,French Vanilla Latte - Large,Beverage,Signature Coffee,26.0,8249.7,1392.56,53.56,7,1392.53,6857.17,83.1202
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0030,Vegan Iced Latte - Regular,Beverage,Signature Coffee,35.0,9782.45,2061.5,55.79,8,1952.61,7829.84,80.0396
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0031,Vegan Iced Latte - Medium,Beverage,Signature Coffee,21.0,6429.9,1405.95,63.38,8,1330.92,5098.98,79.3011
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0032,Vegan Iced Latte - Large,Beverage,Signature Coffee,23.0,7595.37,1725.46,70.97,8,1632.41,5962.96,78.5078
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0033,Classic Cold Brew - Regular,Beverage,Cold Brew,11.0,2438.72,281.6,25.95,7,285.44,2153.28,88.2956
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0034,Classic Cold Brew - Medium,Beverage,Cold Brew,14.0,3415.36,401.24,29.06,7,406.85,3008.51,88.0875
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0035,Classic Cold Brew - Large,Beverage,Cold Brew,11.0,2943.18,349.03,32.18,7,354.01,2589.17,87.972
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0036,Coffee Lemonade - Regular,Beverage,Cold Brew,22.0,5041.42,647.9,29.86,8,656.99,4384.43,86.9681
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0037,Coffee Lemonade - Medium,Beverage,Cold Brew,15.0,3803.25,496.35,33.57,8,503.52,3299.73,86.7608
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0038,Coffee Lemonade - Large,Beverage,Cold Brew,16.0,4455.46,587.68,37.27,8,596.34,3859.12,86.6156
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0039,Vietnamese Shakerato - Regular,Beverage,Cold Brew,19.0,4758.04,486.4,25.95,7,493.03,4265.01,89.6379
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0040,Vietnamese Shakerato - Medium,Beverage,Cold Brew,24.0,6689.96,687.84,29.06,7,697.47,5992.49,89.5745
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0041,Vietnamese Shakerato - Large,Beverage,Cold Brew,9.0,2674.26,285.57,32.18,7,289.64,2384.62,89.1693
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0042,Classic Cold Coffee - Regular,Beverage,Cold Coffee,28.0,6937.07,1079.68,39.24,8,1098.64,5838.43,84.1628
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0043,Classic Cold Coffee - Medium,Beverage,Cold Coffee,22.0,6229.56,958.32,44.34,8,975.53,5254.03,84.3402
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0044,Classic Cold Coffee - Large,Beverage,Cold Coffee,25.0,7978.91,1214.5,49.46,8,1236.42,6742.49,84.5038
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0045,Mocha Cold Coffee - Regular,Beverage,Cold Coffee,25.0,6958.79,1126.5,45.08,9,1126.9,5831.89,83.8061
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0046,Mocha Cold Coffee - Medium,Beverage,Cold Coffee,18.0,5682.29,918.54,51.05,9,918.82,4763.47,83.8302
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0047,Mocha Cold Coffee - Large,Beverage,Cold Coffee,15.0,5197.79,855.45,57.05,9,855.71,4342.08,83.537
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0048,Caramel Cold Coffee - Regular,Beverage,Cold Coffee,27.0,7627.66,1209.87,45.57,9,1230.26,6397.4,83.8711
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0049,Caramel Cold Coffee - Medium,Beverage,Cold Coffee,20.0,6229.12,1014.8,51.61,9,1032.14,5196.98,83.4304
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0050,Caramel Cold Coffee - Large,Beverage,Cold Coffee,14.0,4838.38,793.8,57.68,9,807.57,4030.81,83.3091
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0051,Masala Chai Latte - Regular,Beverage,Tea,33.0,6285.12,1193.61,36.78,6,1213.59,5071.53,80.691
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0052,Masala Chai Latte - Medium,Beverage,Tea,21.0,4521.14,860.16,41.66,6,874.85,3646.29,80.6499
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0053,Masala Chai Latte - Large,Beverage,Tea,22.0,5236.45,1006.72,46.55,6,1024.15,4212.3,80.4418
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0054,Himalayan Green Tea,Beverage,Tea,14.0,2870.1,121.38,8.72,5,122.14,2747.96,95.7442
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0055,Japanese Matcha Latte - Regular,Beverage,Tea,21.0,5399.36,759.57,36.78,6,772.29,4627.07,85.6967
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0056,Japanese Matcha Latte - Medium,Beverage,Tea,19.0,5460.43,778.24,41.66,6,791.53,4668.9,85.5043
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0057,Japanese Matcha Latte - Large,Beverage,Tea,17.0,5367.75,777.92,46.55,6,791.39,4576.36,85.2565
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0058,Lemon Iced Tea - Regular,Beverage,Iced Tea,16.0,3209.94,228.64,14.47,8,231.52,2978.42,92.7876
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0059,Lemon Iced Tea - Medium,Beverage,Iced Tea,16.0,3610.27,250.56,15.87,8,253.85,3356.42,92.9687
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0060,Lemon Iced Tea - Large,Beverage,Iced Tea,9.0,2285.51,153.27,17.26,8,155.33,2130.18,93.2036
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0061,Hibiscus Lime Iced Tea - Regular,Beverage,Iced Tea,18.0,4001.97,433.62,22.98,8,413.71,3588.26,89.6624
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0062,Hibiscus Lime Iced Tea - Medium,Beverage,Iced Tea,19.0,4626.3,511.86,25.67,8,487.71,4138.59,89.4579
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0063,Hibiscus Lime Iced Tea - Large,Beverage,Iced Tea,8.0,2115.8,238.16,28.33,8,226.62,1889.18,89.2891
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0064,Hot Chocolate - Regular,Beverage,Kids Beverage,7.0,1501.69,248.99,34.35,6,240.43,1261.26,83.9891
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0065,Hot Chocolate - Medium,Beverage,Kids Beverage,6.0,1415.52,241.62,38.87,6,233.2,1182.32,83.5252
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0066,Hot Chocolate - Large,Beverage,Kids Beverage,1.0,262.23,44.98,43.4,6,43.4,218.83,83.4511
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0067,Babyccino - Regular,Beverage,Kids Beverage,3.0,474.52,42.63,14.43,5,43.29,431.23,90.8779
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0068,Choco Chip Shake - Regular,Beverage,Shake,8.0,2298.96,272.88,33.98,9,271.83,2027.13,88.1758
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0069,Choco Chip Shake - Medium,Beverage,Shake,16.0,5146.48,614.72,38.27,9,612.38,4534.1,88.101
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0070,Choco Chip Shake - Large,Beverage,Shake,9.0,3238.16,385.11,42.62,9,383.6,2854.56,88.1539
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0071,Mixed Berry Shake - Regular,Beverage,Shake,11.0,3401.25,673.31,62.24,9,684.68,2716.57,79.8698
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0072,Mixed Berry Shake - Medium,Beverage,Shake,21.0,7168.24,1461.6,70.79,9,1486.57,5681.67,79.2617
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0073,Mixed Berry Shake - Large,Beverage,Shake,8.0,2969.46,624.16,79.37,9,634.92,2334.54,78.6183
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0074,Seasonal Smoothie - Regular,Beverage,Smoothie,11.0,3323.17,367.07,34.01,9,374.07,2949.1,88.7435
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0075,Seasonal Smoothie - Medium,Beverage,Smoothie,7.0,2335.51,263.13,38.32,9,268.22,2067.29,88.5157
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0076,Seasonal Smoothie - Large,Beverage,Smoothie,5.0,1874.41,209.15,42.66,9,213.29,1661.12,88.6211
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0077,Spicy Paneer Wrap,Food,Wraps,16.0,4302.74,1173.76,73.75,8,1179.96,3122.78,72.5766
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0078,Shredded Chicken Wrap,Food,Wraps,16.0,4615.09,1120.8,70.15,8,1122.35,3492.74,75.681
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0079,Smoked Chipotle Paneer Sandwich,Food,Sandwiches,26.0,7456.87,2357.16,90.3,8,2347.77,5109.1,68.5153
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0080,Pesto Veg Sandwich,Food,Sandwiches,24.0,6535.45,2204.64,92.09,8,2210.21,4325.24,66.1812
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0081,Pepper Chicken Sandwich,Food,Sandwiches,25.0,7765.09,2191.5,87.03,8,2175.64,5589.45,71.9818
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0082,Tandoori Chicken Sandwich,Food,Sandwiches,28.0,8751.4,2454.48,87.03,8,2436.72,6314.68,72.1563
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0083,Chilli Cheese Garlic Toast,Food,Toasts,7.0,1598.52,294.98,41.01,5,287.07,1311.45,82.0414
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0084,Chicken Pepperoni Avocado Toast,Food,Toasts,13.0,4201.75,891.02,68.11,6,885.39,3316.36,78.9281
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0085,Hummus and Pita Platter,Food,Platter,5.0,1536.69,227.25,45.9,6,229.52,1307.16,85.0637
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0086,Breakfast Pancakes,Food,Breakfast,20.0,5613.98,1337.8,68.25,5,1364.99,4248.99,75.6858
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0087,Cream Cheese Bagel,Food,Breakfast,17.0,4191.78,926.33,54.26,5,922.47,3269.31,77.9934
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0088,Scallion Pepper Cream Cheese Bagel,Food,Breakfast,17.0,4420.05,926.33,54.26,5,922.47,3497.58,79.1299
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0089,Masala Egg Bun,Food,Breakfast,11.0,2411.85,470.14,42.51,5,467.66,1944.19,80.61
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0090,Marinara Cheese Pin Wheels,Food,Snacks,5.0,1057.97,191.45,37.37,5,186.85,871.12,82.339
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0091,Pesto Sundried Tomato Pin Wheel,Food,Snacks,14.0,3099.22,588.56,41.13,5,575.87,2523.35,81.4187
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0092,Turnover with Brioche Dough Chicken,Food,Snacks,8.0,2020.27,700.32,83.33,5,666.61,1353.66,67.0038
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0093,Turnover with Brioche Dough Veg,Food,Snacks,10.0,2310.95,899.4,85.95,5,859.45,1451.5,62.8096
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0094,Butter Croissant,Food,Baked Goods,12.0,2292.56,696.48,54.59,4,655.06,1637.5,71.4267
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0095,Almond Croissant,Food,Baked Goods,12.0,2890.49,696.48,54.59,4,655.06,2235.43,77.3374
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0096,Chocolate Croissant,Food,Baked Goods,19.0,4392.29,1226.26,60.43,5,1148.11,3244.18,73.8607
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0097,Mushroom Cheese Croissant,Food,Baked Goods,17.0,4236.58,1272.28,69.83,5,1187.15,3049.43,71.9785
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0098,Sriracha Chicken Croissant,Food,Baked Goods,13.0,3508.83,1054.82,78.3,5,1017.87,2490.96,70.9912
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0099,Cinnamon Roll with Cream Cheese,Dessert,Baked Goods,18.0,3941.46,946.26,48.83,4,878.92,3062.54,77.7007
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0100,Banana Walnut Tea Cake,Dessert,Baked Goods,11.0,2210.9,677.71,62.62,5,688.84,1522.06,68.8436
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0101,Lemon Raspberry Tea Cake,Dessert,Baked Goods,16.0,3376.4,905.12,57.49,4,919.82,2456.58,72.7574
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0102,Double Chocolate Truffle Cake,Dessert,Desserts,19.0,5494.87,1198.33,63.33,5,1203.22,4291.65,78.1028
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0103,Banoffee Pie,Dessert,Desserts,21.0,5851.43,1187.97,57.49,4,1207.26,4644.17,79.3681
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0104,Classic Chocolate Fudge Brownie,Dessert,Desserts,19.0,3607.14,969.38,50.43,4,958.08,2649.06,73.4393
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0105,Soft-Centred Caramel Cookie,Dessert,Desserts,13.0,2314.28,598.26,46.97,5,610.6,1703.68,73.6159
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0106,Death by Chocolate Cookie,Dessert,Desserts,6.0,1126.37,285.12,47.75,5,286.47,839.9,74.5666
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0107,Jaggery Parmesan Cookie,Dessert,Desserts,10.0,1668.23,410.2,41.91,4,419.07,1249.16,74.8794
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0108,Apple Pie,Dessert,Desserts,10.0,2686.83,565.7,57.49,4,574.89,2111.94,78.6035
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0109,Basque Cheesecake,Dessert,Desserts,11.0,3343.58,908.27,84.6,4,930.55,2413.03,72.1691
+month_01,OUT001,ABNAH Cafe Connaught Place,MENU0110,Multigrain Walnut Tea Cake,Dessert,Baked Goods,22.0,4835.36,1244.54,57.49,4,1264.75,3570.61,73.8437
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0001,Espresso Shot - Solo,Beverage,Espresso,6.0,848.0,81.78,13.74,4,82.45,765.55,90.2773
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0002,Espresso Shot - Doppio,Beverage,Espresso,7.0,1240.02,148.89,21.51,4,150.54,1089.48,87.8599
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0003,Americano - Regular,Beverage,Coffee Classics,56.0,10205.86,1299.76,23.49,5,1315.29,8890.57,87.1124
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0004,Americano - Medium,Beverage,Coffee Classics,69.0,14273.85,1797.45,26.38,5,1820.08,12453.77,87.2489
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0005,Americano - Large,Beverage,Coffee Classics,40.0,9291.16,1156.4,29.28,5,1171.11,8120.05,87.3954
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0006,Latte - Regular,Beverage,Coffee Classics,56.0,12304.95,2025.52,36.78,6,2059.43,10245.52,83.2634
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0007,Latte - Medium,Beverage,Coffee Classics,53.0,12938.1,2170.88,41.66,6,2207.95,10730.15,82.9345
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0008,Latte - Large,Beverage,Coffee Classics,32.0,8609.69,1464.32,46.55,6,1489.68,7120.01,82.6976
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0009,Cappuccino - Regular,Beverage,Coffee Classics,60.0,13147.91,2170.2,36.78,6,2206.53,10941.38,83.2176
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0010,Cappuccino - Medium,Beverage,Coffee Classics,36.0,8818.81,1474.56,41.66,6,1499.74,7319.07,82.9939
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0011,Cappuccino - Large,Beverage,Coffee Classics,27.0,7196.14,1235.52,46.55,6,1256.92,5939.22,82.5335
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0012,Flat White - Regular,Beverage,Coffee Classics,43.0,9858.32,1555.31,36.78,6,1581.35,8276.97,83.9593
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0013,Flat White - Medium,Beverage,Coffee Classics,39.0,9983.91,1597.44,41.66,6,1624.72,8359.19,83.7267
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0014,Flat White - Large,Beverage,Coffee Classics,35.0,9890.52,1601.6,46.55,6,1629.34,8261.18,83.5263
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0015,Mocha - Regular,Beverage,Coffee Classics,41.0,9846.86,1749.47,42.61,7,1747.18,8099.68,82.2564
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0016,Mocha - Medium,Beverage,Coffee Classics,44.0,11668.06,2130.48,48.36,7,2127.94,9540.12,81.7627
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0017,Mocha - Large,Beverage,Coffee Classics,31.0,8936.35,1680.51,54.14,7,1678.43,7257.92,81.218
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0018,Sea Salt Mocha - Regular,Beverage,Signature Coffee,21.0,5633.7,896.07,42.61,7,894.9,4738.8,84.1153
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0019,Sea Salt Mocha - Medium,Beverage,Signature Coffee,15.0,4487.01,726.3,48.36,7,725.43,3761.58,83.8326
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0020,Sea Salt Mocha - Large,Beverage,Signature Coffee,5.0,1627.68,271.05,54.14,7,270.71,1356.97,83.3681
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0021,Orange Zest Mocha - Regular,Beverage,Signature Coffee,21.0,5600.49,896.07,42.61,7,894.9,4705.59,84.0211
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0022,Orange Zest Mocha - Medium,Beverage,Signature Coffee,20.0,5882.72,968.4,48.36,7,967.24,4915.48,83.5579
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0023,Orange Zest Mocha - Large,Beverage,Signature Coffee,17.0,5494.64,921.57,54.14,7,920.43,4574.21,83.2486
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0024,Caramel Macchiato - Regular,Beverage,Signature Coffee,19.0,4968.72,805.98,43.1,7,818.97,4149.75,83.5176
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0025,Caramel Macchiato - Medium,Beverage,Signature Coffee,22.0,6387.43,1058.86,48.92,7,1076.33,5311.1,83.1493
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0026,Caramel Macchiato - Large,Beverage,Signature Coffee,10.0,3177.1,538.8,54.78,7,547.79,2629.31,82.7582
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0027,French Vanilla Latte - Regular,Beverage,Signature Coffee,25.0,6486.5,1054.25,42.17,7,1054.13,5432.37,83.7489
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0028,French Vanilla Latte - Medium,Beverage,Signature Coffee,25.0,7277.84,1196.25,47.85,7,1196.16,6081.68,83.5643
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0029,French Vanilla Latte - Large,Beverage,Signature Coffee,14.0,4516.66,749.84,53.56,7,749.82,3766.84,83.3987
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0030,Vegan Iced Latte - Regular,Beverage,Signature Coffee,21.0,5879.57,1236.9,55.79,8,1171.57,4708.0,80.0739
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0031,Vegan Iced Latte - Medium,Beverage,Signature Coffee,25.0,7669.7,1673.75,63.38,8,1584.43,6085.27,79.3417
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0032,Vegan Iced Latte - Large,Beverage,Signature Coffee,17.0,5588.64,1275.34,70.97,8,1206.56,4382.08,78.4104
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0033,Classic Cold Brew - Regular,Beverage,Cold Brew,22.0,4826.18,563.2,25.95,7,570.88,4255.3,88.1712
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0034,Classic Cold Brew - Medium,Beverage,Cold Brew,14.0,3406.62,401.24,29.06,7,406.85,2999.77,88.0569
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0035,Classic Cold Brew - Large,Beverage,Cold Brew,9.0,2409.06,285.57,32.18,7,289.64,2119.42,87.977
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0036,Coffee Lemonade - Regular,Beverage,Cold Brew,19.0,4383.96,559.55,29.86,8,567.4,3816.56,87.0573
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0037,Coffee Lemonade - Medium,Beverage,Cold Brew,17.0,4273.02,562.53,33.57,8,570.66,3702.36,86.6451
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0038,Coffee Lemonade - Large,Beverage,Cold Brew,13.0,3640.06,477.49,37.27,8,484.52,3155.54,86.6892
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0039,Vietnamese Shakerato - Regular,Beverage,Cold Brew,18.0,4452.8,460.8,25.95,7,467.08,3985.72,89.5104
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0040,Vietnamese Shakerato - Medium,Beverage,Cold Brew,18.0,4971.2,515.88,29.06,7,523.1,4448.1,89.4774
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0041,Vietnamese Shakerato - Large,Beverage,Cold Brew,16.0,4780.9,507.68,32.18,7,514.92,4265.98,89.2297
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0042,Classic Cold Coffee - Regular,Beverage,Cold Coffee,47.0,11717.27,1812.32,39.24,8,1844.15,9873.12,84.2613
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0043,Classic Cold Coffee - Medium,Beverage,Cold Coffee,58.0,16454.75,2526.48,44.34,8,2571.86,13882.89,84.3701
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0044,Classic Cold Coffee - Large,Beverage,Cold Coffee,26.0,8338.7,1263.08,49.46,8,1285.88,7052.82,84.5793
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0045,Mocha Cold Coffee - Regular,Beverage,Cold Coffee,45.0,12530.02,2027.7,45.08,9,2028.42,10501.6,83.8115
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0046,Mocha Cold Coffee - Medium,Beverage,Cold Coffee,36.0,11414.49,1837.08,51.05,9,1837.63,9576.86,83.9009
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0047,Mocha Cold Coffee - Large,Beverage,Cold Coffee,20.0,6863.2,1140.6,57.05,9,1140.95,5722.25,83.3759
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0048,Caramel Cold Coffee - Regular,Beverage,Cold Coffee,45.0,12580.38,2016.45,45.57,9,2050.43,10529.95,83.7014
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0049,Caramel Cold Coffee - Medium,Beverage,Cold Coffee,30.0,9488.06,1522.2,51.61,9,1548.21,7939.85,83.6825
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0050,Caramel Cold Coffee - Large,Beverage,Cold Coffee,14.0,4887.91,793.8,57.68,9,807.57,4080.34,83.4783
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0051,Masala Chai Latte - Regular,Beverage,Tea,26.0,5016.57,940.42,36.78,6,956.16,4060.41,80.9399
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0052,Masala Chai Latte - Medium,Beverage,Tea,23.0,4977.6,942.08,41.66,6,958.17,4019.43,80.7505
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0053,Masala Chai Latte - Large,Beverage,Tea,15.0,3651.32,686.4,46.55,6,698.29,2953.03,80.8758
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0054,Himalayan Green Tea,Beverage,Tea,20.0,4124.26,173.4,8.72,5,174.49,3949.77,95.7691
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0055,Japanese Matcha Latte - Regular,Beverage,Tea,18.0,4627.52,651.06,36.78,6,661.96,3965.56,85.6952
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0056,Japanese Matcha Latte - Medium,Beverage,Tea,16.0,4649.24,655.36,41.66,6,666.55,3982.69,85.6633
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0057,Japanese Matcha Latte - Large,Beverage,Tea,12.0,3866.91,549.12,46.55,6,558.63,3308.28,85.5536
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0058,Lemon Iced Tea - Regular,Beverage,Iced Tea,29.0,5851.0,414.41,14.47,8,419.62,5431.38,92.8282
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0059,Lemon Iced Tea - Medium,Beverage,Iced Tea,23.0,5162.7,360.18,15.87,8,364.91,4797.79,92.9319
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0060,Lemon Iced Tea - Large,Beverage,Iced Tea,14.0,3493.51,238.42,17.26,8,241.63,3251.88,93.0835
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0061,Hibiscus Lime Iced Tea - Regular,Beverage,Iced Tea,34.0,7487.1,819.06,22.98,8,781.45,6705.65,89.5627
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0062,Hibiscus Lime Iced Tea - Medium,Beverage,Iced Tea,24.0,5837.38,646.56,25.67,8,616.05,5221.33,89.4464
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0063,Hibiscus Lime Iced Tea - Large,Beverage,Iced Tea,12.0,3260.06,357.24,28.33,8,339.93,2920.13,89.5729
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0064,Hot Chocolate - Regular,Beverage,Kids Beverage,6.0,1308.17,213.42,34.35,6,206.09,1102.08,84.2462
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0065,Hot Chocolate - Medium,Beverage,Kids Beverage,5.0,1202.4,201.35,38.87,6,194.34,1008.06,83.8376
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0066,Hot Chocolate - Large,Beverage,Kids Beverage,6.0,1578.91,269.88,43.4,6,260.38,1318.53,83.509
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0067,Babyccino - Regular,Beverage,Kids Beverage,4.0,639.4,56.84,14.43,5,57.72,581.68,90.9735
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0068,Choco Chip Shake - Regular,Beverage,Shake,16.0,4568.36,545.76,33.98,9,543.67,4024.69,88.0992
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0069,Choco Chip Shake - Medium,Beverage,Shake,14.0,4541.85,537.88,38.27,9,535.83,4006.02,88.2024
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0070,Choco Chip Shake - Large,Beverage,Shake,7.0,2492.02,299.53,42.62,9,298.35,2193.67,88.0277
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0071,Mixed Berry Shake - Regular,Beverage,Shake,14.0,4313.12,856.94,62.24,9,871.41,3441.71,79.7963
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0072,Mixed Berry Shake - Medium,Beverage,Shake,21.0,7268.67,1461.6,70.79,9,1486.57,5782.1,79.5482
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0073,Mixed Berry Shake - Large,Beverage,Shake,5.0,1898.18,390.1,79.37,9,396.83,1501.35,79.0944
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0074,Seasonal Smoothie - Regular,Beverage,Smoothie,9.0,2655.28,300.33,34.01,9,306.06,2349.22,88.4735
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0075,Seasonal Smoothie - Medium,Beverage,Smoothie,16.0,5332.61,601.44,38.32,9,613.07,4719.54,88.5034
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0076,Seasonal Smoothie - Large,Beverage,Smoothie,4.0,1453.17,167.32,42.66,9,170.63,1282.54,88.2581
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0077,Spicy Paneer Wrap,Food,Wraps,32.0,8568.82,2347.52,73.75,8,2359.91,6208.91,72.4593
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0078,Shredded Chicken Wrap,Food,Wraps,29.0,8408.95,2031.45,70.15,8,2034.25,6374.7,75.8085
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0079,Smoked Chipotle Paneer Sandwich,Food,Sandwiches,20.0,5732.87,1813.2,90.3,8,1805.98,3926.89,68.4978
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0080,Pesto Veg Sandwich,Food,Sandwiches,25.0,6873.59,2296.5,92.09,8,2302.3,4571.29,66.5051
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0081,Pepper Chicken Sandwich,Food,Sandwiches,14.0,4317.0,1227.24,87.03,8,1218.36,3098.64,71.7777
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0082,Tandoori Chicken Sandwich,Food,Sandwiches,24.0,7643.83,2103.84,87.03,8,2088.61,5555.22,72.6758
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0083,Chilli Cheese Garlic Toast,Food,Toasts,3.0,700.08,126.42,41.01,5,123.03,577.05,82.4262
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0084,Chicken Pepperoni Avocado Toast,Food,Toasts,12.0,3917.1,822.48,68.11,6,817.28,3099.82,79.1356
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0085,Hummus and Pita Platter,Food,Platter,6.0,1841.25,272.7,45.9,6,275.43,1565.82,85.0411
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0086,Breakfast Pancakes,Food,Breakfast,17.0,4717.57,1137.13,68.25,5,1160.24,3557.33,75.4059
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0087,Cream Cheese Bagel,Food,Breakfast,6.0,1481.3,326.94,54.26,5,325.58,1155.72,78.0208
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0088,Scallion Pepper Cream Cheese Bagel,Food,Breakfast,16.0,4076.04,871.84,54.26,5,868.21,3207.83,78.6997
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0089,Masala Egg Bun,Food,Breakfast,13.0,2869.42,555.62,42.51,5,552.69,2316.73,80.7387
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0090,Marinara Cheese Pin Wheels,Food,Snacks,18.0,3775.04,689.22,37.37,5,672.65,3102.39,82.1816
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0091,Pesto Sundried Tomato Pin Wheel,Food,Snacks,20.0,4398.46,840.8,41.13,5,822.68,3575.78,81.2962
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0092,Turnover with Brioche Dough Chicken,Food,Snacks,21.0,5203.02,1838.34,83.33,5,1749.85,3453.17,66.3685
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0093,Turnover with Brioche Dough Veg,Food,Snacks,12.0,2743.56,1079.28,85.95,5,1031.34,1712.22,62.4087
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0094,Butter Croissant,Food,Baked Goods,20.0,3856.09,1160.8,54.59,4,1091.77,2764.32,71.6872
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0095,Almond Croissant,Food,Baked Goods,17.0,4078.47,986.68,54.59,4,928.0,3150.47,77.2463
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0096,Chocolate Croissant,Food,Baked Goods,21.0,4788.31,1355.34,60.43,5,1268.97,3519.34,73.4986
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0097,Mushroom Cheese Croissant,Food,Baked Goods,21.0,5233.89,1571.64,69.83,5,1466.48,3767.41,71.981
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0098,Sriracha Chicken Croissant,Food,Baked Goods,19.0,5076.47,1541.66,78.3,5,1487.66,3588.81,70.695
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0099,Cinnamon Roll with Cream Cheese,Dessert,Baked Goods,25.0,5370.48,1314.25,48.83,4,1220.72,4149.76,77.2699
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0100,Banana Walnut Tea Cake,Dessert,Baked Goods,18.0,3600.5,1108.98,62.62,5,1127.19,2473.31,68.6936
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0101,Lemon Raspberry Tea Cake,Dessert,Baked Goods,14.0,2977.16,791.98,57.49,4,804.84,2172.32,72.9661
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0102,Double Chocolate Truffle Cake,Dessert,Desserts,21.0,6094.13,1324.47,63.33,5,1329.88,4764.25,78.1777
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0103,Banoffee Pie,Dessert,Desserts,18.0,5084.98,1018.26,57.49,4,1034.8,4050.18,79.6499
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0104,Classic Chocolate Fudge Brownie,Dessert,Desserts,19.0,3617.74,969.38,50.43,4,958.08,2659.66,73.5171
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0105,Soft-Centred Caramel Cookie,Dessert,Desserts,28.0,4960.65,1288.56,46.97,5,1315.14,3645.51,73.4885
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0106,Death by Chocolate Cookie,Dessert,Desserts,28.0,5205.93,1330.56,47.75,5,1336.88,3869.05,74.32
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0107,Jaggery Parmesan Cookie,Dessert,Desserts,19.0,3182.97,779.38,41.91,4,796.23,2386.74,74.9846
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0108,Apple Pie,Dessert,Desserts,13.0,3406.5,735.41,57.49,4,747.35,2659.15,78.061
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0109,Basque Cheesecake,Dessert,Desserts,21.0,6371.88,1733.97,84.6,4,1776.5,4595.38,72.1196
+month_01,OUT002,ABNAH Cafe Hauz Khas,MENU0110,Multigrain Walnut Tea Cake,Dessert,Baked Goods,18.0,3956.01,1018.26,57.49,4,1034.8,2921.21,73.8424
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0001,Espresso Shot - Solo,Beverage,Espresso,1.0,138.72,13.63,13.74,4,13.74,124.98,90.0941
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0002,Espresso Shot - Doppio,Beverage,Espresso,4.0,723.73,85.08,21.51,4,86.02,637.71,88.114
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0003,Americano - Regular,Beverage,Coffee Classics,46.0,8287.85,1067.66,23.49,5,1080.42,7207.43,86.9639
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0004,Americano - Medium,Beverage,Coffee Classics,48.0,9935.81,1250.4,26.38,5,1266.14,8669.67,87.2568
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0005,Americano - Large,Beverage,Coffee Classics,33.0,7617.67,954.03,29.28,5,966.17,6651.5,87.3168
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0006,Latte - Regular,Beverage,Coffee Classics,62.0,13704.85,2242.54,36.78,6,2280.08,11424.77,83.363
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0007,Latte - Medium,Beverage,Coffee Classics,51.0,12577.62,2088.96,41.66,6,2124.63,10452.99,83.1079
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0008,Latte - Large,Beverage,Coffee Classics,35.0,9399.04,1601.6,46.55,6,1629.34,7769.7,82.6649
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0009,Cappuccino - Regular,Beverage,Coffee Classics,52.0,11454.21,1880.84,36.78,6,1912.33,9541.88,83.3046
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0010,Cappuccino - Medium,Beverage,Coffee Classics,42.0,10243.42,1720.32,41.66,6,1749.69,8493.73,82.9189
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0011,Cappuccino - Large,Beverage,Coffee Classics,37.0,9975.36,1693.12,46.55,6,1722.44,8252.92,82.733
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0012,Flat White - Regular,Beverage,Coffee Classics,57.0,13130.74,2061.69,36.78,6,2096.2,11034.54,84.0359
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0013,Flat White - Medium,Beverage,Coffee Classics,47.0,12014.97,1925.12,41.66,6,1957.99,10056.98,83.7037
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0014,Flat White - Large,Beverage,Coffee Classics,27.0,7511.11,1235.52,46.55,6,1256.92,6254.19,83.2659
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0015,Mocha - Regular,Beverage,Coffee Classics,36.0,8624.81,1536.12,42.61,7,1534.11,7090.7,82.2128
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0016,Mocha - Medium,Beverage,Coffee Classics,59.0,15615.06,2856.78,48.36,7,2853.37,12761.69,81.7268
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0017,Mocha - Large,Beverage,Coffee Classics,31.0,8940.7,1680.51,54.14,7,1678.43,7262.27,81.2271
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0018,Sea Salt Mocha - Regular,Beverage,Signature Coffee,24.0,6433.48,1024.08,42.61,7,1022.74,5410.74,84.1028
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0019,Sea Salt Mocha - Medium,Beverage,Signature Coffee,33.0,9873.41,1597.86,48.36,7,1595.95,8277.46,83.8358
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0020,Sea Salt Mocha - Large,Beverage,Signature Coffee,24.0,7884.13,1301.04,54.14,7,1299.43,6584.7,83.5184
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0021,Orange Zest Mocha - Regular,Beverage,Signature Coffee,35.0,9164.63,1493.45,42.61,7,1491.5,7673.13,83.7255
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0022,Orange Zest Mocha - Medium,Beverage,Signature Coffee,29.0,8501.11,1404.18,48.36,7,1402.51,7098.6,83.5021
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0023,Orange Zest Mocha - Large,Beverage,Signature Coffee,28.0,9033.76,1517.88,54.14,7,1516.0,7517.76,83.2185
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0024,Caramel Macchiato - Regular,Beverage,Signature Coffee,27.0,6963.71,1145.34,43.1,7,1163.79,5799.92,83.2877
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0025,Caramel Macchiato - Medium,Beverage,Signature Coffee,34.0,9868.59,1636.42,48.92,7,1663.41,8205.18,83.1444
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0026,Caramel Macchiato - Large,Beverage,Signature Coffee,23.0,7309.81,1239.24,54.78,7,1259.91,6049.9,82.7641
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0027,French Vanilla Latte - Regular,Beverage,Signature Coffee,33.0,8523.89,1391.61,42.17,7,1391.45,7132.44,83.6759
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0028,French Vanilla Latte - Medium,Beverage,Signature Coffee,37.0,10613.31,1770.45,47.85,7,1770.32,8842.99,83.3198
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0029,French Vanilla Latte - Large,Beverage,Signature Coffee,19.0,6044.51,1017.64,53.56,7,1017.62,5026.89,83.1646
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0030,Vegan Iced Latte - Regular,Beverage,Signature Coffee,47.0,13216.29,2768.3,55.79,8,2622.08,10594.21,80.1602
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0031,Vegan Iced Latte - Medium,Beverage,Signature Coffee,34.0,10290.8,2276.3,63.38,8,2154.82,8135.98,79.0607
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0032,Vegan Iced Latte - Large,Beverage,Signature Coffee,30.0,9822.81,2250.6,70.97,8,2129.23,7693.58,78.3236
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0033,Classic Cold Brew - Regular,Beverage,Cold Brew,29.0,6372.85,742.4,25.95,7,752.52,5620.33,88.1918
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0034,Classic Cold Brew - Medium,Beverage,Cold Brew,19.0,4677.78,544.54,29.06,7,552.16,4125.62,88.1961
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0035,Classic Cold Brew - Large,Beverage,Cold Brew,16.0,4365.09,507.68,32.18,7,514.92,3850.17,88.2037
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0036,Coffee Lemonade - Regular,Beverage,Cold Brew,21.0,4831.28,618.45,29.86,8,627.13,4204.15,87.0194
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0037,Coffee Lemonade - Medium,Beverage,Cold Brew,11.0,2766.66,363.99,33.57,8,369.25,2397.41,86.6536
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0038,Coffee Lemonade - Large,Beverage,Cold Brew,14.0,3881.37,514.22,37.27,8,521.79,3359.58,86.5565
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0039,Vietnamese Shakerato - Regular,Beverage,Cold Brew,21.0,5273.03,537.6,25.95,7,544.93,4728.1,89.6657
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0040,Vietnamese Shakerato - Medium,Beverage,Cold Brew,22.0,6004.07,630.52,29.06,7,639.34,5364.73,89.3515
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0041,Vietnamese Shakerato - Large,Beverage,Cold Brew,12.0,3607.02,380.76,32.18,7,386.19,3220.83,89.2934
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0042,Classic Cold Coffee - Regular,Beverage,Cold Coffee,45.0,11211.24,1735.2,39.24,8,1765.67,9445.57,84.2509
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0043,Classic Cold Coffee - Medium,Beverage,Cold Coffee,35.0,9933.29,1524.6,44.34,8,1551.99,8381.3,84.3759
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0044,Classic Cold Coffee - Large,Beverage,Cold Coffee,30.0,9645.04,1457.4,49.46,8,1483.71,8161.33,84.6169
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0045,Mocha Cold Coffee - Regular,Beverage,Cold Coffee,24.0,6666.56,1081.44,45.08,9,1081.82,5584.74,83.7724
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0046,Mocha Cold Coffee - Medium,Beverage,Cold Coffee,36.0,11239.21,1837.08,51.05,9,1837.63,9401.58,83.6498
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0047,Mocha Cold Coffee - Large,Beverage,Cold Coffee,14.0,4829.81,798.42,57.05,9,798.66,4031.15,83.4639
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0048,Caramel Cold Coffee - Regular,Beverage,Cold Coffee,33.0,9140.09,1478.73,45.57,9,1503.65,7636.44,83.5488
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0049,Caramel Cold Coffee - Medium,Beverage,Cold Coffee,39.0,12204.99,1978.86,51.61,9,2012.67,10192.32,83.5094
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0050,Caramel Cold Coffee - Large,Beverage,Cold Coffee,16.0,5652.49,907.2,57.68,9,922.93,4729.56,83.6721
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0051,Masala Chai Latte - Regular,Beverage,Tea,25.0,4791.96,904.25,36.78,6,919.39,3872.57,80.814
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0052,Masala Chai Latte - Medium,Beverage,Tea,25.0,5372.55,1024.0,41.66,6,1041.48,4331.07,80.6147
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0053,Masala Chai Latte - Large,Beverage,Tea,17.0,4063.08,777.92,46.55,6,791.39,3271.69,80.5224
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0054,Himalayan Green Tea,Beverage,Tea,10.0,2051.96,86.7,8.72,5,87.25,1964.71,95.7482
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0055,Japanese Matcha Latte - Regular,Beverage,Tea,19.0,4926.21,687.23,36.78,6,698.73,4227.48,85.816
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0056,Japanese Matcha Latte - Medium,Beverage,Tea,20.0,5750.15,819.2,41.66,6,833.19,4916.96,85.5102
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0057,Japanese Matcha Latte - Large,Beverage,Tea,14.0,4440.65,640.64,46.55,6,651.73,3788.92,85.3234
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0058,Lemon Iced Tea - Regular,Beverage,Iced Tea,31.0,6272.68,442.99,14.47,8,448.56,5824.12,92.849
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0059,Lemon Iced Tea - Medium,Beverage,Iced Tea,18.0,4028.89,281.88,15.87,8,285.58,3743.31,92.9117
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0060,Lemon Iced Tea - Large,Beverage,Iced Tea,12.0,2980.06,204.36,17.26,8,207.11,2772.95,93.0501
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0061,Hibiscus Lime Iced Tea - Regular,Beverage,Iced Tea,7.0,1538.08,168.63,22.98,8,160.89,1377.19,89.5398
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0062,Hibiscus Lime Iced Tea - Medium,Beverage,Iced Tea,16.0,3953.73,431.04,25.67,8,410.7,3543.03,89.6123
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0063,Hibiscus Lime Iced Tea - Large,Beverage,Iced Tea,9.0,2431.44,267.93,28.33,8,254.95,2176.49,89.5145
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0064,Hot Chocolate - Regular,Beverage,Kids Beverage,3.0,625.26,106.71,34.35,6,103.04,522.22,83.52
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0065,Hot Chocolate - Medium,Beverage,Kids Beverage,7.0,1652.64,281.89,38.87,6,272.07,1380.57,83.5372
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0066,Hot Chocolate - Large,Beverage,Kids Beverage,2.0,526.05,89.96,43.4,6,86.79,439.26,83.5011
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0067,Babyccino - Regular,Beverage,Kids Beverage,7.0,1146.56,99.47,14.43,5,101.0,1045.56,91.1909
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0068,Choco Chip Shake - Regular,Beverage,Shake,12.0,3483.41,409.32,33.98,9,407.75,3075.66,88.2945
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0069,Choco Chip Shake - Medium,Beverage,Shake,26.0,8395.31,998.92,38.27,9,995.11,7400.2,88.1468
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0070,Choco Chip Shake - Large,Beverage,Shake,14.0,5083.96,599.06,42.62,9,596.71,4487.25,88.263
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0071,Mixed Berry Shake - Regular,Beverage,Shake,15.0,4630.04,918.15,62.24,9,933.65,3696.39,79.8349
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0072,Mixed Berry Shake - Medium,Beverage,Shake,25.0,8524.87,1740.0,70.79,9,1769.73,6755.14,79.2404
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0073,Mixed Berry Shake - Large,Beverage,Shake,12.0,4522.79,936.24,79.37,9,952.38,3570.41,78.9426
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0074,Seasonal Smoothie - Regular,Beverage,Smoothie,15.0,4513.18,500.55,34.01,9,510.1,4003.08,88.6975
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0075,Seasonal Smoothie - Medium,Beverage,Smoothie,15.0,4926.18,563.85,38.32,9,574.75,4351.43,88.3327
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0076,Seasonal Smoothie - Large,Beverage,Smoothie,12.0,4412.64,501.96,42.66,9,511.89,3900.75,88.3995
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0077,Spicy Paneer Wrap,Food,Wraps,28.0,7527.6,2054.08,73.75,8,2064.92,5462.68,72.5686
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0078,Shredded Chicken Wrap,Food,Wraps,29.0,8321.63,2031.45,70.15,8,2034.25,6287.38,75.5546
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0079,Smoked Chipotle Paneer Sandwich,Food,Sandwiches,19.0,5497.38,1722.54,90.3,8,1715.68,3781.7,68.791
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0080,Pesto Veg Sandwich,Food,Sandwiches,23.0,6256.85,2112.78,92.09,8,2118.12,4138.73,66.1472
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0081,Pepper Chicken Sandwich,Food,Sandwiches,22.0,6780.15,1928.52,87.03,8,1914.56,4865.59,71.7622
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0082,Tandoori Chicken Sandwich,Food,Sandwiches,21.0,6559.19,1840.86,87.03,8,1827.54,4731.65,72.1378
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0083,Chilli Cheese Garlic Toast,Food,Toasts,5.0,1161.63,210.7,41.01,5,205.05,956.58,82.348
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0084,Chicken Pepperoni Avocado Toast,Food,Toasts,9.0,2931.4,616.86,68.11,6,612.96,2318.44,79.0898
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0085,Hummus and Pita Platter,Food,Platter,3.0,900.2,136.35,45.9,6,137.72,762.48,84.7017
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0086,Breakfast Pancakes,Food,Breakfast,17.0,4776.32,1137.13,68.25,5,1160.24,3616.08,75.7084
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0087,Cream Cheese Bagel,Food,Breakfast,12.0,2937.05,653.88,54.26,5,651.16,2285.89,77.8296
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0088,Scallion Pepper Cream Cheese Bagel,Food,Breakfast,13.0,3350.16,708.37,54.26,5,705.42,2644.74,78.9437
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0089,Masala Egg Bun,Food,Breakfast,18.0,4003.38,769.32,42.51,5,765.26,3238.12,80.8847
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0090,Marinara Cheese Pin Wheels,Food,Snacks,10.0,2107.33,382.9,37.37,5,373.7,1733.63,82.2668
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0091,Pesto Sundried Tomato Pin Wheel,Food,Snacks,12.0,2601.97,504.48,41.13,5,493.61,2108.36,81.0295
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0092,Turnover with Brioche Dough Chicken,Food,Snacks,11.0,2764.89,962.94,83.33,5,916.59,1848.3,66.8489
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0093,Turnover with Brioche Dough Veg,Food,Snacks,9.0,2127.34,809.46,85.95,5,773.51,1353.83,63.6398
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0094,Butter Croissant,Food,Baked Goods,29.0,5586.35,1683.16,54.59,4,1583.06,4003.29,71.662
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0095,Almond Croissant,Food,Baked Goods,24.0,5719.53,1392.96,54.59,4,1310.12,4409.41,77.0939
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0096,Chocolate Croissant,Food,Baked Goods,20.0,4617.63,1290.8,60.43,5,1208.54,3409.09,73.8277
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0097,Mushroom Cheese Croissant,Food,Baked Goods,25.0,6174.46,1871.0,69.83,5,1745.81,4428.65,71.7252
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0098,Sriracha Chicken Croissant,Food,Baked Goods,24.0,6430.86,1947.36,78.3,5,1879.15,4551.71,70.7792
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0099,Cinnamon Roll with Cream Cheese,Dessert,Baked Goods,20.0,4291.2,1051.4,48.83,4,976.57,3314.63,77.2424
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0100,Banana Walnut Tea Cake,Dessert,Baked Goods,31.0,6233.5,1909.91,62.62,5,1941.27,4292.23,68.8575
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0101,Lemon Raspberry Tea Cake,Dessert,Baked Goods,30.0,6290.82,1697.1,57.49,4,1724.66,4566.16,72.5845
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0102,Double Chocolate Truffle Cake,Dessert,Desserts,32.0,9327.82,2018.24,63.33,5,2026.48,7301.34,78.2749
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0103,Banoffee Pie,Dessert,Desserts,19.0,5262.06,1074.83,57.49,4,1092.29,4169.77,79.2423
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0104,Classic Chocolate Fudge Brownie,Dessert,Desserts,31.0,5867.67,1581.62,50.43,4,1563.18,4304.49,73.3594
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0105,Soft-Centred Caramel Cookie,Dessert,Desserts,20.0,3504.31,920.4,46.97,5,939.39,2564.92,73.1934
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0106,Death by Chocolate Cookie,Dessert,Desserts,28.0,5176.41,1330.56,47.75,5,1336.88,3839.53,74.1736
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0107,Jaggery Parmesan Cookie,Dessert,Desserts,25.0,4189.78,1025.5,41.91,4,1047.68,3142.1,74.9945
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0108,Apple Pie,Dessert,Desserts,25.0,6659.0,1414.25,57.49,4,1437.22,5221.78,78.4169
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0109,Basque Cheesecake,Dessert,Desserts,34.0,10252.42,2807.38,84.6,4,2876.24,7376.18,71.9457
+month_01,OUT003,ABNAH Cafe Saket Premium,MENU0110,Multigrain Walnut Tea Cake,Dessert,Baked Goods,24.0,5322.17,1357.68,57.49,4,1379.73,3942.44,74.0758
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0001,Espresso Shot - Solo,Beverage,Espresso,5.0,717.69,68.15,13.74,4,68.71,648.98,90.4266
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0002,Espresso Shot - Doppio,Beverage,Espresso,4.0,715.98,85.08,21.51,4,86.02,629.96,87.9854
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0003,Americano - Regular,Beverage,Coffee Classics,69.0,12432.46,1601.49,23.49,5,1620.62,10811.84,86.9646
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0004,Americano - Medium,Beverage,Coffee Classics,69.0,14295.04,1797.45,26.38,5,1820.08,12474.96,87.2678
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0005,Americano - Large,Beverage,Coffee Classics,53.0,12199.14,1532.23,29.28,5,1551.72,10647.42,87.2801
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0006,Latte - Regular,Beverage,Coffee Classics,59.0,13027.32,2134.03,36.78,6,2169.75,10857.57,83.3446
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0007,Latte - Medium,Beverage,Coffee Classics,72.0,17584.34,2949.12,41.66,6,2999.47,14584.87,82.9424
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0008,Latte - Large,Beverage,Coffee Classics,46.0,12286.49,2104.96,46.55,6,2141.41,10145.08,82.571
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0009,Cappuccino - Regular,Beverage,Coffee Classics,65.0,14322.47,2351.05,36.78,6,2390.41,11932.06,83.3101
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0010,Cappuccino - Medium,Beverage,Coffee Classics,68.0,16552.87,2785.28,41.66,6,2832.84,13720.03,82.8861
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0011,Cappuccino - Large,Beverage,Coffee Classics,33.0,8874.22,1510.08,46.55,6,1536.23,7337.99,82.6888
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0012,Flat White - Regular,Beverage,Coffee Classics,66.0,15264.65,2387.22,36.78,6,2427.18,12837.47,84.0993
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0013,Flat White - Medium,Beverage,Coffee Classics,61.0,15436.74,2498.56,41.66,6,2541.22,12895.52,83.5378
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0014,Flat White - Large,Beverage,Coffee Classics,46.0,12977.16,2104.96,46.55,6,2141.41,10835.75,83.4986
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0015,Mocha - Regular,Beverage,Coffee Classics,53.0,12714.35,2261.51,42.61,7,2258.55,10455.8,82.2362
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0016,Mocha - Medium,Beverage,Coffee Classics,56.0,14896.84,2711.52,48.36,7,2708.29,12188.55,81.8197
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0017,Mocha - Large,Beverage,Coffee Classics,39.0,11376.9,2114.19,54.14,7,2111.57,9265.33,81.4398
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0018,Sea Salt Mocha - Regular,Beverage,Signature Coffee,36.0,9665.07,1536.12,42.61,7,1534.11,8130.96,84.1272
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0019,Sea Salt Mocha - Medium,Beverage,Signature Coffee,29.0,8613.0,1404.18,48.36,7,1402.51,7210.49,83.7164
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0020,Sea Salt Mocha - Large,Beverage,Signature Coffee,21.0,6871.06,1138.41,54.14,7,1137.0,5734.06,83.4523
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0021,Orange Zest Mocha - Regular,Beverage,Signature Coffee,18.0,4770.13,768.06,42.61,7,767.06,4003.07,83.9196
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0022,Orange Zest Mocha - Medium,Beverage,Signature Coffee,26.0,7530.81,1258.92,48.36,7,1257.42,6273.39,83.303
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0023,Orange Zest Mocha - Large,Beverage,Signature Coffee,14.0,4551.33,758.94,54.14,7,758.0,3793.33,83.3455
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0024,Caramel Macchiato - Regular,Beverage,Signature Coffee,27.0,7012.19,1145.34,43.1,7,1163.79,5848.4,83.4033
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0025,Caramel Macchiato - Medium,Beverage,Signature Coffee,24.0,6983.19,1155.12,48.92,7,1174.17,5809.02,83.1857
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0026,Caramel Macchiato - Large,Beverage,Signature Coffee,23.0,7340.75,1239.24,54.78,7,1259.91,6080.84,82.8367
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0027,French Vanilla Latte - Regular,Beverage,Signature Coffee,31.0,8055.98,1307.27,42.17,7,1307.12,6748.86,83.7746
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0028,French Vanilla Latte - Medium,Beverage,Signature Coffee,31.0,8902.18,1483.35,47.85,7,1483.24,7418.94,83.3384
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0029,French Vanilla Latte - Large,Beverage,Signature Coffee,17.0,5418.02,910.52,53.56,7,910.5,4507.52,83.195
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0030,Vegan Iced Latte - Regular,Beverage,Signature Coffee,21.0,5877.78,1236.9,55.79,8,1171.57,4706.21,80.0678
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0031,Vegan Iced Latte - Medium,Beverage,Signature Coffee,31.0,9511.43,2075.45,63.38,8,1964.69,7546.74,79.3439
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0032,Vegan Iced Latte - Large,Beverage,Signature Coffee,15.0,4958.37,1125.3,70.97,8,1064.62,3893.75,78.5289
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0033,Classic Cold Brew - Regular,Beverage,Cold Brew,20.0,4447.35,512.0,25.95,7,518.98,3928.37,88.3306
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0034,Classic Cold Brew - Medium,Beverage,Cold Brew,12.0,2957.96,343.92,29.06,7,348.73,2609.23,88.2104
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0035,Classic Cold Brew - Large,Beverage,Cold Brew,19.0,5090.86,602.87,32.18,7,611.46,4479.4,87.989
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0036,Coffee Lemonade - Regular,Beverage,Cold Brew,20.0,4596.91,589.0,29.86,8,597.27,3999.64,87.0072
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0037,Coffee Lemonade - Medium,Beverage,Cold Brew,21.0,5340.81,694.89,33.57,8,704.93,4635.88,86.8011
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0038,Coffee Lemonade - Large,Beverage,Cold Brew,12.0,3304.83,440.76,37.27,8,447.25,2857.58,86.4667
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0039,Vietnamese Shakerato - Regular,Beverage,Cold Brew,18.0,4504.8,460.8,25.95,7,467.08,4037.72,89.6315
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0040,Vietnamese Shakerato - Medium,Beverage,Cold Brew,13.0,3542.15,372.58,29.06,7,377.79,3164.36,89.3343
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0041,Vietnamese Shakerato - Large,Beverage,Cold Brew,10.0,2988.8,317.3,32.18,7,321.82,2666.98,89.2324
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0042,Classic Cold Coffee - Regular,Beverage,Cold Coffee,39.0,9645.62,1503.84,39.24,8,1530.25,8115.37,84.1353
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0043,Classic Cold Coffee - Medium,Beverage,Cold Coffee,28.0,7955.72,1219.68,44.34,8,1241.59,6714.13,84.3938
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0044,Classic Cold Coffee - Large,Beverage,Cold Coffee,12.0,3860.8,582.96,49.46,8,593.48,3267.32,84.628
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0045,Mocha Cold Coffee - Regular,Beverage,Cold Coffee,32.0,9019.31,1441.92,45.08,9,1442.43,7576.88,84.0073
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0046,Mocha Cold Coffee - Medium,Beverage,Cold Coffee,23.0,7253.97,1173.69,51.05,9,1174.04,6079.93,83.8152
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0047,Mocha Cold Coffee - Large,Beverage,Cold Coffee,11.0,3755.28,627.33,57.05,9,627.52,3127.76,83.2896
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0048,Caramel Cold Coffee - Regular,Beverage,Cold Coffee,17.0,4732.16,761.77,45.57,9,774.61,3957.55,83.631
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0049,Caramel Cold Coffee - Medium,Beverage,Cold Coffee,21.0,6546.84,1065.54,51.61,9,1083.75,5463.09,83.4463
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0050,Caramel Cold Coffee - Large,Beverage,Cold Coffee,17.0,5884.48,963.9,57.68,9,980.62,4903.86,83.3355
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0051,Masala Chai Latte - Regular,Beverage,Tea,25.0,4725.78,904.25,36.78,6,919.39,3806.39,80.5453
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0052,Masala Chai Latte - Medium,Beverage,Tea,31.0,6674.39,1269.76,41.66,6,1291.44,5382.95,80.6508
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0053,Masala Chai Latte - Large,Beverage,Tea,16.0,3811.93,732.16,46.55,6,744.84,3067.09,80.4603
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0054,Himalayan Green Tea,Beverage,Tea,24.0,4971.36,208.08,8.72,5,209.39,4761.97,95.7881
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0055,Japanese Matcha Latte - Regular,Beverage,Tea,31.0,8029.71,1121.27,36.78,6,1140.04,6889.67,85.8022
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0056,Japanese Matcha Latte - Medium,Beverage,Tea,20.0,5819.13,819.2,41.66,6,833.19,4985.94,85.6819
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0057,Japanese Matcha Latte - Large,Beverage,Tea,23.0,7320.19,1052.48,46.55,6,1070.71,6249.48,85.3732
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0058,Lemon Iced Tea - Regular,Beverage,Iced Tea,21.0,4193.49,300.09,14.47,8,303.86,3889.63,92.7539
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0059,Lemon Iced Tea - Medium,Beverage,Iced Tea,26.0,5844.95,407.16,15.87,8,412.5,5432.45,92.9426
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0060,Lemon Iced Tea - Large,Beverage,Iced Tea,9.0,2277.52,153.27,17.26,8,155.33,2122.19,93.1797
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0061,Hibiscus Lime Iced Tea - Regular,Beverage,Iced Tea,20.0,4429.49,481.8,22.98,8,459.68,3969.81,89.6224
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0062,Hibiscus Lime Iced Tea - Medium,Beverage,Iced Tea,19.0,4643.36,511.86,25.67,8,487.71,4155.65,89.4967
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0063,Hibiscus Lime Iced Tea - Large,Beverage,Iced Tea,8.0,2154.65,238.16,28.33,8,226.62,1928.03,89.4822
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0064,Hot Chocolate - Regular,Beverage,Kids Beverage,4.0,849.54,142.28,34.35,6,137.39,712.15,83.8276
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0065,Hot Chocolate - Medium,Beverage,Kids Beverage,4.0,983.16,161.08,38.87,6,155.47,827.69,84.1868
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0066,Hot Chocolate - Large,Beverage,Kids Beverage,3.0,779.39,134.94,43.4,6,130.19,649.2,83.2961
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0067,Babyccino - Regular,Beverage,Kids Beverage,7.0,1126.85,99.47,14.43,5,101.0,1025.85,91.0368
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0068,Choco Chip Shake - Regular,Beverage,Shake,17.0,4895.09,579.87,33.98,9,577.65,4317.44,88.1994
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0069,Choco Chip Shake - Medium,Beverage,Shake,10.0,3234.78,384.2,38.27,9,382.74,2852.04,88.1681
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0070,Choco Chip Shake - Large,Beverage,Shake,9.0,3228.72,385.11,42.62,9,383.6,2845.12,88.1192
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0071,Mixed Berry Shake - Regular,Beverage,Shake,17.0,5305.26,1040.57,62.24,9,1058.14,4247.12,80.0549
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0072,Mixed Berry Shake - Medium,Beverage,Shake,15.0,5081.78,1044.0,70.79,9,1061.84,4019.94,79.105
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0073,Mixed Berry Shake - Large,Beverage,Shake,7.0,2672.98,546.14,79.37,9,555.56,2117.42,79.2158
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0074,Seasonal Smoothie - Regular,Beverage,Smoothie,4.0,1176.25,133.48,34.01,9,136.03,1040.22,88.4355
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0075,Seasonal Smoothie - Medium,Beverage,Smoothie,10.0,3333.67,375.9,38.32,9,383.17,2950.5,88.5061
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0076,Seasonal Smoothie - Large,Beverage,Smoothie,7.0,2562.72,292.81,42.66,9,298.6,2264.12,88.3482
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0077,Spicy Paneer Wrap,Food,Wraps,16.0,4325.44,1173.76,73.75,8,1179.96,3145.48,72.7205
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0078,Shredded Chicken Wrap,Food,Wraps,13.0,3739.02,910.65,70.15,8,911.91,2827.11,75.6111
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0079,Smoked Chipotle Paneer Sandwich,Food,Sandwiches,27.0,7817.87,2447.82,90.3,8,2438.07,5379.8,68.8141
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0080,Pesto Veg Sandwich,Food,Sandwiches,28.0,7718.77,2572.08,92.09,8,2578.58,5140.19,66.5934
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0081,Pepper Chicken Sandwich,Food,Sandwiches,25.0,7850.93,2191.5,87.03,8,2175.64,5675.29,72.2881
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0082,Tandoori Chicken Sandwich,Food,Sandwiches,32.0,10002.32,2805.12,87.03,8,2784.82,7217.5,72.1583
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0083,Chilli Cheese Garlic Toast,Food,Toasts,4.0,915.77,168.56,41.01,5,164.04,751.73,82.0871
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0084,Chicken Pepperoni Avocado Toast,Food,Toasts,10.0,3230.03,685.4,68.11,6,681.07,2548.96,78.9145
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0085,Hummus and Pita Platter,Food,Platter,5.0,1530.6,227.25,45.9,6,229.52,1301.07,85.0042
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0086,Breakfast Pancakes,Food,Breakfast,19.0,5308.67,1270.91,68.25,5,1296.74,4011.93,75.5731
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0087,Cream Cheese Bagel,Food,Breakfast,22.0,5322.02,1198.78,54.26,5,1193.78,4128.24,77.569
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0088,Scallion Pepper Cream Cheese Bagel,Food,Breakfast,19.0,4954.5,1035.31,54.26,5,1031.0,3923.5,79.1907
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0089,Masala Egg Bun,Food,Breakfast,16.0,3534.15,683.84,42.51,5,680.23,2853.92,80.7527
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0090,Marinara Cheese Pin Wheels,Food,Snacks,9.0,1888.38,344.61,37.37,5,336.33,1552.05,82.1897
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0091,Pesto Sundried Tomato Pin Wheel,Food,Snacks,7.0,1554.88,294.28,41.13,5,287.94,1266.94,81.4817
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0092,Turnover with Brioche Dough Chicken,Food,Snacks,8.0,2026.68,700.32,83.33,5,666.61,1360.07,67.1082
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0093,Turnover with Brioche Dough Veg,Food,Snacks,13.0,3020.24,1169.22,85.95,5,1117.29,1902.95,63.0067
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0094,Butter Croissant,Food,Baked Goods,21.0,4024.51,1218.84,54.59,4,1146.35,2878.16,71.5157
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0095,Almond Croissant,Food,Baked Goods,15.0,3586.68,870.6,54.59,4,818.82,2767.86,77.1704
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0096,Chocolate Croissant,Food,Baked Goods,19.0,4374.76,1226.26,60.43,5,1148.11,3226.65,73.756
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0097,Mushroom Cheese Croissant,Food,Baked Goods,18.0,4467.4,1347.12,69.83,5,1256.99,3210.41,71.8631
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0098,Sriracha Chicken Croissant,Food,Baked Goods,16.0,4346.25,1298.24,78.3,5,1252.76,3093.49,71.176
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0099,Cinnamon Roll with Cream Cheese,Dessert,Baked Goods,14.0,3039.13,735.98,48.83,4,683.6,2355.53,77.5067
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0100,Banana Walnut Tea Cake,Dessert,Baked Goods,16.0,3252.1,985.76,62.62,5,1001.94,2250.16,69.1908
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0101,Lemon Raspberry Tea Cake,Dessert,Baked Goods,13.0,2728.62,735.41,57.49,4,747.35,1981.27,72.6106
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0102,Double Chocolate Truffle Cake,Dessert,Desserts,7.0,2006.66,441.49,63.33,5,443.29,1563.37,77.909
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0103,Banoffee Pie,Dessert,Desserts,15.0,4182.25,848.55,57.49,4,862.33,3319.92,79.3812
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0104,Classic Chocolate Fudge Brownie,Dessert,Desserts,9.0,1745.59,459.18,50.43,4,453.83,1291.76,74.0015
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0105,Soft-Centred Caramel Cookie,Dessert,Desserts,12.0,2128.67,552.24,46.97,5,563.63,1565.04,73.5218
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0106,Death by Chocolate Cookie,Dessert,Desserts,19.0,3528.22,902.88,47.75,5,907.17,2621.05,74.2882
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0107,Jaggery Parmesan Cookie,Dessert,Desserts,16.0,2649.77,656.32,41.91,4,670.51,1979.26,74.6955
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0108,Apple Pie,Dessert,Desserts,11.0,2925.12,622.27,57.49,4,632.38,2292.74,78.3812
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0109,Basque Cheesecake,Dessert,Desserts,11.0,3357.85,908.27,84.6,4,930.55,2427.3,72.2874
+month_02,OUT001,ABNAH Cafe Connaught Place,MENU0110,Multigrain Walnut Tea Cake,Dessert,Baked Goods,11.0,2455.26,622.27,57.49,4,632.38,1822.88,74.244
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0001,Espresso Shot - Solo,Beverage,Espresso,5.0,708.65,68.15,13.74,4,68.71,639.94,90.3045
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0002,Espresso Shot - Doppio,Beverage,Espresso,3.0,532.77,63.81,21.51,4,64.52,468.25,87.8903
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0003,Americano - Regular,Beverage,Coffee Classics,59.0,10720.04,1369.39,23.49,5,1385.75,9334.29,87.0733
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0004,Americano - Medium,Beverage,Coffee Classics,46.0,9409.13,1198.3,26.38,5,1213.38,8195.75,87.1042
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0005,Americano - Large,Beverage,Coffee Classics,27.0,6245.09,780.57,29.28,5,790.5,5454.59,87.342
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0006,Latte - Regular,Beverage,Coffee Classics,63.0,13863.74,2278.71,36.78,6,2316.86,11546.88,83.2884
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0007,Latte - Medium,Beverage,Coffee Classics,58.0,14225.31,2375.68,41.66,6,2416.24,11809.07,83.0145
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0008,Latte - Large,Beverage,Coffee Classics,38.0,10158.96,1738.88,46.55,6,1768.99,8389.97,82.5869
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0009,Cappuccino - Regular,Beverage,Coffee Classics,53.0,11696.79,1917.01,36.78,6,1949.1,9747.69,83.3364
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0010,Cappuccino - Medium,Beverage,Coffee Classics,46.0,11308.26,1884.16,41.66,6,1916.33,9391.93,83.0537
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0011,Cappuccino - Large,Beverage,Coffee Classics,33.0,8836.24,1510.08,46.55,6,1536.23,7300.01,82.6144
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0012,Flat White - Regular,Beverage,Coffee Classics,47.0,10808.48,1699.99,36.78,6,1728.45,9080.03,84.0084
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0013,Flat White - Medium,Beverage,Coffee Classics,41.0,10374.91,1679.36,41.66,6,1708.03,8666.88,83.5369
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0014,Flat White - Large,Beverage,Coffee Classics,31.0,8628.59,1418.56,46.55,6,1443.13,7185.46,83.2751
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0015,Mocha - Regular,Beverage,Coffee Classics,38.0,9156.27,1621.46,42.61,7,1619.34,7536.93,82.3144
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0016,Mocha - Medium,Beverage,Coffee Classics,28.0,7424.97,1355.76,48.36,7,1354.14,6070.83,81.7623
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0017,Mocha - Large,Beverage,Coffee Classics,25.0,7152.83,1355.25,54.14,7,1353.57,5799.26,81.0764
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0018,Sea Salt Mocha - Regular,Beverage,Signature Coffee,15.0,4035.82,640.05,42.61,7,639.21,3396.61,84.1615
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0019,Sea Salt Mocha - Medium,Beverage,Signature Coffee,13.0,3919.58,629.46,48.36,7,628.71,3290.87,83.9598
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0020,Sea Salt Mocha - Large,Beverage,Signature Coffee,9.0,2960.71,487.89,54.14,7,487.29,2473.42,83.5416
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0021,Orange Zest Mocha - Regular,Beverage,Signature Coffee,10.0,2628.1,426.7,42.61,7,426.14,2201.96,83.7852
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0022,Orange Zest Mocha - Medium,Beverage,Signature Coffee,15.0,4438.1,726.3,48.36,7,725.43,3712.67,83.6544
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0023,Orange Zest Mocha - Large,Beverage,Signature Coffee,3.0,959.9,162.63,54.14,7,162.43,797.47,83.0786
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0024,Caramel Macchiato - Regular,Beverage,Signature Coffee,17.0,4379.41,721.14,43.1,7,732.76,3646.65,83.2681
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0025,Caramel Macchiato - Medium,Beverage,Signature Coffee,23.0,6640.36,1106.99,48.92,7,1125.25,5515.11,83.0544
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0026,Caramel Macchiato - Large,Beverage,Signature Coffee,9.0,2845.6,484.92,54.78,7,493.01,2352.59,82.6747
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0027,French Vanilla Latte - Regular,Beverage,Signature Coffee,21.0,5455.54,885.57,42.17,7,885.47,4570.07,83.7694
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0028,French Vanilla Latte - Medium,Beverage,Signature Coffee,18.0,5174.15,861.3,47.85,7,861.24,4312.91,83.355
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0029,French Vanilla Latte - Large,Beverage,Signature Coffee,9.0,2851.95,482.04,53.56,7,482.03,2369.92,83.0982
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0030,Vegan Iced Latte - Regular,Beverage,Signature Coffee,18.0,5011.78,1060.2,55.79,8,1004.2,4007.58,79.9632
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0031,Vegan Iced Latte - Medium,Beverage,Signature Coffee,23.0,6988.5,1539.85,63.38,8,1457.67,5530.83,79.1418
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0032,Vegan Iced Latte - Large,Beverage,Signature Coffee,15.0,4878.39,1125.3,70.97,8,1064.62,3813.77,78.1769
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0033,Classic Cold Brew - Regular,Beverage,Cold Brew,21.0,4603.87,537.6,25.95,7,544.93,4058.94,88.1637
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0034,Classic Cold Brew - Medium,Beverage,Cold Brew,24.0,5900.71,687.84,29.06,7,697.47,5203.24,88.18
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0035,Classic Cold Brew - Large,Beverage,Cold Brew,12.0,3281.17,380.76,32.18,7,386.19,2894.98,88.2302
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0036,Coffee Lemonade - Regular,Beverage,Cold Brew,18.0,4113.93,530.1,29.86,8,537.54,3576.39,86.9337
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0037,Coffee Lemonade - Medium,Beverage,Cold Brew,15.0,3778.38,496.35,33.57,8,503.52,3274.86,86.6736
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0038,Coffee Lemonade - Large,Beverage,Cold Brew,18.0,5047.19,661.14,37.27,8,670.88,4376.31,86.7079
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0039,Vietnamese Shakerato - Regular,Beverage,Cold Brew,22.0,5522.03,563.2,25.95,7,570.88,4951.15,89.6618
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0040,Vietnamese Shakerato - Medium,Beverage,Cold Brew,20.0,5552.22,573.2,29.06,7,581.22,4971.0,89.5317
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0041,Vietnamese Shakerato - Large,Beverage,Cold Brew,3.0,870.34,95.19,32.18,7,96.55,773.79,88.907
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0042,Classic Cold Coffee - Regular,Beverage,Cold Coffee,60.0,15021.69,2313.6,39.24,8,2354.23,12667.46,84.3278
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0043,Classic Cold Coffee - Medium,Beverage,Cold Coffee,63.0,17739.06,2744.28,44.34,8,2793.58,14945.48,84.2518
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0044,Classic Cold Coffee - Large,Beverage,Cold Coffee,35.0,11170.09,1700.3,49.46,8,1730.99,9439.1,84.5033
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0045,Mocha Cold Coffee - Regular,Beverage,Cold Coffee,53.0,14681.84,2388.18,45.08,9,2389.02,12292.82,83.728
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0046,Mocha Cold Coffee - Medium,Beverage,Cold Coffee,32.0,10010.36,1632.96,51.05,9,1633.45,8376.91,83.6824
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0047,Mocha Cold Coffee - Large,Beverage,Cold Coffee,26.0,9049.99,1482.78,57.05,9,1483.23,7566.76,83.6107
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0048,Caramel Cold Coffee - Regular,Beverage,Cold Coffee,43.0,12121.96,1926.83,45.57,9,1959.3,10162.66,83.8368
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0049,Caramel Cold Coffee - Medium,Beverage,Cold Coffee,32.0,9872.36,1623.68,51.61,9,1651.42,8220.94,83.2723
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0050,Caramel Cold Coffee - Large,Beverage,Cold Coffee,19.0,6624.35,1077.3,57.68,9,1095.98,5528.37,83.4552
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0051,Masala Chai Latte - Regular,Beverage,Tea,26.0,4962.09,940.42,36.78,6,956.16,4005.93,80.7306
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0052,Masala Chai Latte - Medium,Beverage,Tea,26.0,5542.15,1064.96,41.66,6,1083.14,4459.01,80.4563
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0053,Masala Chai Latte - Large,Beverage,Tea,8.0,1926.1,366.08,46.55,6,372.42,1553.68,80.6646
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0054,Himalayan Green Tea,Beverage,Tea,19.0,3901.87,164.73,8.72,5,165.77,3736.1,95.7516
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0055,Japanese Matcha Latte - Regular,Beverage,Tea,20.0,5249.49,723.4,36.78,6,735.51,4513.98,85.9889
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0056,Japanese Matcha Latte - Medium,Beverage,Tea,13.0,3768.45,532.48,41.66,6,541.57,3226.88,85.6288
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0057,Japanese Matcha Latte - Large,Beverage,Tea,12.0,3856.65,549.12,46.55,6,558.63,3298.02,85.5152
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0058,Lemon Iced Tea - Regular,Beverage,Iced Tea,26.0,5273.88,371.54,14.47,8,376.21,4897.67,92.8665
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0059,Lemon Iced Tea - Medium,Beverage,Iced Tea,28.0,6324.04,438.48,15.87,8,444.23,5879.81,92.9755
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0060,Lemon Iced Tea - Large,Beverage,Iced Tea,14.0,3479.55,238.42,17.26,8,241.63,3237.92,93.0557
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0061,Hibiscus Lime Iced Tea - Regular,Beverage,Iced Tea,28.0,6202.09,674.52,22.98,8,643.55,5558.54,89.6237
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0062,Hibiscus Lime Iced Tea - Medium,Beverage,Iced Tea,21.0,5217.75,565.74,25.67,8,539.05,4678.7,89.669
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0063,Hibiscus Lime Iced Tea - Large,Beverage,Iced Tea,13.0,3453.78,387.01,28.33,8,368.26,3085.52,89.3375
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0064,Hot Chocolate - Regular,Beverage,Kids Beverage,6.0,1288.07,213.42,34.35,6,206.09,1081.98,84.0004
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0065,Hot Chocolate - Medium,Beverage,Kids Beverage,1.0,232.05,40.27,38.87,6,38.87,193.18,83.2504
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0066,Hot Chocolate - Large,Beverage,Kids Beverage,8.0,2091.7,359.84,43.4,6,347.17,1744.53,83.4025
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0067,Babyccino - Regular,Beverage,Kids Beverage,6.0,953.81,85.26,14.43,5,86.57,867.24,90.9235
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0068,Choco Chip Shake - Regular,Beverage,Shake,17.0,4896.03,579.87,33.98,9,577.65,4318.38,88.2017
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0069,Choco Chip Shake - Medium,Beverage,Shake,10.0,3228.27,384.2,38.27,9,382.74,2845.53,88.1442
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0070,Choco Chip Shake - Large,Beverage,Shake,3.0,1078.8,128.37,42.62,9,127.87,950.93,88.1474
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0071,Mixed Berry Shake - Regular,Beverage,Shake,16.0,4914.92,979.36,62.24,9,995.9,3919.02,79.7373
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0072,Mixed Berry Shake - Medium,Beverage,Shake,10.0,3402.14,696.0,70.79,9,707.89,2694.25,79.1928
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0073,Mixed Berry Shake - Large,Beverage,Shake,3.0,1151.04,234.06,79.37,9,238.1,912.94,79.3147
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0074,Seasonal Smoothie - Regular,Beverage,Smoothie,13.0,3918.34,433.81,34.01,9,442.09,3476.25,88.7175
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0075,Seasonal Smoothie - Medium,Beverage,Smoothie,7.0,2304.1,263.13,38.32,9,268.22,2035.88,88.3591
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0076,Seasonal Smoothie - Large,Beverage,Smoothie,4.0,1456.11,167.32,42.66,9,170.63,1285.48,88.2818
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0077,Spicy Paneer Wrap,Food,Wraps,27.0,7272.21,1980.72,73.75,8,1991.18,5281.03,72.6194
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0078,Shredded Chicken Wrap,Food,Wraps,24.0,7010.31,1681.2,70.15,8,1683.52,5326.79,75.9851
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0079,Smoked Chipotle Paneer Sandwich,Food,Sandwiches,16.0,4569.66,1450.56,90.3,8,1444.78,3124.88,68.3832
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0080,Pesto Veg Sandwich,Food,Sandwiches,25.0,6880.5,2296.5,92.09,8,2302.3,4578.2,66.5388
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0081,Pepper Chicken Sandwich,Food,Sandwiches,17.0,5228.55,1490.22,87.03,8,1479.43,3749.12,71.7047
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0082,Tandoori Chicken Sandwich,Food,Sandwiches,16.0,5025.65,1402.56,87.03,8,1392.41,3633.24,72.294
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0083,Chilli Cheese Garlic Toast,Food,Toasts,7.0,1609.64,294.98,41.01,5,287.07,1322.57,82.1655
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0084,Chicken Pepperoni Avocado Toast,Food,Toasts,7.0,2278.43,479.78,68.11,6,476.75,1801.68,79.0756
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0085,Hummus and Pita Platter,Food,Platter,9.0,2730.86,409.05,45.9,6,413.14,2317.71,84.8712
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0086,Breakfast Pancakes,Food,Breakfast,8.0,2224.81,535.12,68.25,5,546.0,1678.81,75.4587
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0087,Cream Cheese Bagel,Food,Breakfast,12.0,2945.48,653.88,54.26,5,651.16,2294.32,77.8931
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0088,Scallion Pepper Cream Cheese Bagel,Food,Breakfast,12.0,3134.47,653.88,54.26,5,651.16,2483.31,79.226
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0089,Masala Egg Bun,Food,Breakfast,11.0,2425.11,470.14,42.51,5,467.66,1957.45,80.716
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0090,Marinara Cheese Pin Wheels,Food,Snacks,13.0,2768.46,497.77,37.37,5,485.81,2282.65,82.4522
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0091,Pesto Sundried Tomato Pin Wheel,Food,Snacks,14.0,3103.76,588.56,41.13,5,575.87,2527.89,81.4459
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0092,Turnover with Brioche Dough Chicken,Food,Snacks,10.0,2469.35,875.4,83.33,5,833.26,1636.09,66.2557
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0093,Turnover with Brioche Dough Veg,Food,Snacks,14.0,3224.3,1259.16,85.95,5,1203.23,2021.07,62.6824
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0094,Butter Croissant,Food,Baked Goods,26.0,4959.26,1509.04,54.59,4,1419.3,3539.96,71.3809
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0095,Almond Croissant,Food,Baked Goods,17.0,4092.29,986.68,54.59,4,928.0,3164.29,77.3232
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0096,Chocolate Croissant,Food,Baked Goods,22.0,5071.83,1419.88,60.43,5,1329.39,3742.44,73.7887
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0097,Mushroom Cheese Croissant,Food,Baked Goods,27.0,6678.29,2020.68,69.83,5,1885.48,4792.81,71.767
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0098,Sriracha Chicken Croissant,Food,Baked Goods,18.0,4849.96,1460.52,78.3,5,1409.36,3440.6,70.9408
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0099,Cinnamon Roll with Cream Cheese,Dessert,Baked Goods,17.0,3711.52,893.69,48.83,4,830.09,2881.43,77.6348
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0100,Banana Walnut Tea Cake,Dessert,Baked Goods,10.0,2041.68,616.1,62.62,5,626.22,1415.46,69.3284
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0101,Lemon Raspberry Tea Cake,Dessert,Baked Goods,15.0,3144.67,848.55,57.49,4,862.33,2282.34,72.578
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0102,Double Chocolate Truffle Cake,Dessert,Desserts,29.0,8381.51,1829.03,63.33,5,1836.5,6545.01,78.0887
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0103,Banoffee Pie,Dessert,Desserts,18.0,4985.3,1018.26,57.49,4,1034.8,3950.5,79.243
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0104,Classic Chocolate Fudge Brownie,Dessert,Desserts,24.0,4578.04,1224.48,50.43,4,1210.21,3367.83,73.5649
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0105,Soft-Centred Caramel Cookie,Dessert,Desserts,28.0,4929.58,1288.56,46.97,5,1315.14,3614.44,73.3214
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0106,Death by Chocolate Cookie,Dessert,Desserts,21.0,3918.85,997.92,47.75,5,1002.66,2916.19,74.4144
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0107,Jaggery Parmesan Cookie,Dessert,Desserts,19.0,3138.12,779.38,41.91,4,796.23,2341.89,74.6271
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0108,Apple Pie,Dessert,Desserts,20.0,5389.48,1131.4,57.49,4,1149.77,4239.71,78.6663
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0109,Basque Cheesecake,Dessert,Desserts,25.0,7638.32,2064.25,84.6,4,2114.88,5523.44,72.3122
+month_02,OUT002,ABNAH Cafe Hauz Khas,MENU0110,Multigrain Walnut Tea Cake,Dessert,Baked Goods,16.0,3518.64,905.12,57.49,4,919.82,2598.82,73.8587
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0001,Espresso Shot - Solo,Beverage,Espresso,4.0,577.85,54.52,13.74,4,54.97,522.88,90.4879
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0002,Espresso Shot - Doppio,Beverage,Espresso,5.0,891.45,106.35,21.51,4,107.53,783.92,87.9378
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0003,Americano - Regular,Beverage,Coffee Classics,48.0,8711.43,1114.08,23.49,5,1127.39,7584.04,87.0585
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0004,Americano - Medium,Beverage,Coffee Classics,40.0,8195.99,1042.0,26.38,5,1055.12,7140.87,87.1264
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0005,Americano - Large,Beverage,Coffee Classics,28.0,6423.38,809.48,29.28,5,819.78,5603.6,87.2376
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0006,Latte - Regular,Beverage,Coffee Classics,59.0,12932.89,2134.03,36.78,6,2169.75,10763.14,83.223
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0007,Latte - Medium,Beverage,Coffee Classics,39.0,9620.78,1597.44,41.66,6,1624.72,7996.06,83.1124
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0008,Latte - Large,Beverage,Coffee Classics,22.0,5948.84,1006.72,46.55,6,1024.15,4924.69,82.784
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0009,Cappuccino - Regular,Beverage,Coffee Classics,57.0,12442.99,2061.69,36.78,6,2096.2,10346.79,83.1535
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0010,Cappuccino - Medium,Beverage,Coffee Classics,57.0,13898.44,2334.72,41.66,6,2374.58,11523.86,82.9147
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0011,Cappuccino - Large,Beverage,Coffee Classics,29.0,7808.12,1327.04,46.55,6,1350.02,6458.1,82.71
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0012,Flat White - Regular,Beverage,Coffee Classics,37.0,8506.05,1338.29,36.78,6,1360.69,7145.36,84.0032
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0013,Flat White - Medium,Beverage,Coffee Classics,49.0,12439.93,2007.04,41.66,6,2041.31,10398.62,83.5907
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0014,Flat White - Large,Beverage,Coffee Classics,24.0,6771.54,1098.24,46.55,6,1117.26,5654.28,83.5007
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0015,Mocha - Regular,Beverage,Coffee Classics,44.0,10476.88,1877.48,42.61,7,1875.03,8601.85,82.1032
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0016,Mocha - Medium,Beverage,Coffee Classics,41.0,10796.05,1985.22,48.36,7,1982.85,8813.2,81.6335
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0017,Mocha - Large,Beverage,Coffee Classics,37.0,10639.66,2005.77,54.14,7,2003.29,8636.37,81.1715
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0018,Sea Salt Mocha - Regular,Beverage,Signature Coffee,38.0,10250.26,1621.46,42.61,7,1619.34,8630.92,84.202
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0019,Sea Salt Mocha - Medium,Beverage,Signature Coffee,26.0,7739.53,1258.92,48.36,7,1257.42,6482.11,83.7533
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0020,Sea Salt Mocha - Large,Beverage,Signature Coffee,18.0,5912.1,975.78,54.14,7,974.57,4937.53,83.5157
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0021,Orange Zest Mocha - Regular,Beverage,Signature Coffee,31.0,8210.38,1322.77,42.61,7,1321.04,6889.34,83.9101
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0022,Orange Zest Mocha - Medium,Beverage,Signature Coffee,28.0,8179.6,1355.76,48.36,7,1354.14,6825.46,83.4449
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0023,Orange Zest Mocha - Large,Beverage,Signature Coffee,20.0,6363.8,1084.2,54.14,7,1082.86,5280.94,82.9841
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0024,Caramel Macchiato - Regular,Beverage,Signature Coffee,34.0,8871.75,1442.28,43.1,7,1465.52,7406.23,83.4811
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0025,Caramel Macchiato - Medium,Beverage,Signature Coffee,33.0,9509.35,1588.29,48.92,7,1614.49,7894.86,83.0221
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0026,Caramel Macchiato - Large,Beverage,Signature Coffee,22.0,7104.4,1185.36,54.78,7,1205.13,5899.27,83.0368
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0027,French Vanilla Latte - Regular,Beverage,Signature Coffee,36.0,9361.41,1518.12,42.17,7,1517.94,7843.47,83.7851
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0028,French Vanilla Latte - Medium,Beverage,Signature Coffee,39.0,11350.13,1866.15,47.85,7,1866.02,9484.11,83.5595
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0029,French Vanilla Latte - Large,Beverage,Signature Coffee,28.0,9039.62,1499.68,53.56,7,1499.65,7539.97,83.4103
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0030,Vegan Iced Latte - Regular,Beverage,Signature Coffee,40.0,11278.04,2356.0,55.79,8,2231.56,9046.48,80.2132
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0031,Vegan Iced Latte - Medium,Beverage,Signature Coffee,33.0,9982.3,2209.35,63.38,8,2091.44,7890.86,79.0485
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0032,Vegan Iced Latte - Large,Beverage,Signature Coffee,16.0,5263.01,1200.32,70.97,8,1135.59,4127.42,78.4232
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0033,Classic Cold Brew - Regular,Beverage,Cold Brew,20.0,4391.86,512.0,25.95,7,518.98,3872.88,88.1831
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0034,Classic Cold Brew - Medium,Beverage,Cold Brew,23.0,5650.5,659.18,29.06,7,668.4,4982.1,88.1709
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0035,Classic Cold Brew - Large,Beverage,Cold Brew,6.0,1637.12,190.38,32.18,7,193.09,1444.03,88.2053
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0036,Coffee Lemonade - Regular,Beverage,Cold Brew,16.0,3707.71,471.2,29.86,8,477.81,3229.9,87.113
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0037,Coffee Lemonade - Medium,Beverage,Cold Brew,21.0,5358.19,694.89,33.57,8,704.93,4653.26,86.8439
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0038,Coffee Lemonade - Large,Beverage,Cold Brew,14.0,3968.04,514.22,37.27,8,521.79,3446.25,86.8501
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0039,Vietnamese Shakerato - Regular,Beverage,Cold Brew,24.0,5954.57,614.4,25.95,7,622.78,5331.79,89.5412
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0040,Vietnamese Shakerato - Medium,Beverage,Cold Brew,17.0,4647.08,487.22,29.06,7,494.04,4153.04,89.3689
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0041,Vietnamese Shakerato - Large,Beverage,Cold Brew,15.0,4504.74,475.95,32.18,7,482.74,4022.0,89.2838
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0042,Classic Cold Coffee - Regular,Beverage,Cold Coffee,33.0,8189.7,1272.48,39.24,8,1294.83,6894.87,84.1896
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0043,Classic Cold Coffee - Medium,Beverage,Cold Coffee,32.0,9151.67,1393.92,44.34,8,1418.96,7732.71,84.4951
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0044,Classic Cold Coffee - Large,Beverage,Cold Coffee,16.0,5048.8,777.28,49.46,8,791.31,4257.49,84.3267
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0045,Mocha Cold Coffee - Regular,Beverage,Cold Coffee,19.0,5341.5,856.14,45.08,9,856.44,4485.06,83.9663
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0046,Mocha Cold Coffee - Medium,Beverage,Cold Coffee,32.0,10013.07,1632.96,51.05,9,1633.45,8379.62,83.6868
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0047,Mocha Cold Coffee - Large,Beverage,Cold Coffee,19.0,6589.52,1083.57,57.05,9,1083.9,5505.62,83.5512
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0048,Caramel Cold Coffee - Regular,Beverage,Cold Coffee,35.0,9786.14,1568.35,45.57,9,1594.78,8191.36,83.7037
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0049,Caramel Cold Coffee - Medium,Beverage,Cold Coffee,27.0,8450.85,1369.98,51.61,9,1393.39,7057.46,83.5119
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0050,Caramel Cold Coffee - Large,Beverage,Cold Coffee,24.0,8294.3,1360.8,57.68,9,1384.4,6909.9,83.309
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0051,Masala Chai Latte - Regular,Beverage,Tea,18.0,3432.84,651.06,36.78,6,661.96,2770.88,80.7169
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0052,Masala Chai Latte - Medium,Beverage,Tea,19.0,4070.58,778.24,41.66,6,791.53,3279.05,80.5549
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0053,Masala Chai Latte - Large,Beverage,Tea,11.0,2616.02,503.36,46.55,6,512.08,2103.94,80.4253
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0054,Himalayan Green Tea,Beverage,Tea,20.0,4155.49,173.4,8.72,5,174.49,3981.0,95.8009
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0055,Japanese Matcha Latte - Regular,Beverage,Tea,26.0,6700.53,940.42,36.78,6,956.16,5744.37,85.73
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0056,Japanese Matcha Latte - Medium,Beverage,Tea,22.0,6420.49,901.12,41.66,6,916.51,5503.98,85.7253
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0057,Japanese Matcha Latte - Large,Beverage,Tea,18.0,5649.02,823.68,46.55,6,837.94,4811.08,85.1666
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0058,Lemon Iced Tea - Regular,Beverage,Iced Tea,20.0,4016.26,285.8,14.47,8,289.39,3726.87,92.7944
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0059,Lemon Iced Tea - Medium,Beverage,Iced Tea,17.0,3799.24,266.22,15.87,8,269.71,3529.53,92.9009
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0060,Lemon Iced Tea - Large,Beverage,Iced Tea,10.0,2511.74,170.3,17.26,8,172.59,2339.15,93.1286
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0061,Hibiscus Lime Iced Tea - Regular,Beverage,Iced Tea,19.0,4181.59,457.71,22.98,8,436.69,3744.9,89.5568
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0062,Hibiscus Lime Iced Tea - Medium,Beverage,Iced Tea,19.0,4623.35,511.86,25.67,8,487.71,4135.64,89.4512
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0063,Hibiscus Lime Iced Tea - Large,Beverage,Iced Tea,9.0,2397.82,267.93,28.33,8,254.95,2142.87,89.3675
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0064,Hot Chocolate - Regular,Beverage,Kids Beverage,4.0,864.77,142.28,34.35,6,137.39,727.38,84.1125
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0065,Hot Chocolate - Medium,Beverage,Kids Beverage,3.0,728.13,120.81,38.87,6,116.6,611.53,83.9861
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0066,Hot Chocolate - Large,Beverage,Kids Beverage,1.0,266.98,44.98,43.4,6,43.4,223.58,83.7455
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0067,Babyccino - Regular,Beverage,Kids Beverage,3.0,477.44,42.63,14.43,5,43.29,434.15,90.9337
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0068,Choco Chip Shake - Regular,Beverage,Shake,19.0,5466.49,648.09,33.98,9,645.61,4820.88,88.1897
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0069,Choco Chip Shake - Medium,Beverage,Shake,28.0,9118.24,1075.76,38.27,9,1071.66,8046.58,88.2471
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0070,Choco Chip Shake - Large,Beverage,Shake,13.0,4703.19,556.27,42.62,9,554.08,4149.11,88.219
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0071,Mixed Berry Shake - Regular,Beverage,Shake,25.0,7720.98,1530.25,62.24,9,1556.09,6164.89,79.846
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0072,Mixed Berry Shake - Medium,Beverage,Shake,16.0,5494.35,1113.6,70.79,9,1132.63,4361.72,79.3856
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0073,Mixed Berry Shake - Large,Beverage,Shake,11.0,4175.08,858.22,79.37,9,873.02,3302.06,79.0898
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0074,Seasonal Smoothie - Regular,Beverage,Smoothie,21.0,6277.01,700.77,34.01,9,714.14,5562.87,88.6229
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0075,Seasonal Smoothie - Medium,Beverage,Smoothie,15.0,5005.0,563.85,38.32,9,574.75,4430.25,88.5165
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0076,Seasonal Smoothie - Large,Beverage,Smoothie,9.0,3316.96,376.47,42.66,9,383.92,2933.04,88.4256
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0077,Spicy Paneer Wrap,Food,Wraps,19.0,5102.5,1393.84,73.75,8,1401.2,3701.3,72.539
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0078,Shredded Chicken Wrap,Food,Wraps,28.0,8111.23,1961.4,70.15,8,1964.11,6147.12,75.7854
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0079,Smoked Chipotle Paneer Sandwich,Food,Sandwiches,26.0,7501.86,2357.16,90.3,8,2347.77,5154.09,68.7041
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0080,Pesto Veg Sandwich,Food,Sandwiches,18.0,4894.29,1653.48,92.09,8,1657.66,3236.63,66.1308
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0081,Pepper Chicken Sandwich,Food,Sandwiches,11.0,3410.26,964.26,87.03,8,957.28,2452.98,71.9294
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0082,Tandoori Chicken Sandwich,Food,Sandwiches,27.0,8415.03,2366.82,87.03,8,2349.69,6065.34,72.0775
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0083,Chilli Cheese Garlic Toast,Food,Toasts,9.0,2082.42,379.26,41.01,5,369.09,1713.33,82.2758
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0084,Chicken Pepperoni Avocado Toast,Food,Toasts,13.0,4212.4,891.02,68.11,6,885.39,3327.01,78.9814
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0085,Hummus and Pita Platter,Food,Platter,6.0,1834.21,272.7,45.9,6,275.43,1558.78,84.9837
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0086,Breakfast Pancakes,Food,Breakfast,10.0,2807.02,668.9,68.25,5,682.5,2124.52,75.6861
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0087,Cream Cheese Bagel,Food,Breakfast,12.0,2949.08,653.88,54.26,5,651.16,2297.92,77.92
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0088,Scallion Pepper Cream Cheese Bagel,Food,Breakfast,11.0,2838.98,599.39,54.26,5,596.89,2242.09,78.9751
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0089,Masala Egg Bun,Food,Breakfast,11.0,2435.78,470.14,42.51,5,467.66,1968.12,80.8005
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0090,Marinara Cheese Pin Wheels,Food,Snacks,10.0,2093.92,382.9,37.37,5,373.7,1720.22,82.1533
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0091,Pesto Sundried Tomato Pin Wheel,Food,Snacks,10.0,2204.06,420.4,41.13,5,411.34,1792.72,81.3372
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0092,Turnover with Brioche Dough Chicken,Food,Snacks,9.0,2262.4,787.86,83.33,5,749.94,1512.46,66.8521
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0093,Turnover with Brioche Dough Veg,Food,Snacks,9.0,2086.09,809.46,85.95,5,773.51,1312.58,62.9208
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0094,Butter Croissant,Food,Baked Goods,40.0,7606.72,2321.6,54.59,4,2183.53,5423.19,71.2947
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0095,Almond Croissant,Food,Baked Goods,18.0,4380.86,1044.72,54.59,4,982.59,3398.27,77.5709
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0096,Chocolate Croissant,Food,Baked Goods,22.0,5060.06,1419.88,60.43,5,1329.39,3730.67,73.7277
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0097,Mushroom Cheese Croissant,Food,Baked Goods,31.0,7773.94,2320.04,69.83,5,2164.81,5609.13,72.153
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0098,Sriracha Chicken Croissant,Food,Baked Goods,25.0,6727.11,2028.5,78.3,5,1957.44,4769.67,70.9022
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0099,Cinnamon Roll with Cream Cheese,Dessert,Baked Goods,15.0,3256.15,788.55,48.83,4,732.43,2523.72,77.5062
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0100,Banana Walnut Tea Cake,Dessert,Baked Goods,24.0,4849.35,1478.64,62.62,5,1502.92,3346.43,69.0079
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0101,Lemon Raspberry Tea Cake,Dessert,Baked Goods,19.0,4017.3,1074.83,57.49,4,1092.29,2925.01,72.8105
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0102,Double Chocolate Truffle Cake,Dessert,Desserts,23.0,6565.58,1450.61,63.33,5,1456.53,5109.05,77.8157
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0103,Banoffee Pie,Dessert,Desserts,28.0,7803.45,1583.96,57.49,4,1609.68,6193.77,79.3722
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0104,Classic Chocolate Fudge Brownie,Dessert,Desserts,26.0,4973.84,1326.52,50.43,4,1311.06,3662.78,73.6409
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0105,Soft-Centred Caramel Cookie,Dessert,Desserts,30.0,5250.2,1380.6,46.97,5,1409.08,3841.12,73.1614
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0106,Death by Chocolate Cookie,Dessert,Desserts,28.0,5177.47,1330.56,47.75,5,1336.88,3840.59,74.1789
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0107,Jaggery Parmesan Cookie,Dessert,Desserts,28.0,4664.02,1148.56,41.91,4,1173.4,3490.62,74.8415
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0108,Apple Pie,Dessert,Desserts,30.0,7932.35,1697.1,57.49,4,1724.66,6207.69,78.2579
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0109,Basque Cheesecake,Dessert,Desserts,22.0,6678.45,1816.54,84.6,4,1861.1,4817.35,72.1328
+month_02,OUT003,ABNAH Cafe Saket Premium,MENU0110,Multigrain Walnut Tea Cake,Dessert,Baked Goods,22.0,4833.22,1244.54,57.49,4,1264.75,3568.47,73.8321
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0001,Espresso Shot - Solo,Beverage,Espresso,3.0,420.93,40.89,13.74,4,41.22,379.71,90.2064
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0002,Espresso Shot - Doppio,Beverage,Espresso,7.0,1283.17,148.89,21.51,4,150.54,1132.63,88.2682
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0003,Americano - Regular,Beverage,Coffee Classics,89.0,16104.88,2065.69,23.49,5,2090.37,14014.51,87.0203
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0004,Americano - Medium,Beverage,Coffee Classics,77.0,15862.83,2005.85,26.38,5,2031.1,13831.73,87.1958
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0005,Americano - Large,Beverage,Coffee Classics,45.0,10427.1,1300.95,29.28,5,1317.5,9109.6,87.3646
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0006,Latte - Regular,Beverage,Coffee Classics,81.0,17760.51,2929.77,36.78,6,2978.81,14781.7,83.2279
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0007,Latte - Medium,Beverage,Coffee Classics,72.0,17536.31,2949.12,41.66,6,2999.47,14536.84,82.8956
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0008,Latte - Large,Beverage,Coffee Classics,48.0,12905.67,2196.48,46.55,6,2234.52,10671.15,82.6858
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0009,Cappuccino - Regular,Beverage,Coffee Classics,97.0,21494.58,3508.49,36.78,6,3567.22,17927.36,83.4041
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0010,Cappuccino - Medium,Beverage,Coffee Classics,65.0,15983.15,2662.4,41.66,6,2707.86,13275.29,83.058
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0011,Cappuccino - Large,Beverage,Coffee Classics,47.0,12776.24,2150.72,46.55,6,2187.97,10588.27,82.8747
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0012,Flat White - Regular,Beverage,Coffee Classics,48.0,11067.95,1736.16,36.78,6,1765.22,9302.73,84.051
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0013,Flat White - Medium,Beverage,Coffee Classics,64.0,16414.45,2621.44,41.66,6,2666.2,13748.25,83.757
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0014,Flat White - Large,Beverage,Coffee Classics,38.0,10526.78,1738.88,46.55,6,1768.99,8757.79,83.1953
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0015,Mocha - Regular,Beverage,Coffee Classics,68.0,16348.47,2901.56,42.61,7,2897.77,13450.7,82.275
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0016,Mocha - Medium,Beverage,Coffee Classics,62.0,16396.59,3002.04,48.36,7,2998.46,13398.13,81.7129
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0017,Mocha - Large,Beverage,Coffee Classics,36.0,10320.33,1951.56,54.14,7,1949.14,8371.19,81.1136
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0018,Sea Salt Mocha - Regular,Beverage,Signature Coffee,36.0,9754.93,1536.12,42.61,7,1534.11,8220.82,84.2735
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0019,Sea Salt Mocha - Medium,Beverage,Signature Coffee,16.0,4745.21,774.72,48.36,7,773.8,3971.41,83.6931
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0020,Sea Salt Mocha - Large,Beverage,Signature Coffee,18.0,5821.28,975.78,54.14,7,974.57,4846.71,83.2585
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0021,Orange Zest Mocha - Regular,Beverage,Signature Coffee,30.0,7944.53,1280.1,42.61,7,1278.43,6666.1,83.9081
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0022,Orange Zest Mocha - Medium,Beverage,Signature Coffee,27.0,7959.28,1307.34,48.36,7,1305.78,6653.5,83.5942
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0023,Orange Zest Mocha - Large,Beverage,Signature Coffee,14.0,4547.5,758.94,54.14,7,758.0,3789.5,83.3315
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0024,Caramel Macchiato - Regular,Beverage,Signature Coffee,18.0,4653.61,763.56,43.1,7,775.86,3877.75,83.3277
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0025,Caramel Macchiato - Medium,Beverage,Signature Coffee,25.0,7200.63,1203.25,48.92,7,1223.1,5977.53,83.014
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0026,Caramel Macchiato - Large,Beverage,Signature Coffee,23.0,7344.72,1239.24,54.78,7,1259.91,6084.81,82.846
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0027,French Vanilla Latte - Regular,Beverage,Signature Coffee,28.0,7231.85,1180.76,42.17,7,1180.62,6051.23,83.6747
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0028,French Vanilla Latte - Medium,Beverage,Signature Coffee,35.0,10063.92,1674.75,47.85,7,1674.63,8389.29,83.3601
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0029,French Vanilla Latte - Large,Beverage,Signature Coffee,24.0,7660.37,1285.44,53.56,7,1285.41,6374.96,83.22
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0030,Vegan Iced Latte - Regular,Beverage,Signature Coffee,38.0,10559.79,2238.2,55.79,8,2119.98,8439.81,79.924
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0031,Vegan Iced Latte - Medium,Beverage,Signature Coffee,31.0,9446.93,2075.45,63.38,8,1964.69,7482.24,79.2029
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0032,Vegan Iced Latte - Large,Beverage,Signature Coffee,21.0,6903.35,1575.42,70.97,8,1490.46,5412.89,78.4096
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0033,Classic Cold Brew - Regular,Beverage,Cold Brew,15.0,3323.01,384.0,25.95,7,389.23,2933.78,88.2867
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0034,Classic Cold Brew - Medium,Beverage,Cold Brew,26.0,6360.58,745.16,29.06,7,755.59,5604.99,88.1208
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0035,Classic Cold Brew - Large,Beverage,Cold Brew,10.0,2719.2,317.3,32.18,7,321.82,2397.38,88.1648
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0036,Coffee Lemonade - Regular,Beverage,Cold Brew,27.0,6192.14,795.15,29.86,8,806.31,5385.83,86.9785
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0037,Coffee Lemonade - Medium,Beverage,Cold Brew,19.0,4865.74,628.71,33.57,8,637.79,4227.95,86.8921
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0038,Coffee Lemonade - Large,Beverage,Cold Brew,7.0,1948.44,257.11,37.27,8,260.9,1687.54,86.61
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0039,Vietnamese Shakerato - Regular,Beverage,Cold Brew,21.0,5255.19,537.6,25.95,7,544.93,4710.26,89.6307
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0040,Vietnamese Shakerato - Medium,Beverage,Cold Brew,15.0,4083.22,429.9,29.06,7,435.92,3647.3,89.3242
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0041,Vietnamese Shakerato - Large,Beverage,Cold Brew,14.0,4179.01,444.22,32.18,7,450.55,3728.46,89.2187
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0042,Classic Cold Coffee - Regular,Beverage,Cold Coffee,33.0,8241.22,1272.48,39.24,8,1294.83,6946.39,84.2884
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0043,Classic Cold Coffee - Medium,Beverage,Cold Coffee,32.0,9055.39,1393.92,44.34,8,1418.96,7636.43,84.3302
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0044,Classic Cold Coffee - Large,Beverage,Cold Coffee,22.0,7056.17,1068.76,49.46,8,1088.05,5968.12,84.5801
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0045,Mocha Cold Coffee - Regular,Beverage,Cold Coffee,31.0,8699.43,1396.86,45.08,9,1397.35,7302.08,83.9374
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0046,Mocha Cold Coffee - Medium,Beverage,Cold Coffee,20.0,6273.05,1020.6,51.05,9,1020.91,5252.14,83.7255
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0047,Mocha Cold Coffee - Large,Beverage,Cold Coffee,15.0,5243.98,855.45,57.05,9,855.71,4388.27,83.682
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0048,Caramel Cold Coffee - Regular,Beverage,Cold Coffee,17.0,4742.76,761.77,45.57,9,774.61,3968.15,83.6676
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0049,Caramel Cold Coffee - Medium,Beverage,Cold Coffee,28.0,8814.36,1420.72,51.61,9,1445.0,7369.36,83.6063
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0050,Caramel Cold Coffee - Large,Beverage,Cold Coffee,20.0,6976.76,1134.0,57.68,9,1153.67,5823.09,83.4641
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0051,Masala Chai Latte - Regular,Beverage,Tea,25.0,4809.2,904.25,36.78,6,919.39,3889.81,80.8827
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0052,Masala Chai Latte - Medium,Beverage,Tea,28.0,6032.52,1146.88,41.66,6,1166.46,4866.06,80.6638
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0053,Masala Chai Latte - Large,Beverage,Tea,16.0,3883.65,732.16,46.55,6,744.84,3138.81,80.8211
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0054,Himalayan Green Tea,Beverage,Tea,31.0,6403.56,268.77,8.72,5,270.46,6133.1,95.7764
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0055,Japanese Matcha Latte - Regular,Beverage,Tea,29.0,7498.47,1048.93,36.78,6,1066.49,6431.98,85.7772
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0056,Japanese Matcha Latte - Medium,Beverage,Tea,20.0,5816.34,819.2,41.66,6,833.19,4983.15,85.6751
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0057,Japanese Matcha Latte - Large,Beverage,Tea,9.0,2889.84,411.84,46.55,6,418.97,2470.87,85.5019
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0058,Lemon Iced Tea - Regular,Beverage,Iced Tea,21.0,4261.24,300.09,14.47,8,303.86,3957.38,92.8691
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0059,Lemon Iced Tea - Medium,Beverage,Iced Tea,14.0,3153.26,219.24,15.87,8,222.12,2931.14,92.956
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0060,Lemon Iced Tea - Large,Beverage,Iced Tea,12.0,3006.78,204.36,17.26,8,207.11,2799.67,93.1119
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0061,Hibiscus Lime Iced Tea - Regular,Beverage,Iced Tea,14.0,3098.22,337.26,22.98,8,321.77,2776.45,89.6143
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0062,Hibiscus Lime Iced Tea - Medium,Beverage,Iced Tea,14.0,3415.88,377.16,25.67,8,359.36,3056.52,89.4796
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0063,Hibiscus Lime Iced Tea - Large,Beverage,Iced Tea,5.0,1378.07,148.85,28.33,8,141.64,1236.43,89.722
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0064,Hot Chocolate - Regular,Beverage,Kids Beverage,5.0,1070.57,177.85,34.35,6,171.74,898.83,83.9582
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0065,Hot Chocolate - Medium,Beverage,Kids Beverage,6.0,1452.18,241.62,38.87,6,233.2,1218.98,83.9411
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0067,Babyccino - Regular,Beverage,Kids Beverage,6.0,962.6,85.26,14.43,5,86.57,876.03,91.0064
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0068,Choco Chip Shake - Regular,Beverage,Shake,13.0,3772.36,443.43,33.98,9,441.73,3330.63,88.2903
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0069,Choco Chip Shake - Medium,Beverage,Shake,18.0,5865.05,691.56,38.27,9,688.92,5176.13,88.2537
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0070,Choco Chip Shake - Large,Beverage,Shake,8.0,2842.19,342.32,42.62,9,340.97,2501.22,88.0031
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0071,Mixed Berry Shake - Regular,Beverage,Shake,21.0,6427.05,1285.41,62.24,9,1307.11,5119.94,79.6623
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0072,Mixed Berry Shake - Medium,Beverage,Shake,10.0,3412.75,696.0,70.79,9,707.89,2704.86,79.2575
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0073,Mixed Berry Shake - Large,Beverage,Shake,8.0,3058.78,624.16,79.37,9,634.92,2423.86,79.2426
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0074,Seasonal Smoothie - Regular,Beverage,Smoothie,12.0,3604.4,400.44,34.01,9,408.08,3196.32,88.6783
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0075,Seasonal Smoothie - Medium,Beverage,Smoothie,12.0,4039.64,451.08,38.32,9,459.8,3579.84,88.6178
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0076,Seasonal Smoothie - Large,Beverage,Smoothie,10.0,3607.8,418.3,42.66,9,426.57,3181.23,88.1763
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0077,Spicy Paneer Wrap,Food,Wraps,14.0,3772.34,1027.04,73.75,8,1032.46,2739.88,72.6307
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0078,Shredded Chicken Wrap,Food,Wraps,16.0,4658.69,1120.8,70.15,8,1122.35,3536.34,75.9086
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0079,Smoked Chipotle Paneer Sandwich,Food,Sandwiches,30.0,8645.87,2719.8,90.3,8,2708.97,5936.9,68.6675
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0080,Pesto Veg Sandwich,Food,Sandwiches,31.0,8486.7,2847.66,92.09,8,2854.85,5631.85,66.3609
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0081,Pepper Chicken Sandwich,Food,Sandwiches,38.0,11672.72,3331.08,87.03,8,3306.97,8365.75,71.6692
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0082,Tandoori Chicken Sandwich,Food,Sandwiches,42.0,13068.5,3681.72,87.03,8,3655.07,9413.43,72.0314
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0083,Chilli Cheese Garlic Toast,Food,Toasts,10.0,2286.01,421.4,41.01,5,410.1,1875.91,82.0604
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0084,Chicken Pepperoni Avocado Toast,Food,Toasts,12.0,3859.66,822.48,68.11,6,817.28,3042.38,78.8251
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0085,Hummus and Pita Platter,Food,Platter,5.0,1520.14,227.25,45.9,6,229.52,1290.61,84.9011
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0086,Breakfast Pancakes,Food,Breakfast,16.0,4528.99,1070.24,68.25,5,1092.0,3436.99,75.8888
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0087,Cream Cheese Bagel,Food,Breakfast,23.0,5667.35,1253.27,54.26,5,1248.05,4419.3,77.9783
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0088,Scallion Pepper Cream Cheese Bagel,Food,Breakfast,17.0,4403.6,926.33,54.26,5,922.47,3481.13,79.0519
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0089,Masala Egg Bun,Food,Breakfast,20.0,4420.94,854.8,42.51,5,850.29,3570.65,80.7668
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0090,Marinara Cheese Pin Wheels,Food,Snacks,15.0,3176.8,574.35,37.37,5,560.54,2616.26,82.3551
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0091,Pesto Sundried Tomato Pin Wheel,Food,Snacks,13.0,2866.35,546.52,41.13,5,534.74,2331.61,81.3442
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0092,Turnover with Brioche Dough Chicken,Food,Snacks,13.0,3240.87,1138.02,83.33,5,1083.24,2157.63,66.5755
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0093,Turnover with Brioche Dough Veg,Food,Snacks,11.0,2557.33,989.34,85.95,5,945.4,1611.93,63.0319
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0094,Butter Croissant,Food,Baked Goods,17.0,3260.59,986.68,54.59,4,928.0,2332.59,71.5389
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0095,Almond Croissant,Food,Baked Goods,21.0,5005.26,1218.84,54.59,4,1146.35,3858.91,77.097
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0096,Chocolate Croissant,Food,Baked Goods,20.0,4561.94,1290.8,60.43,5,1208.54,3353.4,73.5082
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0097,Mushroom Cheese Croissant,Food,Baked Goods,27.0,6772.95,2020.68,69.83,5,1885.48,4887.47,72.1616
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0098,Sriracha Chicken Croissant,Food,Baked Goods,29.0,7884.4,2353.06,78.3,5,2270.63,5613.77,71.2009
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0099,Cinnamon Roll with Cream Cheese,Dessert,Baked Goods,17.0,3674.63,893.69,48.83,4,830.09,2844.54,77.4103
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0100,Banana Walnut Tea Cake,Dessert,Baked Goods,17.0,3428.02,1047.37,62.62,5,1064.57,2363.45,68.9451
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0101,Lemon Raspberry Tea Cake,Dessert,Baked Goods,13.0,2739.96,735.41,57.49,4,747.35,1992.61,72.7239
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0102,Double Chocolate Truffle Cake,Dessert,Desserts,15.0,4327.47,946.05,63.33,5,949.91,3377.56,78.0493
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0103,Banoffee Pie,Dessert,Desserts,9.0,2502.55,509.13,57.49,4,517.4,1985.15,79.3252
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0104,Classic Chocolate Fudge Brownie,Dessert,Desserts,15.0,2836.32,765.3,50.43,4,756.38,2079.94,73.3324
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0105,Soft-Centred Caramel Cookie,Dessert,Desserts,11.0,1906.93,506.22,46.97,5,516.66,1390.27,72.906
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0106,Death by Chocolate Cookie,Dessert,Desserts,12.0,2228.27,570.24,47.75,5,572.95,1655.32,74.2873
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0107,Jaggery Parmesan Cookie,Dessert,Desserts,20.0,3344.77,820.4,41.91,4,838.14,2506.63,74.9418
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0108,Apple Pie,Dessert,Desserts,15.0,3934.12,848.55,57.49,4,862.33,3071.79,78.0807
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0109,Basque Cheesecake,Dessert,Desserts,16.0,4806.61,1321.12,84.6,4,1353.53,3453.08,71.8403
+month_03,OUT001,ABNAH Cafe Connaught Place,MENU0110,Multigrain Walnut Tea Cake,Dessert,Baked Goods,17.0,3772.14,961.69,57.49,4,977.31,2794.83,74.0914
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0001,Espresso Shot - Solo,Beverage,Espresso,2.0,277.33,27.26,13.74,4,27.48,249.85,90.0902
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0002,Espresso Shot - Doppio,Beverage,Espresso,6.0,1070.75,127.62,21.51,4,129.03,941.72,87.9492
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0003,Americano - Regular,Beverage,Coffee Classics,56.0,10201.47,1299.76,23.49,5,1315.29,8886.18,87.1069
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0004,Americano - Medium,Beverage,Coffee Classics,50.0,10385.82,1302.5,26.38,5,1318.9,9066.92,87.301
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0005,Americano - Large,Beverage,Coffee Classics,45.0,10272.23,1300.95,29.28,5,1317.5,8954.73,87.1741
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0006,Latte - Regular,Beverage,Coffee Classics,61.0,13509.72,2206.37,36.78,6,2243.3,11266.42,83.3949
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0007,Latte - Medium,Beverage,Coffee Classics,50.0,12291.1,2048.0,41.66,6,2082.97,10208.13,83.053
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0008,Latte - Large,Beverage,Coffee Classics,43.0,11663.9,1967.68,46.55,6,2001.76,9662.14,82.838
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0009,Cappuccino - Regular,Beverage,Coffee Classics,64.0,14193.38,2314.88,36.78,6,2353.63,11839.75,83.4174
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0010,Cappuccino - Medium,Beverage,Coffee Classics,67.0,16277.68,2744.32,41.66,6,2791.18,13486.5,82.8527
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0011,Cappuccino - Large,Beverage,Coffee Classics,28.0,7532.96,1281.28,46.55,6,1303.47,6229.49,82.6965
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0012,Flat White - Regular,Beverage,Coffee Classics,50.0,11439.97,1808.5,36.78,6,1838.77,9601.2,83.9268
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0013,Flat White - Medium,Beverage,Coffee Classics,43.0,11035.81,1761.28,41.66,6,1791.35,9244.46,83.7678
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0014,Flat White - Large,Beverage,Coffee Classics,31.0,8616.99,1418.56,46.55,6,1443.13,7173.86,83.2525
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0015,Mocha - Regular,Beverage,Coffee Classics,42.0,10129.18,1792.14,42.61,7,1789.8,8339.38,82.3303
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0016,Mocha - Medium,Beverage,Coffee Classics,61.0,16074.3,2953.62,48.36,7,2950.1,13124.2,81.6471
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0017,Mocha - Large,Beverage,Coffee Classics,34.0,9826.7,1843.14,54.14,7,1840.86,7985.84,81.2668
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0018,Sea Salt Mocha - Regular,Beverage,Signature Coffee,21.0,5649.93,896.07,42.61,7,894.9,4755.03,84.1609
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0019,Sea Salt Mocha - Medium,Beverage,Signature Coffee,23.0,6827.08,1113.66,48.36,7,1112.33,5714.75,83.7071
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0020,Sea Salt Mocha - Large,Beverage,Signature Coffee,9.0,2967.85,487.89,54.14,7,487.29,2480.56,83.5812
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0021,Orange Zest Mocha - Regular,Beverage,Signature Coffee,27.0,7155.84,1152.09,42.61,7,1150.58,6005.26,83.921
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0022,Orange Zest Mocha - Medium,Beverage,Signature Coffee,20.0,5895.67,968.4,48.36,7,967.24,4928.43,83.594
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0023,Orange Zest Mocha - Large,Beverage,Signature Coffee,10.0,3240.35,542.1,54.14,7,541.43,2698.92,83.2911
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0024,Caramel Macchiato - Regular,Beverage,Signature Coffee,20.0,5149.79,848.4,43.1,7,862.07,4287.72,83.2601
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0025,Caramel Macchiato - Medium,Beverage,Signature Coffee,18.0,5195.5,866.34,48.92,7,880.63,4314.87,83.0501
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0026,Caramel Macchiato - Large,Beverage,Signature Coffee,10.0,3208.47,538.8,54.78,7,547.79,2660.68,82.9268
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0027,French Vanilla Latte - Regular,Beverage,Signature Coffee,27.0,6939.42,1138.59,42.17,7,1138.46,5800.96,83.5944
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0028,French Vanilla Latte - Medium,Beverage,Signature Coffee,26.0,7500.44,1244.1,47.85,7,1244.01,6256.43,83.4142
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0029,French Vanilla Latte - Large,Beverage,Signature Coffee,20.0,6345.78,1071.2,53.56,7,1071.18,5274.6,83.1199
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0030,Vegan Iced Latte - Regular,Beverage,Signature Coffee,20.0,5601.83,1178.0,55.79,8,1115.78,4486.05,80.0819
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0031,Vegan Iced Latte - Medium,Beverage,Signature Coffee,22.0,6715.29,1472.9,63.38,8,1394.29,5321.0,79.237
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0032,Vegan Iced Latte - Large,Beverage,Signature Coffee,12.0,3962.06,900.24,70.97,8,851.69,3110.37,78.5038
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0033,Classic Cold Brew - Regular,Beverage,Cold Brew,21.0,4656.68,537.6,25.95,7,544.93,4111.75,88.2979
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0034,Classic Cold Brew - Medium,Beverage,Cold Brew,22.0,5372.26,630.52,29.06,7,639.34,4732.92,88.0992
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0035,Classic Cold Brew - Large,Beverage,Cold Brew,10.0,2698.06,317.3,32.18,7,321.82,2376.24,88.072
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0036,Coffee Lemonade - Regular,Beverage,Cold Brew,20.0,4588.54,589.0,29.86,8,597.27,3991.27,86.9835
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0037,Coffee Lemonade - Medium,Beverage,Cold Brew,23.0,5944.08,761.07,33.57,8,772.07,5172.01,87.0112
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0038,Coffee Lemonade - Large,Beverage,Cold Brew,9.0,2541.93,330.57,37.27,8,335.44,2206.49,86.8038
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0039,Vietnamese Shakerato - Regular,Beverage,Cold Brew,26.0,6425.64,665.6,25.95,7,674.67,5750.97,89.5003
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0040,Vietnamese Shakerato - Medium,Beverage,Cold Brew,20.0,5461.44,573.2,29.06,7,581.22,4880.22,89.3577
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0041,Vietnamese Shakerato - Large,Beverage,Cold Brew,12.0,3619.45,380.76,32.18,7,386.19,3233.26,89.3302
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0042,Classic Cold Coffee - Regular,Beverage,Cold Coffee,69.0,17130.98,2660.64,39.24,8,2707.37,14423.61,84.1961
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0043,Classic Cold Coffee - Medium,Beverage,Cold Coffee,61.0,17436.47,2657.16,44.34,8,2704.89,14731.58,84.4872
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0044,Classic Cold Coffee - Large,Beverage,Cold Coffee,30.0,9515.39,1457.4,49.46,8,1483.71,8031.68,84.4073
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0045,Mocha Cold Coffee - Regular,Beverage,Cold Coffee,58.0,16116.06,2613.48,45.08,9,2614.4,13501.66,83.7776
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0046,Mocha Cold Coffee - Medium,Beverage,Cold Coffee,42.0,13109.63,2143.26,51.05,9,2143.91,10965.72,83.6463
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0047,Mocha Cold Coffee - Large,Beverage,Cold Coffee,26.0,9050.8,1482.78,57.05,9,1483.23,7567.57,83.6121
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0048,Caramel Cold Coffee - Regular,Beverage,Cold Coffee,55.0,15189.34,2464.55,45.57,9,2506.08,12683.26,83.501
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0049,Caramel Cold Coffee - Medium,Beverage,Cold Coffee,39.0,12344.31,1978.86,51.61,9,2012.67,10331.64,83.6955
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0050,Caramel Cold Coffee - Large,Beverage,Cold Coffee,20.0,6971.07,1134.0,57.68,9,1153.67,5817.4,83.4506
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0051,Masala Chai Latte - Regular,Beverage,Tea,29.0,5517.62,1048.93,36.78,6,1066.49,4451.13,80.6712
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0052,Masala Chai Latte - Medium,Beverage,Tea,17.0,3647.32,696.32,41.66,6,708.21,2939.11,80.5828
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0053,Masala Chai Latte - Large,Beverage,Tea,12.0,2881.06,549.12,46.55,6,558.63,2322.43,80.6103
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0054,Himalayan Green Tea,Beverage,Tea,20.0,4100.34,173.4,8.72,5,174.49,3925.85,95.7445
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0055,Japanese Matcha Latte - Regular,Beverage,Tea,25.0,6475.32,904.25,36.78,6,919.39,5555.93,85.8017
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0056,Japanese Matcha Latte - Medium,Beverage,Tea,14.0,4030.43,573.44,41.66,6,583.23,3447.2,85.5293
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0057,Japanese Matcha Latte - Large,Beverage,Tea,18.0,5703.7,823.68,46.55,6,837.94,4865.76,85.3088
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0058,Lemon Iced Tea - Regular,Beverage,Iced Tea,26.0,5281.12,371.54,14.47,8,376.21,4904.91,92.8763
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0059,Lemon Iced Tea - Medium,Beverage,Iced Tea,32.0,7198.38,501.12,15.87,8,507.69,6690.69,92.9471
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0060,Lemon Iced Tea - Large,Beverage,Iced Tea,15.0,3718.37,255.45,17.26,8,258.89,3459.48,93.0376
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0061,Hibiscus Lime Iced Tea - Regular,Beverage,Iced Tea,34.0,7432.06,819.06,22.98,8,781.45,6650.61,89.4854
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0062,Hibiscus Lime Iced Tea - Medium,Beverage,Iced Tea,30.0,7370.08,808.2,25.67,8,770.06,6600.02,89.5515
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0063,Hibiscus Lime Iced Tea - Large,Beverage,Iced Tea,20.0,5355.08,595.4,28.33,8,566.55,4788.53,89.4203
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0064,Hot Chocolate - Regular,Beverage,Kids Beverage,4.0,850.47,142.28,34.35,6,137.39,713.08,83.8453
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0065,Hot Chocolate - Medium,Beverage,Kids Beverage,4.0,955.42,161.08,38.87,6,155.47,799.95,83.7276
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0066,Hot Chocolate - Large,Beverage,Kids Beverage,2.0,523.74,89.96,43.4,6,86.79,436.95,83.4283
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0067,Babyccino - Regular,Beverage,Kids Beverage,6.0,971.19,85.26,14.43,5,86.57,884.62,91.0859
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0068,Choco Chip Shake - Regular,Beverage,Shake,19.0,5504.84,648.09,33.98,9,645.61,4859.23,88.272
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0069,Choco Chip Shake - Medium,Beverage,Shake,17.0,5465.46,653.14,38.27,9,650.65,4814.81,88.0952
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0070,Choco Chip Shake - Large,Beverage,Shake,8.0,2889.2,342.32,42.62,9,340.97,2548.23,88.1983
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0071,Mixed Berry Shake - Regular,Beverage,Shake,18.0,5584.08,1101.78,62.24,9,1120.38,4463.7,79.9361
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0072,Mixed Berry Shake - Medium,Beverage,Shake,12.0,4079.28,835.2,70.79,9,849.47,3229.81,79.176
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0073,Mixed Berry Shake - Large,Beverage,Shake,5.0,1848.86,390.1,79.37,9,396.83,1452.03,78.5367
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0074,Seasonal Smoothie - Regular,Beverage,Smoothie,14.0,4173.99,467.18,34.01,9,476.09,3697.9,88.5938
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0075,Seasonal Smoothie - Medium,Beverage,Smoothie,6.0,2024.03,225.54,38.32,9,229.9,1794.13,88.6414
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0076,Seasonal Smoothie - Large,Beverage,Smoothie,6.0,2219.93,250.98,42.66,9,255.94,1963.99,88.4706
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0077,Spicy Paneer Wrap,Food,Wraps,28.0,7509.47,2054.08,73.75,8,2064.92,5444.55,72.5024
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0078,Shredded Chicken Wrap,Food,Wraps,38.0,11006.08,2661.9,70.15,8,2665.57,8340.51,75.7809
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0079,Smoked Chipotle Paneer Sandwich,Food,Sandwiches,20.0,5812.23,1813.2,90.3,8,1805.98,4006.25,68.928
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0080,Pesto Veg Sandwich,Food,Sandwiches,15.0,4102.96,1377.9,92.09,8,1381.38,2721.58,66.3321
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0081,Pepper Chicken Sandwich,Food,Sandwiches,14.0,4313.72,1227.24,87.03,8,1218.36,3095.36,71.7562
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0082,Tandoori Chicken Sandwich,Food,Sandwiches,20.0,6275.31,1753.2,87.03,8,1740.51,4534.8,72.2641
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0083,Chilli Cheese Garlic Toast,Food,Toasts,13.0,2998.08,547.82,41.01,5,533.13,2464.95,82.2176
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0084,Chicken Pepperoni Avocado Toast,Food,Toasts,8.0,2572.67,548.32,68.11,6,544.85,2027.82,78.8215
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0085,Hummus and Pita Platter,Food,Platter,4.0,1183.6,181.8,45.9,6,183.62,999.98,84.4863
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0086,Breakfast Pancakes,Food,Breakfast,6.0,1687.12,401.34,68.25,5,409.5,1277.62,75.728
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0087,Cream Cheese Bagel,Food,Breakfast,19.0,4645.08,1035.31,54.26,5,1031.0,3614.08,77.8046
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0088,Scallion Pepper Cream Cheese Bagel,Food,Breakfast,18.0,4666.0,980.82,54.26,5,976.73,3689.27,79.067
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0089,Masala Egg Bun,Food,Breakfast,15.0,3266.46,641.1,42.51,5,637.72,2628.74,80.4769
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0090,Marinara Cheese Pin Wheels,Food,Snacks,17.0,3583.2,650.93,37.37,5,635.28,2947.92,82.2705
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0091,Pesto Sundried Tomato Pin Wheel,Food,Snacks,14.0,3085.19,588.56,41.13,5,575.87,2509.32,81.3342
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0092,Turnover with Brioche Dough Chicken,Food,Snacks,20.0,4956.15,1750.8,83.33,5,1666.53,3289.62,66.3745
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0093,Turnover with Brioche Dough Veg,Food,Snacks,15.0,3455.23,1349.1,85.95,5,1289.18,2166.05,62.6891
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0094,Butter Croissant,Food,Baked Goods,9.0,1708.0,522.36,54.59,4,491.29,1216.71,71.2357
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0095,Almond Croissant,Food,Baked Goods,15.0,3601.08,870.6,54.59,4,818.82,2782.26,77.2617
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0096,Chocolate Croissant,Food,Baked Goods,20.0,4569.01,1290.8,60.43,5,1208.54,3360.47,73.5492
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0097,Mushroom Cheese Croissant,Food,Baked Goods,17.0,4297.53,1272.28,69.83,5,1187.15,3110.38,72.3759
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0098,Sriracha Chicken Croissant,Food,Baked Goods,19.0,5133.54,1541.66,78.3,5,1487.66,3645.88,71.0208
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0099,Cinnamon Roll with Cream Cheese,Dessert,Baked Goods,11.0,2377.08,578.27,48.83,4,537.12,1839.96,77.4044
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0100,Banana Walnut Tea Cake,Dessert,Baked Goods,22.0,4448.0,1355.42,62.62,5,1377.67,3070.33,69.0271
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0101,Lemon Raspberry Tea Cake,Dessert,Baked Goods,15.0,3164.11,848.55,57.49,4,862.33,2301.78,72.7465
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0102,Double Chocolate Truffle Cake,Dessert,Desserts,30.0,8680.17,1892.1,63.33,5,1899.82,6780.35,78.1131
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0103,Banoffee Pie,Dessert,Desserts,19.0,5311.53,1074.83,57.49,4,1092.29,4219.24,79.4356
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0104,Classic Chocolate Fudge Brownie,Dessert,Desserts,20.0,3831.27,1020.4,50.43,4,1008.51,2822.76,73.677
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0105,Soft-Centred Caramel Cookie,Dessert,Desserts,24.0,4238.58,1104.48,46.97,5,1127.27,3111.31,73.4046
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0106,Death by Chocolate Cookie,Dessert,Desserts,28.0,5223.44,1330.56,47.75,5,1336.88,3886.56,74.4061
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0107,Jaggery Parmesan Cookie,Dessert,Desserts,22.0,3690.77,902.44,41.91,4,921.95,2768.82,75.02
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0108,Apple Pie,Dessert,Desserts,25.0,6579.61,1414.25,57.49,4,1437.22,5142.39,78.1565
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0109,Basque Cheesecake,Dessert,Desserts,20.0,6027.65,1651.4,84.6,4,1691.91,4335.74,71.9309
+month_03,OUT002,ABNAH Cafe Hauz Khas,MENU0110,Multigrain Walnut Tea Cake,Dessert,Baked Goods,16.0,3513.35,905.12,57.49,4,919.82,2593.53,73.8193
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0001,Espresso Shot - Solo,Beverage,Espresso,6.0,847.08,81.78,13.74,4,82.45,764.63,90.2667
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0002,Espresso Shot - Doppio,Beverage,Espresso,5.0,897.1,106.35,21.51,4,107.53,789.57,88.0138
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0003,Americano - Regular,Beverage,Coffee Classics,72.0,13148.93,1671.12,23.49,5,1691.08,11457.85,87.139
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0004,Americano - Medium,Beverage,Coffee Classics,63.0,13058.36,1641.15,26.38,5,1661.81,11396.55,87.274
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0005,Americano - Large,Beverage,Coffee Classics,52.0,12035.64,1503.32,29.28,5,1522.45,10513.19,87.3505
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0006,Latte - Regular,Beverage,Coffee Classics,42.0,9312.43,1519.14,36.78,6,1544.57,7767.86,83.4139
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0007,Latte - Medium,Beverage,Coffee Classics,49.0,11954.22,2007.04,41.66,6,2041.31,9912.91,82.9239
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0008,Latte - Large,Beverage,Coffee Classics,29.0,7738.71,1327.04,46.55,6,1350.02,6388.69,82.555
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0009,Cappuccino - Regular,Beverage,Coffee Classics,76.0,16754.19,2748.92,36.78,6,2794.94,13959.25,83.318
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0010,Cappuccino - Medium,Beverage,Coffee Classics,72.0,17476.12,2949.12,41.66,6,2999.47,14476.65,82.8367
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0011,Cappuccino - Large,Beverage,Coffee Classics,36.0,9712.7,1647.36,46.55,6,1675.89,8036.81,82.7454
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0012,Flat White - Regular,Beverage,Coffee Classics,57.0,13190.44,2061.69,36.78,6,2096.2,11094.24,84.1082
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0013,Flat White - Medium,Beverage,Coffee Classics,61.0,15464.06,2498.56,41.66,6,2541.22,12922.84,83.5669
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0014,Flat White - Large,Beverage,Coffee Classics,37.0,10356.02,1693.12,46.55,6,1722.44,8633.58,83.3677
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0015,Mocha - Regular,Beverage,Coffee Classics,49.0,11725.53,2090.83,42.61,7,2088.1,9637.43,82.1919
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0016,Mocha - Medium,Beverage,Coffee Classics,52.0,13663.53,2517.84,48.36,7,2514.84,11148.69,81.5945
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0017,Mocha - Large,Beverage,Coffee Classics,31.0,8873.81,1680.51,54.14,7,1678.43,7195.38,81.0856
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0018,Sea Salt Mocha - Regular,Beverage,Signature Coffee,38.0,10110.33,1621.46,42.61,7,1619.34,8490.99,83.9833
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0019,Sea Salt Mocha - Medium,Beverage,Signature Coffee,42.0,12525.85,2033.64,48.36,7,2031.21,10494.64,83.7838
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0020,Sea Salt Mocha - Large,Beverage,Signature Coffee,27.0,8785.55,1463.67,54.14,7,1461.86,7323.69,83.3607
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0021,Orange Zest Mocha - Regular,Beverage,Signature Coffee,40.0,10534.14,1706.8,42.61,7,1704.57,8829.57,83.8186
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0022,Orange Zest Mocha - Medium,Beverage,Signature Coffee,39.0,11469.59,1888.38,48.36,7,1886.13,9583.46,83.5554
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0023,Orange Zest Mocha - Large,Beverage,Signature Coffee,23.0,7350.49,1246.83,54.14,7,1245.29,6105.2,83.0585
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0024,Caramel Macchiato - Regular,Beverage,Signature Coffee,39.0,10197.8,1654.38,43.1,7,1681.03,8516.77,83.5157
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0025,Caramel Macchiato - Medium,Beverage,Signature Coffee,45.0,13065.6,2165.85,48.92,7,2201.57,10864.03,83.1498
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0026,Caramel Macchiato - Large,Beverage,Signature Coffee,19.0,6110.26,1023.72,54.78,7,1040.8,5069.46,82.9664
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0027,French Vanilla Latte - Regular,Beverage,Signature Coffee,50.0,13116.4,2108.5,42.17,7,2108.25,11008.15,83.9266
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0028,French Vanilla Latte - Medium,Beverage,Signature Coffee,44.0,12685.31,2105.4,47.85,7,2105.25,10580.06,83.404
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0029,French Vanilla Latte - Large,Beverage,Signature Coffee,32.0,10182.9,1713.92,53.56,7,1713.88,8469.02,83.169
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0030,Vegan Iced Latte - Regular,Beverage,Signature Coffee,47.0,13201.56,2768.3,55.79,8,2622.08,10579.48,80.1381
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0031,Vegan Iced Latte - Medium,Beverage,Signature Coffee,45.0,13675.77,3012.75,63.38,8,2851.97,10823.8,79.1458
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0032,Vegan Iced Latte - Large,Beverage,Signature Coffee,30.0,9861.27,2250.6,70.97,8,2129.23,7732.04,78.4082
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0033,Classic Cold Brew - Regular,Beverage,Cold Brew,20.0,4399.58,512.0,25.95,7,518.98,3880.6,88.2039
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0034,Classic Cold Brew - Medium,Beverage,Cold Brew,26.0,6379.93,745.16,29.06,7,755.59,5624.34,88.1568
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0035,Classic Cold Brew - Large,Beverage,Cold Brew,18.0,4845.46,571.14,32.18,7,579.28,4266.18,88.0448
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0036,Coffee Lemonade - Regular,Beverage,Cold Brew,28.0,6436.77,824.6,29.86,8,836.17,5600.6,87.0094
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0037,Coffee Lemonade - Medium,Beverage,Cold Brew,29.0,7432.67,959.61,33.57,8,973.48,6459.19,86.9028
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0038,Coffee Lemonade - Large,Beverage,Cold Brew,13.0,3662.02,477.49,37.27,8,484.52,3177.5,86.769
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0039,Vietnamese Shakerato - Regular,Beverage,Cold Brew,19.0,4730.75,486.4,25.95,7,493.03,4237.72,89.5782
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0040,Vietnamese Shakerato - Medium,Beverage,Cold Brew,24.0,6530.92,687.84,29.06,7,697.47,5833.45,89.3206
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0041,Vietnamese Shakerato - Large,Beverage,Cold Brew,17.0,5086.45,539.41,32.18,7,547.1,4539.35,89.244
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0042,Classic Cold Coffee - Regular,Beverage,Cold Coffee,46.0,11458.26,1773.76,39.24,8,1804.91,9653.35,84.248
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0043,Classic Cold Coffee - Medium,Beverage,Cold Coffee,43.0,12135.76,1873.08,44.34,8,1906.73,10229.03,84.2884
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0044,Classic Cold Coffee - Large,Beverage,Cold Coffee,30.0,9609.34,1457.4,49.46,8,1483.71,8125.63,84.5597
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0045,Mocha Cold Coffee - Regular,Beverage,Cold Coffee,40.0,11236.25,1802.4,45.08,9,1803.04,9433.21,83.9534
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0046,Mocha Cold Coffee - Medium,Beverage,Cold Coffee,23.0,7195.87,1173.69,51.05,9,1174.04,6021.83,83.6845
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0047,Mocha Cold Coffee - Large,Beverage,Cold Coffee,27.0,9420.17,1539.81,57.05,9,1540.28,7879.89,83.6491
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0048,Caramel Cold Coffee - Regular,Beverage,Cold Coffee,40.0,11144.64,1792.4,45.57,9,1822.61,9322.03,83.6459
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0049,Caramel Cold Coffee - Medium,Beverage,Cold Coffee,35.0,10922.42,1775.9,51.61,9,1806.24,9116.18,83.463
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0050,Caramel Cold Coffee - Large,Beverage,Cold Coffee,24.0,8382.15,1360.8,57.68,9,1384.4,6997.75,83.4839
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0051,Masala Chai Latte - Regular,Beverage,Tea,30.0,5740.37,1085.1,36.78,6,1103.26,4637.11,80.7806
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0052,Masala Chai Latte - Medium,Beverage,Tea,20.0,4325.52,819.2,41.66,6,833.19,3492.33,80.7379
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0053,Masala Chai Latte - Large,Beverage,Tea,18.0,4350.65,823.68,46.55,6,837.94,3512.71,80.7398
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0054,Himalayan Green Tea,Beverage,Tea,23.0,4771.93,199.41,8.72,5,200.67,4571.26,95.7949
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0055,Japanese Matcha Latte - Regular,Beverage,Tea,27.0,7002.35,976.59,36.78,6,992.94,6009.41,85.8199
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0056,Japanese Matcha Latte - Medium,Beverage,Tea,42.0,12169.98,1720.32,41.66,6,1749.69,10420.29,85.6229
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0057,Japanese Matcha Latte - Large,Beverage,Tea,19.0,6065.21,869.44,46.55,6,884.5,5180.71,85.4169
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0058,Lemon Iced Tea - Regular,Beverage,Iced Tea,23.0,4620.74,328.67,14.47,8,332.8,4287.94,92.7976
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0059,Lemon Iced Tea - Medium,Beverage,Iced Tea,19.0,4236.69,297.54,15.87,8,301.44,3935.25,92.8849
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0060,Lemon Iced Tea - Large,Beverage,Iced Tea,17.0,4309.83,289.51,17.26,8,293.41,4016.42,93.1921
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0061,Hibiscus Lime Iced Tea - Regular,Beverage,Iced Tea,17.0,3792.97,409.53,22.98,8,390.72,3402.25,89.6987
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0062,Hibiscus Lime Iced Tea - Medium,Beverage,Iced Tea,16.0,3880.55,431.04,25.67,8,410.7,3469.85,89.4164
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0063,Hibiscus Lime Iced Tea - Large,Beverage,Iced Tea,9.0,2408.64,267.93,28.33,8,254.95,2153.69,89.4153
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0064,Hot Chocolate - Regular,Beverage,Kids Beverage,6.0,1281.91,213.42,34.35,6,206.09,1075.82,83.9235
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0065,Hot Chocolate - Medium,Beverage,Kids Beverage,7.0,1705.55,281.89,38.87,6,272.07,1433.48,84.0479
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0066,Hot Chocolate - Large,Beverage,Kids Beverage,5.0,1318.05,224.9,43.4,6,216.98,1101.07,83.5377
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0067,Babyccino - Regular,Beverage,Kids Beverage,5.0,810.95,71.05,14.43,5,72.14,738.81,91.1038
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0068,Choco Chip Shake - Regular,Beverage,Shake,23.0,6691.2,784.53,33.98,9,781.52,5909.68,88.3201
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0069,Choco Chip Shake - Medium,Beverage,Shake,16.0,5222.97,614.72,38.27,9,612.38,4610.59,88.2753
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0070,Choco Chip Shake - Large,Beverage,Shake,19.0,6771.33,813.01,42.62,9,809.81,5961.52,88.0405
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0071,Mixed Berry Shake - Regular,Beverage,Shake,33.0,10167.64,2019.93,62.24,9,2054.04,8113.6,79.7983
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0072,Mixed Berry Shake - Medium,Beverage,Shake,32.0,10996.39,2227.2,70.79,9,2265.25,8731.14,79.4001
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0073,Mixed Berry Shake - Large,Beverage,Shake,18.0,6823.94,1404.36,79.37,9,1428.57,5395.37,79.0653
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0074,Seasonal Smoothie - Regular,Beverage,Smoothie,21.0,6260.17,700.77,34.01,9,714.14,5546.03,88.5923
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0075,Seasonal Smoothie - Medium,Beverage,Smoothie,19.0,6424.67,714.21,38.32,9,728.02,5696.65,88.6684
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0076,Seasonal Smoothie - Large,Beverage,Smoothie,12.0,4386.0,501.96,42.66,9,511.89,3874.11,88.329
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0077,Spicy Paneer Wrap,Food,Wraps,19.0,5120.77,1393.84,73.75,8,1401.2,3719.57,72.637
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0078,Shredded Chicken Wrap,Food,Wraps,20.0,5764.74,1401.0,70.15,8,1402.93,4361.81,75.6636
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0079,Smoked Chipotle Paneer Sandwich,Food,Sandwiches,25.0,7253.64,2266.5,90.3,8,2257.47,4996.17,68.8781
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0080,Pesto Veg Sandwich,Food,Sandwiches,22.0,5997.38,2020.92,92.09,8,2026.02,3971.36,66.2182
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0081,Pepper Chicken Sandwich,Food,Sandwiches,27.0,8219.83,2366.82,87.03,8,2349.69,5870.14,71.4144
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0082,Tandoori Chicken Sandwich,Food,Sandwiches,28.0,8822.45,2454.48,87.03,8,2436.72,6385.73,72.3805
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0083,Chilli Cheese Garlic Toast,Food,Toasts,17.0,3921.47,716.38,41.01,5,697.17,3224.3,82.2217
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0084,Chicken Pepperoni Avocado Toast,Food,Toasts,16.0,5109.91,1096.64,68.11,6,1089.71,4020.2,78.6746
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0085,Hummus and Pita Platter,Food,Platter,6.0,1844.26,272.7,45.9,6,275.43,1568.83,85.0656
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0086,Breakfast Pancakes,Food,Breakfast,15.0,4165.94,1003.35,68.25,5,1023.75,3142.19,75.4258
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0087,Cream Cheese Bagel,Food,Breakfast,12.0,2901.04,653.88,54.26,5,651.16,2249.88,77.5544
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0088,Scallion Pepper Cream Cheese Bagel,Food,Breakfast,11.0,2885.18,599.39,54.26,5,596.89,2288.29,79.3118
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0089,Masala Egg Bun,Food,Breakfast,21.0,4649.09,897.54,42.51,5,892.8,3756.29,80.7962
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0090,Marinara Cheese Pin Wheels,Food,Snacks,10.0,2103.01,382.9,37.37,5,373.7,1729.31,82.2304
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0091,Pesto Sundried Tomato Pin Wheel,Food,Snacks,9.0,1986.12,378.36,41.13,5,370.2,1615.92,81.3604
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0092,Turnover with Brioche Dough Chicken,Food,Snacks,10.0,2454.21,875.4,83.33,5,833.26,1620.95,66.0476
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0093,Turnover with Brioche Dough Veg,Food,Snacks,12.0,2772.01,1079.28,85.95,5,1031.34,1740.67,62.7945
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0094,Butter Croissant,Food,Baked Goods,24.0,4637.28,1392.96,54.59,4,1310.12,3327.16,71.7481
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0095,Almond Croissant,Food,Baked Goods,30.0,7205.45,1741.2,54.59,4,1637.65,5567.8,77.2721
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0096,Chocolate Croissant,Food,Baked Goods,39.0,9049.05,2517.06,60.43,5,2356.65,6692.4,73.9569
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0097,Mushroom Cheese Croissant,Food,Baked Goods,31.0,7780.19,2320.04,69.83,5,2164.81,5615.38,72.1754
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0098,Sriracha Chicken Croissant,Food,Baked Goods,32.0,8561.34,2596.48,78.3,5,2505.53,6055.81,70.7344
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0099,Cinnamon Roll with Cream Cheese,Dessert,Baked Goods,29.0,6294.6,1524.53,48.83,4,1416.03,4878.57,77.504
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0100,Banana Walnut Tea Cake,Dessert,Baked Goods,26.0,5248.07,1601.86,62.62,5,1628.16,3619.91,68.976
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0101,Lemon Raspberry Tea Cake,Dessert,Baked Goods,32.0,6747.61,1810.24,57.49,4,1839.64,4907.97,72.7364
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0102,Double Chocolate Truffle Cake,Dessert,Desserts,39.0,11305.14,2459.73,63.33,5,2469.77,8835.37,78.1536
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0103,Banoffee Pie,Dessert,Desserts,31.0,8764.21,1753.67,57.49,4,1782.15,6982.06,79.6656
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0104,Classic Chocolate Fudge Brownie,Dessert,Desserts,31.0,5848.24,1581.62,50.43,4,1563.18,4285.06,73.2709
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0105,Soft-Centred Caramel Cookie,Dessert,Desserts,38.0,6725.16,1748.76,46.97,5,1784.84,4940.32,73.4603
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0106,Death by Chocolate Cookie,Dessert,Desserts,28.0,5158.1,1330.56,47.75,5,1336.88,3821.22,74.0819
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0107,Jaggery Parmesan Cookie,Dessert,Desserts,36.0,6001.26,1476.72,41.91,4,1508.65,4492.61,74.8611
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0108,Apple Pie,Dessert,Desserts,36.0,9464.35,2036.52,57.49,4,2069.59,7394.76,78.1328
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0109,Basque Cheesecake,Dessert,Desserts,37.0,11202.02,3055.09,84.6,4,3130.03,8071.99,72.0584
+month_03,OUT003,ABNAH Cafe Saket Premium,MENU0110,Multigrain Walnut Tea Cake,Dessert,Baked Goods,28.0,6164.02,1583.96,57.49,4,1609.68,4554.34,73.8858

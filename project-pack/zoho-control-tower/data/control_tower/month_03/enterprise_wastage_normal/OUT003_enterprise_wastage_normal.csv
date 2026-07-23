@@ -1,0 +1,13 @@
+﻿Deployment Name,Store/Kitchen Name,User Name,Date,Transaction Number,Item Code,Item Name,Category Name,Super Category Name,Comment,Quantity,Unit,Unit Price,Amount,Source
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-03-09,WST-OUT003-03-001,ING040,Napkin,Packaging,Consumable,Preparation loss,46.0636,pcs,0.32,14.74,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-03-10,WST-OUT003-03-002,ING038,Lid,Packaging,Consumable,Preparation loss,29.9477,pcs,1.12,33.54,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-03-11,WST-OUT003-03-003,ING037,Hot Cup,Packaging,Consumable,Preparation loss,18.234,pcs,2.84,51.78,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-03-12,WST-OUT003-03-004,ING036,Cold Cup,Packaging,Consumable,Quality rejection,11.7137,pcs,3.25,38.07,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-03-13,WST-OUT003-03-005,ING039,Straw,Packaging,Consumable,Quality rejection,11.7137,pcs,0.56,6.56,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-03-14,WST-OUT003-03-006,ING041,Dessert Box,Packaging,Consumable,Shelf-life loss,7.1711,pcs,5.07,36.36,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-03-15,WST-OUT003-03-007,ING002,Milk,Dairy,Raw Material,Preparation loss,6.928,litre,75.24,521.26,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-03-16,WST-OUT003-03-008,ING009,Bread,Bakery,Raw Material,Quality rejection,3.6876,pcs,12.3,45.36,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-03-17,WST-OUT003-03-009,ING014,Cake Base,Dessert Inputs,Raw Material,Shelf-life loss,3.3572,pcs,46.92,157.52,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-03-18,WST-OUT003-03-010,ING042,Sandwich Box,Packaging,Consumable,Shelf-life loss,2.8838,pcs,6.6,19.03,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-03-19,WST-OUT003-03-011,ING012,Croissant Base,Bakery,Raw Material,Quality rejection,2.6413,pcs,43.05,113.71,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-03-20,WST-OUT003-03-012,ING022,Ice,Beverage Inputs,Raw Material,Preparation loss,1.5882,kg,12.24,19.44,

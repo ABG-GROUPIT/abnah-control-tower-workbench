@@ -1,0 +1,56 @@
+{
+  "contract_version": "1.1.0",
+  "report_id": "p4.closing_stock.item",
+  "display_name": "Closing Stock Report",
+  "canonical_filename_prefix": "closing_stock",
+  "workbench": {
+    "target_report_id": "report:p4_stock_admin:06_analytical_reports:04_closing_stock_report",
+    "blueprint_path": "schema-pack/source/report_structures/p4_stock_admin/06_analytical_reports/04_closing_stock_report.json",
+    "variant": "item_snapshot_csv",
+    "layout_kind": "grouped_columns"
+  },
+  "filename_regexes": ["(?i)^closing[ _-]*report.*\\.csv$"],
+  "schema_status": "validated_from_populated_uat_csv",
+  "grain": "one row per deployment, generation date and inventory item",
+  "max_trailing_empty_fields": 1,
+  "expected_header": [
+    "Deployment", "Date", "Generation Date", "Generation Time", "Item Code", "Item Name",
+    "Super Category Code", "Super Category Name", "Category Code", "Category Name",
+    "Unit Name", "Average Price", "GK2 Main Store", "Total Qty", "Total Amt"
+  ],
+  "row_columns": [
+    {"name": "deployment_name", "type": "text", "required": true},
+    {"name": "stock_date", "type": "date", "required": true},
+    {"name": "generation_date", "type": "date"},
+    {"name": "generation_time", "type": "text"},
+    {"name": "item_code", "type": "text", "required": true},
+    {"name": "item_name", "type": "text", "required": true},
+    {"name": "super_category_code", "type": "text"},
+    {"name": "super_category_name", "type": "text"},
+    {"name": "category_code", "type": "text"},
+    {"name": "category_name", "type": "text"},
+    {"name": "unit_name", "type": "text"},
+    {"name": "average_price", "type": "decimal"},
+    {"name": "gk2_main_store_qty", "type": "decimal"},
+    {"name": "total_qty", "type": "decimal"},
+    {"name": "total_amt", "type": "decimal"}
+  ],
+  "rules": [
+    {
+      "id": "closing_amount_from_qty_price",
+      "type": "product_equals",
+      "target": "total_amt",
+      "left": "total_qty",
+      "right": "average_price",
+      "display_rounding": {
+        "left_decimals": 3,
+        "right_decimals": 2,
+        "target_decimals": 2
+      },
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "Closing amount differs from total quantity multiplied by average price."
+    }
+  ]
+}

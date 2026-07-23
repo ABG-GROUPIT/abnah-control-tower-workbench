@@ -1,0 +1,13 @@
+﻿Deployment Name,Store/Kitchen Name,User Name,Date,Transaction Number,Item Code,Item Name,Category Name,Super Category Name,Comment,Quantity,Unit,Unit Price,Amount,Source
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-02-09,WST-OUT003-02-001,ING040,Napkin,Packaging,Consumable,Preparation loss,34.4045,pcs,0.32,11.01,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-02-10,WST-OUT003-02-002,ING038,Lid,Packaging,Consumable,Shelf-life loss,21.9899,pcs,1.11,24.41,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-02-11,WST-OUT003-02-003,ING037,Hot Cup,Packaging,Consumable,Preparation loss,13.2818,pcs,2.81,37.32,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-02-12,WST-OUT003-02-004,ING036,Cold Cup,Packaging,Consumable,Preparation loss,8.708,pcs,3.22,28.04,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-02-13,WST-OUT003-02-005,ING039,Straw,Packaging,Consumable,Shelf-life loss,8.708,pcs,0.55,4.79,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-02-14,WST-OUT003-02-006,ING041,Dessert Box,Packaging,Consumable,Shelf-life loss,5.2391,pcs,5.02,26.3,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-02-15,WST-OUT003-02-007,ING002,Milk,Dairy,Raw Material,Shelf-life loss,5.1522,litre,73.44,378.38,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-02-16,WST-OUT003-02-008,ING009,Bread,Bakery,Raw Material,Shelf-life loss,2.7205,pcs,12.12,32.97,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-02-17,WST-OUT003-02-009,ING014,Cake Base,Dessert Inputs,Raw Material,Quality rejection,2.4152,pcs,46.46,112.21,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-02-18,WST-OUT003-02-010,ING042,Sandwich Box,Packaging,Consumable,Shelf-life loss,2.1622,pcs,6.53,14.12,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-02-19,WST-OUT003-02-011,ING012,Croissant Base,Bakery,Raw Material,Quality rejection,2.0077,pcs,42.42,85.17,
+ABNAH Cafe Saket Premium,Main Store,inventory.lead,2026-02-20,WST-OUT003-02-012,ING022,Ice,Beverage Inputs,Raw Material,Shelf-life loss,1.1741,kg,12.12,14.23,

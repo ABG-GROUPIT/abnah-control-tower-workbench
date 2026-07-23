@@ -1,0 +1,1475 @@
+row_id,outlet_name,date,super_category,category,item_number,item_name,qty,net_sale
+SALE_20260201_OUT001_MENU0003,ABNAH Cafe Connaught Place,2026-02-01,Beverage,Coffee Classics,MENU0003,Americano - Regular,1,181.5
+SALE_20260201_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-01,Beverage,Coffee Classics,MENU0004,Americano - Medium,1,205.81
+SALE_20260201_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-01,Beverage,Coffee Classics,MENU0007,Latte - Medium,3,711.2
+SALE_20260201_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-01,Beverage,Coffee Classics,MENU0013,Flat White - Medium,5,1228.44
+SALE_20260201_OUT001_MENU0014,ABNAH Cafe Connaught Place,2026-02-01,Beverage,Coffee Classics,MENU0014,Flat White - Large,2,569.64
+SALE_20260201_OUT001_MENU0015,ABNAH Cafe Connaught Place,2026-02-01,Beverage,Coffee Classics,MENU0015,Mocha - Regular,1,245.76
+SALE_20260201_OUT001_MENU0017,ABNAH Cafe Connaught Place,2026-02-01,Beverage,Coffee Classics,MENU0017,Mocha - Large,1,292.58
+SALE_20260201_OUT001_MENU0018,ABNAH Cafe Connaught Place,2026-02-01,Beverage,Signature Coffee,MENU0018,Sea Salt Mocha - Regular,3,778.39
+SALE_20260201_OUT001_MENU0019,ABNAH Cafe Connaught Place,2026-02-01,Beverage,Signature Coffee,MENU0019,Sea Salt Mocha - Medium,1,303.29
+SALE_20260201_OUT001_MENU0025,ABNAH Cafe Connaught Place,2026-02-01,Beverage,Signature Coffee,MENU0025,Caramel Macchiato - Medium,2,599.9
+SALE_20260201_OUT001_MENU0030,ABNAH Cafe Connaught Place,2026-02-01,Beverage,Signature Coffee,MENU0030,Vegan Iced Latte - Regular,1,288.22
+SALE_20260201_OUT001_MENU0031,ABNAH Cafe Connaught Place,2026-02-01,Beverage,Signature Coffee,MENU0031,Vegan Iced Latte - Medium,1,305.93
+SALE_20260201_OUT001_MENU0032,ABNAH Cafe Connaught Place,2026-02-01,Beverage,Signature Coffee,MENU0032,Vegan Iced Latte - Large,1,325.45
+SALE_20260201_OUT001_MENU0033,ABNAH Cafe Connaught Place,2026-02-01,Beverage,Cold Brew,MENU0033,Classic Cold Brew - Regular,1,212.5
+SALE_20260201_OUT001_MENU0036,ABNAH Cafe Connaught Place,2026-02-01,Beverage,Cold Brew,MENU0036,Coffee Lemonade - Regular,1,230.82
+SALE_20260201_OUT001_MENU0045,ABNAH Cafe Connaught Place,2026-02-01,Beverage,Cold Coffee,MENU0045,Mocha Cold Coffee - Regular,1,271.78
+SALE_20260201_OUT001_MENU0050,ABNAH Cafe Connaught Place,2026-02-01,Beverage,Cold Coffee,MENU0050,Caramel Cold Coffee - Large,1,345.27
+SALE_20260201_OUT001_MENU0052,ABNAH Cafe Connaught Place,2026-02-01,Beverage,Tea,MENU0052,Masala Chai Latte - Medium,1,214.55
+SALE_20260201_OUT001_MENU0055,ABNAH Cafe Connaught Place,2026-02-01,Beverage,Tea,MENU0055,Japanese Matcha Latte - Regular,1,264.32
+SALE_20260201_OUT001_MENU0057,ABNAH Cafe Connaught Place,2026-02-01,Beverage,Tea,MENU0057,Japanese Matcha Latte - Large,1,306.88
+SALE_20260201_OUT001_MENU0067,ABNAH Cafe Connaught Place,2026-02-01,Beverage,Kids Beverage,MENU0067,Babyccino - Regular,1,163.14
+SALE_20260201_OUT001_MENU0081,ABNAH Cafe Connaught Place,2026-02-01,Food,Sandwiches,MENU0081,Pepper Chicken Sandwich,1,297.78
+SALE_20260201_OUT001_MENU0082,ABNAH Cafe Connaught Place,2026-02-01,Food,Sandwiches,MENU0082,Tandoori Chicken Sandwich,2,629.85
+SALE_20260201_OUT001_MENU0088,ABNAH Cafe Connaught Place,2026-02-01,Food,Breakfast,MENU0088,Scallion Pepper Cream Cheese Bagel,1,270.22
+SALE_20260201_OUT001_MENU0089,ABNAH Cafe Connaught Place,2026-02-01,Food,Breakfast,MENU0089,Masala Egg Bun,1,223.03
+SALE_20260201_OUT001_MENU0090,ABNAH Cafe Connaught Place,2026-02-01,Food,Snacks,MENU0090,Marinara Cheese Pin Wheels,1,203.99
+SALE_20260201_OUT001_MENU0094,ABNAH Cafe Connaught Place,2026-02-01,Food,Baked Goods,MENU0094,Butter Croissant,1,191.21
+SALE_20260201_OUT001_MENU0106,ABNAH Cafe Connaught Place,2026-02-01,Dessert,Desserts,MENU0106,Death by Chocolate Cookie,1,181.56
+SALE_20260201_OUT001_MENU0107,ABNAH Cafe Connaught Place,2026-02-01,Dessert,Desserts,MENU0107,Jaggery Parmesan Cookie,2,330.74
+SALE_20260201_OUT001_MENU0109,ABNAH Cafe Connaught Place,2026-02-01,Dessert,Desserts,MENU0109,Basque Cheesecake,1,315.34
+SALE_20260202_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Coffee Classics,MENU0004,Americano - Medium,3,628.34
+SALE_20260202_OUT001_MENU0005,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Coffee Classics,MENU0005,Americano - Large,4,941.75
+SALE_20260202_OUT001_MENU0006,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Coffee Classics,MENU0006,Latte - Regular,2,447.32
+SALE_20260202_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Coffee Classics,MENU0007,Latte - Medium,3,729.53
+SALE_20260202_OUT001_MENU0009,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Coffee Classics,MENU0009,Cappuccino - Regular,5,1133.05
+SALE_20260202_OUT001_MENU0010,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Coffee Classics,MENU0010,Cappuccino - Medium,4,1008.47
+SALE_20260202_OUT001_MENU0011,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Coffee Classics,MENU0011,Cappuccino - Large,2,550.65
+SALE_20260202_OUT001_MENU0012,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Coffee Classics,MENU0012,Flat White - Regular,3,672.78
+SALE_20260202_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Coffee Classics,MENU0013,Flat White - Medium,2,491.38
+SALE_20260202_OUT001_MENU0014,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Coffee Classics,MENU0014,Flat White - Large,4,1151.24
+SALE_20260202_OUT001_MENU0015,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Coffee Classics,MENU0015,Mocha - Regular,1,242.58
+SALE_20260202_OUT001_MENU0016,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Coffee Classics,MENU0016,Mocha - Medium,4,1075.48
+SALE_20260202_OUT001_MENU0018,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Signature Coffee,MENU0018,Sea Salt Mocha - Regular,1,270.26
+SALE_20260202_OUT001_MENU0022,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Signature Coffee,MENU0022,Orange Zest Mocha - Medium,4,1136.72
+SALE_20260202_OUT001_MENU0024,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Signature Coffee,MENU0024,Caramel Macchiato - Regular,3,759.1
+SALE_20260202_OUT001_MENU0025,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Signature Coffee,MENU0025,Caramel Macchiato - Medium,1,288.18
+SALE_20260202_OUT001_MENU0026,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Signature Coffee,MENU0026,Caramel Macchiato - Large,2,624.87
+SALE_20260202_OUT001_MENU0031,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Signature Coffee,MENU0031,Vegan Iced Latte - Medium,1,308.15
+SALE_20260202_OUT001_MENU0037,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Cold Brew,MENU0037,Coffee Lemonade - Medium,1,254.82
+SALE_20260202_OUT001_MENU0039,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Cold Brew,MENU0039,Vietnamese Shakerato - Regular,1,258.89
+SALE_20260202_OUT001_MENU0040,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Cold Brew,MENU0040,Vietnamese Shakerato - Medium,1,285.24
+SALE_20260202_OUT001_MENU0042,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Cold Coffee,MENU0042,Classic Cold Coffee - Regular,2,493.86
+SALE_20260202_OUT001_MENU0045,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Cold Coffee,MENU0045,Mocha Cold Coffee - Regular,4,1152.37
+SALE_20260202_OUT001_MENU0047,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Cold Coffee,MENU0047,Mocha Cold Coffee - Large,1,345.11
+SALE_20260202_OUT001_MENU0049,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Cold Coffee,MENU0049,Caramel Cold Coffee - Medium,1,321.14
+SALE_20260202_OUT001_MENU0050,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Cold Coffee,MENU0050,Caramel Cold Coffee - Large,1,344.91
+SALE_20260202_OUT001_MENU0052,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Tea,MENU0052,Masala Chai Latte - Medium,2,443.38
+SALE_20260202_OUT001_MENU0053,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Tea,MENU0053,Masala Chai Latte - Large,1,247.36
+SALE_20260202_OUT001_MENU0054,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Tea,MENU0054,Himalayan Green Tea,1,206.61
+SALE_20260202_OUT001_MENU0056,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Tea,MENU0056,Japanese Matcha Latte - Medium,1,286.94
+SALE_20260202_OUT001_MENU0057,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Tea,MENU0057,Japanese Matcha Latte - Large,1,328.53
+SALE_20260202_OUT001_MENU0058,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Iced Tea,MENU0058,Lemon Iced Tea - Regular,1,204.04
+SALE_20260202_OUT001_MENU0062,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Iced Tea,MENU0062,Hibiscus Lime Iced Tea - Medium,1,253.62
+SALE_20260202_OUT001_MENU0069,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Shake,MENU0069,Choco Chip Shake - Medium,2,634.0
+SALE_20260202_OUT001_MENU0073,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Shake,MENU0073,Mixed Berry Shake - Large,1,386.45
+SALE_20260202_OUT001_MENU0075,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Smoothie,MENU0075,Seasonal Smoothie - Medium,1,331.21
+SALE_20260202_OUT001_MENU0076,ABNAH Cafe Connaught Place,2026-02-02,Beverage,Smoothie,MENU0076,Seasonal Smoothie - Large,1,371.62
+SALE_20260202_OUT001_MENU0078,ABNAH Cafe Connaught Place,2026-02-02,Food,Wraps,MENU0078,Shredded Chicken Wrap,1,288.58
+SALE_20260202_OUT001_MENU0081,ABNAH Cafe Connaught Place,2026-02-02,Food,Sandwiches,MENU0081,Pepper Chicken Sandwich,1,318.73
+SALE_20260202_OUT001_MENU0082,ABNAH Cafe Connaught Place,2026-02-02,Food,Sandwiches,MENU0082,Tandoori Chicken Sandwich,2,642.17
+SALE_20260202_OUT001_MENU0083,ABNAH Cafe Connaught Place,2026-02-02,Food,Toasts,MENU0083,Chilli Cheese Garlic Toast,1,227.47
+SALE_20260202_OUT001_MENU0087,ABNAH Cafe Connaught Place,2026-02-02,Food,Breakfast,MENU0087,Cream Cheese Bagel,2,503.58
+SALE_20260202_OUT001_MENU0088,ABNAH Cafe Connaught Place,2026-02-02,Food,Breakfast,MENU0088,Scallion Pepper Cream Cheese Bagel,2,528.69
+SALE_20260202_OUT001_MENU0089,ABNAH Cafe Connaught Place,2026-02-02,Food,Breakfast,MENU0089,Masala Egg Bun,2,443.17
+SALE_20260202_OUT001_MENU0091,ABNAH Cafe Connaught Place,2026-02-02,Food,Snacks,MENU0091,Pesto Sundried Tomato Pin Wheel,1,225.45
+SALE_20260202_OUT001_MENU0092,ABNAH Cafe Connaught Place,2026-02-02,Food,Snacks,MENU0092,Turnover with Brioche Dough Chicken,1,246.29
+SALE_20260202_OUT001_MENU0093,ABNAH Cafe Connaught Place,2026-02-02,Food,Snacks,MENU0093,Turnover with Brioche Dough Veg,1,236.55
+SALE_20260202_OUT001_MENU0094,ABNAH Cafe Connaught Place,2026-02-02,Food,Baked Goods,MENU0094,Butter Croissant,2,373.28
+SALE_20260202_OUT001_MENU0095,ABNAH Cafe Connaught Place,2026-02-02,Food,Baked Goods,MENU0095,Almond Croissant,2,463.47
+SALE_20260202_OUT001_MENU0097,ABNAH Cafe Connaught Place,2026-02-02,Food,Baked Goods,MENU0097,Mushroom Cheese Croissant,2,479.9
+SALE_20260202_OUT001_MENU0098,ABNAH Cafe Connaught Place,2026-02-02,Food,Baked Goods,MENU0098,Sriracha Chicken Croissant,1,265.46
+SALE_20260202_OUT001_MENU0100,ABNAH Cafe Connaught Place,2026-02-02,Dessert,Baked Goods,MENU0100,Banana Walnut Tea Cake,1,207.39
+SALE_20260202_OUT001_MENU0107,ABNAH Cafe Connaught Place,2026-02-02,Dessert,Desserts,MENU0107,Jaggery Parmesan Cookie,1,163.01
+SALE_20260202_OUT001_MENU0110,ABNAH Cafe Connaught Place,2026-02-02,Dessert,Baked Goods,MENU0110,Multigrain Walnut Tea Cake,3,680.28
+SALE_20260203_OUT001_MENU0003,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Coffee Classics,MENU0003,Americano - Regular,2,374.12
+SALE_20260203_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Coffee Classics,MENU0004,Americano - Medium,3,637.31
+SALE_20260203_OUT001_MENU0005,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Coffee Classics,MENU0005,Americano - Large,3,684.85
+SALE_20260203_OUT001_MENU0006,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Coffee Classics,MENU0006,Latte - Regular,7,1583.08
+SALE_20260203_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Coffee Classics,MENU0007,Latte - Medium,3,756.14
+SALE_20260203_OUT001_MENU0008,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Coffee Classics,MENU0008,Latte - Large,2,550.94
+SALE_20260203_OUT001_MENU0009,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Coffee Classics,MENU0009,Cappuccino - Regular,4,871.33
+SALE_20260203_OUT001_MENU0010,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Coffee Classics,MENU0010,Cappuccino - Medium,4,970.45
+SALE_20260203_OUT001_MENU0012,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Coffee Classics,MENU0012,Flat White - Regular,2,459.94
+SALE_20260203_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Coffee Classics,MENU0013,Flat White - Medium,1,262.29
+SALE_20260203_OUT001_MENU0014,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Coffee Classics,MENU0014,Flat White - Large,4,1155.14
+SALE_20260203_OUT001_MENU0015,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Coffee Classics,MENU0015,Mocha - Regular,1,244.35
+SALE_20260203_OUT001_MENU0016,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Coffee Classics,MENU0016,Mocha - Medium,5,1341.94
+SALE_20260203_OUT001_MENU0017,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Coffee Classics,MENU0017,Mocha - Large,1,294.51
+SALE_20260203_OUT001_MENU0018,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Signature Coffee,MENU0018,Sea Salt Mocha - Regular,3,820.07
+SALE_20260203_OUT001_MENU0019,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Signature Coffee,MENU0019,Sea Salt Mocha - Medium,2,574.6
+SALE_20260203_OUT001_MENU0020,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Signature Coffee,MENU0020,Sea Salt Mocha - Large,1,338.25
+SALE_20260203_OUT001_MENU0026,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Signature Coffee,MENU0026,Caramel Macchiato - Large,2,654.51
+SALE_20260203_OUT001_MENU0027,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Signature Coffee,MENU0027,French Vanilla Latte - Regular,1,255.05
+SALE_20260203_OUT001_MENU0029,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Signature Coffee,MENU0029,French Vanilla Latte - Large,2,653.03
+SALE_20260203_OUT001_MENU0030,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Signature Coffee,MENU0030,Vegan Iced Latte - Regular,1,290.34
+SALE_20260203_OUT001_MENU0032,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Signature Coffee,MENU0032,Vegan Iced Latte - Large,1,324.43
+SALE_20260203_OUT001_MENU0033,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Cold Brew,MENU0033,Classic Cold Brew - Regular,1,225.13
+SALE_20260203_OUT001_MENU0034,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Cold Brew,MENU0034,Classic Cold Brew - Medium,1,254.73
+SALE_20260203_OUT001_MENU0035,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Cold Brew,MENU0035,Classic Cold Brew - Large,2,538.9
+SALE_20260203_OUT001_MENU0036,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Cold Brew,MENU0036,Coffee Lemonade - Regular,1,229.5
+SALE_20260203_OUT001_MENU0037,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Cold Brew,MENU0037,Coffee Lemonade - Medium,1,246.18
+SALE_20260203_OUT001_MENU0038,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Cold Brew,MENU0038,Coffee Lemonade - Large,2,536.03
+SALE_20260203_OUT001_MENU0039,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Cold Brew,MENU0039,Vietnamese Shakerato - Regular,1,257.41
+SALE_20260203_OUT001_MENU0040,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Cold Brew,MENU0040,Vietnamese Shakerato - Medium,1,266.81
+SALE_20260203_OUT001_MENU0041,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Cold Brew,MENU0041,Vietnamese Shakerato - Large,1,286.73
+SALE_20260203_OUT001_MENU0045,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Cold Coffee,MENU0045,Mocha Cold Coffee - Regular,2,573.16
+SALE_20260203_OUT001_MENU0046,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Cold Coffee,MENU0046,Mocha Cold Coffee - Medium,2,608.29
+SALE_20260203_OUT001_MENU0047,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Cold Coffee,MENU0047,Mocha Cold Coffee - Large,1,340.24
+SALE_20260203_OUT001_MENU0049,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Cold Coffee,MENU0049,Caramel Cold Coffee - Medium,1,320.83
+SALE_20260203_OUT001_MENU0052,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Tea,MENU0052,Masala Chai Latte - Medium,3,629.26
+SALE_20260203_OUT001_MENU0053,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Tea,MENU0053,Masala Chai Latte - Large,1,239.38
+SALE_20260203_OUT001_MENU0056,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Tea,MENU0056,Japanese Matcha Latte - Medium,3,886.13
+SALE_20260203_OUT001_MENU0057,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Tea,MENU0057,Japanese Matcha Latte - Large,1,309.3
+SALE_20260203_OUT001_MENU0060,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Iced Tea,MENU0060,Lemon Iced Tea - Large,2,514.43
+SALE_20260203_OUT001_MENU0061,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Iced Tea,MENU0061,Hibiscus Lime Iced Tea - Regular,4,873.32
+SALE_20260203_OUT001_MENU0063,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Iced Tea,MENU0063,Hibiscus Lime Iced Tea - Large,2,522.47
+SALE_20260203_OUT001_MENU0068,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Shake,MENU0068,Choco Chip Shake - Regular,1,285.11
+SALE_20260203_OUT001_MENU0074,ABNAH Cafe Connaught Place,2026-02-03,Beverage,Smoothie,MENU0074,Seasonal Smoothie - Regular,1,292.16
+SALE_20260203_OUT001_MENU0080,ABNAH Cafe Connaught Place,2026-02-03,Food,Sandwiches,MENU0080,Pesto Veg Sandwich,1,281.67
+SALE_20260203_OUT001_MENU0082,ABNAH Cafe Connaught Place,2026-02-03,Food,Sandwiches,MENU0082,Tandoori Chicken Sandwich,2,618.13
+SALE_20260203_OUT001_MENU0084,ABNAH Cafe Connaught Place,2026-02-03,Food,Toasts,MENU0084,Chicken Pepperoni Avocado Toast,1,329.31
+SALE_20260203_OUT001_MENU0087,ABNAH Cafe Connaught Place,2026-02-03,Food,Breakfast,MENU0087,Cream Cheese Bagel,2,484.49
+SALE_20260203_OUT001_MENU0089,ABNAH Cafe Connaught Place,2026-02-03,Food,Breakfast,MENU0089,Masala Egg Bun,2,448.38
+SALE_20260203_OUT001_MENU0090,ABNAH Cafe Connaught Place,2026-02-03,Food,Snacks,MENU0090,Marinara Cheese Pin Wheels,1,217.86
+SALE_20260203_OUT001_MENU0093,ABNAH Cafe Connaught Place,2026-02-03,Food,Snacks,MENU0093,Turnover with Brioche Dough Veg,3,679.71
+SALE_20260203_OUT001_MENU0095,ABNAH Cafe Connaught Place,2026-02-03,Food,Baked Goods,MENU0095,Almond Croissant,1,237.48
+SALE_20260203_OUT001_MENU0096,ABNAH Cafe Connaught Place,2026-02-03,Food,Baked Goods,MENU0096,Chocolate Croissant,1,229.25
+SALE_20260203_OUT001_MENU0099,ABNAH Cafe Connaught Place,2026-02-03,Dessert,Baked Goods,MENU0099,Cinnamon Roll with Cream Cheese,2,432.18
+SALE_20260203_OUT001_MENU0102,ABNAH Cafe Connaught Place,2026-02-03,Dessert,Desserts,MENU0102,Double Chocolate Truffle Cake,1,279.21
+SALE_20260203_OUT001_MENU0103,ABNAH Cafe Connaught Place,2026-02-03,Dessert,Desserts,MENU0103,Banoffee Pie,1,288.58
+SALE_20260203_OUT001_MENU0104,ABNAH Cafe Connaught Place,2026-02-03,Dessert,Desserts,MENU0104,Classic Chocolate Fudge Brownie,1,191.68
+SALE_20260203_OUT001_MENU0105,ABNAH Cafe Connaught Place,2026-02-03,Dessert,Desserts,MENU0105,Soft-Centred Caramel Cookie,1,176.9
+SALE_20260203_OUT001_MENU0107,ABNAH Cafe Connaught Place,2026-02-03,Dessert,Desserts,MENU0107,Jaggery Parmesan Cookie,1,166.5
+SALE_20260203_OUT001_MENU0109,ABNAH Cafe Connaught Place,2026-02-03,Dessert,Desserts,MENU0109,Basque Cheesecake,2,588.24
+SALE_20260204_OUT001_MENU0003,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Coffee Classics,MENU0003,Americano - Regular,2,350.15
+SALE_20260204_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Coffee Classics,MENU0004,Americano - Medium,2,423.09
+SALE_20260204_OUT001_MENU0005,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Coffee Classics,MENU0005,Americano - Large,1,228.35
+SALE_20260204_OUT001_MENU0006,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Coffee Classics,MENU0006,Latte - Regular,5,1082.28
+SALE_20260204_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Coffee Classics,MENU0007,Latte - Medium,1,240.52
+SALE_20260204_OUT001_MENU0008,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Coffee Classics,MENU0008,Latte - Large,1,270.11
+SALE_20260204_OUT001_MENU0009,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Coffee Classics,MENU0009,Cappuccino - Regular,2,429.38
+SALE_20260204_OUT001_MENU0010,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Coffee Classics,MENU0010,Cappuccino - Medium,2,476.81
+SALE_20260204_OUT001_MENU0012,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Coffee Classics,MENU0012,Flat White - Regular,8,1789.19
+SALE_20260204_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Coffee Classics,MENU0013,Flat White - Medium,3,738.31
+SALE_20260204_OUT001_MENU0014,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Coffee Classics,MENU0014,Flat White - Large,2,540.64
+SALE_20260204_OUT001_MENU0015,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Coffee Classics,MENU0015,Mocha - Regular,3,730.25
+SALE_20260204_OUT001_MENU0016,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Coffee Classics,MENU0016,Mocha - Medium,1,261.55
+SALE_20260204_OUT001_MENU0018,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Signature Coffee,MENU0018,Sea Salt Mocha - Regular,1,265.71
+SALE_20260204_OUT001_MENU0019,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Signature Coffee,MENU0019,Sea Salt Mocha - Medium,1,291.22
+SALE_20260204_OUT001_MENU0020,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Signature Coffee,MENU0020,Sea Salt Mocha - Large,2,665.52
+SALE_20260204_OUT001_MENU0021,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Signature Coffee,MENU0021,Orange Zest Mocha - Regular,1,274.76
+SALE_20260204_OUT001_MENU0022,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Signature Coffee,MENU0022,Orange Zest Mocha - Medium,2,603.68
+SALE_20260204_OUT001_MENU0024,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Signature Coffee,MENU0024,Caramel Macchiato - Regular,1,261.84
+SALE_20260204_OUT001_MENU0026,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Signature Coffee,MENU0026,Caramel Macchiato - Large,1,314.28
+SALE_20260204_OUT001_MENU0027,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Signature Coffee,MENU0027,French Vanilla Latte - Regular,2,531.78
+SALE_20260204_OUT001_MENU0028,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Signature Coffee,MENU0028,French Vanilla Latte - Medium,1,287.16
+SALE_20260204_OUT001_MENU0031,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Signature Coffee,MENU0031,Vegan Iced Latte - Medium,1,293.71
+SALE_20260204_OUT001_MENU0033,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Cold Brew,MENU0033,Classic Cold Brew - Regular,3,673.32
+SALE_20260204_OUT001_MENU0035,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Cold Brew,MENU0035,Classic Cold Brew - Large,2,541.92
+SALE_20260204_OUT001_MENU0036,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Cold Brew,MENU0036,Coffee Lemonade - Regular,3,706.87
+SALE_20260204_OUT001_MENU0037,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Cold Brew,MENU0037,Coffee Lemonade - Medium,1,258.71
+SALE_20260204_OUT001_MENU0039,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Cold Brew,MENU0039,Vietnamese Shakerato - Regular,2,492.68
+SALE_20260204_OUT001_MENU0041,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Cold Brew,MENU0041,Vietnamese Shakerato - Large,1,297.24
+SALE_20260204_OUT001_MENU0042,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Cold Coffee,MENU0042,Classic Cold Coffee - Regular,1,246.81
+SALE_20260204_OUT001_MENU0043,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Cold Coffee,MENU0043,Classic Cold Coffee - Medium,2,577.21
+SALE_20260204_OUT001_MENU0046,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Cold Coffee,MENU0046,Mocha Cold Coffee - Medium,1,322.36
+SALE_20260204_OUT001_MENU0048,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Cold Coffee,MENU0048,Caramel Cold Coffee - Regular,2,553.76
+SALE_20260204_OUT001_MENU0051,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Tea,MENU0051,Masala Chai Latte - Regular,2,374.38
+SALE_20260204_OUT001_MENU0055,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Tea,MENU0055,Japanese Matcha Latte - Regular,1,252.37
+SALE_20260204_OUT001_MENU0056,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Tea,MENU0056,Japanese Matcha Latte - Medium,1,295.32
+SALE_20260204_OUT001_MENU0057,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Tea,MENU0057,Japanese Matcha Latte - Large,1,321.42
+SALE_20260204_OUT001_MENU0058,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Iced Tea,MENU0058,Lemon Iced Tea - Regular,1,205.35
+SALE_20260204_OUT001_MENU0059,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Iced Tea,MENU0059,Lemon Iced Tea - Medium,2,445.19
+SALE_20260204_OUT001_MENU0061,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Iced Tea,MENU0061,Hibiscus Lime Iced Tea - Regular,4,891.62
+SALE_20260204_OUT001_MENU0062,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Iced Tea,MENU0062,Hibiscus Lime Iced Tea - Medium,1,251.73
+SALE_20260204_OUT001_MENU0068,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Shake,MENU0068,Choco Chip Shake - Regular,1,287.29
+SALE_20260204_OUT001_MENU0069,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Shake,MENU0069,Choco Chip Shake - Medium,2,654.62
+SALE_20260204_OUT001_MENU0071,ABNAH Cafe Connaught Place,2026-02-04,Beverage,Shake,MENU0071,Mixed Berry Shake - Regular,1,316.53
+SALE_20260204_OUT001_MENU0077,ABNAH Cafe Connaught Place,2026-02-04,Food,Wraps,MENU0077,Spicy Paneer Wrap,1,266.11
+SALE_20260204_OUT001_MENU0079,ABNAH Cafe Connaught Place,2026-02-04,Food,Sandwiches,MENU0079,Smoked Chipotle Paneer Sandwich,2,561.03
+SALE_20260204_OUT001_MENU0080,ABNAH Cafe Connaught Place,2026-02-04,Food,Sandwiches,MENU0080,Pesto Veg Sandwich,2,534.18
+SALE_20260204_OUT001_MENU0082,ABNAH Cafe Connaught Place,2026-02-04,Food,Sandwiches,MENU0082,Tandoori Chicken Sandwich,1,315.47
+SALE_20260204_OUT001_MENU0083,ABNAH Cafe Connaught Place,2026-02-04,Food,Toasts,MENU0083,Chilli Cheese Garlic Toast,1,227.46
+SALE_20260204_OUT001_MENU0084,ABNAH Cafe Connaught Place,2026-02-04,Food,Toasts,MENU0084,Chicken Pepperoni Avocado Toast,1,323.5
+SALE_20260204_OUT001_MENU0086,ABNAH Cafe Connaught Place,2026-02-04,Food,Breakfast,MENU0086,Breakfast Pancakes,3,829.65
+SALE_20260204_OUT001_MENU0087,ABNAH Cafe Connaught Place,2026-02-04,Food,Breakfast,MENU0087,Cream Cheese Bagel,2,478.14
+SALE_20260204_OUT001_MENU0088,ABNAH Cafe Connaught Place,2026-02-04,Food,Breakfast,MENU0088,Scallion Pepper Cream Cheese Bagel,2,501.49
+SALE_20260204_OUT001_MENU0094,ABNAH Cafe Connaught Place,2026-02-04,Food,Baked Goods,MENU0094,Butter Croissant,1,194.43
+SALE_20260204_OUT001_MENU0095,ABNAH Cafe Connaught Place,2026-02-04,Food,Baked Goods,MENU0095,Almond Croissant,1,231.41
+SALE_20260204_OUT001_MENU0097,ABNAH Cafe Connaught Place,2026-02-04,Food,Baked Goods,MENU0097,Mushroom Cheese Croissant,2,488.0
+SALE_20260204_OUT001_MENU0098,ABNAH Cafe Connaught Place,2026-02-04,Food,Baked Goods,MENU0098,Sriracha Chicken Croissant,1,258.7
+SALE_20260204_OUT001_MENU0102,ABNAH Cafe Connaught Place,2026-02-04,Dessert,Desserts,MENU0102,Double Chocolate Truffle Cake,1,278.52
+SALE_20260204_OUT001_MENU0105,ABNAH Cafe Connaught Place,2026-02-04,Dessert,Desserts,MENU0105,Soft-Centred Caramel Cookie,2,356.64
+SALE_20260204_OUT001_MENU0106,ABNAH Cafe Connaught Place,2026-02-04,Dessert,Desserts,MENU0106,Death by Chocolate Cookie,1,181.36
+SALE_20260204_OUT001_MENU0108,ABNAH Cafe Connaught Place,2026-02-04,Dessert,Desserts,MENU0108,Apple Pie,1,269.48
+SALE_20260204_OUT001_MENU0110,ABNAH Cafe Connaught Place,2026-02-04,Dessert,Baked Goods,MENU0110,Multigrain Walnut Tea Cake,1,225.41
+SALE_20260205_OUT001_MENU0003,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Coffee Classics,MENU0003,Americano - Regular,2,354.6
+SALE_20260205_OUT001_MENU0006,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Coffee Classics,MENU0006,Latte - Regular,1,216.1
+SALE_20260205_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Coffee Classics,MENU0007,Latte - Medium,2,489.62
+SALE_20260205_OUT001_MENU0008,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Coffee Classics,MENU0008,Latte - Large,3,838.87
+SALE_20260205_OUT001_MENU0009,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Coffee Classics,MENU0009,Cappuccino - Regular,6,1286.56
+SALE_20260205_OUT001_MENU0010,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Coffee Classics,MENU0010,Cappuccino - Medium,3,724.43
+SALE_20260205_OUT001_MENU0011,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Coffee Classics,MENU0011,Cappuccino - Large,4,1080.69
+SALE_20260205_OUT001_MENU0012,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Coffee Classics,MENU0012,Flat White - Regular,2,475.23
+SALE_20260205_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Coffee Classics,MENU0013,Flat White - Medium,2,492.59
+SALE_20260205_OUT001_MENU0015,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Coffee Classics,MENU0015,Mocha - Regular,4,980.38
+SALE_20260205_OUT001_MENU0016,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Coffee Classics,MENU0016,Mocha - Medium,1,262.03
+SALE_20260205_OUT001_MENU0017,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Coffee Classics,MENU0017,Mocha - Large,1,289.95
+SALE_20260205_OUT001_MENU0018,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Signature Coffee,MENU0018,Sea Salt Mocha - Regular,3,791.71
+SALE_20260205_OUT001_MENU0020,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Signature Coffee,MENU0020,Sea Salt Mocha - Large,3,979.5
+SALE_20260205_OUT001_MENU0021,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Signature Coffee,MENU0021,Orange Zest Mocha - Regular,2,524.93
+SALE_20260205_OUT001_MENU0022,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Signature Coffee,MENU0022,Orange Zest Mocha - Medium,2,566.0
+SALE_20260205_OUT001_MENU0023,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Signature Coffee,MENU0023,Orange Zest Mocha - Large,3,990.39
+SALE_20260205_OUT001_MENU0026,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Signature Coffee,MENU0026,Caramel Macchiato - Large,1,321.71
+SALE_20260205_OUT001_MENU0027,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Signature Coffee,MENU0027,French Vanilla Latte - Regular,1,249.71
+SALE_20260205_OUT001_MENU0028,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Signature Coffee,MENU0028,French Vanilla Latte - Medium,1,277.54
+SALE_20260205_OUT001_MENU0029,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Signature Coffee,MENU0029,French Vanilla Latte - Large,1,311.83
+SALE_20260205_OUT001_MENU0030,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Signature Coffee,MENU0030,Vegan Iced Latte - Regular,1,274.83
+SALE_20260205_OUT001_MENU0031,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Signature Coffee,MENU0031,Vegan Iced Latte - Medium,1,308.42
+SALE_20260205_OUT001_MENU0037,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Cold Brew,MENU0037,Coffee Lemonade - Medium,2,524.08
+SALE_20260205_OUT001_MENU0040,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Cold Brew,MENU0040,Vietnamese Shakerato - Medium,2,535.51
+SALE_20260205_OUT001_MENU0041,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Cold Brew,MENU0041,Vietnamese Shakerato - Large,1,307.99
+SALE_20260205_OUT001_MENU0042,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Cold Coffee,MENU0042,Classic Cold Coffee - Regular,1,247.99
+SALE_20260205_OUT001_MENU0044,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Cold Coffee,MENU0044,Classic Cold Coffee - Large,1,305.76
+SALE_20260205_OUT001_MENU0045,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Cold Coffee,MENU0045,Mocha Cold Coffee - Regular,1,284.78
+SALE_20260205_OUT001_MENU0046,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Cold Coffee,MENU0046,Mocha Cold Coffee - Medium,1,305.45
+SALE_20260205_OUT001_MENU0047,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Cold Coffee,MENU0047,Mocha Cold Coffee - Large,1,334.51
+SALE_20260205_OUT001_MENU0048,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Cold Coffee,MENU0048,Caramel Cold Coffee - Regular,1,278.69
+SALE_20260205_OUT001_MENU0051,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Tea,MENU0051,Masala Chai Latte - Regular,1,188.63
+SALE_20260205_OUT001_MENU0054,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Tea,MENU0054,Himalayan Green Tea,1,212.9
+SALE_20260205_OUT001_MENU0055,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Tea,MENU0055,Japanese Matcha Latte - Regular,1,262.75
+SALE_20260205_OUT001_MENU0056,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Tea,MENU0056,Japanese Matcha Latte - Medium,1,290.35
+SALE_20260205_OUT001_MENU0058,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Iced Tea,MENU0058,Lemon Iced Tea - Regular,2,396.04
+SALE_20260205_OUT001_MENU0059,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Iced Tea,MENU0059,Lemon Iced Tea - Medium,1,218.24
+SALE_20260205_OUT001_MENU0060,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Iced Tea,MENU0060,Lemon Iced Tea - Large,1,247.62
+SALE_20260205_OUT001_MENU0062,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Iced Tea,MENU0062,Hibiscus Lime Iced Tea - Medium,1,244.88
+SALE_20260205_OUT001_MENU0066,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Kids Beverage,MENU0066,Hot Chocolate - Large,1,268.52
+SALE_20260205_OUT001_MENU0068,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Shake,MENU0068,Choco Chip Shake - Regular,1,289.11
+SALE_20260205_OUT001_MENU0071,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Shake,MENU0071,Mixed Berry Shake - Regular,1,297.12
+SALE_20260205_OUT001_MENU0073,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Shake,MENU0073,Mixed Berry Shake - Large,1,391.04
+SALE_20260205_OUT001_MENU0075,ABNAH Cafe Connaught Place,2026-02-05,Beverage,Smoothie,MENU0075,Seasonal Smoothie - Medium,1,325.48
+SALE_20260205_OUT001_MENU0077,ABNAH Cafe Connaught Place,2026-02-05,Food,Wraps,MENU0077,Spicy Paneer Wrap,2,555.08
+SALE_20260205_OUT001_MENU0078,ABNAH Cafe Connaught Place,2026-02-05,Food,Wraps,MENU0078,Shredded Chicken Wrap,1,293.4
+SALE_20260205_OUT001_MENU0079,ABNAH Cafe Connaught Place,2026-02-05,Food,Sandwiches,MENU0079,Smoked Chipotle Paneer Sandwich,2,592.84
+SALE_20260205_OUT001_MENU0080,ABNAH Cafe Connaught Place,2026-02-05,Food,Sandwiches,MENU0080,Pesto Veg Sandwich,1,276.9
+SALE_20260205_OUT001_MENU0081,ABNAH Cafe Connaught Place,2026-02-05,Food,Sandwiches,MENU0081,Pepper Chicken Sandwich,2,603.82
+SALE_20260205_OUT001_MENU0087,ABNAH Cafe Connaught Place,2026-02-05,Food,Breakfast,MENU0087,Cream Cheese Bagel,4,943.54
+SALE_20260205_OUT001_MENU0089,ABNAH Cafe Connaught Place,2026-02-05,Food,Breakfast,MENU0089,Masala Egg Bun,1,216.39
+SALE_20260205_OUT001_MENU0095,ABNAH Cafe Connaught Place,2026-02-05,Food,Baked Goods,MENU0095,Almond Croissant,1,238.24
+SALE_20260205_OUT001_MENU0096,ABNAH Cafe Connaught Place,2026-02-05,Food,Baked Goods,MENU0096,Chocolate Croissant,4,895.33
+SALE_20260205_OUT001_MENU0098,ABNAH Cafe Connaught Place,2026-02-05,Food,Baked Goods,MENU0098,Sriracha Chicken Croissant,2,557.15
+SALE_20260205_OUT001_MENU0099,ABNAH Cafe Connaught Place,2026-02-05,Dessert,Baked Goods,MENU0099,Cinnamon Roll with Cream Cheese,2,440.64
+SALE_20260205_OUT001_MENU0100,ABNAH Cafe Connaught Place,2026-02-05,Dessert,Baked Goods,MENU0100,Banana Walnut Tea Cake,1,197.32
+SALE_20260206_OUT001_MENU0003,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Coffee Classics,MENU0003,Americano - Regular,1,183.18
+SALE_20260206_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Coffee Classics,MENU0004,Americano - Medium,1,212.94
+SALE_20260206_OUT001_MENU0005,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Coffee Classics,MENU0005,Americano - Large,3,662.94
+SALE_20260206_OUT001_MENU0006,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Coffee Classics,MENU0006,Latte - Regular,1,229.24
+SALE_20260206_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Coffee Classics,MENU0007,Latte - Medium,3,713.46
+SALE_20260206_OUT001_MENU0009,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Coffee Classics,MENU0009,Cappuccino - Regular,3,636.35
+SALE_20260206_OUT001_MENU0011,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Coffee Classics,MENU0011,Cappuccino - Large,1,263.52
+SALE_20260206_OUT001_MENU0012,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Coffee Classics,MENU0012,Flat White - Regular,1,237.32
+SALE_20260206_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Coffee Classics,MENU0013,Flat White - Medium,4,1036.16
+SALE_20260206_OUT001_MENU0014,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Coffee Classics,MENU0014,Flat White - Large,1,282.19
+SALE_20260206_OUT001_MENU0015,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Coffee Classics,MENU0015,Mocha - Regular,4,955.14
+SALE_20260206_OUT001_MENU0016,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Coffee Classics,MENU0016,Mocha - Medium,2,534.39
+SALE_20260206_OUT001_MENU0017,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Coffee Classics,MENU0017,Mocha - Large,1,289.8
+SALE_20260206_OUT001_MENU0019,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Signature Coffee,MENU0019,Sea Salt Mocha - Medium,1,291.31
+SALE_20260206_OUT001_MENU0022,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Signature Coffee,MENU0022,Orange Zest Mocha - Medium,2,564.87
+SALE_20260206_OUT001_MENU0024,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Signature Coffee,MENU0024,Caramel Macchiato - Regular,1,257.78
+SALE_20260206_OUT001_MENU0028,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Signature Coffee,MENU0028,French Vanilla Latte - Medium,3,850.5
+SALE_20260206_OUT001_MENU0031,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Signature Coffee,MENU0031,Vegan Iced Latte - Medium,2,626.57
+SALE_20260206_OUT001_MENU0032,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Signature Coffee,MENU0032,Vegan Iced Latte - Large,2,669.26
+SALE_20260206_OUT001_MENU0034,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Cold Brew,MENU0034,Classic Cold Brew - Medium,1,252.37
+SALE_20260206_OUT001_MENU0040,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Cold Brew,MENU0040,Vietnamese Shakerato - Medium,1,280.79
+SALE_20260206_OUT001_MENU0042,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Cold Coffee,MENU0042,Classic Cold Coffee - Regular,1,241.88
+SALE_20260206_OUT001_MENU0043,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Cold Coffee,MENU0043,Classic Cold Coffee - Medium,2,582.03
+SALE_20260206_OUT001_MENU0045,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Cold Coffee,MENU0045,Mocha Cold Coffee - Regular,2,537.27
+SALE_20260206_OUT001_MENU0046,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Cold Coffee,MENU0046,Mocha Cold Coffee - Medium,3,943.1
+SALE_20260206_OUT001_MENU0048,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Cold Coffee,MENU0048,Caramel Cold Coffee - Regular,1,289.4
+SALE_20260206_OUT001_MENU0049,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Cold Coffee,MENU0049,Caramel Cold Coffee - Medium,1,301.73
+SALE_20260206_OUT001_MENU0050,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Cold Coffee,MENU0050,Caramel Cold Coffee - Large,1,352.89
+SALE_20260206_OUT001_MENU0051,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Tea,MENU0051,Masala Chai Latte - Regular,1,194.57
+SALE_20260206_OUT001_MENU0052,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Tea,MENU0052,Masala Chai Latte - Medium,1,222.75
+SALE_20260206_OUT001_MENU0053,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Tea,MENU0053,Masala Chai Latte - Large,1,230.73
+SALE_20260206_OUT001_MENU0054,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Tea,MENU0054,Himalayan Green Tea,2,403.66
+SALE_20260206_OUT001_MENU0056,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Tea,MENU0056,Japanese Matcha Latte - Medium,1,291.95
+SALE_20260206_OUT001_MENU0057,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Tea,MENU0057,Japanese Matcha Latte - Large,2,625.93
+SALE_20260206_OUT001_MENU0058,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Iced Tea,MENU0058,Lemon Iced Tea - Regular,1,197.81
+SALE_20260206_OUT001_MENU0059,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Iced Tea,MENU0059,Lemon Iced Tea - Medium,1,222.46
+SALE_20260206_OUT001_MENU0061,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Iced Tea,MENU0061,Hibiscus Lime Iced Tea - Regular,2,433.43
+SALE_20260206_OUT001_MENU0062,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Iced Tea,MENU0062,Hibiscus Lime Iced Tea - Medium,2,471.02
+SALE_20260206_OUT001_MENU0068,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Shake,MENU0068,Choco Chip Shake - Regular,1,283.59
+SALE_20260206_OUT001_MENU0071,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Shake,MENU0071,Mixed Berry Shake - Regular,1,314.06
+SALE_20260206_OUT001_MENU0072,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Shake,MENU0072,Mixed Berry Shake - Medium,1,336.91
+SALE_20260206_OUT001_MENU0073,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Shake,MENU0073,Mixed Berry Shake - Large,1,370.0
+SALE_20260206_OUT001_MENU0075,ABNAH Cafe Connaught Place,2026-02-06,Beverage,Smoothie,MENU0075,Seasonal Smoothie - Medium,1,322.2
+SALE_20260206_OUT001_MENU0077,ABNAH Cafe Connaught Place,2026-02-06,Food,Wraps,MENU0077,Spicy Paneer Wrap,2,532.49
+SALE_20260206_OUT001_MENU0080,ABNAH Cafe Connaught Place,2026-02-06,Food,Sandwiches,MENU0080,Pesto Veg Sandwich,2,529.83
+SALE_20260206_OUT001_MENU0081,ABNAH Cafe Connaught Place,2026-02-06,Food,Sandwiches,MENU0081,Pepper Chicken Sandwich,1,318.67
+SALE_20260206_OUT001_MENU0085,ABNAH Cafe Connaught Place,2026-02-06,Food,Platter,MENU0085,Hummus and Pita Platter,1,301.93
+SALE_20260206_OUT001_MENU0086,ABNAH Cafe Connaught Place,2026-02-06,Food,Breakfast,MENU0086,Breakfast Pancakes,1,268.78
+SALE_20260206_OUT001_MENU0090,ABNAH Cafe Connaught Place,2026-02-06,Food,Snacks,MENU0090,Marinara Cheese Pin Wheels,2,411.02
+SALE_20260206_OUT001_MENU0093,ABNAH Cafe Connaught Place,2026-02-06,Food,Snacks,MENU0093,Turnover with Brioche Dough Veg,1,227.96
+SALE_20260206_OUT001_MENU0094,ABNAH Cafe Connaught Place,2026-02-06,Food,Baked Goods,MENU0094,Butter Croissant,1,197.7
+SALE_20260206_OUT001_MENU0095,ABNAH Cafe Connaught Place,2026-02-06,Food,Baked Goods,MENU0095,Almond Croissant,1,239.71
+SALE_20260206_OUT001_MENU0098,ABNAH Cafe Connaught Place,2026-02-06,Food,Baked Goods,MENU0098,Sriracha Chicken Croissant,1,264.73
+SALE_20260206_OUT001_MENU0100,ABNAH Cafe Connaught Place,2026-02-06,Dessert,Baked Goods,MENU0100,Banana Walnut Tea Cake,1,206.21
+SALE_20260206_OUT001_MENU0101,ABNAH Cafe Connaught Place,2026-02-06,Dessert,Baked Goods,MENU0101,Lemon Raspberry Tea Cake,1,203.77
+SALE_20260206_OUT001_MENU0102,ABNAH Cafe Connaught Place,2026-02-06,Dessert,Desserts,MENU0102,Double Chocolate Truffle Cake,1,293.28
+SALE_20260206_OUT001_MENU0109,ABNAH Cafe Connaught Place,2026-02-06,Dessert,Desserts,MENU0109,Basque Cheesecake,1,294.88
+SALE_20260207_OUT001_MENU0003,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Coffee Classics,MENU0003,Americano - Regular,3,526.03
+SALE_20260207_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Coffee Classics,MENU0004,Americano - Medium,2,424.53
+SALE_20260207_OUT001_MENU0005,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Coffee Classics,MENU0005,Americano - Large,1,227.04
+SALE_20260207_OUT001_MENU0006,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Coffee Classics,MENU0006,Latte - Regular,1,215.03
+SALE_20260207_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Coffee Classics,MENU0007,Latte - Medium,1,251.26
+SALE_20260207_OUT001_MENU0008,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Coffee Classics,MENU0008,Latte - Large,1,261.78
+SALE_20260207_OUT001_MENU0010,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Coffee Classics,MENU0010,Cappuccino - Medium,2,475.35
+SALE_20260207_OUT001_MENU0011,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Coffee Classics,MENU0011,Cappuccino - Large,1,259.25
+SALE_20260207_OUT001_MENU0012,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Coffee Classics,MENU0012,Flat White - Regular,2,453.94
+SALE_20260207_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Coffee Classics,MENU0013,Flat White - Medium,2,497.72
+SALE_20260207_OUT001_MENU0014,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Coffee Classics,MENU0014,Flat White - Large,1,286.75
+SALE_20260207_OUT001_MENU0015,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Coffee Classics,MENU0015,Mocha - Regular,4,943.54
+SALE_20260207_OUT001_MENU0016,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Coffee Classics,MENU0016,Mocha - Medium,1,260.32
+SALE_20260207_OUT001_MENU0017,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Coffee Classics,MENU0017,Mocha - Large,1,293.32
+SALE_20260207_OUT001_MENU0019,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Signature Coffee,MENU0019,Sea Salt Mocha - Medium,2,613.77
+SALE_20260207_OUT001_MENU0022,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Signature Coffee,MENU0022,Orange Zest Mocha - Medium,1,284.65
+SALE_20260207_OUT001_MENU0024,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Signature Coffee,MENU0024,Caramel Macchiato - Regular,1,262.63
+SALE_20260207_OUT001_MENU0027,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Signature Coffee,MENU0027,French Vanilla Latte - Regular,1,267.14
+SALE_20260207_OUT001_MENU0030,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Signature Coffee,MENU0030,Vegan Iced Latte - Regular,1,279.94
+SALE_20260207_OUT001_MENU0032,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Signature Coffee,MENU0032,Vegan Iced Latte - Large,1,328.58
+SALE_20260207_OUT001_MENU0036,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Cold Brew,MENU0036,Coffee Lemonade - Regular,2,451.72
+SALE_20260207_OUT001_MENU0039,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Cold Brew,MENU0039,Vietnamese Shakerato - Regular,1,258.98
+SALE_20260207_OUT001_MENU0043,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Cold Coffee,MENU0043,Classic Cold Coffee - Medium,2,564.95
+SALE_20260207_OUT001_MENU0045,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Cold Coffee,MENU0045,Mocha Cold Coffee - Regular,1,273.27
+SALE_20260207_OUT001_MENU0047,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Cold Coffee,MENU0047,Mocha Cold Coffee - Large,1,344.18
+SALE_20260207_OUT001_MENU0052,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Tea,MENU0052,Masala Chai Latte - Medium,1,212.37
+SALE_20260207_OUT001_MENU0053,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Tea,MENU0053,Masala Chai Latte - Large,1,233.8
+SALE_20260207_OUT001_MENU0059,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Iced Tea,MENU0059,Lemon Iced Tea - Medium,2,451.74
+SALE_20260207_OUT001_MENU0062,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Iced Tea,MENU0062,Hibiscus Lime Iced Tea - Medium,1,238.06
+SALE_20260207_OUT001_MENU0067,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Kids Beverage,MENU0067,Babyccino - Regular,1,160.09
+SALE_20260207_OUT001_MENU0069,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Shake,MENU0069,Choco Chip Shake - Medium,1,316.92
+SALE_20260207_OUT001_MENU0072,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Shake,MENU0072,Mixed Berry Shake - Medium,2,666.06
+SALE_20260207_OUT001_MENU0075,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Smoothie,MENU0075,Seasonal Smoothie - Medium,1,344.76
+SALE_20260207_OUT001_MENU0076,ABNAH Cafe Connaught Place,2026-02-07,Beverage,Smoothie,MENU0076,Seasonal Smoothie - Large,1,369.24
+SALE_20260207_OUT001_MENU0077,ABNAH Cafe Connaught Place,2026-02-07,Food,Wraps,MENU0077,Spicy Paneer Wrap,1,275.18
+SALE_20260207_OUT001_MENU0084,ABNAH Cafe Connaught Place,2026-02-07,Food,Toasts,MENU0084,Chicken Pepperoni Avocado Toast,2,661.81
+SALE_20260207_OUT001_MENU0094,ABNAH Cafe Connaught Place,2026-02-07,Food,Baked Goods,MENU0094,Butter Croissant,1,185.34
+SALE_20260207_OUT001_MENU0095,ABNAH Cafe Connaught Place,2026-02-07,Food,Baked Goods,MENU0095,Almond Croissant,2,491.88
+SALE_20260207_OUT001_MENU0100,ABNAH Cafe Connaught Place,2026-02-07,Dessert,Baked Goods,MENU0100,Banana Walnut Tea Cake,1,197.0
+SALE_20260207_OUT001_MENU0102,ABNAH Cafe Connaught Place,2026-02-07,Dessert,Desserts,MENU0102,Double Chocolate Truffle Cake,1,289.09
+SALE_20260208_OUT001_MENU0003,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Coffee Classics,MENU0003,Americano - Regular,1,175.55
+SALE_20260208_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Coffee Classics,MENU0004,Americano - Medium,1,201.16
+SALE_20260208_OUT001_MENU0005,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Coffee Classics,MENU0005,Americano - Large,2,457.65
+SALE_20260208_OUT001_MENU0006,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Coffee Classics,MENU0006,Latte - Regular,3,670.52
+SALE_20260208_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Coffee Classics,MENU0007,Latte - Medium,5,1244.57
+SALE_20260208_OUT001_MENU0008,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Coffee Classics,MENU0008,Latte - Large,2,545.35
+SALE_20260208_OUT001_MENU0012,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Coffee Classics,MENU0012,Flat White - Regular,3,698.99
+SALE_20260208_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Coffee Classics,MENU0013,Flat White - Medium,6,1484.09
+SALE_20260208_OUT001_MENU0016,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Coffee Classics,MENU0016,Mocha - Medium,1,274.07
+SALE_20260208_OUT001_MENU0017,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Coffee Classics,MENU0017,Mocha - Large,1,290.12
+SALE_20260208_OUT001_MENU0019,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Signature Coffee,MENU0019,Sea Salt Mocha - Medium,1,294.16
+SALE_20260208_OUT001_MENU0021,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Signature Coffee,MENU0021,Orange Zest Mocha - Regular,1,262.14
+SALE_20260208_OUT001_MENU0023,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Signature Coffee,MENU0023,Orange Zest Mocha - Large,1,314.65
+SALE_20260208_OUT001_MENU0024,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Signature Coffee,MENU0024,Caramel Macchiato - Regular,2,528.97
+SALE_20260208_OUT001_MENU0025,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Signature Coffee,MENU0025,Caramel Macchiato - Medium,1,288.87
+SALE_20260208_OUT001_MENU0027,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Signature Coffee,MENU0027,French Vanilla Latte - Regular,1,262.89
+SALE_20260208_OUT001_MENU0028,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Signature Coffee,MENU0028,French Vanilla Latte - Medium,1,280.36
+SALE_20260208_OUT001_MENU0029,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Signature Coffee,MENU0029,French Vanilla Latte - Large,1,324.07
+SALE_20260208_OUT001_MENU0031,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Signature Coffee,MENU0031,Vegan Iced Latte - Medium,1,310.78
+SALE_20260208_OUT001_MENU0036,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Cold Brew,MENU0036,Coffee Lemonade - Regular,1,228.56
+SALE_20260208_OUT001_MENU0039,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Cold Brew,MENU0039,Vietnamese Shakerato - Regular,1,249.87
+SALE_20260208_OUT001_MENU0043,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Cold Coffee,MENU0043,Classic Cold Coffee - Medium,1,282.38
+SALE_20260208_OUT001_MENU0045,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Cold Coffee,MENU0045,Mocha Cold Coffee - Regular,2,559.86
+SALE_20260208_OUT001_MENU0046,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Cold Coffee,MENU0046,Mocha Cold Coffee - Medium,1,308.57
+SALE_20260208_OUT001_MENU0049,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Cold Coffee,MENU0049,Caramel Cold Coffee - Medium,1,310.82
+SALE_20260208_OUT001_MENU0052,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Tea,MENU0052,Masala Chai Latte - Medium,1,209.86
+SALE_20260208_OUT001_MENU0055,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Tea,MENU0055,Japanese Matcha Latte - Regular,2,507.33
+SALE_20260208_OUT001_MENU0057,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Tea,MENU0057,Japanese Matcha Latte - Large,1,316.23
+SALE_20260208_OUT001_MENU0061,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Iced Tea,MENU0061,Hibiscus Lime Iced Tea - Regular,1,227.01
+SALE_20260208_OUT001_MENU0064,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Kids Beverage,MENU0064,Hot Chocolate - Regular,1,215.61
+SALE_20260208_OUT001_MENU0068,ABNAH Cafe Connaught Place,2026-02-08,Beverage,Shake,MENU0068,Choco Chip Shake - Regular,1,279.42
+SALE_20260208_OUT001_MENU0080,ABNAH Cafe Connaught Place,2026-02-08,Food,Sandwiches,MENU0080,Pesto Veg Sandwich,1,282.28
+SALE_20260208_OUT001_MENU0082,ABNAH Cafe Connaught Place,2026-02-08,Food,Sandwiches,MENU0082,Tandoori Chicken Sandwich,1,323.96
+SALE_20260208_OUT001_MENU0088,ABNAH Cafe Connaught Place,2026-02-08,Food,Breakfast,MENU0088,Scallion Pepper Cream Cheese Bagel,1,254.46
+SALE_20260208_OUT001_MENU0090,ABNAH Cafe Connaught Place,2026-02-08,Food,Snacks,MENU0090,Marinara Cheese Pin Wheels,1,216.25
+SALE_20260208_OUT001_MENU0101,ABNAH Cafe Connaught Place,2026-02-08,Dessert,Baked Goods,MENU0101,Lemon Raspberry Tea Cake,1,216.88
+SALE_20260208_OUT001_MENU0107,ABNAH Cafe Connaught Place,2026-02-08,Dessert,Desserts,MENU0107,Jaggery Parmesan Cookie,2,326.48
+SALE_20260209_OUT001_MENU0001,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Espresso,MENU0001,Espresso Shot - Solo,1,144.33
+SALE_20260209_OUT001_MENU0003,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Coffee Classics,MENU0003,Americano - Regular,4,703.05
+SALE_20260209_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Coffee Classics,MENU0004,Americano - Medium,2,419.44
+SALE_20260209_OUT001_MENU0005,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Coffee Classics,MENU0005,Americano - Large,2,458.25
+SALE_20260209_OUT001_MENU0006,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Coffee Classics,MENU0006,Latte - Regular,1,213.14
+SALE_20260209_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Coffee Classics,MENU0007,Latte - Medium,1,238.77
+SALE_20260209_OUT001_MENU0009,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Coffee Classics,MENU0009,Cappuccino - Regular,7,1509.79
+SALE_20260209_OUT001_MENU0010,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Coffee Classics,MENU0010,Cappuccino - Medium,2,490.76
+SALE_20260209_OUT001_MENU0011,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Coffee Classics,MENU0011,Cappuccino - Large,1,262.81
+SALE_20260209_OUT001_MENU0012,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Coffee Classics,MENU0012,Flat White - Regular,1,229.37
+SALE_20260209_OUT001_MENU0014,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Coffee Classics,MENU0014,Flat White - Large,1,276.53
+SALE_20260209_OUT001_MENU0016,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Coffee Classics,MENU0016,Mocha - Medium,4,1076.24
+SALE_20260209_OUT001_MENU0017,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Coffee Classics,MENU0017,Mocha - Large,3,855.94
+SALE_20260209_OUT001_MENU0018,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Signature Coffee,MENU0018,Sea Salt Mocha - Regular,2,525.91
+SALE_20260209_OUT001_MENU0019,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Signature Coffee,MENU0019,Sea Salt Mocha - Medium,2,595.82
+SALE_20260209_OUT001_MENU0024,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Signature Coffee,MENU0024,Caramel Macchiato - Regular,2,532.52
+SALE_20260209_OUT001_MENU0025,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Signature Coffee,MENU0025,Caramel Macchiato - Medium,1,278.35
+SALE_20260209_OUT001_MENU0026,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Signature Coffee,MENU0026,Caramel Macchiato - Large,2,661.89
+SALE_20260209_OUT001_MENU0027,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Signature Coffee,MENU0027,French Vanilla Latte - Regular,1,262.61
+SALE_20260209_OUT001_MENU0028,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Signature Coffee,MENU0028,French Vanilla Latte - Medium,4,1199.43
+SALE_20260209_OUT001_MENU0029,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Signature Coffee,MENU0029,French Vanilla Latte - Large,1,324.46
+SALE_20260209_OUT001_MENU0030,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Signature Coffee,MENU0030,Vegan Iced Latte - Regular,1,274.26
+SALE_20260209_OUT001_MENU0031,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Signature Coffee,MENU0031,Vegan Iced Latte - Medium,2,594.66
+SALE_20260209_OUT001_MENU0032,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Signature Coffee,MENU0032,Vegan Iced Latte - Large,2,674.42
+SALE_20260209_OUT001_MENU0034,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Cold Brew,MENU0034,Classic Cold Brew - Medium,1,235.23
+SALE_20260209_OUT001_MENU0035,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Cold Brew,MENU0035,Classic Cold Brew - Large,1,264.73
+SALE_20260209_OUT001_MENU0037,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Cold Brew,MENU0037,Coffee Lemonade - Medium,1,251.15
+SALE_20260209_OUT001_MENU0038,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Cold Brew,MENU0038,Coffee Lemonade - Large,2,560.41
+SALE_20260209_OUT001_MENU0042,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Cold Coffee,MENU0042,Classic Cold Coffee - Regular,4,1030.24
+SALE_20260209_OUT001_MENU0043,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Cold Coffee,MENU0043,Classic Cold Coffee - Medium,1,278.18
+SALE_20260209_OUT001_MENU0045,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Cold Coffee,MENU0045,Mocha Cold Coffee - Regular,1,281.88
+SALE_20260209_OUT001_MENU0048,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Cold Coffee,MENU0048,Caramel Cold Coffee - Regular,2,539.65
+SALE_20260209_OUT001_MENU0049,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Cold Coffee,MENU0049,Caramel Cold Coffee - Medium,2,626.33
+SALE_20260209_OUT001_MENU0050,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Cold Coffee,MENU0050,Caramel Cold Coffee - Large,1,352.73
+SALE_20260209_OUT001_MENU0051,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Tea,MENU0051,Masala Chai Latte - Regular,2,391.37
+SALE_20260209_OUT001_MENU0054,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Tea,MENU0054,Himalayan Green Tea,1,206.34
+SALE_20260209_OUT001_MENU0056,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Tea,MENU0056,Japanese Matcha Latte - Medium,1,289.38
+SALE_20260209_OUT001_MENU0057,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Tea,MENU0057,Japanese Matcha Latte - Large,3,992.57
+SALE_20260209_OUT001_MENU0060,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Iced Tea,MENU0060,Lemon Iced Tea - Large,1,252.32
+SALE_20260209_OUT001_MENU0062,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Iced Tea,MENU0062,Hibiscus Lime Iced Tea - Medium,2,495.39
+SALE_20260209_OUT001_MENU0065,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Kids Beverage,MENU0065,Hot Chocolate - Medium,1,242.72
+SALE_20260209_OUT001_MENU0071,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Shake,MENU0071,Mixed Berry Shake - Regular,1,315.25
+SALE_20260209_OUT001_MENU0072,ABNAH Cafe Connaught Place,2026-02-09,Beverage,Shake,MENU0072,Mixed Berry Shake - Medium,1,334.97
+SALE_20260209_OUT001_MENU0077,ABNAH Cafe Connaught Place,2026-02-09,Food,Wraps,MENU0077,Spicy Paneer Wrap,1,272.11
+SALE_20260209_OUT001_MENU0079,ABNAH Cafe Connaught Place,2026-02-09,Food,Sandwiches,MENU0079,Smoked Chipotle Paneer Sandwich,3,838.97
+SALE_20260209_OUT001_MENU0080,ABNAH Cafe Connaught Place,2026-02-09,Food,Sandwiches,MENU0080,Pesto Veg Sandwich,4,1117.07
+SALE_20260209_OUT001_MENU0081,ABNAH Cafe Connaught Place,2026-02-09,Food,Sandwiches,MENU0081,Pepper Chicken Sandwich,5,1591.14
+SALE_20260209_OUT001_MENU0082,ABNAH Cafe Connaught Place,2026-02-09,Food,Sandwiches,MENU0082,Tandoori Chicken Sandwich,1,309.79
+SALE_20260209_OUT001_MENU0084,ABNAH Cafe Connaught Place,2026-02-09,Food,Toasts,MENU0084,Chicken Pepperoni Avocado Toast,1,322.29
+SALE_20260209_OUT001_MENU0085,ABNAH Cafe Connaught Place,2026-02-09,Food,Platter,MENU0085,Hummus and Pita Platter,1,313.31
+SALE_20260209_OUT001_MENU0086,ABNAH Cafe Connaught Place,2026-02-09,Food,Breakfast,MENU0086,Breakfast Pancakes,1,288.43
+SALE_20260209_OUT001_MENU0087,ABNAH Cafe Connaught Place,2026-02-09,Food,Breakfast,MENU0087,Cream Cheese Bagel,1,249.08
+SALE_20260209_OUT001_MENU0088,ABNAH Cafe Connaught Place,2026-02-09,Food,Breakfast,MENU0088,Scallion Pepper Cream Cheese Bagel,1,258.15
+SALE_20260209_OUT001_MENU0090,ABNAH Cafe Connaught Place,2026-02-09,Food,Snacks,MENU0090,Marinara Cheese Pin Wheels,1,203.05
+SALE_20260209_OUT001_MENU0096,ABNAH Cafe Connaught Place,2026-02-09,Food,Baked Goods,MENU0096,Chocolate Croissant,1,234.1
+SALE_20260209_OUT001_MENU0097,ABNAH Cafe Connaught Place,2026-02-09,Food,Baked Goods,MENU0097,Mushroom Cheese Croissant,1,251.4
+SALE_20260209_OUT001_MENU0098,ABNAH Cafe Connaught Place,2026-02-09,Food,Baked Goods,MENU0098,Sriracha Chicken Croissant,1,266.09
+SALE_20260209_OUT001_MENU0101,ABNAH Cafe Connaught Place,2026-02-09,Dessert,Baked Goods,MENU0101,Lemon Raspberry Tea Cake,1,217.21
+SALE_20260209_OUT001_MENU0103,ABNAH Cafe Connaught Place,2026-02-09,Dessert,Desserts,MENU0103,Banoffee Pie,1,282.11
+SALE_20260209_OUT001_MENU0106,ABNAH Cafe Connaught Place,2026-02-09,Dessert,Desserts,MENU0106,Death by Chocolate Cookie,2,381.61
+SALE_20260209_OUT001_MENU0107,ABNAH Cafe Connaught Place,2026-02-09,Dessert,Desserts,MENU0107,Jaggery Parmesan Cookie,3,482.02
+SALE_20260209_OUT001_MENU0110,ABNAH Cafe Connaught Place,2026-02-09,Dessert,Baked Goods,MENU0110,Multigrain Walnut Tea Cake,1,228.34
+SALE_20260210_OUT001_MENU0003,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Coffee Classics,MENU0003,Americano - Regular,1,186.66
+SALE_20260210_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Coffee Classics,MENU0004,Americano - Medium,2,414.41
+SALE_20260210_OUT001_MENU0005,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Coffee Classics,MENU0005,Americano - Large,2,457.4
+SALE_20260210_OUT001_MENU0006,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Coffee Classics,MENU0006,Latte - Regular,2,446.32
+SALE_20260210_OUT001_MENU0008,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Coffee Classics,MENU0008,Latte - Large,1,278.93
+SALE_20260210_OUT001_MENU0009,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Coffee Classics,MENU0009,Cappuccino - Regular,2,432.42
+SALE_20260210_OUT001_MENU0010,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Coffee Classics,MENU0010,Cappuccino - Medium,3,713.46
+SALE_20260210_OUT001_MENU0011,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Coffee Classics,MENU0011,Cappuccino - Large,1,263.33
+SALE_20260210_OUT001_MENU0012,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Coffee Classics,MENU0012,Flat White - Regular,1,236.08
+SALE_20260210_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Coffee Classics,MENU0013,Flat White - Medium,4,1011.78
+SALE_20260210_OUT001_MENU0014,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Coffee Classics,MENU0014,Flat White - Large,3,844.07
+SALE_20260210_OUT001_MENU0015,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Coffee Classics,MENU0015,Mocha - Regular,1,235.29
+SALE_20260210_OUT001_MENU0016,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Coffee Classics,MENU0016,Mocha - Medium,4,1045.13
+SALE_20260210_OUT001_MENU0017,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Coffee Classics,MENU0017,Mocha - Large,2,571.92
+SALE_20260210_OUT001_MENU0019,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Signature Coffee,MENU0019,Sea Salt Mocha - Medium,2,585.17
+SALE_20260210_OUT001_MENU0020,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Signature Coffee,MENU0020,Sea Salt Mocha - Large,1,338.16
+SALE_20260210_OUT001_MENU0021,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Signature Coffee,MENU0021,Orange Zest Mocha - Regular,2,530.99
+SALE_20260210_OUT001_MENU0026,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Signature Coffee,MENU0026,Caramel Macchiato - Large,2,627.09
+SALE_20260210_OUT001_MENU0028,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Signature Coffee,MENU0028,French Vanilla Latte - Medium,1,289.8
+SALE_20260210_OUT001_MENU0029,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Signature Coffee,MENU0029,French Vanilla Latte - Large,2,644.62
+SALE_20260210_OUT001_MENU0030,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Signature Coffee,MENU0030,Vegan Iced Latte - Regular,3,861.63
+SALE_20260210_OUT001_MENU0031,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Signature Coffee,MENU0031,Vegan Iced Latte - Medium,2,626.65
+SALE_20260210_OUT001_MENU0033,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Cold Brew,MENU0033,Classic Cold Brew - Regular,1,217.77
+SALE_20260210_OUT001_MENU0034,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Cold Brew,MENU0034,Classic Cold Brew - Medium,1,244.14
+SALE_20260210_OUT001_MENU0035,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Cold Brew,MENU0035,Classic Cold Brew - Large,2,525.84
+SALE_20260210_OUT001_MENU0036,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Cold Brew,MENU0036,Coffee Lemonade - Regular,1,236.91
+SALE_20260210_OUT001_MENU0038,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Cold Brew,MENU0038,Coffee Lemonade - Large,1,280.08
+SALE_20260210_OUT001_MENU0040,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Cold Brew,MENU0040,Vietnamese Shakerato - Medium,1,266.32
+SALE_20260210_OUT001_MENU0041,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Cold Brew,MENU0041,Vietnamese Shakerato - Large,1,293.54
+SALE_20260210_OUT001_MENU0042,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Cold Coffee,MENU0042,Classic Cold Coffee - Regular,2,488.21
+SALE_20260210_OUT001_MENU0043,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Cold Coffee,MENU0043,Classic Cold Coffee - Medium,2,551.75
+SALE_20260210_OUT001_MENU0044,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Cold Coffee,MENU0044,Classic Cold Coffee - Large,1,326.78
+SALE_20260210_OUT001_MENU0045,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Cold Coffee,MENU0045,Mocha Cold Coffee - Regular,1,287.7
+SALE_20260210_OUT001_MENU0048,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Cold Coffee,MENU0048,Caramel Cold Coffee - Regular,1,278.96
+SALE_20260210_OUT001_MENU0050,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Cold Coffee,MENU0050,Caramel Cold Coffee - Large,1,334.25
+SALE_20260210_OUT001_MENU0052,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Tea,MENU0052,Masala Chai Latte - Medium,1,218.12
+SALE_20260210_OUT001_MENU0053,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Tea,MENU0053,Masala Chai Latte - Large,1,232.63
+SALE_20260210_OUT001_MENU0054,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Tea,MENU0054,Himalayan Green Tea,1,203.17
+SALE_20260210_OUT001_MENU0055,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Tea,MENU0055,Japanese Matcha Latte - Regular,1,250.62
+SALE_20260210_OUT001_MENU0057,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Tea,MENU0057,Japanese Matcha Latte - Large,1,328.86
+SALE_20260210_OUT001_MENU0058,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Iced Tea,MENU0058,Lemon Iced Tea - Regular,1,205.85
+SALE_20260210_OUT001_MENU0061,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Iced Tea,MENU0061,Hibiscus Lime Iced Tea - Regular,1,226.28
+SALE_20260210_OUT001_MENU0064,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Kids Beverage,MENU0064,Hot Chocolate - Regular,1,209.68
+SALE_20260210_OUT001_MENU0073,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Shake,MENU0073,Mixed Berry Shake - Large,1,391.09
+SALE_20260210_OUT001_MENU0075,ABNAH Cafe Connaught Place,2026-02-10,Beverage,Smoothie,MENU0075,Seasonal Smoothie - Medium,1,339.62
+SALE_20260210_OUT001_MENU0077,ABNAH Cafe Connaught Place,2026-02-10,Food,Wraps,MENU0077,Spicy Paneer Wrap,1,271.89
+SALE_20260210_OUT001_MENU0078,ABNAH Cafe Connaught Place,2026-02-10,Food,Wraps,MENU0078,Shredded Chicken Wrap,1,297.87
+SALE_20260210_OUT001_MENU0079,ABNAH Cafe Connaught Place,2026-02-10,Food,Sandwiches,MENU0079,Smoked Chipotle Paneer Sandwich,1,292.13
+SALE_20260210_OUT001_MENU0081,ABNAH Cafe Connaught Place,2026-02-10,Food,Sandwiches,MENU0081,Pepper Chicken Sandwich,1,319.87
+SALE_20260210_OUT001_MENU0082,ABNAH Cafe Connaught Place,2026-02-10,Food,Sandwiches,MENU0082,Tandoori Chicken Sandwich,3,916.98
+SALE_20260210_OUT001_MENU0087,ABNAH Cafe Connaught Place,2026-02-10,Food,Breakfast,MENU0087,Cream Cheese Bagel,1,244.9
+SALE_20260210_OUT001_MENU0089,ABNAH Cafe Connaught Place,2026-02-10,Food,Breakfast,MENU0089,Masala Egg Bun,2,448.0
+SALE_20260210_OUT001_MENU0090,ABNAH Cafe Connaught Place,2026-02-10,Food,Snacks,MENU0090,Marinara Cheese Pin Wheels,2,424.26
+SALE_20260210_OUT001_MENU0093,ABNAH Cafe Connaught Place,2026-02-10,Food,Snacks,MENU0093,Turnover with Brioche Dough Veg,1,239.68
+SALE_20260210_OUT001_MENU0094,ABNAH Cafe Connaught Place,2026-02-10,Food,Baked Goods,MENU0094,Butter Croissant,1,189.93
+SALE_20260210_OUT001_MENU0096,ABNAH Cafe Connaught Place,2026-02-10,Food,Baked Goods,MENU0096,Chocolate Croissant,1,228.03
+SALE_20260210_OUT001_MENU0098,ABNAH Cafe Connaught Place,2026-02-10,Food,Baked Goods,MENU0098,Sriracha Chicken Croissant,1,268.39
+SALE_20260210_OUT001_MENU0099,ABNAH Cafe Connaught Place,2026-02-10,Dessert,Baked Goods,MENU0099,Cinnamon Roll with Cream Cheese,3,669.35
+SALE_20260210_OUT001_MENU0101,ABNAH Cafe Connaught Place,2026-02-10,Dessert,Baked Goods,MENU0101,Lemon Raspberry Tea Cake,1,205.44
+SALE_20260210_OUT001_MENU0105,ABNAH Cafe Connaught Place,2026-02-10,Dessert,Desserts,MENU0105,Soft-Centred Caramel Cookie,3,535.67
+SALE_20260211_OUT001_MENU0003,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Coffee Classics,MENU0003,Americano - Regular,8,1429.84
+SALE_20260211_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Coffee Classics,MENU0004,Americano - Medium,2,424.24
+SALE_20260211_OUT001_MENU0005,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Coffee Classics,MENU0005,Americano - Large,3,684.02
+SALE_20260211_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Coffee Classics,MENU0007,Latte - Medium,2,477.81
+SALE_20260211_OUT001_MENU0008,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Coffee Classics,MENU0008,Latte - Large,1,270.82
+SALE_20260211_OUT001_MENU0009,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Coffee Classics,MENU0009,Cappuccino - Regular,1,220.71
+SALE_20260211_OUT001_MENU0010,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Coffee Classics,MENU0010,Cappuccino - Medium,4,976.84
+SALE_20260211_OUT001_MENU0011,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Coffee Classics,MENU0011,Cappuccino - Large,3,794.95
+SALE_20260211_OUT001_MENU0012,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Coffee Classics,MENU0012,Flat White - Regular,4,935.84
+SALE_20260211_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Coffee Classics,MENU0013,Flat White - Medium,2,495.68
+SALE_20260211_OUT001_MENU0014,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Coffee Classics,MENU0014,Flat White - Large,2,558.75
+SALE_20260211_OUT001_MENU0015,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Coffee Classics,MENU0015,Mocha - Regular,2,472.32
+SALE_20260211_OUT001_MENU0016,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Coffee Classics,MENU0016,Mocha - Medium,2,538.89
+SALE_20260211_OUT001_MENU0024,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Signature Coffee,MENU0024,Caramel Macchiato - Regular,2,531.05
+SALE_20260211_OUT001_MENU0025,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Signature Coffee,MENU0025,Caramel Macchiato - Medium,1,288.29
+SALE_20260211_OUT001_MENU0028,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Signature Coffee,MENU0028,French Vanilla Latte - Medium,3,881.35
+SALE_20260211_OUT001_MENU0031,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Signature Coffee,MENU0031,Vegan Iced Latte - Medium,1,310.57
+SALE_20260211_OUT001_MENU0033,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Cold Brew,MENU0033,Classic Cold Brew - Regular,2,441.04
+SALE_20260211_OUT001_MENU0037,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Cold Brew,MENU0037,Coffee Lemonade - Medium,2,510.83
+SALE_20260211_OUT001_MENU0039,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Cold Brew,MENU0039,Vietnamese Shakerato - Regular,1,242.68
+SALE_20260211_OUT001_MENU0040,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Cold Brew,MENU0040,Vietnamese Shakerato - Medium,1,269.64
+SALE_20260211_OUT001_MENU0042,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Cold Coffee,MENU0042,Classic Cold Coffee - Regular,2,483.89
+SALE_20260211_OUT001_MENU0043,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Cold Coffee,MENU0043,Classic Cold Coffee - Medium,1,281.76
+SALE_20260211_OUT001_MENU0045,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Cold Coffee,MENU0045,Mocha Cold Coffee - Regular,1,285.46
+SALE_20260211_OUT001_MENU0046,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Cold Coffee,MENU0046,Mocha Cold Coffee - Medium,2,618.98
+SALE_20260211_OUT001_MENU0048,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Cold Coffee,MENU0048,Caramel Cold Coffee - Regular,1,283.62
+SALE_20260211_OUT001_MENU0050,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Cold Coffee,MENU0050,Caramel Cold Coffee - Large,2,722.16
+SALE_20260211_OUT001_MENU0051,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Tea,MENU0051,Masala Chai Latte - Regular,2,368.13
+SALE_20260211_OUT001_MENU0052,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Tea,MENU0052,Masala Chai Latte - Medium,1,220.46
+SALE_20260211_OUT001_MENU0054,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Tea,MENU0054,Himalayan Green Tea,2,414.28
+SALE_20260211_OUT001_MENU0055,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Tea,MENU0055,Japanese Matcha Latte - Regular,1,268.7
+SALE_20260211_OUT001_MENU0056,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Tea,MENU0056,Japanese Matcha Latte - Medium,3,877.36
+SALE_20260211_OUT001_MENU0059,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Iced Tea,MENU0059,Lemon Iced Tea - Medium,1,220.74
+SALE_20260211_OUT001_MENU0060,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Iced Tea,MENU0060,Lemon Iced Tea - Large,2,501.86
+SALE_20260211_OUT001_MENU0062,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Iced Tea,MENU0062,Hibiscus Lime Iced Tea - Medium,1,239.85
+SALE_20260211_OUT001_MENU0063,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Iced Tea,MENU0063,Hibiscus Lime Iced Tea - Large,1,277.16
+SALE_20260211_OUT001_MENU0067,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Kids Beverage,MENU0067,Babyccino - Regular,1,155.29
+SALE_20260211_OUT001_MENU0071,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Shake,MENU0071,Mixed Berry Shake - Regular,2,617.27
+SALE_20260211_OUT001_MENU0072,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Shake,MENU0072,Mixed Berry Shake - Medium,1,348.1
+SALE_20260211_OUT001_MENU0075,ABNAH Cafe Connaught Place,2026-02-11,Beverage,Smoothie,MENU0075,Seasonal Smoothie - Medium,1,333.51
+SALE_20260211_OUT001_MENU0078,ABNAH Cafe Connaught Place,2026-02-11,Food,Wraps,MENU0078,Shredded Chicken Wrap,2,564.28
+SALE_20260211_OUT001_MENU0079,ABNAH Cafe Connaught Place,2026-02-11,Food,Sandwiches,MENU0079,Smoked Chipotle Paneer Sandwich,2,589.24
+SALE_20260211_OUT001_MENU0080,ABNAH Cafe Connaught Place,2026-02-11,Food,Sandwiches,MENU0080,Pesto Veg Sandwich,1,277.79
+SALE_20260211_OUT001_MENU0082,ABNAH Cafe Connaught Place,2026-02-11,Food,Sandwiches,MENU0082,Tandoori Chicken Sandwich,1,301.76
+SALE_20260211_OUT001_MENU0086,ABNAH Cafe Connaught Place,2026-02-11,Food,Breakfast,MENU0086,Breakfast Pancakes,4,1122.63
+SALE_20260211_OUT001_MENU0088,ABNAH Cafe Connaught Place,2026-02-11,Food,Breakfast,MENU0088,Scallion Pepper Cream Cheese Bagel,1,268.95
+SALE_20260211_OUT001_MENU0089,ABNAH Cafe Connaught Place,2026-02-11,Food,Breakfast,MENU0089,Masala Egg Bun,1,217.29
+SALE_20260211_OUT001_MENU0091,ABNAH Cafe Connaught Place,2026-02-11,Food,Snacks,MENU0091,Pesto Sundried Tomato Pin Wheel,2,442.16
+SALE_20260211_OUT001_MENU0094,ABNAH Cafe Connaught Place,2026-02-11,Food,Baked Goods,MENU0094,Butter Croissant,1,197.24
+SALE_20260211_OUT001_MENU0095,ABNAH Cafe Connaught Place,2026-02-11,Food,Baked Goods,MENU0095,Almond Croissant,2,484.97
+SALE_20260211_OUT001_MENU0096,ABNAH Cafe Connaught Place,2026-02-11,Food,Baked Goods,MENU0096,Chocolate Croissant,1,232.65
+SALE_20260211_OUT001_MENU0097,ABNAH Cafe Connaught Place,2026-02-11,Food,Baked Goods,MENU0097,Mushroom Cheese Croissant,2,516.89
+SALE_20260211_OUT001_MENU0100,ABNAH Cafe Connaught Place,2026-02-11,Dessert,Baked Goods,MENU0100,Banana Walnut Tea Cake,1,197.5
+SALE_20260211_OUT001_MENU0102,ABNAH Cafe Connaught Place,2026-02-11,Dessert,Desserts,MENU0102,Double Chocolate Truffle Cake,1,293.85
+SALE_20260211_OUT001_MENU0106,ABNAH Cafe Connaught Place,2026-02-11,Dessert,Desserts,MENU0106,Death by Chocolate Cookie,2,382.25
+SALE_20260211_OUT001_MENU0108,ABNAH Cafe Connaught Place,2026-02-11,Dessert,Desserts,MENU0108,Apple Pie,1,271.04
+SALE_20260212_OUT001_MENU0002,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Espresso,MENU0002,Espresso Shot - Doppio,1,175.61
+SALE_20260212_OUT001_MENU0003,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Coffee Classics,MENU0003,Americano - Regular,1,180.44
+SALE_20260212_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Coffee Classics,MENU0004,Americano - Medium,6,1249.13
+SALE_20260212_OUT001_MENU0005,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Coffee Classics,MENU0005,Americano - Large,3,681.11
+SALE_20260212_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Coffee Classics,MENU0007,Latte - Medium,3,762.67
+SALE_20260212_OUT001_MENU0008,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Coffee Classics,MENU0008,Latte - Large,2,533.17
+SALE_20260212_OUT001_MENU0009,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Coffee Classics,MENU0009,Cappuccino - Regular,3,635.81
+SALE_20260212_OUT001_MENU0010,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Coffee Classics,MENU0010,Cappuccino - Medium,5,1184.16
+SALE_20260212_OUT001_MENU0011,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Coffee Classics,MENU0011,Cappuccino - Large,3,813.54
+SALE_20260212_OUT001_MENU0012,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Coffee Classics,MENU0012,Flat White - Regular,4,940.97
+SALE_20260212_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Coffee Classics,MENU0013,Flat White - Medium,1,255.25
+SALE_20260212_OUT001_MENU0014,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Coffee Classics,MENU0014,Flat White - Large,4,1155.27
+SALE_20260212_OUT001_MENU0015,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Coffee Classics,MENU0015,Mocha - Regular,4,951.09
+SALE_20260212_OUT001_MENU0016,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Coffee Classics,MENU0016,Mocha - Medium,2,526.68
+SALE_20260212_OUT001_MENU0017,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Coffee Classics,MENU0017,Mocha - Large,1,285.75
+SALE_20260212_OUT001_MENU0020,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Signature Coffee,MENU0020,Sea Salt Mocha - Large,1,317.95
+SALE_20260212_OUT001_MENU0023,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Signature Coffee,MENU0023,Orange Zest Mocha - Large,1,335.55
+SALE_20260212_OUT001_MENU0024,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Signature Coffee,MENU0024,Caramel Macchiato - Regular,1,265.4
+SALE_20260212_OUT001_MENU0025,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Signature Coffee,MENU0025,Caramel Macchiato - Medium,1,294.23
+SALE_20260212_OUT001_MENU0027,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Signature Coffee,MENU0027,French Vanilla Latte - Regular,2,532.26
+SALE_20260212_OUT001_MENU0028,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Signature Coffee,MENU0028,French Vanilla Latte - Medium,2,555.03
+SALE_20260212_OUT001_MENU0029,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Signature Coffee,MENU0029,French Vanilla Latte - Large,1,321.84
+SALE_20260212_OUT001_MENU0030,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Signature Coffee,MENU0030,Vegan Iced Latte - Regular,1,285.06
+SALE_20260212_OUT001_MENU0031,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Signature Coffee,MENU0031,Vegan Iced Latte - Medium,2,628.69
+SALE_20260212_OUT001_MENU0035,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Cold Brew,MENU0035,Classic Cold Brew - Large,1,271.27
+SALE_20260212_OUT001_MENU0037,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Cold Brew,MENU0037,Coffee Lemonade - Medium,3,737.05
+SALE_20260212_OUT001_MENU0039,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Cold Brew,MENU0039,Vietnamese Shakerato - Regular,1,253.47
+SALE_20260212_OUT001_MENU0041,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Cold Brew,MENU0041,Vietnamese Shakerato - Large,1,310.7
+SALE_20260212_OUT001_MENU0044,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Cold Coffee,MENU0044,Classic Cold Coffee - Large,1,331.3
+SALE_20260212_OUT001_MENU0045,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Cold Coffee,MENU0045,Mocha Cold Coffee - Regular,2,560.32
+SALE_20260212_OUT001_MENU0046,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Cold Coffee,MENU0046,Mocha Cold Coffee - Medium,2,638.36
+SALE_20260212_OUT001_MENU0047,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Cold Coffee,MENU0047,Mocha Cold Coffee - Large,1,341.75
+SALE_20260212_OUT001_MENU0050,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Cold Coffee,MENU0050,Caramel Cold Coffee - Large,2,683.07
+SALE_20260212_OUT001_MENU0051,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Tea,MENU0051,Masala Chai Latte - Regular,2,370.75
+SALE_20260212_OUT001_MENU0052,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Tea,MENU0052,Masala Chai Latte - Medium,2,435.77
+SALE_20260212_OUT001_MENU0053,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Tea,MENU0053,Masala Chai Latte - Large,1,241.18
+SALE_20260212_OUT001_MENU0054,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Tea,MENU0054,Himalayan Green Tea,1,213.46
+SALE_20260212_OUT001_MENU0055,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Tea,MENU0055,Japanese Matcha Latte - Regular,3,805.3
+SALE_20260212_OUT001_MENU0056,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Tea,MENU0056,Japanese Matcha Latte - Medium,2,568.64
+SALE_20260212_OUT001_MENU0058,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Iced Tea,MENU0058,Lemon Iced Tea - Regular,1,192.82
+SALE_20260212_OUT001_MENU0059,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Iced Tea,MENU0059,Lemon Iced Tea - Medium,1,224.46
+SALE_20260212_OUT001_MENU0062,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Iced Tea,MENU0062,Hibiscus Lime Iced Tea - Medium,1,237.79
+SALE_20260212_OUT001_MENU0068,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Shake,MENU0068,Choco Chip Shake - Regular,2,567.75
+SALE_20260212_OUT001_MENU0071,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Shake,MENU0071,Mixed Berry Shake - Regular,2,620.88
+SALE_20260212_OUT001_MENU0072,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Shake,MENU0072,Mixed Berry Shake - Medium,3,991.37
+SALE_20260212_OUT001_MENU0073,ABNAH Cafe Connaught Place,2026-02-12,Beverage,Shake,MENU0073,Mixed Berry Shake - Large,1,375.34
+SALE_20260212_OUT001_MENU0080,ABNAH Cafe Connaught Place,2026-02-12,Food,Sandwiches,MENU0080,Pesto Veg Sandwich,1,266.37
+SALE_20260212_OUT001_MENU0082,ABNAH Cafe Connaught Place,2026-02-12,Food,Sandwiches,MENU0082,Tandoori Chicken Sandwich,2,615.77
+SALE_20260212_OUT001_MENU0087,ABNAH Cafe Connaught Place,2026-02-12,Food,Breakfast,MENU0087,Cream Cheese Bagel,1,237.88
+SALE_20260212_OUT001_MENU0094,ABNAH Cafe Connaught Place,2026-02-12,Food,Baked Goods,MENU0094,Butter Croissant,2,396.8
+SALE_20260212_OUT001_MENU0095,ABNAH Cafe Connaught Place,2026-02-12,Food,Baked Goods,MENU0095,Almond Croissant,1,237.14
+SALE_20260212_OUT001_MENU0098,ABNAH Cafe Connaught Place,2026-02-12,Food,Baked Goods,MENU0098,Sriracha Chicken Croissant,1,279.67
+SALE_20260212_OUT001_MENU0100,ABNAH Cafe Connaught Place,2026-02-12,Dessert,Baked Goods,MENU0100,Banana Walnut Tea Cake,2,408.43
+SALE_20260212_OUT001_MENU0101,ABNAH Cafe Connaught Place,2026-02-12,Dessert,Baked Goods,MENU0101,Lemon Raspberry Tea Cake,1,212.39
+SALE_20260212_OUT001_MENU0103,ABNAH Cafe Connaught Place,2026-02-12,Dessert,Desserts,MENU0103,Banoffee Pie,2,551.9
+SALE_20260212_OUT001_MENU0107,ABNAH Cafe Connaught Place,2026-02-12,Dessert,Desserts,MENU0107,Jaggery Parmesan Cookie,1,170.78
+SALE_20260212_OUT001_MENU0108,ABNAH Cafe Connaught Place,2026-02-12,Dessert,Desserts,MENU0108,Apple Pie,1,271.44
+SALE_20260212_OUT001_MENU0109,ABNAH Cafe Connaught Place,2026-02-12,Dessert,Desserts,MENU0109,Basque Cheesecake,1,309.18
+SALE_20260213_OUT001_MENU0003,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Coffee Classics,MENU0003,Americano - Regular,4,724.81
+SALE_20260213_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Coffee Classics,MENU0004,Americano - Medium,3,598.1
+SALE_20260213_OUT001_MENU0005,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Coffee Classics,MENU0005,Americano - Large,3,683.01
+SALE_20260213_OUT001_MENU0006,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Coffee Classics,MENU0006,Latte - Regular,2,423.51
+SALE_20260213_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Coffee Classics,MENU0007,Latte - Medium,3,713.4
+SALE_20260213_OUT001_MENU0008,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Coffee Classics,MENU0008,Latte - Large,4,1051.34
+SALE_20260213_OUT001_MENU0009,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Coffee Classics,MENU0009,Cappuccino - Regular,4,914.31
+SALE_20260213_OUT001_MENU0010,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Coffee Classics,MENU0010,Cappuccino - Medium,4,977.75
+SALE_20260213_OUT001_MENU0011,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Coffee Classics,MENU0011,Cappuccino - Large,1,266.78
+SALE_20260213_OUT001_MENU0012,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Coffee Classics,MENU0012,Flat White - Regular,6,1381.18
+SALE_20260213_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Coffee Classics,MENU0013,Flat White - Medium,2,518.39
+SALE_20260213_OUT001_MENU0014,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Coffee Classics,MENU0014,Flat White - Large,2,541.07
+SALE_20260213_OUT001_MENU0016,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Coffee Classics,MENU0016,Mocha - Medium,1,266.99
+SALE_20260213_OUT001_MENU0017,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Coffee Classics,MENU0017,Mocha - Large,4,1201.93
+SALE_20260213_OUT001_MENU0018,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Signature Coffee,MENU0018,Sea Salt Mocha - Regular,2,544.81
+SALE_20260213_OUT001_MENU0019,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Signature Coffee,MENU0019,Sea Salt Mocha - Medium,3,865.04
+SALE_20260213_OUT001_MENU0020,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Signature Coffee,MENU0020,Sea Salt Mocha - Large,1,319.3
+SALE_20260213_OUT001_MENU0022,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Signature Coffee,MENU0022,Orange Zest Mocha - Medium,2,565.03
+SALE_20260213_OUT001_MENU0025,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Signature Coffee,MENU0025,Caramel Macchiato - Medium,1,278.71
+SALE_20260213_OUT001_MENU0026,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Signature Coffee,MENU0026,Caramel Macchiato - Large,1,323.01
+SALE_20260213_OUT001_MENU0027,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Signature Coffee,MENU0027,French Vanilla Latte - Regular,1,253.07
+SALE_20260213_OUT001_MENU0028,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Signature Coffee,MENU0028,French Vanilla Latte - Medium,3,834.16
+SALE_20260213_OUT001_MENU0030,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Signature Coffee,MENU0030,Vegan Iced Latte - Regular,1,278.38
+SALE_20260213_OUT001_MENU0031,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Signature Coffee,MENU0031,Vegan Iced Latte - Medium,2,612.72
+SALE_20260213_OUT001_MENU0035,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Cold Brew,MENU0035,Classic Cold Brew - Large,2,529.34
+SALE_20260213_OUT001_MENU0037,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Cold Brew,MENU0037,Coffee Lemonade - Medium,1,247.21
+SALE_20260213_OUT001_MENU0039,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Cold Brew,MENU0039,Vietnamese Shakerato - Regular,2,500.48
+SALE_20260213_OUT001_MENU0040,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Cold Brew,MENU0040,Vietnamese Shakerato - Medium,1,267.54
+SALE_20260213_OUT001_MENU0042,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Cold Coffee,MENU0042,Classic Cold Coffee - Regular,2,504.22
+SALE_20260213_OUT001_MENU0044,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Cold Coffee,MENU0044,Classic Cold Coffee - Large,1,315.78
+SALE_20260213_OUT001_MENU0047,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Cold Coffee,MENU0047,Mocha Cold Coffee - Large,1,341.97
+SALE_20260213_OUT001_MENU0052,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Tea,MENU0052,Masala Chai Latte - Medium,1,222.89
+SALE_20260213_OUT001_MENU0053,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Tea,MENU0053,Masala Chai Latte - Large,1,236.78
+SALE_20260213_OUT001_MENU0055,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Tea,MENU0055,Japanese Matcha Latte - Regular,2,507.6
+SALE_20260213_OUT001_MENU0057,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Tea,MENU0057,Japanese Matcha Latte - Large,1,316.93
+SALE_20260213_OUT001_MENU0058,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Iced Tea,MENU0058,Lemon Iced Tea - Regular,1,197.81
+SALE_20260213_OUT001_MENU0062,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Iced Tea,MENU0062,Hibiscus Lime Iced Tea - Medium,3,736.49
+SALE_20260213_OUT001_MENU0068,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Shake,MENU0068,Choco Chip Shake - Regular,1,281.23
+SALE_20260213_OUT001_MENU0070,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Shake,MENU0070,Choco Chip Shake - Large,1,358.18
+SALE_20260213_OUT001_MENU0071,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Shake,MENU0071,Mixed Berry Shake - Regular,1,321.05
+SALE_20260213_OUT001_MENU0076,ABNAH Cafe Connaught Place,2026-02-13,Beverage,Smoothie,MENU0076,Seasonal Smoothie - Large,1,352.78
+SALE_20260213_OUT001_MENU0082,ABNAH Cafe Connaught Place,2026-02-13,Food,Sandwiches,MENU0082,Tandoori Chicken Sandwich,1,325.55
+SALE_20260213_OUT001_MENU0084,ABNAH Cafe Connaught Place,2026-02-13,Food,Toasts,MENU0084,Chicken Pepperoni Avocado Toast,1,333.42
+SALE_20260213_OUT001_MENU0085,ABNAH Cafe Connaught Place,2026-02-13,Food,Platter,MENU0085,Hummus and Pita Platter,2,618.79
+SALE_20260213_OUT001_MENU0086,ABNAH Cafe Connaught Place,2026-02-13,Food,Breakfast,MENU0086,Breakfast Pancakes,1,282.09
+SALE_20260213_OUT001_MENU0088,ABNAH Cafe Connaught Place,2026-02-13,Food,Breakfast,MENU0088,Scallion Pepper Cream Cheese Bagel,1,269.9
+SALE_20260213_OUT001_MENU0095,ABNAH Cafe Connaught Place,2026-02-13,Food,Baked Goods,MENU0095,Almond Croissant,1,242.49
+SALE_20260213_OUT001_MENU0096,ABNAH Cafe Connaught Place,2026-02-13,Food,Baked Goods,MENU0096,Chocolate Croissant,1,221.32
+SALE_20260213_OUT001_MENU0099,ABNAH Cafe Connaught Place,2026-02-13,Dessert,Baked Goods,MENU0099,Cinnamon Roll with Cream Cheese,1,211.04
+SALE_20260213_OUT001_MENU0100,ABNAH Cafe Connaught Place,2026-02-13,Dessert,Baked Goods,MENU0100,Banana Walnut Tea Cake,2,417.93
+SALE_20260213_OUT001_MENU0103,ABNAH Cafe Connaught Place,2026-02-13,Dessert,Desserts,MENU0103,Banoffee Pie,1,272.55
+SALE_20260213_OUT001_MENU0104,ABNAH Cafe Connaught Place,2026-02-13,Dessert,Desserts,MENU0104,Classic Chocolate Fudge Brownie,2,394.24
+SALE_20260213_OUT001_MENU0106,ABNAH Cafe Connaught Place,2026-02-13,Dessert,Desserts,MENU0106,Death by Chocolate Cookie,1,184.18
+SALE_20260213_OUT001_MENU0107,ABNAH Cafe Connaught Place,2026-02-13,Dessert,Desserts,MENU0107,Jaggery Parmesan Cookie,1,172.82
+SALE_20260213_OUT001_MENU0110,ABNAH Cafe Connaught Place,2026-02-13,Dessert,Baked Goods,MENU0110,Multigrain Walnut Tea Cake,2,458.58
+SALE_20260214_OUT001_MENU0003,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Coffee Classics,MENU0003,Americano - Regular,3,529.67
+SALE_20260214_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Coffee Classics,MENU0004,Americano - Medium,1,206.67
+SALE_20260214_OUT001_MENU0005,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Coffee Classics,MENU0005,Americano - Large,2,447.94
+SALE_20260214_OUT001_MENU0006,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Coffee Classics,MENU0006,Latte - Regular,3,637.14
+SALE_20260214_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Coffee Classics,MENU0007,Latte - Medium,1,246.37
+SALE_20260214_OUT001_MENU0008,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Coffee Classics,MENU0008,Latte - Large,1,263.82
+SALE_20260214_OUT001_MENU0009,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Coffee Classics,MENU0009,Cappuccino - Regular,4,909.47
+SALE_20260214_OUT001_MENU0010,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Coffee Classics,MENU0010,Cappuccino - Medium,1,248.46
+SALE_20260214_OUT001_MENU0012,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Coffee Classics,MENU0012,Flat White - Regular,2,474.01
+SALE_20260214_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Coffee Classics,MENU0013,Flat White - Medium,2,513.99
+SALE_20260214_OUT001_MENU0016,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Coffee Classics,MENU0016,Mocha - Medium,3,775.46
+SALE_20260214_OUT001_MENU0019,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Signature Coffee,MENU0019,Sea Salt Mocha - Medium,1,308.49
+SALE_20260214_OUT001_MENU0021,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Signature Coffee,MENU0021,Orange Zest Mocha - Regular,1,271.07
+SALE_20260214_OUT001_MENU0022,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Signature Coffee,MENU0022,Orange Zest Mocha - Medium,1,305.2
+SALE_20260214_OUT001_MENU0025,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Signature Coffee,MENU0025,Caramel Macchiato - Medium,1,285.88
+SALE_20260214_OUT001_MENU0028,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Signature Coffee,MENU0028,French Vanilla Latte - Medium,1,283.16
+SALE_20260214_OUT001_MENU0030,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Signature Coffee,MENU0030,Vegan Iced Latte - Regular,2,556.16
+SALE_20260214_OUT001_MENU0033,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Cold Brew,MENU0033,Classic Cold Brew - Regular,1,227.46
+SALE_20260214_OUT001_MENU0036,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Cold Brew,MENU0036,Coffee Lemonade - Regular,1,233.28
+SALE_20260214_OUT001_MENU0038,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Cold Brew,MENU0038,Coffee Lemonade - Large,1,287.06
+SALE_20260214_OUT001_MENU0040,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Cold Brew,MENU0040,Vietnamese Shakerato - Medium,1,265.28
+SALE_20260214_OUT001_MENU0044,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Cold Coffee,MENU0044,Classic Cold Coffee - Large,1,319.04
+SALE_20260214_OUT001_MENU0045,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Cold Coffee,MENU0045,Mocha Cold Coffee - Regular,1,280.71
+SALE_20260214_OUT001_MENU0046,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Cold Coffee,MENU0046,Mocha Cold Coffee - Medium,1,307.62
+SALE_20260214_OUT001_MENU0049,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Cold Coffee,MENU0049,Caramel Cold Coffee - Medium,2,616.55
+SALE_20260214_OUT001_MENU0050,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Cold Coffee,MENU0050,Caramel Cold Coffee - Large,1,348.17
+SALE_20260214_OUT001_MENU0051,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Tea,MENU0051,Masala Chai Latte - Regular,1,190.65
+SALE_20260214_OUT001_MENU0052,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Tea,MENU0052,Masala Chai Latte - Medium,2,422.2
+SALE_20260214_OUT001_MENU0055,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Tea,MENU0055,Japanese Matcha Latte - Regular,1,262.52
+SALE_20260214_OUT001_MENU0056,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Tea,MENU0056,Japanese Matcha Latte - Medium,2,578.98
+SALE_20260214_OUT001_MENU0059,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Iced Tea,MENU0059,Lemon Iced Tea - Medium,3,659.04
+SALE_20260214_OUT001_MENU0067,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Kids Beverage,MENU0067,Babyccino - Regular,1,157.27
+SALE_20260214_OUT001_MENU0068,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Shake,MENU0068,Choco Chip Shake - Regular,2,568.37
+SALE_20260214_OUT001_MENU0070,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Shake,MENU0070,Choco Chip Shake - Large,2,694.49
+SALE_20260214_OUT001_MENU0075,ABNAH Cafe Connaught Place,2026-02-14,Beverage,Smoothie,MENU0075,Seasonal Smoothie - Medium,1,322.33
+SALE_20260214_OUT001_MENU0079,ABNAH Cafe Connaught Place,2026-02-14,Food,Sandwiches,MENU0079,Smoked Chipotle Paneer Sandwich,2,584.23
+SALE_20260214_OUT001_MENU0082,ABNAH Cafe Connaught Place,2026-02-14,Food,Sandwiches,MENU0082,Tandoori Chicken Sandwich,3,962.66
+SALE_20260214_OUT001_MENU0083,ABNAH Cafe Connaught Place,2026-02-14,Food,Toasts,MENU0083,Chilli Cheese Garlic Toast,1,226.63
+SALE_20260214_OUT001_MENU0086,ABNAH Cafe Connaught Place,2026-02-14,Food,Breakfast,MENU0086,Breakfast Pancakes,1,268.32
+SALE_20260214_OUT001_MENU0092,ABNAH Cafe Connaught Place,2026-02-14,Food,Snacks,MENU0092,Turnover with Brioche Dough Chicken,1,257.86
+SALE_20260214_OUT001_MENU0093,ABNAH Cafe Connaught Place,2026-02-14,Food,Snacks,MENU0093,Turnover with Brioche Dough Veg,1,232.37
+SALE_20260214_OUT001_MENU0094,ABNAH Cafe Connaught Place,2026-02-14,Food,Baked Goods,MENU0094,Butter Croissant,3,551.03
+SALE_20260214_OUT001_MENU0101,ABNAH Cafe Connaught Place,2026-02-14,Dessert,Baked Goods,MENU0101,Lemon Raspberry Tea Cake,1,209.92
+SALE_20260214_OUT001_MENU0104,ABNAH Cafe Connaught Place,2026-02-14,Dessert,Desserts,MENU0104,Classic Chocolate Fudge Brownie,1,185.17
+SALE_20260214_OUT001_MENU0105,ABNAH Cafe Connaught Place,2026-02-14,Dessert,Desserts,MENU0105,Soft-Centred Caramel Cookie,1,173.53
+SALE_20260214_OUT001_MENU0106,ABNAH Cafe Connaught Place,2026-02-14,Dessert,Desserts,MENU0106,Death by Chocolate Cookie,2,369.27
+SALE_20260214_OUT001_MENU0108,ABNAH Cafe Connaught Place,2026-02-14,Dessert,Desserts,MENU0108,Apple Pie,1,273.13
+SALE_20260214_OUT001_MENU0109,ABNAH Cafe Connaught Place,2026-02-14,Dessert,Desserts,MENU0109,Basque Cheesecake,1,301.96
+SALE_20260215_OUT001_MENU0003,ABNAH Cafe Connaught Place,2026-02-15,Beverage,Coffee Classics,MENU0003,Americano - Regular,2,360.91
+SALE_20260215_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-15,Beverage,Coffee Classics,MENU0004,Americano - Medium,1,212.75
+SALE_20260215_OUT001_MENU0006,ABNAH Cafe Connaught Place,2026-02-15,Beverage,Coffee Classics,MENU0006,Latte - Regular,1,220.36
+SALE_20260215_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-15,Beverage,Coffee Classics,MENU0007,Latte - Medium,1,250.21
+SALE_20260215_OUT001_MENU0008,ABNAH Cafe Connaught Place,2026-02-15,Beverage,Coffee Classics,MENU0008,Latte - Large,2,541.59
+SALE_20260215_OUT001_MENU0009,ABNAH Cafe Connaught Place,2026-02-15,Beverage,Coffee Classics,MENU0009,Cappuccino - Regular,1,219.62
+SALE_20260215_OUT001_MENU0010,ABNAH Cafe Connaught Place,2026-02-15,Beverage,Coffee Classics,MENU0010,Cappuccino - Medium,2,495.05
+SALE_20260215_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-15,Beverage,Coffee Classics,MENU0013,Flat White - Medium,1,256.4
+SALE_20260215_OUT001_MENU0015,ABNAH Cafe Connaught Place,2026-02-15,Beverage,Coffee Classics,MENU0015,Mocha - Regular,1,232.88
+SALE_20260215_OUT001_MENU0016,ABNAH Cafe Connaught Place,2026-02-15,Beverage,Coffee Classics,MENU0016,Mocha - Medium,2,508.21
+SALE_20260215_OUT001_MENU0017,ABNAH Cafe Connaught Place,2026-02-15,Beverage,Coffee Classics,MENU0017,Mocha - Large,2,593.07
+SALE_20260215_OUT001_MENU0018,ABNAH Cafe Connaught Place,2026-02-15,Beverage,Signature Coffee,MENU0018,Sea Salt Mocha - Regular,2,547.23
+SALE_20260215_OUT001_MENU0020,ABNAH Cafe Connaught Place,2026-02-15,Beverage,Signature Coffee,MENU0020,Sea Salt Mocha - Large,1,330.42
+SALE_20260215_OUT001_MENU0023,ABNAH Cafe Connaught Place,2026-02-15,Beverage,Signature Coffee,MENU0023,Orange Zest Mocha - Large,1,328.75
+SALE_20260215_OUT001_MENU0026,ABNAH Cafe Connaught Place,2026-02-15,Beverage,Signature Coffee,MENU0026,Caramel Macchiato - Large,1,325.26
+SALE_20260215_OUT001_MENU0027,ABNAH Cafe Connaught Place,2026-02-15,Beverage,Signature Coffee,MENU0027,French Vanilla Latte - Regular,2,525.17
+SALE_20260215_OUT001_MENU0031,ABNAH Cafe Connaught Place,2026-02-15,Beverage,Signature Coffee,MENU0031,Vegan Iced Latte - Medium,1,300.74
+SALE_20260215_OUT001_MENU0036,ABNAH Cafe Connaught Place,2026-02-15,Beverage,Cold Brew,MENU0036,Coffee Lemonade - Regular,1,223.61
+SALE_20260215_OUT001_MENU0038,ABNAH Cafe Connaught Place,2026-02-15,Beverage,Cold Brew,MENU0038,Coffee Lemonade - Large,2,541.69
+SALE_20260215_OUT001_MENU0039,ABNAH Cafe Connaught Place,2026-02-15,Beverage,Cold Brew,MENU0039,Vietnamese Shakerato - Regular,1,247.97
+SALE_20260215_OUT001_MENU0046,ABNAH Cafe Connaught Place,2026-02-15,Beverage,Cold Coffee,MENU0046,Mocha Cold Coffee - Medium,1,324.08
+SALE_20260215_OUT001_MENU0061,ABNAH Cafe Connaught Place,2026-02-15,Beverage,Iced Tea,MENU0061,Hibiscus Lime Iced Tea - Regular,2,442.09
+SALE_20260215_OUT001_MENU0071,ABNAH Cafe Connaught Place,2026-02-15,Beverage,Shake,MENU0071,Mixed Berry Shake - Regular,2,631.88
+SALE_20260215_OUT001_MENU0073,ABNAH Cafe Connaught Place,2026-02-15,Beverage,Shake,MENU0073,Mixed Berry Shake - Large,1,389.54
+SALE_20260215_OUT001_MENU0077,ABNAH Cafe Connaught Place,2026-02-15,Food,Wraps,MENU0077,Spicy Paneer Wrap,1,275.33
+SALE_20260215_OUT001_MENU0080,ABNAH Cafe Connaught Place,2026-02-15,Food,Sandwiches,MENU0080,Pesto Veg Sandwich,1,274.83
+SALE_20260215_OUT001_MENU0084,ABNAH Cafe Connaught Place,2026-02-15,Food,Toasts,MENU0084,Chicken Pepperoni Avocado Toast,1,310.52
+SALE_20260215_OUT001_MENU0086,ABNAH Cafe Connaught Place,2026-02-15,Food,Breakfast,MENU0086,Breakfast Pancakes,1,270.75
+SALE_20260215_OUT001_MENU0092,ABNAH Cafe Connaught Place,2026-02-15,Food,Snacks,MENU0092,Turnover with Brioche Dough Chicken,1,257.08
+SALE_20260215_OUT001_MENU0101,ABNAH Cafe Connaught Place,2026-02-15,Dessert,Baked Goods,MENU0101,Lemon Raspberry Tea Cake,1,205.9
+SALE_20260215_OUT001_MENU0105,ABNAH Cafe Connaught Place,2026-02-15,Dessert,Desserts,MENU0105,Soft-Centred Caramel Cookie,1,171.15
+SALE_20260215_OUT001_MENU0109,ABNAH Cafe Connaught Place,2026-02-15,Dessert,Desserts,MENU0109,Basque Cheesecake,1,314.13
+SALE_20260216_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Coffee Classics,MENU0004,Americano - Medium,5,1019.97
+SALE_20260216_OUT001_MENU0005,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Coffee Classics,MENU0005,Americano - Large,3,678.78
+SALE_20260216_OUT001_MENU0006,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Coffee Classics,MENU0006,Latte - Regular,2,427.28
+SALE_20260216_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Coffee Classics,MENU0007,Latte - Medium,1,237.01
+SALE_20260216_OUT001_MENU0008,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Coffee Classics,MENU0008,Latte - Large,3,787.63
+SALE_20260216_OUT001_MENU0009,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Coffee Classics,MENU0009,Cappuccino - Regular,3,676.33
+SALE_20260216_OUT001_MENU0010,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Coffee Classics,MENU0010,Cappuccino - Medium,2,491.32
+SALE_20260216_OUT001_MENU0011,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Coffee Classics,MENU0011,Cappuccino - Large,3,792.83
+SALE_20260216_OUT001_MENU0012,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Coffee Classics,MENU0012,Flat White - Regular,1,226.99
+SALE_20260216_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Coffee Classics,MENU0013,Flat White - Medium,2,522.38
+SALE_20260216_OUT001_MENU0014,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Coffee Classics,MENU0014,Flat White - Large,3,828.6
+SALE_20260216_OUT001_MENU0016,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Coffee Classics,MENU0016,Mocha - Medium,4,1055.64
+SALE_20260216_OUT001_MENU0017,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Coffee Classics,MENU0017,Mocha - Large,1,294.81
+SALE_20260216_OUT001_MENU0018,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Signature Coffee,MENU0018,Sea Salt Mocha - Regular,3,809.83
+SALE_20260216_OUT001_MENU0019,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Signature Coffee,MENU0019,Sea Salt Mocha - Medium,1,288.65
+SALE_20260216_OUT001_MENU0021,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Signature Coffee,MENU0021,Orange Zest Mocha - Regular,2,517.54
+SALE_20260216_OUT001_MENU0022,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Signature Coffee,MENU0022,Orange Zest Mocha - Medium,1,296.71
+SALE_20260216_OUT001_MENU0023,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Signature Coffee,MENU0023,Orange Zest Mocha - Large,1,335.97
+SALE_20260216_OUT001_MENU0024,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Signature Coffee,MENU0024,Caramel Macchiato - Regular,2,511.76
+SALE_20260216_OUT001_MENU0025,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Signature Coffee,MENU0025,Caramel Macchiato - Medium,1,297.39
+SALE_20260216_OUT001_MENU0026,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Signature Coffee,MENU0026,Caramel Macchiato - Large,1,311.39
+SALE_20260216_OUT001_MENU0032,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Signature Coffee,MENU0032,Vegan Iced Latte - Large,1,333.88
+SALE_20260216_OUT001_MENU0033,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Cold Brew,MENU0033,Classic Cold Brew - Regular,2,458.31
+SALE_20260216_OUT001_MENU0034,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Cold Brew,MENU0034,Classic Cold Brew - Medium,1,248.69
+SALE_20260216_OUT001_MENU0035,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Cold Brew,MENU0035,Classic Cold Brew - Large,3,803.9
+SALE_20260216_OUT001_MENU0036,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Cold Brew,MENU0036,Coffee Lemonade - Regular,1,229.62
+SALE_20260216_OUT001_MENU0039,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Cold Brew,MENU0039,Vietnamese Shakerato - Regular,1,241.34
+SALE_20260216_OUT001_MENU0043,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Cold Coffee,MENU0043,Classic Cold Coffee - Medium,3,873.99
+SALE_20260216_OUT001_MENU0050,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Cold Coffee,MENU0050,Caramel Cold Coffee - Large,2,676.0
+SALE_20260216_OUT001_MENU0052,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Tea,MENU0052,Masala Chai Latte - Medium,1,221.11
+SALE_20260216_OUT001_MENU0055,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Tea,MENU0055,Japanese Matcha Latte - Regular,5,1281.13
+SALE_20260216_OUT001_MENU0056,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Tea,MENU0056,Japanese Matcha Latte - Medium,1,288.76
+SALE_20260216_OUT001_MENU0059,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Iced Tea,MENU0059,Lemon Iced Tea - Medium,1,226.76
+SALE_20260216_OUT001_MENU0061,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Iced Tea,MENU0061,Hibiscus Lime Iced Tea - Regular,1,224.89
+SALE_20260216_OUT001_MENU0062,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Iced Tea,MENU0062,Hibiscus Lime Iced Tea - Medium,1,249.59
+SALE_20260216_OUT001_MENU0066,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Kids Beverage,MENU0066,Hot Chocolate - Large,1,256.99
+SALE_20260216_OUT001_MENU0067,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Kids Beverage,MENU0067,Babyccino - Regular,2,332.5
+SALE_20260216_OUT001_MENU0068,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Shake,MENU0068,Choco Chip Shake - Regular,2,598.2
+SALE_20260216_OUT001_MENU0072,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Shake,MENU0072,Mixed Berry Shake - Medium,1,350.86
+SALE_20260216_OUT001_MENU0075,ABNAH Cafe Connaught Place,2026-02-16,Beverage,Smoothie,MENU0075,Seasonal Smoothie - Medium,1,337.04
+SALE_20260216_OUT001_MENU0078,ABNAH Cafe Connaught Place,2026-02-16,Food,Wraps,MENU0078,Shredded Chicken Wrap,1,283.42
+SALE_20260216_OUT001_MENU0080,ABNAH Cafe Connaught Place,2026-02-16,Food,Sandwiches,MENU0080,Pesto Veg Sandwich,1,271.43
+SALE_20260216_OUT001_MENU0082,ABNAH Cafe Connaught Place,2026-02-16,Food,Sandwiches,MENU0082,Tandoori Chicken Sandwich,1,317.74
+SALE_20260216_OUT001_MENU0088,ABNAH Cafe Connaught Place,2026-02-16,Food,Breakfast,MENU0088,Scallion Pepper Cream Cheese Bagel,1,256.15
+SALE_20260216_OUT001_MENU0089,ABNAH Cafe Connaught Place,2026-02-16,Food,Breakfast,MENU0089,Masala Egg Bun,3,656.72
+SALE_20260216_OUT001_MENU0093,ABNAH Cafe Connaught Place,2026-02-16,Food,Snacks,MENU0093,Turnover with Brioche Dough Veg,1,228.82
+SALE_20260216_OUT001_MENU0094,ABNAH Cafe Connaught Place,2026-02-16,Food,Baked Goods,MENU0094,Butter Croissant,3,590.09
+SALE_20260216_OUT001_MENU0095,ABNAH Cafe Connaught Place,2026-02-16,Food,Baked Goods,MENU0095,Almond Croissant,3,719.89
+SALE_20260216_OUT001_MENU0099,ABNAH Cafe Connaught Place,2026-02-16,Dessert,Baked Goods,MENU0099,Cinnamon Roll with Cream Cheese,1,217.6
+SALE_20260216_OUT001_MENU0100,ABNAH Cafe Connaught Place,2026-02-16,Dessert,Baked Goods,MENU0100,Banana Walnut Tea Cake,1,207.43
+SALE_20260216_OUT001_MENU0105,ABNAH Cafe Connaught Place,2026-02-16,Dessert,Desserts,MENU0105,Soft-Centred Caramel Cookie,1,174.43
+SALE_20260216_OUT001_MENU0106,ABNAH Cafe Connaught Place,2026-02-16,Dessert,Desserts,MENU0106,Death by Chocolate Cookie,1,179.97
+SALE_20260216_OUT001_MENU0107,ABNAH Cafe Connaught Place,2026-02-16,Dessert,Desserts,MENU0107,Jaggery Parmesan Cookie,1,161.97
+SALE_20260217_OUT001_MENU0003,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Coffee Classics,MENU0003,Americano - Regular,4,746.25
+SALE_20260217_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Coffee Classics,MENU0004,Americano - Medium,3,615.16
+SALE_20260217_OUT001_MENU0006,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Coffee Classics,MENU0006,Latte - Regular,2,450.76
+SALE_20260217_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Coffee Classics,MENU0007,Latte - Medium,1,251.38
+SALE_20260217_OUT001_MENU0008,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Coffee Classics,MENU0008,Latte - Large,1,268.5
+SALE_20260217_OUT001_MENU0009,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Coffee Classics,MENU0009,Cappuccino - Regular,2,450.76
+SALE_20260217_OUT001_MENU0010,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Coffee Classics,MENU0010,Cappuccino - Medium,3,732.92
+SALE_20260217_OUT001_MENU0012,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Coffee Classics,MENU0012,Flat White - Regular,1,232.03
+SALE_20260217_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Coffee Classics,MENU0013,Flat White - Medium,2,495.32
+SALE_20260217_OUT001_MENU0014,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Coffee Classics,MENU0014,Flat White - Large,4,1159.58
+SALE_20260217_OUT001_MENU0015,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Coffee Classics,MENU0015,Mocha - Regular,1,242.82
+SALE_20260217_OUT001_MENU0018,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Signature Coffee,MENU0018,Sea Salt Mocha - Regular,1,272.6
+SALE_20260217_OUT001_MENU0020,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Signature Coffee,MENU0020,Sea Salt Mocha - Large,1,339.54
+SALE_20260217_OUT001_MENU0021,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Signature Coffee,MENU0021,Orange Zest Mocha - Regular,1,272.66
+SALE_20260217_OUT001_MENU0023,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Signature Coffee,MENU0023,Orange Zest Mocha - Large,2,636.29
+SALE_20260217_OUT001_MENU0024,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Signature Coffee,MENU0024,Caramel Macchiato - Regular,2,510.46
+SALE_20260217_OUT001_MENU0025,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Signature Coffee,MENU0025,Caramel Macchiato - Medium,1,286.62
+SALE_20260217_OUT001_MENU0027,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Signature Coffee,MENU0027,French Vanilla Latte - Regular,2,503.56
+SALE_20260217_OUT001_MENU0028,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Signature Coffee,MENU0028,French Vanilla Latte - Medium,1,287.8
+SALE_20260217_OUT001_MENU0029,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Signature Coffee,MENU0029,French Vanilla Latte - Large,1,314.24
+SALE_20260217_OUT001_MENU0030,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Signature Coffee,MENU0030,Vegan Iced Latte - Regular,1,269.7
+SALE_20260217_OUT001_MENU0031,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Signature Coffee,MENU0031,Vegan Iced Latte - Medium,4,1230.52
+SALE_20260217_OUT001_MENU0033,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Cold Brew,MENU0033,Classic Cold Brew - Regular,4,890.66
+SALE_20260217_OUT001_MENU0037,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Cold Brew,MENU0037,Coffee Lemonade - Medium,1,248.67
+SALE_20260217_OUT001_MENU0039,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Cold Brew,MENU0039,Vietnamese Shakerato - Regular,1,253.83
+SALE_20260217_OUT001_MENU0041,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Cold Brew,MENU0041,Vietnamese Shakerato - Large,1,305.85
+SALE_20260217_OUT001_MENU0042,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Cold Coffee,MENU0042,Classic Cold Coffee - Regular,2,481.22
+SALE_20260217_OUT001_MENU0043,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Cold Coffee,MENU0043,Classic Cold Coffee - Medium,3,878.46
+SALE_20260217_OUT001_MENU0044,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Cold Coffee,MENU0044,Classic Cold Coffee - Large,1,326.03
+SALE_20260217_OUT001_MENU0046,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Cold Coffee,MENU0046,Mocha Cold Coffee - Medium,1,323.08
+SALE_20260217_OUT001_MENU0050,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Cold Coffee,MENU0050,Caramel Cold Coffee - Large,1,333.83
+SALE_20260217_OUT001_MENU0052,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Tea,MENU0052,Masala Chai Latte - Medium,1,214.43
+SALE_20260217_OUT001_MENU0054,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Tea,MENU0054,Himalayan Green Tea,3,616.4
+SALE_20260217_OUT001_MENU0055,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Tea,MENU0055,Japanese Matcha Latte - Regular,1,259.13
+SALE_20260217_OUT001_MENU0057,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Tea,MENU0057,Japanese Matcha Latte - Large,2,640.94
+SALE_20260217_OUT001_MENU0058,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Iced Tea,MENU0058,Lemon Iced Tea - Regular,3,595.64
+SALE_20260217_OUT001_MENU0059,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Iced Tea,MENU0059,Lemon Iced Tea - Medium,3,699.04
+SALE_20260217_OUT001_MENU0061,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Iced Tea,MENU0061,Hibiscus Lime Iced Tea - Regular,1,218.74
+SALE_20260217_OUT001_MENU0063,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Iced Tea,MENU0063,Hibiscus Lime Iced Tea - Large,1,278.39
+SALE_20260217_OUT001_MENU0067,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Kids Beverage,MENU0067,Babyccino - Regular,1,158.56
+SALE_20260217_OUT001_MENU0072,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Shake,MENU0072,Mixed Berry Shake - Medium,1,356.98
+SALE_20260217_OUT001_MENU0073,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Shake,MENU0073,Mixed Berry Shake - Large,1,369.52
+SALE_20260217_OUT001_MENU0076,ABNAH Cafe Connaught Place,2026-02-17,Beverage,Smoothie,MENU0076,Seasonal Smoothie - Large,1,365.77
+SALE_20260217_OUT001_MENU0079,ABNAH Cafe Connaught Place,2026-02-17,Food,Sandwiches,MENU0079,Smoked Chipotle Paneer Sandwich,1,291.76
+SALE_20260217_OUT001_MENU0080,ABNAH Cafe Connaught Place,2026-02-17,Food,Sandwiches,MENU0080,Pesto Veg Sandwich,1,272.08
+SALE_20260217_OUT001_MENU0081,ABNAH Cafe Connaught Place,2026-02-17,Food,Sandwiches,MENU0081,Pepper Chicken Sandwich,1,316.18
+SALE_20260217_OUT001_MENU0082,ABNAH Cafe Connaught Place,2026-02-17,Food,Sandwiches,MENU0082,Tandoori Chicken Sandwich,4,1234.79
+SALE_20260217_OUT001_MENU0086,ABNAH Cafe Connaught Place,2026-02-17,Food,Breakfast,MENU0086,Breakfast Pancakes,2,554.06
+SALE_20260217_OUT001_MENU0087,ABNAH Cafe Connaught Place,2026-02-17,Food,Breakfast,MENU0087,Cream Cheese Bagel,1,237.63
+SALE_20260217_OUT001_MENU0088,ABNAH Cafe Connaught Place,2026-02-17,Food,Breakfast,MENU0088,Scallion Pepper Cream Cheese Bagel,1,250.85
+SALE_20260217_OUT001_MENU0093,ABNAH Cafe Connaught Place,2026-02-17,Food,Snacks,MENU0093,Turnover with Brioche Dough Veg,1,238.0
+SALE_20260217_OUT001_MENU0096,ABNAH Cafe Connaught Place,2026-02-17,Food,Baked Goods,MENU0096,Chocolate Croissant,1,236.66
+SALE_20260217_OUT001_MENU0099,ABNAH Cafe Connaught Place,2026-02-17,Dessert,Baked Goods,MENU0099,Cinnamon Roll with Cream Cheese,1,209.86
+SALE_20260217_OUT001_MENU0101,ABNAH Cafe Connaught Place,2026-02-17,Dessert,Baked Goods,MENU0101,Lemon Raspberry Tea Cake,3,624.94
+SALE_20260217_OUT001_MENU0103,ABNAH Cafe Connaught Place,2026-02-17,Dessert,Desserts,MENU0103,Banoffee Pie,1,279.59
+SALE_20260217_OUT001_MENU0106,ABNAH Cafe Connaught Place,2026-02-17,Dessert,Desserts,MENU0106,Death by Chocolate Cookie,3,548.21
+SALE_20260218_OUT001_MENU0001,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Espresso,MENU0001,Espresso Shot - Solo,1,143.88
+SALE_20260218_OUT001_MENU0003,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Coffee Classics,MENU0003,Americano - Regular,7,1261.87
+SALE_20260218_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Coffee Classics,MENU0004,Americano - Medium,4,803.13
+SALE_20260218_OUT001_MENU0005,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Coffee Classics,MENU0005,Americano - Large,4,939.84
+SALE_20260218_OUT001_MENU0006,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Coffee Classics,MENU0006,Latte - Regular,3,685.0
+SALE_20260218_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Coffee Classics,MENU0007,Latte - Medium,4,983.88
+SALE_20260218_OUT001_MENU0008,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Coffee Classics,MENU0008,Latte - Large,2,517.48
+SALE_20260218_OUT001_MENU0009,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Coffee Classics,MENU0009,Cappuccino - Regular,3,685.11
+SALE_20260218_OUT001_MENU0010,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Coffee Classics,MENU0010,Cappuccino - Medium,5,1238.3
+SALE_20260218_OUT001_MENU0011,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Coffee Classics,MENU0011,Cappuccino - Large,2,535.08
+SALE_20260218_OUT001_MENU0012,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Coffee Classics,MENU0012,Flat White - Regular,1,238.11
+SALE_20260218_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Coffee Classics,MENU0013,Flat White - Medium,4,1056.5
+SALE_20260218_OUT001_MENU0014,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Coffee Classics,MENU0014,Flat White - Large,3,816.43
+SALE_20260218_OUT001_MENU0015,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Coffee Classics,MENU0015,Mocha - Regular,2,496.46
+SALE_20260218_OUT001_MENU0017,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Coffee Classics,MENU0017,Mocha - Large,1,297.11
+SALE_20260218_OUT001_MENU0018,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Signature Coffee,MENU0018,Sea Salt Mocha - Regular,3,823.66
+SALE_20260218_OUT001_MENU0019,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Signature Coffee,MENU0019,Sea Salt Mocha - Medium,5,1544.91
+SALE_20260218_OUT001_MENU0021,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Signature Coffee,MENU0021,Orange Zest Mocha - Regular,2,533.15
+SALE_20260218_OUT001_MENU0023,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Signature Coffee,MENU0023,Orange Zest Mocha - Large,1,322.14
+SALE_20260218_OUT001_MENU0024,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Signature Coffee,MENU0024,Caramel Macchiato - Regular,4,1037.04
+SALE_20260218_OUT001_MENU0025,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Signature Coffee,MENU0025,Caramel Macchiato - Medium,1,299.41
+SALE_20260218_OUT001_MENU0026,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Signature Coffee,MENU0026,Caramel Macchiato - Large,1,312.12
+SALE_20260218_OUT001_MENU0027,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Signature Coffee,MENU0027,French Vanilla Latte - Regular,3,751.0
+SALE_20260218_OUT001_MENU0028,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Signature Coffee,MENU0028,French Vanilla Latte - Medium,1,279.28
+SALE_20260218_OUT001_MENU0029,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Signature Coffee,MENU0029,French Vanilla Latte - Large,2,627.67
+SALE_20260218_OUT001_MENU0030,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Signature Coffee,MENU0030,Vegan Iced Latte - Regular,1,272.23
+SALE_20260218_OUT001_MENU0031,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Signature Coffee,MENU0031,Vegan Iced Latte - Medium,1,291.79
+SALE_20260218_OUT001_MENU0036,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Cold Brew,MENU0036,Coffee Lemonade - Regular,2,474.47
+SALE_20260218_OUT001_MENU0037,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Cold Brew,MENU0037,Coffee Lemonade - Medium,1,261.47
+SALE_20260218_OUT001_MENU0038,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Cold Brew,MENU0038,Coffee Lemonade - Large,1,277.82
+SALE_20260218_OUT001_MENU0040,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Cold Brew,MENU0040,Vietnamese Shakerato - Medium,1,276.11
+SALE_20260218_OUT001_MENU0041,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Cold Brew,MENU0041,Vietnamese Shakerato - Large,1,303.13
+SALE_20260218_OUT001_MENU0043,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Cold Coffee,MENU0043,Classic Cold Coffee - Medium,1,285.87
+SALE_20260218_OUT001_MENU0048,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Cold Coffee,MENU0048,Caramel Cold Coffee - Regular,1,280.88
+SALE_20260218_OUT001_MENU0050,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Cold Coffee,MENU0050,Caramel Cold Coffee - Large,1,336.17
+SALE_20260218_OUT001_MENU0051,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Tea,MENU0051,Masala Chai Latte - Regular,1,185.04
+SALE_20260218_OUT001_MENU0052,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Tea,MENU0052,Masala Chai Latte - Medium,1,222.33
+SALE_20260218_OUT001_MENU0054,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Tea,MENU0054,Himalayan Green Tea,1,204.0
+SALE_20260218_OUT001_MENU0055,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Tea,MENU0055,Japanese Matcha Latte - Regular,1,251.74
+SALE_20260218_OUT001_MENU0056,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Tea,MENU0056,Japanese Matcha Latte - Medium,1,297.46
+SALE_20260218_OUT001_MENU0057,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Tea,MENU0057,Japanese Matcha Latte - Large,2,625.64
+SALE_20260218_OUT001_MENU0058,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Iced Tea,MENU0058,Lemon Iced Tea - Regular,2,386.78
+SALE_20260218_OUT001_MENU0059,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Iced Tea,MENU0059,Lemon Iced Tea - Medium,2,440.73
+SALE_20260218_OUT001_MENU0060,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Iced Tea,MENU0060,Lemon Iced Tea - Large,1,246.87
+SALE_20260218_OUT001_MENU0063,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Iced Tea,MENU0063,Hibiscus Lime Iced Tea - Large,1,265.34
+SALE_20260218_OUT001_MENU0065,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Kids Beverage,MENU0065,Hot Chocolate - Medium,1,248.63
+SALE_20260218_OUT001_MENU0070,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Shake,MENU0070,Choco Chip Shake - Large,2,734.82
+SALE_20260218_OUT001_MENU0071,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Shake,MENU0071,Mixed Berry Shake - Regular,2,638.74
+SALE_20260218_OUT001_MENU0072,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Shake,MENU0072,Mixed Berry Shake - Medium,1,337.53
+SALE_20260218_OUT001_MENU0074,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Smoothie,MENU0074,Seasonal Smoothie - Regular,1,295.99
+SALE_20260218_OUT001_MENU0076,ABNAH Cafe Connaught Place,2026-02-18,Beverage,Smoothie,MENU0076,Seasonal Smoothie - Large,1,373.3
+SALE_20260218_OUT001_MENU0077,ABNAH Cafe Connaught Place,2026-02-18,Food,Wraps,MENU0077,Spicy Paneer Wrap,1,263.82
+SALE_20260218_OUT001_MENU0078,ABNAH Cafe Connaught Place,2026-02-18,Food,Wraps,MENU0078,Shredded Chicken Wrap,1,293.71
+SALE_20260218_OUT001_MENU0079,ABNAH Cafe Connaught Place,2026-02-18,Food,Sandwiches,MENU0079,Smoked Chipotle Paneer Sandwich,2,585.0
+SALE_20260218_OUT001_MENU0081,ABNAH Cafe Connaught Place,2026-02-18,Food,Sandwiches,MENU0081,Pepper Chicken Sandwich,2,622.18
+SALE_20260218_OUT001_MENU0082,ABNAH Cafe Connaught Place,2026-02-18,Food,Sandwiches,MENU0082,Tandoori Chicken Sandwich,1,307.83
+SALE_20260218_OUT001_MENU0087,ABNAH Cafe Connaught Place,2026-02-18,Food,Breakfast,MENU0087,Cream Cheese Bagel,1,253.94
+SALE_20260218_OUT001_MENU0088,ABNAH Cafe Connaught Place,2026-02-18,Food,Breakfast,MENU0088,Scallion Pepper Cream Cheese Bagel,1,266.09
+SALE_20260218_OUT001_MENU0091,ABNAH Cafe Connaught Place,2026-02-18,Food,Snacks,MENU0091,Pesto Sundried Tomato Pin Wheel,1,222.58
+SALE_20260218_OUT001_MENU0093,ABNAH Cafe Connaught Place,2026-02-18,Food,Snacks,MENU0093,Turnover with Brioche Dough Veg,1,238.63
+SALE_20260218_OUT001_MENU0096,ABNAH Cafe Connaught Place,2026-02-18,Food,Baked Goods,MENU0096,Chocolate Croissant,2,478.56
+SALE_20260218_OUT001_MENU0097,ABNAH Cafe Connaught Place,2026-02-18,Food,Baked Goods,MENU0097,Mushroom Cheese Croissant,1,240.58
+SALE_20260218_OUT001_MENU0099,ABNAH Cafe Connaught Place,2026-02-18,Dessert,Baked Goods,MENU0099,Cinnamon Roll with Cream Cheese,1,223.57
+SALE_20260218_OUT001_MENU0100,ABNAH Cafe Connaught Place,2026-02-18,Dessert,Baked Goods,MENU0100,Banana Walnut Tea Cake,1,202.62
+SALE_20260218_OUT001_MENU0102,ABNAH Cafe Connaught Place,2026-02-18,Dessert,Desserts,MENU0102,Double Chocolate Truffle Cake,1,294.6
+SALE_20260218_OUT001_MENU0106,ABNAH Cafe Connaught Place,2026-02-18,Dessert,Desserts,MENU0106,Death by Chocolate Cookie,1,189.4
+SALE_20260218_OUT001_MENU0108,ABNAH Cafe Connaught Place,2026-02-18,Dessert,Desserts,MENU0108,Apple Pie,1,256.54
+SALE_20260218_OUT001_MENU0109,ABNAH Cafe Connaught Place,2026-02-18,Dessert,Desserts,MENU0109,Basque Cheesecake,1,312.13
+SALE_20260219_OUT001_MENU0002,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Espresso,MENU0002,Espresso Shot - Doppio,1,186.79
+SALE_20260219_OUT001_MENU0003,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Coffee Classics,MENU0003,Americano - Regular,1,176.79
+SALE_20260219_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Coffee Classics,MENU0004,Americano - Medium,5,1040.76
+SALE_20260219_OUT001_MENU0005,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Coffee Classics,MENU0005,Americano - Large,2,470.46
+SALE_20260219_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Coffee Classics,MENU0007,Latte - Medium,3,755.55
+SALE_20260219_OUT001_MENU0008,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Coffee Classics,MENU0008,Latte - Large,1,275.33
+SALE_20260219_OUT001_MENU0009,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Coffee Classics,MENU0009,Cappuccino - Regular,2,428.48
+SALE_20260219_OUT001_MENU0010,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Coffee Classics,MENU0010,Cappuccino - Medium,3,713.92
+SALE_20260219_OUT001_MENU0011,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Coffee Classics,MENU0011,Cappuccino - Large,2,526.96
+SALE_20260219_OUT001_MENU0012,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Coffee Classics,MENU0012,Flat White - Regular,4,885.44
+SALE_20260219_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Coffee Classics,MENU0013,Flat White - Medium,3,775.72
+SALE_20260219_OUT001_MENU0014,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Coffee Classics,MENU0014,Flat White - Large,1,278.39
+SALE_20260219_OUT001_MENU0015,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Coffee Classics,MENU0015,Mocha - Regular,3,718.89
+SALE_20260219_OUT001_MENU0016,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Coffee Classics,MENU0016,Mocha - Medium,2,528.72
+SALE_20260219_OUT001_MENU0017,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Coffee Classics,MENU0017,Mocha - Large,1,293.42
+SALE_20260219_OUT001_MENU0019,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Signature Coffee,MENU0019,Sea Salt Mocha - Medium,1,294.02
+SALE_20260219_OUT001_MENU0020,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Signature Coffee,MENU0020,Sea Salt Mocha - Large,1,315.56
+SALE_20260219_OUT001_MENU0022,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Signature Coffee,MENU0022,Orange Zest Mocha - Medium,1,298.37
+SALE_20260219_OUT001_MENU0026,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Signature Coffee,MENU0026,Caramel Macchiato - Large,1,320.06
+SALE_20260219_OUT001_MENU0030,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Signature Coffee,MENU0030,Vegan Iced Latte - Regular,1,277.38
+SALE_20260219_OUT001_MENU0033,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Cold Brew,MENU0033,Classic Cold Brew - Regular,2,443.74
+SALE_20260219_OUT001_MENU0035,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Cold Brew,MENU0035,Classic Cold Brew - Large,1,260.28
+SALE_20260219_OUT001_MENU0037,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Cold Brew,MENU0037,Coffee Lemonade - Medium,1,265.19
+SALE_20260219_OUT001_MENU0042,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Cold Coffee,MENU0042,Classic Cold Coffee - Regular,3,757.22
+SALE_20260219_OUT001_MENU0043,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Cold Coffee,MENU0043,Classic Cold Coffee - Medium,2,578.78
+SALE_20260219_OUT001_MENU0044,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Cold Coffee,MENU0044,Classic Cold Coffee - Large,1,312.52
+SALE_20260219_OUT001_MENU0045,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Cold Coffee,MENU0045,Mocha Cold Coffee - Regular,1,276.32
+SALE_20260219_OUT001_MENU0047,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Cold Coffee,MENU0047,Mocha Cold Coffee - Large,1,344.79
+SALE_20260219_OUT001_MENU0048,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Cold Coffee,MENU0048,Caramel Cold Coffee - Regular,2,543.15
+SALE_20260219_OUT001_MENU0049,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Cold Coffee,MENU0049,Caramel Cold Coffee - Medium,1,310.41
+SALE_20260219_OUT001_MENU0050,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Cold Coffee,MENU0050,Caramel Cold Coffee - Large,1,348.16
+SALE_20260219_OUT001_MENU0051,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Tea,MENU0051,Masala Chai Latte - Regular,2,370.64
+SALE_20260219_OUT001_MENU0055,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Tea,MENU0055,Japanese Matcha Latte - Regular,3,799.51
+SALE_20260219_OUT001_MENU0057,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Tea,MENU0057,Japanese Matcha Latte - Large,1,309.33
+SALE_20260219_OUT001_MENU0058,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Iced Tea,MENU0058,Lemon Iced Tea - Regular,1,198.98
+SALE_20260219_OUT001_MENU0068,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Shake,MENU0068,Choco Chip Shake - Regular,1,280.88
+SALE_20260219_OUT001_MENU0069,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Shake,MENU0069,Choco Chip Shake - Medium,1,333.1
+SALE_20260219_OUT001_MENU0070,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Shake,MENU0070,Choco Chip Shake - Large,1,346.37
+SALE_20260219_OUT001_MENU0076,ABNAH Cafe Connaught Place,2026-02-19,Beverage,Smoothie,MENU0076,Seasonal Smoothie - Large,1,358.96
+SALE_20260219_OUT001_MENU0079,ABNAH Cafe Connaught Place,2026-02-19,Food,Sandwiches,MENU0079,Smoked Chipotle Paneer Sandwich,3,856.35
+SALE_20260219_OUT001_MENU0080,ABNAH Cafe Connaught Place,2026-02-19,Food,Sandwiches,MENU0080,Pesto Veg Sandwich,1,272.84
+SALE_20260219_OUT001_MENU0086,ABNAH Cafe Connaught Place,2026-02-19,Food,Breakfast,MENU0086,Breakfast Pancakes,1,280.44
+SALE_20260219_OUT001_MENU0088,ABNAH Cafe Connaught Place,2026-02-19,Food,Breakfast,MENU0088,Scallion Pepper Cream Cheese Bagel,1,259.35
+SALE_20260219_OUT001_MENU0096,ABNAH Cafe Connaught Place,2026-02-19,Food,Baked Goods,MENU0096,Chocolate Croissant,2,467.98
+SALE_20260219_OUT001_MENU0097,ABNAH Cafe Connaught Place,2026-02-19,Food,Baked Goods,MENU0097,Mushroom Cheese Croissant,2,502.48
+SALE_20260219_OUT001_MENU0098,ABNAH Cafe Connaught Place,2026-02-19,Food,Baked Goods,MENU0098,Sriracha Chicken Croissant,2,521.69
+SALE_20260219_OUT001_MENU0101,ABNAH Cafe Connaught Place,2026-02-19,Dessert,Baked Goods,MENU0101,Lemon Raspberry Tea Cake,1,211.99
+SALE_20260219_OUT001_MENU0103,ABNAH Cafe Connaught Place,2026-02-19,Dessert,Desserts,MENU0103,Banoffee Pie,1,290.32
+SALE_20260219_OUT001_MENU0104,ABNAH Cafe Connaught Place,2026-02-19,Dessert,Desserts,MENU0104,Classic Chocolate Fudge Brownie,3,582.42
+SALE_20260219_OUT001_MENU0105,ABNAH Cafe Connaught Place,2026-02-19,Dessert,Desserts,MENU0105,Soft-Centred Caramel Cookie,1,178.54
+SALE_20260219_OUT001_MENU0110,ABNAH Cafe Connaught Place,2026-02-19,Dessert,Baked Goods,MENU0110,Multigrain Walnut Tea Cake,2,425.8
+SALE_20260220_OUT001_MENU0003,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Coffee Classics,MENU0003,Americano - Regular,6,1113.03
+SALE_20260220_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Coffee Classics,MENU0004,Americano - Medium,2,404.73
+SALE_20260220_OUT001_MENU0005,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Coffee Classics,MENU0005,Americano - Large,2,461.78
+SALE_20260220_OUT001_MENU0006,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Coffee Classics,MENU0006,Latte - Regular,2,423.59
+SALE_20260220_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Coffee Classics,MENU0007,Latte - Medium,1,237.19
+SALE_20260220_OUT001_MENU0009,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Coffee Classics,MENU0009,Cappuccino - Regular,2,449.46
+SALE_20260220_OUT001_MENU0010,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Coffee Classics,MENU0010,Cappuccino - Medium,4,950.21
+SALE_20260220_OUT001_MENU0011,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Coffee Classics,MENU0011,Cappuccino - Large,1,279.43
+SALE_20260220_OUT001_MENU0012,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Coffee Classics,MENU0012,Flat White - Regular,1,230.24
+SALE_20260220_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Coffee Classics,MENU0013,Flat White - Medium,1,247.74
+SALE_20260220_OUT001_MENU0015,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Coffee Classics,MENU0015,Mocha - Regular,1,231.34
+SALE_20260220_OUT001_MENU0016,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Coffee Classics,MENU0016,Mocha - Medium,1,263.73
+SALE_20260220_OUT001_MENU0017,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Coffee Classics,MENU0017,Mocha - Large,1,278.41
+SALE_20260220_OUT001_MENU0018,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Signature Coffee,MENU0018,Sea Salt Mocha - Regular,2,517.49
+SALE_20260220_OUT001_MENU0019,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Signature Coffee,MENU0019,Sea Salt Mocha - Medium,1,289.32
+SALE_20260220_OUT001_MENU0020,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Signature Coffee,MENU0020,Sea Salt Mocha - Large,1,330.36
+SALE_20260220_OUT001_MENU0022,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Signature Coffee,MENU0022,Orange Zest Mocha - Medium,1,284.91
+SALE_20260220_OUT001_MENU0023,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Signature Coffee,MENU0023,Orange Zest Mocha - Large,1,318.43
+SALE_20260220_OUT001_MENU0025,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Signature Coffee,MENU0025,Caramel Macchiato - Medium,1,299.37
+SALE_20260220_OUT001_MENU0026,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Signature Coffee,MENU0026,Caramel Macchiato - Large,2,658.08
+SALE_20260220_OUT001_MENU0027,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Signature Coffee,MENU0027,French Vanilla Latte - Regular,1,260.48
+SALE_20260220_OUT001_MENU0028,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Signature Coffee,MENU0028,French Vanilla Latte - Medium,1,293.82
+SALE_20260220_OUT001_MENU0031,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Signature Coffee,MENU0031,Vegan Iced Latte - Medium,3,940.27
+SALE_20260220_OUT001_MENU0032,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Signature Coffee,MENU0032,Vegan Iced Latte - Large,1,326.35
+SALE_20260220_OUT001_MENU0036,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Cold Brew,MENU0036,Coffee Lemonade - Regular,1,222.13
+SALE_20260220_OUT001_MENU0042,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Cold Coffee,MENU0042,Classic Cold Coffee - Regular,4,968.6
+SALE_20260220_OUT001_MENU0043,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Cold Coffee,MENU0043,Classic Cold Coffee - Medium,2,547.52
+SALE_20260220_OUT001_MENU0044,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Cold Coffee,MENU0044,Classic Cold Coffee - Large,1,322.77
+SALE_20260220_OUT001_MENU0046,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Cold Coffee,MENU0046,Mocha Cold Coffee - Medium,3,954.33
+SALE_20260220_OUT001_MENU0047,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Cold Coffee,MENU0047,Mocha Cold Coffee - Large,1,349.69
+SALE_20260220_OUT001_MENU0049,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Cold Coffee,MENU0049,Caramel Cold Coffee - Medium,2,624.98
+SALE_20260220_OUT001_MENU0051,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Tea,MENU0051,Masala Chai Latte - Regular,3,561.07
+SALE_20260220_OUT001_MENU0054,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Tea,MENU0054,Himalayan Green Tea,1,204.78
+SALE_20260220_OUT001_MENU0058,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Iced Tea,MENU0058,Lemon Iced Tea - Regular,1,202.5
+SALE_20260220_OUT001_MENU0061,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Iced Tea,MENU0061,Hibiscus Lime Iced Tea - Regular,2,444.27
+SALE_20260220_OUT001_MENU0062,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Iced Tea,MENU0062,Hibiscus Lime Iced Tea - Medium,1,246.73
+SALE_20260220_OUT001_MENU0063,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Iced Tea,MENU0063,Hibiscus Lime Iced Tea - Large,1,274.6
+SALE_20260220_OUT001_MENU0065,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Kids Beverage,MENU0065,Hot Chocolate - Medium,1,245.22
+SALE_20260220_OUT001_MENU0072,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Shake,MENU0072,Mixed Berry Shake - Medium,1,333.31
+SALE_20260220_OUT001_MENU0075,ABNAH Cafe Connaught Place,2026-02-20,Beverage,Smoothie,MENU0075,Seasonal Smoothie - Medium,1,345.57
+SALE_20260220_OUT001_MENU0077,ABNAH Cafe Connaught Place,2026-02-20,Food,Wraps,MENU0077,Spicy Paneer Wrap,3,803.45
+SALE_20260220_OUT001_MENU0078,ABNAH Cafe Connaught Place,2026-02-20,Food,Wraps,MENU0078,Shredded Chicken Wrap,1,283.84
+SALE_20260220_OUT001_MENU0079,ABNAH Cafe Connaught Place,2026-02-20,Food,Sandwiches,MENU0079,Smoked Chipotle Paneer Sandwich,3,884.57
+SALE_20260220_OUT001_MENU0080,ABNAH Cafe Connaught Place,2026-02-20,Food,Sandwiches,MENU0080,Pesto Veg Sandwich,1,267.29
+SALE_20260220_OUT001_MENU0081,ABNAH Cafe Connaught Place,2026-02-20,Food,Sandwiches,MENU0081,Pepper Chicken Sandwich,2,621.49
+SALE_20260220_OUT001_MENU0082,ABNAH Cafe Connaught Place,2026-02-20,Food,Sandwiches,MENU0082,Tandoori Chicken Sandwich,2,632.54
+SALE_20260220_OUT001_MENU0086,ABNAH Cafe Connaught Place,2026-02-20,Food,Breakfast,MENU0086,Breakfast Pancakes,1,279.68
+SALE_20260220_OUT001_MENU0087,ABNAH Cafe Connaught Place,2026-02-20,Food,Breakfast,MENU0087,Cream Cheese Bagel,1,253.36
+SALE_20260220_OUT001_MENU0094,ABNAH Cafe Connaught Place,2026-02-20,Food,Baked Goods,MENU0094,Butter Croissant,2,377.17
+SALE_20260220_OUT001_MENU0098,ABNAH Cafe Connaught Place,2026-02-20,Food,Baked Goods,MENU0098,Sriracha Chicken Croissant,1,275.06
+SALE_20260220_OUT001_MENU0099,ABNAH Cafe Connaught Place,2026-02-20,Dessert,Baked Goods,MENU0099,Cinnamon Roll with Cream Cheese,1,216.41
+SALE_20260220_OUT001_MENU0100,ABNAH Cafe Connaught Place,2026-02-20,Dessert,Baked Goods,MENU0100,Banana Walnut Tea Cake,1,194.82
+SALE_20260220_OUT001_MENU0103,ABNAH Cafe Connaught Place,2026-02-20,Dessert,Desserts,MENU0103,Banoffee Pie,2,546.39
+SALE_20260220_OUT001_MENU0106,ABNAH Cafe Connaught Place,2026-02-20,Dessert,Desserts,MENU0106,Death by Chocolate Cookie,2,366.9
+SALE_20260220_OUT001_MENU0107,ABNAH Cafe Connaught Place,2026-02-20,Dessert,Desserts,MENU0107,Jaggery Parmesan Cookie,1,172.72
+SALE_20260220_OUT001_MENU0109,ABNAH Cafe Connaught Place,2026-02-20,Dessert,Desserts,MENU0109,Basque Cheesecake,1,314.78
+SALE_20260221_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Coffee Classics,MENU0004,Americano - Medium,2,411.58
+SALE_20260221_OUT001_MENU0006,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Coffee Classics,MENU0006,Latte - Regular,2,428.99
+SALE_20260221_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Coffee Classics,MENU0007,Latte - Medium,2,479.78
+SALE_20260221_OUT001_MENU0008,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Coffee Classics,MENU0008,Latte - Large,3,789.1
+SALE_20260221_OUT001_MENU0009,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Coffee Classics,MENU0009,Cappuccino - Regular,1,214.27
+SALE_20260221_OUT001_MENU0012,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Coffee Classics,MENU0012,Flat White - Regular,3,701.42
+SALE_20260221_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Coffee Classics,MENU0013,Flat White - Medium,2,504.42
+SALE_20260221_OUT001_MENU0014,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Coffee Classics,MENU0014,Flat White - Large,1,282.49
+SALE_20260221_OUT001_MENU0015,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Coffee Classics,MENU0015,Mocha - Regular,2,479.9
+SALE_20260221_OUT001_MENU0017,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Coffee Classics,MENU0017,Mocha - Large,2,601.63
+SALE_20260221_OUT001_MENU0021,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Signature Coffee,MENU0021,Orange Zest Mocha - Regular,1,262.62
+SALE_20260221_OUT001_MENU0022,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Signature Coffee,MENU0022,Orange Zest Mocha - Medium,1,291.1
+SALE_20260221_OUT001_MENU0025,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Signature Coffee,MENU0025,Caramel Macchiato - Medium,1,292.07
+SALE_20260221_OUT001_MENU0026,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Signature Coffee,MENU0026,Caramel Macchiato - Large,1,310.4
+SALE_20260221_OUT001_MENU0027,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Signature Coffee,MENU0027,French Vanilla Latte - Regular,1,257.38
+SALE_20260221_OUT001_MENU0029,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Signature Coffee,MENU0029,French Vanilla Latte - Large,1,308.05
+SALE_20260221_OUT001_MENU0030,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Signature Coffee,MENU0030,Vegan Iced Latte - Regular,1,286.06
+SALE_20260221_OUT001_MENU0031,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Signature Coffee,MENU0031,Vegan Iced Latte - Medium,2,595.13
+SALE_20260221_OUT001_MENU0033,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Cold Brew,MENU0033,Classic Cold Brew - Regular,1,214.43
+SALE_20260221_OUT001_MENU0035,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Cold Brew,MENU0035,Classic Cold Brew - Large,1,273.02
+SALE_20260221_OUT001_MENU0038,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Cold Brew,MENU0038,Coffee Lemonade - Large,1,268.69
+SALE_20260221_OUT001_MENU0039,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Cold Brew,MENU0039,Vietnamese Shakerato - Regular,2,496.99
+SALE_20260221_OUT001_MENU0042,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Cold Coffee,MENU0042,Classic Cold Coffee - Regular,1,244.12
+SALE_20260221_OUT001_MENU0043,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Cold Coffee,MENU0043,Classic Cold Coffee - Medium,1,272.81
+SALE_20260221_OUT001_MENU0047,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Cold Coffee,MENU0047,Mocha Cold Coffee - Large,1,340.74
+SALE_20260221_OUT001_MENU0051,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Tea,MENU0051,Masala Chai Latte - Regular,1,195.64
+SALE_20260221_OUT001_MENU0052,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Tea,MENU0052,Masala Chai Latte - Medium,1,224.12
+SALE_20260221_OUT001_MENU0053,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Tea,MENU0053,Masala Chai Latte - Large,1,230.73
+SALE_20260221_OUT001_MENU0054,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Tea,MENU0054,Himalayan Green Tea,2,403.84
+SALE_20260221_OUT001_MENU0056,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Tea,MENU0056,Japanese Matcha Latte - Medium,1,278.82
+SALE_20260221_OUT001_MENU0059,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Iced Tea,MENU0059,Lemon Iced Tea - Medium,2,440.46
+SALE_20260221_OUT001_MENU0060,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Iced Tea,MENU0060,Lemon Iced Tea - Large,1,257.46
+SALE_20260221_OUT001_MENU0064,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Kids Beverage,MENU0064,Hot Chocolate - Regular,1,212.07
+SALE_20260221_OUT001_MENU0066,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Kids Beverage,MENU0066,Hot Chocolate - Large,1,253.88
+SALE_20260221_OUT001_MENU0068,ABNAH Cafe Connaught Place,2026-02-21,Beverage,Shake,MENU0068,Choco Chip Shake - Regular,1,292.03
+SALE_20260221_OUT001_MENU0078,ABNAH Cafe Connaught Place,2026-02-21,Food,Wraps,MENU0078,Shredded Chicken Wrap,1,296.26
+SALE_20260221_OUT001_MENU0079,ABNAH Cafe Connaught Place,2026-02-21,Food,Sandwiches,MENU0079,Smoked Chipotle Paneer Sandwich,2,576.58
+SALE_20260221_OUT001_MENU0080,ABNAH Cafe Connaught Place,2026-02-21,Food,Sandwiches,MENU0080,Pesto Veg Sandwich,1,272.55
+SALE_20260221_OUT001_MENU0082,ABNAH Cafe Connaught Place,2026-02-21,Food,Sandwiches,MENU0082,Tandoori Chicken Sandwich,1,308.8
+SALE_20260221_OUT001_MENU0086,ABNAH Cafe Connaught Place,2026-02-21,Food,Breakfast,MENU0086,Breakfast Pancakes,1,286.37
+SALE_20260221_OUT001_MENU0091,ABNAH Cafe Connaught Place,2026-02-21,Food,Snacks,MENU0091,Pesto Sundried Tomato Pin Wheel,1,225.97
+SALE_20260221_OUT001_MENU0094,ABNAH Cafe Connaught Place,2026-02-21,Food,Baked Goods,MENU0094,Butter Croissant,1,192.98
+SALE_20260221_OUT001_MENU0097,ABNAH Cafe Connaught Place,2026-02-21,Food,Baked Goods,MENU0097,Mushroom Cheese Croissant,1,242.75
+SALE_20260221_OUT001_MENU0106,ABNAH Cafe Connaught Place,2026-02-21,Dessert,Desserts,MENU0106,Death by Chocolate Cookie,1,193.23
+SALE_20260221_OUT001_MENU0107,ABNAH Cafe Connaught Place,2026-02-21,Dessert,Desserts,MENU0107,Jaggery Parmesan Cookie,1,168.28
+SALE_20260221_OUT001_MENU0108,ABNAH Cafe Connaught Place,2026-02-21,Dessert,Desserts,MENU0108,Apple Pie,2,512.72
+SALE_20260221_OUT001_MENU0109,ABNAH Cafe Connaught Place,2026-02-21,Dessert,Desserts,MENU0109,Basque Cheesecake,1,302.48
+SALE_20260222_OUT001_MENU0001,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Espresso,MENU0001,Espresso Shot - Solo,1,138.94
+SALE_20260222_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Coffee Classics,MENU0004,Americano - Medium,2,410.83
+SALE_20260222_OUT001_MENU0005,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Coffee Classics,MENU0005,Americano - Large,4,950.7
+SALE_20260222_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Coffee Classics,MENU0007,Latte - Medium,5,1181.4
+SALE_20260222_OUT001_MENU0008,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Coffee Classics,MENU0008,Latte - Large,1,267.59
+SALE_20260222_OUT001_MENU0009,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Coffee Classics,MENU0009,Cappuccino - Regular,3,678.76
+SALE_20260222_OUT001_MENU0010,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Coffee Classics,MENU0010,Cappuccino - Medium,1,236.27
+SALE_20260222_OUT001_MENU0016,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Coffee Classics,MENU0016,Mocha - Medium,1,264.18
+SALE_20260222_OUT001_MENU0017,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Coffee Classics,MENU0017,Mocha - Large,1,293.54
+SALE_20260222_OUT001_MENU0018,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Signature Coffee,MENU0018,Sea Salt Mocha - Regular,1,262.24
+SALE_20260222_OUT001_MENU0019,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Signature Coffee,MENU0019,Sea Salt Mocha - Medium,1,300.22
+SALE_20260222_OUT001_MENU0022,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Signature Coffee,MENU0022,Orange Zest Mocha - Medium,1,304.89
+SALE_20260222_OUT001_MENU0023,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Signature Coffee,MENU0023,Orange Zest Mocha - Large,1,318.68
+SALE_20260222_OUT001_MENU0025,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Signature Coffee,MENU0025,Caramel Macchiato - Medium,1,296.37
+SALE_20260222_OUT001_MENU0026,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Signature Coffee,MENU0026,Caramel Macchiato - Large,1,312.97
+SALE_20260222_OUT001_MENU0027,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Signature Coffee,MENU0027,French Vanilla Latte - Regular,1,261.91
+SALE_20260222_OUT001_MENU0030,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Signature Coffee,MENU0030,Vegan Iced Latte - Regular,1,282.55
+SALE_20260222_OUT001_MENU0032,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Signature Coffee,MENU0032,Vegan Iced Latte - Large,1,338.42
+SALE_20260222_OUT001_MENU0034,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Cold Brew,MENU0034,Classic Cold Brew - Medium,1,245.33
+SALE_20260222_OUT001_MENU0035,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Cold Brew,MENU0035,Classic Cold Brew - Large,1,261.64
+SALE_20260222_OUT001_MENU0037,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Cold Brew,MENU0037,Coffee Lemonade - Medium,1,252.92
+SALE_20260222_OUT001_MENU0043,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Cold Coffee,MENU0043,Classic Cold Coffee - Medium,2,556.18
+SALE_20260222_OUT001_MENU0045,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Cold Coffee,MENU0045,Mocha Cold Coffee - Regular,1,273.08
+SALE_20260222_OUT001_MENU0048,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Cold Coffee,MENU0048,Caramel Cold Coffee - Regular,1,269.24
+SALE_20260222_OUT001_MENU0049,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Cold Coffee,MENU0049,Caramel Cold Coffee - Medium,1,316.79
+SALE_20260222_OUT001_MENU0050,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Cold Coffee,MENU0050,Caramel Cold Coffee - Large,1,360.72
+SALE_20260222_OUT001_MENU0053,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Tea,MENU0053,Masala Chai Latte - Large,1,233.76
+SALE_20260222_OUT001_MENU0056,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Tea,MENU0056,Japanese Matcha Latte - Medium,1,293.94
+SALE_20260222_OUT001_MENU0057,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Tea,MENU0057,Japanese Matcha Latte - Large,1,318.17
+SALE_20260222_OUT001_MENU0059,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Iced Tea,MENU0059,Lemon Iced Tea - Medium,1,224.44
+SALE_20260222_OUT001_MENU0068,ABNAH Cafe Connaught Place,2026-02-22,Beverage,Shake,MENU0068,Choco Chip Shake - Regular,1,293.71
+SALE_20260222_OUT001_MENU0080,ABNAH Cafe Connaught Place,2026-02-22,Food,Sandwiches,MENU0080,Pesto Veg Sandwich,1,277.25
+SALE_20260222_OUT001_MENU0081,ABNAH Cafe Connaught Place,2026-02-22,Food,Sandwiches,MENU0081,Pepper Chicken Sandwich,1,318.27
+SALE_20260222_OUT001_MENU0082,ABNAH Cafe Connaught Place,2026-02-22,Food,Sandwiches,MENU0082,Tandoori Chicken Sandwich,1,301.72
+SALE_20260222_OUT001_MENU0087,ABNAH Cafe Connaught Place,2026-02-22,Food,Breakfast,MENU0087,Cream Cheese Bagel,2,470.7
+SALE_20260222_OUT001_MENU0093,ABNAH Cafe Connaught Place,2026-02-22,Food,Snacks,MENU0093,Turnover with Brioche Dough Veg,1,226.83
+SALE_20260222_OUT001_MENU0100,ABNAH Cafe Connaught Place,2026-02-22,Dessert,Baked Goods,MENU0100,Banana Walnut Tea Cake,1,200.75
+SALE_20260222_OUT001_MENU0103,ABNAH Cafe Connaught Place,2026-02-22,Dessert,Desserts,MENU0103,Banoffee Pie,1,269.21
+SALE_20260222_OUT001_MENU0104,ABNAH Cafe Connaught Place,2026-02-22,Dessert,Desserts,MENU0104,Classic Chocolate Fudge Brownie,1,195.65
+SALE_20260222_OUT001_MENU0107,ABNAH Cafe Connaught Place,2026-02-22,Dessert,Desserts,MENU0107,Jaggery Parmesan Cookie,1,163.32
+SALE_20260223_OUT001_MENU0003,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Coffee Classics,MENU0003,Americano - Regular,4,708.2
+SALE_20260223_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Coffee Classics,MENU0004,Americano - Medium,3,614.68
+SALE_20260223_OUT001_MENU0005,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Coffee Classics,MENU0005,Americano - Large,1,232.19
+SALE_20260223_OUT001_MENU0006,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Coffee Classics,MENU0006,Latte - Regular,3,651.51
+SALE_20260223_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Coffee Classics,MENU0007,Latte - Medium,4,1000.14
+SALE_20260223_OUT001_MENU0008,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Coffee Classics,MENU0008,Latte - Large,3,822.25
+SALE_20260223_OUT001_MENU0010,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Coffee Classics,MENU0010,Cappuccino - Medium,2,471.05
+SALE_20260223_OUT001_MENU0011,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Coffee Classics,MENU0011,Cappuccino - Large,1,278.78
+SALE_20260223_OUT001_MENU0012,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Coffee Classics,MENU0012,Flat White - Regular,4,941.98
+SALE_20260223_OUT001_MENU0014,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Coffee Classics,MENU0014,Flat White - Large,1,287.5
+SALE_20260223_OUT001_MENU0015,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Coffee Classics,MENU0015,Mocha - Regular,1,238.92
+SALE_20260223_OUT001_MENU0016,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Coffee Classics,MENU0016,Mocha - Medium,2,545.96
+SALE_20260223_OUT001_MENU0017,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Coffee Classics,MENU0017,Mocha - Large,2,559.21
+SALE_20260223_OUT001_MENU0018,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Signature Coffee,MENU0018,Sea Salt Mocha - Regular,1,269.83
+SALE_20260223_OUT001_MENU0019,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Signature Coffee,MENU0019,Sea Salt Mocha - Medium,1,292.54
+SALE_20260223_OUT001_MENU0021,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Signature Coffee,MENU0021,Orange Zest Mocha - Regular,1,265.55
+SALE_20260223_OUT001_MENU0022,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Signature Coffee,MENU0022,Orange Zest Mocha - Medium,3,863.58
+SALE_20260223_OUT001_MENU0023,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Signature Coffee,MENU0023,Orange Zest Mocha - Large,1,315.75
+SALE_20260223_OUT001_MENU0025,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Signature Coffee,MENU0025,Caramel Macchiato - Medium,1,294.38
+SALE_20260223_OUT001_MENU0028,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Signature Coffee,MENU0028,French Vanilla Latte - Medium,3,863.71
+SALE_20260223_OUT001_MENU0030,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Signature Coffee,MENU0030,Vegan Iced Latte - Regular,2,564.61
+SALE_20260223_OUT001_MENU0031,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Signature Coffee,MENU0031,Vegan Iced Latte - Medium,1,311.75
+SALE_20260223_OUT001_MENU0032,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Signature Coffee,MENU0032,Vegan Iced Latte - Large,1,325.1
+SALE_20260223_OUT001_MENU0034,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Cold Brew,MENU0034,Classic Cold Brew - Medium,2,496.53
+SALE_20260223_OUT001_MENU0035,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Cold Brew,MENU0035,Classic Cold Brew - Large,2,540.16
+SALE_20260223_OUT001_MENU0036,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Cold Brew,MENU0036,Coffee Lemonade - Regular,2,460.47
+SALE_20260223_OUT001_MENU0037,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Cold Brew,MENU0037,Coffee Lemonade - Medium,1,264.63
+SALE_20260223_OUT001_MENU0039,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Cold Brew,MENU0039,Vietnamese Shakerato - Regular,1,252.81
+SALE_20260223_OUT001_MENU0042,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Cold Coffee,MENU0042,Classic Cold Coffee - Regular,2,517.71
+SALE_20260223_OUT001_MENU0043,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Cold Coffee,MENU0043,Classic Cold Coffee - Medium,1,282.33
+SALE_20260223_OUT001_MENU0044,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Cold Coffee,MENU0044,Classic Cold Coffee - Large,2,641.6
+SALE_20260223_OUT001_MENU0045,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Cold Coffee,MENU0045,Mocha Cold Coffee - Regular,3,869.43
+SALE_20260223_OUT001_MENU0046,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Cold Coffee,MENU0046,Mocha Cold Coffee - Medium,1,317.97
+SALE_20260223_OUT001_MENU0048,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Cold Coffee,MENU0048,Caramel Cold Coffee - Regular,1,275.74
+SALE_20260223_OUT001_MENU0049,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Cold Coffee,MENU0049,Caramel Cold Coffee - Medium,1,305.17
+SALE_20260223_OUT001_MENU0051,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Tea,MENU0051,Masala Chai Latte - Regular,1,198.45
+SALE_20260223_OUT001_MENU0052,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Tea,MENU0052,Masala Chai Latte - Medium,3,644.74
+SALE_20260223_OUT001_MENU0053,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Tea,MENU0053,Masala Chai Latte - Large,1,247.98
+SALE_20260223_OUT001_MENU0054,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Tea,MENU0054,Himalayan Green Tea,3,640.74
+SALE_20260223_OUT001_MENU0055,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Tea,MENU0055,Japanese Matcha Latte - Regular,2,501.83
+SALE_20260223_OUT001_MENU0057,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Tea,MENU0057,Japanese Matcha Latte - Large,2,646.25
+SALE_20260223_OUT001_MENU0058,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Iced Tea,MENU0058,Lemon Iced Tea - Regular,1,202.69
+SALE_20260223_OUT001_MENU0059,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Iced Tea,MENU0059,Lemon Iced Tea - Medium,1,231.12
+SALE_20260223_OUT001_MENU0062,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Iced Tea,MENU0062,Hibiscus Lime Iced Tea - Medium,3,740.48
+SALE_20260223_OUT001_MENU0069,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Shake,MENU0069,Choco Chip Shake - Medium,1,330.47
+SALE_20260223_OUT001_MENU0070,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Shake,MENU0070,Choco Chip Shake - Large,1,366.96
+SALE_20260223_OUT001_MENU0071,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Shake,MENU0071,Mixed Berry Shake - Regular,1,319.72
+SALE_20260223_OUT001_MENU0075,ABNAH Cafe Connaught Place,2026-02-23,Beverage,Smoothie,MENU0075,Seasonal Smoothie - Medium,1,331.95
+SALE_20260223_OUT001_MENU0077,ABNAH Cafe Connaught Place,2026-02-23,Food,Wraps,MENU0077,Spicy Paneer Wrap,1,263.56
+SALE_20260223_OUT001_MENU0080,ABNAH Cafe Connaught Place,2026-02-23,Food,Sandwiches,MENU0080,Pesto Veg Sandwich,2,560.99
+SALE_20260223_OUT001_MENU0081,ABNAH Cafe Connaught Place,2026-02-23,Food,Sandwiches,MENU0081,Pepper Chicken Sandwich,2,615.3
+SALE_20260223_OUT001_MENU0086,ABNAH Cafe Connaught Place,2026-02-23,Food,Breakfast,MENU0086,Breakfast Pancakes,1,287.97
+SALE_20260223_OUT001_MENU0087,ABNAH Cafe Connaught Place,2026-02-23,Food,Breakfast,MENU0087,Cream Cheese Bagel,2,480.59
+SALE_20260223_OUT001_MENU0088,ABNAH Cafe Connaught Place,2026-02-23,Food,Breakfast,MENU0088,Scallion Pepper Cream Cheese Bagel,1,264.08
+SALE_20260223_OUT001_MENU0090,ABNAH Cafe Connaught Place,2026-02-23,Food,Snacks,MENU0090,Marinara Cheese Pin Wheels,1,211.95
+SALE_20260223_OUT001_MENU0091,ABNAH Cafe Connaught Place,2026-02-23,Food,Snacks,MENU0091,Pesto Sundried Tomato Pin Wheel,1,211.7
+SALE_20260223_OUT001_MENU0092,ABNAH Cafe Connaught Place,2026-02-23,Food,Snacks,MENU0092,Turnover with Brioche Dough Chicken,1,248.22
+SALE_20260223_OUT001_MENU0093,ABNAH Cafe Connaught Place,2026-02-23,Food,Snacks,MENU0093,Turnover with Brioche Dough Veg,1,234.2
+SALE_20260223_OUT001_MENU0097,ABNAH Cafe Connaught Place,2026-02-23,Food,Baked Goods,MENU0097,Mushroom Cheese Croissant,2,503.34
+SALE_20260223_OUT001_MENU0099,ABNAH Cafe Connaught Place,2026-02-23,Dessert,Baked Goods,MENU0099,Cinnamon Roll with Cream Cheese,1,208.6
+SALE_20260223_OUT001_MENU0101,ABNAH Cafe Connaught Place,2026-02-23,Dessert,Baked Goods,MENU0101,Lemon Raspberry Tea Cake,1,217.63
+SALE_20260223_OUT001_MENU0103,ABNAH Cafe Connaught Place,2026-02-23,Dessert,Desserts,MENU0103,Banoffee Pie,3,828.13
+SALE_20260223_OUT001_MENU0106,ABNAH Cafe Connaught Place,2026-02-23,Dessert,Desserts,MENU0106,Death by Chocolate Cookie,1,184.58
+SALE_20260223_OUT001_MENU0110,ABNAH Cafe Connaught Place,2026-02-23,Dessert,Baked Goods,MENU0110,Multigrain Walnut Tea Cake,1,225.16
+SALE_20260224_OUT001_MENU0003,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Coffee Classics,MENU0003,Americano - Regular,3,541.4
+SALE_20260224_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Coffee Classics,MENU0004,Americano - Medium,2,424.35
+SALE_20260224_OUT001_MENU0005,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Coffee Classics,MENU0005,Americano - Large,1,222.56
+SALE_20260224_OUT001_MENU0006,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Coffee Classics,MENU0006,Latte - Regular,3,687.75
+SALE_20260224_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Coffee Classics,MENU0007,Latte - Medium,2,494.62
+SALE_20260224_OUT001_MENU0008,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Coffee Classics,MENU0008,Latte - Large,5,1293.48
+SALE_20260224_OUT001_MENU0009,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Coffee Classics,MENU0009,Cappuccino - Regular,2,424.46
+SALE_20260224_OUT001_MENU0010,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Coffee Classics,MENU0010,Cappuccino - Medium,4,999.46
+SALE_20260224_OUT001_MENU0011,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Coffee Classics,MENU0011,Cappuccino - Large,2,544.28
+SALE_20260224_OUT001_MENU0012,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Coffee Classics,MENU0012,Flat White - Regular,2,456.13
+SALE_20260224_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Coffee Classics,MENU0013,Flat White - Medium,1,257.38
+SALE_20260224_OUT001_MENU0014,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Coffee Classics,MENU0014,Flat White - Large,3,843.91
+SALE_20260224_OUT001_MENU0015,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Coffee Classics,MENU0015,Mocha - Regular,4,961.88
+SALE_20260224_OUT001_MENU0016,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Coffee Classics,MENU0016,Mocha - Medium,3,812.36
+SALE_20260224_OUT001_MENU0017,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Coffee Classics,MENU0017,Mocha - Large,2,576.08
+SALE_20260224_OUT001_MENU0018,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Signature Coffee,MENU0018,Sea Salt Mocha - Regular,1,272.08
+SALE_20260224_OUT001_MENU0019,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Signature Coffee,MENU0019,Sea Salt Mocha - Medium,2,583.53
+SALE_20260224_OUT001_MENU0020,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Signature Coffee,MENU0020,Sea Salt Mocha - Large,2,660.95
+SALE_20260224_OUT001_MENU0021,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Signature Coffee,MENU0021,Orange Zest Mocha - Regular,3,798.22
+SALE_20260224_OUT001_MENU0022,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Signature Coffee,MENU0022,Orange Zest Mocha - Medium,1,301.69
+SALE_20260224_OUT001_MENU0026,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Signature Coffee,MENU0026,Caramel Macchiato - Large,1,308.96
+SALE_20260224_OUT001_MENU0027,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Signature Coffee,MENU0027,French Vanilla Latte - Regular,3,787.87
+SALE_20260224_OUT001_MENU0028,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Signature Coffee,MENU0028,French Vanilla Latte - Medium,1,299.14
+SALE_20260224_OUT001_MENU0031,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Signature Coffee,MENU0031,Vegan Iced Latte - Medium,1,313.53
+SALE_20260224_OUT001_MENU0032,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Signature Coffee,MENU0032,Vegan Iced Latte - Large,1,326.1
+SALE_20260224_OUT001_MENU0034,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Cold Brew,MENU0034,Classic Cold Brew - Medium,1,244.98
+SALE_20260224_OUT001_MENU0035,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Cold Brew,MENU0035,Classic Cold Brew - Large,1,279.86
+SALE_20260224_OUT001_MENU0037,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Cold Brew,MENU0037,Coffee Lemonade - Medium,3,760.6
+SALE_20260224_OUT001_MENU0040,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Cold Brew,MENU0040,Vietnamese Shakerato - Medium,1,274.32
+SALE_20260224_OUT001_MENU0041,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Cold Brew,MENU0041,Vietnamese Shakerato - Large,2,584.93
+SALE_20260224_OUT001_MENU0042,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Cold Coffee,MENU0042,Classic Cold Coffee - Regular,6,1479.51
+SALE_20260224_OUT001_MENU0045,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Cold Coffee,MENU0045,Mocha Cold Coffee - Regular,1,287.24
+SALE_20260224_OUT001_MENU0046,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Cold Coffee,MENU0046,Mocha Cold Coffee - Medium,1,320.95
+SALE_20260224_OUT001_MENU0051,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Tea,MENU0051,Masala Chai Latte - Regular,3,551.02
+SALE_20260224_OUT001_MENU0052,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Tea,MENU0052,Masala Chai Latte - Medium,4,853.4
+SALE_20260224_OUT001_MENU0053,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Tea,MENU0053,Masala Chai Latte - Large,2,475.81
+SALE_20260224_OUT001_MENU0054,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Tea,MENU0054,Himalayan Green Tea,2,415.17
+SALE_20260224_OUT001_MENU0056,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Tea,MENU0056,Japanese Matcha Latte - Medium,1,295.1
+SALE_20260224_OUT001_MENU0057,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Tea,MENU0057,Japanese Matcha Latte - Large,2,626.2
+SALE_20260224_OUT001_MENU0058,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Iced Tea,MENU0058,Lemon Iced Tea - Regular,1,199.18
+SALE_20260224_OUT001_MENU0059,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Iced Tea,MENU0059,Lemon Iced Tea - Medium,1,232.76
+SALE_20260224_OUT001_MENU0063,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Iced Tea,MENU0063,Hibiscus Lime Iced Tea - Large,1,275.5
+SALE_20260224_OUT001_MENU0071,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Shake,MENU0071,Mixed Berry Shake - Regular,1,296.19
+SALE_20260224_OUT001_MENU0072,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Shake,MENU0072,Mixed Berry Shake - Medium,2,677.25
+SALE_20260224_OUT001_MENU0074,ABNAH Cafe Connaught Place,2026-02-24,Beverage,Smoothie,MENU0074,Seasonal Smoothie - Regular,1,289.11
+SALE_20260224_OUT001_MENU0078,ABNAH Cafe Connaught Place,2026-02-24,Food,Wraps,MENU0078,Shredded Chicken Wrap,1,284.15
+SALE_20260224_OUT001_MENU0080,ABNAH Cafe Connaught Place,2026-02-24,Food,Sandwiches,MENU0080,Pesto Veg Sandwich,2,567.33
+SALE_20260224_OUT001_MENU0081,ABNAH Cafe Connaught Place,2026-02-24,Food,Sandwiches,MENU0081,Pepper Chicken Sandwich,2,639.68
+SALE_20260224_OUT001_MENU0082,ABNAH Cafe Connaught Place,2026-02-24,Food,Sandwiches,MENU0082,Tandoori Chicken Sandwich,1,318.63
+SALE_20260224_OUT001_MENU0087,ABNAH Cafe Connaught Place,2026-02-24,Food,Breakfast,MENU0087,Cream Cheese Bagel,1,248.32
+SALE_20260224_OUT001_MENU0088,ABNAH Cafe Connaught Place,2026-02-24,Food,Breakfast,MENU0088,Scallion Pepper Cream Cheese Bagel,2,533.75
+SALE_20260224_OUT001_MENU0089,ABNAH Cafe Connaught Place,2026-02-24,Food,Breakfast,MENU0089,Masala Egg Bun,2,435.75
+SALE_20260224_OUT001_MENU0092,ABNAH Cafe Connaught Place,2026-02-24,Food,Snacks,MENU0092,Turnover with Brioche Dough Chicken,1,248.83
+SALE_20260224_OUT001_MENU0096,ABNAH Cafe Connaught Place,2026-02-24,Food,Baked Goods,MENU0096,Chocolate Croissant,1,221.2
+SALE_20260224_OUT001_MENU0098,ABNAH Cafe Connaught Place,2026-02-24,Food,Baked Goods,MENU0098,Sriracha Chicken Croissant,2,551.99
+SALE_20260224_OUT001_MENU0099,ABNAH Cafe Connaught Place,2026-02-24,Dessert,Baked Goods,MENU0099,Cinnamon Roll with Cream Cheese,1,209.88
+SALE_20260224_OUT001_MENU0103,ABNAH Cafe Connaught Place,2026-02-24,Dessert,Desserts,MENU0103,Banoffee Pie,1,290.15
+SALE_20260224_OUT001_MENU0105,ABNAH Cafe Connaught Place,2026-02-24,Dessert,Desserts,MENU0105,Soft-Centred Caramel Cookie,1,180.26
+SALE_20260224_OUT001_MENU0108,ABNAH Cafe Connaught Place,2026-02-24,Dessert,Desserts,MENU0108,Apple Pie,1,269.61
+SALE_20260225_OUT001_MENU0003,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Coffee Classics,MENU0003,Americano - Regular,4,713.13
+SALE_20260225_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Coffee Classics,MENU0004,Americano - Medium,4,823.06
+SALE_20260225_OUT001_MENU0005,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Coffee Classics,MENU0005,Americano - Large,2,476.66
+SALE_20260225_OUT001_MENU0006,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Coffee Classics,MENU0006,Latte - Regular,2,444.31
+SALE_20260225_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Coffee Classics,MENU0007,Latte - Medium,6,1440.5
+SALE_20260225_OUT001_MENU0008,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Coffee Classics,MENU0008,Latte - Large,4,1039.96
+SALE_20260225_OUT001_MENU0009,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Coffee Classics,MENU0009,Cappuccino - Regular,2,455.38
+SALE_20260225_OUT001_MENU0010,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Coffee Classics,MENU0010,Cappuccino - Medium,1,254.86
+SALE_20260225_OUT001_MENU0011,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Coffee Classics,MENU0011,Cappuccino - Large,2,533.3
+SALE_20260225_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Coffee Classics,MENU0013,Flat White - Medium,2,503.78
+SALE_20260225_OUT001_MENU0014,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Coffee Classics,MENU0014,Flat White - Large,1,278.96
+SALE_20260225_OUT001_MENU0015,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Coffee Classics,MENU0015,Mocha - Regular,2,492.71
+SALE_20260225_OUT001_MENU0016,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Coffee Classics,MENU0016,Mocha - Medium,4,1080.89
+SALE_20260225_OUT001_MENU0017,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Coffee Classics,MENU0017,Mocha - Large,1,298.77
+SALE_20260225_OUT001_MENU0018,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Signature Coffee,MENU0018,Sea Salt Mocha - Regular,2,544.3
+SALE_20260225_OUT001_MENU0020,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Signature Coffee,MENU0020,Sea Salt Mocha - Large,3,976.42
+SALE_20260225_OUT001_MENU0022,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Signature Coffee,MENU0022,Orange Zest Mocha - Medium,2,575.47
+SALE_20260225_OUT001_MENU0023,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Signature Coffee,MENU0023,Orange Zest Mocha - Large,1,334.73
+SALE_20260225_OUT001_MENU0024,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Signature Coffee,MENU0024,Caramel Macchiato - Regular,3,777.28
+SALE_20260225_OUT001_MENU0025,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Signature Coffee,MENU0025,Caramel Macchiato - Medium,3,845.71
+SALE_20260225_OUT001_MENU0026,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Signature Coffee,MENU0026,Caramel Macchiato - Large,2,630.84
+SALE_20260225_OUT001_MENU0027,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Signature Coffee,MENU0027,French Vanilla Latte - Regular,1,268.36
+SALE_20260225_OUT001_MENU0028,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Signature Coffee,MENU0028,French Vanilla Latte - Medium,2,570.03
+SALE_20260225_OUT001_MENU0029,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Signature Coffee,MENU0029,French Vanilla Latte - Large,1,329.16
+SALE_20260225_OUT001_MENU0030,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Signature Coffee,MENU0030,Vegan Iced Latte - Regular,2,536.43
+SALE_20260225_OUT001_MENU0032,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Signature Coffee,MENU0032,Vegan Iced Latte - Large,2,646.8
+SALE_20260225_OUT001_MENU0033,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Cold Brew,MENU0033,Classic Cold Brew - Regular,2,442.99
+SALE_20260225_OUT001_MENU0036,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Cold Brew,MENU0036,Coffee Lemonade - Regular,2,445.58
+SALE_20260225_OUT001_MENU0038,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Cold Brew,MENU0038,Coffee Lemonade - Large,1,281.69
+SALE_20260225_OUT001_MENU0041,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Cold Brew,MENU0041,Vietnamese Shakerato - Large,1,298.69
+SALE_20260225_OUT001_MENU0042,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Cold Coffee,MENU0042,Classic Cold Coffee - Regular,3,739.28
+SALE_20260225_OUT001_MENU0045,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Cold Coffee,MENU0045,Mocha Cold Coffee - Regular,1,279.81
+SALE_20260225_OUT001_MENU0048,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Cold Coffee,MENU0048,Caramel Cold Coffee - Regular,2,572.26
+SALE_20260225_OUT001_MENU0049,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Cold Coffee,MENU0049,Caramel Cold Coffee - Medium,3,923.75
+SALE_20260225_OUT001_MENU0050,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Cold Coffee,MENU0050,Caramel Cold Coffee - Large,1,346.15
+SALE_20260225_OUT001_MENU0051,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Tea,MENU0051,Masala Chai Latte - Regular,1,197.32
+SALE_20260225_OUT001_MENU0052,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Tea,MENU0052,Masala Chai Latte - Medium,1,213.22
+SALE_20260225_OUT001_MENU0053,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Tea,MENU0053,Masala Chai Latte - Large,1,236.36
+SALE_20260225_OUT001_MENU0054,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Tea,MENU0054,Himalayan Green Tea,1,209.42
+SALE_20260225_OUT001_MENU0055,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Tea,MENU0055,Japanese Matcha Latte - Regular,2,522.9
+SALE_20260225_OUT001_MENU0062,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Iced Tea,MENU0062,Hibiscus Lime Iced Tea - Medium,1,237.73
+SALE_20260225_OUT001_MENU0064,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Kids Beverage,MENU0064,Hot Chocolate - Regular,1,212.18
+SALE_20260225_OUT001_MENU0069,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Shake,MENU0069,Choco Chip Shake - Medium,1,328.84
+SALE_20260225_OUT001_MENU0070,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Shake,MENU0070,Choco Chip Shake - Large,1,361.93
+SALE_20260225_OUT001_MENU0071,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Shake,MENU0071,Mixed Berry Shake - Regular,2,616.57
+SALE_20260225_OUT001_MENU0074,ABNAH Cafe Connaught Place,2026-02-25,Beverage,Smoothie,MENU0074,Seasonal Smoothie - Regular,1,298.99
+SALE_20260225_OUT001_MENU0077,ABNAH Cafe Connaught Place,2026-02-25,Food,Wraps,MENU0077,Spicy Paneer Wrap,1,274.74
+SALE_20260225_OUT001_MENU0079,ABNAH Cafe Connaught Place,2026-02-25,Food,Sandwiches,MENU0079,Smoked Chipotle Paneer Sandwich,1,295.76
+SALE_20260225_OUT001_MENU0080,ABNAH Cafe Connaught Place,2026-02-25,Food,Sandwiches,MENU0080,Pesto Veg Sandwich,3,846.68
+SALE_20260225_OUT001_MENU0081,ABNAH Cafe Connaught Place,2026-02-25,Food,Sandwiches,MENU0081,Pepper Chicken Sandwich,1,307.23
+SALE_20260225_OUT001_MENU0083,ABNAH Cafe Connaught Place,2026-02-25,Food,Toasts,MENU0083,Chilli Cheese Garlic Toast,1,234.21
+SALE_20260225_OUT001_MENU0087,ABNAH Cafe Connaught Place,2026-02-25,Food,Breakfast,MENU0087,Cream Cheese Bagel,1,235.87
+SALE_20260225_OUT001_MENU0096,ABNAH Cafe Connaught Place,2026-02-25,Food,Baked Goods,MENU0096,Chocolate Croissant,1,222.78
+SALE_20260225_OUT001_MENU0097,ABNAH Cafe Connaught Place,2026-02-25,Food,Baked Goods,MENU0097,Mushroom Cheese Croissant,2,508.84
+SALE_20260225_OUT001_MENU0100,ABNAH Cafe Connaught Place,2026-02-25,Dessert,Baked Goods,MENU0100,Banana Walnut Tea Cake,1,198.21
+SALE_20260225_OUT001_MENU0107,ABNAH Cafe Connaught Place,2026-02-25,Dessert,Desserts,MENU0107,Jaggery Parmesan Cookie,1,171.13
+SALE_20260225_OUT001_MENU0108,ABNAH Cafe Connaught Place,2026-02-25,Dessert,Desserts,MENU0108,Apple Pie,2,538.91
+SALE_20260226_OUT001_MENU0002,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Espresso,MENU0002,Espresso Shot - Doppio,2,353.58
+SALE_20260226_OUT001_MENU0003,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Coffee Classics,MENU0003,Americano - Regular,1,178.16
+SALE_20260226_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Coffee Classics,MENU0004,Americano - Medium,2,423.24
+SALE_20260226_OUT001_MENU0006,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Coffee Classics,MENU0006,Latte - Regular,3,687.13
+SALE_20260226_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Coffee Classics,MENU0007,Latte - Medium,3,753.71
+SALE_20260226_OUT001_MENU0008,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Coffee Classics,MENU0008,Latte - Large,1,270.72
+SALE_20260226_OUT001_MENU0009,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Coffee Classics,MENU0009,Cappuccino - Regular,2,434.01
+SALE_20260226_OUT001_MENU0010,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Coffee Classics,MENU0010,Cappuccino - Medium,2,481.61
+SALE_20260226_OUT001_MENU0011,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Coffee Classics,MENU0011,Cappuccino - Large,1,279.49
+SALE_20260226_OUT001_MENU0012,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Coffee Classics,MENU0012,Flat White - Regular,3,704.13
+SALE_20260226_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Coffee Classics,MENU0013,Flat White - Medium,2,504.68
+SALE_20260226_OUT001_MENU0014,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Coffee Classics,MENU0014,Flat White - Large,3,840.01
+SALE_20260226_OUT001_MENU0015,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Coffee Classics,MENU0015,Mocha - Regular,4,974.54
+SALE_20260226_OUT001_MENU0016,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Coffee Classics,MENU0016,Mocha - Medium,2,550.61
+SALE_20260226_OUT001_MENU0017,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Coffee Classics,MENU0017,Mocha - Large,2,594.22
+SALE_20260226_OUT001_MENU0018,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Signature Coffee,MENU0018,Sea Salt Mocha - Regular,2,535.89
+SALE_20260226_OUT001_MENU0024,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Signature Coffee,MENU0024,Caramel Macchiato - Regular,1,260.68
+SALE_20260226_OUT001_MENU0026,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Signature Coffee,MENU0026,Caramel Macchiato - Large,1,323.31
+SALE_20260226_OUT001_MENU0027,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Signature Coffee,MENU0027,French Vanilla Latte - Regular,1,264.46
+SALE_20260226_OUT001_MENU0029,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Signature Coffee,MENU0029,French Vanilla Latte - Large,2,638.01
+SALE_20260226_OUT001_MENU0031,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Signature Coffee,MENU0031,Vegan Iced Latte - Medium,1,302.98
+SALE_20260226_OUT001_MENU0037,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Cold Brew,MENU0037,Coffee Lemonade - Medium,1,257.3
+SALE_20260226_OUT001_MENU0040,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Cold Brew,MENU0040,Vietnamese Shakerato - Medium,1,284.58
+SALE_20260226_OUT001_MENU0043,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Cold Coffee,MENU0043,Classic Cold Coffee - Medium,1,278.71
+SALE_20260226_OUT001_MENU0044,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Cold Coffee,MENU0044,Classic Cold Coffee - Large,2,659.22
+SALE_20260226_OUT001_MENU0045,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Cold Coffee,MENU0045,Mocha Cold Coffee - Regular,1,280.93
+SALE_20260226_OUT001_MENU0046,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Cold Coffee,MENU0046,Mocha Cold Coffee - Medium,2,638.95
+SALE_20260226_OUT001_MENU0047,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Cold Coffee,MENU0047,Mocha Cold Coffee - Large,2,672.3
+SALE_20260226_OUT001_MENU0048,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Cold Coffee,MENU0048,Caramel Cold Coffee - Regular,1,283.09
+SALE_20260226_OUT001_MENU0049,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Cold Coffee,MENU0049,Caramel Cold Coffee - Medium,1,317.94
+SALE_20260226_OUT001_MENU0051,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Tea,MENU0051,Masala Chai Latte - Regular,2,388.12
+SALE_20260226_OUT001_MENU0052,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Tea,MENU0052,Masala Chai Latte - Medium,2,418.03
+SALE_20260226_OUT001_MENU0055,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Tea,MENU0055,Japanese Matcha Latte - Regular,2,515.03
+SALE_20260226_OUT001_MENU0057,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Tea,MENU0057,Japanese Matcha Latte - Large,1,307.01
+SALE_20260226_OUT001_MENU0058,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Iced Tea,MENU0058,Lemon Iced Tea - Regular,2,403.6
+SALE_20260226_OUT001_MENU0059,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Iced Tea,MENU0059,Lemon Iced Tea - Medium,1,224.0
+SALE_20260226_OUT001_MENU0061,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Iced Tea,MENU0061,Hibiscus Lime Iced Tea - Regular,1,221.36
+SALE_20260226_OUT001_MENU0068,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Shake,MENU0068,Choco Chip Shake - Regular,1,295.87
+SALE_20260226_OUT001_MENU0069,ABNAH Cafe Connaught Place,2026-02-26,Beverage,Shake,MENU0069,Choco Chip Shake - Medium,1,315.87
+SALE_20260226_OUT001_MENU0077,ABNAH Cafe Connaught Place,2026-02-26,Food,Wraps,MENU0077,Spicy Paneer Wrap,1,271.68
+SALE_20260226_OUT001_MENU0078,ABNAH Cafe Connaught Place,2026-02-26,Food,Wraps,MENU0078,Shredded Chicken Wrap,1,291.31
+SALE_20260226_OUT001_MENU0079,ABNAH Cafe Connaught Place,2026-02-26,Food,Sandwiches,MENU0079,Smoked Chipotle Paneer Sandwich,2,571.54
+SALE_20260226_OUT001_MENU0080,ABNAH Cafe Connaught Place,2026-02-26,Food,Sandwiches,MENU0080,Pesto Veg Sandwich,1,269.41
+SALE_20260226_OUT001_MENU0081,ABNAH Cafe Connaught Place,2026-02-26,Food,Sandwiches,MENU0081,Pepper Chicken Sandwich,2,641.3
+SALE_20260226_OUT001_MENU0082,ABNAH Cafe Connaught Place,2026-02-26,Food,Sandwiches,MENU0082,Tandoori Chicken Sandwich,1,307.88
+SALE_20260226_OUT001_MENU0088,ABNAH Cafe Connaught Place,2026-02-26,Food,Breakfast,MENU0088,Scallion Pepper Cream Cheese Bagel,1,264.21
+SALE_20260226_OUT001_MENU0089,ABNAH Cafe Connaught Place,2026-02-26,Food,Breakfast,MENU0089,Masala Egg Bun,1,218.96
+SALE_20260226_OUT001_MENU0093,ABNAH Cafe Connaught Place,2026-02-26,Food,Snacks,MENU0093,Turnover with Brioche Dough Veg,1,237.49
+SALE_20260226_OUT001_MENU0096,ABNAH Cafe Connaught Place,2026-02-26,Food,Baked Goods,MENU0096,Chocolate Croissant,1,233.6
+SALE_20260226_OUT001_MENU0098,ABNAH Cafe Connaught Place,2026-02-26,Food,Baked Goods,MENU0098,Sriracha Chicken Croissant,3,837.32
+SALE_20260226_OUT001_MENU0104,ABNAH Cafe Connaught Place,2026-02-26,Dessert,Desserts,MENU0104,Classic Chocolate Fudge Brownie,1,196.43
+SALE_20260226_OUT001_MENU0106,ABNAH Cafe Connaught Place,2026-02-26,Dessert,Desserts,MENU0106,Death by Chocolate Cookie,1,185.7
+SALE_20260226_OUT001_MENU0110,ABNAH Cafe Connaught Place,2026-02-26,Dessert,Baked Goods,MENU0110,Multigrain Walnut Tea Cake,1,211.69
+SALE_20260227_OUT001_MENU0001,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Espresso,MENU0001,Espresso Shot - Solo,2,290.54
+SALE_20260227_OUT001_MENU0003,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Coffee Classics,MENU0003,Americano - Regular,3,553.23
+SALE_20260227_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Coffee Classics,MENU0004,Americano - Medium,4,841.0
+SALE_20260227_OUT001_MENU0005,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Coffee Classics,MENU0005,Americano - Large,3,677.63
+SALE_20260227_OUT001_MENU0006,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Coffee Classics,MENU0006,Latte - Regular,6,1304.77
+SALE_20260227_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Coffee Classics,MENU0007,Latte - Medium,3,738.64
+SALE_20260227_OUT001_MENU0008,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Coffee Classics,MENU0008,Latte - Large,1,275.83
+SALE_20260227_OUT001_MENU0010,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Coffee Classics,MENU0010,Cappuccino - Medium,3,748.21
+SALE_20260227_OUT001_MENU0011,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Coffee Classics,MENU0011,Cappuccino - Large,1,270.06
+SALE_20260227_OUT001_MENU0012,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Coffee Classics,MENU0012,Flat White - Regular,2,466.95
+SALE_20260227_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Coffee Classics,MENU0013,Flat White - Medium,3,768.72
+SALE_20260227_OUT001_MENU0015,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Coffee Classics,MENU0015,Mocha - Regular,5,1154.42
+SALE_20260227_OUT001_MENU0016,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Coffee Classics,MENU0016,Mocha - Medium,3,775.7
+SALE_20260227_OUT001_MENU0017,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Coffee Classics,MENU0017,Mocha - Large,5,1448.64
+SALE_20260227_OUT001_MENU0018,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Signature Coffee,MENU0018,Sea Salt Mocha - Regular,2,540.15
+SALE_20260227_OUT001_MENU0020,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Signature Coffee,MENU0020,Sea Salt Mocha - Large,2,636.4
+SALE_20260227_OUT001_MENU0021,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Signature Coffee,MENU0021,Orange Zest Mocha - Regular,1,256.5
+SALE_20260227_OUT001_MENU0025,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Signature Coffee,MENU0025,Caramel Macchiato - Medium,3,879.71
+SALE_20260227_OUT001_MENU0027,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Signature Coffee,MENU0027,French Vanilla Latte - Regular,4,1044.19
+SALE_20260227_OUT001_MENU0028,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Signature Coffee,MENU0028,French Vanilla Latte - Medium,1,292.56
+SALE_20260227_OUT001_MENU0034,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Cold Brew,MENU0034,Classic Cold Brew - Medium,2,494.44
+SALE_20260227_OUT001_MENU0036,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Cold Brew,MENU0036,Coffee Lemonade - Regular,1,223.37
+SALE_20260227_OUT001_MENU0038,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Cold Brew,MENU0038,Coffee Lemonade - Large,1,271.36
+SALE_20260227_OUT001_MENU0039,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Cold Brew,MENU0039,Vietnamese Shakerato - Regular,1,253.87
+SALE_20260227_OUT001_MENU0042,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Cold Coffee,MENU0042,Classic Cold Coffee - Regular,3,720.86
+SALE_20260227_OUT001_MENU0043,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Cold Coffee,MENU0043,Classic Cold Coffee - Medium,1,282.81
+SALE_20260227_OUT001_MENU0045,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Cold Coffee,MENU0045,Mocha Cold Coffee - Regular,3,861.44
+SALE_20260227_OUT001_MENU0046,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Cold Coffee,MENU0046,Mocha Cold Coffee - Medium,1,321.88
+SALE_20260227_OUT001_MENU0049,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Cold Coffee,MENU0049,Caramel Cold Coffee - Medium,3,944.25
+SALE_20260227_OUT001_MENU0052,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Tea,MENU0052,Masala Chai Latte - Medium,1,211.4
+SALE_20260227_OUT001_MENU0053,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Tea,MENU0053,Masala Chai Latte - Large,3,725.43
+SALE_20260227_OUT001_MENU0055,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Tea,MENU0055,Japanese Matcha Latte - Regular,2,516.93
+SALE_20260227_OUT001_MENU0058,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Iced Tea,MENU0058,Lemon Iced Tea - Regular,1,201.02
+SALE_20260227_OUT001_MENU0059,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Iced Tea,MENU0059,Lemon Iced Tea - Medium,1,221.16
+SALE_20260227_OUT001_MENU0060,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Iced Tea,MENU0060,Lemon Iced Tea - Large,1,256.96
+SALE_20260227_OUT001_MENU0068,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Shake,MENU0068,Choco Chip Shake - Regular,1,292.53
+SALE_20260227_OUT001_MENU0069,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Shake,MENU0069,Choco Chip Shake - Medium,1,320.96
+SALE_20260227_OUT001_MENU0076,ABNAH Cafe Connaught Place,2026-02-27,Beverage,Smoothie,MENU0076,Seasonal Smoothie - Large,1,371.05
+SALE_20260227_OUT001_MENU0078,ABNAH Cafe Connaught Place,2026-02-27,Food,Wraps,MENU0078,Shredded Chicken Wrap,1,279.66
+SALE_20260227_OUT001_MENU0079,ABNAH Cafe Connaught Place,2026-02-27,Food,Sandwiches,MENU0079,Smoked Chipotle Paneer Sandwich,1,297.87
+SALE_20260227_OUT001_MENU0084,ABNAH Cafe Connaught Place,2026-02-27,Food,Toasts,MENU0084,Chicken Pepperoni Avocado Toast,1,316.89
+SALE_20260227_OUT001_MENU0085,ABNAH Cafe Connaught Place,2026-02-27,Food,Platter,MENU0085,Hummus and Pita Platter,1,296.57
+SALE_20260227_OUT001_MENU0086,ABNAH Cafe Connaught Place,2026-02-27,Food,Breakfast,MENU0086,Breakfast Pancakes,1,289.5
+SALE_20260227_OUT001_MENU0088,ABNAH Cafe Connaught Place,2026-02-27,Food,Breakfast,MENU0088,Scallion Pepper Cream Cheese Bagel,1,253.27
+SALE_20260227_OUT001_MENU0089,ABNAH Cafe Connaught Place,2026-02-27,Food,Breakfast,MENU0089,Masala Egg Bun,1,226.46
+SALE_20260227_OUT001_MENU0092,ABNAH Cafe Connaught Place,2026-02-27,Food,Snacks,MENU0092,Turnover with Brioche Dough Chicken,3,768.4
+SALE_20260227_OUT001_MENU0094,ABNAH Cafe Connaught Place,2026-02-27,Food,Baked Goods,MENU0094,Butter Croissant,2,387.31
+SALE_20260227_OUT001_MENU0097,ABNAH Cafe Connaught Place,2026-02-27,Food,Baked Goods,MENU0097,Mushroom Cheese Croissant,2,483.68
+SALE_20260227_OUT001_MENU0100,ABNAH Cafe Connaught Place,2026-02-27,Dessert,Baked Goods,MENU0100,Banana Walnut Tea Cake,2,416.49
+SALE_20260227_OUT001_MENU0102,ABNAH Cafe Connaught Place,2026-02-27,Dessert,Desserts,MENU0102,Double Chocolate Truffle Cake,1,278.11
+SALE_20260227_OUT001_MENU0105,ABNAH Cafe Connaught Place,2026-02-27,Dessert,Desserts,MENU0105,Soft-Centred Caramel Cookie,1,181.55
+SALE_20260227_OUT001_MENU0109,ABNAH Cafe Connaught Place,2026-02-27,Dessert,Desserts,MENU0109,Basque Cheesecake,1,304.73
+SALE_20260228_OUT001_MENU0003,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Coffee Classics,MENU0003,Americano - Regular,1,179.89
+SALE_20260228_OUT001_MENU0004,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Coffee Classics,MENU0004,Americano - Medium,1,204.63
+SALE_20260228_OUT001_MENU0005,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Coffee Classics,MENU0005,Americano - Large,2,474.23
+SALE_20260228_OUT001_MENU0006,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Coffee Classics,MENU0006,Latte - Regular,2,452.19
+SALE_20260228_OUT001_MENU0007,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Coffee Classics,MENU0007,Latte - Medium,5,1205.01
+SALE_20260228_OUT001_MENU0008,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Coffee Classics,MENU0008,Latte - Large,1,271.9
+SALE_20260228_OUT001_MENU0009,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Coffee Classics,MENU0009,Cappuccino - Regular,1,226.65
+SALE_20260228_OUT001_MENU0010,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Coffee Classics,MENU0010,Cappuccino - Medium,2,492.75
+SALE_20260228_OUT001_MENU0011,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Coffee Classics,MENU0011,Cappuccino - Large,1,278.49
+SALE_20260228_OUT001_MENU0012,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Coffee Classics,MENU0012,Flat White - Regular,5,1196.39
+SALE_20260228_OUT001_MENU0013,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Coffee Classics,MENU0013,Flat White - Medium,2,517.63
+SALE_20260228_OUT001_MENU0015,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Coffee Classics,MENU0015,Mocha - Regular,2,488.89
+SALE_20260228_OUT001_MENU0016,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Coffee Classics,MENU0016,Mocha - Medium,1,271.67
+SALE_20260228_OUT001_MENU0017,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Coffee Classics,MENU0017,Mocha - Large,2,582.17
+SALE_20260228_OUT001_MENU0018,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Signature Coffee,MENU0018,Sea Salt Mocha - Regular,1,272.91
+SALE_20260228_OUT001_MENU0019,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Signature Coffee,MENU0019,Sea Salt Mocha - Medium,1,296.94
+SALE_20260228_OUT001_MENU0020,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Signature Coffee,MENU0020,Sea Salt Mocha - Large,1,322.73
+SALE_20260228_OUT001_MENU0022,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Signature Coffee,MENU0022,Orange Zest Mocha - Medium,1,287.94
+SALE_20260228_OUT001_MENU0024,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Signature Coffee,MENU0024,Caramel Macchiato - Regular,2,515.68
+SALE_20260228_OUT001_MENU0025,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Signature Coffee,MENU0025,Caramel Macchiato - Medium,2,589.75
+SALE_20260228_OUT001_MENU0027,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Signature Coffee,MENU0027,French Vanilla Latte - Regular,2,517.09
+SALE_20260228_OUT001_MENU0028,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Signature Coffee,MENU0028,French Vanilla Latte - Medium,1,277.35
+SALE_20260228_OUT001_MENU0029,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Signature Coffee,MENU0029,French Vanilla Latte - Large,2,621.04
+SALE_20260228_OUT001_MENU0031,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Signature Coffee,MENU0031,Vegan Iced Latte - Medium,1,297.87
+SALE_20260228_OUT001_MENU0032,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Signature Coffee,MENU0032,Vegan Iced Latte - Large,1,339.58
+SALE_20260228_OUT001_MENU0034,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Cold Brew,MENU0034,Classic Cold Brew - Medium,1,241.52
+SALE_20260228_OUT001_MENU0039,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Cold Brew,MENU0039,Vietnamese Shakerato - Regular,1,243.53
+SALE_20260228_OUT001_MENU0040,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Cold Brew,MENU0040,Vietnamese Shakerato - Medium,1,270.01
+SALE_20260228_OUT001_MENU0045,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Cold Coffee,MENU0045,Mocha Cold Coffee - Regular,2,542.5
+SALE_20260228_OUT001_MENU0048,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Cold Coffee,MENU0048,Caramel Cold Coffee - Regular,1,283.72
+SALE_20260228_OUT001_MENU0049,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Cold Coffee,MENU0049,Caramel Cold Coffee - Medium,1,306.15
+SALE_20260228_OUT001_MENU0054,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Tea,MENU0054,Himalayan Green Tea,2,416.59
+SALE_20260228_OUT001_MENU0058,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Iced Tea,MENU0058,Lemon Iced Tea - Regular,1,203.38
+SALE_20260228_OUT001_MENU0059,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Iced Tea,MENU0059,Lemon Iced Tea - Medium,2,462.61
+SALE_20260228_OUT001_MENU0061,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Iced Tea,MENU0061,Hibiscus Lime Iced Tea - Regular,1,226.48
+SALE_20260228_OUT001_MENU0063,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Iced Tea,MENU0063,Hibiscus Lime Iced Tea - Large,1,261.19
+SALE_20260228_OUT001_MENU0065,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Kids Beverage,MENU0065,Hot Chocolate - Medium,1,246.59
+SALE_20260228_OUT001_MENU0070,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Shake,MENU0070,Choco Chip Shake - Large,1,365.97
+SALE_20260228_OUT001_MENU0072,ABNAH Cafe Connaught Place,2026-02-28,Beverage,Shake,MENU0072,Mixed Berry Shake - Medium,1,348.44
+SALE_20260228_OUT001_MENU0078,ABNAH Cafe Connaught Place,2026-02-28,Food,Wraps,MENU0078,Shredded Chicken Wrap,1,282.54
+SALE_20260228_OUT001_MENU0081,ABNAH Cafe Connaught Place,2026-02-28,Food,Sandwiches,MENU0081,Pepper Chicken Sandwich,1,319.29
+SALE_20260228_OUT001_MENU0082,ABNAH Cafe Connaught Place,2026-02-28,Food,Sandwiches,MENU0082,Tandoori Chicken Sandwich,1,310.3
+SALE_20260228_OUT001_MENU0084,ABNAH Cafe Connaught Place,2026-02-28,Food,Toasts,MENU0084,Chicken Pepperoni Avocado Toast,2,632.29
+SALE_20260228_OUT001_MENU0088,ABNAH Cafe Connaught Place,2026-02-28,Food,Breakfast,MENU0088,Scallion Pepper Cream Cheese Bagel,1,254.89
+SALE_20260228_OUT001_MENU0091,ABNAH Cafe Connaught Place,2026-02-28,Food,Snacks,MENU0091,Pesto Sundried Tomato Pin Wheel,1,227.02
+SALE_20260228_OUT001_MENU0096,ABNAH Cafe Connaught Place,2026-02-28,Food,Baked Goods,MENU0096,Chocolate Croissant,2,473.3
+SALE_20260228_OUT001_MENU0097,ABNAH Cafe Connaught Place,2026-02-28,Food,Baked Goods,MENU0097,Mushroom Cheese Croissant,1,249.54
+SALE_20260228_OUT001_MENU0101,ABNAH Cafe Connaught Place,2026-02-28,Dessert,Baked Goods,MENU0101,Lemon Raspberry Tea Cake,1,202.55
+SALE_20260228_OUT001_MENU0103,ABNAH Cafe Connaught Place,2026-02-28,Dessert,Desserts,MENU0103,Banoffee Pie,1,283.32
+SALE_20260228_OUT001_MENU0108,ABNAH Cafe Connaught Place,2026-02-28,Dessert,Desserts,MENU0108,Apple Pie,1,262.25

@@ -1,0 +1,44 @@
+﻿Deployment,Date,Generation Date,Generation Time,Item Code,Item Name,Super Category Code,Super Category Name,Category Code,Category Name,Unit Name,Average Price,GK2 Main Store,Total Qty,Total Amt
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING001,Coffee Beans,SUP-RAW,Raw Material,CAT-COF,Coffee Inputs,kg,1004.16,0.6834,0.6834,686.24
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING002,Milk,SUP-RAW,Raw Material,CAT-DAI,Dairy,litre,77.44,13.0332,13.0332,1009.29
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING003,Oat Milk,SUP-RAW,Raw Material,CAT-DAI,Dairy Alternative,litre,185.54,98.3807,98.3807,18253.56
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING004,Cream,SUP-RAW,Raw Material,CAT-DAI,Dairy,litre,212.58,-2.0,-2.0,-425.16
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING005,Paneer,SUP-RAW,Raw Material,CAT-DAI,Dairy,kg,387.46,285.001,285.001,110426.49
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING006,Cheese,SUP-RAW,Raw Material,CAT-DAI,Dairy,kg,501.64,232.168,232.168,116464.76
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING007,Chicken,SUP-RAW,Raw Material,CAT-PRO,Protein,kg,352.76,176.7095,176.7095,62336.04
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING008,Egg,SUP-RAW,Raw Material,CAT-PRO,Protein,pcs,7.24,1251.0,1251.0,9057.24
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING009,Bread,SUP-RAW,Raw Material,CAT-BAK,Bakery,pcs,12.55,1828.4229,1828.4229,22946.71
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING010,Bagel,SUP-RAW,Raw Material,CAT-BAK,Bakery,pcs,28.7,400.879,400.879,11505.23
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING011,Tortilla,SUP-RAW,Raw Material,CAT-BAK,Bakery,pcs,14.9,998.985,998.985,14884.88
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING012,Croissant Base,SUP-RAW,Raw Material,CAT-BAK,Bakery,pcs,41.92,680.606,680.606,28531.0
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING013,Brownie Base,SUP-RAW,Raw Material,CAT-DES,Dessert Inputs,pcs,35.6,503.659,503.659,17930.26
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING014,Cake Base,SUP-RAW,Raw Material,CAT-DES,Dessert Inputs,pcs,48.67,503.0177,503.0177,24481.87
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING015,Cheesecake Base,SUP-RAW,Raw Material,CAT-DES,Dessert Inputs,pcs,76.03,475.13,475.13,36124.13
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING016,Chocolate Sauce,SUP-RAW,Raw Material,CAT-SYR,Syrups & Sauces,litre,0.0,113.9159,113.9159,0.0
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING017,Caramel Syrup,SUP-RAW,Raw Material,CAT-SYR,Syrups & Sauces,litre,255.07,67.7383,67.7383,17278.01
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING018,Vanilla Syrup,SUP-RAW,Raw Material,CAT-SYR,Syrups & Sauces,litre,0.0,144.7088,144.7088,0.0
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING019,Sugar Syrup,SUP-RAW,Raw Material,CAT-SYR,Syrups & Sauces,litre,96.21,39.8887,39.8887,3837.69
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING020,Tea Leaves,SUP-RAW,Raw Material,CAT-TEA,Tea Inputs,kg,655.94,109.2554,109.2554,71664.99
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING021,Matcha Powder,SUP-RAW,Raw Material,CAT-TEA,Tea Inputs,kg,2193.0,6.016,6.016,13193.09
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING022,Ice,SUP-RAW,Raw Material,CAT-BEV,Beverage Inputs,kg,12.85,1165.9379,1165.9379,14982.3
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING023,Lemon,SUP-RAW,Raw Material,CAT-PRO,Produce,kg,116.6,42.2379,42.2379,4924.94
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING024,Hibiscus Concentrate,SUP-RAW,Raw Material,CAT-BEV,Beverage Inputs,litre,404.52,52.1499,52.1499,21095.68
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING025,Mixed Berry Pulp,SUP-RAW,Raw Material,CAT-FRU,Fruit Inputs,kg,447.05,28.3783,28.3783,12686.52
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING026,Banana,SUP-RAW,Raw Material,CAT-PRO,Produce,kg,76.37,441.389,441.389,33708.88
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING027,Butter,SUP-RAW,Raw Material,CAT-DAI,Dairy,kg,558.01,181.2966,181.2966,101165.32
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING028,Lettuce,SUP-RAW,Raw Material,CAT-PRO,Produce,kg,100.7,54.2096,54.2096,5458.91
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING029,Onion,SUP-RAW,Raw Material,CAT-PRO,Produce,kg,45.81,177.9044,177.9044,8149.8
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING030,Capsicum,SUP-RAW,Raw Material,CAT-PRO,Produce,kg,89.04,23.2149,23.2149,2067.05
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING031,Tomato,SUP-RAW,Raw Material,CAT-PRO,Produce,kg,57.24,258.5985,258.5985,14802.18
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING032,Pesto Sauce,SUP-RAW,Raw Material,CAT-SYR,Syrups & Sauces,kg,339.28,145.5474,145.5474,49381.32
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING033,Chipotle Sauce,SUP-RAW,Raw Material,CAT-SYR,Syrups & Sauces,kg,281.95,71.0825,71.0825,20041.71
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING034,Salsa,SUP-RAW,Raw Material,CAT-SYR,Syrups & Sauces,kg,205.35,67.2986,67.2986,13819.77
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING035,Aioli,SUP-RAW,Raw Material,CAT-SYR,Syrups & Sauces,kg,320.61,118.997,118.997,38151.63
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING036,Cold Cup,SUP-CON,Consumable,CAT-PAC,Packaging,pcs,3.25,3714.9593,3714.9593,12073.62
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING037,Hot Cup,SUP-CON,Consumable,CAT-PAC,Packaging,pcs,2.92,6553.1762,6553.1762,19135.27
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING038,Lid,SUP-CON,Consumable,CAT-PAC,Packaging,pcs,0.0,2517.9849,2517.9849,0.0
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING039,Straw,SUP-CON,Consumable,CAT-PAC,Packaging,pcs,0.58,3383.1913,3383.1913,1962.25
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING040,Napkin,SUP-CON,Consumable,CAT-PAC,Packaging,pcs,0.33,8998.6349,8998.6349,2969.55
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING041,Dessert Box,SUP-CON,Consumable,CAT-PAC,Packaging,pcs,5.22,1099.8388,1099.8388,5741.16
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING042,Sandwich Box,SUP-CON,Consumable,CAT-PAC,Packaging,pcs,6.62,2949.36,2949.36,19524.76
+ABNAH Cafe Saket Premium,2026-03-31,2026-03-31,23:59:00,ING043,Wrap Packaging,SUP-CON,Consumable,CAT-PAC,Packaging,pcs,6.03,4074.346,4074.346,24568.31

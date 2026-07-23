@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ABNAH Data Quality Workbench</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #18221e;
+      --muted: #647169;
+      --line: #d9dfdc;
+      --line-strong: #b9c4be;
+      --surface: #fff;
+      --soft: #f3f6f4;
+      --accent: #147a67;
+      --accent-soft: #e6f2ee;
+      --critical: #a93635;
+      --critical-soft: #fbe9e7;
+      --major: #ad651d;
+      --major-soft: #fff0dc;
+      --minor: #816d14;
+      --minor-soft: #fff9d9;
+      --info: #28658d;
+      --info-soft: #e9f3fa;
+      --passed: #147a67;
+      --passed-soft: #e6f2ee;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body { margin: 0; overflow: hidden; background: var(--soft); color: var(--ink); font-size: 12px; }
+    button, input, select, a { font: inherit; }
+    button, a { cursor: pointer; }
+    button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .app { display: grid; height: 100vh; grid-template-rows: 68px 58px minmax(0,1fr); }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 0 18px; border-bottom: 1px solid var(--line); background: var(--surface); }
+    .brand { display: grid; gap: 3px; }
+    .brand strong { font-size: 17px; }
+    .brand small { color: var(--muted); font-size: 10px; }
+    .header-actions { display: flex; align-items: center; gap: 10px; }
+    .privacy { display: inline-flex; align-items: center; gap: 7px; color: var(--accent); font-size: 10px; font-weight: 750; }
+    .privacy i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+    .packet-link { display: inline-flex; height: 32px; align-items: center; padding: 0 10px; border: 1px solid var(--line-strong); border-radius: 4px; background: var(--surface); color: var(--ink); font-size: 10px; font-weight: 750; text-decoration: none; }
+    .packet-link:hover { border-color: var(--accent); color: var(--accent); }
+    .run-summary { display: grid; grid-template-columns: repeat(6, minmax(100px, 1fr)); border-bottom: 1px solid var(--line); background: #f9fbfa; }
+    .run-summary span { display: grid; align-content: center; gap: 2px; padding: 8px 13px; border-right: 1px solid var(--line); }
+    .run-summary span:last-child { border-right: 0; }
+    .run-summary b { font-size: 15px; }
+    .run-summary small { color: var(--muted); font-size: 8px; font-weight: 750; text-transform: uppercase; }
+    .run-summary .tone-critical b { color: var(--critical); }
+    .run-summary .tone-major b { color: var(--major); }
+    .run-summary .tone-minor b { color: var(--minor); }
+    .run-summary .tone-passed b { color: var(--passed); }
+    main { display: grid; min-height: 0; grid-template-columns: 300px minmax(0,1fr); }
+    aside { min-height: 0; overflow: auto; border-right: 1px solid var(--line); background: var(--surface); }
+    .side-title { position: sticky; top: 0; z-index: 4; padding: 12px 14px; border-bottom: 1px solid var(--line); background: rgba(255,255,255,.97); color: var(--muted); font-size: 9px; font-weight: 800; text-transform: uppercase; }
+    .report-button { display: grid; width: 100%; gap: 5px; padding: 10px 12px; border: 0; border-bottom: 1px solid var(--line); border-left: 3px solid transparent; background: transparent; color: var(--ink); text-align: left; }
+    .report-button:hover { background: var(--soft); }
+    .report-button.active { border-left-color: var(--accent); background: var(--accent-soft); }
+    .report-button strong { font-size: 11px; line-height: 1.35; }
+    .report-meta { display: flex; align-items: center; justify-content: space-between; gap: 6px; color: var(--muted); font-size: 9px; }
+    .severity-dots { display: inline-flex; gap: 3px; }
+    .severity-dots i { min-width: 16px; padding: 1px 4px; border-radius: 3px; font-style: normal; font-weight: 800; text-align: center; }
+    .severity-dots .critical { background: var(--critical-soft); color: var(--critical); }
+    .severity-dots .major { background: var(--major-soft); color: var(--major); }
+    .severity-dots .minor { background: var(--minor-soft); color: var(--minor); }
+    .workspace { display: grid; min-width: 0; min-height: 0; grid-template-rows: auto auto auto minmax(0,1fr) auto; }
+    .workspace-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; padding: 14px 16px; border-bottom: 1px solid var(--line); background: var(--surface); }
+    .workspace-heading h1 { margin: 0 0 4px; font-size: 18px; }
+    .workspace-heading p { margin: 0; color: var(--muted); font-size: 10px; }
+    .workspace-heading .state-meta { margin-top: 4px; color: #496159; }
+    .status { padding: 5px 8px; border: 1px solid #d4e8e1; border-radius: 4px; background: var(--accent-soft); color: var(--accent); font-size: 9px; font-weight: 800; white-space: nowrap; }
+    .finding-strip { display: flex; min-height: 39px; align-items: center; gap: 7px; overflow-x: auto; padding: 7px 12px; border-bottom: 1px solid var(--line); background: #fbfcfb; }
+    .finding-strip:empty::before { content: "No aggregate finding for this report"; color: var(--passed); font-size: 9px; font-weight: 750; }
+    .finding-chip { display: inline-flex; min-width: max-content; align-items: center; gap: 6px; padding: 4px 7px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); color: var(--ink); font-size: 9px; }
+    .finding-chip b { text-transform: uppercase; }
+    .finding-chip.critical b { color: var(--critical); }
+    .finding-chip.major b { color: var(--major); }
+    .finding-chip.minor b { color: var(--minor); }
+    .toolbar { display: grid; grid-template-columns: minmax(220px,1fr) minmax(180px,.75fr) 118px 150px 160px auto 84px; align-items: center; gap: 7px; padding: 8px 11px; border-bottom: 1px solid var(--line); background: #f8faf9; }
+    .toolbar select, .toolbar input { width: 100%; height: 32px; min-width: 0; padding: 0 8px; border: 1px solid var(--line-strong); border-radius: 4px; outline: 0; background: var(--surface); color: var(--ink); font-size: 10px; }
+    .toggle { display: inline-flex; height: 32px; align-items: center; gap: 6px; padding: 0 8px; border: 1px solid var(--line-strong); border-radius: 4px; background: var(--surface); color: var(--muted); font-size: 9px; white-space: nowrap; }
+    .toggle input { width: 13px; height: 13px; margin: 0; accent-color: var(--accent); }
+    .table-shell { min-width: 0; min-height: 0; overflow: auto; background: var(--surface); }
+    table { width: max-content; min-width: 100%; border-collapse: separate; border-spacing: 0; }
+    th, td { min-width: 126px; max-width: 230px; padding: 7px 8px; overflow: hidden; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: left; text-overflow: ellipsis; white-space: nowrap; }
+    thead th { position: sticky; top: 0; z-index: 3; height: 40px; background: #edf2ef; color: #4e5c54; font-size: 9px; font-weight: 800; }
+    tbody td { height: 34px; font-family: "Cascadia Code", Consolas, monospace; font-size: 9px; }
+    tbody td.blank-cell { background: #f5f7f6; color: #8a948f; font-family: inherit; font-style: italic; }
+    tbody td.zero-cell { color: #496159; background: #f7faf9; font-weight: 700; }
+    .row-number { position: sticky; left: 0; z-index: 2; min-width: 78px; max-width: 78px; background: #f6f8f7; color: var(--muted); text-align: right; }
+    thead .row-number { z-index: 5; }
+    tr.issue-row.severity-critical th, tr.issue-row.severity-critical td { background: var(--critical-soft); }
+    tr.issue-row.severity-major th, tr.issue-row.severity-major td { background: var(--major-soft); }
+    tr.issue-row.severity-minor th, tr.issue-row.severity-minor td { background: var(--minor-soft); }
+    tr.issue-row.severity-info th, tr.issue-row.severity-info td { background: var(--info-soft); }
+    tr.issue-row.severity-critical .row-number { border-left: 4px solid var(--critical); color: var(--critical); }
+    tr.issue-row.severity-major .row-number { border-left: 4px solid var(--major); color: var(--major); }
+    tr.issue-row.severity-minor .row-number { border-left: 4px solid var(--minor); color: var(--minor); }
+    tr.issue-row.severity-info .row-number { border-left: 4px solid var(--info); color: var(--info); }
+    tr.issue-row td.issue-cell.severity-critical { background: #f3bcb7; color: #681c1c; font-weight: 900; }
+    tr.issue-row td.issue-cell.severity-major { background: #ffd59f; color: #663604; font-weight: 900; }
+    tr.issue-row td.issue-cell.severity-minor { background: #f9e991; color: #554705; font-weight: 900; }
+    tr.issue-row td.issue-cell.severity-info { background: #cde5f5; color: #174c70; font-weight: 900; }
+    tbody tr:hover th, tbody tr:hover td { box-shadow: inset 0 1px 0 #85aa9d, inset 0 -1px 0 #85aa9d; }
+    .issue-summary { display: none; gap: 8px; padding: 10px 12px; border-bottom: 1px solid var(--line); background: #f8faf9; font-size: 10px; line-height: 1.45; }
+    .issue-summary.visible { display: grid; }
+    .issue-block { display: grid; grid-template-columns: 72px minmax(0,1fr); gap: 3px 9px; padding: 8px 10px; border-left: 3px solid var(--line-strong); background: var(--surface); }
+    .issue-block.critical { border-left-color: var(--critical); }
+    .issue-block.major { border-left-color: var(--major); }
+    .issue-block.minor { border-left-color: var(--minor); }
+    .issue-block.info { border-left-color: var(--info); }
+    .issue-block > b { grid-row: 1 / 5; text-transform: uppercase; }
+    .issue-block.critical > b { color: var(--critical); }
+    .issue-block.major > b { color: var(--major); }
+    .issue-block.minor > b { color: var(--minor); }
+    .issue-block.info > b { color: var(--info); }
+    .issue-block strong { color: var(--ink); }
+    .issue-block span { color: var(--muted); }
+    .issue-block code { overflow-wrap: anywhere; font-family: "Cascadia Code", Consolas, monospace; white-space: normal; }
+    footer { display: flex; min-height: 46px; align-items: center; justify-content: space-between; gap: 12px; padding: 7px 11px; border-top: 1px solid var(--line); background: var(--surface); }
+    .page-meta { color: var(--muted); font-size: 10px; }
+    .pager { display: flex; align-items: center; gap: 6px; }
+    .pager button { width: 32px; height: 30px; border: 1px solid var(--line-strong); border-radius: 4px; background: var(--surface); color: var(--ink); font-weight: 900; }
+    .pager button:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+    .pager button:disabled { opacity: .35; cursor: default; }
+    .empty { display: grid; min-height: 260px; place-items: center; color: var(--muted); }
+    @media (max-width: 1080px) {
+      .toolbar { grid-template-columns: minmax(210px, 1fr) minmax(180px, .8fr) repeat(3, 120px); }
+      .toggle, .page-size { width: 100%; }
+    }
+    @media (max-width: 780px) {
+      body { overflow: auto; }
+      .app { height: auto; min-height: 100vh; grid-template-rows: auto auto auto; }
+      header { align-items: flex-start; flex-direction: column; gap: 8px; padding: 12px; }
+      .header-actions { width: 100%; justify-content: space-between; }
+      .run-summary { grid-template-columns: repeat(2, 1fr); }
+      main { display: block; }
+      aside { display: flex; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      .side-title { display: none; }
+      .report-button { min-width: 220px; border-right: 1px solid var(--line); border-bottom: 0; border-left: 0; border-bottom: 3px solid transparent; }
+      .report-button.active { border-bottom-color: var(--accent); }
+      .workspace { min-height: 760px; }
+      .toolbar { grid-template-columns: 1fr 1fr; }
+      .toolbar > :first-child, .toolbar > :nth-child(2) { grid-column: 1 / -1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="brand">
+        <strong>ABNAH Data Quality Workbench</strong>
+        <small id="runLabel">Loading local audit evidence</small>
+      </div>
+      <div class="header-actions">
+        <div class="privacy"><i></i> Loopback only / operational rows remain on this PC</div>
+        <a id="packetLink" class="packet-link" href="/api/local-packet" download hidden>Download private packet</a>
+      </div>
+    </header>
+    <section class="run-summary" id="runSummary" aria-label="Audit summary"></section>
+    <main>
+      <aside><div class="side-title">Reviewed reports</div><div id="reportList"></div></aside>
+      <section class="workspace">
+        <div class="workspace-heading">
+          <div>
+            <h1 id="reportTitle">Select a report</h1>
+            <p id="reportMeta">Captured rows and classified observations appear here.</p>
+            <p class="state-meta" id="sourceStateMeta"></p>
+          </div>
+          <span class="status" id="issueStatus">Local evidence</span>
+        </div>
+        <div class="finding-strip" id="findingStrip"></div>
+        <div class="toolbar">
+          <select id="exportSelect" aria-label="Captured export"></select>
+          <input id="searchInput" type="search" placeholder="Search values in this export">
+          <select id="severityFilter" aria-label="Severity">
+            <option value="all">All severities</option>
+            <option value="critical">Critical</option>
+            <option value="major">Major</option>
+            <option value="minor">Minor</option>
+            <option value="info">Info</option>
+          </select>
+          <select id="classFilter" aria-label="Issue class">
+            <option value="all">All issue classes</option>
+          </select>
+          <select id="stateFilter" aria-label="Interpretation state">
+            <option value="all">All interpretation states</option>
+            <option value="confirmed_issue">Confirmed issue</option>
+            <option value="operational_exception">Operational exception</option>
+            <option value="needs_business_definition">Needs definition</option>
+          </select>
+          <label class="toggle"><input id="issuesOnly" type="checkbox"> Flagged only</label>
+          <select id="pageSize" class="page-size" aria-label="Rows per page">
+            <option value="50">50 rows</option>
+            <option value="100" selected>100 rows</option>
+            <option value="250">250 rows</option>
+          </select>
+        </div>
+        <div class="table-shell" id="tableShell">
+          <div class="issue-summary" id="issueSummary"></div>
+          <div class="empty" id="emptyState">Loading local report index...</div>
+          <table id="reportTable" hidden><thead><tr id="headerRow"></tr></thead><tbody id="tableBody"></tbody></table>
+        </div>
+        <footer>
+          <span class="page-meta" id="pageMeta"></span>
+          <div class="pager">
+            <button id="firstPage" title="First page" aria-label="First page">|&lt;</button>
+            <button id="prevPage" title="Previous page" aria-label="Previous page">&lt;</button>
+            <span id="pageLabel">Page 1</span>
+            <button id="nextPage" title="Next page" aria-label="Next page">&gt;</button>
+            <button id="lastPage" title="Last page" aria-label="Last page">&gt;|</button>
+          </div>
+        </footer>
+      </section>
+    </main>
+  </div>
+  <script>
+    const severityRank = { info: 0, minor: 1, major: 2, critical: 3 };
+    const state = { reports: [], report: null, exportId: "", page: 1, pageCount: 1, request: 0 };
+    const el = (id) => document.getElementById(id);
+    const fmt = new Intl.NumberFormat("en-IN");
+    const params = new URLSearchParams(location.search);
+    const requestedReport = params.get("report_id");
+    const escapeText = (value) => String(value ?? "");
+    const label = (value) => String(value || "").replaceAll("_", " ");
+    const highest = (issues) => issues.reduce(
+      (current, issue) => severityRank[issue.severity] > severityRank[current] ? issue.severity : current,
+      "info",
+    );
+
+    async function getJson(url) {
+      const response = await fetch(url, { cache: "no-store" });
+      const body = await response.json();
+      if (!response.ok) throw new Error(body.error || "Local reviewer request failed");
+      return body;
+    }
+
+    function renderRunSummary(index) {
+      const summary = index.summary || {};
+      const findings = summary.finding_counts || {};
+      const items = [
+        [index.reports.length, "reviewed reports", ""],
+        [findings.critical || 0, "critical findings", "critical"],
+        [findings.major || 0, "major findings", "major"],
+        [findings.minor || 0, "minor findings", "minor"],
+        [summary.passed_control_count || 0, "passed controls", "passed"],
+        [summary.failed_control_count || 0, "failed controls", summary.failed_control_count ? "critical" : "passed"],
+      ];
+      const root = el("runSummary");
+      root.replaceChildren();
+      for (const [value, itemLabel, tone] of items) {
+        const item = document.createElement("span");
+        if (tone) item.className = `tone-${tone}`;
+        const number = document.createElement("b");
+        number.textContent = fmt.format(value);
+        const caption = document.createElement("small");
+        caption.textContent = itemLabel;
+        item.append(number, caption);
+        root.append(item);
+      }
+      el("packetLink").hidden = !summary.local_packet_available;
+    }
+
+    function selectReport(reportId) {
+      state.report = state.reports.find((report) => report.report_id === reportId) || state.reports[0];
+      if (!state.report) return;
+      state.exportId = state.report.exports[0]?.id || "";
+      state.page = 1;
+      renderReportList();
+      renderHeading();
+      renderExports();
+      loadPage();
+      const next = new URL(location.href);
+      next.searchParams.set("report_id", state.report.report_id);
+      history.replaceState(null, "", next);
+    }
+
+    function renderReportList() {
+      const list = el("reportList");
+      list.replaceChildren();
+      for (const report of state.reports) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "report-button" + (state.report?.report_id === report.report_id ? " active" : "");
+        const title = document.createElement("strong");
+        title.textContent = report.display_name;
+        const meta = document.createElement("span");
+        meta.className = "report-meta";
+        const counts = document.createElement("span");
+        counts.textContent = `${fmt.format(report.row_count)} rows / ${fmt.format(report.issue_row_count)} flagged`;
+        const dots = document.createElement("span");
+        dots.className = "severity-dots";
+        for (const severity of ["critical", "major", "minor"]) {
+          const value = report.finding_counts?.[severity] || 0;
+          if (!value) continue;
+          const badge = document.createElement("i");
+          badge.className = severity;
+          badge.textContent = value;
+          badge.title = `${value} ${severity} finding types`;
+          dots.append(badge);
+        }
+        meta.append(counts, dots);
+        button.append(title, meta);
+        button.addEventListener("click", () => selectReport(report.report_id));
+        list.append(button);
+      }
+    }
+
+    function renderHeading() {
+      el("reportTitle").textContent = state.report.display_name;
+      el("reportMeta").textContent = `${state.report.exports.length} captured export${state.report.exports.length === 1 ? "" : "s"} / ${fmt.format(state.report.row_count)} rows reviewed`;
+      el("issueStatus").textContent = `${state.report.finding_count} finding types / ${fmt.format(state.report.issue_row_count)} flagged rows`;
+    }
+
+    function renderExports() {
+      const select = el("exportSelect");
+      select.replaceChildren();
+      for (const item of state.report.exports) {
+        const option = document.createElement("option");
+        option.value = item.id;
+        option.textContent = `${item.label} (${fmt.format(item.row_count)} rows)`;
+        select.append(option);
+      }
+      select.value = state.exportId;
+    }
+
+    function renderFindingStrip(findings, controls) {
+      const root = el("findingStrip");
+      root.replaceChildren();
+      for (const finding of findings) {
+        const chip = document.createElement("span");
+        chip.className = `finding-chip ${finding.severity}`;
+        const severity = document.createElement("b");
+        severity.textContent = finding.severity;
+        const title = document.createElement("span");
+        title.textContent = finding.title;
+        chip.title = finding.observation;
+        chip.append(severity, title);
+        root.append(chip);
+      }
+      const passed = controls.filter((control) => control.status === "passed").length;
+      if (passed) {
+        const chip = document.createElement("span");
+        chip.className = "finding-chip";
+        const mark = document.createElement("b");
+        mark.style.color = "var(--passed)";
+        mark.textContent = "passed";
+        const title = document.createElement("span");
+        title.textContent = `${passed} report or cross-report controls`;
+        chip.append(mark, title);
+        root.append(chip);
+      }
+    }
+
+    function renderClassFilter(data) {
+      const select = el("classFilter");
+      const current = select.value;
+      const classes = new Set();
+      for (const row of data.rows) for (const issue of row.issues) classes.add(issue.issue_class);
+      for (const finding of data.findings) classes.add(finding.issue_class);
+      select.replaceChildren(new Option("All issue classes", "all"));
+      for (const item of [...classes].sort()) select.append(new Option(label(item), item));
+      select.value = [...select.options].some((option) => option.value === current) ? current : "all";
+    }
+
+    function renderTable(data) {
+      const header = el("headerRow");
+      const body = el("tableBody");
+      header.replaceChildren();
+      body.replaceChildren();
+      renderFindingStrip(data.findings || [], data.controls || []);
+      renderClassFilter(data);
+      const rowHeading = document.createElement("th");
+      rowHeading.className = "row-number";
+      rowHeading.textContent = "Source row";
+      header.append(rowHeading);
+      for (const column of data.columns) {
+        const th = document.createElement("th");
+        th.textContent = column;
+        th.title = column;
+        header.append(th);
+      }
+
+      for (const row of data.rows) {
+        const tr = document.createElement("tr");
+        if (row.issues.length) tr.className = `issue-row severity-${row.highest_severity}`;
+        const rowNumber = document.createElement("th");
+        rowNumber.className = "row-number";
+        rowNumber.textContent = row.source_row_number;
+        rowNumber.title = row.issues.length ? row.issues.map((issue) => issue.message).join("\n") : "";
+        tr.append(rowNumber);
+        const cellSeverity = new Map();
+        for (const issue of row.issues) {
+          for (const field of issue.fields || []) {
+            const prior = cellSeverity.get(field) || "info";
+            if (severityRank[issue.severity] >= severityRank[prior]) cellSeverity.set(field, issue.severity);
+          }
+        }
+        for (const column of data.columns) {
+          const td = document.createElement("td");
+          const value = escapeText(row.values[column]);
+          const isBlank = value === "";
+          const isZero = data.column_types[column] === "decimal" && Number(value) === 0 && !isBlank;
+          td.textContent = isBlank ? "blank" : value;
+          td.title = isBlank ? "Empty or null in the source export" : (isZero ? "Numeric zero in the source export" : value);
+          if (isBlank) td.classList.add("blank-cell");
+          if (isZero) td.classList.add("zero-cell");
+          if (cellSeverity.has(column)) td.classList.add("issue-cell", `severity-${cellSeverity.get(column)}`);
+          tr.append(td);
+        }
+        if (row.issues.length) {
+          tr.addEventListener("click", () => {
+            const summary = el("issueSummary");
+            summary.replaceChildren();
+            for (const issue of [...row.issues].sort((a, b) => severityRank[b.severity] - severityRank[a.severity])) {
+              const block = document.createElement("div");
+              block.className = `issue-block ${issue.severity}`;
+              const severity = document.createElement("b");
+              severity.textContent = issue.severity;
+              const title = document.createElement("strong");
+              title.textContent = `${issue.title || issue.rule_id} / row ${row.source_row_number}`;
+              const stateLabel = document.createElement("span");
+              stateLabel.textContent = `${label(issue.issue_class)} / ${label(issue.state)} / ${issue.confidence} confidence`;
+              const message = document.createElement("span");
+              message.textContent = issue.message;
+              const values = document.createElement("code");
+              const impact = issue.impact_abs ? ` | Impact: ${issue.impact_abs}${issue.impact_pct ? ` (${issue.impact_pct}%)` : ""}` : "";
+              values.textContent = `Expected: ${issue.expected || "business definition"} | Observed: ${issue.observed || "review"}${impact}`;
+              const treatment = document.createElement("span");
+              treatment.textContent = issue.production_treatment || "";
+              block.append(severity, title, stateLabel, message, values, treatment);
+              summary.append(block);
+            }
+            summary.classList.add("visible");
+            el("tableShell").scrollTop = 0;
+          });
+        }
+        body.append(tr);
+      }
+
+      el("reportTable").hidden = !data.rows.length;
+      el("emptyState").hidden = Boolean(data.rows.length);
+      if (!data.rows.length) el("emptyState").textContent = "No rows match the current local filters.";
+      el("pageMeta").textContent = `${fmt.format(data.filtered_row_count)} matching of ${fmt.format(data.source_row_count)} rows / ${data.columns.length} columns`;
+      const stateLabel = data.cell_state.normalization_fidelity === "verified" ? "source states preserved" : "state difference detected";
+      el("sourceStateMeta").textContent = `${fmt.format(data.cell_state.source_null_cell_count)} blank/null cells / ${fmt.format(data.cell_state.source_numeric_zero_cell_count)} numeric zero cells / ${stateLabel}`;
+      el("pageLabel").textContent = `Page ${data.page} of ${data.page_count}`;
+      state.page = data.page;
+      state.pageCount = data.page_count;
+      el("firstPage").disabled = data.page <= 1;
+      el("prevPage").disabled = data.page <= 1;
+      el("nextPage").disabled = data.page >= data.page_count;
+      el("lastPage").disabled = data.page >= data.page_count;
+      el("issueSummary").classList.remove("visible");
+    }
+
+    async function loadPage() {
+      if (!state.exportId) return;
+      const request = ++state.request;
+      el("emptyState").hidden = false;
+      el("emptyState").textContent = "Reading local report evidence...";
+      el("reportTable").hidden = true;
+      const query = new URLSearchParams({
+        export_id: state.exportId,
+        page: state.page,
+        page_size: el("pageSize").value,
+        issues_only: el("issuesOnly").checked,
+        severity: el("severityFilter").value,
+        issue_class: el("classFilter").value,
+        state: el("stateFilter").value,
+        q: el("searchInput").value.trim(),
+      });
+      try {
+        const data = await getJson(`/api/report?${query}`);
+        if (request !== state.request) return;
+        renderTable(data);
+      } catch (error) {
+        if (request !== state.request) return;
+        el("emptyState").hidden = false;
+        el("emptyState").textContent = error.message;
+      }
+    }
+
+    let searchTimer;
+    el("exportSelect").addEventListener("change", (event) => { state.exportId = event.target.value; state.page = 1; loadPage(); });
+    for (const id of ["issuesOnly", "pageSize", "severityFilter", "classFilter", "stateFilter"]) {
+      el(id).addEventListener("change", () => { state.page = 1; loadPage(); });
+    }
+    el("searchInput").addEventListener("input", () => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => { state.page = 1; loadPage(); }, 260);
+    });
+    el("firstPage").addEventListener("click", () => { state.page = 1; loadPage(); });
+    el("prevPage").addEventListener("click", () => { state.page = Math.max(1, state.page - 1); loadPage(); });
+    el("nextPage").addEventListener("click", () => { state.page = Math.min(state.pageCount, state.page + 1); loadPage(); });
+    el("lastPage").addEventListener("click", () => { state.page = state.pageCount; loadPage(); });
+
+    getJson("/api/reports").then((index) => {
+      state.reports = index.reports;
+      el("runLabel").textContent = `${index.audit_run_label} / business review ${index.business_review_version || "not generated"}`;
+      renderRunSummary(index);
+      selectReport(
+        requestedReport
+        || index.reports.find((report) => report.finding_counts?.critical)?.report_id
+        || index.reports[0]?.report_id
+      );
+    }).catch((error) => {
+      el("emptyState").textContent = error.message;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+﻿Deployment,Date,Generation Date,Generation Time,Item Code,Item Name,Super Category Code,Super Category Name,Category Code,Category Name,Unit Name,Average Price,GK2 Main Store,Total Qty,Total Amt
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING001,Coffee Beans,SUP-RAW,Raw Material,CAT-COF,Coffee Inputs,kg,1017.34,0.0,0.0,0.0
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING002,Milk,SUP-RAW,Raw Material,CAT-DAI,Dairy,litre,74.61,334.5541,334.5541,24961.08
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING003,Oat Milk,SUP-RAW,Raw Material,CAT-DAI,Dairy Alternative,litre,188.7,64.7147,64.7147,12211.66
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING004,Cream,SUP-RAW,Raw Material,CAT-DAI,Dairy,litre,213.85,206.1876,206.1876,44093.22
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING005,Paneer,SUP-RAW,Raw Material,CAT-DAI,Dairy,kg,384.25,158.1865,158.1865,60783.16
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING006,Cheese,SUP-RAW,Raw Material,CAT-DAI,Dairy,kg,496.96,94.2065,94.2065,46816.86
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING007,Chicken,SUP-RAW,Raw Material,CAT-PRO,Protein,kg,350.79,231.0388,231.0388,81046.1
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING008,Egg,SUP-RAW,Raw Material,CAT-PRO,Protein,pcs,7.58,1943.579,1943.579,14732.33
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING009,Bread,SUP-RAW,Raw Material,CAT-BAK,Bakery,pcs,12.34,1701.6978,1701.6978,20998.95
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING010,Bagel,SUP-RAW,Raw Material,CAT-BAK,Bakery,pcs,29.6,1594.966,1594.966,47210.99
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING011,Tortilla,SUP-RAW,Raw Material,CAT-BAK,Bakery,pcs,15.08,2579.116,2579.116,38893.07
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING012,Croissant Base,SUP-RAW,Raw Material,CAT-BAK,Bakery,pcs,42.17,490.379,490.379,20679.28
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING013,Brownie Base,SUP-RAW,Raw Material,CAT-DES,Dessert Inputs,pcs,34.97,1546.134,1546.134,54068.31
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING014,Cake Base,SUP-RAW,Raw Material,CAT-DES,Dessert Inputs,pcs,48.17,750.8166,750.8166,36166.84
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING015,Cheesecake Base,SUP-RAW,Raw Material,CAT-DES,Dessert Inputs,pcs,74.11,854.298,854.298,63312.02
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING016,Chocolate Sauce,SUP-RAW,Raw Material,CAT-SYR,Syrups & Sauces,litre,265.2,13.0564,13.0564,3462.56
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING017,Caramel Syrup,SUP-RAW,Raw Material,CAT-SYR,Syrups & Sauces,litre,262.8,173.8336,173.8336,45683.47
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING018,Vanilla Syrup,SUP-RAW,Raw Material,CAT-SYR,Syrups & Sauces,litre,244.8,84.9141,84.9141,20786.97
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING019,Sugar Syrup,SUP-RAW,Raw Material,CAT-SYR,Syrups & Sauces,litre,96.89,75.6904,75.6904,7333.64
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING020,Tea Leaves,SUP-RAW,Raw Material,CAT-TEA,Tea Inputs,kg,632.4,61.4661,61.4661,38871.16
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING021,Matcha Powder,SUP-RAW,Raw Material,CAT-TEA,Tea Inputs,kg,2209.93,28.912,28.912,63893.5
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING022,Ice,SUP-RAW,Raw Material,CAT-BEV,Beverage Inputs,kg,12.56,1087.087,1087.087,13653.81
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING023,Lemon,SUP-RAW,Raw Material,CAT-PRO,Produce,kg,116.6,63.2802,63.2802,7378.47
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING024,Hibiscus Concentrate,SUP-RAW,Raw Material,CAT-BEV,Beverage Inputs,litre,397.8,53.6542,53.6542,21343.64
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING025,Mixed Berry Pulp,SUP-RAW,Raw Material,CAT-FRU,Fruit Inputs,kg,419.14,31.7381,31.7381,13302.71
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING026,Banana,SUP-RAW,Raw Material,CAT-PRO,Produce,kg,77.88,184.6914,184.6914,14383.77
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING027,Butter,SUP-RAW,Raw Material,CAT-DAI,Dairy,kg,542.06,220.8123,220.8123,119693.52
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING028,Lettuce,SUP-RAW,Raw Material,CAT-PRO,Produce,kg,100.23,38.0154,38.0154,3810.28
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING029,Onion,SUP-RAW,Raw Material,CAT-PRO,Produce,kg,45.85,437.3523,437.3523,20052.6
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING030,Capsicum,SUP-RAW,Raw Material,CAT-PRO,Produce,kg,89.04,103.8914,103.8914,9250.49
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING031,Tomato,SUP-RAW,Raw Material,CAT-PRO,Produce,kg,57.24,327.2994,327.2994,18734.62
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING032,Pesto Sauce,SUP-RAW,Raw Material,CAT-SYR,Syrups & Sauces,kg,359.47,44.8348,44.8348,16116.77
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING033,Chipotle Sauce,SUP-RAW,Raw Material,CAT-SYR,Syrups & Sauces,kg,285.6,28.8793,28.8793,8247.93
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING034,Salsa,SUP-RAW,Raw Material,CAT-SYR,Syrups & Sauces,kg,197.99,56.8103,56.8103,11247.87
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING035,Aioli,SUP-RAW,Raw Material,CAT-SYR,Syrups & Sauces,kg,326.23,108.0788,108.0788,35258.55
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING036,Cold Cup,SUP-CON,Consumable,CAT-PAC,Packaging,pcs,3.19,12628.4213,12628.4213,40284.66
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING037,Hot Cup,SUP-CON,Consumable,CAT-PAC,Packaging,pcs,2.85,5108.7637,5108.7637,14559.98
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING038,Lid,SUP-CON,Consumable,CAT-PAC,Packaging,pcs,1.11,1346.6218,1346.6218,1494.75
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING039,Straw,SUP-CON,Consumable,CAT-PAC,Packaging,pcs,0.57,5839.4993,5839.4993,3328.51
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING040,Napkin,SUP-CON,Consumable,CAT-PAC,Packaging,pcs,0.35,112.2368,112.2368,39.28
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING041,Dessert Box,SUP-CON,Consumable,CAT-PAC,Packaging,pcs,5.14,3322.6665,3322.6665,17078.51
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING042,Sandwich Box,SUP-CON,Consumable,CAT-PAC,Packaging,pcs,6.54,3626.5904,3626.5904,23717.9
+ABNAH Cafe Connaught Place,2026-03-31,2026-03-31,23:59:00,ING043,Wrap Packaging,SUP-CON,Consumable,CAT-PAC,Packaging,pcs,5.92,3440.962,3440.962,20370.5

@@ -1,0 +1,4 @@
+﻿Deployment Name,Store/Kitchen Name,User Name,Date,Transaction Number,Item Code,Item Name,Category Name,Super Category Name,Comment,Quantity,Unit,Source
+ABNAH Cafe Hauz Khas,Main Store,ops.saket,2026-01-10,BRT-OUT002-260110-0032,ING026,Banana,Produce,Raw Material,,1.702,kg,
+ABNAH Cafe Hauz Khas,Main Store,inventory.lead,2026-01-15,BRT-OUT002-260115-0063,ING025,Mixed Berry Pulp,Fruit Inputs,Raw Material,,0.764,kg,
+ABNAH Cafe Hauz Khas,Main Store,ops.saket,2026-01-27,BRT-OUT002-260127-0156,ING010,Bagel,Bakery,Raw Material,,6.0,pcs,

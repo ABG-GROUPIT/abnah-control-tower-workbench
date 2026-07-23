@@ -1,0 +1,60 @@
+{
+  "contract_version": "1.2.0",
+  "report_id": "p4.enterprise_wastage.normal",
+  "display_name": "Enterprise Wastage Report - transaction detail",
+  "canonical_filename_prefix": "enterprise_wastage_normal",
+  "workbench": {
+    "target_report_id": "report:p4_stock_admin:01_enterprise_reports:12_enterprise_wastage_report",
+    "blueprint_path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/12_enterprise_wastage_report.json",
+    "variant": "transaction_detail_csv",
+    "layout_kind": "flat"
+  },
+  "filename_regexes": ["(?i)^(?!.*master).*(?:enterprise|entp)[ _-]*wastage[ _-]*report.*\\.csv$"],
+  "schema_status": "validated_from_populated_uat_csv",
+  "grain": "one row per deployment, store/kitchen, wastage transaction and item",
+  "filter_profile": {
+    "report_tab": "Normal wastage",
+    "item_level": true
+  },
+  "max_trailing_empty_fields": 1,
+  "expected_header": [
+    "Deployment Name", "Store/Kitchen Name", "User Name", "Date", "Transaction Number",
+    "Item Code", "Item Name", "Category Name", "Super Category Name", "Comment",
+    "Quantity", "Unit", "Unit Price", "Amount", "Source"
+  ],
+  "row_columns": [
+    {"name": "deployment_name", "type": "text", "required": true},
+    {"name": "store_kitchen_name", "type": "text", "required": true},
+    {"name": "user_name", "type": "text", "sensitive": true},
+    {"name": "wastage_date", "type": "date", "required": true},
+    {"name": "transaction_number", "type": "text", "required": true},
+    {"name": "item_code", "type": "text", "required": true},
+    {"name": "item_name", "type": "text", "required": true},
+    {"name": "category_name", "type": "text"},
+    {"name": "super_category_name", "type": "text"},
+    {"name": "comment", "type": "text"},
+    {"name": "wastage_qty", "type": "decimal"},
+    {"name": "unit", "type": "text"},
+    {"name": "unit_price", "type": "decimal"},
+    {"name": "wastage_amt", "type": "decimal"},
+    {"name": "source", "type": "text"}
+  ],
+  "rules": [
+    {
+      "id": "wastage_amount_from_qty_price",
+      "type": "product_equals",
+      "target": "wastage_amt",
+      "left": "wastage_qty",
+      "right": "unit_price",
+      "display_rounding": {
+        "left_decimals": 3,
+        "right_decimals": 2,
+        "target_decimals": 2
+      },
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "Wastage amount differs from quantity multiplied by unit price."
+    }
+  ]
+}

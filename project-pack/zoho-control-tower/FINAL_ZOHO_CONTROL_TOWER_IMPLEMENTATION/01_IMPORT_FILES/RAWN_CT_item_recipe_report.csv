@@ -1,0 +1,724 @@
+﻿menu_item_type,menu_item_number,menu_item_name,recipe_item_type,recipe_qty_per_menu_unit,recipe_unit,ingredient_code,ingredient_name
+Beverage,MENU0001,Espresso Shot - Solo,Raw Material,0.0096,kg,ING001,Coffee Beans
+Beverage,MENU0001,Espresso Shot - Solo,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0001,Espresso Shot - Solo,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0001,Espresso Shot - Solo,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0002,Espresso Shot - Doppio,Raw Material,0.0174,kg,ING001,Coffee Beans
+Beverage,MENU0002,Espresso Shot - Doppio,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0002,Espresso Shot - Doppio,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0002,Espresso Shot - Doppio,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0003,Americano - Regular,Raw Material,0.018,kg,ING001,Coffee Beans
+Beverage,MENU0003,Americano - Regular,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0003,Americano - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0003,Americano - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0003,Americano - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0004,Americano - Medium,Raw Material,0.0207,kg,ING001,Coffee Beans
+Beverage,MENU0004,Americano - Medium,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0004,Americano - Medium,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0004,Americano - Medium,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0004,Americano - Medium,Raw Material,0.0172,litre,ING019,Sugar Syrup
+Beverage,MENU0005,Americano - Large,Raw Material,0.0234,kg,ING001,Coffee Beans
+Beverage,MENU0005,Americano - Large,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0005,Americano - Large,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0005,Americano - Large,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0005,Americano - Large,Raw Material,0.0195,litre,ING019,Sugar Syrup
+Beverage,MENU0006,Latte - Regular,Raw Material,0.018,kg,ING001,Coffee Beans
+Beverage,MENU0006,Latte - Regular,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0006,Latte - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0006,Latte - Regular,Raw Material,0.18,litre,ING002,Milk
+Beverage,MENU0006,Latte - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0006,Latte - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0007,Latte - Medium,Raw Material,0.0207,kg,ING001,Coffee Beans
+Beverage,MENU0007,Latte - Medium,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0007,Latte - Medium,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0007,Latte - Medium,Raw Material,0.207,litre,ING002,Milk
+Beverage,MENU0007,Latte - Medium,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0007,Latte - Medium,Raw Material,0.0172,litre,ING019,Sugar Syrup
+Beverage,MENU0008,Latte - Large,Raw Material,0.0234,kg,ING001,Coffee Beans
+Beverage,MENU0008,Latte - Large,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0008,Latte - Large,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0008,Latte - Large,Raw Material,0.234,litre,ING002,Milk
+Beverage,MENU0008,Latte - Large,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0008,Latte - Large,Raw Material,0.0195,litre,ING019,Sugar Syrup
+Beverage,MENU0009,Cappuccino - Regular,Raw Material,0.018,kg,ING001,Coffee Beans
+Beverage,MENU0009,Cappuccino - Regular,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0009,Cappuccino - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0009,Cappuccino - Regular,Raw Material,0.18,litre,ING002,Milk
+Beverage,MENU0009,Cappuccino - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0009,Cappuccino - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0010,Cappuccino - Medium,Raw Material,0.0207,kg,ING001,Coffee Beans
+Beverage,MENU0010,Cappuccino - Medium,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0010,Cappuccino - Medium,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0010,Cappuccino - Medium,Raw Material,0.207,litre,ING002,Milk
+Beverage,MENU0010,Cappuccino - Medium,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0010,Cappuccino - Medium,Raw Material,0.0172,litre,ING019,Sugar Syrup
+Beverage,MENU0011,Cappuccino - Large,Raw Material,0.0234,kg,ING001,Coffee Beans
+Beverage,MENU0011,Cappuccino - Large,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0011,Cappuccino - Large,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0011,Cappuccino - Large,Raw Material,0.234,litre,ING002,Milk
+Beverage,MENU0011,Cappuccino - Large,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0011,Cappuccino - Large,Raw Material,0.0195,litre,ING019,Sugar Syrup
+Beverage,MENU0012,Flat White - Regular,Raw Material,0.018,kg,ING001,Coffee Beans
+Beverage,MENU0012,Flat White - Regular,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0012,Flat White - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0012,Flat White - Regular,Raw Material,0.18,litre,ING002,Milk
+Beverage,MENU0012,Flat White - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0012,Flat White - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0013,Flat White - Medium,Raw Material,0.0207,kg,ING001,Coffee Beans
+Beverage,MENU0013,Flat White - Medium,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0013,Flat White - Medium,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0013,Flat White - Medium,Raw Material,0.207,litre,ING002,Milk
+Beverage,MENU0013,Flat White - Medium,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0013,Flat White - Medium,Raw Material,0.0172,litre,ING019,Sugar Syrup
+Beverage,MENU0014,Flat White - Large,Raw Material,0.0234,kg,ING001,Coffee Beans
+Beverage,MENU0014,Flat White - Large,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0014,Flat White - Large,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0014,Flat White - Large,Raw Material,0.234,litre,ING002,Milk
+Beverage,MENU0014,Flat White - Large,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0014,Flat White - Large,Raw Material,0.0195,litre,ING019,Sugar Syrup
+Beverage,MENU0015,Mocha - Regular,Raw Material,0.025,litre,ING016,Chocolate Sauce
+Beverage,MENU0015,Mocha - Regular,Raw Material,0.018,kg,ING001,Coffee Beans
+Beverage,MENU0015,Mocha - Regular,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0015,Mocha - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0015,Mocha - Regular,Raw Material,0.18,litre,ING002,Milk
+Beverage,MENU0015,Mocha - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0015,Mocha - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0016,Mocha - Medium,Raw Material,0.0287,litre,ING016,Chocolate Sauce
+Beverage,MENU0016,Mocha - Medium,Raw Material,0.0207,kg,ING001,Coffee Beans
+Beverage,MENU0016,Mocha - Medium,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0016,Mocha - Medium,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0016,Mocha - Medium,Raw Material,0.207,litre,ING002,Milk
+Beverage,MENU0016,Mocha - Medium,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0016,Mocha - Medium,Raw Material,0.0172,litre,ING019,Sugar Syrup
+Beverage,MENU0017,Mocha - Large,Raw Material,0.0325,litre,ING016,Chocolate Sauce
+Beverage,MENU0017,Mocha - Large,Raw Material,0.0234,kg,ING001,Coffee Beans
+Beverage,MENU0017,Mocha - Large,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0017,Mocha - Large,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0017,Mocha - Large,Raw Material,0.234,litre,ING002,Milk
+Beverage,MENU0017,Mocha - Large,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0017,Mocha - Large,Raw Material,0.0195,litre,ING019,Sugar Syrup
+Beverage,MENU0018,Sea Salt Mocha - Regular,Raw Material,0.025,litre,ING016,Chocolate Sauce
+Beverage,MENU0018,Sea Salt Mocha - Regular,Raw Material,0.018,kg,ING001,Coffee Beans
+Beverage,MENU0018,Sea Salt Mocha - Regular,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0018,Sea Salt Mocha - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0018,Sea Salt Mocha - Regular,Raw Material,0.18,litre,ING002,Milk
+Beverage,MENU0018,Sea Salt Mocha - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0018,Sea Salt Mocha - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0019,Sea Salt Mocha - Medium,Raw Material,0.0287,litre,ING016,Chocolate Sauce
+Beverage,MENU0019,Sea Salt Mocha - Medium,Raw Material,0.0207,kg,ING001,Coffee Beans
+Beverage,MENU0019,Sea Salt Mocha - Medium,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0019,Sea Salt Mocha - Medium,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0019,Sea Salt Mocha - Medium,Raw Material,0.207,litre,ING002,Milk
+Beverage,MENU0019,Sea Salt Mocha - Medium,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0019,Sea Salt Mocha - Medium,Raw Material,0.0172,litre,ING019,Sugar Syrup
+Beverage,MENU0020,Sea Salt Mocha - Large,Raw Material,0.0325,litre,ING016,Chocolate Sauce
+Beverage,MENU0020,Sea Salt Mocha - Large,Raw Material,0.0234,kg,ING001,Coffee Beans
+Beverage,MENU0020,Sea Salt Mocha - Large,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0020,Sea Salt Mocha - Large,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0020,Sea Salt Mocha - Large,Raw Material,0.234,litre,ING002,Milk
+Beverage,MENU0020,Sea Salt Mocha - Large,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0020,Sea Salt Mocha - Large,Raw Material,0.0195,litre,ING019,Sugar Syrup
+Beverage,MENU0021,Orange Zest Mocha - Regular,Raw Material,0.025,litre,ING016,Chocolate Sauce
+Beverage,MENU0021,Orange Zest Mocha - Regular,Raw Material,0.018,kg,ING001,Coffee Beans
+Beverage,MENU0021,Orange Zest Mocha - Regular,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0021,Orange Zest Mocha - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0021,Orange Zest Mocha - Regular,Raw Material,0.18,litre,ING002,Milk
+Beverage,MENU0021,Orange Zest Mocha - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0021,Orange Zest Mocha - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0022,Orange Zest Mocha - Medium,Raw Material,0.0287,litre,ING016,Chocolate Sauce
+Beverage,MENU0022,Orange Zest Mocha - Medium,Raw Material,0.0207,kg,ING001,Coffee Beans
+Beverage,MENU0022,Orange Zest Mocha - Medium,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0022,Orange Zest Mocha - Medium,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0022,Orange Zest Mocha - Medium,Raw Material,0.207,litre,ING002,Milk
+Beverage,MENU0022,Orange Zest Mocha - Medium,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0022,Orange Zest Mocha - Medium,Raw Material,0.0172,litre,ING019,Sugar Syrup
+Beverage,MENU0023,Orange Zest Mocha - Large,Raw Material,0.0325,litre,ING016,Chocolate Sauce
+Beverage,MENU0023,Orange Zest Mocha - Large,Raw Material,0.0234,kg,ING001,Coffee Beans
+Beverage,MENU0023,Orange Zest Mocha - Large,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0023,Orange Zest Mocha - Large,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0023,Orange Zest Mocha - Large,Raw Material,0.234,litre,ING002,Milk
+Beverage,MENU0023,Orange Zest Mocha - Large,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0023,Orange Zest Mocha - Large,Raw Material,0.0195,litre,ING019,Sugar Syrup
+Beverage,MENU0024,Caramel Macchiato - Regular,Raw Material,0.025,litre,ING017,Caramel Syrup
+Beverage,MENU0024,Caramel Macchiato - Regular,Raw Material,0.018,kg,ING001,Coffee Beans
+Beverage,MENU0024,Caramel Macchiato - Regular,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0024,Caramel Macchiato - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0024,Caramel Macchiato - Regular,Raw Material,0.18,litre,ING002,Milk
+Beverage,MENU0024,Caramel Macchiato - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0024,Caramel Macchiato - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0025,Caramel Macchiato - Medium,Raw Material,0.0287,litre,ING017,Caramel Syrup
+Beverage,MENU0025,Caramel Macchiato - Medium,Raw Material,0.0207,kg,ING001,Coffee Beans
+Beverage,MENU0025,Caramel Macchiato - Medium,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0025,Caramel Macchiato - Medium,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0025,Caramel Macchiato - Medium,Raw Material,0.207,litre,ING002,Milk
+Beverage,MENU0025,Caramel Macchiato - Medium,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0025,Caramel Macchiato - Medium,Raw Material,0.0172,litre,ING019,Sugar Syrup
+Beverage,MENU0026,Caramel Macchiato - Large,Raw Material,0.0325,litre,ING017,Caramel Syrup
+Beverage,MENU0026,Caramel Macchiato - Large,Raw Material,0.0234,kg,ING001,Coffee Beans
+Beverage,MENU0026,Caramel Macchiato - Large,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0026,Caramel Macchiato - Large,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0026,Caramel Macchiato - Large,Raw Material,0.234,litre,ING002,Milk
+Beverage,MENU0026,Caramel Macchiato - Large,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0026,Caramel Macchiato - Large,Raw Material,0.0195,litre,ING019,Sugar Syrup
+Beverage,MENU0027,French Vanilla Latte - Regular,Raw Material,0.018,kg,ING001,Coffee Beans
+Beverage,MENU0027,French Vanilla Latte - Regular,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0027,French Vanilla Latte - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0027,French Vanilla Latte - Regular,Raw Material,0.18,litre,ING002,Milk
+Beverage,MENU0027,French Vanilla Latte - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0027,French Vanilla Latte - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0027,French Vanilla Latte - Regular,Raw Material,0.025,litre,ING018,Vanilla Syrup
+Beverage,MENU0028,French Vanilla Latte - Medium,Raw Material,0.0207,kg,ING001,Coffee Beans
+Beverage,MENU0028,French Vanilla Latte - Medium,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0028,French Vanilla Latte - Medium,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0028,French Vanilla Latte - Medium,Raw Material,0.207,litre,ING002,Milk
+Beverage,MENU0028,French Vanilla Latte - Medium,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0028,French Vanilla Latte - Medium,Raw Material,0.0172,litre,ING019,Sugar Syrup
+Beverage,MENU0028,French Vanilla Latte - Medium,Raw Material,0.0287,litre,ING018,Vanilla Syrup
+Beverage,MENU0029,French Vanilla Latte - Large,Raw Material,0.0234,kg,ING001,Coffee Beans
+Beverage,MENU0029,French Vanilla Latte - Large,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0029,French Vanilla Latte - Large,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0029,French Vanilla Latte - Large,Raw Material,0.234,litre,ING002,Milk
+Beverage,MENU0029,French Vanilla Latte - Large,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0029,French Vanilla Latte - Large,Raw Material,0.0195,litre,ING019,Sugar Syrup
+Beverage,MENU0029,French Vanilla Latte - Large,Raw Material,0.0325,litre,ING018,Vanilla Syrup
+Beverage,MENU0030,Vegan Iced Latte - Regular,Raw Material,0.018,kg,ING001,Coffee Beans
+Beverage,MENU0030,Vegan Iced Latte - Regular,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0030,Vegan Iced Latte - Regular,Raw Material,0.12,kg,ING022,Ice
+Beverage,MENU0030,Vegan Iced Latte - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0030,Vegan Iced Latte - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0030,Vegan Iced Latte - Regular,Raw Material,0.18,litre,ING003,Oat Milk
+Beverage,MENU0030,Vegan Iced Latte - Regular,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0030,Vegan Iced Latte - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0031,Vegan Iced Latte - Medium,Raw Material,0.0207,kg,ING001,Coffee Beans
+Beverage,MENU0031,Vegan Iced Latte - Medium,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0031,Vegan Iced Latte - Medium,Raw Material,0.138,kg,ING022,Ice
+Beverage,MENU0031,Vegan Iced Latte - Medium,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0031,Vegan Iced Latte - Medium,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0031,Vegan Iced Latte - Medium,Raw Material,0.207,litre,ING003,Oat Milk
+Beverage,MENU0031,Vegan Iced Latte - Medium,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0031,Vegan Iced Latte - Medium,Raw Material,0.0172,litre,ING019,Sugar Syrup
+Beverage,MENU0032,Vegan Iced Latte - Large,Raw Material,0.0234,kg,ING001,Coffee Beans
+Beverage,MENU0032,Vegan Iced Latte - Large,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0032,Vegan Iced Latte - Large,Raw Material,0.156,kg,ING022,Ice
+Beverage,MENU0032,Vegan Iced Latte - Large,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0032,Vegan Iced Latte - Large,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0032,Vegan Iced Latte - Large,Raw Material,0.234,litre,ING003,Oat Milk
+Beverage,MENU0032,Vegan Iced Latte - Large,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0032,Vegan Iced Latte - Large,Raw Material,0.0195,litre,ING019,Sugar Syrup
+Beverage,MENU0033,Classic Cold Brew - Regular,Raw Material,0.018,kg,ING001,Coffee Beans
+Beverage,MENU0033,Classic Cold Brew - Regular,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0033,Classic Cold Brew - Regular,Raw Material,0.12,kg,ING022,Ice
+Beverage,MENU0033,Classic Cold Brew - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0033,Classic Cold Brew - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0033,Classic Cold Brew - Regular,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0033,Classic Cold Brew - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0034,Classic Cold Brew - Medium,Raw Material,0.0207,kg,ING001,Coffee Beans
+Beverage,MENU0034,Classic Cold Brew - Medium,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0034,Classic Cold Brew - Medium,Raw Material,0.138,kg,ING022,Ice
+Beverage,MENU0034,Classic Cold Brew - Medium,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0034,Classic Cold Brew - Medium,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0034,Classic Cold Brew - Medium,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0034,Classic Cold Brew - Medium,Raw Material,0.0172,litre,ING019,Sugar Syrup
+Beverage,MENU0035,Classic Cold Brew - Large,Raw Material,0.0234,kg,ING001,Coffee Beans
+Beverage,MENU0035,Classic Cold Brew - Large,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0035,Classic Cold Brew - Large,Raw Material,0.156,kg,ING022,Ice
+Beverage,MENU0035,Classic Cold Brew - Large,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0035,Classic Cold Brew - Large,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0035,Classic Cold Brew - Large,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0035,Classic Cold Brew - Large,Raw Material,0.0195,litre,ING019,Sugar Syrup
+Beverage,MENU0036,Coffee Lemonade - Regular,Raw Material,0.018,kg,ING001,Coffee Beans
+Beverage,MENU0036,Coffee Lemonade - Regular,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0036,Coffee Lemonade - Regular,Raw Material,0.12,kg,ING022,Ice
+Beverage,MENU0036,Coffee Lemonade - Regular,Raw Material,0.035,kg,ING023,Lemon
+Beverage,MENU0036,Coffee Lemonade - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0036,Coffee Lemonade - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0036,Coffee Lemonade - Regular,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0036,Coffee Lemonade - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0037,Coffee Lemonade - Medium,Raw Material,0.0207,kg,ING001,Coffee Beans
+Beverage,MENU0037,Coffee Lemonade - Medium,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0037,Coffee Lemonade - Medium,Raw Material,0.138,kg,ING022,Ice
+Beverage,MENU0037,Coffee Lemonade - Medium,Raw Material,0.0403,kg,ING023,Lemon
+Beverage,MENU0037,Coffee Lemonade - Medium,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0037,Coffee Lemonade - Medium,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0037,Coffee Lemonade - Medium,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0037,Coffee Lemonade - Medium,Raw Material,0.0172,litre,ING019,Sugar Syrup
+Beverage,MENU0038,Coffee Lemonade - Large,Raw Material,0.0234,kg,ING001,Coffee Beans
+Beverage,MENU0038,Coffee Lemonade - Large,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0038,Coffee Lemonade - Large,Raw Material,0.156,kg,ING022,Ice
+Beverage,MENU0038,Coffee Lemonade - Large,Raw Material,0.0455,kg,ING023,Lemon
+Beverage,MENU0038,Coffee Lemonade - Large,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0038,Coffee Lemonade - Large,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0038,Coffee Lemonade - Large,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0038,Coffee Lemonade - Large,Raw Material,0.0195,litre,ING019,Sugar Syrup
+Beverage,MENU0039,Vietnamese Shakerato - Regular,Raw Material,0.018,kg,ING001,Coffee Beans
+Beverage,MENU0039,Vietnamese Shakerato - Regular,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0039,Vietnamese Shakerato - Regular,Raw Material,0.12,kg,ING022,Ice
+Beverage,MENU0039,Vietnamese Shakerato - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0039,Vietnamese Shakerato - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0039,Vietnamese Shakerato - Regular,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0039,Vietnamese Shakerato - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0040,Vietnamese Shakerato - Medium,Raw Material,0.0207,kg,ING001,Coffee Beans
+Beverage,MENU0040,Vietnamese Shakerato - Medium,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0040,Vietnamese Shakerato - Medium,Raw Material,0.138,kg,ING022,Ice
+Beverage,MENU0040,Vietnamese Shakerato - Medium,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0040,Vietnamese Shakerato - Medium,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0040,Vietnamese Shakerato - Medium,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0040,Vietnamese Shakerato - Medium,Raw Material,0.0172,litre,ING019,Sugar Syrup
+Beverage,MENU0041,Vietnamese Shakerato - Large,Raw Material,0.0234,kg,ING001,Coffee Beans
+Beverage,MENU0041,Vietnamese Shakerato - Large,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0041,Vietnamese Shakerato - Large,Raw Material,0.156,kg,ING022,Ice
+Beverage,MENU0041,Vietnamese Shakerato - Large,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0041,Vietnamese Shakerato - Large,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0041,Vietnamese Shakerato - Large,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0041,Vietnamese Shakerato - Large,Raw Material,0.0195,litre,ING019,Sugar Syrup
+Beverage,MENU0042,Classic Cold Coffee - Regular,Raw Material,0.018,kg,ING001,Coffee Beans
+Beverage,MENU0042,Classic Cold Coffee - Regular,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0042,Classic Cold Coffee - Regular,Raw Material,0.12,kg,ING022,Ice
+Beverage,MENU0042,Classic Cold Coffee - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0042,Classic Cold Coffee - Regular,Raw Material,0.18,litre,ING002,Milk
+Beverage,MENU0042,Classic Cold Coffee - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0042,Classic Cold Coffee - Regular,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0042,Classic Cold Coffee - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0043,Classic Cold Coffee - Medium,Raw Material,0.0207,kg,ING001,Coffee Beans
+Beverage,MENU0043,Classic Cold Coffee - Medium,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0043,Classic Cold Coffee - Medium,Raw Material,0.138,kg,ING022,Ice
+Beverage,MENU0043,Classic Cold Coffee - Medium,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0043,Classic Cold Coffee - Medium,Raw Material,0.207,litre,ING002,Milk
+Beverage,MENU0043,Classic Cold Coffee - Medium,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0043,Classic Cold Coffee - Medium,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0043,Classic Cold Coffee - Medium,Raw Material,0.0172,litre,ING019,Sugar Syrup
+Beverage,MENU0044,Classic Cold Coffee - Large,Raw Material,0.0234,kg,ING001,Coffee Beans
+Beverage,MENU0044,Classic Cold Coffee - Large,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0044,Classic Cold Coffee - Large,Raw Material,0.156,kg,ING022,Ice
+Beverage,MENU0044,Classic Cold Coffee - Large,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0044,Classic Cold Coffee - Large,Raw Material,0.234,litre,ING002,Milk
+Beverage,MENU0044,Classic Cold Coffee - Large,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0044,Classic Cold Coffee - Large,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0044,Classic Cold Coffee - Large,Raw Material,0.0195,litre,ING019,Sugar Syrup
+Beverage,MENU0045,Mocha Cold Coffee - Regular,Raw Material,0.025,litre,ING016,Chocolate Sauce
+Beverage,MENU0045,Mocha Cold Coffee - Regular,Raw Material,0.018,kg,ING001,Coffee Beans
+Beverage,MENU0045,Mocha Cold Coffee - Regular,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0045,Mocha Cold Coffee - Regular,Raw Material,0.12,kg,ING022,Ice
+Beverage,MENU0045,Mocha Cold Coffee - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0045,Mocha Cold Coffee - Regular,Raw Material,0.18,litre,ING002,Milk
+Beverage,MENU0045,Mocha Cold Coffee - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0045,Mocha Cold Coffee - Regular,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0045,Mocha Cold Coffee - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0046,Mocha Cold Coffee - Medium,Raw Material,0.0287,litre,ING016,Chocolate Sauce
+Beverage,MENU0046,Mocha Cold Coffee - Medium,Raw Material,0.0207,kg,ING001,Coffee Beans
+Beverage,MENU0046,Mocha Cold Coffee - Medium,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0046,Mocha Cold Coffee - Medium,Raw Material,0.138,kg,ING022,Ice
+Beverage,MENU0046,Mocha Cold Coffee - Medium,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0046,Mocha Cold Coffee - Medium,Raw Material,0.207,litre,ING002,Milk
+Beverage,MENU0046,Mocha Cold Coffee - Medium,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0046,Mocha Cold Coffee - Medium,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0046,Mocha Cold Coffee - Medium,Raw Material,0.0172,litre,ING019,Sugar Syrup
+Beverage,MENU0047,Mocha Cold Coffee - Large,Raw Material,0.0325,litre,ING016,Chocolate Sauce
+Beverage,MENU0047,Mocha Cold Coffee - Large,Raw Material,0.0234,kg,ING001,Coffee Beans
+Beverage,MENU0047,Mocha Cold Coffee - Large,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0047,Mocha Cold Coffee - Large,Raw Material,0.156,kg,ING022,Ice
+Beverage,MENU0047,Mocha Cold Coffee - Large,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0047,Mocha Cold Coffee - Large,Raw Material,0.234,litre,ING002,Milk
+Beverage,MENU0047,Mocha Cold Coffee - Large,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0047,Mocha Cold Coffee - Large,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0047,Mocha Cold Coffee - Large,Raw Material,0.0195,litre,ING019,Sugar Syrup
+Beverage,MENU0048,Caramel Cold Coffee - Regular,Raw Material,0.025,litre,ING017,Caramel Syrup
+Beverage,MENU0048,Caramel Cold Coffee - Regular,Raw Material,0.018,kg,ING001,Coffee Beans
+Beverage,MENU0048,Caramel Cold Coffee - Regular,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0048,Caramel Cold Coffee - Regular,Raw Material,0.12,kg,ING022,Ice
+Beverage,MENU0048,Caramel Cold Coffee - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0048,Caramel Cold Coffee - Regular,Raw Material,0.18,litre,ING002,Milk
+Beverage,MENU0048,Caramel Cold Coffee - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0048,Caramel Cold Coffee - Regular,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0048,Caramel Cold Coffee - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0049,Caramel Cold Coffee - Medium,Raw Material,0.0287,litre,ING017,Caramel Syrup
+Beverage,MENU0049,Caramel Cold Coffee - Medium,Raw Material,0.0207,kg,ING001,Coffee Beans
+Beverage,MENU0049,Caramel Cold Coffee - Medium,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0049,Caramel Cold Coffee - Medium,Raw Material,0.138,kg,ING022,Ice
+Beverage,MENU0049,Caramel Cold Coffee - Medium,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0049,Caramel Cold Coffee - Medium,Raw Material,0.207,litre,ING002,Milk
+Beverage,MENU0049,Caramel Cold Coffee - Medium,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0049,Caramel Cold Coffee - Medium,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0049,Caramel Cold Coffee - Medium,Raw Material,0.0172,litre,ING019,Sugar Syrup
+Beverage,MENU0050,Caramel Cold Coffee - Large,Raw Material,0.0325,litre,ING017,Caramel Syrup
+Beverage,MENU0050,Caramel Cold Coffee - Large,Raw Material,0.0234,kg,ING001,Coffee Beans
+Beverage,MENU0050,Caramel Cold Coffee - Large,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0050,Caramel Cold Coffee - Large,Raw Material,0.156,kg,ING022,Ice
+Beverage,MENU0050,Caramel Cold Coffee - Large,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0050,Caramel Cold Coffee - Large,Raw Material,0.234,litre,ING002,Milk
+Beverage,MENU0050,Caramel Cold Coffee - Large,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0050,Caramel Cold Coffee - Large,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0050,Caramel Cold Coffee - Large,Raw Material,0.0195,litre,ING019,Sugar Syrup
+Beverage,MENU0051,Masala Chai Latte - Regular,Raw Material,0.018,kg,ING001,Coffee Beans
+Beverage,MENU0051,Masala Chai Latte - Regular,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0051,Masala Chai Latte - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0051,Masala Chai Latte - Regular,Raw Material,0.18,litre,ING002,Milk
+Beverage,MENU0051,Masala Chai Latte - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0051,Masala Chai Latte - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0052,Masala Chai Latte - Medium,Raw Material,0.0207,kg,ING001,Coffee Beans
+Beverage,MENU0052,Masala Chai Latte - Medium,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0052,Masala Chai Latte - Medium,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0052,Masala Chai Latte - Medium,Raw Material,0.207,litre,ING002,Milk
+Beverage,MENU0052,Masala Chai Latte - Medium,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0052,Masala Chai Latte - Medium,Raw Material,0.0172,litre,ING019,Sugar Syrup
+Beverage,MENU0053,Masala Chai Latte - Large,Raw Material,0.0234,kg,ING001,Coffee Beans
+Beverage,MENU0053,Masala Chai Latte - Large,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0053,Masala Chai Latte - Large,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0053,Masala Chai Latte - Large,Raw Material,0.234,litre,ING002,Milk
+Beverage,MENU0053,Masala Chai Latte - Large,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0053,Masala Chai Latte - Large,Raw Material,0.0195,litre,ING019,Sugar Syrup
+Beverage,MENU0054,Himalayan Green Tea,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0054,Himalayan Green Tea,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0054,Himalayan Green Tea,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0054,Himalayan Green Tea,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0054,Himalayan Green Tea,Raw Material,0.005,kg,ING020,Tea Leaves
+Beverage,MENU0055,Japanese Matcha Latte - Regular,Raw Material,0.018,kg,ING001,Coffee Beans
+Beverage,MENU0055,Japanese Matcha Latte - Regular,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0055,Japanese Matcha Latte - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0055,Japanese Matcha Latte - Regular,Raw Material,0.18,litre,ING002,Milk
+Beverage,MENU0055,Japanese Matcha Latte - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0055,Japanese Matcha Latte - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0056,Japanese Matcha Latte - Medium,Raw Material,0.0207,kg,ING001,Coffee Beans
+Beverage,MENU0056,Japanese Matcha Latte - Medium,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0056,Japanese Matcha Latte - Medium,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0056,Japanese Matcha Latte - Medium,Raw Material,0.207,litre,ING002,Milk
+Beverage,MENU0056,Japanese Matcha Latte - Medium,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0056,Japanese Matcha Latte - Medium,Raw Material,0.0172,litre,ING019,Sugar Syrup
+Beverage,MENU0057,Japanese Matcha Latte - Large,Raw Material,0.0234,kg,ING001,Coffee Beans
+Beverage,MENU0057,Japanese Matcha Latte - Large,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0057,Japanese Matcha Latte - Large,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0057,Japanese Matcha Latte - Large,Raw Material,0.234,litre,ING002,Milk
+Beverage,MENU0057,Japanese Matcha Latte - Large,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0057,Japanese Matcha Latte - Large,Raw Material,0.0195,litre,ING019,Sugar Syrup
+Beverage,MENU0058,Lemon Iced Tea - Regular,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0058,Lemon Iced Tea - Regular,Raw Material,0.12,kg,ING022,Ice
+Beverage,MENU0058,Lemon Iced Tea - Regular,Raw Material,0.035,kg,ING023,Lemon
+Beverage,MENU0058,Lemon Iced Tea - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0058,Lemon Iced Tea - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0058,Lemon Iced Tea - Regular,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0058,Lemon Iced Tea - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0058,Lemon Iced Tea - Regular,Raw Material,0.004,kg,ING020,Tea Leaves
+Beverage,MENU0059,Lemon Iced Tea - Medium,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0059,Lemon Iced Tea - Medium,Raw Material,0.138,kg,ING022,Ice
+Beverage,MENU0059,Lemon Iced Tea - Medium,Raw Material,0.0403,kg,ING023,Lemon
+Beverage,MENU0059,Lemon Iced Tea - Medium,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0059,Lemon Iced Tea - Medium,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0059,Lemon Iced Tea - Medium,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0059,Lemon Iced Tea - Medium,Raw Material,0.0172,litre,ING019,Sugar Syrup
+Beverage,MENU0059,Lemon Iced Tea - Medium,Raw Material,0.0046,kg,ING020,Tea Leaves
+Beverage,MENU0060,Lemon Iced Tea - Large,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0060,Lemon Iced Tea - Large,Raw Material,0.156,kg,ING022,Ice
+Beverage,MENU0060,Lemon Iced Tea - Large,Raw Material,0.0455,kg,ING023,Lemon
+Beverage,MENU0060,Lemon Iced Tea - Large,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0060,Lemon Iced Tea - Large,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0060,Lemon Iced Tea - Large,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0060,Lemon Iced Tea - Large,Raw Material,0.0195,litre,ING019,Sugar Syrup
+Beverage,MENU0060,Lemon Iced Tea - Large,Raw Material,0.0052,kg,ING020,Tea Leaves
+Beverage,MENU0061,Hibiscus Lime Iced Tea - Regular,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0061,Hibiscus Lime Iced Tea - Regular,Raw Material,0.035,litre,ING024,Hibiscus Concentrate
+Beverage,MENU0061,Hibiscus Lime Iced Tea - Regular,Raw Material,0.12,kg,ING022,Ice
+Beverage,MENU0061,Hibiscus Lime Iced Tea - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0061,Hibiscus Lime Iced Tea - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0061,Hibiscus Lime Iced Tea - Regular,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0061,Hibiscus Lime Iced Tea - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0061,Hibiscus Lime Iced Tea - Regular,Raw Material,0.004,kg,ING020,Tea Leaves
+Beverage,MENU0062,Hibiscus Lime Iced Tea - Medium,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0062,Hibiscus Lime Iced Tea - Medium,Raw Material,0.0403,litre,ING024,Hibiscus Concentrate
+Beverage,MENU0062,Hibiscus Lime Iced Tea - Medium,Raw Material,0.138,kg,ING022,Ice
+Beverage,MENU0062,Hibiscus Lime Iced Tea - Medium,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0062,Hibiscus Lime Iced Tea - Medium,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0062,Hibiscus Lime Iced Tea - Medium,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0062,Hibiscus Lime Iced Tea - Medium,Raw Material,0.0172,litre,ING019,Sugar Syrup
+Beverage,MENU0062,Hibiscus Lime Iced Tea - Medium,Raw Material,0.0046,kg,ING020,Tea Leaves
+Beverage,MENU0063,Hibiscus Lime Iced Tea - Large,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0063,Hibiscus Lime Iced Tea - Large,Raw Material,0.0455,litre,ING024,Hibiscus Concentrate
+Beverage,MENU0063,Hibiscus Lime Iced Tea - Large,Raw Material,0.156,kg,ING022,Ice
+Beverage,MENU0063,Hibiscus Lime Iced Tea - Large,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0063,Hibiscus Lime Iced Tea - Large,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0063,Hibiscus Lime Iced Tea - Large,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0063,Hibiscus Lime Iced Tea - Large,Raw Material,0.0195,litre,ING019,Sugar Syrup
+Beverage,MENU0063,Hibiscus Lime Iced Tea - Large,Raw Material,0.0052,kg,ING020,Tea Leaves
+Beverage,MENU0064,Hot Chocolate - Regular,Raw Material,0.06,litre,ING016,Chocolate Sauce
+Beverage,MENU0064,Hot Chocolate - Regular,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0064,Hot Chocolate - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0064,Hot Chocolate - Regular,Raw Material,0.2,litre,ING002,Milk
+Beverage,MENU0064,Hot Chocolate - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0064,Hot Chocolate - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0065,Hot Chocolate - Medium,Raw Material,0.069,litre,ING016,Chocolate Sauce
+Beverage,MENU0065,Hot Chocolate - Medium,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0065,Hot Chocolate - Medium,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0065,Hot Chocolate - Medium,Raw Material,0.23,litre,ING002,Milk
+Beverage,MENU0065,Hot Chocolate - Medium,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0065,Hot Chocolate - Medium,Raw Material,0.0172,litre,ING019,Sugar Syrup
+Beverage,MENU0066,Hot Chocolate - Large,Raw Material,0.078,litre,ING016,Chocolate Sauce
+Beverage,MENU0066,Hot Chocolate - Large,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0066,Hot Chocolate - Large,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0066,Hot Chocolate - Large,Raw Material,0.26,litre,ING002,Milk
+Beverage,MENU0066,Hot Chocolate - Large,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0066,Hot Chocolate - Large,Raw Material,0.0195,litre,ING019,Sugar Syrup
+Beverage,MENU0067,Babyccino - Regular,Consumable,1.0,pcs,ING037,Hot Cup
+Beverage,MENU0067,Babyccino - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0067,Babyccino - Regular,Raw Material,0.12,litre,ING002,Milk
+Beverage,MENU0067,Babyccino - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0067,Babyccino - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0068,Choco Chip Shake - Regular,Raw Material,0.025,litre,ING016,Chocolate Sauce
+Beverage,MENU0068,Choco Chip Shake - Regular,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0068,Choco Chip Shake - Regular,Raw Material,0.025,litre,ING004,Cream
+Beverage,MENU0068,Choco Chip Shake - Regular,Raw Material,0.12,kg,ING022,Ice
+Beverage,MENU0068,Choco Chip Shake - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0068,Choco Chip Shake - Regular,Raw Material,0.2,litre,ING002,Milk
+Beverage,MENU0068,Choco Chip Shake - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0068,Choco Chip Shake - Regular,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0068,Choco Chip Shake - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0069,Choco Chip Shake - Medium,Raw Material,0.0287,litre,ING016,Chocolate Sauce
+Beverage,MENU0069,Choco Chip Shake - Medium,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0069,Choco Chip Shake - Medium,Raw Material,0.0287,litre,ING004,Cream
+Beverage,MENU0069,Choco Chip Shake - Medium,Raw Material,0.138,kg,ING022,Ice
+Beverage,MENU0069,Choco Chip Shake - Medium,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0069,Choco Chip Shake - Medium,Raw Material,0.23,litre,ING002,Milk
+Beverage,MENU0069,Choco Chip Shake - Medium,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0069,Choco Chip Shake - Medium,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0069,Choco Chip Shake - Medium,Raw Material,0.0172,litre,ING019,Sugar Syrup
+Beverage,MENU0070,Choco Chip Shake - Large,Raw Material,0.0325,litre,ING016,Chocolate Sauce
+Beverage,MENU0070,Choco Chip Shake - Large,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0070,Choco Chip Shake - Large,Raw Material,0.0325,litre,ING004,Cream
+Beverage,MENU0070,Choco Chip Shake - Large,Raw Material,0.156,kg,ING022,Ice
+Beverage,MENU0070,Choco Chip Shake - Large,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0070,Choco Chip Shake - Large,Raw Material,0.26,litre,ING002,Milk
+Beverage,MENU0070,Choco Chip Shake - Large,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0070,Choco Chip Shake - Large,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0070,Choco Chip Shake - Large,Raw Material,0.0195,litre,ING019,Sugar Syrup
+Beverage,MENU0071,Mixed Berry Shake - Regular,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0071,Mixed Berry Shake - Regular,Raw Material,0.025,litre,ING004,Cream
+Beverage,MENU0071,Mixed Berry Shake - Regular,Raw Material,0.12,kg,ING022,Ice
+Beverage,MENU0071,Mixed Berry Shake - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0071,Mixed Berry Shake - Regular,Raw Material,0.2,litre,ING002,Milk
+Beverage,MENU0071,Mixed Berry Shake - Regular,Raw Material,0.08,kg,ING025,Mixed Berry Pulp
+Beverage,MENU0071,Mixed Berry Shake - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0071,Mixed Berry Shake - Regular,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0071,Mixed Berry Shake - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0072,Mixed Berry Shake - Medium,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0072,Mixed Berry Shake - Medium,Raw Material,0.0287,litre,ING004,Cream
+Beverage,MENU0072,Mixed Berry Shake - Medium,Raw Material,0.138,kg,ING022,Ice
+Beverage,MENU0072,Mixed Berry Shake - Medium,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0072,Mixed Berry Shake - Medium,Raw Material,0.23,litre,ING002,Milk
+Beverage,MENU0072,Mixed Berry Shake - Medium,Raw Material,0.092,kg,ING025,Mixed Berry Pulp
+Beverage,MENU0072,Mixed Berry Shake - Medium,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0072,Mixed Berry Shake - Medium,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0072,Mixed Berry Shake - Medium,Raw Material,0.0172,litre,ING019,Sugar Syrup
+Beverage,MENU0073,Mixed Berry Shake - Large,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0073,Mixed Berry Shake - Large,Raw Material,0.0325,litre,ING004,Cream
+Beverage,MENU0073,Mixed Berry Shake - Large,Raw Material,0.156,kg,ING022,Ice
+Beverage,MENU0073,Mixed Berry Shake - Large,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0073,Mixed Berry Shake - Large,Raw Material,0.26,litre,ING002,Milk
+Beverage,MENU0073,Mixed Berry Shake - Large,Raw Material,0.104,kg,ING025,Mixed Berry Pulp
+Beverage,MENU0073,Mixed Berry Shake - Large,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0073,Mixed Berry Shake - Large,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0073,Mixed Berry Shake - Large,Raw Material,0.0195,litre,ING019,Sugar Syrup
+Beverage,MENU0074,Seasonal Smoothie - Regular,Raw Material,0.08,kg,ING026,Banana
+Beverage,MENU0074,Seasonal Smoothie - Regular,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0074,Seasonal Smoothie - Regular,Raw Material,0.025,litre,ING004,Cream
+Beverage,MENU0074,Seasonal Smoothie - Regular,Raw Material,0.12,kg,ING022,Ice
+Beverage,MENU0074,Seasonal Smoothie - Regular,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0074,Seasonal Smoothie - Regular,Raw Material,0.2,litre,ING002,Milk
+Beverage,MENU0074,Seasonal Smoothie - Regular,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0074,Seasonal Smoothie - Regular,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0074,Seasonal Smoothie - Regular,Raw Material,0.015,litre,ING019,Sugar Syrup
+Beverage,MENU0075,Seasonal Smoothie - Medium,Raw Material,0.092,kg,ING026,Banana
+Beverage,MENU0075,Seasonal Smoothie - Medium,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0075,Seasonal Smoothie - Medium,Raw Material,0.0287,litre,ING004,Cream
+Beverage,MENU0075,Seasonal Smoothie - Medium,Raw Material,0.138,kg,ING022,Ice
+Beverage,MENU0075,Seasonal Smoothie - Medium,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0075,Seasonal Smoothie - Medium,Raw Material,0.23,litre,ING002,Milk
+Beverage,MENU0075,Seasonal Smoothie - Medium,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0075,Seasonal Smoothie - Medium,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0075,Seasonal Smoothie - Medium,Raw Material,0.0172,litre,ING019,Sugar Syrup
+Beverage,MENU0076,Seasonal Smoothie - Large,Raw Material,0.104,kg,ING026,Banana
+Beverage,MENU0076,Seasonal Smoothie - Large,Consumable,1.0,pcs,ING036,Cold Cup
+Beverage,MENU0076,Seasonal Smoothie - Large,Raw Material,0.0325,litre,ING004,Cream
+Beverage,MENU0076,Seasonal Smoothie - Large,Raw Material,0.156,kg,ING022,Ice
+Beverage,MENU0076,Seasonal Smoothie - Large,Consumable,1.0,pcs,ING038,Lid
+Beverage,MENU0076,Seasonal Smoothie - Large,Raw Material,0.26,litre,ING002,Milk
+Beverage,MENU0076,Seasonal Smoothie - Large,Consumable,1.0,pcs,ING040,Napkin
+Beverage,MENU0076,Seasonal Smoothie - Large,Consumable,1.0,pcs,ING039,Straw
+Beverage,MENU0076,Seasonal Smoothie - Large,Raw Material,0.0195,litre,ING019,Sugar Syrup
+Food,MENU0077,Spicy Paneer Wrap,Raw Material,0.025,kg,ING030,Capsicum
+Food,MENU0077,Spicy Paneer Wrap,Raw Material,0.025,kg,ING033,Chipotle Sauce
+Food,MENU0077,Spicy Paneer Wrap,Raw Material,0.025,kg,ING028,Lettuce
+Food,MENU0077,Spicy Paneer Wrap,Consumable,2.0,pcs,ING040,Napkin
+Food,MENU0077,Spicy Paneer Wrap,Raw Material,0.02,kg,ING029,Onion
+Food,MENU0077,Spicy Paneer Wrap,Raw Material,0.11,kg,ING005,Paneer
+Food,MENU0077,Spicy Paneer Wrap,Raw Material,1.0,pcs,ING011,Tortilla
+Food,MENU0077,Spicy Paneer Wrap,Consumable,1.0,pcs,ING043,Wrap Packaging
+Food,MENU0078,Shredded Chicken Wrap,Raw Material,0.025,kg,ING030,Capsicum
+Food,MENU0078,Shredded Chicken Wrap,Raw Material,0.11,kg,ING007,Chicken
+Food,MENU0078,Shredded Chicken Wrap,Raw Material,0.025,kg,ING033,Chipotle Sauce
+Food,MENU0078,Shredded Chicken Wrap,Raw Material,0.025,kg,ING028,Lettuce
+Food,MENU0078,Shredded Chicken Wrap,Consumable,2.0,pcs,ING040,Napkin
+Food,MENU0078,Shredded Chicken Wrap,Raw Material,0.02,kg,ING029,Onion
+Food,MENU0078,Shredded Chicken Wrap,Raw Material,1.0,pcs,ING011,Tortilla
+Food,MENU0078,Shredded Chicken Wrap,Consumable,1.0,pcs,ING043,Wrap Packaging
+Food,MENU0079,Smoked Chipotle Paneer Sandwich,Raw Material,2.0,pcs,ING009,Bread
+Food,MENU0079,Smoked Chipotle Paneer Sandwich,Raw Material,0.03,kg,ING006,Cheese
+Food,MENU0079,Smoked Chipotle Paneer Sandwich,Raw Material,0.02,kg,ING033,Chipotle Sauce
+Food,MENU0079,Smoked Chipotle Paneer Sandwich,Raw Material,0.02,kg,ING028,Lettuce
+Food,MENU0079,Smoked Chipotle Paneer Sandwich,Consumable,2.0,pcs,ING040,Napkin
+Food,MENU0079,Smoked Chipotle Paneer Sandwich,Raw Material,0.1,kg,ING005,Paneer
+Food,MENU0079,Smoked Chipotle Paneer Sandwich,Consumable,1.0,pcs,ING042,Sandwich Box
+Food,MENU0079,Smoked Chipotle Paneer Sandwich,Raw Material,0.03,kg,ING031,Tomato
+Food,MENU0080,Pesto Veg Sandwich,Raw Material,2.0,pcs,ING009,Bread
+Food,MENU0080,Pesto Veg Sandwich,Raw Material,0.03,kg,ING006,Cheese
+Food,MENU0080,Pesto Veg Sandwich,Raw Material,0.02,kg,ING028,Lettuce
+Food,MENU0080,Pesto Veg Sandwich,Consumable,2.0,pcs,ING040,Napkin
+Food,MENU0080,Pesto Veg Sandwich,Raw Material,0.1,kg,ING005,Paneer
+Food,MENU0080,Pesto Veg Sandwich,Raw Material,0.02,kg,ING032,Pesto Sauce
+Food,MENU0080,Pesto Veg Sandwich,Consumable,1.0,pcs,ING042,Sandwich Box
+Food,MENU0080,Pesto Veg Sandwich,Raw Material,0.03,kg,ING031,Tomato
+Food,MENU0081,Pepper Chicken Sandwich,Raw Material,2.0,pcs,ING009,Bread
+Food,MENU0081,Pepper Chicken Sandwich,Raw Material,0.03,kg,ING006,Cheese
+Food,MENU0081,Pepper Chicken Sandwich,Raw Material,0.1,kg,ING007,Chicken
+Food,MENU0081,Pepper Chicken Sandwich,Raw Material,0.02,kg,ING033,Chipotle Sauce
+Food,MENU0081,Pepper Chicken Sandwich,Raw Material,0.02,kg,ING028,Lettuce
+Food,MENU0081,Pepper Chicken Sandwich,Consumable,2.0,pcs,ING040,Napkin
+Food,MENU0081,Pepper Chicken Sandwich,Consumable,1.0,pcs,ING042,Sandwich Box
+Food,MENU0081,Pepper Chicken Sandwich,Raw Material,0.03,kg,ING031,Tomato
+Food,MENU0082,Tandoori Chicken Sandwich,Raw Material,2.0,pcs,ING009,Bread
+Food,MENU0082,Tandoori Chicken Sandwich,Raw Material,0.03,kg,ING006,Cheese
+Food,MENU0082,Tandoori Chicken Sandwich,Raw Material,0.1,kg,ING007,Chicken
+Food,MENU0082,Tandoori Chicken Sandwich,Raw Material,0.02,kg,ING033,Chipotle Sauce
+Food,MENU0082,Tandoori Chicken Sandwich,Raw Material,0.02,kg,ING028,Lettuce
+Food,MENU0082,Tandoori Chicken Sandwich,Consumable,2.0,pcs,ING040,Napkin
+Food,MENU0082,Tandoori Chicken Sandwich,Consumable,1.0,pcs,ING042,Sandwich Box
+Food,MENU0082,Tandoori Chicken Sandwich,Raw Material,0.03,kg,ING031,Tomato
+Food,MENU0083,Chilli Cheese Garlic Toast,Raw Material,0.02,kg,ING035,Aioli
+Food,MENU0083,Chilli Cheese Garlic Toast,Raw Material,1.0,pcs,ING009,Bread
+Food,MENU0083,Chilli Cheese Garlic Toast,Raw Material,0.035,kg,ING006,Cheese
+Food,MENU0083,Chilli Cheese Garlic Toast,Consumable,2.0,pcs,ING040,Napkin
+Food,MENU0083,Chilli Cheese Garlic Toast,Consumable,1.0,pcs,ING042,Sandwich Box
+Food,MENU0084,Chicken Pepperoni Avocado Toast,Raw Material,0.02,kg,ING035,Aioli
+Food,MENU0084,Chicken Pepperoni Avocado Toast,Raw Material,1.0,pcs,ING009,Bread
+Food,MENU0084,Chicken Pepperoni Avocado Toast,Raw Material,0.035,kg,ING006,Cheese
+Food,MENU0084,Chicken Pepperoni Avocado Toast,Raw Material,0.08,kg,ING007,Chicken
+Food,MENU0084,Chicken Pepperoni Avocado Toast,Consumable,2.0,pcs,ING040,Napkin
+Food,MENU0084,Chicken Pepperoni Avocado Toast,Consumable,1.0,pcs,ING042,Sandwich Box
+Food,MENU0085,Hummus and Pita Platter,Raw Material,0.03,kg,ING035,Aioli
+Food,MENU0085,Hummus and Pita Platter,Raw Material,2.0,pcs,ING009,Bread
+Food,MENU0085,Hummus and Pita Platter,Raw Material,0.03,kg,ING028,Lettuce
+Food,MENU0085,Hummus and Pita Platter,Consumable,2.0,pcs,ING040,Napkin
+Food,MENU0085,Hummus and Pita Platter,Consumable,1.0,pcs,ING042,Sandwich Box
+Food,MENU0085,Hummus and Pita Platter,Raw Material,0.04,kg,ING031,Tomato
+Food,MENU0086,Breakfast Pancakes,Raw Material,0.025,kg,ING027,Butter
+Food,MENU0086,Breakfast Pancakes,Raw Material,1.0,pcs,ING014,Cake Base
+Food,MENU0086,Breakfast Pancakes,Consumable,1.0,pcs,ING041,Dessert Box
+Food,MENU0086,Breakfast Pancakes,Consumable,2.0,pcs,ING040,Napkin
+Food,MENU0086,Breakfast Pancakes,Raw Material,0.025,litre,ING019,Sugar Syrup
+Food,MENU0087,Cream Cheese Bagel,Raw Material,1.0,pcs,ING010,Bagel
+Food,MENU0087,Cream Cheese Bagel,Raw Material,0.025,kg,ING006,Cheese
+Food,MENU0087,Cream Cheese Bagel,Raw Material,0.035,litre,ING004,Cream
+Food,MENU0087,Cream Cheese Bagel,Consumable,2.0,pcs,ING040,Napkin
+Food,MENU0087,Cream Cheese Bagel,Consumable,1.0,pcs,ING042,Sandwich Box
+Food,MENU0088,Scallion Pepper Cream Cheese Bagel,Raw Material,1.0,pcs,ING010,Bagel
+Food,MENU0088,Scallion Pepper Cream Cheese Bagel,Raw Material,0.025,kg,ING006,Cheese
+Food,MENU0088,Scallion Pepper Cream Cheese Bagel,Raw Material,0.035,litre,ING004,Cream
+Food,MENU0088,Scallion Pepper Cream Cheese Bagel,Consumable,2.0,pcs,ING040,Napkin
+Food,MENU0088,Scallion Pepper Cream Cheese Bagel,Consumable,1.0,pcs,ING042,Sandwich Box
+Food,MENU0089,Masala Egg Bun,Raw Material,1.0,pcs,ING009,Bread
+Food,MENU0089,Masala Egg Bun,Raw Material,0.02,kg,ING006,Cheese
+Food,MENU0089,Masala Egg Bun,Raw Material,2.0,pcs,ING008,Egg
+Food,MENU0089,Masala Egg Bun,Consumable,2.0,pcs,ING040,Napkin
+Food,MENU0089,Masala Egg Bun,Consumable,1.0,pcs,ING042,Sandwich Box
+Food,MENU0090,Marinara Cheese Pin Wheels,Raw Material,1.0,pcs,ING009,Bread
+Food,MENU0090,Marinara Cheese Pin Wheels,Raw Material,0.03,kg,ING006,Cheese
+Food,MENU0090,Marinara Cheese Pin Wheels,Consumable,2.0,pcs,ING040,Napkin
+Food,MENU0090,Marinara Cheese Pin Wheels,Raw Material,0.025,kg,ING034,Salsa
+Food,MENU0090,Marinara Cheese Pin Wheels,Consumable,1.0,pcs,ING042,Sandwich Box
+Food,MENU0091,Pesto Sundried Tomato Pin Wheel,Raw Material,1.0,pcs,ING009,Bread
+Food,MENU0091,Pesto Sundried Tomato Pin Wheel,Raw Material,0.03,kg,ING006,Cheese
+Food,MENU0091,Pesto Sundried Tomato Pin Wheel,Consumable,2.0,pcs,ING040,Napkin
+Food,MENU0091,Pesto Sundried Tomato Pin Wheel,Raw Material,0.025,kg,ING032,Pesto Sauce
+Food,MENU0091,Pesto Sundried Tomato Pin Wheel,Consumable,1.0,pcs,ING042,Sandwich Box
+Food,MENU0092,Turnover with Brioche Dough Chicken,Raw Material,0.025,kg,ING006,Cheese
+Food,MENU0092,Turnover with Brioche Dough Chicken,Raw Material,0.08,kg,ING007,Chicken
+Food,MENU0092,Turnover with Brioche Dough Chicken,Raw Material,1.0,pcs,ING012,Croissant Base
+Food,MENU0092,Turnover with Brioche Dough Chicken,Consumable,2.0,pcs,ING040,Napkin
+Food,MENU0092,Turnover with Brioche Dough Chicken,Consumable,1.0,pcs,ING042,Sandwich Box
+Food,MENU0093,Turnover with Brioche Dough Veg,Raw Material,0.025,kg,ING006,Cheese
+Food,MENU0093,Turnover with Brioche Dough Veg,Raw Material,1.0,pcs,ING012,Croissant Base
+Food,MENU0093,Turnover with Brioche Dough Veg,Consumable,2.0,pcs,ING040,Napkin
+Food,MENU0093,Turnover with Brioche Dough Veg,Raw Material,0.08,kg,ING005,Paneer
+Food,MENU0093,Turnover with Brioche Dough Veg,Consumable,1.0,pcs,ING042,Sandwich Box
+Food,MENU0094,Butter Croissant,Raw Material,0.02,kg,ING027,Butter
+Food,MENU0094,Butter Croissant,Raw Material,1.0,pcs,ING012,Croissant Base
+Food,MENU0094,Butter Croissant,Consumable,1.0,pcs,ING041,Dessert Box
+Food,MENU0094,Butter Croissant,Consumable,2.0,pcs,ING040,Napkin
+Food,MENU0095,Almond Croissant,Raw Material,0.02,kg,ING027,Butter
+Food,MENU0095,Almond Croissant,Raw Material,1.0,pcs,ING012,Croissant Base
+Food,MENU0095,Almond Croissant,Consumable,1.0,pcs,ING041,Dessert Box
+Food,MENU0095,Almond Croissant,Consumable,2.0,pcs,ING040,Napkin
+Food,MENU0096,Chocolate Croissant,Raw Material,0.02,kg,ING027,Butter
+Food,MENU0096,Chocolate Croissant,Raw Material,0.025,litre,ING016,Chocolate Sauce
+Food,MENU0096,Chocolate Croissant,Raw Material,1.0,pcs,ING012,Croissant Base
+Food,MENU0096,Chocolate Croissant,Consumable,1.0,pcs,ING041,Dessert Box
+Food,MENU0096,Chocolate Croissant,Consumable,2.0,pcs,ING040,Napkin
+Food,MENU0097,Mushroom Cheese Croissant,Raw Material,0.02,kg,ING027,Butter
+Food,MENU0097,Mushroom Cheese Croissant,Raw Material,0.035,kg,ING006,Cheese
+Food,MENU0097,Mushroom Cheese Croissant,Raw Material,1.0,pcs,ING012,Croissant Base
+Food,MENU0097,Mushroom Cheese Croissant,Consumable,1.0,pcs,ING041,Dessert Box
+Food,MENU0097,Mushroom Cheese Croissant,Consumable,2.0,pcs,ING040,Napkin
+Food,MENU0098,Sriracha Chicken Croissant,Raw Material,0.02,kg,ING027,Butter
+Food,MENU0098,Sriracha Chicken Croissant,Raw Material,0.07,kg,ING007,Chicken
+Food,MENU0098,Sriracha Chicken Croissant,Raw Material,1.0,pcs,ING012,Croissant Base
+Food,MENU0098,Sriracha Chicken Croissant,Consumable,1.0,pcs,ING041,Dessert Box
+Food,MENU0098,Sriracha Chicken Croissant,Consumable,2.0,pcs,ING040,Napkin
+Dessert,MENU0099,Cinnamon Roll with Cream Cheese,Raw Material,0.025,litre,ING004,Cream
+Dessert,MENU0099,Cinnamon Roll with Cream Cheese,Raw Material,1.0,pcs,ING012,Croissant Base
+Dessert,MENU0099,Cinnamon Roll with Cream Cheese,Consumable,1.0,pcs,ING041,Dessert Box
+Dessert,MENU0099,Cinnamon Roll with Cream Cheese,Consumable,1.0,pcs,ING040,Napkin
+Dessert,MENU0100,Banana Walnut Tea Cake,Raw Material,0.07,kg,ING026,Banana
+Dessert,MENU0100,Banana Walnut Tea Cake,Raw Material,1.0,pcs,ING014,Cake Base
+Dessert,MENU0100,Banana Walnut Tea Cake,Raw Material,0.025,litre,ING004,Cream
+Dessert,MENU0100,Banana Walnut Tea Cake,Consumable,1.0,pcs,ING041,Dessert Box
+Dessert,MENU0100,Banana Walnut Tea Cake,Consumable,1.0,pcs,ING040,Napkin
+Dessert,MENU0101,Lemon Raspberry Tea Cake,Raw Material,1.0,pcs,ING014,Cake Base
+Dessert,MENU0101,Lemon Raspberry Tea Cake,Raw Material,0.025,litre,ING004,Cream
+Dessert,MENU0101,Lemon Raspberry Tea Cake,Consumable,1.0,pcs,ING041,Dessert Box
+Dessert,MENU0101,Lemon Raspberry Tea Cake,Consumable,1.0,pcs,ING040,Napkin
+Dessert,MENU0102,Double Chocolate Truffle Cake,Raw Material,1.0,pcs,ING014,Cake Base
+Dessert,MENU0102,Double Chocolate Truffle Cake,Raw Material,0.025,litre,ING016,Chocolate Sauce
+Dessert,MENU0102,Double Chocolate Truffle Cake,Raw Material,0.025,litre,ING004,Cream
+Dessert,MENU0102,Double Chocolate Truffle Cake,Consumable,1.0,pcs,ING041,Dessert Box
+Dessert,MENU0102,Double Chocolate Truffle Cake,Consumable,1.0,pcs,ING040,Napkin
+Dessert,MENU0103,Banoffee Pie,Raw Material,1.0,pcs,ING014,Cake Base
+Dessert,MENU0103,Banoffee Pie,Raw Material,0.025,litre,ING004,Cream
+Dessert,MENU0103,Banoffee Pie,Consumable,1.0,pcs,ING041,Dessert Box
+Dessert,MENU0103,Banoffee Pie,Consumable,1.0,pcs,ING040,Napkin
+Dessert,MENU0104,Classic Chocolate Fudge Brownie,Raw Material,1.0,pcs,ING013,Brownie Base
+Dessert,MENU0104,Classic Chocolate Fudge Brownie,Raw Material,0.045,litre,ING016,Chocolate Sauce
+Dessert,MENU0104,Classic Chocolate Fudge Brownie,Consumable,1.0,pcs,ING041,Dessert Box
+Dessert,MENU0104,Classic Chocolate Fudge Brownie,Consumable,1.0,pcs,ING040,Napkin
+Dessert,MENU0105,Soft-Centred Caramel Cookie,Raw Material,0.02,kg,ING027,Butter
+Dessert,MENU0105,Soft-Centred Caramel Cookie,Raw Material,0.55,pcs,ING014,Cake Base
+Dessert,MENU0105,Soft-Centred Caramel Cookie,Raw Material,0.02,litre,ING017,Caramel Syrup
+Dessert,MENU0105,Soft-Centred Caramel Cookie,Consumable,1.0,pcs,ING041,Dessert Box
+Dessert,MENU0105,Soft-Centred Caramel Cookie,Consumable,1.0,pcs,ING040,Napkin
+Dessert,MENU0106,Death by Chocolate Cookie,Raw Material,0.02,kg,ING027,Butter
+Dessert,MENU0106,Death by Chocolate Cookie,Raw Material,0.55,pcs,ING014,Cake Base
+Dessert,MENU0106,Death by Chocolate Cookie,Raw Material,0.025,litre,ING016,Chocolate Sauce
+Dessert,MENU0106,Death by Chocolate Cookie,Consumable,1.0,pcs,ING041,Dessert Box
+Dessert,MENU0106,Death by Chocolate Cookie,Consumable,1.0,pcs,ING040,Napkin
+Dessert,MENU0107,Jaggery Parmesan Cookie,Raw Material,0.02,kg,ING027,Butter
+Dessert,MENU0107,Jaggery Parmesan Cookie,Raw Material,0.55,pcs,ING014,Cake Base
+Dessert,MENU0107,Jaggery Parmesan Cookie,Consumable,1.0,pcs,ING041,Dessert Box
+Dessert,MENU0107,Jaggery Parmesan Cookie,Consumable,1.0,pcs,ING040,Napkin
+Dessert,MENU0108,Apple Pie,Raw Material,1.0,pcs,ING014,Cake Base
+Dessert,MENU0108,Apple Pie,Raw Material,0.025,litre,ING004,Cream
+Dessert,MENU0108,Apple Pie,Consumable,1.0,pcs,ING041,Dessert Box
+Dessert,MENU0108,Apple Pie,Consumable,1.0,pcs,ING040,Napkin
+Dessert,MENU0109,Basque Cheesecake,Raw Material,1.0,pcs,ING015,Cheesecake Base
+Dessert,MENU0109,Basque Cheesecake,Raw Material,0.025,litre,ING004,Cream
+Dessert,MENU0109,Basque Cheesecake,Consumable,1.0,pcs,ING041,Dessert Box
+Dessert,MENU0109,Basque Cheesecake,Consumable,1.0,pcs,ING040,Napkin
+Dessert,MENU0110,Multigrain Walnut Tea Cake,Raw Material,1.0,pcs,ING014,Cake Base
+Dessert,MENU0110,Multigrain Walnut Tea Cake,Raw Material,0.025,litre,ING004,Cream
+Dessert,MENU0110,Multigrain Walnut Tea Cake,Consumable,1.0,pcs,ING041,Dessert Box
+Dessert,MENU0110,Multigrain Walnut Tea Cake,Consumable,1.0,pcs,ING040,Napkin

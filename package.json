@@ -13,7 +13,7 @@
     "start": "wrangler dev --config dist/server/wrangler.json --show-interactive-dev-session=false",
     "data:refresh": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/refresh_atlas.ps1",
     "data:workspace": "py -3 scripts/build_workspace_data.py",
-    "data:validate": "py -3 scripts/validate_atlas_data.py && py -3 scripts/validate_workspace_data.py && py -3 scripts/validate_control_tower.py && py -3 scripts/validate_schema_privacy.py",
+    "data:validate": "py -3 scripts/validate_atlas_data.py && py -3 scripts/validate_workspace_data.py && py -3 scripts/validate_control_tower.py && py -3 scripts/validate_schema_privacy.py && py -3 scripts/validate_project_pack.py",
     "typecheck": "tsc --noEmit -p tsconfig.app.json",
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",

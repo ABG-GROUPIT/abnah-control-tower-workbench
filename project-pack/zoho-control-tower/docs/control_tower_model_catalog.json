@@ -1,0 +1,712 @@
+{
+  "contractVersion": "1.0.0",
+  "title": "ABNAH Control Tower v2 Model Library",
+  "sourcePolicy": "Exact Query Table SQL and model metadata only. No screenshots or operational rows.",
+  "layers": [
+    {
+      "id": "raw",
+      "order": 0,
+      "label": "RAW landing",
+      "shortLabel": "RAW",
+      "purpose": "Preserve the POSIST-shaped imports and synthetic auxiliary inputs without business reinterpretation.",
+      "example": "RAWN_CT_enterprise_purchase_order-Copy preserves the purchase-order export before status and value rules."
+    },
+    {
+      "id": "standardized",
+      "order": 1,
+      "label": "Standardized",
+      "shortLabel": "STD",
+      "purpose": "Normalize identifiers, dates, status, UOM, signs, and reusable field names while retaining auditability.",
+      "example": "07_std_ct_purchase_order.sql normalizes PO status and line measures before procurement KPIs use them."
+    },
+    {
+      "id": "dimension",
+      "order": 2,
+      "label": "Dimensions",
+      "shortLabel": "DIM",
+      "purpose": "Provide one governed parent row for dates, outlets, items, menu items, vendors, and effective recipes.",
+      "example": "37_dim_ct_outlet_enriched.sql is the canonical outlet parent for dashboard lookups."
+    },
+    {
+      "id": "fact",
+      "order": 3,
+      "label": "Facts",
+      "shortLabel": "FACT",
+      "purpose": "Represent additive events or governed analytical grains such as sales, PO lines, consumption variance, and risk actions.",
+      "example": "27_fact_ct_inventory_risk.sql joins stock, forecast requirement, and open PO supply at item-checkpoint grain."
+    },
+    {
+      "id": "summary",
+      "order": 4,
+      "label": "Summaries",
+      "shortLabel": "SUM",
+      "purpose": "Pre-aggregate reusable dashboard grains so Zoho charts do not repeat complex joins or invalid percentage aggregation.",
+      "example": "30_sum_ct_vendor_scorecard.sql publishes vendor-period metrics for the scorecard and performance matrix."
+    }
+  ],
+  "tables": [
+    {
+      "buildOrder": 1,
+      "layer": "standardized",
+      "physicalName": "01_std_ct_sales_item.sql",
+      "logicalName": "STD_CT_Sales_Item",
+      "dependencyLevel": 1,
+      "purpose": "Standardize bill-item sales, realized revenue and source-reported margin fields.",
+      "sources": [
+        "RAWN_CT_gross_net_margin-Copy"
+      ],
+      "dependencies": [],
+      "rawInputs": [
+        "RAWN_CT_gross_net_margin-Copy"
+      ],
+      "sql": "-- Query Table: 01_std_ct_sales_item.sql\n-- Logical model name: STD_CT_Sales_Item\n-- Layer: standardized\n-- Purpose: Standardize bill-item sales, realized revenue and source-reported margin fields.\n-- Sources: RAWN_CT_gross_net_margin-Copy\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    s.\"source_period_code\" AS \"source_period_code\",\n    s.\"source_outlet_code\" AS \"outlet_code\",\n    s.\"source_outlet_name\" AS \"outlet_name\",\n    CAST(s.\"sale_date\" AS DATE) AS \"sales_date\",\n    s.\"bill_number\" AS \"bill_number\",\n    s.\"tab_type\" AS \"tab_type\",\n    s.\"source\" AS \"order_source\",\n    s.\"super_category_name\" AS \"super_category_name\",\n    s.\"category_name\" AS \"category_name\",\n    s.\"item_code\" AS \"item_code\",\n    s.\"item_name\" AS \"item_name\",\n    CAST(s.\"item_rate\" AS DECIMAL(18,2)) AS \"item_rate\",\n    CAST(s.\"item_qty\" AS DECIMAL(18,4)) AS \"sold_qty\",\n    CAST(s.\"item_subtotal\" AS DECIMAL(18,2)) AS \"item_subtotal\",\n    CAST(s.\"total_discount_amt\" AS DECIMAL(18,2)) AS \"discount_amount\",\n    CAST(s.\"net_sale_value\" AS DECIMAL(18,2)) AS \"net_sales\",\n    CAST(s.\"tax_amt\" AS DECIMAL(18,2)) AS \"tax_amount\",\n    CAST(s.\"gross_sale_value\" AS DECIMAL(18,2)) AS \"gross_sales\",\n    CAST(s.\"purchase_rate\" AS DECIMAL(18,4)) AS \"source_purchase_rate\",\n    CAST(s.\"purchase_value\" AS DECIMAL(18,2)) AS \"source_purchase_value\"\nFROM \"RAWN_CT_gross_net_margin-Copy\" s\nWHERE CAST(s.\"item_qty\" AS DECIMAL(18,4)) <> 0;"
+    },
+    {
+      "buildOrder": 2,
+      "layer": "standardized",
+      "physicalName": "02_std_ct_recipe.sql",
+      "logicalName": "STD_CT_Recipe",
+      "dependencyLevel": 1,
+      "purpose": "Standardize menu-item-to-ingredient recipe quantities.",
+      "sources": [
+        "RAWN_CT_item_recipe_report-Copy"
+      ],
+      "dependencies": [],
+      "rawInputs": [
+        "RAWN_CT_item_recipe_report-Copy"
+      ],
+      "sql": "-- Query Table: 02_std_ct_recipe.sql\n-- Logical model name: STD_CT_Recipe\n-- Layer: standardized\n-- Purpose: Standardize menu-item-to-ingredient recipe quantities.\n-- Sources: RAWN_CT_item_recipe_report-Copy\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    r.\"menu_item_type\" AS \"menu_item_type\",\n    r.\"menu_item_number\" AS \"menu_item_code\",\n    r.\"menu_item_name\" AS \"menu_item_name\",\n    r.\"recipe_item_type\" AS \"recipe_item_type\",\n    r.\"ingredient_code\" AS \"ingredient_code\",\n    r.\"ingredient_name\" AS \"ingredient_name\",\n    CAST(r.\"recipe_qty_per_menu_unit\" AS DECIMAL(18,6)) AS \"recipe_qty_per_menu_unit\",\n    r.\"recipe_unit\" AS \"recipe_uom\"\nFROM \"RAWN_CT_item_recipe_report-Copy\" r\nWHERE r.\"menu_item_number\" IS NOT NULL\n  AND r.\"ingredient_code\" IS NOT NULL;"
+    },
+    {
+      "buildOrder": 3,
+      "layer": "standardized",
+      "physicalName": "03_std_ct_theoretical_consumption.sql",
+      "logicalName": "STD_CT_Theoretical_Consumption",
+      "dependencyLevel": 1,
+      "purpose": "Standardize the synthetic theoretical ingredient baseline at outlet-item-month grain.",
+      "sources": [
+        "AUX_Theoretical_Consumption-Copy"
+      ],
+      "dependencies": [],
+      "rawInputs": [
+        "AUX_Theoretical_Consumption-Copy"
+      ],
+      "sql": "-- Query Table: 03_std_ct_theoretical_consumption.sql\n-- Logical model name: STD_CT_Theoretical_Consumption\n-- Layer: standardized\n-- Purpose: Standardize the synthetic theoretical ingredient baseline at outlet-item-month grain.\n-- Sources: AUX_Theoretical_Consumption-Copy\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    t.\"source_period_code\" AS \"source_period_code\",\n    t.\"outlet_code\" AS \"outlet_code\",\n    t.\"outlet_name\" AS \"outlet_name\",\n    t.\"item_code\" AS \"item_code\",\n    t.\"item_name\" AS \"item_name\",\n    t.\"category_name\" AS \"category_name\",\n    t.\"super_category_name\" AS \"super_category_name\",\n    t.\"unit\" AS \"canonical_uom\",\n    CAST(t.\"average_price\" AS DECIMAL(18,4)) AS \"average_unit_cost\",\n    CAST(t.\"theoretical_qty\" AS DECIMAL(18,6)) AS \"theoretical_consumption_qty\"\nFROM \"AUX_Theoretical_Consumption-Copy\" t;"
+    },
+    {
+      "buildOrder": 4,
+      "layer": "standardized",
+      "physicalName": "04_std_ct_inventory_period.sql",
+      "logicalName": "STD_CT_Inventory_Period",
+      "dependencyLevel": 1,
+      "purpose": "Standardize month-end inventory, actual consumption and source variance measures.",
+      "sources": [
+        "RAWN_CT_enterprise_variance_normal-Copy"
+      ],
+      "dependencies": [],
+      "rawInputs": [
+        "RAWN_CT_enterprise_variance_normal-Copy"
+      ],
+      "sql": "-- Query Table: 04_std_ct_inventory_period.sql\n-- Logical model name: STD_CT_Inventory_Period\n-- Layer: standardized\n-- Purpose: Standardize month-end inventory, actual consumption and source variance measures.\n-- Sources: RAWN_CT_enterprise_variance_normal-Copy\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    v.\"source_period_code\" AS \"source_period_code\",\n    v.\"source_outlet_code\" AS \"outlet_code\",\n    v.\"deployment_name\" AS \"outlet_name\",\n    v.\"store_kitchen_name\" AS \"store_kitchen_name\",\n    v.\"item_code\" AS \"item_code\",\n    v.\"item_name\" AS \"item_name\",\n    v.\"category_name\" AS \"category_name\",\n    v.\"super_category_name\" AS \"super_category_name\",\n    v.\"unit\" AS \"canonical_uom\",\n    CAST(v.\"average_price\" AS DECIMAL(18,4)) AS \"average_unit_cost\",\n    CAST(v.\"opening_date\" AS DATE) AS \"opening_date\",\n    CAST(v.\"closing_date\" AS DATE) AS \"closing_date\",\n    CAST(v.\"opening_qty\" AS DECIMAL(18,6)) AS \"opening_qty\",\n    CAST(v.\"purchase_qty\" AS DECIMAL(18,6)) AS \"purchase_qty\",\n    CAST(v.\"stock_in_qty\" AS DECIMAL(18,6)) AS \"transfer_in_qty\",\n    CAST(v.\"stock_out_qty\" AS DECIMAL(18,6)) AS \"transfer_out_qty\",\n    CAST(v.\"return_qty\" AS DECIMAL(18,6)) AS \"return_qty\",\n    CAST(v.\"wastage_qty\" AS DECIMAL(18,6)) AS \"wastage_qty\",\n    CAST(v.\"closing_qty\" AS DECIMAL(18,6)) AS \"closing_qty\",\n    CAST(v.\"physical_qty\" AS DECIMAL(18,6)) AS \"physical_qty\",\n    CAST(v.\"actual_consumption_qty\" AS DECIMAL(18,6)) AS \"actual_consumption_qty\",\n    CAST(v.\"variance_qty\" AS DECIMAL(18,6)) AS \"source_variance_qty\",\n    CAST(v.\"variance_percent\" AS DECIMAL(18,4)) AS \"source_variance_percent\"\nFROM \"RAWN_CT_enterprise_variance_normal-Copy\" v;"
+    },
+    {
+      "buildOrder": 5,
+      "layer": "standardized",
+      "physicalName": "05_std_ct_inventory_snapshot.sql",
+      "logicalName": "STD_CT_Inventory_Snapshot",
+      "dependencyLevel": 1,
+      "purpose": "Standardize closing stock quantity and value checkpoints.",
+      "sources": [
+        "RAWN_CT_closing_stock-Copy"
+      ],
+      "dependencies": [],
+      "rawInputs": [
+        "RAWN_CT_closing_stock-Copy"
+      ],
+      "sql": "-- Query Table: 05_std_ct_inventory_snapshot.sql\n-- Logical model name: STD_CT_Inventory_Snapshot\n-- Layer: standardized\n-- Purpose: Standardize closing stock quantity and value checkpoints.\n-- Sources: RAWN_CT_closing_stock-Copy\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    c.\"source_period_code\" AS \"source_period_code\",\n    c.\"source_outlet_code\" AS \"outlet_code\",\n    c.\"deployment_name\" AS \"outlet_name\",\n    CAST(c.\"stock_date\" AS DATE) AS \"snapshot_date\",\n    c.\"item_code\" AS \"item_code\",\n    c.\"item_name\" AS \"item_name\",\n    c.\"category_code\" AS \"category_code\",\n    c.\"category_name\" AS \"category_name\",\n    c.\"super_category_code\" AS \"super_category_code\",\n    c.\"super_category_name\" AS \"super_category_name\",\n    c.\"unit_name\" AS \"canonical_uom\",\n    CAST(c.\"average_price\" AS DECIMAL(18,4)) AS \"average_unit_cost\",\n    CAST(c.\"total_qty\" AS DECIMAL(18,6)) AS \"closing_qty\",\n    CAST(c.\"total_amt\" AS DECIMAL(18,2)) AS \"closing_value\"\nFROM \"RAWN_CT_closing_stock-Copy\" c;"
+    },
+    {
+      "buildOrder": 6,
+      "layer": "standardized",
+      "physicalName": "06_std_ct_inventory_movement.sql",
+      "logicalName": "STD_CT_Inventory_Movement",
+      "dependencyLevel": 1,
+      "purpose": "Unify internal transfers and wastage into signed inventory movements.",
+      "sources": [
+        "RAWN_CT_enterprise_transfer_from-Copy",
+        "RAWN_CT_enterprise_transfer_to-Copy",
+        "RAWN_CT_enterprise_wastage_normal-Copy"
+      ],
+      "dependencies": [],
+      "rawInputs": [
+        "RAWN_CT_enterprise_transfer_from-Copy",
+        "RAWN_CT_enterprise_transfer_to-Copy",
+        "RAWN_CT_enterprise_wastage_normal-Copy"
+      ],
+      "sql": "-- Query Table: 06_std_ct_inventory_movement.sql\n-- Logical model name: STD_CT_Inventory_Movement\n-- Layer: standardized\n-- Purpose: Unify internal transfers and wastage into signed inventory movements.\n-- Sources: RAWN_CT_enterprise_transfer_from-Copy, RAWN_CT_enterprise_transfer_to-Copy, RAWN_CT_enterprise_wastage_normal-Copy\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    f.\"source_period_code\" AS \"source_period_code\",\n    f.\"source_outlet_code\" AS \"outlet_code\",\n    f.\"deployment_name\" AS \"outlet_name\",\n    CAST(f.\"transfer_date\" AS DATE) AS \"movement_date\",\n    f.\"transaction_number\" AS \"transaction_number\",\n    f.\"item_code\" AS \"item_code\",\n    f.\"item_name\" AS \"item_name\",\n    f.\"category_name\" AS \"category_name\",\n    f.\"super_category_name\" AS \"super_category_name\",\n    f.\"unit\" AS \"canonical_uom\",\n    'TRANSFER_OUT' AS \"movement_type\",\n    -1 * CAST(f.\"transfer_qty\" AS DECIMAL(18,6)) AS \"signed_qty\",\n    -1 * CAST(f.\"transfer_amt\" AS DECIMAL(18,2)) AS \"signed_value\"\nFROM \"RAWN_CT_enterprise_transfer_from-Copy\" f\nUNION ALL\nSELECT\n    t.\"source_period_code\" AS \"source_period_code\",\n    t.\"source_outlet_code\" AS \"outlet_code\",\n    t.\"deployment_name\" AS \"outlet_name\",\n    CAST(t.\"transfer_date\" AS DATE) AS \"movement_date\",\n    t.\"transaction_number\" AS \"transaction_number\",\n    t.\"item_code\" AS \"item_code\",\n    t.\"item_name\" AS \"item_name\",\n    t.\"category_name\" AS \"category_name\",\n    t.\"super_category_name\" AS \"super_category_name\",\n    t.\"unit\" AS \"canonical_uom\",\n    'TRANSFER_IN' AS \"movement_type\",\n    CAST(t.\"transfer_qty\" AS DECIMAL(18,6)) AS \"signed_qty\",\n    CAST(t.\"transfer_amt\" AS DECIMAL(18,2)) AS \"signed_value\"\nFROM \"RAWN_CT_enterprise_transfer_to-Copy\" t\nUNION ALL\nSELECT\n    w.\"source_period_code\" AS \"source_period_code\",\n    w.\"source_outlet_code\" AS \"outlet_code\",\n    w.\"deployment_name\" AS \"outlet_name\",\n    CAST(w.\"wastage_date\" AS DATE) AS \"movement_date\",\n    w.\"transaction_number\" AS \"transaction_number\",\n    w.\"item_code\" AS \"item_code\",\n    w.\"item_name\" AS \"item_name\",\n    w.\"category_name\" AS \"category_name\",\n    w.\"super_category_name\" AS \"super_category_name\",\n    w.\"unit\" AS \"canonical_uom\",\n    'WASTAGE' AS \"movement_type\",\n    -1 * CAST(w.\"wastage_qty\" AS DECIMAL(18,6)) AS \"signed_qty\",\n    -1 * CAST(w.\"wastage_amt\" AS DECIMAL(18,2)) AS \"signed_value\"\nFROM \"RAWN_CT_enterprise_wastage_normal-Copy\" w;"
+    },
+    {
+      "buildOrder": 7,
+      "layer": "standardized",
+      "physicalName": "07_std_ct_purchase_order.sql",
+      "logicalName": "STD_CT_Purchase_Order",
+      "dependencyLevel": 1,
+      "purpose": "Standardize purchase-order lines and normalized open/closed status.",
+      "sources": [
+        "RAWN_CT_enterprise_purchase_order-Copy"
+      ],
+      "dependencies": [],
+      "rawInputs": [
+        "RAWN_CT_enterprise_purchase_order-Copy"
+      ],
+      "sql": "-- Query Table: 07_std_ct_purchase_order.sql\n-- Logical model name: STD_CT_Purchase_Order\n-- Layer: standardized\n-- Purpose: Standardize purchase-order lines and normalized open/closed status.\n-- Sources: RAWN_CT_enterprise_purchase_order-Copy\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    p.\"source_period_code\" AS \"source_period_code\",\n    CAST(p.\"source_period_end\" AS DATE) AS \"as_of_date\",\n    p.\"source_outlet_code\" AS \"outlet_code\",\n    p.\"deployment_name\" AS \"outlet_name\",\n    p.\"store_name\" AS \"store_name\",\n    p.\"vendor_name\" AS \"vendor_name\",\n    p.\"po_number\" AS \"po_number\",\n    CAST(p.\"po_date\" AS DATE) AS \"po_date\",\n    CAST(p.\"expected_delivery_date\" AS DATE) AS \"expected_delivery_date\",\n    CAST(p.\"po_close_or_partial_receive_date\" AS DATE) AS \"close_or_partial_receive_date\",\n    p.\"po_status\" AS \"po_status\",\n    p.\"item_code\" AS \"item_code\",\n    p.\"item_name\" AS \"item_name\",\n    p.\"category_name\" AS \"category_name\",\n    p.\"super_category_name\" AS \"super_category_name\",\n    CAST(p.\"processed_qty\" AS DECIMAL(18,6)) AS \"processed_qty\",\n    CAST(p.\"remaining_balance_qty\" AS DECIMAL(18,6)) AS \"remaining_qty\",\n    CAST(p.\"ordered_qty\" AS DECIMAL(18,6)) AS \"ordered_qty\",\n    p.\"unit\" AS \"canonical_uom\",\n    CAST(p.\"unit_price\" AS DECIMAL(18,4)) AS \"unit_price\",\n    CAST(p.\"new_subtotal\" AS DECIMAL(18,2)) AS \"net_order_value\",\n    CAST(p.\"tax_amt\" AS DECIMAL(18,2)) AS \"tax_value\",\n    CAST(p.\"total_item_cost\" AS DECIMAL(18,2)) AS \"gross_order_value\",\n    CASE\n        WHEN p.\"po_status\" IN ('Pending', 'Partially Received') THEN 1\n        WHEN CAST(p.\"remaining_balance_qty\" AS DECIMAL(18,6)) > 0 THEN 1\n        ELSE 0\n    END AS \"is_open_po\"\nFROM \"RAWN_CT_enterprise_purchase_order-Copy\" p;"
+    },
+    {
+      "buildOrder": 8,
+      "layer": "standardized",
+      "physicalName": "08_std_ct_purchase_receipt.sql",
+      "logicalName": "STD_CT_Purchase_Receipt",
+      "dependencyLevel": 1,
+      "purpose": "Standardize PO-linked GRN/entry lines.",
+      "sources": [
+        "RAWN_CT_enterprise_entry-Copy"
+      ],
+      "dependencies": [],
+      "rawInputs": [
+        "RAWN_CT_enterprise_entry-Copy"
+      ],
+      "sql": "-- Query Table: 08_std_ct_purchase_receipt.sql\n-- Logical model name: STD_CT_Purchase_Receipt\n-- Layer: standardized\n-- Purpose: Standardize PO-linked GRN/entry lines.\n-- Sources: RAWN_CT_enterprise_entry-Copy\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    e.\"source_period_code\" AS \"source_period_code\",\n    e.\"source_outlet_code\" AS \"outlet_code\",\n    e.\"deployment_name\" AS \"outlet_name\",\n    e.\"store_kitchen_name\" AS \"store_kitchen_name\",\n    e.\"vendor_name\" AS \"vendor_name\",\n    e.\"po_number\" AS \"po_number\",\n    e.\"transaction_number\" AS \"grn_number\",\n    e.\"invoice_number\" AS \"invoice_number\",\n    CAST(e.\"entry_date\" AS DATE) AS \"receipt_date\",\n    CAST(e.\"invoice_date\" AS DATE) AS \"invoice_date\",\n    e.\"item_code\" AS \"item_code\",\n    e.\"item_name\" AS \"item_name\",\n    e.\"category_name\" AS \"category_name\",\n    e.\"super_category_name\" AS \"super_category_name\",\n    CAST(e.\"entry_qty\" AS DECIMAL(18,6)) AS \"received_qty\",\n    e.\"unit\" AS \"canonical_uom\",\n    CAST(e.\"unit_price\" AS DECIMAL(18,4)) AS \"unit_price\",\n    CAST(e.\"base_amt\" AS DECIMAL(18,2)) AS \"receipt_subtotal\",\n    CAST(e.\"discount_amt\" AS DECIMAL(18,2)) AS \"discount_value\",\n    CAST(e.\"total_tax_amt\" AS DECIMAL(18,2)) AS \"tax_value\",\n    CAST(e.\"total_amt\" AS DECIMAL(18,2)) AS \"receipt_total\"\nFROM \"RAWN_CT_enterprise_entry-Copy\" e;"
+    },
+    {
+      "buildOrder": 9,
+      "layer": "standardized",
+      "physicalName": "09_std_ct_wastage.sql",
+      "logicalName": "STD_CT_Wastage",
+      "dependencyLevel": 1,
+      "purpose": "Standardize inventory wastage transactions.",
+      "sources": [
+        "RAWN_CT_enterprise_wastage_normal-Copy"
+      ],
+      "dependencies": [],
+      "rawInputs": [
+        "RAWN_CT_enterprise_wastage_normal-Copy"
+      ],
+      "sql": "-- Query Table: 09_std_ct_wastage.sql\n-- Logical model name: STD_CT_Wastage\n-- Layer: standardized\n-- Purpose: Standardize inventory wastage transactions.\n-- Sources: RAWN_CT_enterprise_wastage_normal-Copy\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    w.\"source_period_code\" AS \"source_period_code\",\n    w.\"source_outlet_code\" AS \"outlet_code\",\n    w.\"deployment_name\" AS \"outlet_name\",\n    w.\"store_kitchen_name\" AS \"store_kitchen_name\",\n    CAST(w.\"wastage_date\" AS DATE) AS \"wastage_date\",\n    w.\"transaction_number\" AS \"transaction_number\",\n    w.\"item_code\" AS \"item_code\",\n    w.\"item_name\" AS \"item_name\",\n    w.\"category_name\" AS \"category_name\",\n    w.\"super_category_name\" AS \"super_category_name\",\n    w.\"comment\" AS \"wastage_reason\",\n    CAST(w.\"wastage_qty\" AS DECIMAL(18,6)) AS \"wastage_qty\",\n    w.\"unit\" AS \"canonical_uom\",\n    CAST(w.\"unit_price\" AS DECIMAL(18,4)) AS \"unit_price\",\n    CAST(w.\"wastage_amt\" AS DECIMAL(18,2)) AS \"wastage_value\"\nFROM \"RAWN_CT_enterprise_wastage_normal-Copy\" w;"
+    },
+    {
+      "buildOrder": 10,
+      "layer": "standardized",
+      "physicalName": "10_std_ct_vendor_report.sql",
+      "logicalName": "STD_CT_Vendor_Report",
+      "dependencyLevel": 1,
+      "purpose": "Standardize the exact historical Vendor Report after local structural cleaning.",
+      "sources": [
+        "RAWN_CT_vendor_report-Copy"
+      ],
+      "dependencies": [],
+      "rawInputs": [
+        "RAWN_CT_vendor_report-Copy"
+      ],
+      "sql": "-- Query Table: 10_std_ct_vendor_report.sql\n-- Logical model name: STD_CT_Vendor_Report\n-- Layer: standardized\n-- Purpose: Standardize the exact historical Vendor Report after local structural cleaning.\n-- Sources: RAWN_CT_vendor_report-Copy\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    v.\"vendor_name\" AS \"vendor_name\",\n    v.\"vendor_code\" AS \"vendor_code\",\n    v.\"description\" AS \"description\",\n    v.\"contact_person\" AS \"contact_person\",\n    v.\"contact_number\" AS \"contact_number\",\n    v.\"email\" AS \"email\",\n    v.\"tin_number\" AS \"tin_number\",\n    v.\"service_tax_number\" AS \"service_tax_number\",\n    v.\"gstin_number\" AS \"gstin_number\",\n    v.\"msme\" AS \"msme\",\n    v.\"fssai_number\" AS \"fssai_number\",\n    v.\"pan_number\" AS \"pan_number\",\n    CAST(v.\"from_date\" AS DATE) AS \"valid_from_date\",\n    CAST(v.\"to_date\" AS DATE) AS \"valid_to_date\",\n    v.\"state\" AS \"state\",\n    v.\"address\" AS \"address\"\nFROM \"RAWN_CT_vendor_report-Copy\" v\nWHERE v.\"vendor_name\" IS NOT NULL;"
+    },
+    {
+      "buildOrder": 11,
+      "layer": "standardized",
+      "physicalName": "11_std_ct_menu_forecast.sql",
+      "logicalName": "STD_CT_Menu_Forecast",
+      "dependencyLevel": 1,
+      "purpose": "Standardize seven-day menu demand forecasts.",
+      "sources": [
+        "AUX_Menu_Demand_Forecast-Copy"
+      ],
+      "dependencies": [],
+      "rawInputs": [
+        "AUX_Menu_Demand_Forecast-Copy"
+      ],
+      "sql": "-- Query Table: 11_std_ct_menu_forecast.sql\n-- Logical model name: STD_CT_Menu_Forecast\n-- Layer: standardized\n-- Purpose: Standardize seven-day menu demand forecasts.\n-- Sources: AUX_Menu_Demand_Forecast-Copy\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    f.\"forecast_as_of_month\" AS \"source_period_code\",\n    CAST(f.\"forecast_date\" AS DATE) AS \"forecast_date\",\n    f.\"outlet_code\" AS \"outlet_code\",\n    f.\"outlet_name\" AS \"outlet_name\",\n    f.\"menu_item_code\" AS \"menu_item_code\",\n    f.\"menu_item_name\" AS \"menu_item_name\",\n    f.\"super_category_name\" AS \"super_category_name\",\n    f.\"category_name\" AS \"category_name\",\n    CAST(f.\"forecast_qty\" AS DECIMAL(18,6)) AS \"forecast_menu_qty\",\n    CAST(f.\"forecast_net_sales\" AS DECIMAL(18,2)) AS \"forecast_net_sales\",\n    f.\"model_name\" AS \"model_name\",\n    f.\"confidence_band\" AS \"confidence_band\"\nFROM \"AUX_Menu_Demand_Forecast-Copy\" f;"
+    },
+    {
+      "buildOrder": 12,
+      "layer": "dimension",
+      "physicalName": "12_dim_ct_date.sql",
+      "logicalName": "DIM_CT_Date",
+      "dependencyLevel": 2,
+      "purpose": "Create the sales-date calendar used by the three-month baseline.",
+      "sources": [
+        "01_std_ct_sales_item.sql"
+      ],
+      "dependencies": [
+        "01_std_ct_sales_item.sql"
+      ],
+      "rawInputs": [],
+      "sql": "-- Query Table: 12_dim_ct_date.sql\n-- Logical model name: DIM_CT_Date\n-- Layer: dimension\n-- Purpose: Create the sales-date calendar used by the three-month baseline.\n-- Sources: 01_std_ct_sales_item.sql\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT DISTINCT\n    s.\"sales_date\" AS \"calendar_date\",\n    YEAR(s.\"sales_date\") AS \"calendar_year\",\n    MONTH(s.\"sales_date\") AS \"calendar_month_number\",\n    DAY(s.\"sales_date\") AS \"calendar_day\",\n    DAYOFWEEK(s.\"sales_date\") AS \"day_of_week_number\",\n    CASE\n        WHEN DAYOFWEEK(s.\"sales_date\") IN (1, 7) THEN 1\n        ELSE 0\n    END AS \"is_weekend\"\nFROM \"01_std_ct_sales_item.sql\" s;"
+    },
+    {
+      "buildOrder": 13,
+      "layer": "dimension",
+      "physicalName": "13_dim_ct_outlet.sql",
+      "logicalName": "DIM_CT_Outlet",
+      "dependencyLevel": 1,
+      "purpose": "Create the outlet identity dimension from the captured stock source.",
+      "sources": [
+        "RAWN_CT_closing_stock-Copy"
+      ],
+      "dependencies": [],
+      "rawInputs": [
+        "RAWN_CT_closing_stock-Copy"
+      ],
+      "sql": "-- Query Table: 13_dim_ct_outlet.sql\n-- Logical model name: DIM_CT_Outlet\n-- Layer: dimension\n-- Purpose: Create the outlet identity dimension from the captured stock source.\n-- Sources: RAWN_CT_closing_stock-Copy\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    c.\"source_outlet_code\" AS \"outlet_code\",\n    MAX(c.\"source_outlet_name\") AS \"outlet_name\",\n    NULL AS \"region\",\n    NULL AS \"city\",\n    NULL AS \"market_area\",\n    NULL AS \"latitude\",\n    NULL AS \"longitude\",\n    NULL AS \"new_matured_flag\",\n    NULL AS \"active_status\",\n    'derived_from_closing_stock' AS \"source_evidence\"\nFROM \"RAWN_CT_closing_stock-Copy\" c\nWHERE c.\"source_outlet_code\" IS NOT NULL\nGROUP BY c.\"source_outlet_code\";"
+    },
+    {
+      "buildOrder": 14,
+      "layer": "dimension",
+      "physicalName": "14_dim_ct_item.sql",
+      "logicalName": "DIM_CT_Item",
+      "dependencyLevel": 1,
+      "purpose": "Create the item identity, category, UOM and cost reference from Closing Stock.",
+      "sources": [
+        "RAWN_CT_closing_stock-Copy"
+      ],
+      "dependencies": [],
+      "rawInputs": [
+        "RAWN_CT_closing_stock-Copy"
+      ],
+      "sql": "-- Query Table: 14_dim_ct_item.sql\n-- Logical model name: DIM_CT_Item\n-- Layer: dimension\n-- Purpose: Create the item identity, category, UOM and cost reference from Closing Stock.\n-- Sources: RAWN_CT_closing_stock-Copy\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    c.\"item_code\" AS \"item_code\",\n    MAX(c.\"item_name\") AS \"item_name\",\n    MAX(c.\"category_name\") AS \"category_name\",\n    MAX(c.\"super_category_name\") AS \"super_category_name\",\n    MAX(c.\"unit_name\") AS \"canonical_uom\",\n    CASE\n        WHEN COUNT(DISTINCT c.\"unit_name\") = 1 THEN 1\n        ELSE NULL\n    END AS \"uom_conversion_factor\",\n    AVG(\n        CASE\n            WHEN CAST(c.\"average_price\" AS DECIMAL(18,4)) > 0\n            THEN CAST(c.\"average_price\" AS DECIMAL(18,4))\n            ELSE NULL\n        END\n    ) AS \"baseline_average_price\",\n    NULL AS \"reorder_level_qty\",\n    NULL AS \"standard_order_qty\",\n    NULL AS \"primary_vendor\",\n    NULL AS \"alternate_vendor\",\n    NULL AS \"shelf_life_days\",\n    NULL AS \"storage_type\",\n    NULL AS \"food_beverage_non_food_flag\",\n    NULL AS \"criticality\",\n    'derived_from_closing_stock' AS \"source_evidence\"\nFROM \"RAWN_CT_closing_stock-Copy\" c\nWHERE c.\"item_code\" IS NOT NULL\nGROUP BY c.\"item_code\";"
+    },
+    {
+      "buildOrder": 15,
+      "layer": "dimension",
+      "physicalName": "15_dim_ct_menu_item.sql",
+      "logicalName": "DIM_CT_Menu_Item",
+      "dependencyLevel": 2,
+      "purpose": "Create the canonical menu-item dimension from validated sales.",
+      "sources": [
+        "01_std_ct_sales_item.sql"
+      ],
+      "dependencies": [
+        "01_std_ct_sales_item.sql"
+      ],
+      "rawInputs": [],
+      "sql": "-- Query Table: 15_dim_ct_menu_item.sql\n-- Logical model name: DIM_CT_Menu_Item\n-- Layer: dimension\n-- Purpose: Create the canonical menu-item dimension from validated sales.\n-- Sources: 01_std_ct_sales_item.sql\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    s.\"item_code\" AS \"menu_item_code\",\n    s.\"item_name\" AS \"menu_item_name\",\n    MAX(s.\"super_category_name\") AS \"super_category_name\",\n    MAX(s.\"category_name\") AS \"category_name\",\n    AVG(s.\"item_rate\") AS \"average_menu_rate\"\nFROM \"01_std_ct_sales_item.sql\" s\nGROUP BY s.\"item_code\", s.\"item_name\";"
+    },
+    {
+      "buildOrder": 16,
+      "layer": "dimension",
+      "physicalName": "16_dim_ct_vendor.sql",
+      "logicalName": "DIM_CT_Vendor",
+      "dependencyLevel": 2,
+      "purpose": "Create the vendor identity dimension from Vendor Report with transaction-only fallbacks.",
+      "sources": [
+        "10_std_ct_vendor_report.sql",
+        "RAWN_CT_enterprise_purchase_order-Copy",
+        "RAWN_CT_enterprise_entry-Copy"
+      ],
+      "dependencies": [
+        "10_std_ct_vendor_report.sql"
+      ],
+      "rawInputs": [
+        "RAWN_CT_enterprise_purchase_order-Copy",
+        "RAWN_CT_enterprise_entry-Copy"
+      ],
+      "sql": "-- Query Table: 16_dim_ct_vendor.sql\n-- Logical model name: DIM_CT_Vendor\n-- Layer: dimension\n-- Purpose: Create the vendor identity dimension from Vendor Report with transaction-only fallbacks.\n-- Sources: 10_std_ct_vendor_report.sql, RAWN_CT_enterprise_purchase_order-Copy, RAWN_CT_enterprise_entry-Copy\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    MAX(v.\"vendor_code\") AS \"vendor_code\",\n    v.\"vendor_name\" AS \"vendor_name\",\n    MAX(v.\"description\") AS \"description\",\n    MAX(v.\"state\") AS \"state\",\n    MIN(v.\"valid_from_date\") AS \"valid_from_date\",\n    MAX(v.\"valid_to_date\") AS \"valid_to_date\",\n    MAX(v.\"msme\") AS \"msme\",\n    MAX(v.\"gstin_number\") AS \"gstin_number\",\n    MAX(v.\"fssai_number\") AS \"fssai_number\",\n    MAX(v.\"pan_number\") AS \"pan_number\",\n    NULL AS \"active_status\",\n    NULL AS \"default_lead_time_days\",\n    NULL AS \"approved_category_mapping\",\n    'vendor_report' AS \"source_evidence\"\nFROM \"10_std_ct_vendor_report.sql\" v\nGROUP BY v.\"vendor_name\"\nUNION ALL\nSELECT\n    NULL AS \"vendor_code\",\n    t.\"vendor_name\" AS \"vendor_name\",\n    NULL AS \"description\",\n    NULL AS \"state\",\n    NULL AS \"valid_from_date\",\n    NULL AS \"valid_to_date\",\n    NULL AS \"msme\",\n    NULL AS \"gstin_number\",\n    NULL AS \"fssai_number\",\n    NULL AS \"pan_number\",\n    NULL AS \"active_status\",\n    NULL AS \"default_lead_time_days\",\n    NULL AS \"approved_category_mapping\",\n    'observed_in_po_or_entry_only' AS \"source_evidence\"\nFROM (\n    SELECT \"vendor_name\" AS \"vendor_name\"\n    FROM \"RAWN_CT_enterprise_purchase_order-Copy\"\n    WHERE \"vendor_name\" IS NOT NULL\n    UNION\n    SELECT \"vendor_name\" AS \"vendor_name\"\n    FROM \"RAWN_CT_enterprise_entry-Copy\"\n    WHERE \"vendor_name\" IS NOT NULL\n) t\nLEFT JOIN (\n    SELECT DISTINCT \"vendor_name\" AS \"vendor_name\"\n    FROM \"10_std_ct_vendor_report.sql\"\n) v\n  ON t.\"vendor_name\" = v.\"vendor_name\"\nWHERE v.\"vendor_name\" IS NULL;"
+    },
+    {
+      "buildOrder": 17,
+      "layer": "dimension",
+      "physicalName": "17_dim_ct_recipe_effective.sql",
+      "logicalName": "DIM_CT_Recipe_Effective",
+      "dependencyLevel": 1,
+      "purpose": "Resolve recipe ingredients to canonical item UOM and unit cost.",
+      "sources": [
+        "RAWN_CT_item_recipe_report-Copy",
+        "RAWN_CT_closing_stock-Copy"
+      ],
+      "dependencies": [],
+      "rawInputs": [
+        "RAWN_CT_item_recipe_report-Copy",
+        "RAWN_CT_closing_stock-Copy"
+      ],
+      "sql": "-- Query Table: 17_dim_ct_recipe_effective.sql\n-- Logical model name: DIM_CT_Recipe_Effective\n-- Layer: dimension\n-- Purpose: Resolve recipe ingredients to canonical item UOM and unit cost.\n-- Sources: RAWN_CT_item_recipe_report-Copy, RAWN_CT_closing_stock-Copy\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    r.\"menu_item_number\" AS \"menu_item_code\",\n    r.\"menu_item_name\" AS \"menu_item_name\",\n    r.\"ingredient_code\" AS \"ingredient_code\",\n    r.\"ingredient_name\" AS \"ingredient_name\",\n    CAST(r.\"recipe_qty_per_menu_unit\" AS DECIMAL(18,6)) AS \"recipe_qty_per_menu_unit\",\n    r.\"recipe_unit\" AS \"recipe_uom\",\n    i.\"canonical_uom\" AS \"canonical_uom\",\n    CASE\n        WHEN LOWER(r.\"recipe_unit\") = LOWER(i.\"canonical_uom\") THEN 1\n        ELSE NULL\n    END AS \"uom_conversion_factor\",\n    CASE\n        WHEN LOWER(r.\"recipe_unit\") = LOWER(i.\"canonical_uom\")\n        THEN CAST(r.\"recipe_qty_per_menu_unit\" AS DECIMAL(18,6))\n        ELSE NULL\n    END AS \"canonical_recipe_qty\",\n    CAST(i.\"average_price\" AS DECIMAL(18,4)) AS \"ingredient_unit_cost\",\n    CASE\n        WHEN LOWER(r.\"recipe_unit\") = LOWER(i.\"canonical_uom\")\n        THEN CAST(r.\"recipe_qty_per_menu_unit\" AS DECIMAL(18,6))\n          * CAST(i.\"average_price\" AS DECIMAL(18,4))\n        ELSE NULL\n    END AS \"ingredient_cost_per_menu_unit\"\nFROM \"RAWN_CT_item_recipe_report-Copy\" r\nLEFT JOIN (\n    SELECT\n        \"item_code\" AS \"item_code\",\n        MAX(\"unit_name\") AS \"canonical_uom\",\n        AVG(\n            CASE\n                WHEN CAST(\"average_price\" AS DECIMAL(18,4)) > 0\n                THEN CAST(\"average_price\" AS DECIMAL(18,4))\n                ELSE NULL\n            END\n        ) AS \"average_price\"\n    FROM \"RAWN_CT_closing_stock-Copy\"\n    GROUP BY \"item_code\"\n) i\n  ON r.\"ingredient_code\" = i.\"item_code\"\nWHERE r.\"menu_item_number\" IS NOT NULL\n  AND r.\"ingredient_code\" IS NOT NULL;"
+    },
+    {
+      "buildOrder": 18,
+      "layer": "fact",
+      "physicalName": "18_fact_ct_sales.sql",
+      "logicalName": "FACT_CT_Sales",
+      "dependencyLevel": 2,
+      "purpose": "Expose validated bill-item sales at its native grain.",
+      "sources": [
+        "01_std_ct_sales_item.sql"
+      ],
+      "dependencies": [
+        "01_std_ct_sales_item.sql"
+      ],
+      "rawInputs": [],
+      "sql": "-- Query Table: 18_fact_ct_sales.sql\n-- Logical model name: FACT_CT_Sales\n-- Layer: fact\n-- Purpose: Expose validated bill-item sales at its native grain.\n-- Sources: 01_std_ct_sales_item.sql\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    s.*,\n    CASE\n        WHEN s.\"sold_qty\" <> 0 THEN s.\"net_sales\" / s.\"sold_qty\"\n        ELSE NULL\n    END AS \"realized_unit_price\"\nFROM \"01_std_ct_sales_item.sql\" s;"
+    },
+    {
+      "buildOrder": 19,
+      "layer": "fact",
+      "physicalName": "19_fact_ct_theoretical_consumption.sql",
+      "logicalName": "FACT_CT_Theoretical_Consumption",
+      "dependencyLevel": 2,
+      "purpose": "Expose theoretical ingredient consumption at outlet-item-month grain.",
+      "sources": [
+        "03_std_ct_theoretical_consumption.sql"
+      ],
+      "dependencies": [
+        "03_std_ct_theoretical_consumption.sql"
+      ],
+      "rawInputs": [],
+      "sql": "-- Query Table: 19_fact_ct_theoretical_consumption.sql\n-- Logical model name: FACT_CT_Theoretical_Consumption\n-- Layer: fact\n-- Purpose: Expose theoretical ingredient consumption at outlet-item-month grain.\n-- Sources: 03_std_ct_theoretical_consumption.sql\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    t.*,\n    t.\"theoretical_consumption_qty\" * t.\"average_unit_cost\" AS \"theoretical_consumption_value\"\nFROM \"03_std_ct_theoretical_consumption.sql\" t;"
+    },
+    {
+      "buildOrder": 20,
+      "layer": "fact",
+      "physicalName": "20_fact_ct_actual_consumption.sql",
+      "logicalName": "FACT_CT_Actual_Consumption",
+      "dependencyLevel": 2,
+      "purpose": "Calculate the approved inventory movement bridge for actual consumption.",
+      "sources": [
+        "04_std_ct_inventory_period.sql"
+      ],
+      "dependencies": [
+        "04_std_ct_inventory_period.sql"
+      ],
+      "rawInputs": [],
+      "sql": "-- Query Table: 20_fact_ct_actual_consumption.sql\n-- Logical model name: FACT_CT_Actual_Consumption\n-- Layer: fact\n-- Purpose: Calculate the approved inventory movement bridge for actual consumption.\n-- Sources: 04_std_ct_inventory_period.sql\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    p.*,\n    p.\"opening_qty\"\n      + p.\"purchase_qty\"\n      + p.\"transfer_in_qty\"\n      - p.\"transfer_out_qty\"\n      - p.\"return_qty\"\n      - p.\"closing_qty\" AS \"calculated_actual_consumption_qty\",\n    (\n      p.\"opening_qty\"\n      + p.\"purchase_qty\"\n      + p.\"transfer_in_qty\"\n      - p.\"transfer_out_qty\"\n      - p.\"return_qty\"\n      - p.\"closing_qty\"\n    ) * p.\"average_unit_cost\" AS \"calculated_actual_consumption_value\"\nFROM \"04_std_ct_inventory_period.sql\" p;"
+    },
+    {
+      "buildOrder": 21,
+      "layer": "fact",
+      "physicalName": "21_fact_ct_consumption_variance.sql",
+      "logicalName": "FACT_CT_Consumption_Variance",
+      "dependencyLevel": 3,
+      "purpose": "Compare actual and theoretical ingredient consumption.",
+      "sources": [
+        "20_fact_ct_actual_consumption.sql",
+        "19_fact_ct_theoretical_consumption.sql"
+      ],
+      "dependencies": [
+        "20_fact_ct_actual_consumption.sql",
+        "19_fact_ct_theoretical_consumption.sql"
+      ],
+      "rawInputs": [],
+      "sql": "-- Query Table: 21_fact_ct_consumption_variance.sql\n-- Logical model name: FACT_CT_Consumption_Variance\n-- Layer: fact\n-- Purpose: Compare actual and theoretical ingredient consumption.\n-- Sources: 20_fact_ct_actual_consumption.sql, 19_fact_ct_theoretical_consumption.sql\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    a.\"source_period_code\" AS \"source_period_code\",\n    a.\"outlet_code\" AS \"outlet_code\",\n    a.\"outlet_name\" AS \"outlet_name\",\n    a.\"closing_date\" AS \"closing_date\",\n    a.\"item_code\" AS \"item_code\",\n    a.\"item_name\" AS \"item_name\",\n    a.\"category_name\" AS \"category_name\",\n    a.\"super_category_name\" AS \"super_category_name\",\n    a.\"canonical_uom\" AS \"canonical_uom\",\n    a.\"average_unit_cost\" AS \"average_unit_cost\",\n    a.\"calculated_actual_consumption_qty\" AS \"actual_consumption_qty\",\n    COALESCE(t.\"theoretical_consumption_qty\", 0) AS \"theoretical_consumption_qty\",\n    a.\"calculated_actual_consumption_qty\" - COALESCE(t.\"theoretical_consumption_qty\", 0) AS \"variance_qty\",\n    CASE\n        WHEN a.\"calculated_actual_consumption_qty\" > COALESCE(t.\"theoretical_consumption_qty\", 0)\n        THEN (a.\"calculated_actual_consumption_qty\" - COALESCE(t.\"theoretical_consumption_qty\", 0)) * a.\"average_unit_cost\"\n        ELSE 0\n    END AS \"leakage_value\",\n    CASE\n        WHEN a.\"calculated_actual_consumption_qty\" < COALESCE(t.\"theoretical_consumption_qty\", 0)\n        THEN COALESCE(t.\"theoretical_consumption_qty\", 0) - a.\"calculated_actual_consumption_qty\"\n        ELSE 0\n    END AS \"low_consumption_qty\"\nFROM \"20_fact_ct_actual_consumption.sql\" a\nLEFT JOIN \"19_fact_ct_theoretical_consumption.sql\" t\n  ON a.\"source_period_code\" = t.\"source_period_code\"\n AND a.\"outlet_code\" = t.\"outlet_code\"\n AND a.\"item_code\" = t.\"item_code\";"
+    },
+    {
+      "buildOrder": 22,
+      "layer": "fact",
+      "physicalName": "22_fact_ct_purchase_order.sql",
+      "logicalName": "FACT_CT_Purchase_Order",
+      "dependencyLevel": 2,
+      "purpose": "Calculate ordered, pending and open PO values.",
+      "sources": [
+        "07_std_ct_purchase_order.sql"
+      ],
+      "dependencies": [
+        "07_std_ct_purchase_order.sql"
+      ],
+      "rawInputs": [],
+      "sql": "-- Query Table: 22_fact_ct_purchase_order.sql\n-- Logical model name: FACT_CT_Purchase_Order\n-- Layer: fact\n-- Purpose: Calculate ordered, pending and open PO values.\n-- Sources: 07_std_ct_purchase_order.sql\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    p.*,\n    p.\"remaining_qty\" * p.\"unit_price\" AS \"open_po_value\",\n    p.\"processed_qty\" * p.\"unit_price\" AS \"processed_po_value\",\n    CASE\n        WHEN p.\"is_open_po\" = 1 AND p.\"expected_delivery_date\" IS NULL THEN 1\n        ELSE 0\n    END AS \"missing_expected_delivery_flag\",\n    CASE\n        WHEN p.\"is_open_po\" = 1\n         AND p.\"expected_delivery_date\" < p.\"as_of_date\"\n        THEN 1 ELSE 0\n    END AS \"delayed_po_flag\"\nFROM \"07_std_ct_purchase_order.sql\" p;"
+    },
+    {
+      "buildOrder": 23,
+      "layer": "fact",
+      "physicalName": "23_fact_ct_purchase_receipt.sql",
+      "logicalName": "FACT_CT_Purchase_Receipt",
+      "dependencyLevel": 2,
+      "purpose": "Expose PO-linked accepted receipt lines.",
+      "sources": [
+        "08_std_ct_purchase_receipt.sql"
+      ],
+      "dependencies": [
+        "08_std_ct_purchase_receipt.sql"
+      ],
+      "rawInputs": [],
+      "sql": "-- Query Table: 23_fact_ct_purchase_receipt.sql\n-- Logical model name: FACT_CT_Purchase_Receipt\n-- Layer: fact\n-- Purpose: Expose PO-linked accepted receipt lines.\n-- Sources: 08_std_ct_purchase_receipt.sql\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT r.*\nFROM \"08_std_ct_purchase_receipt.sql\" r;"
+    },
+    {
+      "buildOrder": 24,
+      "layer": "fact",
+      "physicalName": "24_fact_ct_po_receipt_line.sql",
+      "logicalName": "FACT_CT_PO_Receipt_Line",
+      "dependencyLevel": 2,
+      "purpose": "Join exact PO number, outlet and item to receipt lines for fill-rate and OTIF logic.",
+      "sources": [
+        "07_std_ct_purchase_order.sql",
+        "08_std_ct_purchase_receipt.sql"
+      ],
+      "dependencies": [
+        "07_std_ct_purchase_order.sql",
+        "08_std_ct_purchase_receipt.sql"
+      ],
+      "rawInputs": [],
+      "sql": "-- Query Table: 24_fact_ct_po_receipt_line.sql\n-- Logical model name: FACT_CT_PO_Receipt_Line\n-- Layer: fact\n-- Purpose: Join exact PO number, outlet and item to receipt lines for fill-rate and OTIF logic.\n-- Sources: 07_std_ct_purchase_order.sql, 08_std_ct_purchase_receipt.sql\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    p.\"source_period_code\" AS \"source_period_code\",\n    p.\"as_of_date\" AS \"as_of_date\",\n    p.\"outlet_code\" AS \"outlet_code\",\n    p.\"outlet_name\" AS \"outlet_name\",\n    p.\"vendor_name\" AS \"vendor_name\",\n    p.\"po_number\" AS \"po_number\",\n    p.\"po_date\" AS \"po_date\",\n    p.\"expected_delivery_date\" AS \"expected_delivery_date\",\n    p.\"po_status\" AS \"po_status\",\n    p.\"item_code\" AS \"item_code\",\n    p.\"item_name\" AS \"item_name\",\n    p.\"category_name\" AS \"category_name\",\n    p.\"canonical_uom\" AS \"canonical_uom\",\n    p.\"ordered_qty\" AS \"ordered_qty\",\n    p.\"processed_qty\" AS \"processed_qty\",\n    p.\"remaining_qty\" AS \"remaining_qty\",\n    p.\"unit_price\" AS \"unit_price\",\n    p.\"gross_order_value\" AS \"gross_order_value\",\n    p.\"is_open_po\" AS \"is_open_po\",\n    p.\"remaining_qty\" * p.\"unit_price\" AS \"open_po_value\",\n    r.\"receipt_date\" AS \"receipt_date\",\n    COALESCE(r.\"received_qty\", 0) AS \"received_qty\",\n    COALESCE(r.\"receipt_total\", 0) AS \"receipt_total\",\n    CASE\n        WHEN r.\"receipt_date\" IS NOT NULL\n         AND p.\"expected_delivery_date\" IS NOT NULL\n         AND r.\"receipt_date\" <= p.\"expected_delivery_date\"\n        THEN 1 ELSE 0\n    END AS \"on_time_flag\",\n    CASE\n        WHEN COALESCE(r.\"received_qty\", 0) >= p.\"ordered_qty\" THEN 1 ELSE 0\n    END AS \"in_full_flag\",\n    CASE\n        WHEN p.\"is_open_po\" = 0\n         AND r.\"receipt_date\" IS NOT NULL\n         AND p.\"expected_delivery_date\" IS NOT NULL\n        THEN 1 ELSE 0\n    END AS \"eligible_closed_line_flag\",\n    CASE\n        WHEN p.\"is_open_po\" = 0\n         AND r.\"receipt_date\" IS NOT NULL\n         AND p.\"expected_delivery_date\" IS NOT NULL\n         AND r.\"receipt_date\" <= p.\"expected_delivery_date\"\n         AND COALESCE(r.\"received_qty\", 0) >= p.\"ordered_qty\"\n        THEN 1 ELSE 0\n    END AS \"otif_success_flag\",\n    CASE\n        WHEN r.\"receipt_date\" IS NOT NULL\n         AND p.\"expected_delivery_date\" IS NOT NULL\n        THEN DATEDIFF(r.\"receipt_date\", p.\"expected_delivery_date\")\n        ELSE NULL\n    END AS \"lead_time_deviation_days\",\n    CASE\n        WHEN p.\"is_open_po\" = 1\n         AND p.\"expected_delivery_date\" IS NULL\n        THEN 1 ELSE 0\n    END AS \"missing_expected_delivery_flag\",\n    CASE\n        WHEN p.\"is_open_po\" = 1\n         AND p.\"expected_delivery_date\" < p.\"as_of_date\"\n        THEN 1 ELSE 0\n    END AS \"delayed_po_flag\"\nFROM \"07_std_ct_purchase_order.sql\" p\nLEFT JOIN (\n    SELECT\n        e.\"source_period_code\" AS \"source_period_code\",\n        e.\"outlet_code\" AS \"outlet_code\",\n        e.\"po_number\" AS \"po_number\",\n        e.\"item_code\" AS \"item_code\",\n        MAX(e.\"receipt_date\") AS \"receipt_date\",\n        SUM(e.\"received_qty\") AS \"received_qty\",\n        SUM(e.\"receipt_total\") AS \"receipt_total\"\n    FROM \"08_std_ct_purchase_receipt.sql\" e\n    GROUP BY\n        e.\"source_period_code\",\n        e.\"outlet_code\",\n        e.\"po_number\",\n        e.\"item_code\"\n) r\n  ON p.\"outlet_code\" = r.\"outlet_code\"\n AND p.\"po_number\" = r.\"po_number\"\n AND p.\"item_code\" = r.\"item_code\"\n AND p.\"source_period_code\" = r.\"source_period_code\";"
+    },
+    {
+      "buildOrder": 25,
+      "layer": "fact",
+      "physicalName": "25_fact_ct_menu_profitability.sql",
+      "logicalName": "FACT_CT_Menu_Profitability",
+      "dependencyLevel": 2,
+      "purpose": "Aggregate menu sales, theoretical COGS and recipe gross margin.",
+      "sources": [
+        "01_std_ct_sales_item.sql",
+        "17_dim_ct_recipe_effective.sql"
+      ],
+      "dependencies": [
+        "01_std_ct_sales_item.sql",
+        "17_dim_ct_recipe_effective.sql"
+      ],
+      "rawInputs": [],
+      "sql": "-- Query Table: 25_fact_ct_menu_profitability.sql\n-- Logical model name: FACT_CT_Menu_Profitability\n-- Layer: fact\n-- Purpose: Aggregate menu sales, theoretical COGS and recipe gross margin.\n-- Sources: 01_std_ct_sales_item.sql, 17_dim_ct_recipe_effective.sql\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    s.*,\n    COALESCE(c.\"theoretical_cost_per_menu_unit\", 0)\n      * s.\"sold_qty\" AS \"theoretical_cogs\",\n    s.\"net_sales\"\n      - COALESCE(c.\"theoretical_cost_per_menu_unit\", 0)\n      * s.\"sold_qty\" AS \"gross_margin_value\",\n    CASE\n        WHEN s.\"net_sales\" <> 0\n        THEN (\n          s.\"net_sales\"\n          - COALESCE(c.\"theoretical_cost_per_menu_unit\", 0) * s.\"sold_qty\"\n        ) / s.\"net_sales\" * 100\n        ELSE NULL\n    END AS \"gross_margin_percent\"\nFROM (\n    SELECT\n        \"source_period_code\" AS \"source_period_code\",\n        \"outlet_code\" AS \"outlet_code\",\n        \"outlet_name\" AS \"outlet_name\",\n        \"item_code\" AS \"menu_item_code\",\n        \"item_name\" AS \"menu_item_name\",\n        \"super_category_name\" AS \"super_category_name\",\n        \"category_name\" AS \"category_name\",\n        SUM(\"sold_qty\") AS \"sold_qty\",\n        SUM(\"net_sales\") AS \"net_sales\",\n        SUM(\"source_purchase_value\") AS \"source_reported_purchase_value\"\n    FROM \"01_std_ct_sales_item.sql\"\n    GROUP BY\n        \"source_period_code\",\n        \"outlet_code\",\n        \"outlet_name\",\n        \"item_code\",\n        \"item_name\",\n        \"super_category_name\",\n        \"category_name\"\n) s\nLEFT JOIN (\n    SELECT\n        \"menu_item_code\" AS \"menu_item_code\",\n        SUM(\"ingredient_cost_per_menu_unit\") AS \"theoretical_cost_per_menu_unit\"\n    FROM \"17_dim_ct_recipe_effective.sql\"\n    GROUP BY \"menu_item_code\"\n) c\n  ON s.\"menu_item_code\" = c.\"menu_item_code\";"
+    },
+    {
+      "buildOrder": 26,
+      "layer": "fact",
+      "physicalName": "26_fact_ct_forecast_ingredient_demand.sql",
+      "logicalName": "FACT_CT_Forecast_Ingredient_Demand",
+      "dependencyLevel": 2,
+      "purpose": "Convert menu demand forecast into ingredient requirements through the effective recipe.",
+      "sources": [
+        "11_std_ct_menu_forecast.sql",
+        "17_dim_ct_recipe_effective.sql"
+      ],
+      "dependencies": [
+        "11_std_ct_menu_forecast.sql",
+        "17_dim_ct_recipe_effective.sql"
+      ],
+      "rawInputs": [],
+      "sql": "-- Query Table: 26_fact_ct_forecast_ingredient_demand.sql\n-- Logical model name: FACT_CT_Forecast_Ingredient_Demand\n-- Layer: fact\n-- Purpose: Convert menu demand forecast into ingredient requirements through the effective recipe.\n-- Sources: 11_std_ct_menu_forecast.sql, 17_dim_ct_recipe_effective.sql\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    f.\"source_period_code\" AS \"source_period_code\",\n    f.\"forecast_date\" AS \"forecast_date\",\n    f.\"outlet_code\" AS \"outlet_code\",\n    f.\"outlet_name\" AS \"outlet_name\",\n    f.\"menu_item_code\" AS \"menu_item_code\",\n    f.\"menu_item_name\" AS \"menu_item_name\",\n    r.\"ingredient_code\" AS \"item_code\",\n    r.\"ingredient_name\" AS \"item_name\",\n    r.\"canonical_uom\" AS \"canonical_uom\",\n    f.\"forecast_menu_qty\" AS \"forecast_menu_qty\",\n    r.\"canonical_recipe_qty\" AS \"canonical_recipe_qty\",\n    f.\"forecast_menu_qty\" * r.\"canonical_recipe_qty\" AS \"forecast_ingredient_qty\",\n    f.\"forecast_net_sales\" AS \"forecast_net_sales\"\nFROM \"11_std_ct_menu_forecast.sql\" f\nINNER JOIN \"17_dim_ct_recipe_effective.sql\" r\n  ON f.\"menu_item_code\" = r.\"menu_item_code\";"
+    },
+    {
+      "buildOrder": 27,
+      "layer": "fact",
+      "physicalName": "27_fact_ct_inventory_risk.sql",
+      "logicalName": "FACT_CT_Inventory_Risk",
+      "dependencyLevel": 3,
+      "purpose": "Calculate source-supported stockout and days-cover risk at ingredient checkpoint grain.",
+      "sources": [
+        "05_std_ct_inventory_snapshot.sql",
+        "26_fact_ct_forecast_ingredient_demand.sql",
+        "22_fact_ct_purchase_order.sql"
+      ],
+      "dependencies": [
+        "05_std_ct_inventory_snapshot.sql",
+        "26_fact_ct_forecast_ingredient_demand.sql",
+        "22_fact_ct_purchase_order.sql"
+      ],
+      "rawInputs": [],
+      "sql": "-- Query Table: 27_fact_ct_inventory_risk.sql\n-- Logical model name: FACT_CT_Inventory_Risk\n-- Layer: fact\n-- Purpose: Calculate source-supported stockout and days-cover risk at ingredient checkpoint grain.\n-- Sources: 05_std_ct_inventory_snapshot.sql, 26_fact_ct_forecast_ingredient_demand.sql, 22_fact_ct_purchase_order.sql\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    s.\"source_period_code\" AS \"source_period_code\",\n    s.\"snapshot_date\" AS \"snapshot_date\",\n    s.\"outlet_code\" AS \"outlet_code\",\n    s.\"outlet_name\" AS \"outlet_name\",\n    s.\"item_code\" AS \"item_code\",\n    s.\"item_name\" AS \"item_name\",\n    s.\"category_name\" AS \"category_name\",\n    s.\"super_category_name\" AS \"super_category_name\",\n    s.\"canonical_uom\" AS \"canonical_uom\",\n    s.\"average_unit_cost\" AS \"average_unit_cost\",\n    s.\"closing_qty\" AS \"current_stock_qty\",\n    s.\"closing_value\" AS \"closing_value\",\n    COALESCE(f.\"forecast_required_qty\", 0) AS \"forecast_required_qty\",\n    COALESCE(f.\"forecast_required_qty\", 0) * 1.15\n      AS \"required_qty_with_safety\",\n    COALESCE(p.\"valid_open_po_qty\", 0) AS \"valid_open_po_qty\",\n    COALESCE(p.\"valid_open_po_count\", 0) AS \"valid_open_po_count\",\n    COALESCE(p.\"open_po_value\", 0) AS \"open_po_value\",\n    CASE\n        WHEN COALESCE(f.\"forecast_required_qty\", 0) * 1.15\n           > s.\"closing_qty\" + COALESCE(p.\"valid_open_po_qty\", 0)\n        THEN COALESCE(f.\"forecast_required_qty\", 0) * 1.15\n           - s.\"closing_qty\" - COALESCE(p.\"valid_open_po_qty\", 0)\n        ELSE 0\n    END AS \"shortage_qty\",\n    CASE\n        WHEN COALESCE(f.\"forecast_required_qty\", 0) > 0\n        THEN (s.\"closing_qty\" + COALESCE(p.\"valid_open_po_qty\", 0))\n           / (COALESCE(f.\"forecast_required_qty\", 0) / 7)\n        ELSE NULL\n    END AS \"days_cover\",\n    CASE\n        WHEN s.\"closing_qty\" <= 0\n         AND COALESCE(f.\"forecast_required_qty\", 0) > 0\n        THEN 'PURPLE'\n        WHEN COALESCE(f.\"forecast_required_qty\", 0)\n           > s.\"closing_qty\" + COALESCE(p.\"valid_open_po_qty\", 0)\n        THEN 'RED'\n        WHEN COALESCE(f.\"forecast_required_qty\", 0) * 1.15\n           > s.\"closing_qty\" + COALESCE(p.\"valid_open_po_qty\", 0)\n        THEN 'AMBER'\n        ELSE 'GREEN'\n    END AS \"stockout_risk_severity\",\n    CASE\n        WHEN s.\"closing_qty\" <= 0\n         AND COALESCE(f.\"forecast_required_qty\", 0) > 0\n        THEN 'PURPLE'\n        WHEN COALESCE(f.\"forecast_required_qty\", 0)\n           > s.\"closing_qty\" + COALESCE(p.\"valid_open_po_qty\", 0)\n        THEN 'RED'\n        WHEN COALESCE(f.\"forecast_required_qty\", 0) * 1.15\n           > s.\"closing_qty\" + COALESCE(p.\"valid_open_po_qty\", 0)\n        THEN 'AMBER'\n        ELSE 'GREEN'\n    END AS \"risk_severity\",\n    CASE\n        WHEN s.\"closing_qty\" <= 0\n         AND COALESCE(f.\"forecast_required_qty\", 0) > 0\n        THEN 4\n        WHEN COALESCE(f.\"forecast_required_qty\", 0)\n           > s.\"closing_qty\" + COALESCE(p.\"valid_open_po_qty\", 0)\n        THEN 3\n        WHEN COALESCE(f.\"forecast_required_qty\", 0) * 1.15\n           > s.\"closing_qty\" + COALESCE(p.\"valid_open_po_qty\", 0)\n        THEN 2\n        ELSE 1\n    END AS \"risk_severity_rank\",\n    CASE\n        WHEN s.\"closing_qty\" <= 0\n         AND COALESCE(f.\"forecast_required_qty\", 0) > 0\n        THEN 'STOCKOUT'\n        WHEN COALESCE(f.\"forecast_required_qty\", 0) * 1.15\n           > s.\"closing_qty\" + COALESCE(p.\"valid_open_po_qty\", 0)\n        THEN 'STOCKOUT'\n        ELSE 'HEALTHY'\n    END AS \"risk_type\",\n    CASE\n        WHEN COALESCE(f.\"forecast_required_qty\", 0) * 1.15\n           > s.\"closing_qty\" + COALESCE(p.\"valid_open_po_qty\", 0)\n        THEN (\n            COALESCE(f.\"forecast_required_qty\", 0) * 1.15\n            - s.\"closing_qty\" - COALESCE(p.\"valid_open_po_qty\", 0)\n        ) * s.\"average_unit_cost\"\n        ELSE 0\n    END AS \"shortage_cost_value\",\n    CASE\n        WHEN COALESCE(f.\"forecast_required_qty\", 0) * 1.15\n           > s.\"closing_qty\" + COALESCE(p.\"valid_open_po_qty\", 0)\n        THEN (\n            COALESCE(f.\"forecast_required_qty\", 0) * 1.15\n            - s.\"closing_qty\" - COALESCE(p.\"valid_open_po_qty\", 0)\n        ) * s.\"average_unit_cost\"\n        ELSE 0\n    END AS \"total_risk_value\",\n    NULL AS \"criticality\",\n    NULL AS \"primary_vendor\",\n    NULL AS \"alternate_vendor\",\n    'vendor_item_approval_mapping_unavailable' AS \"vendor_mapping_status\",\n    CONCAT(\n        s.\"source_period_code\", ':', s.\"outlet_code\", ':', s.\"item_code\"\n    ) AS \"action_id\",\n    CASE\n        WHEN s.\"closing_qty\" <= 0\n         AND COALESCE(f.\"forecast_required_qty\", 0) > 0\n         AND COALESCE(p.\"valid_open_po_qty\", 0) = 0\n        THEN 'Raise purchase order'\n        WHEN COALESCE(f.\"forecast_required_qty\", 0) * 1.15\n           > s.\"closing_qty\" + COALESCE(p.\"valid_open_po_qty\", 0)\n         AND COALESCE(p.\"valid_open_po_qty\", 0) > 0\n        THEN 'Expedite existing PO'\n        ELSE 'Monitor'\n    END AS \"recommended_action\",\n    CASE\n        WHEN COALESCE(f.\"forecast_required_qty\", 0) * 1.15\n           > s.\"closing_qty\" + COALESCE(p.\"valid_open_po_qty\", 0)\n        THEN 'Procurement'\n        ELSE 'Supply Chain'\n    END AS \"action_owner\",\n    CASE\n        WHEN s.\"closing_qty\" <= 0\n         AND COALESCE(f.\"forecast_required_qty\", 0) > 0\n        THEN 'Due today'\n        WHEN COALESCE(f.\"forecast_required_qty\", 0)\n           > s.\"closing_qty\" + COALESCE(p.\"valid_open_po_qty\", 0)\n        THEN 'Due today'\n        WHEN COALESCE(f.\"forecast_required_qty\", 0) * 1.15\n           > s.\"closing_qty\" + COALESCE(p.\"valid_open_po_qty\", 0)\n        THEN 'Due in 3 days'\n        ELSE 'Monitor'\n    END AS \"due_band\"\nFROM \"05_std_ct_inventory_snapshot.sql\" s\nLEFT JOIN (\n    SELECT\n        \"source_period_code\" AS \"source_period_code\",\n        \"outlet_code\" AS \"outlet_code\",\n        \"item_code\" AS \"item_code\",\n        SUM(\"forecast_ingredient_qty\") AS \"forecast_required_qty\"\n    FROM \"26_fact_ct_forecast_ingredient_demand.sql\"\n    GROUP BY \"source_period_code\", \"outlet_code\", \"item_code\"\n) f\n  ON s.\"source_period_code\" = f.\"source_period_code\"\n AND s.\"outlet_code\" = f.\"outlet_code\"\n AND s.\"item_code\" = f.\"item_code\"\nLEFT JOIN (\n    SELECT\n        \"source_period_code\" AS \"source_period_code\",\n        \"outlet_code\" AS \"outlet_code\",\n        \"item_code\" AS \"item_code\",\n        SUM(\"remaining_qty\") AS \"valid_open_po_qty\",\n        SUM(\"open_po_value\") AS \"open_po_value\",\n        COUNT(DISTINCT \"po_number\") AS \"valid_open_po_count\"\n    FROM \"22_fact_ct_purchase_order.sql\"\n    WHERE \"is_open_po\" = 1\n    GROUP BY \"source_period_code\", \"outlet_code\", \"item_code\"\n) p\n  ON s.\"source_period_code\" = p.\"source_period_code\"\n AND s.\"outlet_code\" = p.\"outlet_code\"\n AND s.\"item_code\" = p.\"item_code\";"
+    },
+    {
+      "buildOrder": 28,
+      "layer": "fact",
+      "physicalName": "28_fact_ct_menu_impact.sql",
+      "logicalName": "FACT_CT_Menu_Impact",
+      "dependencyLevel": 3,
+      "purpose": "Connect risky ingredients back to forecast menu items and revenue at risk.",
+      "sources": [
+        "05_std_ct_inventory_snapshot.sql",
+        "26_fact_ct_forecast_ingredient_demand.sql",
+        "22_fact_ct_purchase_order.sql"
+      ],
+      "dependencies": [
+        "05_std_ct_inventory_snapshot.sql",
+        "26_fact_ct_forecast_ingredient_demand.sql",
+        "22_fact_ct_purchase_order.sql"
+      ],
+      "rawInputs": [],
+      "sql": "-- Query Table: 28_fact_ct_menu_impact.sql\n-- Logical model name: FACT_CT_Menu_Impact\n-- Layer: fact\n-- Purpose: Connect risky ingredients back to forecast menu items and revenue at risk.\n-- Sources: 05_std_ct_inventory_snapshot.sql, 26_fact_ct_forecast_ingredient_demand.sql, 22_fact_ct_purchase_order.sql\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nWITH forecast_menu AS (\n    SELECT\n        \"source_period_code\" AS \"source_period_code\",\n        \"outlet_code\" AS \"outlet_code\",\n        \"outlet_name\" AS \"outlet_name\",\n        \"menu_item_code\" AS \"menu_item_code\",\n        \"menu_item_name\" AS \"menu_item_name\",\n        \"item_code\" AS \"item_code\",\n        \"item_name\" AS \"item_name\",\n        SUM(\"forecast_menu_qty\") AS \"forecast_menu_qty\",\n        SUM(\"forecast_ingredient_qty\") AS \"forecast_ingredient_qty\",\n        SUM(\"forecast_net_sales\") AS \"forecast_net_sales\"\n    FROM \"26_fact_ct_forecast_ingredient_demand.sql\"\n    GROUP BY\n        \"source_period_code\",\n        \"outlet_code\",\n        \"outlet_name\",\n        \"menu_item_code\",\n        \"menu_item_name\",\n        \"item_code\",\n        \"item_name\"\n),\npo_open AS (\n    SELECT\n        \"source_period_code\" AS \"source_period_code\",\n        \"outlet_code\" AS \"outlet_code\",\n        \"item_code\" AS \"item_code\",\n        SUM(\"remaining_qty\") AS \"valid_open_po_qty\"\n    FROM \"22_fact_ct_purchase_order.sql\"\n    WHERE \"is_open_po\" = 1\n    GROUP BY \"source_period_code\", \"outlet_code\", \"item_code\"\n),\nrisk_count AS (\n    SELECT\n        f.\"source_period_code\" AS \"source_period_code\",\n        f.\"outlet_code\" AS \"outlet_code\",\n        f.\"menu_item_code\" AS \"menu_item_code\",\n        COUNT(DISTINCT f.\"item_code\") AS \"risk_ingredient_count\"\n    FROM forecast_menu f\n    INNER JOIN \"05_std_ct_inventory_snapshot.sql\" s\n      ON f.\"source_period_code\" = s.\"source_period_code\"\n     AND f.\"outlet_code\" = s.\"outlet_code\"\n     AND f.\"item_code\" = s.\"item_code\"\n    LEFT JOIN po_open p\n      ON f.\"source_period_code\" = p.\"source_period_code\"\n     AND f.\"outlet_code\" = p.\"outlet_code\"\n     AND f.\"item_code\" = p.\"item_code\"\n    WHERE (\n        s.\"closing_qty\" <= 0\n        AND f.\"forecast_ingredient_qty\" > 0\n    )\n       OR f.\"forecast_ingredient_qty\" * 1.15\n          > s.\"closing_qty\" + COALESCE(p.\"valid_open_po_qty\", 0)\n    GROUP BY f.\"source_period_code\", f.\"outlet_code\", f.\"menu_item_code\"\n)\nSELECT\n    f.\"source_period_code\" AS \"source_period_code\",\n    f.\"outlet_code\" AS \"outlet_code\",\n    f.\"outlet_name\" AS \"outlet_name\",\n    f.\"item_code\" AS \"ingredient_code\",\n    f.\"item_name\" AS \"ingredient_name\",\n    CASE\n        WHEN s.\"closing_qty\" <= 0 AND f.\"forecast_ingredient_qty\" > 0\n        THEN 'PURPLE'\n        WHEN f.\"forecast_ingredient_qty\"\n           > s.\"closing_qty\" + COALESCE(p.\"valid_open_po_qty\", 0)\n        THEN 'RED'\n        WHEN f.\"forecast_ingredient_qty\" * 1.15\n           > s.\"closing_qty\" + COALESCE(p.\"valid_open_po_qty\", 0)\n        THEN 'AMBER'\n        ELSE 'GREEN'\n    END AS \"risk_severity\",\n    CASE\n        WHEN f.\"forecast_ingredient_qty\" * 1.15\n           > s.\"closing_qty\" + COALESCE(p.\"valid_open_po_qty\", 0)\n        THEN f.\"forecast_ingredient_qty\" * 1.15\n           - s.\"closing_qty\" - COALESCE(p.\"valid_open_po_qty\", 0)\n        ELSE 0\n    END AS \"shortage_qty\",\n    f.\"menu_item_code\" AS \"menu_item_code\",\n    f.\"menu_item_name\" AS \"menu_item_name\",\n    f.\"forecast_menu_qty\" AS \"forecast_menu_qty\",\n    f.\"forecast_net_sales\" AS \"forecast_net_sales_at_risk\",\n    c.\"risk_ingredient_count\" AS \"risk_ingredient_count\",\n    f.\"forecast_net_sales\" / c.\"risk_ingredient_count\"\n      AS \"allocated_forecast_net_sales_at_risk\"\nFROM forecast_menu f\nINNER JOIN \"05_std_ct_inventory_snapshot.sql\" s\n  ON f.\"source_period_code\" = s.\"source_period_code\"\n AND f.\"outlet_code\" = s.\"outlet_code\"\n AND f.\"item_code\" = s.\"item_code\"\nLEFT JOIN po_open p\n  ON f.\"source_period_code\" = p.\"source_period_code\"\n AND f.\"outlet_code\" = p.\"outlet_code\"\n AND f.\"item_code\" = p.\"item_code\"\nINNER JOIN risk_count c\n  ON f.\"source_period_code\" = c.\"source_period_code\"\n AND f.\"outlet_code\" = c.\"outlet_code\"\n AND f.\"menu_item_code\" = c.\"menu_item_code\"\nWHERE (\n    s.\"closing_qty\" <= 0\n    AND f.\"forecast_ingredient_qty\" > 0\n)\n   OR f.\"forecast_ingredient_qty\" * 1.15\n      > s.\"closing_qty\" + COALESCE(p.\"valid_open_po_qty\", 0);"
+    },
+    {
+      "buildOrder": 29,
+      "layer": "summary",
+      "physicalName": "29_sum_ct_procurement_funnel.sql",
+      "logicalName": "SUM_CT_Procurement_Funnel",
+      "dependencyLevel": 3,
+      "purpose": "Summarize ordered, received, pending and delayed PO value for Page 2.",
+      "sources": [
+        "22_fact_ct_purchase_order.sql"
+      ],
+      "dependencies": [
+        "22_fact_ct_purchase_order.sql"
+      ],
+      "rawInputs": [],
+      "sql": "-- Query Table: 29_sum_ct_procurement_funnel.sql\n-- Logical model name: SUM_CT_Procurement_Funnel\n-- Layer: summary\n-- Purpose: Summarize ordered, received, pending and delayed PO value for Page 2.\n-- Sources: 22_fact_ct_purchase_order.sql\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    p.\"source_period_code\" AS \"source_period_code\",\n    p.\"outlet_code\" AS \"outlet_code\",\n    p.\"outlet_name\" AS \"outlet_name\",\n    p.\"vendor_name\" AS \"vendor_name\",\n    SUM(p.\"gross_order_value\") AS \"ordered_value\",\n    SUM(p.\"processed_po_value\") AS \"processed_value\",\n    SUM(p.\"open_po_value\") AS \"pending_value\",\n    SUM(CASE WHEN p.\"delayed_po_flag\" = 1 THEN p.\"open_po_value\" ELSE 0 END) AS \"delayed_value\",\n    COUNT(DISTINCT p.\"po_number\") AS \"po_count\",\n    COUNT(DISTINCT CASE WHEN p.\"is_open_po\" = 1 THEN p.\"po_number\" ELSE NULL END) AS \"open_po_count\"\nFROM \"22_fact_ct_purchase_order.sql\" p\nGROUP BY\n    p.\"source_period_code\",\n    p.\"outlet_code\",\n    p.\"outlet_name\",\n    p.\"vendor_name\";"
+    },
+    {
+      "buildOrder": 30,
+      "layer": "summary",
+      "physicalName": "30_sum_ct_vendor_scorecard.sql",
+      "logicalName": "SUM_CT_Vendor_Scorecard",
+      "dependencyLevel": 3,
+      "purpose": "Summarize fill rate, OTIF and open PO exposure by vendor.",
+      "sources": [
+        "24_fact_ct_po_receipt_line.sql"
+      ],
+      "dependencies": [
+        "24_fact_ct_po_receipt_line.sql"
+      ],
+      "rawInputs": [],
+      "sql": "-- Query Table: 30_sum_ct_vendor_scorecard.sql\n-- Logical model name: SUM_CT_Vendor_Scorecard\n-- Layer: summary\n-- Purpose: Summarize fill rate, OTIF and open PO exposure by vendor.\n-- Sources: 24_fact_ct_po_receipt_line.sql\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    v.\"source_period_code\" AS \"source_period_code\",\n    v.\"outlet_code\" AS \"outlet_code\",\n    v.\"outlet_name\" AS \"outlet_name\",\n    v.\"vendor_name\" AS \"vendor_name\",\n    SUM(v.\"gross_order_value\") AS \"monthly_purchase_value\",\n    SUM(v.\"remaining_qty\" * v.\"unit_price\") AS \"open_po_value\",\n    CASE\n        WHEN SUM(v.\"eligible_closed_line_flag\") <> 0\n        THEN SUM(v.\"otif_success_flag\")\n          / SUM(v.\"eligible_closed_line_flag\") * 100\n        ELSE NULL\n    END AS \"otif_percent\",\n    CASE\n        WHEN SUM(v.\"ordered_qty\") <> 0\n        THEN SUM(v.\"received_qty\") / SUM(v.\"ordered_qty\") * 100\n        ELSE NULL\n    END AS \"fill_rate_percent\",\n    AVG(\n        CASE\n            WHEN v.\"eligible_closed_line_flag\" = 1\n            THEN v.\"lead_time_deviation_days\"\n            ELSE NULL\n        END\n    ) AS \"average_lead_time_deviation_days\",\n    SUM(v.\"delayed_po_flag\") AS \"delayed_po_line_count\"\nFROM \"24_fact_ct_po_receipt_line.sql\" v\nGROUP BY\n    v.\"source_period_code\",\n    v.\"outlet_code\",\n    v.\"outlet_name\",\n    v.\"vendor_name\";"
+    },
+    {
+      "buildOrder": 31,
+      "layer": "summary",
+      "physicalName": "31_sum_ct_price_movement.sql",
+      "logicalName": "SUM_CT_Price_Movement",
+      "dependencyLevel": 3,
+      "purpose": "Compare weighted receipt prices with the immediately prior synthetic month.",
+      "sources": [
+        "23_fact_ct_purchase_receipt.sql"
+      ],
+      "dependencies": [
+        "23_fact_ct_purchase_receipt.sql"
+      ],
+      "rawInputs": [],
+      "sql": "-- Query Table: 31_sum_ct_price_movement.sql\n-- Logical model name: SUM_CT_Price_Movement\n-- Layer: summary\n-- Purpose: Compare weighted receipt prices with the immediately prior synthetic month.\n-- Sources: 23_fact_ct_purchase_receipt.sql\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    c.\"source_period_code\" AS \"source_period_code\",\n    c.\"outlet_code\" AS \"outlet_code\",\n    c.\"outlet_name\" AS \"outlet_name\",\n    c.\"vendor_name\" AS \"vendor_name\",\n    c.\"item_code\" AS \"item_code\",\n    c.\"item_name\" AS \"item_name\",\n    c.\"canonical_uom\" AS \"canonical_uom\",\n    c.\"current_unit_price\" AS \"current_unit_price\",\n    p.\"current_unit_price\" AS \"previous_unit_price\",\n    c.\"current_unit_price\" - p.\"current_unit_price\" AS \"unit_price_change\",\n    CASE\n        WHEN p.\"current_unit_price\" <> 0\n        THEN (c.\"current_unit_price\" - p.\"current_unit_price\") / p.\"current_unit_price\" * 100\n        ELSE NULL\n    END AS \"unit_price_change_percent\"\nFROM (\n    SELECT\n        \"source_period_code\" AS \"source_period_code\",\n        \"outlet_code\" AS \"outlet_code\",\n        \"outlet_name\" AS \"outlet_name\",\n        \"vendor_name\" AS \"vendor_name\",\n        \"item_code\" AS \"item_code\",\n        \"item_name\" AS \"item_name\",\n        \"canonical_uom\" AS \"canonical_uom\",\n        SUM(\"receipt_subtotal\") / NULLIF(SUM(\"received_qty\"), 0) AS \"current_unit_price\"\n    FROM \"23_fact_ct_purchase_receipt.sql\"\n    GROUP BY\n        \"source_period_code\",\n        \"outlet_code\",\n        \"outlet_name\",\n        \"vendor_name\",\n        \"item_code\",\n        \"item_name\",\n        \"canonical_uom\"\n) c\nLEFT JOIN (\n    SELECT\n        \"source_period_code\" AS \"source_period_code\",\n        \"outlet_code\" AS \"outlet_code\",\n        \"vendor_name\" AS \"vendor_name\",\n        \"item_code\" AS \"item_code\",\n        SUM(\"receipt_subtotal\") / NULLIF(SUM(\"received_qty\"), 0) AS \"current_unit_price\"\n    FROM \"23_fact_ct_purchase_receipt.sql\"\n    GROUP BY \"source_period_code\", \"outlet_code\", \"vendor_name\", \"item_code\"\n) p\n  ON c.\"outlet_code\" = p.\"outlet_code\"\n AND c.\"vendor_name\" = p.\"vendor_name\"\n AND c.\"item_code\" = p.\"item_code\"\n AND (\n      (c.\"source_period_code\" = 'month_02' AND p.\"source_period_code\" = 'month_01')\n   OR (c.\"source_period_code\" = 'month_03' AND p.\"source_period_code\" = 'month_02')\n );"
+    },
+    {
+      "buildOrder": 32,
+      "layer": "summary",
+      "physicalName": "32_sum_ct_menu_profitability.sql",
+      "logicalName": "SUM_CT_Menu_Profitability",
+      "dependencyLevel": 3,
+      "purpose": "Expose menu profitability with BCG quadrant classification.",
+      "sources": [
+        "25_fact_ct_menu_profitability.sql"
+      ],
+      "dependencies": [
+        "25_fact_ct_menu_profitability.sql"
+      ],
+      "rawInputs": [],
+      "sql": "-- Query Table: 32_sum_ct_menu_profitability.sql\n-- Logical model name: SUM_CT_Menu_Profitability\n-- Layer: summary\n-- Purpose: Expose menu profitability with BCG quadrant classification.\n-- Sources: 25_fact_ct_menu_profitability.sql\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    m.*,\n    CASE\n        WHEN m.\"sold_qty\" >= 150 AND m.\"gross_margin_percent\" >= 60 THEN 'Stars'\n        WHEN m.\"sold_qty\" < 150 AND m.\"gross_margin_percent\" >= 60 THEN 'Niche gems'\n        WHEN m.\"sold_qty\" >= 150 AND m.\"gross_margin_percent\" < 60 THEN 'Volume drags'\n        ELSE 'Review / rationalize'\n    END AS \"bcg_quadrant\"\nFROM \"25_fact_ct_menu_profitability.sql\" m;"
+    },
+    {
+      "buildOrder": 33,
+      "layer": "summary",
+      "physicalName": "33_sum_ct_scm_monthly.sql",
+      "logicalName": "SUM_CT_SCM_Monthly",
+      "dependencyLevel": 3,
+      "purpose": "Join monthly sales, closing stock, open PO and actual consumption for Page 4.",
+      "sources": [
+        "18_fact_ct_sales.sql",
+        "05_std_ct_inventory_snapshot.sql",
+        "22_fact_ct_purchase_order.sql",
+        "20_fact_ct_actual_consumption.sql"
+      ],
+      "dependencies": [
+        "18_fact_ct_sales.sql",
+        "05_std_ct_inventory_snapshot.sql",
+        "22_fact_ct_purchase_order.sql",
+        "20_fact_ct_actual_consumption.sql"
+      ],
+      "rawInputs": [],
+      "sql": "-- Query Table: 33_sum_ct_scm_monthly.sql\n-- Logical model name: SUM_CT_SCM_Monthly\n-- Layer: summary\n-- Purpose: Join monthly sales, closing stock, open PO and actual consumption for Page 4.\n-- Sources: 18_fact_ct_sales.sql, 05_std_ct_inventory_snapshot.sql, 22_fact_ct_purchase_order.sql, 20_fact_ct_actual_consumption.sql\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    k.\"source_period_code\" AS \"source_period_code\",\n    k.\"outlet_code\" AS \"outlet_code\",\n    k.\"outlet_name\" AS \"outlet_name\",\n    COALESCE(s.\"net_sales\", 0) AS \"net_sales\",\n    COALESCE(i.\"closing_stock_value\", 0) AS \"closing_stock_value\",\n    COALESCE(p.\"open_po_value\", 0) AS \"open_po_value\",\n    COALESCE(a.\"actual_consumption_value\", 0) AS \"actual_consumption_value\"\nFROM (\n    SELECT DISTINCT\n        \"source_period_code\" AS \"source_period_code\",\n        \"outlet_code\" AS \"outlet_code\",\n        \"outlet_name\" AS \"outlet_name\"\n    FROM \"05_std_ct_inventory_snapshot.sql\"\n) k\nLEFT JOIN (\n    SELECT\n        \"source_period_code\" AS \"source_period_code\",\n        \"outlet_code\" AS \"outlet_code\",\n        SUM(\"net_sales\") AS \"net_sales\"\n    FROM \"18_fact_ct_sales.sql\"\n    GROUP BY \"source_period_code\", \"outlet_code\"\n) s\n  ON k.\"source_period_code\" = s.\"source_period_code\"\n AND k.\"outlet_code\" = s.\"outlet_code\"\nLEFT JOIN (\n    SELECT\n        \"source_period_code\" AS \"source_period_code\",\n        \"outlet_code\" AS \"outlet_code\",\n        SUM(\"closing_value\") AS \"closing_stock_value\"\n    FROM \"05_std_ct_inventory_snapshot.sql\"\n    GROUP BY \"source_period_code\", \"outlet_code\"\n) i\n  ON k.\"source_period_code\" = i.\"source_period_code\"\n AND k.\"outlet_code\" = i.\"outlet_code\"\nLEFT JOIN (\n    SELECT\n        \"source_period_code\" AS \"source_period_code\",\n        \"outlet_code\" AS \"outlet_code\",\n        SUM(\"open_po_value\") AS \"open_po_value\"\n    FROM \"22_fact_ct_purchase_order.sql\"\n    WHERE \"is_open_po\" = 1\n    GROUP BY \"source_period_code\", \"outlet_code\"\n) p\n  ON k.\"source_period_code\" = p.\"source_period_code\"\n AND k.\"outlet_code\" = p.\"outlet_code\"\nLEFT JOIN (\n    SELECT\n        \"source_period_code\" AS \"source_period_code\",\n        \"outlet_code\" AS \"outlet_code\",\n        SUM(\"calculated_actual_consumption_value\") AS \"actual_consumption_value\"\n    FROM \"20_fact_ct_actual_consumption.sql\"\n    GROUP BY \"source_period_code\", \"outlet_code\"\n) a\n  ON k.\"source_period_code\" = a.\"source_period_code\"\n AND k.\"outlet_code\" = a.\"outlet_code\";"
+    },
+    {
+      "buildOrder": 34,
+      "layer": "fact",
+      "physicalName": "34_fact_ct_data_quality_exception.sql",
+      "logicalName": "FACT_CT_Data_Quality_Exception",
+      "dependencyLevel": 3,
+      "purpose": "Produce drillable Page 4 exception rows with period, outlet and source references.",
+      "sources": [
+        "05_std_ct_inventory_snapshot.sql",
+        "26_fact_ct_forecast_ingredient_demand.sql",
+        "01_std_ct_sales_item.sql",
+        "02_std_ct_recipe.sql",
+        "22_fact_ct_purchase_order.sql",
+        "07_std_ct_purchase_order.sql",
+        "08_std_ct_purchase_receipt.sql",
+        "06_std_ct_inventory_movement.sql",
+        "10_std_ct_vendor_report.sql",
+        "14_dim_ct_item.sql"
+      ],
+      "dependencies": [
+        "05_std_ct_inventory_snapshot.sql",
+        "26_fact_ct_forecast_ingredient_demand.sql",
+        "01_std_ct_sales_item.sql",
+        "02_std_ct_recipe.sql",
+        "22_fact_ct_purchase_order.sql",
+        "07_std_ct_purchase_order.sql",
+        "08_std_ct_purchase_receipt.sql",
+        "06_std_ct_inventory_movement.sql",
+        "10_std_ct_vendor_report.sql",
+        "14_dim_ct_item.sql"
+      ],
+      "rawInputs": [],
+      "sql": "-- Query Table: 34_fact_ct_data_quality_exception.sql\n-- Logical model name: FACT_CT_Data_Quality_Exception\n-- Layer: fact\n-- Purpose: Produce drillable Page 4 exception rows with period, outlet and source references.\n-- Sources: 05_std_ct_inventory_snapshot.sql, 26_fact_ct_forecast_ingredient_demand.sql, 01_std_ct_sales_item.sql, 02_std_ct_recipe.sql, 22_fact_ct_purchase_order.sql, 07_std_ct_purchase_order.sql, 08_std_ct_purchase_receipt.sql, 06_std_ct_inventory_movement.sql, 10_std_ct_vendor_report.sql, 14_dim_ct_item.sql\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    \"source_period_code\" AS \"source_period_code\",\n    \"outlet_code\" AS \"outlet_code\",\n    \"outlet_name\" AS \"outlet_name\",\n    'NEGATIVE_STOCK' AS \"exception_type\",\n    CONCAT(\"source_period_code\", ':', \"outlet_code\", ':', \"item_code\")\n      AS \"exception_record_key\",\n    \"item_code\" AS \"item_code\",\n    '' AS \"reference_number\",\n    1 AS \"exception_count\",\n    'Closing quantity below zero' AS \"definition\"\nFROM \"05_std_ct_inventory_snapshot.sql\"\nWHERE \"closing_qty\" < 0\nUNION ALL\nSELECT\n    s.\"source_period_code\" AS \"source_period_code\",\n    s.\"outlet_code\" AS \"outlet_code\",\n    s.\"outlet_name\" AS \"outlet_name\",\n    'ZERO_STOCK_WITH_DEMAND',\n    CONCAT(s.\"source_period_code\", ':', s.\"outlet_code\", ':', s.\"item_code\"),\n    s.\"item_code\" AS \"item_code\",\n    '',\n    1,\n    'Zero closing stock with positive seven-day forecast ingredient demand'\nFROM \"05_std_ct_inventory_snapshot.sql\" s\nINNER JOIN (\n    SELECT\n        \"source_period_code\" AS \"source_period_code\",\n        \"outlet_code\" AS \"outlet_code\",\n        \"item_code\" AS \"item_code\",\n        SUM(\"forecast_ingredient_qty\") AS \"forecast_required_qty\"\n    FROM \"26_fact_ct_forecast_ingredient_demand.sql\"\n    GROUP BY \"source_period_code\", \"outlet_code\", \"item_code\"\n) f\n  ON s.\"source_period_code\" = f.\"source_period_code\"\n AND s.\"outlet_code\" = f.\"outlet_code\"\n AND s.\"item_code\" = f.\"item_code\"\nWHERE s.\"closing_qty\" = 0\n  AND f.\"forecast_required_qty\" > 0\nUNION ALL\nSELECT DISTINCT\n    s.\"source_period_code\" AS \"source_period_code\",\n    s.\"outlet_code\" AS \"outlet_code\",\n    s.\"outlet_name\" AS \"outlet_name\",\n    'SOLD_ITEM_MISSING_RECIPE',\n    CONCAT(s.\"source_period_code\", ':', s.\"outlet_code\", ':', s.\"item_code\"),\n    s.\"item_code\" AS \"item_code\",\n    '',\n    1,\n    'Sold menu item without a recipe mapping'\nFROM \"01_std_ct_sales_item.sql\" s\nLEFT JOIN \"02_std_ct_recipe.sql\" r\n  ON s.\"item_code\" = r.\"menu_item_code\"\nWHERE r.\"menu_item_code\" IS NULL\nUNION ALL\nSELECT\n    \"source_period_code\" AS \"source_period_code\",\n    \"outlet_code\" AS \"outlet_code\",\n    MAX(\"outlet_name\") AS \"outlet_name\",\n    'OPEN_PO_MISSING_EXPECTED_DELIVERY',\n    CONCAT(\"source_period_code\", ':', \"outlet_code\", ':', \"po_number\"),\n    '' AS \"item_code\",\n    \"po_number\" AS \"reference_number\",\n    1,\n    'Open PO without expected delivery date'\nFROM \"22_fact_ct_purchase_order.sql\"\nWHERE \"missing_expected_delivery_flag\" = 1\nGROUP BY \"source_period_code\", \"outlet_code\", \"po_number\"\nUNION ALL\nSELECT DISTINCT\n    x.\"source_period_code\" AS \"source_period_code\",\n    x.\"outlet_code\" AS \"outlet_code\",\n    x.\"outlet_name\" AS \"outlet_name\",\n    'OPERATIONAL_ITEM_MISSING_MASTER',\n    CONCAT(x.\"source_period_code\", ':', x.\"outlet_code\", ':', x.\"item_code\"),\n    x.\"item_code\" AS \"item_code\",\n    '',\n    1,\n    'Operational item identifier absent from the canonical item master'\nFROM (\n    SELECT\n        \"source_period_code\" AS \"source_period_code\",\n        \"outlet_code\" AS \"outlet_code\",\n        \"outlet_name\" AS \"outlet_name\",\n        \"item_code\" AS \"item_code\"\n    FROM \"05_std_ct_inventory_snapshot.sql\"\n    UNION ALL\n    SELECT\n        \"source_period_code\" AS \"source_period_code\",\n        \"outlet_code\" AS \"outlet_code\",\n        \"outlet_name\" AS \"outlet_name\",\n        \"item_code\" AS \"item_code\"\n    FROM \"22_fact_ct_purchase_order.sql\"\n    UNION ALL\n    SELECT\n        \"source_period_code\" AS \"source_period_code\",\n        \"outlet_code\" AS \"outlet_code\",\n        \"outlet_name\" AS \"outlet_name\",\n        \"item_code\" AS \"item_code\"\n    FROM \"08_std_ct_purchase_receipt.sql\"\n    UNION ALL\n    SELECT\n        \"source_period_code\" AS \"source_period_code\",\n        \"outlet_code\" AS \"outlet_code\",\n        \"outlet_name\" AS \"outlet_name\",\n        \"item_code\" AS \"item_code\"\n    FROM \"06_std_ct_inventory_movement.sql\"\n) x\nLEFT JOIN \"14_dim_ct_item.sql\" i\n  ON x.\"item_code\" = i.\"item_code\"\nWHERE i.\"item_code\" IS NULL\nUNION ALL\nSELECT\n    'ALL' AS \"source_period_code\",\n    'ALL' AS \"outlet_code\",\n    'All outlets' AS \"outlet_name\",\n    'VENDOR_NAME_MULTIPLE_CODES' AS \"exception_type\",\n    CONCAT('ALL:ALL:', v.\"vendor_name\") AS \"exception_record_key\",\n    '' AS \"item_code\",\n    v.\"vendor_name\" AS \"reference_number\",\n    1 AS \"exception_count\",\n    'Vendor Report contains more than one populated vendor code for the same vendor name'\n      AS \"definition\"\nFROM \"10_std_ct_vendor_report.sql\" v\nWHERE v.\"vendor_code\" IS NOT NULL\nGROUP BY v.\"vendor_name\"\nHAVING COUNT(DISTINCT v.\"vendor_code\") > 1\nUNION ALL\nSELECT DISTINCT\n    t.\"source_period_code\" AS \"source_period_code\",\n    t.\"outlet_code\" AS \"outlet_code\",\n    t.\"outlet_name\" AS \"outlet_name\",\n    'TRANSACTION_VENDOR_MISSING_VENDOR_REPORT',\n    CONCAT(t.\"source_period_code\", ':', t.\"outlet_code\", ':', t.\"vendor_name\"),\n    '',\n    t.\"vendor_name\" AS \"vendor_name\",\n    1,\n    'Vendor observed in PO or Entry but absent from the cleaned Vendor Report'\nFROM (\n    SELECT\n        \"source_period_code\" AS \"source_period_code\",\n        \"outlet_code\" AS \"outlet_code\",\n        \"outlet_name\" AS \"outlet_name\",\n        \"vendor_name\" AS \"vendor_name\"\n    FROM \"07_std_ct_purchase_order.sql\"\n    UNION ALL\n    SELECT\n        \"source_period_code\" AS \"source_period_code\",\n        \"outlet_code\" AS \"outlet_code\",\n        \"outlet_name\" AS \"outlet_name\",\n        \"vendor_name\" AS \"vendor_name\"\n    FROM \"08_std_ct_purchase_receipt.sql\"\n) t\nLEFT JOIN (\n    SELECT DISTINCT \"vendor_name\" AS \"vendor_name\"\n    FROM \"10_std_ct_vendor_report.sql\"\n) v\n  ON t.\"vendor_name\" = v.\"vendor_name\"\nWHERE t.\"vendor_name\" IS NOT NULL\n  AND v.\"vendor_name\" IS NULL\nUNION ALL\nSELECT\n    'ALL' AS \"source_period_code\",\n    'ALL' AS \"outlet_code\",\n    'All outlets' AS \"outlet_name\",\n    'UOM_MISMATCH_WITHOUT_CONVERSION',\n    CONCAT('ALL:ALL:', x.\"item_code\"),\n    x.\"item_code\" AS \"item_code\",\n    '',\n    1,\n    'Item observed in multiple units without a complete canonical conversion'\nFROM (\n    SELECT\n        \"item_code\" AS \"item_code\",\n        \"canonical_uom\" AS \"observed_uom\"\n    FROM \"05_std_ct_inventory_snapshot.sql\"\n    UNION ALL\n    SELECT\n        \"item_code\" AS \"item_code\",\n        \"canonical_uom\" AS \"observed_uom\"\n    FROM \"22_fact_ct_purchase_order.sql\"\n    UNION ALL\n    SELECT\n        \"item_code\" AS \"item_code\",\n        \"canonical_uom\" AS \"observed_uom\"\n    FROM \"08_std_ct_purchase_receipt.sql\"\n    UNION ALL\n    SELECT\n        \"item_code\" AS \"item_code\",\n        \"canonical_uom\" AS \"observed_uom\"\n    FROM \"06_std_ct_inventory_movement.sql\"\n) x\nLEFT JOIN \"14_dim_ct_item.sql\" i\n  ON x.\"item_code\" = i.\"item_code\"\nGROUP BY x.\"item_code\"\nHAVING COUNT(DISTINCT x.\"observed_uom\") > 1\n   AND MAX(\n       CASE\n           WHEN i.\"item_code\" IS NOT NULL\n            AND i.\"uom_conversion_factor\" IS NOT NULL\n           THEN 1 ELSE 0\n       END\n   ) = 0;"
+    },
+    {
+      "buildOrder": 35,
+      "layer": "summary",
+      "physicalName": "35_sum_ct_financial_leakage.sql",
+      "logicalName": "SUM_CT_Financial_Leakage",
+      "dependencyLevel": 2,
+      "purpose": "Summarize observed wastage separately from demo expiry and unavailable vendor returns.",
+      "sources": [
+        "09_std_ct_wastage.sql"
+      ],
+      "dependencies": [
+        "09_std_ct_wastage.sql"
+      ],
+      "rawInputs": [],
+      "sql": "-- Query Table: 35_sum_ct_financial_leakage.sql\n-- Logical model name: SUM_CT_Financial_Leakage\n-- Layer: summary\n-- Purpose: Summarize observed wastage separately from demo expiry and unavailable vendor returns.\n-- Sources: 09_std_ct_wastage.sql\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    \"source_period_code\" AS \"source_period_code\",\n    \"outlet_code\" AS \"outlet_code\",\n    \"outlet_name\" AS \"outlet_name\",\n    'WASTAGE' AS \"leakage_type\",\n    SUM(\"wastage_value\") AS \"leakage_value\",\n    'observed' AS \"evidence_type\"\nFROM \"09_std_ct_wastage.sql\"\nGROUP BY \"source_period_code\", \"outlet_code\", \"outlet_name\";"
+    },
+    {
+      "buildOrder": 36,
+      "layer": "fact",
+      "physicalName": "36_fact_ct_risky_po.sql",
+      "logicalName": "FACT_CT_Risky_PO",
+      "dependencyLevel": 3,
+      "purpose": "Retain exact open PO lines whose ingredients are currently red, purple or amber.",
+      "sources": [
+        "05_std_ct_inventory_snapshot.sql",
+        "26_fact_ct_forecast_ingredient_demand.sql",
+        "22_fact_ct_purchase_order.sql"
+      ],
+      "dependencies": [
+        "05_std_ct_inventory_snapshot.sql",
+        "26_fact_ct_forecast_ingredient_demand.sql",
+        "22_fact_ct_purchase_order.sql"
+      ],
+      "rawInputs": [],
+      "sql": "-- Query Table: 36_fact_ct_risky_po.sql\n-- Logical model name: FACT_CT_Risky_PO\n-- Layer: fact\n-- Purpose: Retain exact open PO lines whose ingredients are currently red, purple or amber.\n-- Sources: 05_std_ct_inventory_snapshot.sql, 26_fact_ct_forecast_ingredient_demand.sql, 22_fact_ct_purchase_order.sql\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nWITH forecast_item AS (\n    SELECT\n        \"source_period_code\" AS \"source_period_code\",\n        \"outlet_code\" AS \"outlet_code\",\n        \"item_code\" AS \"item_code\",\n        SUM(\"forecast_ingredient_qty\") AS \"forecast_required_qty\"\n    FROM \"26_fact_ct_forecast_ingredient_demand.sql\"\n    GROUP BY \"source_period_code\", \"outlet_code\", \"item_code\"\n),\nopen_po AS (\n    SELECT\n        \"source_period_code\" AS \"source_period_code\",\n        \"outlet_code\" AS \"outlet_code\",\n        \"item_code\" AS \"item_code\",\n        SUM(\"remaining_qty\") AS \"valid_open_po_qty\"\n    FROM \"22_fact_ct_purchase_order.sql\"\n    WHERE \"is_open_po\" = 1\n    GROUP BY \"source_period_code\", \"outlet_code\", \"item_code\"\n),\nrisk_item AS (\n    SELECT\n        s.\"source_period_code\" AS \"source_period_code\",\n        s.\"outlet_code\" AS \"outlet_code\",\n        s.\"item_code\" AS \"item_code\",\n        CASE\n            WHEN s.\"closing_qty\" <= 0\n             AND COALESCE(f.\"forecast_required_qty\", 0) > 0\n            THEN 'PURPLE'\n            WHEN COALESCE(f.\"forecast_required_qty\", 0)\n               > s.\"closing_qty\" + COALESCE(o.\"valid_open_po_qty\", 0)\n            THEN 'RED'\n            WHEN COALESCE(f.\"forecast_required_qty\", 0) * 1.15\n               > s.\"closing_qty\" + COALESCE(o.\"valid_open_po_qty\", 0)\n            THEN 'AMBER'\n            ELSE 'GREEN'\n        END AS \"risk_severity\"\n    FROM \"05_std_ct_inventory_snapshot.sql\" s\n    LEFT JOIN forecast_item f\n      ON s.\"source_period_code\" = f.\"source_period_code\"\n     AND s.\"outlet_code\" = f.\"outlet_code\"\n     AND s.\"item_code\" = f.\"item_code\"\n    LEFT JOIN open_po o\n      ON s.\"source_period_code\" = o.\"source_period_code\"\n     AND s.\"outlet_code\" = o.\"outlet_code\"\n     AND s.\"item_code\" = o.\"item_code\"\n)\nSELECT\n    p.*,\n    r.\"risk_severity\" AS \"risk_severity\"\nFROM \"22_fact_ct_purchase_order.sql\" p\nINNER JOIN risk_item r\n  ON p.\"source_period_code\" = r.\"source_period_code\"\n AND p.\"outlet_code\" = r.\"outlet_code\"\n AND p.\"item_code\" = r.\"item_code\"\nWHERE p.\"is_open_po\" = 1\n  AND r.\"risk_severity\" <> 'GREEN';"
+    },
+    {
+      "buildOrder": 37,
+      "layer": "dimension",
+      "physicalName": "37_dim_ct_outlet_enriched.sql",
+      "logicalName": "DIM_CT_Outlet_Enriched",
+      "dependencyLevel": 2,
+      "purpose": "Enrich source-derived outlet identity with synthetic demonstrator geography.",
+      "sources": [
+        "13_dim_ct_outlet.sql"
+      ],
+      "dependencies": [
+        "13_dim_ct_outlet.sql"
+      ],
+      "rawInputs": [],
+      "sql": "-- Query Table: 37_dim_ct_outlet_enriched.sql\n-- Logical model name: DIM_CT_Outlet_Enriched\n-- Layer: dimension\n-- Purpose: Enrich source-derived outlet identity with synthetic demonstrator geography.\n-- Sources: 13_dim_ct_outlet.sql\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    d.\"outlet_code\" AS \"outlet_code\",\n    d.\"outlet_name\" AS \"outlet_name\",\n    'North' AS \"region\",\n    'Delhi' AS \"city\",\n    CASE\n        WHEN d.\"outlet_code\" = 'OUT001' THEN 'Connaught Place'\n        WHEN d.\"outlet_code\" = 'OUT002' THEN 'Hauz Khas'\n        WHEN d.\"outlet_code\" = 'OUT003' THEN 'Saket'\n        ELSE 'Unmapped'\n    END AS \"market_area\",\n    CASE\n        WHEN d.\"outlet_code\" = 'OUT001' THEN 28.6315\n        WHEN d.\"outlet_code\" = 'OUT002' THEN 28.5494\n        WHEN d.\"outlet_code\" = 'OUT003' THEN 28.5245\n        ELSE 0\n    END AS \"latitude\",\n    CASE\n        WHEN d.\"outlet_code\" = 'OUT001' THEN 77.2167\n        WHEN d.\"outlet_code\" = 'OUT002' THEN 77.2001\n        WHEN d.\"outlet_code\" = 'OUT003' THEN 77.2066\n        ELSE 0\n    END AS \"longitude\",\n    CASE\n        WHEN d.\"outlet_code\" = 'OUT003' THEN 'New'\n        ELSE 'Matured'\n    END AS \"new_matured_flag\",\n    'Active' AS \"active_status\",\n    'synthetic_demo_geography_on_source_derived_outlet'\n      AS \"source_evidence\",\n    1 AS \"is_synthetic\",\n    'replace_with_approved_abnah_outlet_reference'\n      AS \"production_use_status\"\nFROM \"13_dim_ct_outlet.sql\" d\nWHERE d.\"outlet_code\" IN ('OUT001', 'OUT002', 'OUT003');"
+    },
+    {
+      "buildOrder": 38,
+      "layer": "fact",
+      "physicalName": "38_fact_ct_expiry_risk.sql",
+      "logicalName": "FACT_CT_Expiry_Risk",
+      "dependencyLevel": 1,
+      "purpose": "Expose traceable batch-linked demo expiry exposure without claiming POSIST batch truth.",
+      "sources": [
+        "AUX_Expiry_Estimate-Copy"
+      ],
+      "dependencies": [],
+      "rawInputs": [
+        "AUX_Expiry_Estimate-Copy"
+      ],
+      "sql": "-- Query Table: 38_fact_ct_expiry_risk.sql\n-- Logical model name: FACT_CT_Expiry_Risk\n-- Layer: fact\n-- Purpose: Expose traceable batch-linked demo expiry exposure without claiming POSIST batch truth.\n-- Sources: AUX_Expiry_Estimate-Copy\n-- Validate CAST/date function behavior once in the target Zoho workspace.\nSELECT\n    e.\"source_period_code\" AS \"source_period_code\",\n    e.\"as_of_date\" AS \"as_of_date\",\n    e.\"outlet_code\" AS \"outlet_code\",\n    e.\"outlet_name\" AS \"outlet_name\",\n    e.\"region\" AS \"region\",\n    e.\"city\" AS \"city\",\n    e.\"market_area\" AS \"market_area\",\n    e.\"latitude\" AS \"latitude\",\n    e.\"longitude\" AS \"longitude\",\n    e.\"store_name\" AS \"store_name\",\n    e.\"batch_allocation_id\" AS \"batch_allocation_id\",\n    e.\"batch_number\" AS \"batch_number\",\n    e.\"receipt_date\" AS \"receipt_date\",\n    e.\"grn_number\" AS \"grn_number\",\n    e.\"po_number\" AS \"po_number\",\n    e.\"vendor_name\" AS \"vendor_name\",\n    e.\"receipt_source_status\" AS \"receipt_source_status\",\n    e.\"item_code\" AS \"item_code\",\n    e.\"item_name\" AS \"item_name\",\n    e.\"category_name\" AS \"category_name\",\n    e.\"unit\" AS \"canonical_uom\",\n    e.\"available_qty\" AS \"available_qty\",\n    e.\"received_qty\" AS \"received_qty\",\n    e.\"batch_remaining_qty\" AS \"batch_remaining_qty\",\n    e.\"item_closing_qty\" AS \"item_closing_qty\",\n    e.\"qty_at_risk\" AS \"expiry_qty_at_risk\",\n    e.\"average_unit_cost\" AS \"average_unit_cost\",\n    e.\"shelf_life_days_assumption\" AS \"shelf_life_days_assumption\",\n    e.\"estimated_fifo_tranche_qty\" AS \"estimated_fifo_tranche_qty\",\n    e.\"daily_theoretical_demand\" AS \"daily_theoretical_demand\",\n    e.\"expected_consumption_before_expiry\"\n      AS \"expected_consumption_before_expiry\",\n    e.\"estimated_expiry_date\" AS \"estimated_expiry_date\",\n    e.\"days_to_expiry\" AS \"days_to_expiry\",\n    e.\"expiry_risk_value\" AS \"expiry_risk_value\",\n    e.\"risk_status\" AS \"expiry_batch_risk_status\",\n    'EXPIRY' AS \"risk_type\",\n    CASE\n        WHEN e.\"risk_status\" IN ('EXPIRED', 'EXPIRES_TODAY')\n        THEN 'PURPLE'\n        WHEN e.\"risk_status\" = 'CRITICAL' THEN 'RED'\n        ELSE 'AMBER'\n    END AS \"risk_severity\",\n    CASE\n        WHEN e.\"risk_status\" IN ('EXPIRED', 'EXPIRES_TODAY') THEN 4\n        WHEN e.\"risk_status\" = 'CRITICAL' THEN 3\n        ELSE 2\n    END AS \"risk_severity_rank\",\n    e.\"batch_allocation_id\" AS \"action_id\",\n    CASE\n        WHEN e.\"risk_status\" = 'EXPIRED'\n        THEN 'Quarantine expired batch and investigate'\n        WHEN e.\"risk_status\" IN ('EXPIRES_TODAY', 'CRITICAL')\n        THEN 'Transfer, promote, or consume near-expiry stock'\n        ELSE 'Review FIFO rotation and demand plan'\n    END AS \"recommended_action\",\n    'Operations' AS \"action_owner\",\n    CASE\n        WHEN e.\"risk_status\" IN (\n            'EXPIRED', 'EXPIRES_TODAY', 'CRITICAL'\n        )\n        THEN 'Due today'\n        ELSE 'Due in 3 days'\n    END AS \"due_band\",\n    e.\"is_estimated\" AS \"is_estimated\",\n    e.\"estimation_method\" AS \"estimation_method\",\n    e.\"source_evidence\" AS \"source_evidence\",\n    e.\"production_use_status\" AS \"production_use_status\"\nFROM \"AUX_Expiry_Estimate-Copy\" e;"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+event_id,event_name,event_type,outlet_name,affected_category,event_days,event_day_sales,baseline_sales,sales_lift_value,sales_lift_pct,expected_impact_pct,impact_direction,confidence_level
+EVT001,Coffee Subscription Launch,Promotion,ABNAH Cafe Connaught Place,Coffee Classics;Signature Coffee,"2026-01-15, 2026-01-16",27420.870000000003,20352.711428571427,7068.158571428576,34.72833875837395,18,Up,Medium
+EVT001,Coffee Subscription Launch,Promotion,ABNAH Cafe Saket Premium,Coffee Classics;Signature Coffee,"2026-01-15, 2026-01-16",22746.360000000004,18879.131428571425,3867.228571428579,20.484144549022883,18,Up,Medium
+EVT002,Republic Day Leisure/Corporate Contrast,Holiday overlay,ABNAH Cafe Connaught Place,Cold Coffee;Shake;Desserts;Coffee Classics;Sandwiches,2026-01-26,7032.26,11281.902857142859,-4249.642857142859,-37.667784512541715,15,Mixed,Medium
+EVT002,Republic Day Leisure/Corporate Contrast,Holiday overlay,ABNAH Cafe Hauz Khas,Cold Coffee;Shake;Desserts;Coffee Classics;Sandwiches,2026-01-26,10915.66,11379.781428571428,-464.1214285714286,-4.078474015380913,15,Mixed,Medium
+EVT002,Republic Day Leisure/Corporate Contrast,Holiday overlay,ABNAH Cafe Saket Premium,Cold Coffee;Shake;Desserts;Coffee Classics;Sandwiches,2026-01-26,13559.87,11053.822857142859,2506.047142857142,22.671316297038015,15,Mixed,Medium

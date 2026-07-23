@@ -1,0 +1,304 @@
+﻿ERP Doc ID,Vendor ID,Vendor Name,Outlet #,Outlet Name,Status,Published,Received On,Inserted By,Comment,Updated On,Item ID,UOM,Unit Price
+EVP-month_01-00001,VEND001,BeanCraft Roasters Delhi,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING001,kg,956.95
+EVP-month_01-00002,VEND008,ChocoCraft Ingredients,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING013,pcs,33.55
+EVP-month_01-00003,VEND008,ChocoCraft Ingredients,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING016,litre,254.25
+EVP-month_01-00004,VEND003,Delhi Bakery Supply Co,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING009,pcs,11.85
+EVP-month_01-00005,VEND003,Delhi Bakery Supply Co,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING010,pcs,28.61
+EVP-month_01-00006,VEND003,Delhi Bakery Supply Co,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING011,pcs,15.44
+EVP-month_01-00007,VEND003,Delhi Bakery Supply Co,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING012,pcs,40.61
+EVP-month_01-00008,VEND003,Delhi Bakery Supply Co,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING014,pcs,46.85
+EVP-month_01-00009,VEND003,Delhi Bakery Supply Co,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING015,pcs,70.77
+EVP-month_01-00010,VEND002,FreshDairy Foods NCR,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING002,litre,73.73
+EVP-month_01-00011,VEND002,FreshDairy Foods NCR,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING003,litre,183.01
+EVP-month_01-00012,VEND002,FreshDairy Foods NCR,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING004,litre,215.09
+EVP-month_01-00013,VEND002,FreshDairy Foods NCR,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING005,kg,369.94
+EVP-month_01-00014,VEND002,FreshDairy Foods NCR,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING027,kg,517.11
+EVP-month_01-00015,VEND005,GreenLeaf Produce Delhi,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING023,kg,116.37
+EVP-month_01-00016,VEND005,GreenLeaf Produce Delhi,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING029,kg,42.2
+EVP-month_01-00017,VEND005,GreenLeaf Produce Delhi,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING030,kg,85.17
+EVP-month_01-00018,VEND005,GreenLeaf Produce Delhi,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING031,kg,54.5
+EVP-month_01-00019,VEND007,NorthStar Poultry,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING007,kg,328.1
+EVP-month_01-00020,VEND007,NorthStar Poultry,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING008,pcs,7.18
+EVP-month_01-00021,VEND004,PackPro Disposables,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING036,pcs,3.2
+EVP-month_01-00022,VEND004,PackPro Disposables,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING037,pcs,2.9
+EVP-month_01-00023,VEND004,PackPro Disposables,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING039,pcs,0.55
+EVP-month_01-00024,VEND004,PackPro Disposables,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING040,pcs,0.33
+EVP-month_01-00025,VEND004,PackPro Disposables,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING041,pcs,5.15
+EVP-month_01-00026,VEND004,PackPro Disposables,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING042,pcs,6.73
+EVP-month_01-00027,VEND004,PackPro Disposables,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING043,pcs,5.87
+EVP-month_01-00028,VEND006,SpiceRoot Foods,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING032,kg,341.63
+EVP-month_01-00029,VEND006,SpiceRoot Foods,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING033,kg,280.19
+EVP-month_01-00030,VEND006,SpiceRoot Foods,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING034,kg,187.86
+EVP-month_01-00031,VEND012,SweetBase Foods,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING017,litre,244.01
+EVP-month_01-00032,VEND012,SweetBase Foods,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING019,litre,89.51
+EVP-month_01-00033,VEND012,SweetBase Foods,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING024,litre,391.06
+EVP-month_01-00034,VEND011,TeaLeaf Traders NCR,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING020,kg,615.77
+EVP-month_01-00035,VEND011,TeaLeaf Traders NCR,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING021,kg,2158.58
+EVP-month_01-00036,VEND001,BeanCraft Roasters Delhi,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING001,kg,1005.57
+EVP-month_01-00037,VEND008,ChocoCraft Ingredients,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING016,litre,259.88
+EVP-month_01-00038,VEND003,Delhi Bakery Supply Co,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING009,pcs,11.8
+EVP-month_01-00039,VEND003,Delhi Bakery Supply Co,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING010,pcs,27.87
+EVP-month_01-00040,VEND003,Delhi Bakery Supply Co,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING011,pcs,15.49
+EVP-month_01-00041,VEND003,Delhi Bakery Supply Co,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING012,pcs,42.24
+EVP-month_01-00042,VEND003,Delhi Bakery Supply Co,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING014,pcs,45.71
+EVP-month_01-00043,VEND002,FreshDairy Foods NCR,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING002,litre,71.95
+EVP-month_01-00044,VEND002,FreshDairy Foods NCR,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING004,litre,216.47
+EVP-month_01-00045,VEND002,FreshDairy Foods NCR,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING005,kg,364.16
+EVP-month_01-00046,VEND002,FreshDairy Foods NCR,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING006,kg,469.21
+EVP-month_01-00047,VEND002,FreshDairy Foods NCR,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING027,kg,532.62
+EVP-month_01-00048,VEND009,FrozenBerry Traders,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING025,kg,415.72
+EVP-month_01-00049,VEND005,GreenLeaf Produce Delhi,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING023,kg,105.67
+EVP-month_01-00050,VEND005,GreenLeaf Produce Delhi,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING026,kg,72.02
+EVP-month_01-00051,VEND005,GreenLeaf Produce Delhi,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING030,kg,84.8
+EVP-month_01-00052,VEND010,Metro Wholesale Delhi,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING022,kg,12.23
+EVP-month_01-00053,VEND007,NorthStar Poultry,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING007,kg,327.35
+EVP-month_01-00054,VEND007,NorthStar Poultry,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING008,pcs,7.1
+EVP-month_01-00055,VEND004,PackPro Disposables,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING036,pcs,3.3
+EVP-month_01-00056,VEND004,PackPro Disposables,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING037,pcs,2.8
+EVP-month_01-00057,VEND004,PackPro Disposables,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING038,pcs,1.12
+EVP-month_01-00058,VEND004,PackPro Disposables,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING039,pcs,0.55
+EVP-month_01-00059,VEND004,PackPro Disposables,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING040,pcs,0.32
+EVP-month_01-00060,VEND004,PackPro Disposables,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING041,pcs,5.13
+EVP-month_01-00061,VEND004,PackPro Disposables,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING042,pcs,6.85
+EVP-month_01-00062,VEND004,PackPro Disposables,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING043,pcs,5.94
+EVP-month_01-00063,VEND006,SpiceRoot Foods,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING033,kg,282.94
+EVP-month_01-00064,VEND006,SpiceRoot Foods,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING034,kg,193.96
+EVP-month_01-00065,VEND012,SweetBase Foods,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING018,litre,242.44
+EVP-month_01-00066,VEND012,SweetBase Foods,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING019,litre,89.48
+EVP-month_01-00067,VEND012,SweetBase Foods,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING024,litre,407.83
+EVP-month_01-00068,VEND011,TeaLeaf Traders NCR,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING021,kg,2085.72
+EVP-month_01-00069,VEND008,ChocoCraft Ingredients,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING013,pcs,33.38
+EVP-month_01-00070,VEND008,ChocoCraft Ingredients,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING016,litre,256.62
+EVP-month_01-00071,VEND003,Delhi Bakery Supply Co,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING011,pcs,14.42
+EVP-month_01-00072,VEND003,Delhi Bakery Supply Co,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING012,pcs,42.48
+EVP-month_01-00073,VEND003,Delhi Bakery Supply Co,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING014,pcs,45.74
+EVP-month_01-00074,VEND003,Delhi Bakery Supply Co,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING015,pcs,74.97
+EVP-month_01-00075,VEND002,FreshDairy Foods NCR,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING002,litre,72.86
+EVP-month_01-00076,VEND002,FreshDairy Foods NCR,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING004,litre,211.82
+EVP-month_01-00077,VEND002,FreshDairy Foods NCR,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING005,kg,365.9
+EVP-month_01-00078,VEND002,FreshDairy Foods NCR,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING006,kg,486.87
+EVP-month_01-00079,VEND002,FreshDairy Foods NCR,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING027,kg,530.62
+EVP-month_01-00080,VEND005,GreenLeaf Produce Delhi,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING026,kg,73.42
+EVP-month_01-00081,VEND005,GreenLeaf Produce Delhi,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING028,kg,96.06
+EVP-month_01-00082,VEND005,GreenLeaf Produce Delhi,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING029,kg,42.33
+EVP-month_01-00083,VEND005,GreenLeaf Produce Delhi,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING031,kg,54.29
+EVP-month_01-00084,VEND010,Metro Wholesale Delhi,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING022,kg,12.48
+EVP-month_01-00085,VEND007,NorthStar Poultry,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING007,kg,334.49
+EVP-month_01-00086,VEND007,NorthStar Poultry,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING008,pcs,7.09
+EVP-month_01-00087,VEND004,PackPro Disposables,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING036,pcs,3.34
+EVP-month_01-00088,VEND004,PackPro Disposables,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING037,pcs,2.92
+EVP-month_01-00089,VEND004,PackPro Disposables,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING038,pcs,1.1
+EVP-month_01-00090,VEND004,PackPro Disposables,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING039,pcs,0.55
+EVP-month_01-00091,VEND004,PackPro Disposables,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING040,pcs,0.33
+EVP-month_01-00092,VEND004,PackPro Disposables,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING041,pcs,5.15
+EVP-month_01-00093,VEND004,PackPro Disposables,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING042,pcs,6.65
+EVP-month_01-00094,VEND004,PackPro Disposables,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING043,pcs,5.69
+EVP-month_01-00095,VEND006,SpiceRoot Foods,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING032,kg,340.43
+EVP-month_01-00096,VEND006,SpiceRoot Foods,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING033,kg,290.76
+EVP-month_01-00097,VEND006,SpiceRoot Foods,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING034,kg,187.35
+EVP-month_01-00098,VEND012,SweetBase Foods,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING017,litre,252.66
+EVP-month_01-00099,VEND012,SweetBase Foods,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING018,litre,240.0
+EVP-month_01-00100,VEND012,SweetBase Foods,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING019,litre,91.16
+EVP-month_01-00101,VEND012,SweetBase Foods,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING024,litre,376.43
+EVP-month_01-00102,VEND011,TeaLeaf Traders NCR,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-01-31,synthetic.generator,Monthly approved synthetic vendor price,2026-01-31,ING020,kg,615.19
+EVP-month_02-00103,VEND001,BeanCraft Roasters Delhi,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING001,kg,989.38
+EVP-month_02-00104,VEND008,ChocoCraft Ingredients,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING013,pcs,34.75
+EVP-month_02-00105,VEND003,Delhi Bakery Supply Co,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING009,pcs,12.62
+EVP-month_02-00106,VEND003,Delhi Bakery Supply Co,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING010,pcs,28.77
+EVP-month_02-00107,VEND003,Delhi Bakery Supply Co,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING011,pcs,15.16
+EVP-month_02-00108,VEND003,Delhi Bakery Supply Co,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING012,pcs,41.05
+EVP-month_02-00109,VEND003,Delhi Bakery Supply Co,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING014,pcs,45.62
+EVP-month_02-00110,VEND003,Delhi Bakery Supply Co,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING015,pcs,71.1
+EVP-month_02-00111,VEND002,FreshDairy Foods NCR,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING002,litre,72.82
+EVP-month_02-00112,VEND002,FreshDairy Foods NCR,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING003,litre,195.24
+EVP-month_02-00113,VEND002,FreshDairy Foods NCR,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING004,litre,216.19
+EVP-month_02-00114,VEND002,FreshDairy Foods NCR,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING005,kg,374.31
+EVP-month_02-00115,VEND002,FreshDairy Foods NCR,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING006,kg,483.08
+EVP-month_02-00116,VEND002,FreshDairy Foods NCR,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING027,kg,531.55
+EVP-month_02-00117,VEND005,GreenLeaf Produce Delhi,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING026,kg,71.68
+EVP-month_02-00118,VEND005,GreenLeaf Produce Delhi,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING030,kg,85.12
+EVP-month_02-00119,VEND005,GreenLeaf Produce Delhi,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING031,kg,52.67
+EVP-month_02-00120,VEND010,Metro Wholesale Delhi,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING022,kg,12.48
+EVP-month_02-00121,VEND007,NorthStar Poultry,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING007,kg,321.49
+EVP-month_02-00122,VEND004,PackPro Disposables,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING036,pcs,3.3
+EVP-month_02-00123,VEND004,PackPro Disposables,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING038,pcs,1.09
+EVP-month_02-00124,VEND004,PackPro Disposables,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING039,pcs,0.57
+EVP-month_02-00125,VEND004,PackPro Disposables,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING040,pcs,0.32
+EVP-month_02-00126,VEND004,PackPro Disposables,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING041,pcs,5.05
+EVP-month_02-00127,VEND004,PackPro Disposables,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING042,pcs,6.59
+EVP-month_02-00128,VEND004,PackPro Disposables,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING043,pcs,5.88
+EVP-month_02-00129,VEND006,SpiceRoot Foods,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING033,kg,280.12
+EVP-month_02-00130,VEND006,SpiceRoot Foods,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING035,kg,308.98
+EVP-month_02-00131,VEND012,SweetBase Foods,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING018,litre,236.53
+EVP-month_02-00132,VEND012,SweetBase Foods,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING019,litre,91.09
+EVP-month_02-00133,VEND012,SweetBase Foods,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING024,litre,397.19
+EVP-month_02-00134,VEND011,TeaLeaf Traders NCR,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING020,kg,628.81
+EVP-month_02-00135,VEND001,BeanCraft Roasters Delhi,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING001,kg,989.74
+EVP-month_02-00136,VEND008,ChocoCraft Ingredients,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING016,litre,267.65
+EVP-month_02-00137,VEND003,Delhi Bakery Supply Co,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING009,pcs,11.83
+EVP-month_02-00138,VEND003,Delhi Bakery Supply Co,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING010,pcs,28.16
+EVP-month_02-00139,VEND003,Delhi Bakery Supply Co,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING011,pcs,15.6
+EVP-month_02-00140,VEND003,Delhi Bakery Supply Co,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING012,pcs,42.46
+EVP-month_02-00141,VEND003,Delhi Bakery Supply Co,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING014,pcs,45.14
+EVP-month_02-00142,VEND003,Delhi Bakery Supply Co,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING015,pcs,72.1
+EVP-month_02-00143,VEND002,FreshDairy Foods NCR,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING002,litre,72.65
+EVP-month_02-00144,VEND002,FreshDairy Foods NCR,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING003,litre,191.98
+EVP-month_02-00145,VEND002,FreshDairy Foods NCR,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING004,litre,211.12
+EVP-month_02-00146,VEND002,FreshDairy Foods NCR,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING005,kg,359.18
+EVP-month_02-00147,VEND002,FreshDairy Foods NCR,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING006,kg,473.08
+EVP-month_02-00148,VEND009,FrozenBerry Traders,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING025,kg,433.42
+EVP-month_02-00149,VEND005,GreenLeaf Produce Delhi,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING023,kg,106.18
+EVP-month_02-00150,VEND005,GreenLeaf Produce Delhi,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING028,kg,94.09
+EVP-month_02-00151,VEND005,GreenLeaf Produce Delhi,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING030,kg,83.34
+EVP-month_02-00152,VEND010,Metro Wholesale Delhi,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING022,kg,12.03
+EVP-month_02-00153,VEND007,NorthStar Poultry,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING008,pcs,7.04
+EVP-month_02-00154,VEND004,PackPro Disposables,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING036,pcs,3.34
+EVP-month_02-00155,VEND004,PackPro Disposables,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING037,pcs,2.79
+EVP-month_02-00156,VEND004,PackPro Disposables,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING038,pcs,1.14
+EVP-month_02-00157,VEND004,PackPro Disposables,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING040,pcs,0.32
+EVP-month_02-00158,VEND004,PackPro Disposables,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING041,pcs,5.05
+EVP-month_02-00159,VEND004,PackPro Disposables,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING042,pcs,6.64
+EVP-month_02-00160,VEND004,PackPro Disposables,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING043,pcs,5.93
+EVP-month_02-00161,VEND012,SweetBase Foods,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING017,litre,249.14
+EVP-month_02-00162,VEND012,SweetBase Foods,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING018,litre,247.8
+EVP-month_02-00163,VEND012,SweetBase Foods,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING019,litre,88.85
+EVP-month_02-00164,VEND012,SweetBase Foods,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING024,litre,401.6
+EVP-month_02-00165,VEND011,TeaLeaf Traders NCR,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING021,kg,2134.18
+EVP-month_02-00166,VEND001,BeanCraft Roasters Delhi,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING001,kg,993.1
+EVP-month_02-00167,VEND008,ChocoCraft Ingredients,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING013,pcs,35.48
+EVP-month_02-00168,VEND008,ChocoCraft Ingredients,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING016,litre,265.8
+EVP-month_02-00169,VEND003,Delhi Bakery Supply Co,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING009,pcs,12.34
+EVP-month_02-00170,VEND003,Delhi Bakery Supply Co,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING010,pcs,29.08
+EVP-month_02-00171,VEND003,Delhi Bakery Supply Co,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING011,pcs,14.71
+EVP-month_02-00172,VEND003,Delhi Bakery Supply Co,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING012,pcs,43.73
+EVP-month_02-00173,VEND003,Delhi Bakery Supply Co,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING014,pcs,48.19
+EVP-month_02-00174,VEND003,Delhi Bakery Supply Co,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING015,pcs,76.72
+EVP-month_02-00175,VEND002,FreshDairy Foods NCR,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING002,litre,74.35
+EVP-month_02-00176,VEND002,FreshDairy Foods NCR,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING003,litre,184.38
+EVP-month_02-00177,VEND002,FreshDairy Foods NCR,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING004,litre,212.36
+EVP-month_02-00178,VEND002,FreshDairy Foods NCR,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING005,kg,364.55
+EVP-month_02-00179,VEND002,FreshDairy Foods NCR,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING006,kg,498.69
+EVP-month_02-00180,VEND002,FreshDairy Foods NCR,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING027,kg,550.71
+EVP-month_02-00181,VEND005,GreenLeaf Produce Delhi,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING023,kg,110.72
+EVP-month_02-00182,VEND005,GreenLeaf Produce Delhi,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING026,kg,69.22
+EVP-month_02-00183,VEND005,GreenLeaf Produce Delhi,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING028,kg,94.01
+EVP-month_02-00184,VEND005,GreenLeaf Produce Delhi,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING030,kg,83.38
+EVP-month_02-00185,VEND005,GreenLeaf Produce Delhi,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING031,kg,54.11
+EVP-month_02-00186,VEND010,Metro Wholesale Delhi,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING022,kg,12.39
+EVP-month_02-00187,VEND007,NorthStar Poultry,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING007,kg,348.37
+EVP-month_02-00188,VEND007,NorthStar Poultry,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING008,pcs,7.15
+EVP-month_02-00189,VEND004,PackPro Disposables,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING036,pcs,3.4
+EVP-month_02-00190,VEND004,PackPro Disposables,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING037,pcs,2.87
+EVP-month_02-00191,VEND004,PackPro Disposables,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING038,pcs,1.12
+EVP-month_02-00192,VEND004,PackPro Disposables,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING039,pcs,0.56
+EVP-month_02-00193,VEND004,PackPro Disposables,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING040,pcs,0.33
+EVP-month_02-00194,VEND004,PackPro Disposables,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING042,pcs,6.46
+EVP-month_02-00195,VEND006,SpiceRoot Foods,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING032,kg,343.31
+EVP-month_02-00196,VEND006,SpiceRoot Foods,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING033,kg,285.47
+EVP-month_02-00197,VEND006,SpiceRoot Foods,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING035,kg,322.69
+EVP-month_02-00198,VEND012,SweetBase Foods,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING018,litre,250.57
+EVP-month_02-00199,VEND012,SweetBase Foods,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING019,litre,96.17
+EVP-month_02-00200,VEND012,SweetBase Foods,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING024,litre,400.35
+EVP-month_02-00201,VEND011,TeaLeaf Traders NCR,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-02-28,synthetic.generator,Monthly approved synthetic vendor price,2026-02-28,ING020,kg,639.23
+EVP-month_03-00202,VEND001,BeanCraft Roasters Delhi,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING001,kg,1017.34
+EVP-month_03-00203,VEND008,ChocoCraft Ingredients,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING013,pcs,34.97
+EVP-month_03-00204,VEND003,Delhi Bakery Supply Co,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING009,pcs,12.41
+EVP-month_03-00205,VEND003,Delhi Bakery Supply Co,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING010,pcs,29.59
+EVP-month_03-00206,VEND003,Delhi Bakery Supply Co,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING011,pcs,15.14
+EVP-month_03-00207,VEND003,Delhi Bakery Supply Co,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING012,pcs,42.4
+EVP-month_03-00208,VEND003,Delhi Bakery Supply Co,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING014,pcs,47.27
+EVP-month_03-00209,VEND003,Delhi Bakery Supply Co,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING015,pcs,74.33
+EVP-month_03-00210,VEND002,FreshDairy Foods NCR,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING002,litre,74.67
+EVP-month_03-00211,VEND002,FreshDairy Foods NCR,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING004,litre,213.85
+EVP-month_03-00212,VEND002,FreshDairy Foods NCR,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING005,kg,381.44
+EVP-month_03-00213,VEND002,FreshDairy Foods NCR,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING006,kg,502.12
+EVP-month_03-00214,VEND002,FreshDairy Foods NCR,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING027,kg,542.63
+EVP-month_03-00215,VEND009,FrozenBerry Traders,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING025,kg,419.14
+EVP-month_03-00216,VEND005,GreenLeaf Produce Delhi,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING026,kg,77.88
+EVP-month_03-00217,VEND005,GreenLeaf Produce Delhi,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING028,kg,100.23
+EVP-month_03-00218,VEND005,GreenLeaf Produce Delhi,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING029,kg,45.73
+EVP-month_03-00219,VEND010,Metro Wholesale Delhi,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING022,kg,12.57
+EVP-month_03-00220,VEND007,NorthStar Poultry,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING007,kg,349.62
+EVP-month_03-00221,VEND007,NorthStar Poultry,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING008,pcs,7.58
+EVP-month_03-00222,VEND004,PackPro Disposables,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING036,pcs,3.18
+EVP-month_03-00223,VEND004,PackPro Disposables,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING037,pcs,2.84
+EVP-month_03-00224,VEND004,PackPro Disposables,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING038,pcs,1.11
+EVP-month_03-00225,VEND004,PackPro Disposables,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING039,pcs,0.57
+EVP-month_03-00226,VEND004,PackPro Disposables,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING040,pcs,0.35
+EVP-month_03-00227,VEND004,PackPro Disposables,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING041,pcs,5.18
+EVP-month_03-00228,VEND004,PackPro Disposables,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING042,pcs,6.52
+EVP-month_03-00229,VEND004,PackPro Disposables,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING043,pcs,5.99
+EVP-month_03-00230,VEND006,SpiceRoot Foods,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING032,kg,359.47
+EVP-month_03-00231,VEND006,SpiceRoot Foods,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING034,kg,197.99
+EVP-month_03-00232,VEND006,SpiceRoot Foods,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING035,kg,324.11
+EVP-month_03-00233,VEND012,SweetBase Foods,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING017,litre,262.88
+EVP-month_03-00234,VEND012,SweetBase Foods,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING019,litre,96.89
+EVP-month_03-00235,VEND011,TeaLeaf Traders NCR,OUT001,ABNAH Cafe Connaught Place,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING021,kg,2212.68
+EVP-month_03-00236,VEND001,BeanCraft Roasters Delhi,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING001,kg,1019.84
+EVP-month_03-00237,VEND008,ChocoCraft Ingredients,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING013,pcs,33.87
+EVP-month_03-00238,VEND008,ChocoCraft Ingredients,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING016,litre,265.39
+EVP-month_03-00239,VEND003,Delhi Bakery Supply Co,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING009,pcs,11.97
+EVP-month_03-00240,VEND003,Delhi Bakery Supply Co,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING010,pcs,29.05
+EVP-month_03-00241,VEND003,Delhi Bakery Supply Co,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING012,pcs,45.16
+EVP-month_03-00242,VEND003,Delhi Bakery Supply Co,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING015,pcs,76.45
+EVP-month_03-00243,VEND002,FreshDairy Foods NCR,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING002,litre,72.73
+EVP-month_03-00244,VEND002,FreshDairy Foods NCR,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING004,litre,217.75
+EVP-month_03-00245,VEND002,FreshDairy Foods NCR,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING005,kg,378.8
+EVP-month_03-00246,VEND002,FreshDairy Foods NCR,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING006,kg,497.55
+EVP-month_03-00247,VEND009,FrozenBerry Traders,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING025,kg,430.25
+EVP-month_03-00248,VEND005,GreenLeaf Produce Delhi,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING026,kg,76.94
+EVP-month_03-00249,VEND005,GreenLeaf Produce Delhi,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING029,kg,44.53
+EVP-month_03-00250,VEND005,GreenLeaf Produce Delhi,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING030,kg,92.43
+EVP-month_03-00251,VEND005,GreenLeaf Produce Delhi,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING031,kg,58.77
+EVP-month_03-00252,VEND010,Metro Wholesale Delhi,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING022,kg,11.78
+EVP-month_03-00253,VEND007,NorthStar Poultry,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING007,kg,346.31
+EVP-month_03-00254,VEND007,NorthStar Poultry,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING008,pcs,7.25
+EVP-month_03-00255,VEND004,PackPro Disposables,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING036,pcs,3.34
+EVP-month_03-00256,VEND004,PackPro Disposables,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING037,pcs,2.95
+EVP-month_03-00257,VEND004,PackPro Disposables,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING039,pcs,0.58
+EVP-month_03-00258,VEND004,PackPro Disposables,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING040,pcs,0.32
+EVP-month_03-00259,VEND004,PackPro Disposables,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING041,pcs,5.26
+EVP-month_03-00260,VEND004,PackPro Disposables,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING042,pcs,6.71
+EVP-month_03-00261,VEND004,PackPro Disposables,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING043,pcs,6.03
+EVP-month_03-00262,VEND006,SpiceRoot Foods,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING032,kg,347.18
+EVP-month_03-00263,VEND006,SpiceRoot Foods,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING033,kg,297.12
+EVP-month_03-00264,VEND006,SpiceRoot Foods,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING034,kg,197.9
+EVP-month_03-00265,VEND012,SweetBase Foods,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING017,litre,258.03
+EVP-month_03-00266,VEND012,SweetBase Foods,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING018,litre,240.69
+EVP-month_03-00267,VEND012,SweetBase Foods,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING019,litre,91.3
+EVP-month_03-00268,VEND011,TeaLeaf Traders NCR,OUT002,ABNAH Cafe Hauz Khas,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING020,kg,640.42
+EVP-month_03-00269,VEND001,BeanCraft Roasters Delhi,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING001,kg,1004.16
+EVP-month_03-00270,VEND008,ChocoCraft Ingredients,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING013,pcs,35.6
+EVP-month_03-00271,VEND008,ChocoCraft Ingredients,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING016,litre,268.36
+EVP-month_03-00272,VEND003,Delhi Bakery Supply Co,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING009,pcs,12.46
+EVP-month_03-00273,VEND003,Delhi Bakery Supply Co,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING011,pcs,14.9
+EVP-month_03-00274,VEND003,Delhi Bakery Supply Co,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING012,pcs,41.92
+EVP-month_03-00275,VEND003,Delhi Bakery Supply Co,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING014,pcs,48.67
+EVP-month_03-00276,VEND003,Delhi Bakery Supply Co,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING015,pcs,76.03
+EVP-month_03-00277,VEND002,FreshDairy Foods NCR,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING002,litre,75.88
+EVP-month_03-00278,VEND002,FreshDairy Foods NCR,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING003,litre,187.63
+EVP-month_03-00279,VEND002,FreshDairy Foods NCR,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING004,litre,212.58
+EVP-month_03-00280,VEND002,FreshDairy Foods NCR,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING005,kg,387.42
+EVP-month_03-00281,VEND002,FreshDairy Foods NCR,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING006,kg,502.76
+EVP-month_03-00282,VEND002,FreshDairy Foods NCR,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING027,kg,557.81
+EVP-month_03-00283,VEND009,FrozenBerry Traders,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING025,kg,449.52
+EVP-month_03-00284,VEND005,GreenLeaf Produce Delhi,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING026,kg,76.41
+EVP-month_03-00285,VEND005,GreenLeaf Produce Delhi,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING029,kg,45.81
+EVP-month_03-00286,VEND010,Metro Wholesale Delhi,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING022,kg,12.85
+EVP-month_03-00287,VEND007,NorthStar Poultry,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING007,kg,352.76
+EVP-month_03-00288,VEND004,PackPro Disposables,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING037,pcs,2.93
+EVP-month_03-00289,VEND004,PackPro Disposables,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING038,pcs,1.18
+EVP-month_03-00290,VEND004,PackPro Disposables,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING039,pcs,0.58
+EVP-month_03-00291,VEND004,PackPro Disposables,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING040,pcs,0.33
+EVP-month_03-00292,VEND004,PackPro Disposables,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING041,pcs,5.21
+EVP-month_03-00293,VEND004,PackPro Disposables,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING042,pcs,6.62
+EVP-month_03-00294,VEND004,PackPro Disposables,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING043,pcs,6.0
+EVP-month_03-00295,VEND006,SpiceRoot Foods,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING032,kg,346.24
+EVP-month_03-00296,VEND006,SpiceRoot Foods,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING033,kg,281.95
+EVP-month_03-00297,VEND006,SpiceRoot Foods,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING034,kg,205.35
+EVP-month_03-00298,VEND006,SpiceRoot Foods,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING035,kg,320.37
+EVP-month_03-00299,VEND012,SweetBase Foods,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING017,litre,255.07
+EVP-month_03-00300,VEND012,SweetBase Foods,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING018,litre,247.73
+EVP-month_03-00301,VEND012,SweetBase Foods,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING019,litre,96.21
+EVP-month_03-00302,VEND012,SweetBase Foods,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING024,litre,404.52
+EVP-month_03-00303,VEND011,TeaLeaf Traders NCR,OUT003,ABNAH Cafe Saket Premium,Approved,Yes,2026-03-31,synthetic.generator,Monthly approved synthetic vendor price,2026-03-31,ING020,kg,655.94

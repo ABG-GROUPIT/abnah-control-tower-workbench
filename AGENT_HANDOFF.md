@@ -23,24 +23,25 @@ Maintain a screenshot-free, evidence-disciplined understanding of ABNAH's Restro
 ## Read Order
 
 1. `README.md`
-2. `schema-pack/manifest.json`
-3. `docs/STRUCTURAL_SCHEMA_METHOD.md`
-4. `docs/CONTROL_TOWER_KPI_AND_CHART_LINEAGE_HANDBOOK.md`
-5. `docs/PRESENTATION_SAFE_ACTUAL_DATA_ISSUES.md`
-6. `schema-pack/source/control_tower/control-tower-presentation.json`
-7. `schema-pack/source/model/control-tower-model.json`
-8. `docs/CONTROL_TOWER_REQUIREMENTS.md`
-9. `docs/REPORT_CAPTURE_PRIORITY.md`
-10. `docs/MODEL_REVISION_PLAN.md`
-11. `schema-pack/source/control_tower/control-tower-requirements.json`
-12. `docs/DATA_CONTRACT.md`
-13. `docs/LOCAL_AUDIT_PACKET_WORKFLOW.md` when a local CSV packet is supplied
-14. `docs/DATA_QUALITY_AND_HOSTING.md` before changing severity, local evidence, or deployment
-15. `docs/SCHEMA_CAPTURE_IMPORT.md` when a local schema-capture README is supplied
-16. `schema-pack/generated/workspace_report_catalog.csv`
-17. The selected report file under `schema-pack/source/report_structures/`
-18. Relevant text chunk under `schema-pack/source/reference_chunks/`
-19. `docs/KPI_LINEAGE_CONTRACT.md` before source selection or publication
+2. `project-pack/README.md`
+3. `schema-pack/manifest.json`
+4. `docs/STRUCTURAL_SCHEMA_METHOD.md`
+5. `docs/CONTROL_TOWER_KPI_AND_CHART_LINEAGE_HANDBOOK.md`
+6. `docs/PRESENTATION_SAFE_ACTUAL_DATA_ISSUES.md`
+7. `schema-pack/source/control_tower/control-tower-presentation.json`
+8. `schema-pack/source/model/control-tower-model.json`
+9. `docs/CONTROL_TOWER_REQUIREMENTS.md`
+10. `docs/REPORT_CAPTURE_PRIORITY.md`
+11. `docs/MODEL_REVISION_PLAN.md`
+12. `schema-pack/source/control_tower/control-tower-requirements.json`
+13. `docs/DATA_CONTRACT.md`
+14. `docs/LOCAL_AUDIT_PACKET_WORKFLOW.md` when a local CSV packet is supplied
+15. `docs/DATA_QUALITY_AND_HOSTING.md` before changing severity, local evidence, or deployment
+16. `docs/SCHEMA_CAPTURE_IMPORT.md` when a local schema-capture README is supplied
+17. `schema-pack/generated/workspace_report_catalog.csv`
+18. The selected report file under `schema-pack/source/report_structures/`
+19. Relevant text chunk under `schema-pack/source/reference_chunks/`
+20. `docs/KPI_LINEAGE_CONTRACT.md` before source selection or publication
 
 ## Truth Model
 
@@ -54,8 +55,8 @@ There are three intentional stores:
 For the live site, use the latest D1 current document. For a clean rebuild or team transfer, use source blueprints plus an exported D1 backup. Site edits are not automatically promoted into source JSON.
 
 The presentation architecture is generated differently: update the canonical
-Query Tables or dashboard story register in the sibling
-`abnah-zoho-synthetic-demo` repository, then run `npm run data:refresh`. That
+Query Tables or dashboard story register under
+`project-pack/zoho-control-tower/`, then run `npm run data:refresh`. That
 regenerates both handbooks and synchronizes the exact SQL and presentation
 contract into this repository before validation.
 

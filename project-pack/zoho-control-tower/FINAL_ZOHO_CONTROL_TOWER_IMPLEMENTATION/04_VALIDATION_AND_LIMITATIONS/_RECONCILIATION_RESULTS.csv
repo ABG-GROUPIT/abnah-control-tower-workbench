@@ -1,0 +1,36 @@
+﻿check_id,status,observed,expected,notes
+sales_line_count,PASS,14576,14576,Bill Item Detail and Gross/Net Margin use the same synthetic sale lines.
+sales_qty_reconciliation,PASS,23319.0,23319.0,Sold quantity must reconcile across the two sales authorities.
+bill_item_net_bridge,PASS,0,0,"Bill-item net amount uses exported GST tax values, not the taxable-base columns."
+po_quantity_bridge,PASS,0,0,Cancelled lines are excluded because Restroworks may retain original ordered quantity.
+transfer_quantity_balance,PASS,690.12,690.12,Every synthetic transfer has a supplier and receiver side.
+closing_value_bridge,PASS,0,0,Closing amount equals quantity multiplied by average price within rounding tolerance.
+actual_consumption_bridge,PASS,0,0,"Actual consumption follows the approved opening plus receipts plus transfer-in less transfer-out, returns and closing rule."
+variance_bridge,PASS,0,0,Consumption variance equals actual less theoretical at outlet-item-month grain.
+controlled_data_quality_exceptions,PASS,negative=1; zero=2,negative=1; zero>=2,Controlled exceptions keep the data-quality page demonstrable and are listed in the truth pack.
+aux_outlet_master_unique,PASS,rows=3; unique_outlets=3,rows=3; unique_outlets=3,The scenario geography must contain exactly one row per synthetic outlet.
+aux_expiry_estimate_traceable,PASS,rows=206; risky_rows=206; value_gap_rows=0; tranche_gap_rows=0; duplicate_batch_keys=0,rows>0; risky_rows>0; value_gap_rows=0; tranche_gap_rows=0; duplicate_batch_keys=0,"Expiry demo tranches must remain within item closing stock, retain unique batch lineage and stay visibly non-production."
+report_non_empty:vendor_report,PASS,70,>0,Every populated validated source contract has synthetic rows.
+report_non_empty:bill_item_detail,PASS,14576,>0,Every populated validated source contract has synthetic rows.
+report_non_empty:bulk_return,PASS,19,>0,Every populated validated source contract has synthetic rows.
+report_non_empty:enterprise_consumption_detail,PASS,387,>0,Every populated validated source contract has synthetic rows.
+report_non_empty:enterprise_entry,PASS,585,>0,Every populated validated source contract has synthetic rows.
+report_non_empty:enterprise_purchase_order,PASS,638,>0,Every populated validated source contract has synthetic rows.
+report_header_only:enterprise_reorder,PASS,0,0,The synthetic export mirrors the header-only UAT source state.
+report_header_only:enterprise_stock_return,PASS,0,0,The synthetic export mirrors the header-only UAT source state.
+report_non_empty:enterprise_transfer_from,PASS,18,>0,Every populated validated source contract has synthetic rows.
+report_non_empty:enterprise_transfer_to,PASS,18,>0,Every populated validated source contract has synthetic rows.
+report_non_empty:enterprise_variance_master,PASS,387,>0,Every populated validated source contract has synthetic rows.
+report_non_empty:enterprise_variance_normal,PASS,387,>0,Every populated validated source contract has synthetic rows.
+report_non_empty:enterprise_wastage_normal,PASS,108,>0,Every populated validated source contract has synthetic rows.
+report_non_empty:gross_net_margin,PASS,14576,>0,Every populated validated source contract has synthetic rows.
+report_non_empty:item_recipe_report,PASS,723,>0,Every populated validated source contract has synthetic rows.
+report_non_empty:purchase_detail,PASS,585,>0,Every populated validated source contract has synthetic rows.
+report_non_empty:recipe_consumption,PASS,6501,>0,Every populated validated source contract has synthetic rows.
+report_non_empty:stock_in_stock_out,PASS,36,>0,Every populated validated source contract has synthetic rows.
+report_non_empty:enterprise_opening,PASS,387,>0,Every populated validated source contract has synthetic rows.
+report_non_empty:enterprise_physical,PASS,387,>0,Every populated validated source contract has synthetic rows.
+report_non_empty:closing_stock,PASS,387,>0,Every populated validated source contract has synthetic rows.
+schema_capture_non_empty:ERP_Vendor_Price,PASS,303,>0,Schema-capture-only reports are generated separately from validated CSV contracts.
+schema_capture_non_empty:Enterprise_Purchase_Summary,PASS,100,>0,Schema-capture-only reports are generated separately from validated CSV contracts.
+schema_capture_non_empty:Enterprise_Consolidated_Indent,PASS,25,>0,Schema-capture-only reports are generated separately from validated CSV contracts.

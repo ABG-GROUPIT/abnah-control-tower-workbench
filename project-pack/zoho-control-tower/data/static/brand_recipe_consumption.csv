@@ -1,0 +1,724 @@
+row_id,recipe_name,recipe_qty,recipe_unit,item_name,item_qty,item_unit,item_tab_type
+BOM00001,Espresso Shot - Solo,1,Piece,Coffee Beans,0.0096,kg,Base Recipe
+BOM00002,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00003,,,,Lid,1.0,pcs,Base Recipe
+BOM00004,,,,Napkin,1.0,pcs,Base Recipe
+BOM00005,Espresso Shot - Doppio,1,Piece,Coffee Beans,0.0174,kg,Base Recipe
+BOM00006,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00007,,,,Lid,1.0,pcs,Base Recipe
+BOM00008,,,,Napkin,1.0,pcs,Base Recipe
+BOM00009,Americano - Regular,1,Piece,Coffee Beans,0.018,kg,Base Recipe
+BOM00010,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00011,,,,Lid,1.0,pcs,Base Recipe
+BOM00012,,,,Napkin,1.0,pcs,Base Recipe
+BOM00013,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00014,Americano - Medium,1,Piece,Coffee Beans,0.0207,kg,Base Recipe
+BOM00015,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00016,,,,Lid,1.0,pcs,Base Recipe
+BOM00017,,,,Napkin,1.0,pcs,Base Recipe
+BOM00018,,,,Sugar Syrup,0.0172,litre,Base Recipe
+BOM00019,Americano - Large,1,Piece,Coffee Beans,0.0234,kg,Base Recipe
+BOM00020,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00021,,,,Lid,1.0,pcs,Base Recipe
+BOM00022,,,,Napkin,1.0,pcs,Base Recipe
+BOM00023,,,,Sugar Syrup,0.0195,litre,Base Recipe
+BOM00024,Latte - Regular,1,Piece,Coffee Beans,0.018,kg,Base Recipe
+BOM00025,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00026,,,,Lid,1.0,pcs,Base Recipe
+BOM00027,,,,Milk,0.18,litre,Base Recipe
+BOM00028,,,,Napkin,1.0,pcs,Base Recipe
+BOM00029,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00030,Latte - Medium,1,Piece,Coffee Beans,0.0207,kg,Base Recipe
+BOM00031,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00032,,,,Lid,1.0,pcs,Base Recipe
+BOM00033,,,,Milk,0.207,litre,Base Recipe
+BOM00034,,,,Napkin,1.0,pcs,Base Recipe
+BOM00035,,,,Sugar Syrup,0.0172,litre,Base Recipe
+BOM00036,Latte - Large,1,Piece,Coffee Beans,0.0234,kg,Base Recipe
+BOM00037,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00038,,,,Lid,1.0,pcs,Base Recipe
+BOM00039,,,,Milk,0.234,litre,Base Recipe
+BOM00040,,,,Napkin,1.0,pcs,Base Recipe
+BOM00041,,,,Sugar Syrup,0.0195,litre,Base Recipe
+BOM00042,Cappuccino - Regular,1,Piece,Coffee Beans,0.018,kg,Base Recipe
+BOM00043,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00044,,,,Lid,1.0,pcs,Base Recipe
+BOM00045,,,,Milk,0.18,litre,Base Recipe
+BOM00046,,,,Napkin,1.0,pcs,Base Recipe
+BOM00047,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00048,Cappuccino - Medium,1,Piece,Coffee Beans,0.0207,kg,Base Recipe
+BOM00049,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00050,,,,Lid,1.0,pcs,Base Recipe
+BOM00051,,,,Milk,0.207,litre,Base Recipe
+BOM00052,,,,Napkin,1.0,pcs,Base Recipe
+BOM00053,,,,Sugar Syrup,0.0172,litre,Base Recipe
+BOM00054,Cappuccino - Large,1,Piece,Coffee Beans,0.0234,kg,Base Recipe
+BOM00055,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00056,,,,Lid,1.0,pcs,Base Recipe
+BOM00057,,,,Milk,0.234,litre,Base Recipe
+BOM00058,,,,Napkin,1.0,pcs,Base Recipe
+BOM00059,,,,Sugar Syrup,0.0195,litre,Base Recipe
+BOM00060,Flat White - Regular,1,Piece,Coffee Beans,0.018,kg,Base Recipe
+BOM00061,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00062,,,,Lid,1.0,pcs,Base Recipe
+BOM00063,,,,Milk,0.18,litre,Base Recipe
+BOM00064,,,,Napkin,1.0,pcs,Base Recipe
+BOM00065,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00066,Flat White - Medium,1,Piece,Coffee Beans,0.0207,kg,Base Recipe
+BOM00067,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00068,,,,Lid,1.0,pcs,Base Recipe
+BOM00069,,,,Milk,0.207,litre,Base Recipe
+BOM00070,,,,Napkin,1.0,pcs,Base Recipe
+BOM00071,,,,Sugar Syrup,0.0172,litre,Base Recipe
+BOM00072,Flat White - Large,1,Piece,Coffee Beans,0.0234,kg,Base Recipe
+BOM00073,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00074,,,,Lid,1.0,pcs,Base Recipe
+BOM00075,,,,Milk,0.234,litre,Base Recipe
+BOM00076,,,,Napkin,1.0,pcs,Base Recipe
+BOM00077,,,,Sugar Syrup,0.0195,litre,Base Recipe
+BOM00078,Mocha - Regular,1,Piece,Chocolate Sauce,0.025,litre,Base Recipe
+BOM00079,,,,Coffee Beans,0.018,kg,Base Recipe
+BOM00080,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00081,,,,Lid,1.0,pcs,Base Recipe
+BOM00082,,,,Milk,0.18,litre,Base Recipe
+BOM00083,,,,Napkin,1.0,pcs,Base Recipe
+BOM00084,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00085,Mocha - Medium,1,Piece,Chocolate Sauce,0.0287,litre,Base Recipe
+BOM00086,,,,Coffee Beans,0.0207,kg,Base Recipe
+BOM00087,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00088,,,,Lid,1.0,pcs,Base Recipe
+BOM00089,,,,Milk,0.207,litre,Base Recipe
+BOM00090,,,,Napkin,1.0,pcs,Base Recipe
+BOM00091,,,,Sugar Syrup,0.0172,litre,Base Recipe
+BOM00092,Mocha - Large,1,Piece,Chocolate Sauce,0.0325,litre,Base Recipe
+BOM00093,,,,Coffee Beans,0.0234,kg,Base Recipe
+BOM00094,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00095,,,,Lid,1.0,pcs,Base Recipe
+BOM00096,,,,Milk,0.234,litre,Base Recipe
+BOM00097,,,,Napkin,1.0,pcs,Base Recipe
+BOM00098,,,,Sugar Syrup,0.0195,litre,Base Recipe
+BOM00099,Sea Salt Mocha - Regular,1,Piece,Chocolate Sauce,0.025,litre,Base Recipe
+BOM00100,,,,Coffee Beans,0.018,kg,Base Recipe
+BOM00101,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00102,,,,Lid,1.0,pcs,Base Recipe
+BOM00103,,,,Milk,0.18,litre,Base Recipe
+BOM00104,,,,Napkin,1.0,pcs,Base Recipe
+BOM00105,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00106,Sea Salt Mocha - Medium,1,Piece,Chocolate Sauce,0.0287,litre,Base Recipe
+BOM00107,,,,Coffee Beans,0.0207,kg,Base Recipe
+BOM00108,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00109,,,,Lid,1.0,pcs,Base Recipe
+BOM00110,,,,Milk,0.207,litre,Base Recipe
+BOM00111,,,,Napkin,1.0,pcs,Base Recipe
+BOM00112,,,,Sugar Syrup,0.0172,litre,Base Recipe
+BOM00113,Sea Salt Mocha - Large,1,Piece,Chocolate Sauce,0.0325,litre,Base Recipe
+BOM00114,,,,Coffee Beans,0.0234,kg,Base Recipe
+BOM00115,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00116,,,,Lid,1.0,pcs,Base Recipe
+BOM00117,,,,Milk,0.234,litre,Base Recipe
+BOM00118,,,,Napkin,1.0,pcs,Base Recipe
+BOM00119,,,,Sugar Syrup,0.0195,litre,Base Recipe
+BOM00120,Orange Zest Mocha - Regular,1,Piece,Chocolate Sauce,0.025,litre,Base Recipe
+BOM00121,,,,Coffee Beans,0.018,kg,Base Recipe
+BOM00122,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00123,,,,Lid,1.0,pcs,Base Recipe
+BOM00124,,,,Milk,0.18,litre,Base Recipe
+BOM00125,,,,Napkin,1.0,pcs,Base Recipe
+BOM00126,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00127,Orange Zest Mocha - Medium,1,Piece,Chocolate Sauce,0.0287,litre,Base Recipe
+BOM00128,,,,Coffee Beans,0.0207,kg,Base Recipe
+BOM00129,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00130,,,,Lid,1.0,pcs,Base Recipe
+BOM00131,,,,Milk,0.207,litre,Base Recipe
+BOM00132,,,,Napkin,1.0,pcs,Base Recipe
+BOM00133,,,,Sugar Syrup,0.0172,litre,Base Recipe
+BOM00134,Orange Zest Mocha - Large,1,Piece,Chocolate Sauce,0.0325,litre,Base Recipe
+BOM00135,,,,Coffee Beans,0.0234,kg,Base Recipe
+BOM00136,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00137,,,,Lid,1.0,pcs,Base Recipe
+BOM00138,,,,Milk,0.234,litre,Base Recipe
+BOM00139,,,,Napkin,1.0,pcs,Base Recipe
+BOM00140,,,,Sugar Syrup,0.0195,litre,Base Recipe
+BOM00141,Caramel Macchiato - Regular,1,Piece,Caramel Syrup,0.025,litre,Base Recipe
+BOM00142,,,,Coffee Beans,0.018,kg,Base Recipe
+BOM00143,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00144,,,,Lid,1.0,pcs,Base Recipe
+BOM00145,,,,Milk,0.18,litre,Base Recipe
+BOM00146,,,,Napkin,1.0,pcs,Base Recipe
+BOM00147,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00148,Caramel Macchiato - Medium,1,Piece,Caramel Syrup,0.0287,litre,Base Recipe
+BOM00149,,,,Coffee Beans,0.0207,kg,Base Recipe
+BOM00150,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00151,,,,Lid,1.0,pcs,Base Recipe
+BOM00152,,,,Milk,0.207,litre,Base Recipe
+BOM00153,,,,Napkin,1.0,pcs,Base Recipe
+BOM00154,,,,Sugar Syrup,0.0172,litre,Base Recipe
+BOM00155,Caramel Macchiato - Large,1,Piece,Caramel Syrup,0.0325,litre,Base Recipe
+BOM00156,,,,Coffee Beans,0.0234,kg,Base Recipe
+BOM00157,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00158,,,,Lid,1.0,pcs,Base Recipe
+BOM00159,,,,Milk,0.234,litre,Base Recipe
+BOM00160,,,,Napkin,1.0,pcs,Base Recipe
+BOM00161,,,,Sugar Syrup,0.0195,litre,Base Recipe
+BOM00162,French Vanilla Latte - Regular,1,Piece,Coffee Beans,0.018,kg,Base Recipe
+BOM00163,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00164,,,,Lid,1.0,pcs,Base Recipe
+BOM00165,,,,Milk,0.18,litre,Base Recipe
+BOM00166,,,,Napkin,1.0,pcs,Base Recipe
+BOM00167,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00168,,,,Vanilla Syrup,0.025,litre,Base Recipe
+BOM00169,French Vanilla Latte - Medium,1,Piece,Coffee Beans,0.0207,kg,Base Recipe
+BOM00170,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00171,,,,Lid,1.0,pcs,Base Recipe
+BOM00172,,,,Milk,0.207,litre,Base Recipe
+BOM00173,,,,Napkin,1.0,pcs,Base Recipe
+BOM00174,,,,Sugar Syrup,0.0172,litre,Base Recipe
+BOM00175,,,,Vanilla Syrup,0.0287,litre,Base Recipe
+BOM00176,French Vanilla Latte - Large,1,Piece,Coffee Beans,0.0234,kg,Base Recipe
+BOM00177,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00178,,,,Lid,1.0,pcs,Base Recipe
+BOM00179,,,,Milk,0.234,litre,Base Recipe
+BOM00180,,,,Napkin,1.0,pcs,Base Recipe
+BOM00181,,,,Sugar Syrup,0.0195,litre,Base Recipe
+BOM00182,,,,Vanilla Syrup,0.0325,litre,Base Recipe
+BOM00183,Vegan Iced Latte - Regular,1,Piece,Coffee Beans,0.018,kg,Base Recipe
+BOM00184,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00185,,,,Ice,0.12,kg,Base Recipe
+BOM00186,,,,Lid,1.0,pcs,Base Recipe
+BOM00187,,,,Napkin,1.0,pcs,Base Recipe
+BOM00188,,,,Oat Milk,0.18,litre,Base Recipe
+BOM00189,,,,Straw,1.0,pcs,Base Recipe
+BOM00190,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00191,Vegan Iced Latte - Medium,1,Piece,Coffee Beans,0.0207,kg,Base Recipe
+BOM00192,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00193,,,,Ice,0.138,kg,Base Recipe
+BOM00194,,,,Lid,1.0,pcs,Base Recipe
+BOM00195,,,,Napkin,1.0,pcs,Base Recipe
+BOM00196,,,,Oat Milk,0.207,litre,Base Recipe
+BOM00197,,,,Straw,1.0,pcs,Base Recipe
+BOM00198,,,,Sugar Syrup,0.0172,litre,Base Recipe
+BOM00199,Vegan Iced Latte - Large,1,Piece,Coffee Beans,0.0234,kg,Base Recipe
+BOM00200,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00201,,,,Ice,0.156,kg,Base Recipe
+BOM00202,,,,Lid,1.0,pcs,Base Recipe
+BOM00203,,,,Napkin,1.0,pcs,Base Recipe
+BOM00204,,,,Oat Milk,0.234,litre,Base Recipe
+BOM00205,,,,Straw,1.0,pcs,Base Recipe
+BOM00206,,,,Sugar Syrup,0.0195,litre,Base Recipe
+BOM00207,Classic Cold Brew - Regular,1,Piece,Coffee Beans,0.018,kg,Base Recipe
+BOM00208,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00209,,,,Ice,0.12,kg,Base Recipe
+BOM00210,,,,Lid,1.0,pcs,Base Recipe
+BOM00211,,,,Napkin,1.0,pcs,Base Recipe
+BOM00212,,,,Straw,1.0,pcs,Base Recipe
+BOM00213,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00214,Classic Cold Brew - Medium,1,Piece,Coffee Beans,0.0207,kg,Base Recipe
+BOM00215,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00216,,,,Ice,0.138,kg,Base Recipe
+BOM00217,,,,Lid,1.0,pcs,Base Recipe
+BOM00218,,,,Napkin,1.0,pcs,Base Recipe
+BOM00219,,,,Straw,1.0,pcs,Base Recipe
+BOM00220,,,,Sugar Syrup,0.0172,litre,Base Recipe
+BOM00221,Classic Cold Brew - Large,1,Piece,Coffee Beans,0.0234,kg,Base Recipe
+BOM00222,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00223,,,,Ice,0.156,kg,Base Recipe
+BOM00224,,,,Lid,1.0,pcs,Base Recipe
+BOM00225,,,,Napkin,1.0,pcs,Base Recipe
+BOM00226,,,,Straw,1.0,pcs,Base Recipe
+BOM00227,,,,Sugar Syrup,0.0195,litre,Base Recipe
+BOM00228,Coffee Lemonade - Regular,1,Piece,Coffee Beans,0.018,kg,Base Recipe
+BOM00229,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00230,,,,Ice,0.12,kg,Base Recipe
+BOM00231,,,,Lemon,0.035,kg,Base Recipe
+BOM00232,,,,Lid,1.0,pcs,Base Recipe
+BOM00233,,,,Napkin,1.0,pcs,Base Recipe
+BOM00234,,,,Straw,1.0,pcs,Base Recipe
+BOM00235,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00236,Coffee Lemonade - Medium,1,Piece,Coffee Beans,0.0207,kg,Base Recipe
+BOM00237,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00238,,,,Ice,0.138,kg,Base Recipe
+BOM00239,,,,Lemon,0.0403,kg,Base Recipe
+BOM00240,,,,Lid,1.0,pcs,Base Recipe
+BOM00241,,,,Napkin,1.0,pcs,Base Recipe
+BOM00242,,,,Straw,1.0,pcs,Base Recipe
+BOM00243,,,,Sugar Syrup,0.0172,litre,Base Recipe
+BOM00244,Coffee Lemonade - Large,1,Piece,Coffee Beans,0.0234,kg,Base Recipe
+BOM00245,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00246,,,,Ice,0.156,kg,Base Recipe
+BOM00247,,,,Lemon,0.0455,kg,Base Recipe
+BOM00248,,,,Lid,1.0,pcs,Base Recipe
+BOM00249,,,,Napkin,1.0,pcs,Base Recipe
+BOM00250,,,,Straw,1.0,pcs,Base Recipe
+BOM00251,,,,Sugar Syrup,0.0195,litre,Base Recipe
+BOM00252,Vietnamese Shakerato - Regular,1,Piece,Coffee Beans,0.018,kg,Base Recipe
+BOM00253,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00254,,,,Ice,0.12,kg,Base Recipe
+BOM00255,,,,Lid,1.0,pcs,Base Recipe
+BOM00256,,,,Napkin,1.0,pcs,Base Recipe
+BOM00257,,,,Straw,1.0,pcs,Base Recipe
+BOM00258,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00259,Vietnamese Shakerato - Medium,1,Piece,Coffee Beans,0.0207,kg,Base Recipe
+BOM00260,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00261,,,,Ice,0.138,kg,Base Recipe
+BOM00262,,,,Lid,1.0,pcs,Base Recipe
+BOM00263,,,,Napkin,1.0,pcs,Base Recipe
+BOM00264,,,,Straw,1.0,pcs,Base Recipe
+BOM00265,,,,Sugar Syrup,0.0172,litre,Base Recipe
+BOM00266,Vietnamese Shakerato - Large,1,Piece,Coffee Beans,0.0234,kg,Base Recipe
+BOM00267,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00268,,,,Ice,0.156,kg,Base Recipe
+BOM00269,,,,Lid,1.0,pcs,Base Recipe
+BOM00270,,,,Napkin,1.0,pcs,Base Recipe
+BOM00271,,,,Straw,1.0,pcs,Base Recipe
+BOM00272,,,,Sugar Syrup,0.0195,litre,Base Recipe
+BOM00273,Classic Cold Coffee - Regular,1,Piece,Coffee Beans,0.018,kg,Base Recipe
+BOM00274,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00275,,,,Ice,0.12,kg,Base Recipe
+BOM00276,,,,Lid,1.0,pcs,Base Recipe
+BOM00277,,,,Milk,0.18,litre,Base Recipe
+BOM00278,,,,Napkin,1.0,pcs,Base Recipe
+BOM00279,,,,Straw,1.0,pcs,Base Recipe
+BOM00280,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00281,Classic Cold Coffee - Medium,1,Piece,Coffee Beans,0.0207,kg,Base Recipe
+BOM00282,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00283,,,,Ice,0.138,kg,Base Recipe
+BOM00284,,,,Lid,1.0,pcs,Base Recipe
+BOM00285,,,,Milk,0.207,litre,Base Recipe
+BOM00286,,,,Napkin,1.0,pcs,Base Recipe
+BOM00287,,,,Straw,1.0,pcs,Base Recipe
+BOM00288,,,,Sugar Syrup,0.0172,litre,Base Recipe
+BOM00289,Classic Cold Coffee - Large,1,Piece,Coffee Beans,0.0234,kg,Base Recipe
+BOM00290,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00291,,,,Ice,0.156,kg,Base Recipe
+BOM00292,,,,Lid,1.0,pcs,Base Recipe
+BOM00293,,,,Milk,0.234,litre,Base Recipe
+BOM00294,,,,Napkin,1.0,pcs,Base Recipe
+BOM00295,,,,Straw,1.0,pcs,Base Recipe
+BOM00296,,,,Sugar Syrup,0.0195,litre,Base Recipe
+BOM00297,Mocha Cold Coffee - Regular,1,Piece,Chocolate Sauce,0.025,litre,Base Recipe
+BOM00298,,,,Coffee Beans,0.018,kg,Base Recipe
+BOM00299,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00300,,,,Ice,0.12,kg,Base Recipe
+BOM00301,,,,Lid,1.0,pcs,Base Recipe
+BOM00302,,,,Milk,0.18,litre,Base Recipe
+BOM00303,,,,Napkin,1.0,pcs,Base Recipe
+BOM00304,,,,Straw,1.0,pcs,Base Recipe
+BOM00305,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00306,Mocha Cold Coffee - Medium,1,Piece,Chocolate Sauce,0.0287,litre,Base Recipe
+BOM00307,,,,Coffee Beans,0.0207,kg,Base Recipe
+BOM00308,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00309,,,,Ice,0.138,kg,Base Recipe
+BOM00310,,,,Lid,1.0,pcs,Base Recipe
+BOM00311,,,,Milk,0.207,litre,Base Recipe
+BOM00312,,,,Napkin,1.0,pcs,Base Recipe
+BOM00313,,,,Straw,1.0,pcs,Base Recipe
+BOM00314,,,,Sugar Syrup,0.0172,litre,Base Recipe
+BOM00315,Mocha Cold Coffee - Large,1,Piece,Chocolate Sauce,0.0325,litre,Base Recipe
+BOM00316,,,,Coffee Beans,0.0234,kg,Base Recipe
+BOM00317,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00318,,,,Ice,0.156,kg,Base Recipe
+BOM00319,,,,Lid,1.0,pcs,Base Recipe
+BOM00320,,,,Milk,0.234,litre,Base Recipe
+BOM00321,,,,Napkin,1.0,pcs,Base Recipe
+BOM00322,,,,Straw,1.0,pcs,Base Recipe
+BOM00323,,,,Sugar Syrup,0.0195,litre,Base Recipe
+BOM00324,Caramel Cold Coffee - Regular,1,Piece,Caramel Syrup,0.025,litre,Base Recipe
+BOM00325,,,,Coffee Beans,0.018,kg,Base Recipe
+BOM00326,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00327,,,,Ice,0.12,kg,Base Recipe
+BOM00328,,,,Lid,1.0,pcs,Base Recipe
+BOM00329,,,,Milk,0.18,litre,Base Recipe
+BOM00330,,,,Napkin,1.0,pcs,Base Recipe
+BOM00331,,,,Straw,1.0,pcs,Base Recipe
+BOM00332,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00333,Caramel Cold Coffee - Medium,1,Piece,Caramel Syrup,0.0287,litre,Base Recipe
+BOM00334,,,,Coffee Beans,0.0207,kg,Base Recipe
+BOM00335,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00336,,,,Ice,0.138,kg,Base Recipe
+BOM00337,,,,Lid,1.0,pcs,Base Recipe
+BOM00338,,,,Milk,0.207,litre,Base Recipe
+BOM00339,,,,Napkin,1.0,pcs,Base Recipe
+BOM00340,,,,Straw,1.0,pcs,Base Recipe
+BOM00341,,,,Sugar Syrup,0.0172,litre,Base Recipe
+BOM00342,Caramel Cold Coffee - Large,1,Piece,Caramel Syrup,0.0325,litre,Base Recipe
+BOM00343,,,,Coffee Beans,0.0234,kg,Base Recipe
+BOM00344,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00345,,,,Ice,0.156,kg,Base Recipe
+BOM00346,,,,Lid,1.0,pcs,Base Recipe
+BOM00347,,,,Milk,0.234,litre,Base Recipe
+BOM00348,,,,Napkin,1.0,pcs,Base Recipe
+BOM00349,,,,Straw,1.0,pcs,Base Recipe
+BOM00350,,,,Sugar Syrup,0.0195,litre,Base Recipe
+BOM00351,Masala Chai Latte - Regular,1,Piece,Coffee Beans,0.018,kg,Base Recipe
+BOM00352,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00353,,,,Lid,1.0,pcs,Base Recipe
+BOM00354,,,,Milk,0.18,litre,Base Recipe
+BOM00355,,,,Napkin,1.0,pcs,Base Recipe
+BOM00356,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00357,Masala Chai Latte - Medium,1,Piece,Coffee Beans,0.0207,kg,Base Recipe
+BOM00358,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00359,,,,Lid,1.0,pcs,Base Recipe
+BOM00360,,,,Milk,0.207,litre,Base Recipe
+BOM00361,,,,Napkin,1.0,pcs,Base Recipe
+BOM00362,,,,Sugar Syrup,0.0172,litre,Base Recipe
+BOM00363,Masala Chai Latte - Large,1,Piece,Coffee Beans,0.0234,kg,Base Recipe
+BOM00364,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00365,,,,Lid,1.0,pcs,Base Recipe
+BOM00366,,,,Milk,0.234,litre,Base Recipe
+BOM00367,,,,Napkin,1.0,pcs,Base Recipe
+BOM00368,,,,Sugar Syrup,0.0195,litre,Base Recipe
+BOM00369,Himalayan Green Tea,1,Piece,Hot Cup,1.0,pcs,Base Recipe
+BOM00370,,,,Lid,1.0,pcs,Base Recipe
+BOM00371,,,,Napkin,1.0,pcs,Base Recipe
+BOM00372,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00373,,,,Tea Leaves,0.005,kg,Base Recipe
+BOM00374,Japanese Matcha Latte - Regular,1,Piece,Coffee Beans,0.018,kg,Base Recipe
+BOM00375,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00376,,,,Lid,1.0,pcs,Base Recipe
+BOM00377,,,,Milk,0.18,litre,Base Recipe
+BOM00378,,,,Napkin,1.0,pcs,Base Recipe
+BOM00379,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00380,Japanese Matcha Latte - Medium,1,Piece,Coffee Beans,0.0207,kg,Base Recipe
+BOM00381,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00382,,,,Lid,1.0,pcs,Base Recipe
+BOM00383,,,,Milk,0.207,litre,Base Recipe
+BOM00384,,,,Napkin,1.0,pcs,Base Recipe
+BOM00385,,,,Sugar Syrup,0.0172,litre,Base Recipe
+BOM00386,Japanese Matcha Latte - Large,1,Piece,Coffee Beans,0.0234,kg,Base Recipe
+BOM00387,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00388,,,,Lid,1.0,pcs,Base Recipe
+BOM00389,,,,Milk,0.234,litre,Base Recipe
+BOM00390,,,,Napkin,1.0,pcs,Base Recipe
+BOM00391,,,,Sugar Syrup,0.0195,litre,Base Recipe
+BOM00392,Lemon Iced Tea - Regular,1,Piece,Cold Cup,1.0,pcs,Base Recipe
+BOM00393,,,,Ice,0.12,kg,Base Recipe
+BOM00394,,,,Lemon,0.035,kg,Base Recipe
+BOM00395,,,,Lid,1.0,pcs,Base Recipe
+BOM00396,,,,Napkin,1.0,pcs,Base Recipe
+BOM00397,,,,Straw,1.0,pcs,Base Recipe
+BOM00398,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00399,,,,Tea Leaves,0.004,kg,Base Recipe
+BOM00400,Lemon Iced Tea - Medium,1,Piece,Cold Cup,1.0,pcs,Base Recipe
+BOM00401,,,,Ice,0.138,kg,Base Recipe
+BOM00402,,,,Lemon,0.0403,kg,Base Recipe
+BOM00403,,,,Lid,1.0,pcs,Base Recipe
+BOM00404,,,,Napkin,1.0,pcs,Base Recipe
+BOM00405,,,,Straw,1.0,pcs,Base Recipe
+BOM00406,,,,Sugar Syrup,0.0172,litre,Base Recipe
+BOM00407,,,,Tea Leaves,0.0046,kg,Base Recipe
+BOM00408,Lemon Iced Tea - Large,1,Piece,Cold Cup,1.0,pcs,Base Recipe
+BOM00409,,,,Ice,0.156,kg,Base Recipe
+BOM00410,,,,Lemon,0.0455,kg,Base Recipe
+BOM00411,,,,Lid,1.0,pcs,Base Recipe
+BOM00412,,,,Napkin,1.0,pcs,Base Recipe
+BOM00413,,,,Straw,1.0,pcs,Base Recipe
+BOM00414,,,,Sugar Syrup,0.0195,litre,Base Recipe
+BOM00415,,,,Tea Leaves,0.0052,kg,Base Recipe
+BOM00416,Hibiscus Lime Iced Tea - Regular,1,Piece,Cold Cup,1.0,pcs,Base Recipe
+BOM00417,,,,Hibiscus Concentrate,0.035,litre,Base Recipe
+BOM00418,,,,Ice,0.12,kg,Base Recipe
+BOM00419,,,,Lid,1.0,pcs,Base Recipe
+BOM00420,,,,Napkin,1.0,pcs,Base Recipe
+BOM00421,,,,Straw,1.0,pcs,Base Recipe
+BOM00422,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00423,,,,Tea Leaves,0.004,kg,Base Recipe
+BOM00424,Hibiscus Lime Iced Tea - Medium,1,Piece,Cold Cup,1.0,pcs,Base Recipe
+BOM00425,,,,Hibiscus Concentrate,0.0403,litre,Base Recipe
+BOM00426,,,,Ice,0.138,kg,Base Recipe
+BOM00427,,,,Lid,1.0,pcs,Base Recipe
+BOM00428,,,,Napkin,1.0,pcs,Base Recipe
+BOM00429,,,,Straw,1.0,pcs,Base Recipe
+BOM00430,,,,Sugar Syrup,0.0172,litre,Base Recipe
+BOM00431,,,,Tea Leaves,0.0046,kg,Base Recipe
+BOM00432,Hibiscus Lime Iced Tea - Large,1,Piece,Cold Cup,1.0,pcs,Base Recipe
+BOM00433,,,,Hibiscus Concentrate,0.0455,litre,Base Recipe
+BOM00434,,,,Ice,0.156,kg,Base Recipe
+BOM00435,,,,Lid,1.0,pcs,Base Recipe
+BOM00436,,,,Napkin,1.0,pcs,Base Recipe
+BOM00437,,,,Straw,1.0,pcs,Base Recipe
+BOM00438,,,,Sugar Syrup,0.0195,litre,Base Recipe
+BOM00439,,,,Tea Leaves,0.0052,kg,Base Recipe
+BOM00440,Hot Chocolate - Regular,1,Piece,Chocolate Sauce,0.06,litre,Base Recipe
+BOM00441,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00442,,,,Lid,1.0,pcs,Base Recipe
+BOM00443,,,,Milk,0.2,litre,Base Recipe
+BOM00444,,,,Napkin,1.0,pcs,Base Recipe
+BOM00445,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00446,Hot Chocolate - Medium,1,Piece,Chocolate Sauce,0.069,litre,Base Recipe
+BOM00447,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00448,,,,Lid,1.0,pcs,Base Recipe
+BOM00449,,,,Milk,0.23,litre,Base Recipe
+BOM00450,,,,Napkin,1.0,pcs,Base Recipe
+BOM00451,,,,Sugar Syrup,0.0172,litre,Base Recipe
+BOM00452,Hot Chocolate - Large,1,Piece,Chocolate Sauce,0.078,litre,Base Recipe
+BOM00453,,,,Hot Cup,1.0,pcs,Base Recipe
+BOM00454,,,,Lid,1.0,pcs,Base Recipe
+BOM00455,,,,Milk,0.26,litre,Base Recipe
+BOM00456,,,,Napkin,1.0,pcs,Base Recipe
+BOM00457,,,,Sugar Syrup,0.0195,litre,Base Recipe
+BOM00458,Babyccino - Regular,1,Piece,Hot Cup,1.0,pcs,Base Recipe
+BOM00459,,,,Lid,1.0,pcs,Base Recipe
+BOM00460,,,,Milk,0.12,litre,Base Recipe
+BOM00461,,,,Napkin,1.0,pcs,Base Recipe
+BOM00462,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00463,Choco Chip Shake - Regular,1,Piece,Chocolate Sauce,0.025,litre,Base Recipe
+BOM00464,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00465,,,,Cream,0.025,litre,Base Recipe
+BOM00466,,,,Ice,0.12,kg,Base Recipe
+BOM00467,,,,Lid,1.0,pcs,Base Recipe
+BOM00468,,,,Milk,0.2,litre,Base Recipe
+BOM00469,,,,Napkin,1.0,pcs,Base Recipe
+BOM00470,,,,Straw,1.0,pcs,Base Recipe
+BOM00471,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00472,Choco Chip Shake - Medium,1,Piece,Chocolate Sauce,0.0287,litre,Base Recipe
+BOM00473,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00474,,,,Cream,0.0287,litre,Base Recipe
+BOM00475,,,,Ice,0.138,kg,Base Recipe
+BOM00476,,,,Lid,1.0,pcs,Base Recipe
+BOM00477,,,,Milk,0.23,litre,Base Recipe
+BOM00478,,,,Napkin,1.0,pcs,Base Recipe
+BOM00479,,,,Straw,1.0,pcs,Base Recipe
+BOM00480,,,,Sugar Syrup,0.0172,litre,Base Recipe
+BOM00481,Choco Chip Shake - Large,1,Piece,Chocolate Sauce,0.0325,litre,Base Recipe
+BOM00482,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00483,,,,Cream,0.0325,litre,Base Recipe
+BOM00484,,,,Ice,0.156,kg,Base Recipe
+BOM00485,,,,Lid,1.0,pcs,Base Recipe
+BOM00486,,,,Milk,0.26,litre,Base Recipe
+BOM00487,,,,Napkin,1.0,pcs,Base Recipe
+BOM00488,,,,Straw,1.0,pcs,Base Recipe
+BOM00489,,,,Sugar Syrup,0.0195,litre,Base Recipe
+BOM00490,Mixed Berry Shake - Regular,1,Piece,Cold Cup,1.0,pcs,Base Recipe
+BOM00491,,,,Cream,0.025,litre,Base Recipe
+BOM00492,,,,Ice,0.12,kg,Base Recipe
+BOM00493,,,,Lid,1.0,pcs,Base Recipe
+BOM00494,,,,Milk,0.2,litre,Base Recipe
+BOM00495,,,,Mixed Berry Pulp,0.08,kg,Base Recipe
+BOM00496,,,,Napkin,1.0,pcs,Base Recipe
+BOM00497,,,,Straw,1.0,pcs,Base Recipe
+BOM00498,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00499,Mixed Berry Shake - Medium,1,Piece,Cold Cup,1.0,pcs,Base Recipe
+BOM00500,,,,Cream,0.0287,litre,Base Recipe
+BOM00501,,,,Ice,0.138,kg,Base Recipe
+BOM00502,,,,Lid,1.0,pcs,Base Recipe
+BOM00503,,,,Milk,0.23,litre,Base Recipe
+BOM00504,,,,Mixed Berry Pulp,0.092,kg,Base Recipe
+BOM00505,,,,Napkin,1.0,pcs,Base Recipe
+BOM00506,,,,Straw,1.0,pcs,Base Recipe
+BOM00507,,,,Sugar Syrup,0.0172,litre,Base Recipe
+BOM00508,Mixed Berry Shake - Large,1,Piece,Cold Cup,1.0,pcs,Base Recipe
+BOM00509,,,,Cream,0.0325,litre,Base Recipe
+BOM00510,,,,Ice,0.156,kg,Base Recipe
+BOM00511,,,,Lid,1.0,pcs,Base Recipe
+BOM00512,,,,Milk,0.26,litre,Base Recipe
+BOM00513,,,,Mixed Berry Pulp,0.104,kg,Base Recipe
+BOM00514,,,,Napkin,1.0,pcs,Base Recipe
+BOM00515,,,,Straw,1.0,pcs,Base Recipe
+BOM00516,,,,Sugar Syrup,0.0195,litre,Base Recipe
+BOM00517,Seasonal Smoothie - Regular,1,Piece,Banana,0.08,kg,Base Recipe
+BOM00518,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00519,,,,Cream,0.025,litre,Base Recipe
+BOM00520,,,,Ice,0.12,kg,Base Recipe
+BOM00521,,,,Lid,1.0,pcs,Base Recipe
+BOM00522,,,,Milk,0.2,litre,Base Recipe
+BOM00523,,,,Napkin,1.0,pcs,Base Recipe
+BOM00524,,,,Straw,1.0,pcs,Base Recipe
+BOM00525,,,,Sugar Syrup,0.015,litre,Base Recipe
+BOM00526,Seasonal Smoothie - Medium,1,Piece,Banana,0.092,kg,Base Recipe
+BOM00527,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00528,,,,Cream,0.0287,litre,Base Recipe
+BOM00529,,,,Ice,0.138,kg,Base Recipe
+BOM00530,,,,Lid,1.0,pcs,Base Recipe
+BOM00531,,,,Milk,0.23,litre,Base Recipe
+BOM00532,,,,Napkin,1.0,pcs,Base Recipe
+BOM00533,,,,Straw,1.0,pcs,Base Recipe
+BOM00534,,,,Sugar Syrup,0.0172,litre,Base Recipe
+BOM00535,Seasonal Smoothie - Large,1,Piece,Banana,0.104,kg,Base Recipe
+BOM00536,,,,Cold Cup,1.0,pcs,Base Recipe
+BOM00537,,,,Cream,0.0325,litre,Base Recipe
+BOM00538,,,,Ice,0.156,kg,Base Recipe
+BOM00539,,,,Lid,1.0,pcs,Base Recipe
+BOM00540,,,,Milk,0.26,litre,Base Recipe
+BOM00541,,,,Napkin,1.0,pcs,Base Recipe
+BOM00542,,,,Straw,1.0,pcs,Base Recipe
+BOM00543,,,,Sugar Syrup,0.0195,litre,Base Recipe
+BOM00544,Spicy Paneer Wrap,1,Piece,Capsicum,0.025,kg,Base Recipe
+BOM00545,,,,Chipotle Sauce,0.025,kg,Base Recipe
+BOM00546,,,,Lettuce,0.025,kg,Base Recipe
+BOM00547,,,,Napkin,2.0,pcs,Base Recipe
+BOM00548,,,,Onion,0.02,kg,Base Recipe
+BOM00549,,,,Paneer,0.11,kg,Base Recipe
+BOM00550,,,,Tortilla,1.0,pcs,Base Recipe
+BOM00551,,,,Wrap Packaging,1.0,pcs,Base Recipe
+BOM00552,Shredded Chicken Wrap,1,Piece,Capsicum,0.025,kg,Base Recipe
+BOM00553,,,,Chicken,0.11,kg,Base Recipe
+BOM00554,,,,Chipotle Sauce,0.025,kg,Base Recipe
+BOM00555,,,,Lettuce,0.025,kg,Base Recipe
+BOM00556,,,,Napkin,2.0,pcs,Base Recipe
+BOM00557,,,,Onion,0.02,kg,Base Recipe
+BOM00558,,,,Tortilla,1.0,pcs,Base Recipe
+BOM00559,,,,Wrap Packaging,1.0,pcs,Base Recipe
+BOM00560,Smoked Chipotle Paneer Sandwich,1,Piece,Bread,2.0,pcs,Base Recipe
+BOM00561,,,,Cheese,0.03,kg,Base Recipe
+BOM00562,,,,Chipotle Sauce,0.02,kg,Base Recipe
+BOM00563,,,,Lettuce,0.02,kg,Base Recipe
+BOM00564,,,,Napkin,2.0,pcs,Base Recipe
+BOM00565,,,,Paneer,0.1,kg,Base Recipe
+BOM00566,,,,Sandwich Box,1.0,pcs,Base Recipe
+BOM00567,,,,Tomato,0.03,kg,Base Recipe
+BOM00568,Pesto Veg Sandwich,1,Piece,Bread,2.0,pcs,Base Recipe
+BOM00569,,,,Cheese,0.03,kg,Base Recipe
+BOM00570,,,,Lettuce,0.02,kg,Base Recipe
+BOM00571,,,,Napkin,2.0,pcs,Base Recipe
+BOM00572,,,,Paneer,0.1,kg,Base Recipe
+BOM00573,,,,Pesto Sauce,0.02,kg,Base Recipe
+BOM00574,,,,Sandwich Box,1.0,pcs,Base Recipe
+BOM00575,,,,Tomato,0.03,kg,Base Recipe
+BOM00576,Pepper Chicken Sandwich,1,Piece,Bread,2.0,pcs,Base Recipe
+BOM00577,,,,Cheese,0.03,kg,Base Recipe
+BOM00578,,,,Chicken,0.1,kg,Base Recipe
+BOM00579,,,,Chipotle Sauce,0.02,kg,Base Recipe
+BOM00580,,,,Lettuce,0.02,kg,Base Recipe
+BOM00581,,,,Napkin,2.0,pcs,Base Recipe
+BOM00582,,,,Sandwich Box,1.0,pcs,Base Recipe
+BOM00583,,,,Tomato,0.03,kg,Base Recipe
+BOM00584,Tandoori Chicken Sandwich,1,Piece,Bread,2.0,pcs,Base Recipe
+BOM00585,,,,Cheese,0.03,kg,Base Recipe
+BOM00586,,,,Chicken,0.1,kg,Base Recipe
+BOM00587,,,,Chipotle Sauce,0.02,kg,Base Recipe
+BOM00588,,,,Lettuce,0.02,kg,Base Recipe
+BOM00589,,,,Napkin,2.0,pcs,Base Recipe
+BOM00590,,,,Sandwich Box,1.0,pcs,Base Recipe
+BOM00591,,,,Tomato,0.03,kg,Base Recipe
+BOM00592,Chilli Cheese Garlic Toast,1,Piece,Aioli,0.02,kg,Base Recipe
+BOM00593,,,,Bread,1.0,pcs,Base Recipe
+BOM00594,,,,Cheese,0.035,kg,Base Recipe
+BOM00595,,,,Napkin,2.0,pcs,Base Recipe
+BOM00596,,,,Sandwich Box,1.0,pcs,Base Recipe
+BOM00597,Chicken Pepperoni Avocado Toast,1,Piece,Aioli,0.02,kg,Base Recipe
+BOM00598,,,,Bread,1.0,pcs,Base Recipe
+BOM00599,,,,Cheese,0.035,kg,Base Recipe
+BOM00600,,,,Chicken,0.08,kg,Base Recipe
+BOM00601,,,,Napkin,2.0,pcs,Base Recipe
+BOM00602,,,,Sandwich Box,1.0,pcs,Base Recipe
+BOM00603,Hummus and Pita Platter,1,Piece,Aioli,0.03,kg,Base Recipe
+BOM00604,,,,Bread,2.0,pcs,Base Recipe
+BOM00605,,,,Lettuce,0.03,kg,Base Recipe
+BOM00606,,,,Napkin,2.0,pcs,Base Recipe
+BOM00607,,,,Sandwich Box,1.0,pcs,Base Recipe
+BOM00608,,,,Tomato,0.04,kg,Base Recipe
+BOM00609,Breakfast Pancakes,1,Piece,Butter,0.025,kg,Base Recipe
+BOM00610,,,,Cake Base,1.0,pcs,Base Recipe
+BOM00611,,,,Dessert Box,1.0,pcs,Base Recipe
+BOM00612,,,,Napkin,2.0,pcs,Base Recipe
+BOM00613,,,,Sugar Syrup,0.025,litre,Base Recipe
+BOM00614,Cream Cheese Bagel,1,Piece,Bagel,1.0,pcs,Base Recipe
+BOM00615,,,,Cheese,0.025,kg,Base Recipe
+BOM00616,,,,Cream,0.035,litre,Base Recipe
+BOM00617,,,,Napkin,2.0,pcs,Base Recipe
+BOM00618,,,,Sandwich Box,1.0,pcs,Base Recipe
+BOM00619,Scallion Pepper Cream Cheese Bagel,1,Piece,Bagel,1.0,pcs,Base Recipe
+BOM00620,,,,Cheese,0.025,kg,Base Recipe
+BOM00621,,,,Cream,0.035,litre,Base Recipe
+BOM00622,,,,Napkin,2.0,pcs,Base Recipe
+BOM00623,,,,Sandwich Box,1.0,pcs,Base Recipe
+BOM00624,Masala Egg Bun,1,Piece,Bread,1.0,pcs,Base Recipe
+BOM00625,,,,Cheese,0.02,kg,Base Recipe
+BOM00626,,,,Egg,2.0,pcs,Base Recipe
+BOM00627,,,,Napkin,2.0,pcs,Base Recipe
+BOM00628,,,,Sandwich Box,1.0,pcs,Base Recipe
+BOM00629,Marinara Cheese Pin Wheels,1,Piece,Bread,1.0,pcs,Base Recipe
+BOM00630,,,,Cheese,0.03,kg,Base Recipe
+BOM00631,,,,Napkin,2.0,pcs,Base Recipe
+BOM00632,,,,Salsa,0.025,kg,Base Recipe
+BOM00633,,,,Sandwich Box,1.0,pcs,Base Recipe
+BOM00634,Pesto Sundried Tomato Pin Wheel,1,Piece,Bread,1.0,pcs,Base Recipe
+BOM00635,,,,Cheese,0.03,kg,Base Recipe
+BOM00636,,,,Napkin,2.0,pcs,Base Recipe
+BOM00637,,,,Pesto Sauce,0.025,kg,Base Recipe
+BOM00638,,,,Sandwich Box,1.0,pcs,Base Recipe
+BOM00639,Turnover with Brioche Dough Chicken,1,Piece,Cheese,0.025,kg,Base Recipe
+BOM00640,,,,Chicken,0.08,kg,Base Recipe
+BOM00641,,,,Croissant Base,1.0,pcs,Base Recipe
+BOM00642,,,,Napkin,2.0,pcs,Base Recipe
+BOM00643,,,,Sandwich Box,1.0,pcs,Base Recipe
+BOM00644,Turnover with Brioche Dough Veg,1,Piece,Cheese,0.025,kg,Base Recipe
+BOM00645,,,,Croissant Base,1.0,pcs,Base Recipe
+BOM00646,,,,Napkin,2.0,pcs,Base Recipe
+BOM00647,,,,Paneer,0.08,kg,Base Recipe
+BOM00648,,,,Sandwich Box,1.0,pcs,Base Recipe
+BOM00649,Butter Croissant,1,Piece,Butter,0.02,kg,Base Recipe
+BOM00650,,,,Croissant Base,1.0,pcs,Base Recipe
+BOM00651,,,,Dessert Box,1.0,pcs,Base Recipe
+BOM00652,,,,Napkin,2.0,pcs,Base Recipe
+BOM00653,Almond Croissant,1,Piece,Butter,0.02,kg,Base Recipe
+BOM00654,,,,Croissant Base,1.0,pcs,Base Recipe
+BOM00655,,,,Dessert Box,1.0,pcs,Base Recipe
+BOM00656,,,,Napkin,2.0,pcs,Base Recipe
+BOM00657,Chocolate Croissant,1,Piece,Butter,0.02,kg,Base Recipe
+BOM00658,,,,Chocolate Sauce,0.025,litre,Base Recipe
+BOM00659,,,,Croissant Base,1.0,pcs,Base Recipe
+BOM00660,,,,Dessert Box,1.0,pcs,Base Recipe
+BOM00661,,,,Napkin,2.0,pcs,Base Recipe
+BOM00662,Mushroom Cheese Croissant,1,Piece,Butter,0.02,kg,Base Recipe
+BOM00663,,,,Cheese,0.035,kg,Base Recipe
+BOM00664,,,,Croissant Base,1.0,pcs,Base Recipe
+BOM00665,,,,Dessert Box,1.0,pcs,Base Recipe
+BOM00666,,,,Napkin,2.0,pcs,Base Recipe
+BOM00667,Sriracha Chicken Croissant,1,Piece,Butter,0.02,kg,Base Recipe
+BOM00668,,,,Chicken,0.07,kg,Base Recipe
+BOM00669,,,,Croissant Base,1.0,pcs,Base Recipe
+BOM00670,,,,Dessert Box,1.0,pcs,Base Recipe
+BOM00671,,,,Napkin,2.0,pcs,Base Recipe
+BOM00672,Cinnamon Roll with Cream Cheese,1,Piece,Cream,0.025,litre,Base Recipe
+BOM00673,,,,Croissant Base,1.0,pcs,Base Recipe
+BOM00674,,,,Dessert Box,1.0,pcs,Base Recipe
+BOM00675,,,,Napkin,1.0,pcs,Base Recipe
+BOM00676,Banana Walnut Tea Cake,1,Piece,Banana,0.07,kg,Base Recipe
+BOM00677,,,,Cake Base,1.0,pcs,Base Recipe
+BOM00678,,,,Cream,0.025,litre,Base Recipe
+BOM00679,,,,Dessert Box,1.0,pcs,Base Recipe
+BOM00680,,,,Napkin,1.0,pcs,Base Recipe
+BOM00681,Lemon Raspberry Tea Cake,1,Piece,Cake Base,1.0,pcs,Base Recipe
+BOM00682,,,,Cream,0.025,litre,Base Recipe
+BOM00683,,,,Dessert Box,1.0,pcs,Base Recipe
+BOM00684,,,,Napkin,1.0,pcs,Base Recipe
+BOM00685,Double Chocolate Truffle Cake,1,Piece,Cake Base,1.0,pcs,Base Recipe
+BOM00686,,,,Chocolate Sauce,0.025,litre,Base Recipe
+BOM00687,,,,Cream,0.025,litre,Base Recipe
+BOM00688,,,,Dessert Box,1.0,pcs,Base Recipe
+BOM00689,,,,Napkin,1.0,pcs,Base Recipe
+BOM00690,Banoffee Pie,1,Piece,Cake Base,1.0,pcs,Base Recipe
+BOM00691,,,,Cream,0.025,litre,Base Recipe
+BOM00692,,,,Dessert Box,1.0,pcs,Base Recipe
+BOM00693,,,,Napkin,1.0,pcs,Base Recipe
+BOM00694,Classic Chocolate Fudge Brownie,1,Piece,Brownie Base,1.0,pcs,Base Recipe
+BOM00695,,,,Chocolate Sauce,0.045,litre,Base Recipe
+BOM00696,,,,Dessert Box,1.0,pcs,Base Recipe
+BOM00697,,,,Napkin,1.0,pcs,Base Recipe
+BOM00698,Soft-Centred Caramel Cookie,1,Piece,Butter,0.02,kg,Base Recipe
+BOM00699,,,,Cake Base,0.55,pcs,Base Recipe
+BOM00700,,,,Caramel Syrup,0.02,litre,Base Recipe
+BOM00701,,,,Dessert Box,1.0,pcs,Base Recipe
+BOM00702,,,,Napkin,1.0,pcs,Base Recipe
+BOM00703,Death by Chocolate Cookie,1,Piece,Butter,0.02,kg,Base Recipe
+BOM00704,,,,Cake Base,0.55,pcs,Base Recipe
+BOM00705,,,,Chocolate Sauce,0.025,litre,Base Recipe
+BOM00706,,,,Dessert Box,1.0,pcs,Base Recipe
+BOM00707,,,,Napkin,1.0,pcs,Base Recipe
+BOM00708,Jaggery Parmesan Cookie,1,Piece,Butter,0.02,kg,Base Recipe
+BOM00709,,,,Cake Base,0.55,pcs,Base Recipe
+BOM00710,,,,Dessert Box,1.0,pcs,Base Recipe
+BOM00711,,,,Napkin,1.0,pcs,Base Recipe
+BOM00712,Apple Pie,1,Piece,Cake Base,1.0,pcs,Base Recipe
+BOM00713,,,,Cream,0.025,litre,Base Recipe
+BOM00714,,,,Dessert Box,1.0,pcs,Base Recipe
+BOM00715,,,,Napkin,1.0,pcs,Base Recipe
+BOM00716,Basque Cheesecake,1,Piece,Cheesecake Base,1.0,pcs,Base Recipe
+BOM00717,,,,Cream,0.025,litre,Base Recipe
+BOM00718,,,,Dessert Box,1.0,pcs,Base Recipe
+BOM00719,,,,Napkin,1.0,pcs,Base Recipe
+BOM00720,Multigrain Walnut Tea Cake,1,Piece,Cake Base,1.0,pcs,Base Recipe
+BOM00721,,,,Cream,0.025,litre,Base Recipe
+BOM00722,,,,Dessert Box,1.0,pcs,Base Recipe
+BOM00723,,,,Napkin,1.0,pcs,Base Recipe

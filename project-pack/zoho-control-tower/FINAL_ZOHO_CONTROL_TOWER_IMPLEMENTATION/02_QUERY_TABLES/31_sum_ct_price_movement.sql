@@ -1,0 +1,59 @@
+-- Query Table: 31_sum_ct_price_movement.sql
+-- Logical model name: SUM_CT_Price_Movement
+-- Layer: summary
+-- Purpose: Compare weighted receipt prices with the immediately prior synthetic month.
+-- Sources: 23_fact_ct_purchase_receipt.sql
+-- Validate CAST/date function behavior once in the target Zoho workspace.
+SELECT
+    c."source_period_code" AS "source_period_code",
+    c."outlet_code" AS "outlet_code",
+    c."outlet_name" AS "outlet_name",
+    c."vendor_name" AS "vendor_name",
+    c."item_code" AS "item_code",
+    c."item_name" AS "item_name",
+    c."canonical_uom" AS "canonical_uom",
+    c."current_unit_price" AS "current_unit_price",
+    p."current_unit_price" AS "previous_unit_price",
+    c."current_unit_price" - p."current_unit_price" AS "unit_price_change",
+    CASE
+        WHEN p."current_unit_price" <> 0
+        THEN (c."current_unit_price" - p."current_unit_price") / p."current_unit_price" * 100
+        ELSE NULL
+    END AS "unit_price_change_percent"
+FROM (
+    SELECT
+        "source_period_code" AS "source_period_code",
+        "outlet_code" AS "outlet_code",
+        "outlet_name" AS "outlet_name",
+        "vendor_name" AS "vendor_name",
+        "item_code" AS "item_code",
+        "item_name" AS "item_name",
+        "canonical_uom" AS "canonical_uom",
+        SUM("receipt_subtotal") / NULLIF(SUM("received_qty"), 0) AS "current_unit_price"
+    FROM "23_fact_ct_purchase_receipt.sql"
+    GROUP BY
+        "source_period_code",
+        "outlet_code",
+        "outlet_name",
+        "vendor_name",
+        "item_code",
+        "item_name",
+        "canonical_uom"
+) c
+LEFT JOIN (
+    SELECT
+        "source_period_code" AS "source_period_code",
+        "outlet_code" AS "outlet_code",
+        "vendor_name" AS "vendor_name",
+        "item_code" AS "item_code",
+        SUM("receipt_subtotal") / NULLIF(SUM("received_qty"), 0) AS "current_unit_price"
+    FROM "23_fact_ct_purchase_receipt.sql"
+    GROUP BY "source_period_code", "outlet_code", "vendor_name", "item_code"
+) p
+  ON c."outlet_code" = p."outlet_code"
+ AND c."vendor_name" = p."vendor_name"
+ AND c."item_code" = p."item_code"
+ AND (
+      (c."source_period_code" = 'month_02' AND p."source_period_code" = 'month_01')
+   OR (c."source_period_code" = 'month_03' AND p."source_period_code" = 'month_02')
+ );
