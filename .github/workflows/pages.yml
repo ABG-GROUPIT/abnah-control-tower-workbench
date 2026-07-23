@@ -23,8 +23,16 @@ jobs:
         with:
           node-version: "22"
           cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       - run: npm ci
-      - run: npm run data:validate
+      - name: Validate portable data contracts
+        run: |
+          python scripts/validate_atlas_data.py
+          python scripts/validate_workspace_data.py
+          python scripts/validate_control_tower.py
+          python scripts/validate_schema_privacy.py
       - run: npm run typecheck
       - run: npm run build:pages
       - uses: actions/configure-pages@v5
