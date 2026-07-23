@@ -61,6 +61,7 @@ function FieldTokens({
 }
 
 function ReportDetail({ report }: { report: FidelityReport }) {
+  const isHistorical = report.evidenceScope === "historical_abnah_export";
   const blankCount = report.ignoredFields.filter(
     (field) => field.observedState === "all_blank",
   ).length;
@@ -72,7 +73,9 @@ function ReportDetail({ report }: { report: FidelityReport }) {
     <article className="ct-fidelity-detail">
       <header className="ct-fidelity-report-heading">
         <div>
-          <span className="section-kicker">Validated POSIST contract / {report.reportStem}</span>
+          <span className="section-kicker">
+            {isHistorical ? "Historical ABNAH contract" : "Validated POSIST contract"} / {report.reportStem}
+          </span>
           <h2>{report.displayName}</h2>
           <p>{report.grain}</p>
         </div>
@@ -87,22 +90,42 @@ function ReportDetail({ report }: { report: FidelityReport }) {
         </span>
         <span>
           <TableProperties aria-hidden="true" size={15} />
-          <b>{report.rowPatternStatus === "mirrored_header_only" ? "Header-only mirror" : "Captured grain"}</b>
+          <b>
+            {isHistorical
+              ? "Historical quality gate"
+              : report.rowPatternStatus === "mirrored_header_only"
+                ? "Header-only mirror"
+                : "Captured grain"}
+          </b>
           <small>
-            {report.rowPatternStatus === "mirrored_header_only"
+            {isHistorical
+              ? "Phone and address spillover must be repaired locally"
+              : report.rowPatternStatus === "mirrored_header_only"
               ? "No synthetic business rows fabricated"
               : "Synthetic frequencies and values remain modelled"}
           </small>
         </span>
         <span>
           <Database aria-hidden="true" size={15} />
-          <b>{numberFormat.format(report.actualRowsAudited)} / {numberFormat.format(report.syntheticRowsGenerated)}</b>
-          <small>Audited POSIST rows / generated synthetic rows</small>
+          <b>
+            {isHistorical ? "Historical" : numberFormat.format(report.actualRowsAudited ?? 0)}
+            {" / "}
+            {numberFormat.format(report.syntheticRowsGenerated)}
+          </b>
+          <small>
+            {isHistorical
+              ? "Current UAT rows not retained / generated synthetic rows"
+              : "Audited POSIST rows / generated synthetic rows"}
+          </small>
         </span>
         <span>
           <CircleOff aria-hidden="true" size={15} />
           <b>{report.ignoredFields.length}</b>
-          <small>{blankCount} blank, {zeroCount} zero-only, {report.rowPatternStatus === "mirrored_header_only" ? "source gated" : "excluded downstream"}</small>
+          <small>
+            {isHistorical
+              ? "Structural repair gate documented"
+              : `${blankCount} blank, ${zeroCount} zero-only, ${report.rowPatternStatus === "mirrored_header_only" ? "source gated" : "excluded downstream"}`}
+          </small>
         </span>
       </div>
 

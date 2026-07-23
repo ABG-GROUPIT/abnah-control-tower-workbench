@@ -164,8 +164,14 @@ def main() -> int:
     }
     if master_source_ids != {"src_vendor_master"}:
         errors.append(
-            "Vendor Master must be the only optional authoritative master source."
+            "Vendor Report must be the only quality-gated authoritative master source."
         )
+    vendor_source = next(
+        (item for item in source_nodes if item.get("id") == "src_vendor_master"),
+        None,
+    )
+    if not vendor_source or vendor_source.get("label") != "Vendor Report":
+        errors.append("The vendor master source must use the exact name Vendor Report.")
     po_source = next((item for item in source_nodes if item.get("id") == "src_purchase_order"), None)
     if not po_source:
         errors.append("Enterprise Purchase Order must be the planned PO source authority.")
@@ -216,8 +222,8 @@ def main() -> int:
     summary = evidence.get("summary", {})
     expected_summary = {
         "selectedSourceCount": 19,
-        "primarySourceCount": 9,
-        "auxiliarySourceCount": 5,
+        "primarySourceCount": 10,
+        "auxiliarySourceCount": 4,
         "controlSourceCount": 5,
         "auditedReportCount": 20,
         "auditedFileCount": 26,
@@ -306,8 +312,8 @@ def main() -> int:
         errors.append("Control Tower evidence must exclude sensitive values.")
     zoho = evidence.get("zohoReadiness", {})
     if (
-        zoho.get("requiredLandingTableCount") != 11
-        or zoho.get("queryTableCount") != 35
+        zoho.get("requiredLandingTableCount") != 12
+        or zoho.get("queryTableCount") != 36
         or zoho.get("dashboardTabCount") != 4
     ):
         errors.append("Control Tower Zoho readiness counts do not match the approved build pack.")
@@ -333,14 +339,16 @@ def main() -> int:
         errors.append("Control Tower fidelity must be verified before publication.")
     fidelity_summary = fidelity.get("summary", {})
     expected_fidelity_summary = {
-        "validatedReportContracts": 20,
-        "exactHeaderReports": 20,
+        "validatedReportContracts": 21,
+        "exactHeaderReports": 21,
+        "currentUatAuditedReportContracts": 20,
+        "historicalSchemaContracts": 1,
         "populatedReportContracts": 18,
         "headerOnlyReportContracts": 2,
         "confirmedAllBlankFields": 38,
         "confirmedAllZeroFields": 31,
         "ignoredNoSignalFields": 69,
-        "activeReportContracts": 9,
+        "activeReportContracts": 10,
         "gatedReportContracts": 2,
         "schemaCaptureOnlyReports": 3,
         "auxiliaryModelTables": 2,
@@ -353,8 +361,8 @@ def main() -> int:
             )
     fidelity_reports = fidelity.get("reports", [])
     fidelity_report_ids = [report.get("reportId", "") for report in fidelity_reports]
-    if len(fidelity_reports) != 20 or "" in fidelity_report_ids or duplicates(fidelity_report_ids):
-        errors.append("Control Tower fidelity must contain 20 unique validated report contracts.")
+    if len(fidelity_reports) != 21 or "" in fidelity_report_ids or duplicates(fidelity_report_ids):
+        errors.append("Control Tower fidelity must contain 21 unique validated report contracts.")
     for report in fidelity_reports:
         if not report.get("headerMatch") or report.get("schemaStatus") != "exact_validated_contract":
             errors.append(

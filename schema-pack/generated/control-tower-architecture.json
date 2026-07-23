@@ -770,27 +770,29 @@
       "layerId": "source",
       "groupId": "master_data",
       "kind": "master",
-      "label": "Vendor Master",
-      "description": "Authoritative vendor identity, coverage and active-state extract.",
-      "status": "required_gap",
-      "role": "Required production master",
+      "label": "Vendor Report",
+      "description": "Exact historical ABNAH vendor-master export, retained as a quality-gated source because phone and address overflow can shift its CSV structure.",
+      "status": "available_quality_gated",
+      "role": "Vendor identity master",
       "pages": [
         "page_1_risk_action_center",
         "page_2_procurement_vendor_capital",
         "page_4_scm_explorer_data_quality"
       ],
       "dataPoints": [
-        "Vendor code",
         "Vendor name",
-        "Active status",
-        "Vendor category",
-        "Region served",
-        "Approved item or category mapping"
+        "Vendor code",
+        "Description",
+        "Contact and compliance fields",
+        "Validity dates",
+        "State",
+        "Address"
       ],
       "inputs": [],
-      "logic": "Prefer API or authoritative CSV and retain unresolved vendor-name mappings as data-quality exceptions.",
+      "logic": "Repair phone overflow and address-continuation rows locally, validate row width and compliance formats, then import. Keep transaction-only vendor names as data-quality exceptions.",
       "alternatives": [
-        "Transaction-derived vendor lists are acceptable for POC only."
+        "PO and Stock Entry vendor names provide transaction-only fallback identity.",
+        "Lead time, SLA and approved vendor-item mapping remain unavailable until an exact source is validated."
       ]
     }
   ],
@@ -1086,25 +1088,28 @@
       "layerId": "raw",
       "groupId": "master_data",
       "kind": "table",
-      "label": "RAW Vendor Master",
-      "description": "Optional authoritative vendor extract when ABNAH supplies the exact source.",
-      "status": "conditional",
-      "role": "Optional master landing",
+      "label": "RAW Vendor Report",
+      "description": "Source-shaped 16-column historical Vendor Report after local structural repair.",
+      "status": "planned_quality_gated",
+      "role": "Qualified master landing",
       "pages": [
         "page_1_risk_action_center",
         "page_2_procurement_vendor_capital",
         "page_4_scm_explorer_data_quality"
       ],
       "dataPoints": [
-        "Stable vendor code",
-        "Vendor name",
-        "Status",
-        "Coverage"
+        "Vendor name and code",
+        "Description",
+        "Contact fields",
+        "Compliance identifiers",
+        "Validity dates",
+        "State",
+        "Address"
       ],
       "inputs": [
         "src_vendor_master"
       ],
-      "logic": "Version source snapshots and reject silent code reuse. Until supplied, derive observed vendor names from PO and stock-entry transactions.",
+      "logic": "Preserve all source columns and reject unresolved phone overflow, address continuation, excess cells, or invalid compliance formats before import.",
       "alternatives": []
     },
     {
@@ -1418,27 +1423,27 @@
       "layerId": "standardized",
       "groupId": "master_data",
       "kind": "table",
-      "label": "STD Business Masters",
-      "description": "Canonical outlet and vendor records.",
+      "label": "STD Vendor Report",
+      "description": "Canonical vendor identity and historical validity/compliance context.",
       "status": "planned",
-      "role": "Master standardization",
+      "role": "Vendor master standardization",
       "pages": [
         "page_1_risk_action_center",
         "page_2_procurement_vendor_capital",
-        "page_3_consumption_menu_profitability",
         "page_4_scm_explorer_data_quality"
       ],
       "dataPoints": [
-        "Stable business key",
-        "Source aliases",
-        "Active status",
-        "Geography",
-        "Coverage"
+        "Vendor name",
+        "Vendor code",
+        "Description",
+        "Validity dates",
+        "State",
+        "Compliance context"
       ],
       "inputs": [
         "raw_business_masters"
       ],
-      "logic": "Create explicit crosswalks and unresolved queues; never use hardcoded outlet unions.",
+      "logic": "Normalize repaired vendor rows, preserve source identifiers, and leave active status, lead time, SLA and approved mappings null.",
       "alternatives": []
     },
     {
@@ -1565,8 +1570,8 @@
       "groupId": "vendor",
       "kind": "table",
       "label": "DIM Vendor",
-      "description": "Stable vendor identity, active state and service coverage.",
-      "status": "definition_ready",
+      "description": "Vendor Report identity with transaction-only PO and Entry fallbacks.",
+      "status": "definition_ready_quality_gated",
       "role": "Conformed dimension",
       "pages": [
         "page_1_risk_action_center",
@@ -1574,20 +1579,23 @@
         "page_4_scm_explorer_data_quality"
       ],
       "dataPoints": [
-        "Vendor key",
+        "Vendor name",
         "Vendor code",
-        "Aliases",
-        "Category",
-        "Region served",
-        "Approved items",
-        "Status"
+        "Description",
+        "Validity dates",
+        "State",
+        "Compliance context",
+        "Source evidence"
       ],
       "inputs": [
         "std_business_masters",
-        "std_vendor_activity"
+        "std_purchase_order",
+        "std_purchase_receipt"
       ],
-      "logic": "Master-driven identity with transaction-derived aliases retained for review.",
-      "alternatives": []
+      "logic": "Use cleaned Vendor Report rows as the master grain; add PO or Entry vendor names only when absent from the report and label them transaction-only.",
+      "alternatives": [
+        "Lead time, SLA, active status and approved item mappings remain null."
+      ]
     },
     {
       "id": "dim_uom_conversion",

@@ -1522,7 +1522,7 @@
       "Stable recipe BOM with effective date, base quantity, ingredient identifiers, UOM, and wastage factor",
       "Complete daily or stock-count closing inventory snapshot",
       "Guaranteed purchase-order lifecycle and line-to-GRN relationship",
-      "Optional authoritative Vendor Master and approved vendor-item relationships; observed vendor names are available from PO and entry transactions",
+      "The historical Vendor Report is available for vendor identity, validity, compliance context, state and address after structural cleaning; lead time, SLA, active-status semantics and approved vendor-item relationships remain unavailable",
       "Expiry Report is not enabled and batch-expiry inventory is unavailable",
       "Enterprise Stock Return and Enterprise Stock Re-Order are unavailable as populated sources",
       "Standing PO and release PO mapping",
@@ -1530,8 +1530,8 @@
     ]
   },
   "modelRevision": {
-    "decision": "use_revised_35_query_source_defensible_model",
-    "rationale": "The layered structure is reusable, but unsupported scenario masters and unavailable report facts have been removed from active dependencies. The current POC pack uses 35 active query tables and keeps blocked KPIs explicit.",
+    "decision": "use_revised_36_query_source_defensible_model",
+    "rationale": "The layered structure is reusable, but unsupported scenario masters and unavailable report facts have been removed from active dependencies. The current POC pack uses 36 active query tables, including the quality-gated historical Vendor Report standardization, and keeps blocked KPIs explicit.",
     "retain": [
       "Layered RAW to STD to DIM/FACT to SUM convention",
       "Core sales, purchase-order, receipt, closing-inventory, recipe, item, vendor, and date concepts",

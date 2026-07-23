@@ -3,7 +3,7 @@
   "asOfDate": "2026-07-23",
   "status": "verified",
   "headline": "Source schemas are exact; values and operational distributions remain synthetic.",
-  "scopeStatement": "Twenty validated POSIST CSV contracts were checked against the generated raw source files. Exact means header spelling, order, field count, captured grain, and confirmed empty-state behavior. It does not mean that synthetic values, row counts, identifiers, preamble rows, or missingness frequencies reproduce ABNAH operations.",
+  "scopeStatement": "Twenty current UAT POSIST CSV contracts and one historically supplied ABNAH Vendor Report contract were checked against the generated raw source files. Exact means header spelling, order, field count and captured grain. Current-UAT empty-state behavior is also mirrored. It does not mean that synthetic values, row counts, identifiers, preamble rows, or missingness frequencies reproduce ABNAH operations.",
   "handlingPolicy": [
     "Keep every captured POSIST column in RAW_CT source-shaped CSVs, even when unused.",
     "Mirror fields confirmed all blank or all zero in the audited UAT exports.",
@@ -33,14 +33,16 @@
     }
   ],
   "summary": {
-    "validatedReportContracts": 20,
-    "exactHeaderReports": 20,
+    "validatedReportContracts": 21,
+    "exactHeaderReports": 21,
+    "currentUatAuditedReportContracts": 20,
+    "historicalSchemaContracts": 1,
     "populatedReportContracts": 18,
     "headerOnlyReportContracts": 2,
     "confirmedAllBlankFields": 38,
     "confirmedAllZeroFields": 31,
     "ignoredNoSignalFields": 69,
-    "activeReportContracts": 9,
+    "activeReportContracts": 10,
     "gatedReportContracts": 2,
     "schemaCaptureOnlyReports": 3,
     "auxiliaryModelTables": 2
@@ -72,6 +74,7 @@
       "reportStem": "bill_item_detail",
       "displayName": "Bill Item Detail Report",
       "grain": "one row per bill and sold item",
+      "evidenceScope": "current_uat_audit",
       "schemaStatus": "exact_validated_contract",
       "headerMatch": true,
       "columnCount": 32,
@@ -252,6 +255,7 @@
       "reportStem": "bulk_return",
       "displayName": "Bulk Return Report",
       "grain": "one row per bulk-return transaction and item",
+      "evidenceScope": "current_uat_audit",
       "schemaStatus": "exact_validated_contract",
       "headerMatch": true,
       "columnCount": 13,
@@ -336,6 +340,7 @@
       "reportStem": "closing_stock",
       "displayName": "Closing Stock Report",
       "grain": "one row per deployment, generation date and inventory item",
+      "evidenceScope": "current_uat_audit",
       "schemaStatus": "exact_validated_contract",
       "headerMatch": true,
       "columnCount": 15,
@@ -418,6 +423,7 @@
       "reportStem": "enterprise_consumption_detail",
       "displayName": "Enterprise Consumption Report - detail",
       "grain": "one row per deployment, store/kitchen, item and selected report period",
+      "evidenceScope": "current_uat_audit",
       "schemaStatus": "exact_validated_contract",
       "headerMatch": true,
       "columnCount": 46,
@@ -674,6 +680,7 @@
       "reportStem": "enterprise_entry",
       "displayName": "Enterprise Entry Report - Stock Entry",
       "grain": "one row per stock-entry item or document-level charge",
+      "evidenceScope": "current_uat_audit",
       "schemaStatus": "exact_validated_contract",
       "headerMatch": true,
       "columnCount": 34,
@@ -888,6 +895,7 @@
       "reportStem": "enterprise_opening",
       "displayName": "Enterprise Opening Report - Opening Stock",
       "grain": "one row per opening-stock transaction and item",
+      "evidenceScope": "current_uat_audit",
       "schemaStatus": "exact_validated_contract",
       "headerMatch": true,
       "columnCount": 15,
@@ -990,6 +998,7 @@
       "reportStem": "enterprise_physical",
       "displayName": "Enterprise Physical Report - Physical Stock",
       "grain": "one row per physical-stock transaction and item",
+      "evidenceScope": "current_uat_audit",
       "schemaStatus": "exact_validated_contract",
       "headerMatch": true,
       "columnCount": 16,
@@ -1086,6 +1095,7 @@
       "reportStem": "enterprise_purchase_order",
       "displayName": "Enterprise Purchase Order Report - item detail",
       "grain": "one row per purchase order and item",
+      "evidenceScope": "current_uat_audit",
       "schemaStatus": "exact_validated_contract",
       "headerMatch": true,
       "columnCount": 27,
@@ -1247,6 +1257,7 @@
       "reportStem": "enterprise_reorder",
       "displayName": "Enterprise Stock Re-Order",
       "grain": "one row per deployment, store and inventory item at export date",
+      "evidenceScope": "current_uat_audit",
       "schemaStatus": "exact_validated_contract",
       "headerMatch": true,
       "columnCount": 8,
@@ -1374,6 +1385,7 @@
       "reportStem": "enterprise_stock_return",
       "displayName": "Enterprise Stock Return",
       "grain": "one row per original stock-entry item and its vendor return",
+      "evidenceScope": "current_uat_audit",
       "schemaStatus": "exact_validated_contract",
       "headerMatch": true,
       "columnCount": 36,
@@ -1865,6 +1877,7 @@
       "reportStem": "enterprise_transfer_from",
       "displayName": "Enterprise Transfer Report - Transfer From",
       "grain": "one row per supplier-to-receiver transfer transaction and item",
+      "evidenceScope": "current_uat_audit",
       "schemaStatus": "exact_validated_contract",
       "headerMatch": true,
       "columnCount": 18,
@@ -1980,6 +1993,7 @@
       "reportStem": "enterprise_transfer_to",
       "displayName": "Enterprise Transfer Report - Transfer To",
       "grain": "one row per destination-side transfer transaction and item",
+      "evidenceScope": "current_uat_audit",
       "schemaStatus": "exact_validated_contract",
       "headerMatch": true,
       "columnCount": 16,
@@ -2077,6 +2091,7 @@
       "reportStem": "enterprise_variance_master",
       "displayName": "Enterprise Variance Report - master",
       "grain": "one row per deployment, store/kitchen and item for the selected period",
+      "evidenceScope": "current_uat_audit",
       "schemaStatus": "exact_validated_contract",
       "headerMatch": true,
       "columnCount": 38,
@@ -2301,6 +2316,7 @@
       "reportStem": "enterprise_variance_normal",
       "displayName": "Enterprise Variance Report - normal detailed CSV",
       "grain": "one row per deployment, store/kitchen and item over the selected variance period",
+      "evidenceScope": "current_uat_audit",
       "schemaStatus": "exact_validated_contract",
       "headerMatch": true,
       "columnCount": 46,
@@ -2528,6 +2544,7 @@
       "reportStem": "enterprise_wastage_normal",
       "displayName": "Enterprise Wastage Report - transaction detail",
       "grain": "one row per deployment, store/kitchen, wastage transaction and item",
+      "evidenceScope": "current_uat_audit",
       "schemaStatus": "exact_validated_contract",
       "headerMatch": true,
       "columnCount": 15,
@@ -2616,6 +2633,7 @@
       "reportStem": "gross_net_margin",
       "displayName": "Gross/Net Margin Report - bill item detail",
       "grain": "one row per bill and sold item",
+      "evidenceScope": "current_uat_audit",
       "schemaStatus": "exact_validated_contract",
       "headerMatch": true,
       "columnCount": 26,
@@ -2742,6 +2760,7 @@
       "reportStem": "item_recipe_report",
       "displayName": "Item Recipe Report",
       "grain": "one normalized row per menu item and recipe ingredient, inherited from grouped parent rows",
+      "evidenceScope": "current_uat_audit",
       "schemaStatus": "exact_validated_contract",
       "headerMatch": true,
       "columnCount": 8,
@@ -2795,6 +2814,7 @@
       "reportStem": "purchase_detail",
       "displayName": "Purchase Detail - PO details enabled",
       "grain": "one row per purchase transaction and item, with linked PO attributes when available",
+      "evidenceScope": "current_uat_audit",
       "schemaStatus": "exact_validated_contract",
       "headerMatch": true,
       "columnCount": 32,
@@ -2965,6 +2985,7 @@
       "reportStem": "recipe_consumption",
       "displayName": "Recipe Consumption Report",
       "grain": "one row per parent item and consumed recipe item",
+      "evidenceScope": "current_uat_audit",
       "schemaStatus": "exact_validated_contract",
       "headerMatch": true,
       "columnCount": 11,
@@ -3046,6 +3067,7 @@
       "reportStem": "stock_in_stock_out",
       "displayName": "Stock In Stock Out Report - movement detail",
       "grain": "one row per dated item movement between supplier and receiver",
+      "evidenceScope": "current_uat_audit",
       "schemaStatus": "exact_validated_contract",
       "headerMatch": true,
       "columnCount": 13,
@@ -3113,6 +3135,93 @@
       ],
       "ignoredFields": [],
       "fidelityNote": "Header spelling/order and confirmed blank, zero-only, or header-only behavior match the audited POSIST contract. Business values, row counts, identifiers, and event frequency remain controlled synthetic data."
+    },
+    {
+      "reportId": "historical.vendor_report.master",
+      "reportStem": "vendor_report",
+      "displayName": "Vendor Report",
+      "grain": "one row per vendor master record",
+      "evidenceScope": "historical_abnah_export",
+      "schemaStatus": "exact_validated_contract",
+      "headerMatch": true,
+      "columnCount": 16,
+      "actualFilesAudited": 0,
+      "actualRowsAudited": null,
+      "syntheticFilesGenerated": 1,
+      "syntheticRowsGenerated": 70,
+      "rowPatternStatus": "historical_schema_with_structural_quality_gate",
+      "downstreamStatus": "active_projected_fields",
+      "activeFields": [
+        {
+          "field": "description",
+          "label": "description"
+        },
+        {
+          "field": "from_date",
+          "label": "fromDate"
+        },
+        {
+          "field": "msme",
+          "label": "msme"
+        },
+        {
+          "field": "state",
+          "label": "state"
+        },
+        {
+          "field": "to_date",
+          "label": "toDate"
+        },
+        {
+          "field": "vendor_code",
+          "label": "vendorCode"
+        },
+        {
+          "field": "vendor_name",
+          "label": "vendorName"
+        }
+      ],
+      "gatedFields": [],
+      "contextOnlyFields": [
+        {
+          "field": "address",
+          "label": "address"
+        },
+        {
+          "field": "contact_number",
+          "label": "contactNumber"
+        },
+        {
+          "field": "contact_person",
+          "label": "contactPerson"
+        },
+        {
+          "field": "email",
+          "label": "email"
+        },
+        {
+          "field": "fssai_number",
+          "label": "fssaiNumber"
+        },
+        {
+          "field": "gstin_number",
+          "label": "gstInNumber"
+        },
+        {
+          "field": "pan_number",
+          "label": "panNumber"
+        },
+        {
+          "field": "service_tax_number",
+          "label": "serviceTaxNumber"
+        },
+        {
+          "field": "tin_number",
+          "label": "tinNumber"
+        }
+      ],
+      "ignoredFields": [],
+      "fidelityNote": "Header spelling/order follows the earlier ABNAH Vendor Report contract. The source is quality-gated because multiple phone numbers and long addresses were documented to shift exported cells or continue onto another row."
     }
   ]
 }

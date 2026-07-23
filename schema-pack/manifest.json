@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1.0",
-  "generated_at": "2026-07-23T10:02:31+00:00",
+  "generated_at": "2026-07-23T10:42:30+00:00",
   "portable": true,
   "source_inputs": {
     "schema_reference": "external local input; not packaged",
@@ -120,7 +120,7 @@
     "planned_architecture_model_nodes": 58,
     "selected_control_tower_sources": 22,
     "audited_control_tower_reports": 20,
-    "validated_fidelity_contracts": 20,
+    "validated_fidelity_contracts": 21,
     "ignored_no_signal_fields": 69
   },
   "quality_status": "usable_with_warnings",
@@ -873,18 +873,18 @@
   },
   "control_tower_source": {
     "path": "schema-pack/source/control_tower/control-tower-requirements.json",
-    "sha256": "9ff40a58bac9fa8b818e6096d78ca8a4db05fb93361123dc5d221878b181b7b5"
+    "sha256": "767ce5999b1ac341e340c6f979eaa65aad17983391d96934e09f4f74083254c9"
   },
   "control_tower_evidence_source": {
     "path": "schema-pack/source/control_tower/control-tower-evidence.json",
-    "sha256": "a55e5cae7f2415a2f00cbce6b43141a3d2d3634ab4cfa706e7a034d8c62bc248"
+    "sha256": "ebbae34fd25adc9d144f86532da91a79f07f629d697b02432fc4cbc801fe5c35"
   },
   "control_tower_fidelity_source": {
     "path": "schema-pack/source/control_tower/control-tower-fidelity.json",
-    "sha256": "5e9049c2715bf0ee33529e65a5a9de469bfb906f23173517d49fd447e99fdbba"
+    "sha256": "9cf7005073f93e6eda6a43849b14a9e3f0e085df858bec9d7aac2ce8b5cc735f"
   },
   "control_tower_architecture_source": {
     "path": "schema-pack/source/architecture/control-tower-architecture.json",
-    "sha256": "1803e6c6fac6c9c4578ac584a949f43abe423d51943423837181b32e73eaf2c5"
+    "sha256": "d4a38252722fa74fa781a0186cc6e9c775cd674fdf988f8712e63a0aa3faf1d6"
   }
 }

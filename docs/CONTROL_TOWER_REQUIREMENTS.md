@@ -70,6 +70,10 @@ Safety factors and forecast horizons remain configurable until business sign-off
 - `Expiry Report` is not enabled for ABNAH. Expiry must display `Unavailable`, not zero or an unapproved estimate.
 - `Enterprise Stock Return` and `Enterprise Stock Re-Order` are not populated sources. Vendor return rate is unavailable, and projected shortage must not be called a POSIST reorder breach.
 - There is no captured POSIST report named `Raw Material Item Detail`. Derive the POC item reference from exact operational reports and leave unsupported master attributes null.
+- The exact historical source is `Vendor Report`. Use it only after local repair
+  of phone overflow, address continuation, shifted cells, and compliance-ID
+  formats. It supports vendor identity and validity context, not lead time,
+  SLA, active-status semantics, or approved vendor-item mapping.
 - ABNAH currently has one outlet in scope. Derive its identity from operational rows and do not publish a geographic outlet map.
 - A weighted vendor criticality score remains deferred until business owners approve weights.
 - Standing PO analytics remain separate and hidden unless standing and release identifiers exist.

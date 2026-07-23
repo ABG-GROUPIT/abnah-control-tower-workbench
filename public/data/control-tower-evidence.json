@@ -12,29 +12,29 @@
   "decision": {
     "headline": "Schemas and encoded arithmetic align; remaining risks are coverage and business treatment.",
     "reason": "Synthetic data remains appropriate for the demonstrator because the actual exports cover one operating scope with uneven periods, two evaluated reports are header-only, PO linkage is sparse, and expiry data is not enabled.",
-    "productionRule": "Raw exports remain authoritative evidence. Derived item, outlet, and vendor references may use only observed source fields. Unsupported attributes and KPIs remain null or unavailable until an exact source is validated."
+    "productionRule": "Raw exports remain authoritative evidence. Item and outlet references may use only observed source fields. Vendor identity uses the locally repaired historical Vendor Report with PO and Entry names as transaction-only fallbacks. Unsupported attributes and KPIs remain null or unavailable until an exact source is validated."
   },
   "zohoReadiness": {
     "demoBuild": "ready",
     "productionModelBuild": "ready_with_gates",
     "productionPublication": "blocked_pending_signoff",
-    "requiredLandingTableCount": 11,
-    "queryTableCount": 35,
+    "requiredLandingTableCount": 12,
+    "queryTableCount": 36,
     "dashboardTabCount": 4,
     "migrationRule": "Build v2 in parallel. Do not delete old raw tables before reconciliation, dashboard acceptance, and rollback approval.",
     "nextSequence": [
       "Back up or duplicate the current Zoho workspace.",
-      "Import the 9 active RAWN_CT tables and 2 approved model-output tables with exact names.",
+      "Import the 10 active RAWN_CT tables and 2 approved model-output tables with exact names.",
       "Keep Enterprise Stock Return, Enterprise Stock Re-Order, and expiry outside active landing dependencies.",
-      "Build the 35 active Query Tables in manifest dependency order.",
+      "Build the 36 active Query Tables in manifest dependency order.",
       "Validate facts and summaries before assembling the four dashboard tabs.",
       "Train Ask Zia only after dashboard calculations pass."
     ]
   },
   "summary": {
     "selectedSourceCount": 19,
-    "primarySourceCount": 9,
-    "auxiliarySourceCount": 5,
+    "primarySourceCount": 10,
+    "auxiliarySourceCount": 4,
     "controlSourceCount": 5,
     "auditedReportCount": 20,
     "auditedFileCount": 26,
@@ -356,23 +356,29 @@
       "rowCount": 0
     },
     {
-      "id": "source:dim_ct_vendor",
-      "sourceName": "Observed Vendor Reference",
-      "sourceTable": "DIM_CT_Vendor",
-      "modelRole": "derived_dimension",
-      "roleGroup": "auxiliary",
+      "id": "source:rawn_ct_vendor_report",
+      "sourceName": "Vendor Report",
+      "sourceTable": "RAWN_CT_vendor_report",
+      "modelRole": "primary_quality_gated",
+      "roleGroup": "primary",
       "pages": [
         "P1",
-        "P2"
+        "P2",
+        "P4"
       ],
       "requiredFields": [
-        "vendor_name"
+        "vendor_name",
+        "vendor_code",
+        "description",
+        "from_date",
+        "to_date",
+        "state"
       ],
-      "productionDecision": "Derive observed names from Purchase Order and Entry; active status, default lead time and approved category mapping await a separate vendor master",
-      "fallbackOrReconciliation": "Enterprise Purchase Order Report - item detail|Enterprise Entry Report - Stock Entry",
+      "productionDecision": "Use only after local structural repair and validation; supports vendor identity, validity, compliance context, state and address but not lead time, SLA or approved vendor-item mapping",
+      "fallbackOrReconciliation": "Enterprise Purchase Order Report - item detail|Enterprise Entry Report - Stock Entry provide transaction-only vendor fallback",
       "auditReportId": "",
       "workbenchReportId": "",
-      "auditStatus": "not_in_local_export_set",
+      "auditStatus": "historical_schema_with_documented_quality_gate",
       "rowCount": 0
     },
     {

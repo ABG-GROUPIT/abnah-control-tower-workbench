@@ -81,9 +81,17 @@ Do not request `Enterprise Stock Return` or `Enterprise Stock Re-Order` again fo
 - Vendor Pricing Report
 - Vendor Last 5 Purchase Price
 - Late Delivery Report
-- Vendor Master, using the exact source name shown in ABNAH's interface
 
-These are optional enrichment exports, not blockers for the synthetic demo. `Kitchen Wise Item Report` and `Default Cost Report` may improve the derived item reference. `Late Delivery Report` can validate delivery breach only if it provides reliable PO linkage. A populated vendor master can add stable code, active status, and approved relationships; otherwise the model uses observed vendor names from PO and entry transactions.
+These are optional enrichment exports, not blockers for the synthetic demo.
+`Kitchen Wise Item Report` and `Default Cost Report` may improve the derived
+item reference. `Late Delivery Report` can validate delivery breach only if it
+provides reliable PO linkage.
+
+The exact historical vendor source is already known as `Vendor Report`. Its
+16-column contract supplies identity, validity, compliance context, state and
+address after local structural repair. Do not request an invented `Vendor
+Master` report name. Vendor lead time, SLA, active-status semantics and approved
+item/category relationships still require an exact additional source.
 
 ### COGS and Purchase Reconciliation
 

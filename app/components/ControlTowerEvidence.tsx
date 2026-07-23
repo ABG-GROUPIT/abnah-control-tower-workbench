@@ -34,7 +34,7 @@ const label = (value: string) => value.replaceAll("_", " ");
 
 function toneForStatus(value: string) {
   if (["exact", "complete", "populated", "schema_ready_value_checks_passed", "no_encoded_exception", "derived_reference", "derived_dimension"].includes(value)) return "green";
-  if (["partial", "review_required", "review", "warning", "coverage_review", "definition_review", "business_review", "formula_definition_gate", "reconciliation_exception", "cost_coverage_gap", "operational_exception", "deduplication_risk", "derived_reference_optional_master"].includes(value)) return "amber";
+  if (["partial", "review_required", "review", "warning", "coverage_review", "definition_review", "business_review", "formula_definition_gate", "reconciliation_exception", "cost_coverage_gap", "operational_exception", "deduplication_risk", "derived_reference_optional_master", "primary_quality_gated", "historical_schema_with_documented_quality_gate"].includes(value)) return "amber";
   if (["weak", "missing", "header_only", "blocked_header_only", "blocker", "coverage_blocked", "coverage_blocker", "gated_unavailable", "unavailable_header_only", "blocked_feature"].includes(value)) return "red";
   return "neutral";
 }
@@ -112,6 +112,8 @@ function SourceRegister({
                   <small>
                     {source.auditReportId
                       ? `${numberFormat.format(source.rowCount)} rows reviewed`
+                      : source.auditStatus === "historical_schema_with_documented_quality_gate"
+                        ? "Historical schema retained; local structural repair required"
                       : source.modelRole.startsWith("derived_")
                         ? "Derived from reviewed operational reports"
                         : ["gated_unavailable", "unavailable_header_only", "blocked_feature"].includes(source.modelRole)

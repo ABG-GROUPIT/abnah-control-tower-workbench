@@ -39,6 +39,9 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
   displayed-precision false positives. The Control Tower evidence contract now
   records 11 aggregate coverage, duplicate-grain, cost, and sign-treatment
   findings with four minimal non-sensitive sign-review excerpts.
+- The exact historical `Vendor Report` contract is retained as a quality-gated
+  vendor identity source; phone/address spillover must be repaired locally and
+  unsupported lead-time or vendor-item attributes remain null.
 - Four business pages recorded: Risk Action Center; Procurement, Vendor & Capital Control; Consumption Variance & Menu Profitability; SCM Descriptive Explorer & Data Quality.
 - The current P2/P4 schema capture and corrected deterministic CSV audit are
   compiled into the website baseline; business interpretation and production

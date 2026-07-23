@@ -2,6 +2,7 @@ export type FidelityFieldState =
   | "all_blank"
   | "all_zero"
   | "no_rows"
+  | "historical_schema_not_in_current_uat_dump"
   | "partially_blank"
   | "mixed_zero_nonzero"
   | "populated";
@@ -26,14 +27,18 @@ export interface FidelityReport {
   reportStem: string;
   displayName: string;
   grain: string;
+  evidenceScope: "current_uat_audit" | "historical_abnah_export";
   schemaStatus: "exact_validated_contract";
   headerMatch: boolean;
   columnCount: number;
   actualFilesAudited: number;
-  actualRowsAudited: number;
+  actualRowsAudited: number | null;
   syntheticFilesGenerated: number;
   syntheticRowsGenerated: number;
-  rowPatternStatus: "modelled_at_captured_grain" | "mirrored_header_only";
+  rowPatternStatus:
+    | "modelled_at_captured_grain"
+    | "mirrored_header_only"
+    | "historical_schema_with_structural_quality_gate";
   downstreamStatus:
     | "active_projected_fields"
     | "gated_source_unavailable"
@@ -61,6 +66,8 @@ export interface ControlTowerFidelity {
   summary: {
     validatedReportContracts: number;
     exactHeaderReports: number;
+    currentUatAuditedReportContracts: number;
+    historicalSchemaContracts: number;
     populatedReportContracts: number;
     headerOnlyReportContracts: number;
     confirmedAllBlankFields: number;

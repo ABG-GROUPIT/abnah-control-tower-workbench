@@ -78,17 +78,24 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   assert.equal(evidence.summary.auditedFileCount, 26);
   assert.equal(evidence.summary.schemaVisualMatches, 20);
   assert.equal(evidence.summary.headerOnlyReportCount, 2);
-  assert.equal(evidence.zohoReadiness.requiredLandingTableCount, 11);
-  assert.equal(evidence.zohoReadiness.queryTableCount, 35);
+  assert.equal(evidence.zohoReadiness.requiredLandingTableCount, 12);
+  assert.equal(evidence.zohoReadiness.queryTableCount, 36);
   assert.equal(evidence.privacy.fullRowsIncluded, false);
   assert.equal(evidence.privacy.sensitiveValuesIncluded, false);
   assert.equal(fidelity.status, "verified");
-  assert.equal(fidelity.reports.length, 20);
-  assert.equal(fidelity.summary.exactHeaderReports, 20);
+  assert.equal(fidelity.reports.length, 21);
+  assert.equal(fidelity.summary.exactHeaderReports, 21);
+  assert.equal(fidelity.summary.currentUatAuditedReportContracts, 20);
+  assert.equal(fidelity.summary.historicalSchemaContracts, 1);
   assert.equal(fidelity.summary.ignoredNoSignalFields, 69);
   assert.equal(fidelity.summary.headerOnlyReportContracts, 2);
   assert.equal(fidelity.summary.gatedReportContracts, 2);
   assert.equal(fidelity.summary.auxiliaryModelTables, 2);
+  assert.ok(fidelity.reports.some((report) => (
+    report.displayName === "Vendor Report"
+    && report.evidenceScope === "historical_abnah_export"
+    && report.rowPatternStatus === "historical_schema_with_structural_quality_gate"
+  )));
   assert.ok(fidelity.reports.every((report) => report.headerMatch));
   assert.ok(fidelity.reports.every((report) => (
     report.ignoredFields.every((field) => field.observedState === field.syntheticState)

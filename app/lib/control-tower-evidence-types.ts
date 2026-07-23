@@ -25,7 +25,11 @@ export interface EvidenceSource {
   fallbackOrReconciliation: string;
   auditReportId: string;
   workbenchReportId: string;
-  auditStatus: "populated" | "header_only" | "not_in_local_export_set";
+  auditStatus:
+    | "populated"
+    | "header_only"
+    | "not_in_local_export_set"
+    | "historical_schema_with_documented_quality_gate";
   rowCount: number;
 }
 
