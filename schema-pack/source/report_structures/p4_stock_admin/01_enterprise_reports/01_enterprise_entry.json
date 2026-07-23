@@ -1,11 +1,11 @@
 {
   "report_id": "report:p4_stock_admin:01_enterprise_reports:01_enterprise_entry",
   "schema_status": "captured",
-  "verification_status": "reviewed",
-  "layout_kind": "flat",
-  "capture_method": "pasted_export_headers",
-  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
-  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "verification_status": "needs_review",
+  "layout_kind": "mixed",
+  "capture_method": "manual_visual_and_local_csv_contract_review",
+  "source_policy": "Schema definitions and sanitized audit summaries only. Raw CSV rows, local evidence, screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README. Sanitized local audit packet run_20260723_075052 verified CSV header order, canonical field mapping, and declared types. Value-health findings are review evidence and do not alter this blank structure.",
   "data_points": [
     {
       "key": "deployment_name",
@@ -26,7 +26,13 @@
       "data_type": "text"
     },
     {
-      "key": "date",
+      "key": "vendor_name",
+      "label": "Vendor Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "entry_date",
       "label": "Date",
       "semantic_role": "date",
       "data_type": "date"
@@ -36,6 +42,36 @@
       "label": "Transaction Number",
       "semantic_role": "document_identifier",
       "data_type": "text"
+    },
+    {
+      "key": "invoice_number",
+      "label": "Invoice Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "batch_number",
+      "label": "Batch Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "pr_number",
+      "label": "PR Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "po_number",
+      "label": "PO Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "invoice_date",
+      "label": "Invoice Date",
+      "semantic_role": "date",
+      "data_type": "date"
     },
     {
       "key": "item_code",
@@ -52,8 +88,8 @@
     {
       "key": "item_brand",
       "label": "Item Brand",
-      "semantic_role": "unknown",
-      "data_type": "unknown"
+      "semantic_role": "dimension",
+      "data_type": "text"
     },
     {
       "key": "category_name",
@@ -74,10 +110,10 @@
       "data_type": "text"
     },
     {
-      "key": "quantity",
+      "key": "entry_qty",
       "label": "Quantity",
       "semantic_role": "measure",
-      "data_type": "integer"
+      "data_type": "decimal"
     },
     {
       "key": "unit",
@@ -86,14 +122,86 @@
       "data_type": "text"
     },
     {
+      "key": "mrp",
+      "label": "MRP",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
       "key": "unit_price",
       "label": "Unit Price",
       "semantic_role": "measure",
       "data_type": "decimal"
     },
     {
-      "key": "amount",
+      "key": "charges_name",
+      "label": "Charges Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "base_amt",
       "label": "Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "discount_amt",
+      "label": "Discount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_igst_rate",
+      "label": "GST/IGST Rate",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_igst_value",
+      "label": "GST/IGST Value",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "cess_rate",
+      "label": "CESS Rate",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "cess_value",
+      "label": "CESS Value",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "other_tax_rate",
+      "label": "Other Taxes Rate",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "other_tax_value",
+      "label": "Other Taxes Value",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_tax_amt",
+      "label": "Total Tax",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "item_charges_amt",
+      "label": "Item Charges Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_amt",
+      "label": "Total",
       "semantic_role": "measure",
       "data_type": "decimal"
     },
@@ -102,12 +210,245 @@
       "label": "Source",
       "semantic_role": "dimension",
       "data_type": "text"
+    },
+    {
+      "key": "opening_date",
+      "label": "Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "opening_qty",
+      "label": "Quantity",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "opening_subtotal",
+      "label": "Sub Total",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "physical_date",
+      "label": "Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "physical_qty",
+      "label": "Quantity",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "physical_amt",
+      "label": "Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "supplier_store_kitchen_code",
+      "label": "Supplier Store/Kitchen Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "supplier_store_kitchen_name",
+      "label": "Supplier Store/Kitchen Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "receiver_store_kitchen_code",
+      "label": "Receiver Store/Kitchen Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "receiver_store_kitchen_name",
+      "label": "Receiver Store/Kitchen Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "transfer_date",
+      "label": "Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "transfer_qty",
+      "label": "Quantity",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "transfer_amt",
+      "label": "Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "receiver_store_name",
+      "label": "Transferred To Store Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "supplier_store_name",
+      "label": "From Store Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
     }
   ],
   "blocks": [
     {
-      "id": "primary",
-      "name": "Enterprise Entry export",
+      "id": "stock_entry_csv",
+      "name": "Stock entry CSV",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Deployment Name",
+          "key": "deployment_name"
+        },
+        {
+          "label": "Store/Kitchen Name",
+          "key": "store_kitchen_name"
+        },
+        {
+          "label": "User Name",
+          "key": "user_name"
+        },
+        {
+          "label": "Vendor Name",
+          "key": "vendor_name"
+        },
+        {
+          "label": "Date",
+          "key": "entry_date"
+        },
+        {
+          "label": "Transaction Number",
+          "key": "transaction_number"
+        },
+        {
+          "label": "Invoice Number",
+          "key": "invoice_number"
+        },
+        {
+          "label": "Batch Number",
+          "key": "batch_number"
+        },
+        {
+          "label": "PR Number",
+          "key": "pr_number"
+        },
+        {
+          "label": "PO Number",
+          "key": "po_number"
+        },
+        {
+          "label": "Invoice Date",
+          "key": "invoice_date"
+        },
+        {
+          "label": "Item Code",
+          "key": "item_code"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Item Brand",
+          "key": "item_brand"
+        },
+        {
+          "label": "Category Name",
+          "key": "category_name"
+        },
+        {
+          "label": "Super Category Name",
+          "key": "super_category_name"
+        },
+        {
+          "label": "Comment",
+          "key": "comment"
+        },
+        {
+          "label": "Quantity",
+          "key": "entry_qty"
+        },
+        {
+          "label": "Unit",
+          "key": "unit"
+        },
+        {
+          "label": "MRP",
+          "key": "mrp"
+        },
+        {
+          "label": "Unit Price",
+          "key": "unit_price"
+        },
+        {
+          "label": "Charges Name",
+          "key": "charges_name"
+        },
+        {
+          "label": "Amount",
+          "key": "base_amt"
+        },
+        {
+          "label": "Discount",
+          "key": "discount_amt"
+        },
+        {
+          "label": "GST/IGST Rate",
+          "key": "gst_igst_rate"
+        },
+        {
+          "label": "GST/IGST Value",
+          "key": "gst_igst_value"
+        },
+        {
+          "label": "CESS Rate",
+          "key": "cess_rate"
+        },
+        {
+          "label": "CESS Value",
+          "key": "cess_value"
+        },
+        {
+          "label": "Other Taxes Rate",
+          "key": "other_tax_rate"
+        },
+        {
+          "label": "Other Taxes Value",
+          "key": "other_tax_value"
+        },
+        {
+          "label": "Total Tax",
+          "key": "total_tax_amt"
+        },
+        {
+          "label": "Item Charges Amount",
+          "key": "item_charges_amt"
+        },
+        {
+          "label": "Total",
+          "key": "total_amt"
+        },
+        {
+          "label": "Source",
+          "key": "source"
+        }
+      ]
+    },
+    {
+      "id": "opening_stock_csv",
+      "name": "Opening stock CSV",
       "kind": "flat_table",
       "columns": [
         {
@@ -124,7 +465,74 @@
         },
         {
           "label": "Date",
-          "key": "date"
+          "key": "opening_date"
+        },
+        {
+          "label": "Transaction Number",
+          "key": "transaction_number"
+        },
+        {
+          "label": "Item Code",
+          "key": "item_code"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Category Name",
+          "key": "category_name"
+        },
+        {
+          "label": "Super Category Name",
+          "key": "super_category_name"
+        },
+        {
+          "label": "Comment",
+          "key": "comment"
+        },
+        {
+          "label": "Quantity",
+          "key": "opening_qty"
+        },
+        {
+          "label": "Unit",
+          "key": "unit"
+        },
+        {
+          "label": "Unit Price",
+          "key": "unit_price"
+        },
+        {
+          "label": "Sub Total",
+          "key": "opening_subtotal"
+        },
+        {
+          "label": "Source",
+          "key": "source"
+        }
+      ]
+    },
+    {
+      "id": "physical_stock_csv",
+      "name": "Physical stock CSV",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Deployment Name",
+          "key": "deployment_name"
+        },
+        {
+          "label": "Store/Kitchen Name",
+          "key": "store_kitchen_name"
+        },
+        {
+          "label": "User Name",
+          "key": "user_name"
+        },
+        {
+          "label": "Date",
+          "key": "physical_date"
         },
         {
           "label": "Transaction Number",
@@ -156,7 +564,7 @@
         },
         {
           "label": "Quantity",
-          "key": "quantity"
+          "key": "physical_qty"
         },
         {
           "label": "Unit",
@@ -168,7 +576,157 @@
         },
         {
           "label": "Amount",
-          "key": "amount"
+          "key": "physical_amt"
+        },
+        {
+          "label": "Source",
+          "key": "source"
+        }
+      ]
+    },
+    {
+      "id": "transfer_from_csv",
+      "name": "Transfer from CSV",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Deployment Name",
+          "key": "deployment_name"
+        },
+        {
+          "label": "Supplier Store/Kitchen Code",
+          "key": "supplier_store_kitchen_code"
+        },
+        {
+          "label": "Supplier Store/Kitchen Name",
+          "key": "supplier_store_kitchen_name"
+        },
+        {
+          "label": "Receiver Store/Kitchen Code",
+          "key": "receiver_store_kitchen_code"
+        },
+        {
+          "label": "Receiver Store/Kitchen Name",
+          "key": "receiver_store_kitchen_name"
+        },
+        {
+          "label": "User Name",
+          "key": "user_name"
+        },
+        {
+          "label": "Date",
+          "key": "transfer_date"
+        },
+        {
+          "label": "Transaction Number",
+          "key": "transaction_number"
+        },
+        {
+          "label": "Item Code",
+          "key": "item_code"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Category Name",
+          "key": "category_name"
+        },
+        {
+          "label": "Super Category Name",
+          "key": "super_category_name"
+        },
+        {
+          "label": "Comment",
+          "key": "comment"
+        },
+        {
+          "label": "Quantity",
+          "key": "transfer_qty"
+        },
+        {
+          "label": "Unit",
+          "key": "unit"
+        },
+        {
+          "label": "Unit Price",
+          "key": "unit_price"
+        },
+        {
+          "label": "Amount",
+          "key": "transfer_amt"
+        },
+        {
+          "label": "Source",
+          "key": "source"
+        }
+      ]
+    },
+    {
+      "id": "transfer_to_csv",
+      "name": "Transfer to CSV",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Deployment Name",
+          "key": "deployment_name"
+        },
+        {
+          "label": "Transferred To Store Name",
+          "key": "receiver_store_name"
+        },
+        {
+          "label": "From Store Name",
+          "key": "supplier_store_name"
+        },
+        {
+          "label": "User Name",
+          "key": "user_name"
+        },
+        {
+          "label": "Date",
+          "key": "transfer_date"
+        },
+        {
+          "label": "Transaction Number",
+          "key": "transaction_number"
+        },
+        {
+          "label": "Item Code",
+          "key": "item_code"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Category Name",
+          "key": "category_name"
+        },
+        {
+          "label": "Super Category Name",
+          "key": "super_category_name"
+        },
+        {
+          "label": "Comment",
+          "key": "comment"
+        },
+        {
+          "label": "Quantity",
+          "key": "transfer_qty"
+        },
+        {
+          "label": "Unit",
+          "key": "unit"
+        },
+        {
+          "label": "Unit Price",
+          "key": "unit_price"
+        },
+        {
+          "label": "Amount",
+          "key": "transfer_amt"
         },
         {
           "label": "Source",

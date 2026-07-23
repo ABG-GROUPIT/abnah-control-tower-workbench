@@ -1,11 +1,11 @@
 {
   "report_id": "report:p4_stock_admin:02_transactional_reports:05_purchase_detail",
   "schema_status": "captured",
-  "verification_status": "reviewed",
+  "verification_status": "needs_review",
   "layout_kind": "flat",
-  "capture_method": "pasted_export_headers",
-  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
-  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "capture_method": "local_csv_contract_review",
+  "source_policy": "Schema definitions and sanitized audit summaries only. Raw CSV rows, local evidence, screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README. Sanitized local audit packet run_20260723_075052 verified CSV header order, canonical field mapping, and declared types. Value-health findings are review evidence and do not alter this blank structure.",
   "data_points": [
     {
       "key": "item_code",
@@ -20,19 +20,19 @@
       "data_type": "text"
     },
     {
-      "key": "company",
+      "key": "company_name",
       "label": "Company",
-      "semantic_role": "unknown",
-      "data_type": "unknown"
+      "semantic_role": "dimension",
+      "data_type": "text"
     },
     {
-      "key": "deployment",
+      "key": "deployment_name",
       "label": "Deployment",
       "semantic_role": "dimension",
       "data_type": "text"
     },
     {
-      "key": "date",
+      "key": "transaction_date",
       "label": "Date",
       "semantic_role": "date",
       "data_type": "date"
@@ -113,7 +113,7 @@
       "key": "po_qty",
       "label": "PO Qty",
       "semantic_role": "measure",
-      "data_type": "integer"
+      "data_type": "decimal"
     },
     {
       "key": "po_unit",
@@ -140,10 +140,10 @@
       "data_type": "text"
     },
     {
-      "key": "purchase_quantity",
+      "key": "purchase_qty",
       "label": "Purchase Quantity",
       "semantic_role": "measure",
-      "data_type": "integer"
+      "data_type": "decimal"
     },
     {
       "key": "purchase_unit",
@@ -164,37 +164,37 @@
       "data_type": "decimal"
     },
     {
-      "key": "discount",
+      "key": "discount_amt",
       "label": "Discount",
       "semantic_role": "measure",
-      "data_type": "integer"
+      "data_type": "decimal"
     },
     {
-      "key": "cgst_tax",
+      "key": "cgst_tax_amt",
       "label": "CGST Tax",
       "semantic_role": "measure",
       "data_type": "decimal"
     },
     {
-      "key": "sgst_tax",
+      "key": "sgst_tax_amt",
       "label": "SGST Tax",
       "semantic_role": "measure",
       "data_type": "decimal"
     },
     {
-      "key": "igst_tax",
+      "key": "igst_tax_amt",
       "label": "IGST Tax",
       "semantic_role": "measure",
       "data_type": "decimal"
     },
     {
-      "key": "other_taxes",
+      "key": "other_tax_amt",
       "label": "Other Taxes",
       "semantic_role": "measure",
       "data_type": "decimal"
     },
     {
-      "key": "total",
+      "key": "total_amt",
       "label": "Total",
       "semantic_role": "measure",
       "data_type": "decimal"
@@ -203,7 +203,7 @@
   "blocks": [
     {
       "id": "primary",
-      "name": "Purchase Detail export",
+      "name": "Purchase detail with PO fields",
       "kind": "flat_table",
       "columns": [
         {
@@ -216,15 +216,15 @@
         },
         {
           "label": "Company",
-          "key": "company"
+          "key": "company_name"
         },
         {
           "label": "Deployment",
-          "key": "deployment"
+          "key": "deployment_name"
         },
         {
           "label": "Date",
-          "key": "date"
+          "key": "transaction_date"
         },
         {
           "label": "Invoice Date",
@@ -296,7 +296,7 @@
         },
         {
           "label": "Purchase Quantity",
-          "key": "purchase_quantity"
+          "key": "purchase_qty"
         },
         {
           "label": "Purchase Unit",
@@ -312,27 +312,27 @@
         },
         {
           "label": "Discount",
-          "key": "discount"
+          "key": "discount_amt"
         },
         {
           "label": "CGST Tax",
-          "key": "cgst_tax"
+          "key": "cgst_tax_amt"
         },
         {
           "label": "SGST Tax",
-          "key": "sgst_tax"
+          "key": "sgst_tax_amt"
         },
         {
           "label": "IGST Tax",
-          "key": "igst_tax"
+          "key": "igst_tax_amt"
         },
         {
           "label": "Other Taxes",
-          "key": "other_taxes"
+          "key": "other_tax_amt"
         },
         {
           "label": "Total",
-          "key": "total"
+          "key": "total_amt"
         }
       ]
     }

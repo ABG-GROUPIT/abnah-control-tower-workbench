@@ -20,6 +20,17 @@ Validate before reading or applying a packet:
 py -3 scripts/validate_audit_packet.py "D:\secure\CODEX_PACKET.zip"
 ```
 
+After validation, dry-run the explicit report-to-blueprint mapping before writing:
+
+```powershell
+py -3 scripts/apply_verified_audit_schemas.py "D:\secure\CODEX_PACKET.zip"
+py -3 scripts/apply_verified_audit_schemas.py "D:\secure\CODEX_PACKET.zip" --write
+```
+
+The importer is intentionally bounded to reviewed report identities and variants. It
+refuses incomplete packets, observed schema drift, catalog-reconciliation candidates,
+unknown report mappings, and any target outside `schema-pack/source/report_structures`.
+
 The validator requires:
 
 - packet status `ready_for_codex`;
@@ -86,6 +97,8 @@ npm test
 
 8. Review the report in Discovery, including merged cells and every variant.
 9. Publish only after the structural change and its evidence have been reviewed.
+
+The current worked example is summarized in `docs/REAL_CSV_AUDIT_CHECKPOINT.md`.
 
 ## Transfer
 

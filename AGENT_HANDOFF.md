@@ -64,7 +64,8 @@ For the live site, use the latest D1 current document. For a clean rebuild or te
 ## Current P2/P4 Coverage
 
 - P2: 73 captured, 3 partial, 79 pending. Category/Item has 17 of 18 captured; Sales has 24 of 41 captured.
-- P4: 24 captured, 50 pending. Enterprise Reports has 15 of 15 captured.
+- P4: 26 captured, 48 pending. Enterprise Reports has 15 of 15 captured; Bulk Return and Closing Stock are also captured from the first sanitized local CSV audit.
+- The first local CSV checkpoint covers 26 exports across 20 contracts. Read `docs/REAL_CSV_AUDIT_CHECKPOINT.md` before revising report identities, formulas, or value-quality notes.
 - Consumption Report has four independent mode tables; do not merge their fields by label.
 - Enterprise Consumption, Variance, Wastage, Consolidated Indent, and Stock In/Out use position-aware keys for repeated quantity, amount, and subtotal labels.
 - The stable legacy IDs for Gross/Net Margin, Source Analysis Summary, and Daily Sales Revenue are intentionally retained even though their display names were corrected.

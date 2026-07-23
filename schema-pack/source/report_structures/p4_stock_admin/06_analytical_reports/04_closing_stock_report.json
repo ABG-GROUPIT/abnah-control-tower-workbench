@@ -1,0 +1,170 @@
+{
+  "report_id": "report:p4_stock_admin:06_analytical_reports:04_closing_stock_report",
+  "blocks": [
+    {
+      "id": "primary",
+      "name": "CSV closing stock snapshot",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Deployment",
+          "key": "deployment_name"
+        },
+        {
+          "label": "Date",
+          "key": "stock_date"
+        },
+        {
+          "label": "Generation Date",
+          "key": "generation_date"
+        },
+        {
+          "label": "Generation Time",
+          "key": "generation_time"
+        },
+        {
+          "label": "Item Code",
+          "key": "item_code"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Super Category Code",
+          "key": "super_category_code"
+        },
+        {
+          "label": "Super Category Name",
+          "key": "super_category_name"
+        },
+        {
+          "label": "Category Code",
+          "key": "category_code"
+        },
+        {
+          "label": "Category Name",
+          "key": "category_name"
+        },
+        {
+          "label": "Unit Name",
+          "key": "unit_name"
+        },
+        {
+          "label": "Average Price",
+          "key": "average_price"
+        },
+        {
+          "label": "GK2 Main Store",
+          "key": "gk2_main_store_qty"
+        },
+        {
+          "label": "Total Qty",
+          "key": "total_qty"
+        },
+        {
+          "label": "Total Amt",
+          "key": "total_amt"
+        }
+      ]
+    }
+  ],
+  "data_points": [
+    {
+      "key": "deployment_name",
+      "label": "Deployment",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "stock_date",
+      "label": "Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "generation_date",
+      "label": "Generation Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "generation_time",
+      "label": "Generation Time",
+      "semantic_role": "date",
+      "data_type": "text"
+    },
+    {
+      "key": "item_code",
+      "label": "Item Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "item_name",
+      "label": "Item Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "super_category_code",
+      "label": "Super Category Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "super_category_name",
+      "label": "Super Category Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "category_code",
+      "label": "Category Code",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "category_name",
+      "label": "Category Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "unit_name",
+      "label": "Unit Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "average_price",
+      "label": "Average Price",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gk2_main_store_qty",
+      "label": "GK2 Main Store",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_qty",
+      "label": "Total Qty",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "total_amt",
+      "label": "Total Amt",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    }
+  ],
+  "schema_status": "captured",
+  "verification_status": "needs_review",
+  "layout_kind": "flat",
+  "capture_method": "local_csv_contract_review",
+  "source_policy": "Schema definitions and sanitized audit summaries only. Raw CSV rows, local evidence, screenshots, paths, and source images are excluded.",
+  "structure_notes": "Sanitized local audit packet run_20260723_075052 verified CSV header order, canonical field mapping, and declared types. Value-health findings are review evidence and do not alter this blank structure."
+}

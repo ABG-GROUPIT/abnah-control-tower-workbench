@@ -1,11 +1,11 @@
 {
   "report_id": "report:p4_stock_admin:01_enterprise_reports:05_enterprise_stock_re_order",
   "schema_status": "captured",
-  "verification_status": "reviewed",
+  "verification_status": "needs_review",
   "layout_kind": "flat",
-  "capture_method": "pasted_export_headers",
-  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
-  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "capture_method": "local_csv_contract_review",
+  "source_policy": "Schema definitions and sanitized audit summaries only. Raw CSV rows, local evidence, screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README. Sanitized local audit packet run_20260723_075052 verified CSV header order, canonical field mapping, and declared types. Value-health findings are review evidence and do not alter this blank structure.",
   "data_points": [
     {
       "key": "deployment_name",
@@ -32,22 +32,22 @@
       "data_type": "text"
     },
     {
-      "key": "re_order_level",
+      "key": "reorder_level_qty",
       "label": "Re-Order Level",
-      "semantic_role": "unknown",
-      "data_type": "unknown"
+      "semantic_role": "measure",
+      "data_type": "decimal"
     },
     {
-      "key": "minimum_order_level",
+      "key": "minimum_order_level_qty",
       "label": "Minimum-Order Level",
-      "semantic_role": "unknown",
-      "data_type": "unknown"
+      "semantic_role": "measure",
+      "data_type": "decimal"
     },
     {
       "key": "available_qty",
       "label": "Available Qty",
       "semantic_role": "measure",
-      "data_type": "integer"
+      "data_type": "decimal"
     },
     {
       "key": "unit_name",
@@ -59,7 +59,7 @@
   "blocks": [
     {
       "id": "primary",
-      "name": "Enterprise Stock Re-Order export",
+      "name": "CSV reorder snapshot",
       "kind": "flat_table",
       "columns": [
         {
@@ -80,11 +80,11 @@
         },
         {
           "label": "Re-Order Level",
-          "key": "re_order_level"
+          "key": "reorder_level_qty"
         },
         {
           "label": "Minimum-Order Level",
-          "key": "minimum_order_level"
+          "key": "minimum_order_level_qty"
         },
         {
           "label": "Available Qty",

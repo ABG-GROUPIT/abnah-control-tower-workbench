@@ -1,32 +1,32 @@
 {
   "report_id": "report:p4_stock_admin:02_transactional_reports:10_stock_in_stock_out_report",
   "schema_status": "captured",
-  "verification_status": "reviewed",
+  "verification_status": "needs_review",
   "layout_kind": "grouped_columns",
-  "capture_method": "manual_visual_structure_review",
-  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
-  "structure_notes": "Repeated Subtotal fields are positionally paired with the Stock In and Stock Out movement groups.",
+  "capture_method": "manual_visual_and_local_csv_contract_review",
+  "source_policy": "Schema definitions and sanitized audit summaries only. Raw CSV rows, local evidence, screenshots, paths, and source images are excluded.",
+  "structure_notes": "Repeated Subtotal fields are positionally paired with the Stock In and Stock Out movement groups. Sanitized local audit packet run_20260723_075052 verified CSV header order, canonical field mapping, and declared types. Value-health findings are review evidence and do not alter this blank structure.",
   "data_points": [
     {
-      "key": "date",
+      "key": "movement_date",
       "label": "Date",
       "semantic_role": "date",
       "data_type": "date"
     },
     {
-      "key": "store_kitchen",
+      "key": "store_kitchen_name",
       "label": "Store/Kitchen",
       "semantic_role": "dimension",
       "data_type": "text"
     },
     {
-      "key": "supplier",
+      "key": "supplier_name",
       "label": "Supplier",
       "semantic_role": "dimension",
       "data_type": "text"
     },
     {
-      "key": "receiver",
+      "key": "receiver_name",
       "label": "Receiver",
       "semantic_role": "dimension",
       "data_type": "text"
@@ -51,15 +51,15 @@
     },
     {
       "key": "stock_in_reference",
-      "label": "Reference",
-      "semantic_role": "unknown",
-      "data_type": "unknown"
+      "label": "Stock In Reference",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
     },
     {
       "key": "stock_in_qty",
-      "label": "Qty",
+      "label": "Stock In Qty",
       "semantic_role": "measure",
-      "data_type": "integer"
+      "data_type": "decimal"
     },
     {
       "key": "stock_in_subtotal",
@@ -69,15 +69,15 @@
     },
     {
       "key": "stock_out_reference",
-      "label": "Reference",
-      "semantic_role": "unknown",
-      "data_type": "unknown"
+      "label": "Stock Out Reference",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
     },
     {
       "key": "stock_out_qty",
-      "label": "Qty",
+      "label": "Stock Out Qty",
       "semantic_role": "measure",
-      "data_type": "integer"
+      "data_type": "decimal"
     },
     {
       "key": "stock_out_subtotal",
@@ -94,19 +94,19 @@
       "columns": [
         {
           "label": "Date",
-          "key": "date"
+          "key": "movement_date"
         },
         {
           "label": "Store/Kitchen",
-          "key": "store_kitchen"
+          "key": "store_kitchen_name"
         },
         {
           "label": "Supplier",
-          "key": "supplier"
+          "key": "supplier_name"
         },
         {
           "label": "Receiver",
-          "key": "receiver"
+          "key": "receiver_name"
         },
         {
           "label": "Item Name",

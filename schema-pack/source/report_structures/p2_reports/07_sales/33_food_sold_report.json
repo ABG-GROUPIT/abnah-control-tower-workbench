@@ -1,11 +1,11 @@
 {
   "report_id": "report:p2_reports:07_sales:33_food_sold_report",
   "schema_status": "captured",
-  "verification_status": "reviewed",
+  "verification_status": "needs_review",
   "layout_kind": "flat",
-  "capture_method": "pasted_export_headers",
-  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
-  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "capture_method": "local_csv_contract_review",
+  "source_policy": "Schema definitions and sanitized audit summaries only. Raw CSV rows, local evidence, screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README. Sanitized local audit packet run_20260723_075052 verified CSV header order, canonical field mapping, and declared types. Value-health findings are review evidence and do not alter this blank structure.",
   "data_points": [
     {
       "key": "store_name",
@@ -14,14 +14,14 @@
       "data_type": "text"
     },
     {
-      "key": "date",
+      "key": "sale_date",
       "label": "Date",
       "semantic_role": "date",
       "data_type": "date"
     },
     {
       "key": "bill_number",
-      "label": "Bill Number",
+      "label": "Bill No.",
       "semantic_role": "document_identifier",
       "data_type": "text"
     },
@@ -50,31 +50,31 @@
       "data_type": "text"
     },
     {
-      "key": "super_category",
+      "key": "super_category_name",
       "label": "Super Category",
       "semantic_role": "dimension",
       "data_type": "text"
     },
     {
-      "key": "category",
+      "key": "category_name",
       "label": "Category",
       "semantic_role": "dimension",
       "data_type": "text"
     },
     {
       "key": "sac_hsn_number",
-      "label": "SAC/HSN Number",
+      "label": "SAC/HSN No.",
       "semantic_role": "document_identifier",
       "data_type": "text"
     },
     {
-      "key": "sku_code_item_number",
-      "label": "SKU Code / Item Number",
+      "key": "item_code",
+      "label": "SKU Code / Item No",
       "semantic_role": "document_identifier",
       "data_type": "text"
     },
     {
-      "key": "sku_item_name",
+      "key": "item_name",
       "label": "SKU / Item Name",
       "semantic_role": "dimension",
       "data_type": "text"
@@ -89,7 +89,7 @@
       "key": "item_qty",
       "label": "Item Qty",
       "semantic_role": "measure",
-      "data_type": "integer"
+      "data_type": "decimal"
     },
     {
       "key": "item_subtotal",
@@ -98,28 +98,28 @@
       "data_type": "decimal"
     },
     {
-      "key": "offer",
+      "key": "offer_name",
       "label": "Offer",
-      "semantic_role": "unknown",
-      "data_type": "unknown"
+      "semantic_role": "dimension",
+      "data_type": "text"
     },
     {
-      "key": "discount_amount",
+      "key": "discount_amt",
       "label": "Discount Amount",
       "semantic_role": "measure",
-      "data_type": "integer"
+      "data_type": "decimal"
     },
     {
-      "key": "complimentary_amount",
+      "key": "complimentary_amt",
       "label": "Complimentary Amount",
       "semantic_role": "measure",
       "data_type": "decimal"
     },
     {
-      "key": "total_discount",
+      "key": "total_discount_amt",
       "label": "Total Discount",
       "semantic_role": "measure",
-      "data_type": "integer"
+      "data_type": "decimal"
     },
     {
       "key": "net_sale_value",
@@ -128,7 +128,7 @@
       "data_type": "decimal"
     },
     {
-      "key": "tax_amount",
+      "key": "tax_amt",
       "label": "Tax Amount",
       "semantic_role": "measure",
       "data_type": "decimal"
@@ -148,17 +148,17 @@
     {
       "key": "purchase_value",
       "label": "Purchase Value",
-      "semantic_role": "unknown",
-      "data_type": "unknown"
+      "semantic_role": "measure",
+      "data_type": "decimal"
     },
     {
-      "key": "net_margin",
+      "key": "net_margin_percent",
       "label": "Net Margin%",
       "semantic_role": "measure",
       "data_type": "decimal"
     },
     {
-      "key": "gross_margin",
+      "key": "gross_margin_percent",
       "label": "Gross Margin%",
       "semantic_role": "measure",
       "data_type": "decimal"
@@ -167,7 +167,7 @@
   "blocks": [
     {
       "id": "primary",
-      "name": "Gross/Net Margin Report export",
+      "name": "CSV gross/net margin detail",
       "kind": "flat_table",
       "columns": [
         {
@@ -176,10 +176,10 @@
         },
         {
           "label": "Date",
-          "key": "date"
+          "key": "sale_date"
         },
         {
-          "label": "Bill Number",
+          "label": "Bill No.",
           "key": "bill_number"
         },
         {
@@ -200,23 +200,23 @@
         },
         {
           "label": "Super Category",
-          "key": "super_category"
+          "key": "super_category_name"
         },
         {
           "label": "Category",
-          "key": "category"
+          "key": "category_name"
         },
         {
-          "label": "SAC/HSN Number",
+          "label": "SAC/HSN No.",
           "key": "sac_hsn_number"
         },
         {
-          "label": "SKU Code / Item Number",
-          "key": "sku_code_item_number"
+          "label": "SKU Code / Item No",
+          "key": "item_code"
         },
         {
           "label": "SKU / Item Name",
-          "key": "sku_item_name"
+          "key": "item_name"
         },
         {
           "label": "Item Rate",
@@ -232,19 +232,19 @@
         },
         {
           "label": "Offer",
-          "key": "offer"
+          "key": "offer_name"
         },
         {
           "label": "Discount Amount",
-          "key": "discount_amount"
+          "key": "discount_amt"
         },
         {
           "label": "Complimentary Amount",
-          "key": "complimentary_amount"
+          "key": "complimentary_amt"
         },
         {
           "label": "Total Discount",
-          "key": "total_discount"
+          "key": "total_discount_amt"
         },
         {
           "label": "Net Sale Value",
@@ -252,7 +252,7 @@
         },
         {
           "label": "Tax Amount",
-          "key": "tax_amount"
+          "key": "tax_amt"
         },
         {
           "label": "Gross Sale Value",
@@ -268,11 +268,11 @@
         },
         {
           "label": "Net Margin%",
-          "key": "net_margin"
+          "key": "net_margin_percent"
         },
         {
           "label": "Gross Margin%",
-          "key": "gross_margin"
+          "key": "gross_margin_percent"
         }
       ]
     }

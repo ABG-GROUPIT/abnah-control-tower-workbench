@@ -150,8 +150,15 @@ def main() -> int:
                 "report_count"
             ):
                 errors.append("Every report must pass the deterministic post-LLM grounding gate.")
-            if "1.0.0" not in manifest.get("deterministic_grounding_versions", []):
-                errors.append("Packet does not declare deterministic grounding version 1.0.0.")
+            supported_grounding_versions = {"1.0.0", "1.1.0"}
+            declared_grounding_versions = set(
+                manifest.get("deterministic_grounding_versions", [])
+            )
+            if not declared_grounding_versions & supported_grounding_versions:
+                errors.append(
+                    "Packet does not declare a supported deterministic grounding version "
+                    "(1.0.0 or 1.1.0)."
+                )
         privacy = payloads["privacy_report.json"]
         if privacy.get("privacy_validation_errors"):
             errors.append("Local packet builder reported privacy validation errors.")

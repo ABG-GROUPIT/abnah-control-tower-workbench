@@ -1,11 +1,11 @@
 {
   "report_id": "report:p4_stock_admin:01_enterprise_reports:12_enterprise_wastage_report",
   "schema_status": "captured",
-  "verification_status": "reviewed",
+  "verification_status": "needs_review",
   "layout_kind": "mixed",
-  "capture_method": "manual_visual_structure_review",
-  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
-  "structure_notes": "Normal wastage is item-level with paired quantity and amount groups; Master wastage is a separate higher-level summary mode.",
+  "capture_method": "manual_visual_and_local_csv_contract_review",
+  "source_policy": "Schema definitions and sanitized audit summaries only. Raw CSV rows, local evidence, screenshots, paths, and source images are excluded.",
+  "structure_notes": "Normal wastage is item-level with paired quantity and amount groups; Master wastage is a separate higher-level summary mode. Sanitized local audit packet run_20260723_075052 verified CSV header order, canonical field mapping, and declared types. Value-health findings are review evidence and do not alter this blank structure.",
   "data_points": [
     {
       "key": "deployment_name",
@@ -15,7 +15,7 @@
     },
     {
       "key": "store_kitchen_name",
-      "label": "Store Kitchen Name",
+      "label": "Store/Kitchen Name",
       "semantic_role": "dimension",
       "data_type": "text"
     },
@@ -52,14 +52,14 @@
     {
       "key": "average_price",
       "label": "Average Price",
-      "semantic_role": "measure",
-      "data_type": "decimal"
+      "semantic_role": "unknown",
+      "data_type": "unknown"
     },
     {
       "key": "stock_wastage_qty",
       "label": "Qty",
-      "semantic_role": "measure",
-      "data_type": "integer"
+      "semantic_role": "unknown",
+      "data_type": "unknown"
     },
     {
       "key": "stock_wastage_amount",
@@ -70,8 +70,8 @@
     {
       "key": "consumption_qty",
       "label": "Qty",
-      "semantic_role": "measure",
-      "data_type": "integer"
+      "semantic_role": "unknown",
+      "data_type": "unknown"
     },
     {
       "key": "consumption_amount",
@@ -82,8 +82,8 @@
     {
       "key": "billing_wastage_qty",
       "label": "Qty",
-      "semantic_role": "measure",
-      "data_type": "integer"
+      "semantic_role": "unknown",
+      "data_type": "unknown"
     },
     {
       "key": "billing_wastage_amount",
@@ -94,8 +94,8 @@
     {
       "key": "total_wastage_qty",
       "label": "Qty",
-      "semantic_role": "measure",
-      "data_type": "integer"
+      "semantic_role": "unknown",
+      "data_type": "unknown"
     },
     {
       "key": "total_wastage_amount",
@@ -106,26 +106,26 @@
     {
       "key": "percentage_wastage",
       "label": "Percentage Wastage",
-      "semantic_role": "measure",
-      "data_type": "decimal"
+      "semantic_role": "unknown",
+      "data_type": "unknown"
     },
     {
       "key": "deployment",
       "label": "Deployment",
-      "semantic_role": "dimension",
-      "data_type": "text"
+      "semantic_role": "unknown",
+      "data_type": "unknown"
     },
     {
       "key": "store_kitchen",
       "label": "Store/Kitchen",
-      "semantic_role": "dimension",
-      "data_type": "text"
+      "semantic_role": "unknown",
+      "data_type": "unknown"
     },
     {
       "key": "category",
       "label": "Category",
-      "semantic_role": "dimension",
-      "data_type": "text"
+      "semantic_role": "unknown",
+      "data_type": "unknown"
     },
     {
       "key": "opening",
@@ -142,8 +142,8 @@
     {
       "key": "total_stock",
       "label": "Total Stock",
-      "semantic_role": "measure",
-      "data_type": "decimal"
+      "semantic_role": "unknown",
+      "data_type": "unknown"
     },
     {
       "key": "wastage",
@@ -154,8 +154,56 @@
     {
       "key": "wastage_percentage",
       "label": "Wastage Percentage",
+      "semantic_role": "unknown",
+      "data_type": "unknown"
+    },
+    {
+      "key": "user_name",
+      "label": "User Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "wastage_date",
+      "label": "Date",
+      "semantic_role": "date",
+      "data_type": "date"
+    },
+    {
+      "key": "transaction_number",
+      "label": "Transaction Number",
+      "semantic_role": "document_identifier",
+      "data_type": "text"
+    },
+    {
+      "key": "comment",
+      "label": "Comment",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "wastage_qty",
+      "label": "Quantity",
       "semantic_role": "measure",
       "data_type": "decimal"
+    },
+    {
+      "key": "unit_price",
+      "label": "Unit Price",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "wastage_amt",
+      "label": "Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "source",
+      "label": "Source",
+      "semantic_role": "dimension",
+      "data_type": "text"
     }
   ],
   "blocks": [
@@ -290,6 +338,73 @@
         {
           "label": "Wastage Percentage",
           "key": "wastage_percentage"
+        }
+      ]
+    },
+    {
+      "id": "transaction_detail_csv",
+      "name": "Transaction detail CSV",
+      "kind": "flat_table",
+      "columns": [
+        {
+          "label": "Deployment Name",
+          "key": "deployment_name"
+        },
+        {
+          "label": "Store/Kitchen Name",
+          "key": "store_kitchen_name"
+        },
+        {
+          "label": "User Name",
+          "key": "user_name"
+        },
+        {
+          "label": "Date",
+          "key": "wastage_date"
+        },
+        {
+          "label": "Transaction Number",
+          "key": "transaction_number"
+        },
+        {
+          "label": "Item Code",
+          "key": "item_code"
+        },
+        {
+          "label": "Item Name",
+          "key": "item_name"
+        },
+        {
+          "label": "Category Name",
+          "key": "category_name"
+        },
+        {
+          "label": "Super Category Name",
+          "key": "super_category_name"
+        },
+        {
+          "label": "Comment",
+          "key": "comment"
+        },
+        {
+          "label": "Quantity",
+          "key": "wastage_qty"
+        },
+        {
+          "label": "Unit",
+          "key": "unit"
+        },
+        {
+          "label": "Unit Price",
+          "key": "unit_price"
+        },
+        {
+          "label": "Amount",
+          "key": "wastage_amt"
+        },
+        {
+          "label": "Source",
+          "key": "source"
         }
       ]
     }

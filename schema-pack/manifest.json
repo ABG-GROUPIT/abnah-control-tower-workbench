@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1.0",
-  "generated_at": "2026-07-22T09:58:15+00:00",
+  "generated_at": "2026-07-23T02:35:44+00:00",
   "portable": true,
   "source_inputs": {
     "schema_reference": "external local input; not packaged",
@@ -112,7 +112,7 @@
       "api_maps_to_model": 19
     },
     "workspace_reports": 319,
-    "structural_blueprints": 176,
+    "structural_blueprints": 178,
     "draft_kpis": 35,
     "approved_kpis": 0,
     "published_lineage_maps": 0,
@@ -434,7 +434,7 @@
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/18_item_recipe_report.json",
-      "sha256": "ee3823e4c787a948689eae9ffea7d59800bf4ec5d1ff0b7a87d15a20524892dd"
+      "sha256": "fec00ca098617191d59b976225da7d5c178668f47eaa00dc3454d64ad4b55f3a"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/20_shift_report.json",
@@ -682,7 +682,7 @@
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/07_sales/06_bill_item_detail_report.json",
-      "sha256": "6f16481592e5da0ee906c49eb79835ad72a526f6717e01d9682a735cf17138f2"
+      "sha256": "8bc2cbea6d0d1923d3fca4e5fdc7f2f112e2b74f059d8d2c2c490760414c445f"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/07_sales/07_settlement_report.json",
@@ -746,7 +746,7 @@
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/07_sales/33_food_sold_report.json",
-      "sha256": "ff2d6531f4cac110fec8ac8e84eb8335452882ab474882abbf3c8f649a76bcf0"
+      "sha256": "e370aaafa99b1f3446f3268d5cabc53b9e409b70a131d8ffd25bbc39211888a4"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/07_sales/38_daily_sales_reversal.json",
@@ -758,7 +758,7 @@
     },
     {
       "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/01_enterprise_entry.json",
-      "sha256": "8890884928132af7c62395ff781c746c6caf191246911790e59b4bbcf94b483e"
+      "sha256": "66e04e05b5ff0ac3a83ad9877718d962dbd20a4447c6ed91ac5183b981708e44"
     },
     {
       "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/02_erp_vendor_price.json",
@@ -766,19 +766,19 @@
     },
     {
       "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/03_enterprise_stock_return.json",
-      "sha256": "6a073471d87a7ea810c20abe21b5f49beb1bce89a11c4e4c92ecf67816104555"
+      "sha256": "ddb139ec5e6aaaa9626c4b59cd5f0fe3a4d9d7643ae453cd8f053075be1168f3"
     },
     {
       "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/04_enterprise_consumption.json",
-      "sha256": "44ad8f1e980c2429afa4a8c2dda4285d369d18a0cec5b9751d49701c25bd0684"
+      "sha256": "b3ef32ecc4cf8f27614435f904133583bb36346fc6b21a11a894ca46644a4ffb"
     },
     {
       "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/05_enterprise_stock_re_order.json",
-      "sha256": "0f2c7da8d18a87f7b71b8c726bddf67bbc96204bb796890984c6ba9959cd3b08"
+      "sha256": "7514e53a471623f989a49cf4817242a1e8ddb2dd03536a7baf69d82c33192c1b"
     },
     {
       "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/06_enterprise_purchase_order.json",
-      "sha256": "e24f594679566603cc7ba1d70745bd9ef8833b1779d5abf874649778b40ff0d4"
+      "sha256": "c84b4848cfb5d0dded8039682ea71918dc4587a61236e33a4cbea5b23795778a"
     },
     {
       "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/07_enterprise_consolidated_indent.json",
@@ -786,7 +786,7 @@
     },
     {
       "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/08_enterprise_variance.json",
-      "sha256": "a36e9048deca4390fe3d2eaf5e8b4a786435b2219b702155fed78502628c0c70"
+      "sha256": "b9bd31311d2586138e6f1b25ca85e988dcb3ab8b2bf717fc64dc2d39ffc72cec"
     },
     {
       "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/09_enterprise_categorywise_cogs.json",
@@ -802,7 +802,7 @@
     },
     {
       "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/12_enterprise_wastage_report.json",
-      "sha256": "3a0a581a6008c05bc652bfad4156022070e994376fafd6e3500259209d79b20a"
+      "sha256": "ef54025e8411cd3178ed3c8060fd8d43b406c7794d184bf890ae4cd2228f1339"
     },
     {
       "path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/13_enterprise_purchase_summary_report.json",
@@ -830,7 +830,7 @@
     },
     {
       "path": "schema-pack/source/report_structures/p4_stock_admin/02_transactional_reports/05_purchase_detail.json",
-      "sha256": "3c3349ef17280ff23bd34a731ac7d50b42aaa9a198431176db5dca0f26ae2790"
+      "sha256": "4d9c6c199d82224625cecc239cc89cf2df7595455ebab60e14a82a5f74a505f9"
     },
     {
       "path": "schema-pack/source/report_structures/p4_stock_admin/02_transactional_reports/06_purchase_detail_consolidated.json",
@@ -838,11 +838,15 @@
     },
     {
       "path": "schema-pack/source/report_structures/p4_stock_admin/02_transactional_reports/10_stock_in_stock_out_report.json",
-      "sha256": "7690445398f7f727c6959c8978c179aa477123945116cc884f8b8c1376831046"
+      "sha256": "74366189e29741acd2d99bc69de31198c6cf19a52c5723e1266f2b84cccdb1ae"
     },
     {
       "path": "schema-pack/source/report_structures/p4_stock_admin/03_po_so_reports/01_purchase_order.json",
       "sha256": "29bfea3d0c72bc9f6273818744d8b81f53f9596883b1e10bba59b6ce93d64f75"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/04_indent_reports/07_bulk_return_report.json",
+      "sha256": "4060f39d8cdb8051782d882beefedd1c53057c89492fc6983a8f266426d892b2"
     },
     {
       "path": "schema-pack/source/report_structures/p4_stock_admin/05_aggregation_reports/02_consumption_report.json",
@@ -850,7 +854,11 @@
     },
     {
       "path": "schema-pack/source/report_structures/p4_stock_admin/05_aggregation_reports/07_recipe_consumption_report.json",
-      "sha256": "f170a7eab90311ae9adb276b649ed23b3b4b40befb919f14410b2e49acb373ea"
+      "sha256": "ae7af5cc7f488327f96f31966cc8622802b5a210f6f7e836710b4afb9bb67ee6"
+    },
+    {
+      "path": "schema-pack/source/report_structures/p4_stock_admin/06_analytical_reports/04_closing_stock_report.json",
+      "sha256": "e837b0a426af1e3caa18d4b6e36205ff296fab2defa9d885e67d08796b9228be"
     }
   ],
   "kpi_lineage_source": {

@@ -16,12 +16,12 @@ P1_COMPLETION_BASELINE = {
     "archived_reports": 5,
     "schema_statuses": {"captured": 76, "unavailable": 14},
     "active_schema_statuses": {"captured": 76, "unavailable": 9},
-    "verification_statuses": {"reviewed": 80, "needs_review": 10},
+    "verification_statuses": {"reviewed": 79, "needs_review": 11},
 }
 P2_CAPTURE_BASELINE = {
     "catalog_reports": 155,
     "schema_statuses": {"captured": 73, "partial": 3, "pending": 79},
-    "verification_statuses": {"reviewed": 76, "needs_review": 79},
+    "verification_statuses": {"reviewed": 74, "needs_review": 81},
     "sections": {
         "01_analytics": {
             "reports": 10,
@@ -46,19 +46,21 @@ P2_CAPTURE_BASELINE = {
         "07_sales": {
             "reports": 41,
             "schema_statuses": {"captured": 24, "pending": 17},
-            "verification_statuses": {"reviewed": 24, "needs_review": 17},
+            "verification_statuses": {"reviewed": 22, "needs_review": 19},
         },
     },
 }
 P4_CAPTURE_BASELINE = {
     "catalog_reports": 74,
-    "schema_statuses": {"captured": 24, "pending": 50},
-    "verification_statuses": {"reviewed": 24, "needs_review": 50},
+    "schema_statuses": {"captured": 26, "pending": 48},
+    "verification_statuses": {"reviewed": 14, "needs_review": 60},
     "sections": {
         "01_enterprise_reports": {"reports": 15, "captured": 15},
         "02_transactional_reports": {"reports": 10, "captured": 6},
         "03_po_so_reports": {"reports": 6, "captured": 1},
+        "04_indent_reports": {"reports": 7, "captured": 1},
         "05_aggregation_reports": {"reports": 7, "captured": 2},
+        "06_analytical_reports": {"reports": 8, "captured": 1},
     },
 }
 
@@ -285,9 +287,9 @@ def main() -> int:
     )
     enterprise_keys = {field.get("key") for field in enterprise_consumption.get("fields", [])}
     required_positional_keys = {
-        "purchase_qty", "purchase_amount", "consumption_qty", "consumption_amount",
-        "closing_qty", "closing_amount", "physical_adjusted_closing_qty",
-        "physical_adjusted_closing_amount",
+        "purchase_qty", "purchase_amt", "consumption_qty", "consumption_amt",
+        "closing_qty", "closing_amt", "physical_adjusted_closing_qty",
+        "physical_adjusted_closing_amt",
     }
     if not required_positional_keys.issubset(enterprise_keys):
         errors.append("Enterprise Consumption lost one or more position-aware quantity/amount keys.")
@@ -307,9 +309,26 @@ def main() -> int:
         return 1
 
     print(f"Workspace validation passed: {len(report_ids)} reports.")
-    print("P1 completion guard passed: 76 captured, 14 unavailable, 80 reviewed, 0 partial, 0 pending.")
-    print("P2 capture guard passed: 73 captured, 3 partial, 76 reviewed, 79 pending.")
-    print("P4 capture guard passed: 24 captured, 24 reviewed, 50 pending.")
+    print(
+        "P1 completion guard passed: "
+        f"{p1_statuses.get('captured', 0)} captured, "
+        f"{p1_statuses.get('unavailable', 0)} unavailable, "
+        f"{p1_verification_statuses.get('reviewed', 0)} reviewed, "
+        f"{p1_statuses.get('partial', 0)} partial, {p1_statuses.get('pending', 0)} pending."
+    )
+    print(
+        "P2 capture guard passed: "
+        f"{p2_statuses.get('captured', 0)} captured, "
+        f"{p2_statuses.get('partial', 0)} partial, "
+        f"{p2_verification_statuses.get('reviewed', 0)} reviewed, "
+        f"{p2_statuses.get('pending', 0)} pending."
+    )
+    print(
+        "P4 capture guard passed: "
+        f"{p4_statuses.get('captured', 0)} captured, "
+        f"{p4_verification_statuses.get('reviewed', 0)} reviewed, "
+        f"{p4_statuses.get('pending', 0)} pending."
+    )
     return 0
 
 

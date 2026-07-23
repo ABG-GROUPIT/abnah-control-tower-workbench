@@ -1,11 +1,11 @@
 {
   "report_id": "report:p4_stock_admin:01_enterprise_reports:03_enterprise_stock_return",
   "schema_status": "captured",
-  "verification_status": "reviewed",
+  "verification_status": "needs_review",
   "layout_kind": "flat",
-  "capture_method": "pasted_export_headers",
-  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
-  "structure_notes": "Exact exported header order captured from the local schema staging README.",
+  "capture_method": "local_csv_contract_review",
+  "source_policy": "Schema definitions and sanitized audit summaries only. Raw CSV rows, local evidence, screenshots, paths, and source images are excluded.",
+  "structure_notes": "Exact exported header order captured from the local schema staging README. Sanitized local audit packet run_20260723_075052 verified CSV header order, canonical field mapping, and declared types. Value-health findings are review evidence and do not alter this blank structure.",
   "data_points": [
     {
       "key": "deployment_name",
@@ -98,7 +98,7 @@
       "data_type": "text"
     },
     {
-      "key": "unit",
+      "key": "entry_unit",
       "label": "Unit",
       "semantic_role": "dimension",
       "data_type": "text"
@@ -107,7 +107,7 @@
       "key": "entry_qty",
       "label": "Entry Qty",
       "semantic_role": "measure",
-      "data_type": "integer"
+      "data_type": "decimal"
     },
     {
       "key": "unit_price",
@@ -116,46 +116,46 @@
       "data_type": "decimal"
     },
     {
-      "key": "sub_total",
+      "key": "entry_subtotal",
       "label": "Sub Total",
       "semantic_role": "measure",
       "data_type": "decimal"
     },
     {
-      "key": "discount",
+      "key": "entry_discount_amt",
       "label": "Discount",
       "semantic_role": "measure",
-      "data_type": "integer"
+      "data_type": "decimal"
     },
     {
-      "key": "cgst",
+      "key": "entry_cgst_amt",
       "label": "CGST",
-      "semantic_role": "unknown",
-      "data_type": "unknown"
+      "semantic_role": "measure",
+      "data_type": "decimal"
     },
     {
-      "key": "sgst",
+      "key": "entry_sgst_amt",
       "label": "SGST",
-      "semantic_role": "unknown",
-      "data_type": "unknown"
+      "semantic_role": "measure",
+      "data_type": "decimal"
     },
     {
-      "key": "igst",
+      "key": "entry_igst_amt",
       "label": "IGST",
-      "semantic_role": "unknown",
-      "data_type": "unknown"
+      "semantic_role": "measure",
+      "data_type": "decimal"
     },
     {
-      "key": "non_gst",
+      "key": "entry_non_gst_amt",
       "label": "Non GST",
-      "semantic_role": "unknown",
-      "data_type": "unknown"
+      "semantic_role": "measure",
+      "data_type": "decimal"
     },
     {
       "key": "entry_amt",
       "label": "Entry Amt",
-      "semantic_role": "unknown",
-      "data_type": "unknown"
+      "semantic_role": "measure",
+      "data_type": "decimal"
     },
     {
       "key": "return_date",
@@ -173,7 +173,7 @@
       "key": "return_qty",
       "label": "Return Qty",
       "semantic_role": "measure",
-      "data_type": "integer"
+      "data_type": "decimal"
     },
     {
       "key": "return_subtotal",
@@ -182,37 +182,37 @@
       "data_type": "decimal"
     },
     {
-      "key": "return_discount",
+      "key": "return_discount_amt",
       "label": "Return Discount",
       "semantic_role": "measure",
-      "data_type": "integer"
+      "data_type": "decimal"
     },
     {
-      "key": "return_cgst",
+      "key": "return_cgst_amt",
       "label": "Return CGST",
-      "semantic_role": "unknown",
-      "data_type": "unknown"
+      "semantic_role": "measure",
+      "data_type": "decimal"
     },
     {
-      "key": "return_sgst",
+      "key": "return_sgst_amt",
       "label": "Return SGST",
-      "semantic_role": "unknown",
-      "data_type": "unknown"
+      "semantic_role": "measure",
+      "data_type": "decimal"
     },
     {
-      "key": "return_igst",
+      "key": "return_igst_amt",
       "label": "Return IGST",
-      "semantic_role": "unknown",
-      "data_type": "unknown"
+      "semantic_role": "measure",
+      "data_type": "decimal"
     },
     {
-      "key": "return_non_gst",
+      "key": "return_non_gst_amt",
       "label": "Return Non GST",
-      "semantic_role": "unknown",
-      "data_type": "unknown"
+      "semantic_role": "measure",
+      "data_type": "decimal"
     },
     {
-      "key": "return_amount",
+      "key": "return_amt",
       "label": "Return Amount",
       "semantic_role": "measure",
       "data_type": "decimal"
@@ -220,14 +220,14 @@
     {
       "key": "transaction_status",
       "label": "Transaction Status",
-      "semantic_role": "document_identifier",
+      "semantic_role": "dimension",
       "data_type": "text"
     }
   ],
   "blocks": [
     {
       "id": "primary",
-      "name": "Enterprise Stock Return export",
+      "name": "CSV stock entry return detail",
       "kind": "flat_table",
       "columns": [
         {
@@ -292,7 +292,7 @@
         },
         {
           "label": "Unit",
-          "key": "unit"
+          "key": "entry_unit"
         },
         {
           "label": "Entry Qty",
@@ -304,27 +304,27 @@
         },
         {
           "label": "Sub Total",
-          "key": "sub_total"
+          "key": "entry_subtotal"
         },
         {
           "label": "Discount",
-          "key": "discount"
+          "key": "entry_discount_amt"
         },
         {
           "label": "CGST",
-          "key": "cgst"
+          "key": "entry_cgst_amt"
         },
         {
           "label": "SGST",
-          "key": "sgst"
+          "key": "entry_sgst_amt"
         },
         {
           "label": "IGST",
-          "key": "igst"
+          "key": "entry_igst_amt"
         },
         {
           "label": "Non GST",
-          "key": "non_gst"
+          "key": "entry_non_gst_amt"
         },
         {
           "label": "Entry Amt",
@@ -348,27 +348,27 @@
         },
         {
           "label": "Return Discount",
-          "key": "return_discount"
+          "key": "return_discount_amt"
         },
         {
           "label": "Return CGST",
-          "key": "return_cgst"
+          "key": "return_cgst_amt"
         },
         {
           "label": "Return SGST",
-          "key": "return_sgst"
+          "key": "return_sgst_amt"
         },
         {
           "label": "Return IGST",
-          "key": "return_igst"
+          "key": "return_igst_amt"
         },
         {
           "label": "Return Non GST",
-          "key": "return_non_gst"
+          "key": "return_non_gst_amt"
         },
         {
           "label": "Return Amount",
-          "key": "return_amount"
+          "key": "return_amt"
         },
         {
           "label": "Transaction Status",

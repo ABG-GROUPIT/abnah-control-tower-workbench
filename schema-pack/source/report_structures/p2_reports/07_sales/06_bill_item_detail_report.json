@@ -1,20 +1,20 @@
 {
   "report_id": "report:p2_reports:07_sales:06_bill_item_detail_report",
   "schema_status": "captured",
-  "verification_status": "reviewed",
-  "layout_kind": "grouped_rows",
-  "capture_method": "manual_visual_structure_review",
-  "source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
-  "structure_notes": "Rows are grouped by business date and bill, with a bill-total row after each bill.",
+  "verification_status": "needs_review",
+  "layout_kind": "flat",
+  "capture_method": "manual_visual_and_local_csv_contract_review",
+  "source_policy": "Schema definitions and sanitized audit summaries only. Raw CSV rows, local evidence, screenshots, paths, and source images are excluded.",
+  "structure_notes": "Rows are grouped by business date and bill, with a bill-total row after each bill. Sanitized local audit packet run_20260723_075052 verified CSV header order, canonical field mapping, and declared types. Value-health findings are review evidence and do not alter this blank structure.",
   "data_points": [
     {
-      "key": "state",
+      "key": "bill_state",
       "label": "State",
-      "semantic_role": "unknown",
-      "data_type": "unknown"
+      "semantic_role": "dimension",
+      "data_type": "text"
     },
     {
-      "key": "deployment",
+      "key": "deployment_name",
       "label": "Deployment",
       "semantic_role": "dimension",
       "data_type": "text"
@@ -27,39 +27,39 @@
     },
     {
       "key": "bill_number",
-      "label": "Bill Number",
+      "label": "billNumber",
       "semantic_role": "document_identifier",
       "data_type": "text"
     },
     {
       "key": "day_serial",
-      "label": "Day Serial",
-      "semantic_role": "unknown",
-      "data_type": "unknown"
+      "label": "daySerial",
+      "semantic_role": "dimension",
+      "data_type": "text"
     },
     {
-      "key": "tab",
+      "key": "tab_name",
       "label": "Tab",
-      "semantic_role": "unknown",
-      "data_type": "unknown"
+      "semantic_role": "dimension",
+      "data_type": "text"
     },
     {
       "key": "table_number",
-      "label": "Table Number",
+      "label": "tableNumber",
       "semantic_role": "document_identifier",
       "data_type": "text"
     },
     {
       "key": "open_time",
       "label": "Open Time",
-      "semantic_role": "time",
-      "data_type": "time"
+      "semantic_role": "date",
+      "data_type": "text"
     },
     {
       "key": "close_time",
       "label": "Close Time",
-      "semantic_role": "time",
-      "data_type": "time"
+      "semantic_role": "date",
+      "data_type": "text"
     },
     {
       "key": "category_name",
@@ -81,73 +81,157 @@
     },
     {
       "key": "item_section",
-      "label": "Item Section",
+      "label": "itemSection",
       "semantic_role": "dimension",
       "data_type": "text"
     },
     {
       "key": "item_classification",
       "label": "Item Classification",
-      "semantic_role": "unknown",
-      "data_type": "unknown"
+      "semantic_role": "dimension",
+      "data_type": "text"
     },
     {
-      "key": "rate",
+      "key": "item_rate",
       "label": "Rate",
       "semantic_role": "measure",
       "data_type": "decimal"
     },
     {
-      "key": "qty",
+      "key": "item_qty",
       "label": "Qty",
       "semantic_role": "measure",
-      "data_type": "integer"
+      "data_type": "decimal"
     },
     {
-      "key": "amount",
+      "key": "line_amt",
       "label": "Amount",
       "semantic_role": "measure",
       "data_type": "decimal"
     },
     {
-      "key": "business_date",
-      "label": "Business Date",
-      "semantic_role": "date",
-      "data_type": "date"
+      "key": "discount_amt",
+      "label": "Discount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "discount_type",
+      "label": "discountType",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "discount_remarks",
+      "label": "discountRemarks",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "gst_5_amt",
+      "label": "GST@5% Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_5_rate",
+      "label": "GST@5%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_18_amt",
+      "label": "GST@18% Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_18_rate",
+      "label": "GST@18%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_3_amt",
+      "label": "GST@3% Amount",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "gst_3_rate",
+      "label": "GST@3%",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "net_amt",
+      "label": "netamt",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "customer_name",
+      "label": "customerName",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "customer_mobile",
+      "label": "customerMobile",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "covers",
+      "label": "Covers",
+      "semantic_role": "measure",
+      "data_type": "decimal"
+    },
+    {
+      "key": "waiter_name",
+      "label": "Waiter Name",
+      "semantic_role": "dimension",
+      "data_type": "text"
+    },
+    {
+      "key": "source",
+      "label": "Source",
+      "semantic_role": "dimension",
+      "data_type": "text"
     }
   ],
   "blocks": [
     {
       "id": "primary",
-      "name": "Bill item detail",
+      "name": "CSV bill item detail",
       "kind": "flat_table",
       "columns": [
         {
           "label": "State",
-          "key": "state"
+          "key": "bill_state"
         },
         {
           "label": "Deployment",
-          "key": "deployment"
+          "key": "deployment_name"
         },
         {
           "label": "Order Id",
           "key": "order_id"
         },
         {
-          "label": "Bill Number",
+          "label": "billNumber",
           "key": "bill_number"
         },
         {
-          "label": "Day Serial",
+          "label": "daySerial",
           "key": "day_serial"
         },
         {
           "label": "Tab",
-          "key": "tab"
+          "key": "tab_name"
         },
         {
-          "label": "Table Number",
+          "label": "tableNumber",
           "key": "table_number"
         },
         {
@@ -171,7 +255,7 @@
           "key": "item_number"
         },
         {
-          "label": "Item Section",
+          "label": "itemSection",
           "key": "item_section"
         },
         {
@@ -180,15 +264,75 @@
         },
         {
           "label": "Rate",
-          "key": "rate"
+          "key": "item_rate"
         },
         {
           "label": "Qty",
-          "key": "qty"
+          "key": "item_qty"
         },
         {
           "label": "Amount",
-          "key": "amount"
+          "key": "line_amt"
+        },
+        {
+          "label": "Discount",
+          "key": "discount_amt"
+        },
+        {
+          "label": "discountType",
+          "key": "discount_type"
+        },
+        {
+          "label": "discountRemarks",
+          "key": "discount_remarks"
+        },
+        {
+          "label": "GST@5% Amount",
+          "key": "gst_5_amt"
+        },
+        {
+          "label": "GST@5%",
+          "key": "gst_5_rate"
+        },
+        {
+          "label": "GST@18% Amount",
+          "key": "gst_18_amt"
+        },
+        {
+          "label": "GST@18%",
+          "key": "gst_18_rate"
+        },
+        {
+          "label": "GST@3% Amount",
+          "key": "gst_3_amt"
+        },
+        {
+          "label": "GST@3%",
+          "key": "gst_3_rate"
+        },
+        {
+          "label": "netamt",
+          "key": "net_amt"
+        },
+        {
+          "label": "customerName",
+          "key": "customer_name"
+        },
+        {
+          "label": "customerMobile",
+          "key": "customer_mobile"
+        },
+        {
+          "label": "Covers",
+          "key": "covers"
+        },
+        {
+          "label": "Waiter Name",
+          "key": "waiter_name"
+        },
+        {
+          "label": "Source",
+          "key": "source"
         }
       ]
     }

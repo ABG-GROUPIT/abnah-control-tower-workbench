@@ -26,7 +26,8 @@ Do not add screenshots, screenshot paths, client records, credentials, tokens, o
 - 34 public Restroworks API candidates packeted; none are ABNAH UAT verified yet.
 - 35 draft control-tower KPI definitions, 0 approved KPIs, and 0 published KPI lineage maps.
 - P2 now has 73 captured schemas, 3 bounded partial schemas, and 79 pending reports.
-- P4 now has 24 captured schemas and 50 pending reports, including all 15 Enterprise reports and four explicit Consumption Report modes.
+- P4 now has 26 captured schemas and 48 pending reports, including all 15 Enterprise reports, four explicit Consumption Report modes, Bulk Return, and Closing Stock.
+- The first private CSV audit checkpoint covers 26 exports across 20 contracts; all headers matched, Enterprise Entry is represented by five source modes, and two header-only reports remain value-unassessed.
 - Four business pages recorded: Risk Action Center; Procurement, Vendor & Capital Control; Consumption Variance & Menu Profitability; SCM Descriptive Explorer & Data Quality.
 - The current P2/P4 schema capture checkpoint is compiled into the website baseline; CSV value and structural-integrity validation remains pending.
 - Inventory and consumption intelligence plus vendor and procurement remain phase-1 priorities.

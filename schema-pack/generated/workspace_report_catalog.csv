@@ -74,7 +74,7 @@ report:p1_main:06_misc:13_entp_reprint_report,Entp Reprint Report,p1_main,06_mis
 report:p1_main:06_misc:21_expense_report,Expense Report,p1_main,06_misc,unavailable,reviewed,flat,published,0,1,False
 report:p1_main:06_misc:14_filter_invoices_report,filter_invoices_report,p1_main,06_misc,unavailable,reviewed,flat,published,0,1,False
 report:p1_main:06_misc:08_gift_card_report,Gift Card Report,p1_main,06_misc,unavailable,reviewed,flat,published,0,1,False
-report:p1_main:06_misc:18_item_recipe_report,Item Recipe Report,p1_main,06_misc,captured,reviewed,flat,published,8,1,False
+report:p1_main:06_misc:18_item_recipe_report,Item Recipe Report,p1_main,06_misc,captured,needs_review,flat,published,8,1,False
 report:p1_main:06_misc:15_item_out_of_stock,item_out_of_stock,p1_main,06_misc,captured,needs_review,flat,published,12,1,False
 report:p1_main:06_misc:07_msr_reload_report,msr_reload_report,p1_main,06_misc,unavailable,reviewed,flat,published,0,1,False
 report:p1_main:06_misc:10_online_orders_time_log,Online Orders Time Log,p1_main,06_misc,captured,needs_review,flat,published,27,1,False
@@ -175,7 +175,7 @@ report:p2_reports:05_crm:01_crm_report,CRM Report,p2_reports,05_crm,pending,need
 report:p2_reports:06_prepaid_card:01_card_report,Card Report,p2_reports,06_prepaid_card,pending,needs_review,flat,published,0,1,False
 report:p2_reports:07_sales:27_advance_booking_report,Advance Booking Report,p2_reports,07_sales,pending,needs_review,flat,published,0,1,False
 report:p2_reports:07_sales:28_advance_booking_session_consolidat,Advance Booking Session Consolidated,p2_reports,07_sales,pending,needs_review,flat,published,0,1,False
-report:p2_reports:07_sales:06_bill_item_detail_report,Bill Item Detail Report,p2_reports,07_sales,captured,reviewed,grouped_rows,published,18,1,False
+report:p2_reports:07_sales:06_bill_item_detail_report,Bill Item Detail Report,p2_reports,07_sales,captured,needs_review,flat,published,32,1,False
 report:p2_reports:07_sales:25_bill_no_wise_report,Bill No Wise Report,p2_reports,07_sales,captured,reviewed,key_value,published,37,1,False
 report:p2_reports:07_sales:26_bill_status_sales_report,Bill Status Sales Report,p2_reports,07_sales,pending,needs_review,flat,published,0,1,False
 report:p2_reports:07_sales:34_bill_wise_sales_gst_billwise,Bill Wise Sales GST BillWise,p2_reports,07_sales,pending,needs_review,flat,published,0,1,False
@@ -195,7 +195,7 @@ report:p2_reports:07_sales:15_delivery_report,Delivery Report,p2_reports,07_sale
 report:p2_reports:07_sales:37_dsh_item_wise_report,DSH Item Wise Report,p2_reports,07_sales,pending,needs_review,flat,published,0,1,False
 report:p2_reports:07_sales:30_enterprise_settlement_report,Enterprise Settlement Report,p2_reports,07_sales,pending,needs_review,flat,published,0,1,False
 report:p2_reports:07_sales:36_gross_sale_wastage_report,Gross Sale Wastage Report,p2_reports,07_sales,pending,needs_review,flat,published,0,1,False
-report:p2_reports:07_sales:33_food_sold_report,Gross/Net Margin Report,p2_reports,07_sales,captured,reviewed,flat,published,26,1,False
+report:p2_reports:07_sales:33_food_sold_report,Gross/Net Margin Report,p2_reports,07_sales,captured,needs_review,flat,published,26,1,False
 report:p2_reports:07_sales:23_hourly_sales_summary,hourly_sales_summary,p2_reports,07_sales,pending,needs_review,flat,published,0,1,False
 report:p2_reports:07_sales:14_instance_wise_report,Instance Wise Report,p2_reports,07_sales,captured,reviewed,grouped_rows,published,18,1,False
 report:p2_reports:07_sales:41_msr_card_reload_report,msr_card_reload_report,p2_reports,07_sales,pending,needs_review,flat,published,0,1,False
@@ -247,27 +247,27 @@ report:p2_reports:12_bir:02_z_report,Z Report,p2_reports,12_bir,pending,needs_re
 report:p4_stock_admin:01_enterprise_reports:10_enterprise_bill_passing,Enterprise Bill Passing,p4_stock_admin,01_enterprise_reports,captured,reviewed,flat,published,18,1,False
 report:p4_stock_admin:01_enterprise_reports:09_enterprise_categorywise_cogs,Enterprise categorywise cogs,p4_stock_admin,01_enterprise_reports,captured,reviewed,flat,published,12,1,False
 report:p4_stock_admin:01_enterprise_reports:07_enterprise_consolidated_indent,Enterprise Consolidated Indent,p4_stock_admin,01_enterprise_reports,captured,reviewed,grouped_columns,published,15,1,False
-report:p4_stock_admin:01_enterprise_reports:04_enterprise_consumption,Enterprise Consumption,p4_stock_admin,01_enterprise_reports,captured,reviewed,grouped_columns,published,46,1,False
+report:p4_stock_admin:01_enterprise_reports:04_enterprise_consumption,Enterprise Consumption,p4_stock_admin,01_enterprise_reports,captured,needs_review,grouped_columns,published,46,1,False
 report:p4_stock_admin:01_enterprise_reports:11_enterprise_credit_note_report,Enterprise Credit Note Report,p4_stock_admin,01_enterprise_reports,captured,reviewed,flat,published,34,1,False
-report:p4_stock_admin:01_enterprise_reports:01_enterprise_entry,Enterprise Entry,p4_stock_admin,01_enterprise_reports,captured,reviewed,flat,published,16,1,False
+report:p4_stock_admin:01_enterprise_reports:01_enterprise_entry,Enterprise Entry,p4_stock_admin,01_enterprise_reports,captured,needs_review,mixed,published,49,5,False
 report:p4_stock_admin:01_enterprise_reports:15_enterprise_food_cost_report,Enterprise Food Cost Report,p4_stock_admin,01_enterprise_reports,captured,reviewed,flat,published,10,1,False
 report:p4_stock_admin:01_enterprise_reports:14_enterprise_internal_indent_report,Enterprise Internal Indent Report,p4_stock_admin,01_enterprise_reports,captured,reviewed,flat,published,23,1,False
-report:p4_stock_admin:01_enterprise_reports:06_enterprise_purchase_order,Enterprise Purchase Order,p4_stock_admin,01_enterprise_reports,captured,reviewed,flat,published,27,1,False
+report:p4_stock_admin:01_enterprise_reports:06_enterprise_purchase_order,Enterprise Purchase Order,p4_stock_admin,01_enterprise_reports,captured,needs_review,flat,published,27,1,False
 report:p4_stock_admin:01_enterprise_reports:13_enterprise_purchase_summary_report,Enterprise Purchase Summary Report,p4_stock_admin,01_enterprise_reports,captured,reviewed,flat,published,7,1,False
-report:p4_stock_admin:01_enterprise_reports:05_enterprise_stock_re_order,Enterprise Stock Re-Order,p4_stock_admin,01_enterprise_reports,captured,reviewed,flat,published,8,1,False
-report:p4_stock_admin:01_enterprise_reports:03_enterprise_stock_return,Enterprise Stock Return,p4_stock_admin,01_enterprise_reports,captured,reviewed,flat,published,36,1,False
-report:p4_stock_admin:01_enterprise_reports:08_enterprise_variance,Enterprise Variance,p4_stock_admin,01_enterprise_reports,captured,reviewed,mixed,published,53,2,False
-report:p4_stock_admin:01_enterprise_reports:12_enterprise_wastage_report,Enterprise Wastage Report,p4_stock_admin,01_enterprise_reports,captured,reviewed,mixed,published,25,2,False
+report:p4_stock_admin:01_enterprise_reports:05_enterprise_stock_re_order,Enterprise Stock Re-Order,p4_stock_admin,01_enterprise_reports,captured,needs_review,flat,published,8,1,False
+report:p4_stock_admin:01_enterprise_reports:03_enterprise_stock_return,Enterprise Stock Return,p4_stock_admin,01_enterprise_reports,captured,needs_review,flat,published,36,1,False
+report:p4_stock_admin:01_enterprise_reports:08_enterprise_variance,Enterprise Variance,p4_stock_admin,01_enterprise_reports,captured,needs_review,mixed,published,63,3,False
+report:p4_stock_admin:01_enterprise_reports:12_enterprise_wastage_report,Enterprise Wastage Report,p4_stock_admin,01_enterprise_reports,captured,needs_review,mixed,published,33,3,False
 report:p4_stock_admin:01_enterprise_reports:02_erp_vendor_price,ERP Vendor Price,p4_stock_admin,01_enterprise_reports,captured,reviewed,flat,published,14,1,False
 report:p4_stock_admin:02_transactional_reports:09_bill_passing_report,Bill Passing Report,p4_stock_admin,02_transactional_reports,pending,needs_review,flat,published,0,1,False
 report:p4_stock_admin:02_transactional_reports:08_cut_code_report,Cut Code Report,p4_stock_admin,02_transactional_reports,pending,needs_review,flat,published,0,1,False
 report:p4_stock_admin:02_transactional_reports:01_entry_report,Entry Report,p4_stock_admin,02_transactional_reports,captured,reviewed,grouped_columns,published,14,1,False
 report:p4_stock_admin:02_transactional_reports:02_entry_sync_report,Entry Sync Report,p4_stock_admin,02_transactional_reports,captured,reviewed,flat,published,11,1,False
 report:p4_stock_admin:02_transactional_reports:03_payment_report,Payment Report,p4_stock_admin,02_transactional_reports,captured,reviewed,flat,published,12,1,False
-report:p4_stock_admin:02_transactional_reports:05_purchase_detail,Purchase Detail,p4_stock_admin,02_transactional_reports,captured,reviewed,flat,published,32,1,False
+report:p4_stock_admin:02_transactional_reports:05_purchase_detail,Purchase Detail,p4_stock_admin,02_transactional_reports,captured,needs_review,flat,published,32,1,False
 report:p4_stock_admin:02_transactional_reports:06_purchase_detail_consolidated,Purchase Detail Consolidated,p4_stock_admin,02_transactional_reports,captured,reviewed,flat,published,27,1,False
 report:p4_stock_admin:02_transactional_reports:07_purchase_requisition_report,Purchase Requisition Report,p4_stock_admin,02_transactional_reports,pending,needs_review,flat,published,0,1,False
-report:p4_stock_admin:02_transactional_reports:10_stock_in_stock_out_report,Stock In Stock Out Report,p4_stock_admin,02_transactional_reports,captured,reviewed,grouped_columns,published,13,1,False
+report:p4_stock_admin:02_transactional_reports:10_stock_in_stock_out_report,Stock In Stock Out Report,p4_stock_admin,02_transactional_reports,captured,needs_review,grouped_columns,published,13,1,False
 report:p4_stock_admin:02_transactional_reports:04_stock_return,Stock Return,p4_stock_admin,02_transactional_reports,pending,needs_review,flat,published,0,1,False
 report:p4_stock_admin:03_po_so_reports:06_consolidated_salesorder_report_rec,Consolidated salesorder Report receiverWise,p4_stock_admin,03_po_so_reports,pending,needs_review,flat,published,0,1,False
 report:p4_stock_admin:03_po_so_reports:05_erp_vendor_invoice,ERP Vendor Invoice,p4_stock_admin,03_po_so_reports,pending,needs_review,flat,published,0,1,False
@@ -275,7 +275,7 @@ report:p4_stock_admin:03_po_so_reports:04_openreturn_sales_order_report,OpenRetu
 report:p4_stock_admin:03_po_so_reports:01_purchase_order,Purchase Order,p4_stock_admin,03_po_so_reports,captured,reviewed,flat,published,27,1,False
 report:p4_stock_admin:03_po_so_reports:03_sales_order,Sales Order,p4_stock_admin,03_po_so_reports,pending,needs_review,flat,published,0,1,False
 report:p4_stock_admin:03_po_so_reports:02_standing_purchase_order,Standing Purchase Order,p4_stock_admin,03_po_so_reports,pending,needs_review,flat,published,0,1,False
-report:p4_stock_admin:04_indent_reports:07_bulk_return_report,Bulk Return Report,p4_stock_admin,04_indent_reports,pending,needs_review,flat,published,0,1,False
+report:p4_stock_admin:04_indent_reports:07_bulk_return_report,Bulk Return Report,p4_stock_admin,04_indent_reports,captured,needs_review,flat,published,13,1,False
 report:p4_stock_admin:04_indent_reports:02_consolidated_indent,Consolidated Indent,p4_stock_admin,04_indent_reports,pending,needs_review,flat,published,0,1,False
 report:p4_stock_admin:04_indent_reports:03_consolidated_indent_items,Consolidated Indent Items,p4_stock_admin,04_indent_reports,pending,needs_review,flat,published,0,1,False
 report:p4_stock_admin:04_indent_reports:05_consolidated_indent_report_outlet,Consolidated Indent Report Outlet Wise,p4_stock_admin,04_indent_reports,pending,needs_review,flat,published,0,1,False
@@ -287,10 +287,10 @@ report:p4_stock_admin:05_aggregation_reports:06_finished_food,Finished Food,p4_s
 report:p4_stock_admin:05_aggregation_reports:04_intermediate_semi,Intermediate (Semi),p4_stock_admin,05_aggregation_reports,pending,needs_review,flat,published,0,1,False
 report:p4_stock_admin:05_aggregation_reports:01_item_wise_inflation_report,Item Wise Inflation Report,p4_stock_admin,05_aggregation_reports,pending,needs_review,flat,published,0,1,False
 report:p4_stock_admin:05_aggregation_reports:05_movement_report,Movement Report,p4_stock_admin,05_aggregation_reports,pending,needs_review,flat,published,0,1,False
-report:p4_stock_admin:05_aggregation_reports:07_recipe_consumption_report,Recipe Consumption Report,p4_stock_admin,05_aggregation_reports,captured,reviewed,flat,published,11,1,False
+report:p4_stock_admin:05_aggregation_reports:07_recipe_consumption_report,Recipe Consumption Report,p4_stock_admin,05_aggregation_reports,captured,needs_review,flat,published,11,1,False
 report:p4_stock_admin:05_aggregation_reports:03_variance_report,Variance Report,p4_stock_admin,05_aggregation_reports,pending,needs_review,flat,published,0,1,False
 report:p4_stock_admin:06_analytical_reports:01_booking_journal,Booking Journal,p4_stock_admin,06_analytical_reports,pending,needs_review,flat,published,0,1,False
-report:p4_stock_admin:06_analytical_reports:04_closing_stock_report,Closing Stock Report,p4_stock_admin,06_analytical_reports,pending,needs_review,flat,published,0,1,False
+report:p4_stock_admin:06_analytical_reports:04_closing_stock_report,Closing Stock Report,p4_stock_admin,06_analytical_reports,captured,needs_review,flat,published,15,1,False
 report:p4_stock_admin:06_analytical_reports:05_cost_margin_report,Cost margin Report,p4_stock_admin,06_analytical_reports,pending,needs_review,flat,published,0,1,False
 report:p4_stock_admin:06_analytical_reports:02_food_cost_report,Food Cost Report,p4_stock_admin,06_analytical_reports,pending,needs_review,flat,published,0,1,False
 report:p4_stock_admin:06_analytical_reports:06_pricing_ledger,Pricing Ledger,p4_stock_admin,06_analytical_reports,pending,needs_review,flat,published,0,1,False

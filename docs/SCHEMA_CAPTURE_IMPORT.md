@@ -41,7 +41,9 @@ For a newly captured report, confirm the stable report ID, display name, field c
 ## Current Imported Checkpoint
 
 - P2: 73 captured, 3 partial, 79 pending.
-- P4: 24 captured, 50 pending.
+- P4: 26 captured, 48 pending.
 - P4 Consumption Report: four separately modelled modes.
 - Enterprise Consumption: position-aware quantity/amount pairs retained across the inventory lifecycle.
 - Enterprise Purchase Order: schema known but UAT result empty; regular Purchase Order remains the planned authority.
+- Sanitized CSV audit checkpoint: 26 exports mapped to 20 contracts with no observed header drift; Enterprise Entry now retains Stock Entry, Opening Stock, Physical Stock, Transfer From, and Transfer To as separate modes.
+- Bulk Return and Closing Stock now have source blueprints. Enterprise ReOrder and Stock Entry Return were header-only, so their value behavior remains unassessed.
