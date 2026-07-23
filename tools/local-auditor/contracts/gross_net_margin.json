@@ -1,0 +1,157 @@
+{
+  "contract_version": "1.1.0",
+  "report_id": "p2.gross_net_margin.item",
+  "display_name": "Gross/Net Margin Report - bill item detail",
+  "canonical_filename_prefix": "gross_net_margin",
+  "workbench": {
+    "target_report_id": "report:p2_reports:07_sales:33_food_sold_report",
+    "target_report_name": "Gross/Net Margin Report",
+    "target_page": "p2_reports",
+    "target_section": "07_sales",
+    "blueprint_path": "schema-pack/source/report_structures/p2_reports/07_sales/33_food_sold_report.json",
+    "variant": "bill_item_detail",
+    "layout_kind": "flat"
+  },
+  "filename_regexes": ["(?i).*gross[ _-]*(?:and[ _-]*)?net[ _-]*margin[ _-]*report.*\\.csv$"],
+  "schema_status": "validated_from_populated_uat_csv_with_embedded_preamble",
+  "grain": "one row per bill and sold item",
+  "filter_profile": {
+    "detail_level": "bill item",
+    "include_purchase_value": true
+  },
+  "max_trailing_empty_fields": 1,
+  "header_search_rows": 10,
+  "auxiliary_row_widths": [1],
+  "expected_header": [
+    "Store Name", "Date", "Bill No.", "Tab Type", "Source", "Customer Name",
+    "Customer Number", "Super Category", "Category", "SAC/HSN No.",
+    "SKU Code / Item No", "SKU / Item Name", "Item Rate", "Item Qty", "Item Subtotal",
+    "Offer", "Discount Amount", "Complimentary Amount", "Total Discount", "Net Sale Value",
+    "Tax Amount", "Gross Sale Value", "Purchase Rate", "Purchase Value", "Net Margin%",
+    "Gross Margin%"
+  ],
+  "row_columns": [
+    {"name": "store_name", "type": "text", "required": true},
+    {"name": "sale_date", "type": "date", "required": true},
+    {"name": "bill_number", "type": "text", "required": true},
+    {"name": "tab_type", "type": "text"},
+    {"name": "source", "type": "text"},
+    {"name": "customer_name", "type": "text", "sensitive": true},
+    {"name": "customer_number", "type": "text", "sensitive": true},
+    {"name": "super_category_name", "type": "text"},
+    {"name": "category_name", "type": "text"},
+    {"name": "sac_hsn_number", "type": "text"},
+    {"name": "item_code", "type": "text", "required": true},
+    {"name": "item_name", "type": "text", "required": true},
+    {"name": "item_rate", "type": "decimal"},
+    {"name": "item_qty", "type": "decimal"},
+    {"name": "item_subtotal", "type": "decimal"},
+    {"name": "offer_name", "type": "text"},
+    {"name": "discount_amt", "type": "decimal"},
+    {"name": "complimentary_amt", "type": "decimal"},
+    {"name": "total_discount_amt", "type": "decimal"},
+    {"name": "net_sale_value", "type": "decimal"},
+    {"name": "tax_amt", "type": "decimal"},
+    {"name": "gross_sale_value", "type": "decimal"},
+    {"name": "purchase_rate", "type": "decimal"},
+    {"name": "purchase_value", "type": "decimal"},
+    {"name": "net_margin_percent", "type": "decimal"},
+    {"name": "gross_margin_percent", "type": "decimal"}
+  ],
+  "rules": [
+    {
+      "id": "item_subtotal_from_rate_qty",
+      "type": "product_equals",
+      "target": "item_subtotal",
+      "left": "item_rate",
+      "right": "item_qty",
+      "display_rounding": {
+        "left_decimals": 2,
+        "right_decimals": 3,
+        "target_decimals": 2
+      },
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "Item subtotal differs from item rate multiplied by item quantity."
+    },
+    {
+      "id": "total_discount_bridge",
+      "type": "sum_equals",
+      "target": "total_discount_amt",
+      "terms": [
+        {"field": "discount_amt", "coefficient": 1, "null_as_zero": true},
+        {"field": "complimentary_amt", "coefficient": 1, "null_as_zero": true}
+      ],
+      "tolerance": 0.05,
+      "severity": "review",
+      "message": "Total discount differs from discount amount plus complimentary amount."
+    },
+    {
+      "id": "net_sale_bridge",
+      "type": "sum_equals",
+      "target": "net_sale_value",
+      "terms": [
+        {"field": "item_subtotal", "coefficient": 1},
+        {"field": "total_discount_amt", "coefficient": -1, "null_as_zero": true}
+      ],
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "Net sale value differs from item subtotal less total discount."
+    },
+    {
+      "id": "gross_sale_bridge",
+      "type": "sum_equals",
+      "target": "gross_sale_value",
+      "terms": [
+        {"field": "net_sale_value", "coefficient": 1},
+        {"field": "tax_amt", "coefficient": 1, "null_as_zero": true}
+      ],
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "Gross sale value differs from net sale value plus tax."
+    },
+    {
+      "id": "purchase_value_from_rate_qty",
+      "type": "product_equals",
+      "target": "purchase_value",
+      "left": "purchase_rate",
+      "right": "item_qty",
+      "display_rounding": {
+        "left_decimals": 2,
+        "right_decimals": 3,
+        "target_decimals": 2
+      },
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "Purchase value differs from purchase rate multiplied by item quantity."
+    },
+    {
+      "id": "net_margin_formula",
+      "type": "margin_percent",
+      "target": "net_margin_percent",
+      "revenue": "net_sale_value",
+      "cost": "purchase_value",
+      "skip_when_cost_zero": true,
+      "implied_cost_tolerance": 0.1,
+      "tolerance": 0.1,
+      "severity": "review",
+      "message": "Net margin percentage differs from the conventional item-level net-sale margin formula."
+    },
+    {
+      "id": "gross_margin_formula",
+      "type": "margin_percent",
+      "target": "gross_margin_percent",
+      "revenue": "gross_sale_value",
+      "cost": "purchase_value",
+      "skip_when_cost_zero": true,
+      "implied_cost_tolerance": 0.1,
+      "tolerance": 0.1,
+      "severity": "review",
+      "message": "Gross margin percentage differs from the conventional item-level gross-sale margin formula."
+    }
+  ]
+}

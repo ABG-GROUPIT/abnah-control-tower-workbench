@@ -1,0 +1,44 @@
+{
+  "contract_version": "1.0.0",
+  "report_id": "p4.enterprise_reorder.item",
+  "display_name": "Enterprise Stock Re-Order",
+  "canonical_filename_prefix": "enterprise_reorder",
+  "workbench": {
+    "target_report_id": "report:p4_stock_admin:01_enterprise_reports:05_enterprise_stock_re_order",
+    "blueprint_path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/05_enterprise_stock_re_order.json",
+    "variant": "snapshot",
+    "layout_kind": "flat"
+  },
+  "filename_regexes": ["(?i).*enterprise[ _-]*re[ _-]*order[ _-]*report.*\\.csv$"],
+  "schema_status": "header_validated_from_uat_csv_business_rules_pending_populated_export",
+  "grain": "one row per deployment, store and inventory item at export date",
+  "filter_profile": {
+    "snapshot_report": true,
+    "include_all_items": true
+  },
+  "max_trailing_empty_fields": 1,
+  "expected_header": [
+    "Deployment Name", "Store Name", "Item Code", "Item Name", "Re-Order Level",
+    "Minimum-Order Level", "Available Qty", "Unit Name"
+  ],
+  "row_columns": [
+    {"name": "deployment_name", "type": "text", "required": true},
+    {"name": "store_name", "type": "text", "required": true},
+    {"name": "item_code", "type": "text", "required": true},
+    {"name": "item_name", "type": "text", "required": true},
+    {"name": "reorder_level_qty", "type": "decimal"},
+    {"name": "minimum_order_level_qty", "type": "decimal"},
+    {"name": "available_qty", "type": "decimal"},
+    {"name": "unit_name", "type": "text"}
+  ],
+  "rules": [
+    {
+      "id": "minimum_order_not_above_reorder_level",
+      "type": "less_or_equal",
+      "left": "minimum_order_level_qty",
+      "right": "reorder_level_qty",
+      "severity": "review",
+      "message": "Minimum-order level exceeds the reorder level. Confirm how Restroworks defines these two thresholds."
+    }
+  ]
+}

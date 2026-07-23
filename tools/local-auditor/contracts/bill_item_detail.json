@@ -1,0 +1,124 @@
+{
+  "contract_version": "1.1.0",
+  "report_id": "p2.bill_item_detail.item",
+  "display_name": "Bill Item Detail Report",
+  "canonical_filename_prefix": "bill_item_detail",
+  "workbench": {
+    "target_report_id": "report:p2_reports:07_sales:06_bill_item_detail_report",
+    "blueprint_path": "schema-pack/source/report_structures/p2_reports/07_sales/06_bill_item_detail_report.json",
+    "variant": "bill_item_csv",
+    "layout_kind": "flat"
+  },
+  "filename_regexes": ["(?i).*bill[ _-]*item[ _-]*detail.*\\.csv$"],
+  "schema_status": "validated_from_two_populated_uat_csv_exports_with_embedded_preamble",
+  "grain": "one row per bill and sold item",
+  "header_search_rows": 10,
+  "auxiliary_row_widths": [1, 26],
+  "auxiliary_when_all_blank_positions": [1, 2, 3, 10, 11],
+  "expected_header": [
+    "State", "Deployment", "Order Id", "billNumber", "daySerial", "Tab", "tableNumber",
+    "Open Time", "Close Time", "Category Name", "Item Name", "Item Number", "itemSection",
+    "Item Classification", "Rate", "Qty", "Amount", "Discount", "discountType",
+    "discountRemarks", "GST@5% Amount", "GST@5%", "GST@18% Amount", "GST@18%",
+    "GST@3% Amount", "GST@3%", "netamt", "customerName", "customerMobile", "Covers",
+    "Waiter Name", "Source"
+  ],
+  "row_columns": [
+    {"name": "bill_state", "type": "text"},
+    {"name": "deployment_name", "type": "text", "required": true},
+    {"name": "order_id", "type": "text"},
+    {"name": "bill_number", "type": "text", "required": true},
+    {"name": "day_serial", "type": "text"},
+    {"name": "tab_name", "type": "text"},
+    {"name": "table_number", "type": "text"},
+    {"name": "open_time", "type": "text"},
+    {"name": "close_time", "type": "text"},
+    {"name": "category_name", "type": "text"},
+    {"name": "item_name", "type": "text", "required": true},
+    {"name": "item_number", "type": "text", "required": true},
+    {"name": "item_section", "type": "text"},
+    {"name": "item_classification", "type": "text"},
+    {"name": "item_rate", "type": "decimal"},
+    {"name": "item_qty", "type": "decimal"},
+    {"name": "line_amt", "type": "decimal"},
+    {"name": "discount_amt", "type": "decimal"},
+    {"name": "discount_type", "type": "text"},
+    {"name": "discount_remarks", "type": "text"},
+    {"name": "gst_5_taxable_amt", "type": "decimal", "source_label": "GST@5% Amount"},
+    {"name": "gst_5_tax_amt", "type": "decimal", "source_label": "GST@5%"},
+    {"name": "gst_18_taxable_amt", "type": "decimal", "source_label": "GST@18% Amount"},
+    {"name": "gst_18_tax_amt", "type": "decimal", "source_label": "GST@18%"},
+    {"name": "gst_3_taxable_amt", "type": "decimal", "source_label": "GST@3% Amount"},
+    {"name": "gst_3_tax_amt", "type": "decimal", "source_label": "GST@3%"},
+    {"name": "net_amt", "type": "decimal"},
+    {"name": "customer_name", "type": "text", "sensitive": true},
+    {"name": "customer_mobile", "type": "text", "sensitive": true},
+    {"name": "covers", "type": "decimal"},
+    {"name": "waiter_name", "type": "text", "sensitive": true},
+    {"name": "source", "type": "text"}
+  ],
+  "rules": [
+    {
+      "id": "line_amount_from_rate_qty",
+      "type": "product_equals",
+      "target": "line_amt",
+      "left": "item_rate",
+      "right": "item_qty",
+      "display_rounding": {
+        "left_decimals": 2,
+        "right_decimals": 3,
+        "target_decimals": 2
+      },
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "Line amount differs from item rate multiplied by item quantity."
+    },
+    {
+      "id": "gst_5_tax_from_taxable_base",
+      "type": "percent_of",
+      "target": "gst_5_tax_amt",
+      "base": "gst_5_taxable_amt",
+      "percent": 5,
+      "tolerance": 0.05,
+      "severity": "review",
+      "message": "The GST 5% tax value differs from 5% of the exported taxable base."
+    },
+    {
+      "id": "gst_18_tax_from_taxable_base",
+      "type": "percent_of",
+      "target": "gst_18_tax_amt",
+      "base": "gst_18_taxable_amt",
+      "percent": 18,
+      "tolerance": 0.05,
+      "severity": "review",
+      "message": "The GST 18% tax value differs from 18% of the exported taxable base."
+    },
+    {
+      "id": "gst_3_tax_from_taxable_base",
+      "type": "percent_of",
+      "target": "gst_3_tax_amt",
+      "base": "gst_3_taxable_amt",
+      "percent": 3,
+      "tolerance": 0.05,
+      "severity": "review",
+      "message": "The GST 3% tax value differs from 3% of the exported taxable base."
+    },
+    {
+      "id": "bill_item_net_bridge",
+      "type": "sum_equals",
+      "target": "net_amt",
+      "terms": [
+        {"field": "line_amt", "coefficient": 1},
+        {"field": "discount_amt", "coefficient": -1, "null_as_zero": true},
+        {"field": "gst_5_tax_amt", "coefficient": 1, "null_as_zero": true},
+        {"field": "gst_18_tax_amt", "coefficient": 1, "null_as_zero": true},
+        {"field": "gst_3_tax_amt", "coefficient": 1, "null_as_zero": true}
+      ],
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "Net amount differs from line amount less discount plus exported GST tax values."
+    }
+  ]
+}

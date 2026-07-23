@@ -33,9 +33,10 @@ const numberFormat = new Intl.NumberFormat("en-IN");
 const label = (value: string) => value.replaceAll("_", " ");
 
 function toneForStatus(value: string) {
-  if (["exact", "complete", "populated", "schema_ready_value_checks_passed", "no_encoded_exception", "derived_reference", "derived_dimension"].includes(value)) return "green";
-  if (["partial", "review_required", "review", "warning", "coverage_review", "definition_review", "business_review", "formula_definition_gate", "reconciliation_exception", "cost_coverage_gap", "operational_exception", "deduplication_risk", "derived_reference_optional_master", "primary_quality_gated", "historical_schema_with_documented_quality_gate"].includes(value)) return "amber";
-  if (["weak", "missing", "header_only", "blocked_header_only", "blocker", "coverage_blocked", "coverage_blocker", "gated_unavailable", "unavailable_header_only", "blocked_feature"].includes(value)) return "red";
+  if (["exact", "complete", "populated", "schema_ready_value_checks_passed", "no_encoded_exception", "derived_reference", "derived_dimension", "passed", "info"].includes(value)) return "green";
+  if (["partial", "review_required", "review", "warning", "coverage_review", "definition_review", "business_review", "formula_definition_gate", "reconciliation_exception", "cost_coverage_gap", "operational_exception", "deduplication_risk", "derived_reference_optional_master", "primary_quality_gated", "historical_schema_with_documented_quality_gate", "major", "needs_business_definition"].includes(value)) return "amber";
+  if (["weak", "missing", "header_only", "blocked_header_only", "blocker", "coverage_blocked", "coverage_blocker", "gated_unavailable", "unavailable_header_only", "blocked_feature", "critical", "confirmed_issue", "failed"].includes(value)) return "red";
+  if (["minor", "definition_gate"].includes(value)) return "blue";
   return "neutral";
 }
 
@@ -158,11 +159,13 @@ function FindingTable({ findings }: { findings: EvidenceFinding[] }) {
   return (
     <div className="ct-table-wrap">
       <table className="ct-table ct-finding-table">
-        <thead><tr><th>State</th><th>Evidence observation</th><th>Codex semantic review</th><th>Production treatment</th></tr></thead>
+        <thead><tr><th>Impact and state</th><th>Evidence observation</th><th>Codex semantic review</th><th>Production treatment</th></tr></thead>
         <tbody>
           {findings.map((finding) => (
             <tr key={finding.id}>
               <td>
+                <EvidencePill value={finding.severity} />
+                <EvidencePill value={finding.state} />
                 <EvidencePill value={finding.semanticReview.classification} />
                 <small>{finding.semanticReview.confidence} confidence</small>
               </td>
@@ -490,11 +493,10 @@ export function ControlTowerEvidenceView({ evidence, onOpenReport }: ControlTowe
   const summaryItems = [
     [evidence.summary.selectedSourceCount, "active sources"],
     [evidence.summary.auditedReportCount, "audited reports"],
-    [evidence.summary.auditedFileCount, "local exports"],
     [evidence.summary.auditedRowCount, "rows reviewed"],
-    [evidence.summary.deterministicIssueRowCount, "rule exceptions"],
-    [evidence.summary.semanticFindingCount, "semantic findings"],
-    [evidence.summary.headerOnlyReportCount, "header-only reports"],
+    [evidence.summary.criticalFindingCount, "critical findings"],
+    [evidence.summary.majorFindingCount, "major findings"],
+    [evidence.summary.passedControlCount, "passed controls"],
   ] as const;
 
   return (

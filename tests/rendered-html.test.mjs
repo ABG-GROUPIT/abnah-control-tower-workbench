@@ -25,6 +25,7 @@ test("server-renders the editable ABNAH schema workspace", async () => {
   assert.match(html, /Discovery/);
   assert.match(html, /API validation/);
   assert.match(html, /Control tower/);
+  assert.match(html, /Data quality/);
   assert.match(html, /Architecture/);
   assert.match(html, /Budget DSR Report/);
   assert.match(html, /Blank table structure/);
@@ -78,6 +79,18 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   assert.equal(evidence.summary.auditedFileCount, 26);
   assert.equal(evidence.summary.schemaVisualMatches, 20);
   assert.equal(evidence.summary.headerOnlyReportCount, 2);
+  assert.equal(evidence.summary.semanticFindingCount, 19);
+  assert.equal(evidence.summary.criticalFindingCount, 11);
+  assert.equal(evidence.summary.majorFindingCount, 7);
+  assert.equal(evidence.summary.minorFindingCount, 1);
+  assert.equal(evidence.summary.passedControlCount, 23);
+  assert.equal(evidence.summary.failedControlCount, 0);
+  assert.ok(evidence.businessReview.controls.some(
+    (control) => control.id === "transfer_pair_reconciliation" && control.status === "passed",
+  ));
+  assert.ok(evidence.businessReview.controls.some(
+    (control) => control.id === "po_entry_identifier_check" && control.status === "definition_gate",
+  ));
   assert.equal(evidence.zohoReadiness.requiredLandingTableCount, 12);
   assert.equal(evidence.zohoReadiness.queryTableCount, 36);
   assert.equal(evidence.privacy.fullRowsIncluded, false);
@@ -124,4 +137,5 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   assert.match(migration, /CREATE TABLE `workspace_documents`/);
   assert.match(migration, /CREATE TABLE `workspace_revisions`/);
   assert.match(packageJson, /"data:workspace"/);
+  assert.match(packageJson, /"build:pages"/);
 });

@@ -38,8 +38,19 @@ yarn-error.log*
 next-env.d.ts
 *.tsbuildinfo
 /dist/
+/pages-dist/
 /.wrangler/
 /outputs/
 /work/
 __pycache__/
 *.py[cod]
+
+# Local operational evidence and transient development servers
+/tools/local_data_auditor/
+/tools/local-auditor/input/*
+!/tools/local-auditor/input/README.md
+/tools/local-auditor/output/*
+!/tools/local-auditor/output/.gitkeep
+/.codex-dev-*.log
+/.codex-dev-*.pid
+/.preview-pages.*.log

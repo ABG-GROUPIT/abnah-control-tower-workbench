@@ -37,7 +37,7 @@ interface ReportWorkspacePanelProps {
   message: string;
   activeTab: ReportTab;
   revisions: WorkspaceRevision[];
-  persistenceState: "loading" | "ready" | "offline";
+  persistenceState: "loading" | "ready" | "browser";
   onTabChange: (tab: ReportTab) => void;
   onChange: (document: ReportWorkspaceDocument) => void;
   onSave: () => void;
@@ -87,6 +87,7 @@ export function ReportWorkspacePanel({
 }: ReportWorkspacePanelProps) {
   const [tableId, setTableId] = useState(document.tables[0]?.id ?? "");
   const activeTable = document.tables.find((table) => table.id === tableId) ?? document.tables[0];
+  const canPersist = persistenceState === "ready" || persistenceState === "browser";
   const update = (patch: Partial<ReportWorkspaceDocument>) => onChange({ ...document, ...patch });
   const updateTable = (table: SchemaTable) => update({ tables: document.tables.map((item) => (item.id === table.id ? table : item)) });
 
@@ -117,11 +118,11 @@ export function ReportWorkspacePanel({
           {dirty && <span className="dirty-label">Unsaved draft</span>}
           {!readOnly && (
             <>
-              <button type="button" className="secondary-button" disabled={!dirty || busy || persistenceState !== "ready"} onClick={onSave}>
+              <button type="button" className="secondary-button" disabled={!dirty || busy || !canPersist} onClick={onSave}>
                 <Save aria-hidden="true" size={15} /> Save draft
               </button>
               {document.workflowStatus === "draft" && (
-                <button type="button" className="primary-button" disabled={busy || persistenceState !== "ready"} onClick={() => onTransition("submit_review")}>
+                <button type="button" className="primary-button" disabled={busy || !canPersist} onClick={() => onTransition("submit_review")}>
                   <Send aria-hidden="true" size={15} /> Submit review
                 </button>
               )}

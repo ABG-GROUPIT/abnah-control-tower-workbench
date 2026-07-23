@@ -11,6 +11,11 @@ export interface EvidenceSummary {
   headerOnlyReportCount: number;
   deterministicIssueRowCount: number;
   semanticFindingCount: number;
+  criticalFindingCount: number;
+  majorFindingCount: number;
+  minorFindingCount: number;
+  passedControlCount: number;
+  failedControlCount: number;
 }
 
 export interface EvidenceSource {
@@ -36,12 +41,18 @@ export interface EvidenceSource {
 export interface EvidenceFinding {
   id: string;
   category: string;
+  issueClass: string;
+  state:
+    | "confirmed_issue"
+    | "operational_exception"
+    | "needs_business_definition";
   severity: string;
   title: string;
   affectedRowCount: number;
   fields: string[];
   observation: string;
   productionTreatment: string;
+  metrics: Record<string, number | string>;
   semanticReview: {
     classification:
       | "formula_definition_gate"
@@ -198,6 +209,33 @@ export interface ControlTowerEvidence {
     nextSequence: string[];
   };
   summary: EvidenceSummary;
+  businessReview: {
+    contractVersion: string;
+    asOfDate: string;
+    summary: {
+      reviewed_report_count?: number;
+      reviewed_row_count?: number;
+      finding_count?: number;
+      row_observation_count?: number;
+      severity_counts?: Record<string, number>;
+      row_severity_counts?: Record<string, number>;
+      state_counts?: Record<string, number>;
+      passed_control_count?: number;
+      failed_control_count?: number;
+      definition_gate_count?: number;
+    };
+    severityLegend: Record<string, string>;
+    stateLegend: Record<string, string>;
+    controls: Array<{
+      id: string;
+      status: "passed" | "failed" | "definition_gate";
+      severity: "critical" | "major" | "minor" | "info";
+      title: string;
+      observation: string;
+      reports: string[];
+      fields: string[];
+    }>;
+  };
   sourceRegister: EvidenceSource[];
   reportEvidence: EvidenceReport[];
 }

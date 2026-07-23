@@ -217,7 +217,7 @@ def main() -> int:
     if "" in decision_ids or duplicates(decision_ids):
         errors.append("Planned architecture decisions need unique non-empty ids.")
 
-    if evidence.get("contractVersion") != "1.2.0":
+    if evidence.get("contractVersion") != "2.0.0":
         errors.append("Unexpected Control Tower evidence contract version.")
     summary = evidence.get("summary", {})
     expected_summary = {

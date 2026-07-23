@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1.0",
-  "generated_at": "2026-07-23T10:42:30+00:00",
+  "generated_at": "2026-07-23T18:03:21+00:00",
   "portable": true,
   "source_inputs": {
     "schema_reference": "external local input; not packaged",
@@ -877,7 +877,7 @@
   },
   "control_tower_evidence_source": {
     "path": "schema-pack/source/control_tower/control-tower-evidence.json",
-    "sha256": "ebbae34fd25adc9d144f86532da91a79f07f629d697b02432fc4cbc801fe5c35"
+    "sha256": "fe790c821a9206b0661824801434ecd26294af720c77bc119bb171e7bcff3d6f"
   },
   "control_tower_fidelity_source": {
     "path": "schema-pack/source/control_tower/control-tower-fidelity.json",

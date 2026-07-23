@@ -1,0 +1,100 @@
+{
+  "contract_version": "1.0.0",
+  "report_id": "p4.enterprise_variance.master",
+  "display_name": "Enterprise Variance Report - master",
+  "canonical_filename_prefix": "enterprise_variance_master",
+  "workbench": {
+    "target_report_id": "report:p4_stock_admin:01_enterprise_reports:08_enterprise_variance",
+    "blueprint_path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/08_enterprise_variance.json",
+    "variant": "master",
+    "layout_kind": "mixed"
+  },
+  "filename_regexes": ["(?i).*entp[ _-]*master[ _-]*variance[ _-]*report.*\\.csv$"],
+  "schema_status": "validated_from_populated_uat_csv",
+  "grain": "one row per deployment, store/kitchen and item for the selected period",
+  "filter_profile": {
+    "report_tab": "Master Variance Report",
+    "consumption_bifurcation": false,
+    "stock_in_out_bifurcation": false,
+    "show_only_closing_column": false,
+    "price_for_report": "Average Price"
+  },
+  "max_trailing_empty_fields": 1,
+  "expected_header": [
+    "Deployment", "Store/Kitchen", "Category", "Item Type", "Is Asset", "Item Name", "Unit", "Price",
+    "Opening Qty", "Opening Amt", "Purchase Qty", "Purchase Amt", "Production Qty", "Production Amt",
+    "Consumption Qty", "Consumption Amt", "Stock In Qty", "Stock In Amt", "Stock Out Qty", "Stock Out Amt",
+    "Wastage Qty", "Wastage Amt", "Resue Qty", "Reuse Amt", "Return Qty", "Return Amt", "Closing Qty",
+    "Closing Amt", "Physical Qty", "Physical Amt", "Variance Qty", "Variance Amt", "Physical Gain/Loss Qty",
+    "Physical Gain/Loss Amt", "Actual Consumption Qty", "Actual Consumption Amt",
+    "Physical Adjusted Closing Qty", "Physical Adjusted Closing Amt"
+  ],
+  "row_columns": [
+    {"name": "deployment_name", "type": "text", "required": true},
+    {"name": "store_kitchen_name", "type": "text", "required": true},
+    {"name": "category_name", "type": "text"},
+    {"name": "item_type", "type": "text"},
+    {"name": "is_asset", "type": "text"},
+    {"name": "item_name", "type": "text", "required": true},
+    {"name": "unit", "type": "text"},
+    {"name": "price", "type": "decimal"},
+    {"name": "opening_qty", "type": "decimal"},
+    {"name": "opening_amt", "type": "decimal"},
+    {"name": "purchase_qty", "type": "decimal"},
+    {"name": "purchase_amt", "type": "decimal"},
+    {"name": "production_qty", "type": "decimal"},
+    {"name": "production_amt", "type": "decimal"},
+    {"name": "consumption_qty", "type": "decimal"},
+    {"name": "consumption_amt", "type": "decimal"},
+    {"name": "stock_in_qty", "type": "decimal"},
+    {"name": "stock_in_amt", "type": "decimal"},
+    {"name": "stock_out_qty", "type": "decimal"},
+    {"name": "stock_out_amt", "type": "decimal"},
+    {"name": "wastage_qty", "type": "decimal"},
+    {"name": "wastage_amt", "type": "decimal"},
+    {"name": "reuse_qty", "type": "decimal"},
+    {"name": "reuse_amt", "type": "decimal"},
+    {"name": "return_qty", "type": "decimal"},
+    {"name": "return_amt", "type": "decimal"},
+    {"name": "closing_qty", "type": "decimal"},
+    {"name": "closing_amt", "type": "decimal"},
+    {"name": "physical_qty", "type": "decimal"},
+    {"name": "physical_amt", "type": "decimal"},
+    {"name": "variance_qty", "type": "decimal"},
+    {"name": "variance_amt", "type": "decimal"},
+    {"name": "physical_gain_loss_qty", "type": "decimal"},
+    {"name": "physical_gain_loss_amt", "type": "decimal"},
+    {"name": "actual_consumption_qty", "type": "decimal"},
+    {"name": "actual_consumption_amt", "type": "decimal"},
+    {"name": "physical_adjusted_closing_qty", "type": "decimal"},
+    {"name": "physical_adjusted_closing_amt", "type": "decimal"}
+  ],
+  "rules": [
+    {
+      "id": "variance_qty_bridge",
+      "type": "sum_equals",
+      "target": "variance_qty",
+      "terms": [
+        {"field": "closing_qty", "coefficient": 1},
+        {"field": "physical_qty", "coefficient": -1}
+      ],
+      "only_when_present": ["physical_qty"],
+      "tolerance": 0.01,
+      "severity": "error",
+      "message": "Variance quantity must equal closing quantity minus physical quantity."
+    },
+    {
+      "id": "variance_amt_bridge",
+      "type": "sum_equals",
+      "target": "variance_amt",
+      "terms": [
+        {"field": "closing_amt", "coefficient": 1},
+        {"field": "physical_amt", "coefficient": -1}
+      ],
+      "only_when_present": ["physical_amt"],
+      "tolerance": 0.05,
+      "severity": "error",
+      "message": "Variance amount must equal closing amount minus physical amount."
+    }
+  ]
+}

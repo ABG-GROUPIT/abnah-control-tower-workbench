@@ -6,6 +6,9 @@
   "include": [
     "app/**/*.ts",
     "app/**/*.tsx",
+    "github-pages/**/*.ts",
+    "github-pages/**/*.tsx",
+    "vite.pages.config.ts",
     "schema-pack/generated/atlas.json",
     "schema-pack/generated/workspace.json",
     "schema-pack/generated/control-tower-architecture.json",

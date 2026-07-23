@@ -13,9 +13,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://abnah-schema-workspace.cfsckksbk4.chatgpt.site"),
   title: "ABNAH Schema Workspace",
   description:
     "ABNAH report discovery, planned control-tower architecture, KPI requirements, API evidence and versioned schema review.",
+  openGraph: {
+    title: "ABNAH Schema Workspace",
+    description: "Report discovery, data quality, and KPI lineage.",
+    images: [{ url: "/og.png", width: 1710, height: 912 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ABNAH Schema Workspace",
+    description: "Report discovery, data quality, and KPI lineage.",
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({

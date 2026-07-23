@@ -1,0 +1,56 @@
+{
+  "contract_version": "1.1.0",
+  "report_id": "p4.enterprise_opening.item",
+  "display_name": "Enterprise Opening Report - Opening Stock",
+  "canonical_filename_prefix": "enterprise_opening",
+  "workbench": {
+    "target_report_id": "report:p4_stock_admin:01_enterprise_reports:01_enterprise_entry",
+    "blueprint_path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/01_enterprise_entry.json",
+    "variant": "opening_stock_csv",
+    "layout_kind": "flat"
+  },
+  "filename_regexes": ["(?i).*enterprise[ _-]*opening[ _-]*report.*\\.csv$"],
+  "schema_status": "captured_uat_csv_variant",
+  "grain": "one row per opening-stock transaction and item",
+  "max_trailing_empty_fields": 1,
+  "expected_header": [
+    "Deployment Name", "Store/Kitchen Name", "User Name", "Date", "Transaction Number",
+    "Item Code", "Item Name", "Category Name", "Super Category Name", "Comment",
+    "Quantity", "Unit", "Unit Price", "Sub Total", "Source"
+  ],
+  "row_columns": [
+    {"name": "deployment_name", "type": "text", "required": true},
+    {"name": "store_kitchen_name", "type": "text", "required": true},
+    {"name": "user_name", "type": "text", "sensitive": true},
+    {"name": "opening_date", "type": "date", "required": true},
+    {"name": "transaction_number", "type": "text", "required": true},
+    {"name": "item_code", "type": "text", "required": true},
+    {"name": "item_name", "type": "text", "required": true},
+    {"name": "category_name", "type": "text"},
+    {"name": "super_category_name", "type": "text"},
+    {"name": "comment", "type": "text"},
+    {"name": "opening_qty", "type": "decimal"},
+    {"name": "unit", "type": "text"},
+    {"name": "unit_price", "type": "decimal"},
+    {"name": "opening_subtotal", "type": "decimal"},
+    {"name": "source", "type": "text"}
+  ],
+  "rules": [
+    {
+      "id": "opening_subtotal_from_qty_price",
+      "type": "product_equals",
+      "target": "opening_subtotal",
+      "left": "opening_qty",
+      "right": "unit_price",
+      "display_rounding": {
+        "left_decimals": 3,
+        "right_decimals": 2,
+        "target_decimals": 2
+      },
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "Opening subtotal differs from quantity multiplied by unit price."
+    }
+  ]
+}

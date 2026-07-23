@@ -1,0 +1,108 @@
+{
+  "contract_version": "1.1.0",
+  "report_id": "p4.enterprise_entry.item",
+  "display_name": "Enterprise Entry Report - Stock Entry",
+  "canonical_filename_prefix": "enterprise_entry",
+  "workbench": {
+    "target_report_id": "report:p4_stock_admin:01_enterprise_reports:01_enterprise_entry",
+    "blueprint_path": "schema-pack/source/report_structures/p4_stock_admin/01_enterprise_reports/01_enterprise_entry.json",
+    "variant": "stock_entry_csv",
+    "layout_kind": "flat"
+  },
+  "filename_regexes": ["(?i).*enterprise[ _-]*entry[ _-]*report.*\\.csv$"],
+  "schema_status": "validated_from_populated_uat_csv",
+  "grain": "one row per stock-entry item or document-level charge",
+  "max_trailing_empty_fields": 1,
+  "expected_header": [
+    "Deployment Name", "Store/Kitchen Name", "User Name", "Vendor Name", "Date",
+    "Transaction Number", "Invoice Number", "Batch Number", "PR Number", "PO Number",
+    "Invoice Date", "Item Code", "Item Name", "Item Brand", "Category Name",
+    "Super Category Name", "Comment", "Quantity", "Unit", "MRP", "Unit Price",
+    "Charges Name", "Amount", "Discount", "GST/IGST Rate", "GST/IGST Value",
+    "CESS Rate", "CESS Value", "Other Taxes Rate", "Other Taxes Value", "Total Tax",
+    "Item Charges Amount", "Total", "Source"
+  ],
+  "row_columns": [
+    {"name": "deployment_name", "type": "text", "required": true},
+    {"name": "store_kitchen_name", "type": "text", "required": true},
+    {"name": "user_name", "type": "text", "sensitive": true},
+    {"name": "vendor_name", "type": "text", "required": true},
+    {"name": "entry_date", "type": "date", "required": true},
+    {"name": "transaction_number", "type": "text", "required": true},
+    {"name": "invoice_number", "type": "text"},
+    {"name": "batch_number", "type": "text"},
+    {"name": "pr_number", "type": "text"},
+    {"name": "po_number", "type": "text"},
+    {"name": "invoice_date", "type": "date"},
+    {"name": "item_code", "type": "text"},
+    {"name": "item_name", "type": "text"},
+    {"name": "item_brand", "type": "text"},
+    {"name": "category_name", "type": "text"},
+    {"name": "super_category_name", "type": "text"},
+    {"name": "comment", "type": "text"},
+    {"name": "entry_qty", "type": "decimal"},
+    {"name": "unit", "type": "text"},
+    {"name": "mrp", "type": "decimal"},
+    {"name": "unit_price", "type": "decimal"},
+    {"name": "charges_name", "type": "text"},
+    {"name": "base_amt", "type": "decimal"},
+    {"name": "discount_amt", "type": "decimal"},
+    {"name": "gst_igst_rate", "type": "decimal"},
+    {"name": "gst_igst_value", "type": "decimal"},
+    {"name": "cess_rate", "type": "decimal"},
+    {"name": "cess_value", "type": "decimal"},
+    {"name": "other_tax_rate", "type": "decimal"},
+    {"name": "other_tax_value", "type": "decimal"},
+    {"name": "total_tax_amt", "type": "decimal"},
+    {"name": "item_charges_amt", "type": "decimal"},
+    {"name": "total_amt", "type": "decimal"},
+    {"name": "source", "type": "text"}
+  ],
+  "rules": [
+    {
+      "id": "entry_base_from_qty_price",
+      "type": "product_equals",
+      "target": "base_amt",
+      "left": "entry_qty",
+      "right": "unit_price",
+      "display_rounding": {
+        "left_decimals": 3,
+        "right_decimals": 2,
+        "target_decimals": 2
+      },
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "Entry amount differs from quantity multiplied by unit price."
+    },
+    {
+      "id": "entry_total_tax_bridge",
+      "type": "sum_equals",
+      "target": "total_tax_amt",
+      "only_when_present": ["item_code"],
+      "terms": [
+        {"field": "gst_igst_value", "coefficient": 1, "null_as_zero": true},
+        {"field": "cess_value", "coefficient": 1, "null_as_zero": true},
+        {"field": "other_tax_value", "coefficient": 1, "null_as_zero": true}
+      ],
+      "tolerance": 0.05,
+      "severity": "review",
+      "message": "Total tax differs from the exported tax components."
+    },
+    {
+      "id": "entry_total_bridge",
+      "type": "sum_equals",
+      "target": "total_amt",
+      "terms": [
+        {"field": "base_amt", "coefficient": 1},
+        {"field": "discount_amt", "coefficient": -1, "null_as_zero": true},
+        {"field": "total_tax_amt", "coefficient": 1, "null_as_zero": true},
+        {"field": "item_charges_amt", "coefficient": 1, "null_as_zero": true}
+      ],
+      "tolerance": 0.05,
+      "relative_tolerance": 0.0001,
+      "severity": "review",
+      "message": "Entry total differs from base amount less discount plus tax and charges."
+    }
+  ]
+}

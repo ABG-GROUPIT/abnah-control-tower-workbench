@@ -29,20 +29,29 @@ Maintain a screenshot-free, evidence-disciplined understanding of ABNAH's Restro
 7. `schema-pack/source/control_tower/control-tower-requirements.json`
 8. `docs/DATA_CONTRACT.md`
 9. `docs/LOCAL_AUDIT_PACKET_WORKFLOW.md` when a local CSV packet is supplied
-10. `docs/SCHEMA_CAPTURE_IMPORT.md` when a local schema-capture README is supplied
-11. `schema-pack/generated/workspace_report_catalog.csv`
-12. The selected report file under `schema-pack/source/report_structures/`
-13. Relevant text chunk under `schema-pack/source/reference_chunks/`
-14. `docs/KPI_LINEAGE_CONTRACT.md` before source selection or publication
+10. `docs/DATA_QUALITY_AND_HOSTING.md` before changing severity, local evidence, or deployment
+11. `docs/SCHEMA_CAPTURE_IMPORT.md` when a local schema-capture README is supplied
+12. `schema-pack/generated/workspace_report_catalog.csv`
+13. The selected report file under `schema-pack/source/report_structures/`
+14. Relevant text chunk under `schema-pack/source/reference_chunks/`
+15. `docs/KPI_LINEAGE_CONTRACT.md` before source selection or publication
 
 ## Truth Model
 
-There are two intentional stores:
+There are three intentional stores:
 
 - Source blueprints are the transferable baseline in version control.
 - D1 is the working store for edits, workflow state, and revision history.
+- GitHub Pages uses browser-local persistence and backup export because it has
+  no server-side database.
 
 For the live site, use the latest D1 current document. For a clean rebuild or team transfer, use source blueprints plus an exported D1 backup. Site edits are not automatically promoted into source JSON.
+
+Operational CSV rows remain a fourth, local-only evidence store. The hosted
+Data Quality surface may read `local_review_packet.json` through a user-selected
+file input, but the browser must not upload, persist, or commit that packet.
+The transferable implementation for generating and reviewing that packet is in
+`tools/local-auditor/`; never add its runtime `input/` or `output/` contents.
 
 ## Finding One Report
 

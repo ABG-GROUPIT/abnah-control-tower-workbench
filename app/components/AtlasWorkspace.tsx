@@ -9,6 +9,7 @@ import {
   LayoutDashboard,
   Network,
   Pencil,
+  ShieldCheck,
 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { normalizeTable } from "../lib/grid-operations";
@@ -27,6 +28,7 @@ import type { ControlTowerFidelity } from "../lib/control-tower-fidelity-types";
 import { ApiRegistry } from "./ApiRegistry";
 import { ArchitectureGraphWorkspace } from "./ArchitectureGraphWorkspace";
 import { ControlTowerWorkspace } from "./ControlTowerWorkspace";
+import { DataQualityWorkspace } from "./DataQualityWorkspace";
 import { ReportNavigator } from "./ReportNavigator";
 import { ReportWorkspacePanel, type ReportTab } from "./ReportWorkspacePanel";
 
@@ -37,11 +39,13 @@ interface AtlasWorkspaceProps {
   controlTower: ControlTowerRequirements;
   controlTowerEvidence: ControlTowerEvidence;
   controlTowerFidelity: ControlTowerFidelity;
+  persistenceMode?: "auto" | "browser";
 }
 
-type Surface = "discovery" | "api" | "control_tower" | "architecture";
+type Surface = "discovery" | "api" | "control_tower" | "data_quality" | "architecture";
 
 const defaultReportId = "report:p1_main:06_misc:03_budget_dsr_report";
+const browserStorageKey = "abnah-schema-workspace-browser-v1";
 
 function documentRecord(reports: ReportWorkspaceDocument[]) {
   return Object.fromEntries(reports.map((report) => [report.id, report]));
@@ -107,6 +111,7 @@ export function AtlasWorkspace({
   controlTower,
   controlTowerEvidence,
   controlTowerFidelity,
+  persistenceMode = "auto",
 }: AtlasWorkspaceProps) {
   const baseline = useMemo(() => documentRecord(workspaceSeed.reports), [workspaceSeed.reports]);
   const [documents, setDocuments] = useState<Record<string, ReportWorkspaceDocument>>(() => documentRecord(workspaceSeed.reports));
@@ -121,7 +126,9 @@ export function AtlasWorkspace({
   const [showArchived, setShowArchived] = useState(false);
   const [dirtyIds, setDirtyIds] = useState<Set<string>>(new Set());
   const dirtyIdsRef = useRef(dirtyIds);
-  const [persistenceState, setPersistenceState] = useState<"loading" | "ready" | "offline">("loading");
+  const [persistenceState, setPersistenceState] = useState<"loading" | "ready" | "browser">(
+    persistenceMode === "browser" ? "browser" : "loading",
+  );
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
   const [revisions, setRevisions] = useState<Record<string, WorkspaceRevision[]>>({});
@@ -131,6 +138,24 @@ export function AtlasWorkspace({
   useEffect(() => { dirtyIdsRef.current = dirtyIds; }, [dirtyIds]);
 
   useEffect(() => {
+    if (persistenceMode === "browser") {
+      const handle = globalThis.setTimeout(() => {
+        try {
+          const stored = globalThis.localStorage?.getItem(browserStorageKey);
+          if (!stored) return;
+          const parsed = JSON.parse(stored) as { documents?: ReportWorkspaceDocument[] };
+          if (Array.isArray(parsed.documents)) {
+            setDocuments((current) => ({
+              ...current,
+              ...documentRecord(parsed.documents ?? []),
+            }));
+          }
+        } catch {
+          globalThis.localStorage?.removeItem(browserStorageKey);
+        }
+      }, 0);
+      return () => globalThis.clearTimeout(handle);
+    }
     let cancelled = false;
     fetch("/api/workspace")
       .then(async (response) => {
@@ -161,10 +186,25 @@ export function AtlasWorkspace({
         setPersistenceState("ready");
       })
       .catch(() => {
-        if (!cancelled) setPersistenceState("offline");
+        if (cancelled) return;
+        try {
+          const stored = globalThis.localStorage?.getItem(browserStorageKey);
+          if (stored) {
+            const parsed = JSON.parse(stored) as { documents?: ReportWorkspaceDocument[] };
+            if (Array.isArray(parsed.documents)) {
+              setDocuments((current) => ({
+                ...current,
+                ...documentRecord(parsed.documents ?? []),
+              }));
+            }
+          }
+        } catch {
+          globalThis.localStorage?.removeItem(browserStorageKey);
+        }
+        setPersistenceState("browser");
       });
     return () => { cancelled = true; };
-  }, []);
+  }, [persistenceMode]);
 
   useEffect(() => {
     if (!selectedId || persistenceState !== "ready") return;
@@ -209,7 +249,63 @@ export function AtlasWorkspace({
 
   const save = async (action: "save_draft" | "submit_review" | "publish" | "return_to_draft") => {
     const document = documents[selectedId];
-    if (!document || persistenceState !== "ready") return;
+    if (!document || persistenceState === "loading") return;
+    if (persistenceState === "browser") {
+      const workflowStatus =
+        action === "submit_review"
+          ? "in_review"
+          : action === "publish"
+            ? "published"
+            : action === "return_to_draft"
+              ? "draft"
+              : document.workflowStatus;
+      const saved: ReportWorkspaceDocument = {
+        ...document,
+        workflowStatus,
+        version: document.version + 1,
+        updatedAt: new Date().toISOString(),
+        updatedBy: "browser workspace",
+      };
+      const nextDocuments = { ...documents, [saved.id]: saved };
+      setDocuments(nextDocuments);
+      if (workflowStatus === "published") {
+        setPublishedDocuments((current) => ({ ...current, [saved.id]: saved }));
+      }
+      setDirtyIds((current) => {
+        const next = new Set(current);
+        next.delete(saved.id);
+        return next;
+      });
+      setRevisions((current) => ({
+        ...current,
+        [saved.id]: [
+          {
+            id: `browser:${saved.id}:${saved.version}`,
+            reportId: saved.id,
+            version: saved.version,
+            workflowStatus: saved.workflowStatus,
+            action,
+            createdAt: saved.updatedAt,
+            actor: saved.updatedBy,
+          },
+          ...(current[saved.id] ?? []),
+        ],
+      }));
+      globalThis.localStorage?.setItem(
+        browserStorageKey,
+        JSON.stringify({ documents: Object.values(nextDocuments) }),
+      );
+      setMessage(
+        action === "save_draft"
+          ? "Draft saved in this browser."
+          : action === "submit_review"
+            ? "Submitted for browser-local review."
+            : action === "publish"
+              ? "Published revision saved in this browser."
+              : "Returned to draft in this browser.",
+      );
+      return;
+    }
     setBusy(true);
     setMessage("");
     try {
@@ -242,7 +338,7 @@ export function AtlasWorkspace({
   };
 
   const loadHistory = async (reportId = selectedId, force = false) => {
-    if (!reportId || persistenceState !== "ready" || (!force && revisions[reportId])) return;
+    if (!reportId || persistenceState === "browser" || (!force && revisions[reportId])) return;
     try {
       const response = await fetch(`/api/workspace?report_id=${encodeURIComponent(reportId)}&history=1`);
       if (!response.ok) throw new Error("History is unavailable.");
@@ -291,6 +387,27 @@ export function AtlasWorkspace({
 
   const exportBackup = async () => {
     setMessage("");
+    if (persistenceState === "browser") {
+      const body = JSON.stringify(
+        {
+          exportedAt: new Date().toISOString(),
+          storage: "browser",
+          documents: Object.values(documents),
+          revisions,
+        },
+        null,
+        2,
+      );
+      const blob = new Blob([`${body}\n`], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement("a");
+      anchor.href = url;
+      anchor.download = "abnah-schema-workspace-browser-backup.json";
+      anchor.click();
+      URL.revokeObjectURL(url);
+      setMessage("Browser workspace backup exported.");
+      return;
+    }
     try {
       const response = await fetch("/api/workspace?export=1");
       if (!response.ok) throw new Error("Workspace backup is unavailable.");
@@ -319,10 +436,11 @@ export function AtlasWorkspace({
           <button type="button" className={surface === "discovery" ? "is-active" : ""} onClick={() => setSurface("discovery")}><FileSpreadsheet aria-hidden="true" size={15} /> Discovery</button>
           <button type="button" className={surface === "api" ? "is-active" : ""} onClick={() => setSurface("api")}><Braces aria-hidden="true" size={15} /> API validation</button>
           <button type="button" className={surface === "control_tower" ? "is-active" : ""} onClick={() => setSurface("control_tower")}><LayoutDashboard aria-hidden="true" size={15} /> Control tower</button>
+          <button type="button" className={surface === "data_quality" ? "is-active" : ""} onClick={() => setSurface("data_quality")}><ShieldCheck aria-hidden="true" size={15} /> Data quality</button>
           <button type="button" className={surface === "architecture" ? "is-active" : ""} onClick={() => setSurface("architecture")}><Network aria-hidden="true" size={15} /> Architecture</button>
         </nav>
-        <div className="app-summary"><span><b>{atlas.summary.reports}</b> reports</span><span><b>{workspaceSeed.reports.filter((report) => report.schemaStatus === "captured").length}</b> captured</span><span className={`persistence-indicator state-${persistenceState}`}>{persistenceState === "ready" ? "Stored" : persistenceState === "loading" ? "Connecting" : "Baseline only"}</span></div>
-        <button type="button" className="backup-button" onClick={() => void exportBackup()} disabled={persistenceState !== "ready"} title="Export current documents and revision history"><Download aria-hidden="true" size={14} /> Backup</button>
+        <div className="app-summary"><span><b>{atlas.summary.reports}</b> reports</span><span><b>{workspaceSeed.reports.filter((report) => report.schemaStatus === "captured").length}</b> captured</span><span className={`persistence-indicator state-${persistenceState}`}>{persistenceState === "ready" ? "Stored" : persistenceState === "loading" ? "Connecting" : "Browser saved"}</span></div>
+        <button type="button" className="backup-button" onClick={() => void exportBackup()} disabled={persistenceState === "loading"} title="Export current documents and revision history"><Download aria-hidden="true" size={14} /> Backup</button>
         <div className="view-switch" role="group" aria-label="Workspace view">
           <button type="button" className={!presentationMode ? "is-active" : ""} aria-pressed={!presentationMode} onClick={() => setPresentationMode(false)}><Pencil aria-hidden="true" size={14} /> Workspace</button>
           <button type="button" className={presentationMode ? "is-active" : ""} aria-pressed={presentationMode} onClick={() => setPresentationMode(true)}><Eye aria-hidden="true" size={14} /> Published</button>
@@ -374,6 +492,12 @@ export function AtlasWorkspace({
           requirements={controlTower}
           evidence={controlTowerEvidence}
           fidelity={controlTowerFidelity}
+          onOpenReport={openDiscoveryReport}
+        />
+      )}
+      {surface === "data_quality" && (
+        <DataQualityWorkspace
+          evidence={controlTowerEvidence}
           onOpenReport={openDiscoveryReport}
         />
       )}

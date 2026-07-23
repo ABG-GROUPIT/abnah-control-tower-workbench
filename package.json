@@ -8,6 +8,8 @@
   "scripts": {
     "dev": "vinext dev",
     "build": "vinext build",
+    "build:pages": "vite build --config vite.pages.config.ts",
+    "preview:pages": "vite preview --config vite.pages.config.ts",
     "start": "wrangler dev --config dist/server/wrangler.json --show-interactive-dev-session=false",
     "data:refresh": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/refresh_atlas.ps1",
     "data:workspace": "py -3 scripts/build_workspace_data.py",

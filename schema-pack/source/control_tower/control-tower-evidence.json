@@ -1,5 +1,5 @@
 {
-  "contractVersion": "1.2.0",
+  "contractVersion": "2.0.0",
   "status": "semantic_evidence_compiled",
   "asOfDate": "2026-07-23",
   "sourcePolicy": "Hosted evidence contains report schemas, export coverage, issue density, semantic review and redacted context only. Screenshots, full operational rows, local paths, file names, hashes, credentials, and sensitive values are excluded.",
@@ -43,7 +43,349 @@
     "schemaVisualMatches": 20,
     "headerOnlyReportCount": 2,
     "deterministicIssueRowCount": 0,
-    "semanticFindingCount": 11
+    "semanticFindingCount": 19,
+    "criticalFindingCount": 11,
+    "majorFindingCount": 7,
+    "minorFindingCount": 1,
+    "passedControlCount": 23,
+    "failedControlCount": 0
+  },
+  "businessReview": {
+    "contractVersion": "2.0.0",
+    "asOfDate": "2026-07-23",
+    "summary": {
+      "reviewed_report_count": 20,
+      "reviewed_row_count": 35128,
+      "finding_count": 19,
+      "row_observation_count": 5888,
+      "severity_counts": {
+        "critical": 11,
+        "major": 7,
+        "minor": 1
+      },
+      "row_severity_counts": {
+        "critical": 1351,
+        "major": 4458,
+        "minor": 79
+      },
+      "state_counts": {
+        "confirmed_issue": 11,
+        "needs_business_definition": 4,
+        "operational_exception": 4
+      },
+      "passed_control_count": 23,
+      "failed_control_count": 0,
+      "definition_gate_count": 1
+    },
+    "severityLegend": {
+      "critical": "Blocks a dependent production KPI or represents a high-impact exception.",
+      "major": "Material coverage, logic, or operational issue requiring action.",
+      "minor": "Bounded discrepancy or low-materiality exception retained for review.",
+      "info": "Passed control or context; no defect is asserted."
+    },
+    "stateLegend": {
+      "confirmed_issue": "The exported evidence directly proves the condition.",
+      "operational_exception": "The value may be valid but requires operational action.",
+      "needs_business_definition": "The observation is real; its treatment depends on an approved definition."
+    },
+    "controls": [
+      {
+        "id": "p1.item_recipe.detail:schema_and_type_integrity",
+        "status": "passed",
+        "severity": "info",
+        "title": "Item Recipe Report schema and declared types align",
+        "observation": "1 export(s), 899 rows: exact contract headers, no malformed-width rows, and no declared-type parse failures.",
+        "reports": [
+          "p1.item_recipe.detail"
+        ],
+        "fields": []
+      },
+      {
+        "id": "p2.bill_item_detail.item:schema_and_type_integrity",
+        "status": "passed",
+        "severity": "info",
+        "title": "Bill Item Detail Report schema and declared types align",
+        "observation": "2 export(s), 8,138 rows: exact contract headers, no malformed-width rows, and no declared-type parse failures.",
+        "reports": [
+          "p2.bill_item_detail.item"
+        ],
+        "fields": []
+      },
+      {
+        "id": "p2.gross_net_margin.item:schema_and_type_integrity",
+        "status": "passed",
+        "severity": "info",
+        "title": "Gross/Net Margin Report - bill item detail schema and declared types align",
+        "observation": "3 export(s), 11,511 rows: exact contract headers, no malformed-width rows, and no declared-type parse failures.",
+        "reports": [
+          "p2.gross_net_margin.item"
+        ],
+        "fields": []
+      },
+      {
+        "id": "p4.bulk_return.item:schema_and_type_integrity",
+        "status": "passed",
+        "severity": "info",
+        "title": "Bulk Return Report schema and declared types align",
+        "observation": "1 export(s), 6 rows: exact contract headers, no malformed-width rows, and no declared-type parse failures.",
+        "reports": [
+          "p4.bulk_return.item"
+        ],
+        "fields": []
+      },
+      {
+        "id": "p4.closing_stock.item:schema_and_type_integrity",
+        "status": "passed",
+        "severity": "info",
+        "title": "Closing Stock Report schema and declared types align",
+        "observation": "1 export(s), 1,148 rows: exact contract headers, no malformed-width rows, and no declared-type parse failures.",
+        "reports": [
+          "p4.closing_stock.item"
+        ],
+        "fields": []
+      },
+      {
+        "id": "p4.enterprise_consumption.detail:schema_and_type_integrity",
+        "status": "passed",
+        "severity": "info",
+        "title": "Enterprise Consumption Report - detail schema and declared types align",
+        "observation": "1 export(s), 812 rows: exact contract headers, no malformed-width rows, and no declared-type parse failures.",
+        "reports": [
+          "p4.enterprise_consumption.detail"
+        ],
+        "fields": []
+      },
+      {
+        "id": "p4.enterprise_entry.item:schema_and_type_integrity",
+        "status": "passed",
+        "severity": "info",
+        "title": "Enterprise Entry Report - Stock Entry schema and declared types align",
+        "observation": "1 export(s), 562 rows: exact contract headers, no malformed-width rows, and no declared-type parse failures.",
+        "reports": [
+          "p4.enterprise_entry.item"
+        ],
+        "fields": []
+      },
+      {
+        "id": "p4.enterprise_opening.item:schema_and_type_integrity",
+        "status": "passed",
+        "severity": "info",
+        "title": "Enterprise Opening Report - Opening Stock schema and declared types align",
+        "observation": "1 export(s), 3 rows: exact contract headers, no malformed-width rows, and no declared-type parse failures.",
+        "reports": [
+          "p4.enterprise_opening.item"
+        ],
+        "fields": []
+      },
+      {
+        "id": "p4.enterprise_physical.item:schema_and_type_integrity",
+        "status": "passed",
+        "severity": "info",
+        "title": "Enterprise Physical Report - Physical Stock schema and declared types align",
+        "observation": "1 export(s), 6,251 rows: exact contract headers, no malformed-width rows, and no declared-type parse failures.",
+        "reports": [
+          "p4.enterprise_physical.item"
+        ],
+        "fields": []
+      },
+      {
+        "id": "p4.enterprise_purchase_order.item:schema_and_type_integrity",
+        "status": "passed",
+        "severity": "info",
+        "title": "Enterprise Purchase Order Report - item detail schema and declared types align",
+        "observation": "1 export(s), 113 rows: exact contract headers, no malformed-width rows, and no declared-type parse failures.",
+        "reports": [
+          "p4.enterprise_purchase_order.item"
+        ],
+        "fields": []
+      },
+      {
+        "id": "p4.enterprise_reorder.item:schema_and_type_integrity",
+        "status": "passed",
+        "severity": "info",
+        "title": "Enterprise ReOrder Report schema and declared types align",
+        "observation": "1 export(s), 0 rows: exact contract headers, no malformed-width rows, and no declared-type parse failures.",
+        "reports": [
+          "p4.enterprise_reorder.item"
+        ],
+        "fields": []
+      },
+      {
+        "id": "p4.enterprise_stock_return.item:schema_and_type_integrity",
+        "status": "passed",
+        "severity": "info",
+        "title": "Enterprise Stock Return / Stock Entry Return schema and declared types align",
+        "observation": "1 export(s), 0 rows: exact contract headers, no malformed-width rows, and no declared-type parse failures.",
+        "reports": [
+          "p4.enterprise_stock_return.item"
+        ],
+        "fields": []
+      },
+      {
+        "id": "p4.enterprise_transfer.from_item:schema_and_type_integrity",
+        "status": "passed",
+        "severity": "info",
+        "title": "Enterprise Transfer Report - Transfer From schema and declared types align",
+        "observation": "1 export(s), 211 rows: exact contract headers, no malformed-width rows, and no declared-type parse failures.",
+        "reports": [
+          "p4.enterprise_transfer.from_item"
+        ],
+        "fields": []
+      },
+      {
+        "id": "p4.enterprise_transfer.to_item:schema_and_type_integrity",
+        "status": "passed",
+        "severity": "info",
+        "title": "Enterprise Transfer Report - Transfer To schema and declared types align",
+        "observation": "1 export(s), 211 rows: exact contract headers, no malformed-width rows, and no declared-type parse failures.",
+        "reports": [
+          "p4.enterprise_transfer.to_item"
+        ],
+        "fields": []
+      },
+      {
+        "id": "p4.enterprise_variance.master:schema_and_type_integrity",
+        "status": "passed",
+        "severity": "info",
+        "title": "Enterprise Variance Report - master schema and declared types align",
+        "observation": "1 export(s), 426 rows: exact contract headers, no malformed-width rows, and no declared-type parse failures.",
+        "reports": [
+          "p4.enterprise_variance.master"
+        ],
+        "fields": []
+      },
+      {
+        "id": "p4.enterprise_variance.normal:schema_and_type_integrity",
+        "status": "passed",
+        "severity": "info",
+        "title": "Enterprise Variance Report - normal detailed CSV schema and declared types align",
+        "observation": "1 export(s), 812 rows: exact contract headers, no malformed-width rows, and no declared-type parse failures.",
+        "reports": [
+          "p4.enterprise_variance.normal"
+        ],
+        "fields": []
+      },
+      {
+        "id": "p4.enterprise_wastage.normal:schema_and_type_integrity",
+        "status": "passed",
+        "severity": "info",
+        "title": "Enterprise Wastage Report - transaction detail schema and declared types align",
+        "observation": "1 export(s), 581 rows: exact contract headers, no malformed-width rows, and no declared-type parse failures.",
+        "reports": [
+          "p4.enterprise_wastage.normal"
+        ],
+        "fields": []
+      },
+      {
+        "id": "p4.purchase_detail.po_enabled:schema_and_type_integrity",
+        "status": "passed",
+        "severity": "info",
+        "title": "Purchase Detail - PO details enabled schema and declared types align",
+        "observation": "1 export(s), 288 rows: exact contract headers, no malformed-width rows, and no declared-type parse failures.",
+        "reports": [
+          "p4.purchase_detail.po_enabled"
+        ],
+        "fields": []
+      },
+      {
+        "id": "p4.recipe_consumption.item:schema_and_type_integrity",
+        "status": "passed",
+        "severity": "info",
+        "title": "Recipe Consumption Report schema and declared types align",
+        "observation": "4 export(s), 1,927 rows: exact contract headers, no malformed-width rows, and no declared-type parse failures.",
+        "reports": [
+          "p4.recipe_consumption.item"
+        ],
+        "fields": []
+      },
+      {
+        "id": "p4.stock_in_stock_out.item:schema_and_type_integrity",
+        "status": "passed",
+        "severity": "info",
+        "title": "Stock In Stock Out Report - movement detail schema and declared types align",
+        "observation": "1 export(s), 1,229 rows: exact contract headers, no malformed-width rows, and no declared-type parse failures.",
+        "reports": [
+          "p4.stock_in_stock_out.item"
+        ],
+        "fields": []
+      },
+      {
+        "id": "po_entry_identifier_check",
+        "status": "definition_gate",
+        "severity": "critical",
+        "title": "PO-to-entry identifier compatibility",
+        "observation": "Exact linked entry rows=0; canonical-prefix linked rows=2. Only one closed PO is currently evidenced in the Entry export.",
+        "reports": [
+          "p4.enterprise_purchase_order.item",
+          "p4.enterprise_entry.item",
+          "p4.purchase_detail.po_enabled"
+        ],
+        "fields": [
+          "po_number",
+          "transaction_number",
+          "item_code"
+        ]
+      },
+      {
+        "id": "transfer_pair_reconciliation",
+        "status": "passed",
+        "severity": "info",
+        "title": "Transfer From and Transfer To pair reconciliation",
+        "observation": "From rows=211; To rows=211; paired=211; quantity mismatches=0; amount mismatches=0.",
+        "reports": [
+          "p4.enterprise_transfer.from_item",
+          "p4.enterprise_transfer.to_item"
+        ],
+        "fields": [
+          "transaction_number",
+          "item_code",
+          "transfer_date",
+          "transfer_qty",
+          "transfer_amt"
+        ]
+      },
+      {
+        "id": "consumption_variance_reconciliation",
+        "status": "passed",
+        "severity": "info",
+        "title": "Consumption and Normal Variance cross-report reconciliation",
+        "observation": "Consumption rows=812; variance rows=812; paired=812; movement-field mismatches=0.",
+        "reports": [
+          "p4.enterprise_consumption.detail",
+          "p4.enterprise_variance.normal"
+        ],
+        "fields": [
+          "opening_qty",
+          "purchase_qty",
+          "stock_in_qty",
+          "consumption_qty",
+          "stock_out_qty",
+          "wastage_qty",
+          "return_qty",
+          "closing_qty",
+          "ideal_closing_qty"
+        ]
+      },
+      {
+        "id": "bill_margin_aggregate_reconciliation",
+        "status": "passed",
+        "severity": "info",
+        "title": "Bill Item Detail and Gross/Net Margin aggregate reconciliation",
+        "observation": "2026-05: rows 1,165/1,165, gross difference 0.06; 2026-06: rows 6,973/6,973, gross difference 0.94",
+        "reports": [
+          "p2.bill_item_detail.item",
+          "p2.gross_net_margin.item"
+        ],
+        "fields": [
+          "net_amt",
+          "gross_sale_value",
+          "item_qty",
+          "item_subtotal",
+          "total_discount_amt",
+          "tax_amt"
+        ]
+      }
+    ]
   },
   "sourceRegister": [
     {
@@ -1126,14 +1468,15 @@
       "readiness": "review_required",
       "decision": "Schema-ready; quantity-price-value rows reconcile within displayed precision, while negative stock remains an operational exception.",
       "codexReview": {
-        "status": "business_review",
-        "headline": "Schema is sound; observed rows need business-grain and sign treatment.",
+        "status": "coverage_review",
+        "headline": "Schema is sound; critical value coverage remains incomplete.",
         "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
         "confirmedStructuralErrorCount": 0,
         "classificationCounts": {
+          "coverage_blocker": 1,
           "operational_exception": 1
         },
-        "nextDecision": "Approve transaction grain and sign conventions before aggregation."
+        "nextDecision": "Resolve the identified period or field coverage gap before enabling dependent production KPIs."
       },
       "keyFieldCoverage": [
         {
@@ -1204,30 +1547,54 @@
       ],
       "findings": [
         {
-          "id": "p4.closing_stock.item:negative_values",
-          "category": "sign_review",
-          "severity": "review",
-          "title": "Negative values require signed-off business treatment",
-          "affectedRowCount": 116,
+          "id": "p4.closing_stock.item:negative_closing_stock",
+          "category": "operational_exception",
+          "issueClass": "operational_exception",
+          "state": "operational_exception",
+          "severity": "critical",
+          "title": "Negative closing stock requires action",
+          "affectedRowCount": 40,
           "fields": [
-            "total_amt",
-            "gk2_main_store_qty",
-            "total_qty"
+            "total_qty",
+            "total_amt"
           ],
-          "observation": "Negative observations can represent returns, adjustments, or stock corrections; they are not classified as errors automatically.",
-          "productionTreatment": "Confirm sign conventions by transaction type and apply them consistently in standardized facts and KPI formulas.",
+          "observation": "40 rows contain a negative closing quantity or value.",
+          "productionTreatment": "Expose as a stock-integrity exception; do not silently clamp to zero.",
+          "metrics": {},
           "semanticReview": {
             "classification": "operational_exception",
             "confidence": "high",
-            "assessment": "Negative quantities, values, or margins can be valid returns, reversals, corrections, oversold stock, or loss-making sales. They are operational exceptions, not automatic data errors.",
-            "businessQuestion": "Which transaction types and status values define the approved sign convention for each negative field?"
+            "assessment": "The exported condition is real and decision-relevant, but it may be a valid business event rather than a data defect.",
+            "businessQuestion": "Which backdated movement, UOM conversion, or count adjustment caused each negative balance?"
+          }
+        },
+        {
+          "id": "p4.closing_stock.item:stale_snapshot",
+          "category": "freshness",
+          "issueClass": "freshness",
+          "state": "confirmed_issue",
+          "severity": "critical",
+          "title": "Closing-stock extract is not current",
+          "affectedRowCount": 1148,
+          "fields": [
+            "stock_date",
+            "generation_date"
+          ],
+          "observation": "All 1,148 rows carry a stock snapshot up to 36 days behind the generation date.",
+          "productionTreatment": "Refresh the Closing Stock export before stockout, cover, or working-capital publication.",
+          "metrics": {},
+          "semanticReview": {
+            "classification": "coverage_blocker",
+            "confidence": "high",
+            "assessment": "The exported evidence directly proves a coverage or freshness gap. Dependent production KPIs remain gated.",
+            "businessQuestion": "Was the older stock date intentionally selected, or did the export ignore the requested snapshot?"
           }
         }
       ],
       "evidenceRows": [
         {
           "id": "evidence:p4_closing_stock_item:negative",
-          "findingId": "p4.closing_stock.item:negative_values",
+          "findingId": "p4.closing_stock.item:negative_closing_stock",
           "exportLabel": "Export 1",
           "sourceRowNumber": 73,
           "values": [
@@ -1381,7 +1748,7 @@
         "contextWindows": [
           {
             "id": "context:evidence:p4_closing_stock_item:negative",
-            "findingId": "p4.closing_stock.item:negative_values",
+            "findingId": "p4.closing_stock.item:negative_closing_stock",
             "exportLabel": "Export 1",
             "focusSourceRowNumber": 73,
             "rows": [
@@ -1888,12 +2255,15 @@
       "readiness": "review_required",
       "decision": "Schema-ready; item amounts reconcile within displayed precision. Charge rows carry total tax without component columns, while PO and batch coverage remain production gates.",
       "codexReview": {
-        "status": "no_encoded_exception",
-        "headline": "No encoded structural or value exception was detected.",
+        "status": "coverage_review",
+        "headline": "Schema is sound; critical value coverage remains incomplete.",
         "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
         "confirmedStructuralErrorCount": 0,
-        "classificationCounts": {},
-        "nextDecision": "Continue period reconciliation and business sign-off before production publication."
+        "classificationCounts": {
+          "cost_coverage_gap": 2,
+          "review_required": 1
+        },
+        "nextDecision": "Resolve the identified period or field coverage gap before enabling dependent production KPIs."
       },
       "keyFieldCoverage": [
         {
@@ -1975,7 +2345,73 @@
           "coveragePercent": 100.0
         }
       ],
-      "findings": [],
+      "findings": [
+        {
+          "id": "p4.enterprise_entry.item:missing_batch_number",
+          "category": "coverage",
+          "issueClass": "coverage",
+          "state": "confirmed_issue",
+          "severity": "major",
+          "title": "Batch traceability is absent",
+          "affectedRowCount": 562,
+          "fields": [
+            "batch_number"
+          ],
+          "observation": "Batch Number is blank across all 562 captured entry rows.",
+          "productionTreatment": "Keep expiry and batch-level traceability unavailable until batch capture is enabled.",
+          "metrics": {},
+          "semanticReview": {
+            "classification": "cost_coverage_gap",
+            "confidence": "high",
+            "assessment": "The exported evidence directly proves a coverage or freshness gap. Dependent production KPIs remain gated.",
+            "businessQuestion": "Is batch number disabled, stored elsewhere, or unavailable for this outlet?"
+          }
+        },
+        {
+          "id": "p4.enterprise_entry.item:missing_pr_number",
+          "category": "coverage",
+          "issueClass": "coverage",
+          "state": "confirmed_issue",
+          "severity": "major",
+          "title": "Purchase-request lineage is absent",
+          "affectedRowCount": 562,
+          "fields": [
+            "pr_number"
+          ],
+          "observation": "Pr Number is blank across all 562 captured entry rows.",
+          "productionTreatment": "Do not publish PR-to-PO cycle-time or approval metrics from this extract.",
+          "metrics": {},
+          "semanticReview": {
+            "classification": "cost_coverage_gap",
+            "confidence": "high",
+            "assessment": "The exported evidence directly proves a coverage or freshness gap. Dependent production KPIs remain gated.",
+            "businessQuestion": "Is pr number disabled, stored elsewhere, or unavailable for this outlet?"
+          }
+        },
+        {
+          "id": "p4.enterprise_entry.item:po_identifier_normalization",
+          "category": "identifier_standardization",
+          "issueClass": "identifier_standardization",
+          "state": "confirmed_issue",
+          "severity": "critical",
+          "title": "Exact PO-to-receipt joins fail without identifier standardization",
+          "affectedRowCount": 2,
+          "fields": [
+            "po_number",
+            "transaction_number",
+            "item_code"
+          ],
+          "observation": "Exact PO identifier intersection is zero; 2 entry rows link after canonical prefix normalization.",
+          "productionTreatment": "Normalize PO and stock-entry identifiers before any PO status, delay, or receipt KPI join.",
+          "metrics": {},
+          "semanticReview": {
+            "classification": "review_required",
+            "confidence": "high",
+            "assessment": "The exported condition is confirmed, but the standardization or business treatment must be approved before production use.",
+            "businessQuestion": "Is prefix removal the approved enterprise identifier rule for every outlet and deployment?"
+          }
+        }
+      ],
       "evidenceRows": [],
       "reportContext": {
         "mode": "hosted_structure_local_values",
@@ -2248,22 +2684,26 @@
       "keyFieldCoverage": [],
       "findings": [
         {
-          "id": "p4.enterprise_opening.item:zero_valuation_coverage",
-          "category": "cost_coverage",
-          "severity": "warning",
-          "title": "Opening-stock valuation is unavailable in the captured rows",
+          "id": "p4.enterprise_opening.item:zero_valuation",
+          "category": "coverage",
+          "issueClass": "coverage",
+          "state": "confirmed_issue",
+          "severity": "major",
+          "title": "Opening-stock valuation is unavailable",
           "affectedRowCount": 3,
           "fields": [
+            "opening_qty",
             "unit_price",
             "opening_subtotal"
           ],
-          "observation": "Every populated opening-stock row exports zero unit price and zero subtotal. Quantity remains usable, but value does not.",
-          "productionTreatment": "Use this report only for opening quantity reconciliation until an approved valuation source is joined.",
+          "observation": "All 3 captured opening rows have zero unit price and subtotal.",
+          "productionTreatment": "Retain quantities, but source value from an approved valuation method before monetary KPIs.",
+          "metrics": {},
           "semanticReview": {
             "classification": "cost_coverage_gap",
             "confidence": "high",
-            "assessment": "Zero exported cost is a source-coverage state, not proof that an item was free and not a margin-formula defect. The period concentration must be resolved before source-reported margin is used.",
-            "businessQuestion": "Why does purchase-cost coverage fall sharply in the affected period, and which approved recipe or valuation source should fill the gap?"
+            "assessment": "The exported evidence directly proves a coverage or freshness gap. Dependent production KPIs remain gated.",
+            "businessQuestion": "Which opening valuation basis should be used for these items?"
           }
         }
       ],
@@ -2665,12 +3105,14 @@
       "readiness": "review_required",
       "decision": "Populated and schema-ready; receipt linkage, status semantics, and eligible closed-line rules remain production gates.",
       "codexReview": {
-        "status": "no_encoded_exception",
-        "headline": "No encoded structural or value exception was detected.",
+        "status": "business_review",
+        "headline": "Schema is sound; observed rows need business-grain and sign treatment.",
         "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
         "confirmedStructuralErrorCount": 0,
-        "classificationCounts": {},
-        "nextDecision": "Continue period reconciliation and business sign-off before production publication."
+        "classificationCounts": {
+          "operational_exception": 2
+        },
+        "nextDecision": "Approve transaction grain and sign conventions before aggregation."
       },
       "keyFieldCoverage": [
         {
@@ -2778,7 +3220,56 @@
           "coveragePercent": 7.1
         }
       ],
-      "findings": [],
+      "findings": [
+        {
+          "id": "p4.enterprise_purchase_order.item:overdue_open_po",
+          "category": "business_logic",
+          "issueClass": "business_logic",
+          "state": "operational_exception",
+          "severity": "critical",
+          "title": "Overdue open purchase orders require procurement action",
+          "affectedRowCount": 76,
+          "fields": [
+            "po_number",
+            "expected_delivery_date",
+            "po_status",
+            "remaining_balance_qty",
+            "total_item_cost"
+          ],
+          "observation": "17 PO documents (76 lines) were overdue as of 2026-07-23, with line-value exposure of 153362.36.",
+          "productionTreatment": "Publish as an action queue only after owner and revised-date semantics are approved.",
+          "metrics": {},
+          "semanticReview": {
+            "classification": "operational_exception",
+            "confidence": "high",
+            "assessment": "The exported condition is real and decision-relevant, but it may be a valid business event rather than a data defect.",
+            "businessQuestion": "Which overdue POs have an approved revised date or cancellation not represented in the report?"
+          }
+        },
+        {
+          "id": "p4.enterprise_purchase_order.item:closed_po_delay",
+          "category": "business_logic",
+          "issueClass": "business_logic",
+          "state": "operational_exception",
+          "severity": "major",
+          "title": "A closed PO missed its expected date",
+          "affectedRowCount": 2,
+          "fields": [
+            "po_number",
+            "expected_delivery_date",
+            "po_close_or_partial_receive_date"
+          ],
+          "observation": "2 closed PO lines were received after expected delivery.",
+          "productionTreatment": "Use only after PO/receipt identity and partial-receipt definitions are approved.",
+          "metrics": {},
+          "semanticReview": {
+            "classification": "operational_exception",
+            "confidence": "high",
+            "assessment": "The exported condition is real and decision-relevant, but it may be a valid business event rather than a data defect.",
+            "businessQuestion": "Does close date represent full receipt, first partial receipt, or administrative closure?"
+          }
+        }
+      ],
       "evidenceRows": [],
       "reportContext": {
         "mode": "hosted_structure_local_values",
@@ -3056,19 +3547,22 @@
       ],
       "findings": [
         {
-          "id": "p4.enterprise_reorder.item:row_coverage",
+          "id": "p4.enterprise_reorder.item:header_only",
           "category": "coverage",
-          "severity": "blocker",
-          "title": "Export is header-only",
+          "issueClass": "coverage",
+          "state": "confirmed_issue",
+          "severity": "critical",
+          "title": "Captured report is header-only",
           "affectedRowCount": 0,
           "fields": [],
-          "observation": "1 of 1 exports contain no data rows.",
-          "productionTreatment": "Keep dependent KPIs blocked until a populated export or approved alternate source is available.",
+          "observation": "The captured export contains a valid schema but no data rows.",
+          "productionTreatment": "Exclude this report from active KPI dependencies until a populated export exists.",
+          "metrics": {},
           "semanticReview": {
             "classification": "coverage_blocker",
             "confidence": "high",
-            "assessment": "The export contains no usable rows for one or more captured periods. This is a confirmed evidence-coverage gap, regardless of whether the underlying operational system contains data elsewhere.",
-            "businessQuestion": "Is the report genuinely unused, filtered incorrectly, permission-restricted, or populated in another module?"
+            "assessment": "The exported evidence directly proves a coverage or freshness gap. Dependent production KPIs remain gated.",
+            "businessQuestion": "Is this report unused, filtered incorrectly, permission-restricted, or stored in another module?"
           }
         }
       ],
@@ -3268,19 +3762,22 @@
       ],
       "findings": [
         {
-          "id": "p4.enterprise_stock_return.item:row_coverage",
+          "id": "p4.enterprise_stock_return.item:header_only",
           "category": "coverage",
-          "severity": "blocker",
-          "title": "Export is header-only",
+          "issueClass": "coverage",
+          "state": "confirmed_issue",
+          "severity": "critical",
+          "title": "Captured report is header-only",
           "affectedRowCount": 0,
           "fields": [],
-          "observation": "1 of 1 exports contain no data rows.",
-          "productionTreatment": "Keep dependent KPIs blocked until a populated export or approved alternate source is available.",
+          "observation": "The captured export contains a valid schema but no data rows.",
+          "productionTreatment": "Exclude this report from active KPI dependencies until a populated export exists.",
+          "metrics": {},
           "semanticReview": {
             "classification": "coverage_blocker",
             "confidence": "high",
-            "assessment": "The export contains no usable rows for one or more captured periods. This is a confirmed evidence-coverage gap, regardless of whether the underlying operational system contains data elsewhere.",
-            "businessQuestion": "Is the report genuinely unused, filtered incorrectly, permission-restricted, or populated in another module?"
+            "assessment": "The exported evidence directly proves a coverage or freshness gap. Dependent production KPIs remain gated.",
+            "businessQuestion": "Is this report unused, filtered incorrectly, permission-restricted, or stored in another module?"
           }
         }
       ],
@@ -4082,66 +4579,43 @@
       "readiness": "review_required",
       "decision": "Schema-ready; sign conventions require review and normal variance remains the selected source.",
       "codexReview": {
-        "status": "business_review",
-        "headline": "Schema is sound; observed rows need business-grain and sign treatment.",
+        "status": "no_encoded_exception",
+        "headline": "No encoded structural or value exception was detected.",
         "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
         "confirmedStructuralErrorCount": 0,
         "classificationCounts": {
-          "operational_exception": 1
+          "review_required": 1
         },
-        "nextDecision": "Approve transaction grain and sign conventions before aggregation."
+        "nextDecision": "Continue period reconciliation and business sign-off before production publication."
       },
       "keyFieldCoverage": [],
       "findings": [
         {
-          "id": "p4.enterprise_variance.master:negative_values",
-          "category": "sign_review",
-          "severity": "review",
-          "title": "Negative values require signed-off business treatment",
-          "affectedRowCount": 872,
+          "id": "p4.enterprise_variance.master:negative_inventory_or_consumption",
+          "category": "operational_exception",
+          "issueClass": "operational_exception",
+          "state": "needs_business_definition",
+          "severity": "critical",
+          "title": "Negative inventory and consumption states need sign rules",
+          "affectedRowCount": 98,
           "fields": [
-            "opening_qty",
-            "opening_amt",
-            "actual_consumption_qty",
-            "actual_consumption_amt",
             "closing_qty",
-            "physical_adjusted_closing_qty",
-            "variance_qty",
-            "variance_amt"
+            "closing_amt",
+            "actual_consumption_qty",
+            "actual_consumption_amt"
           ],
-          "observation": "Negative observations can represent returns, adjustments, or stock corrections; they are not classified as errors automatically.",
-          "productionTreatment": "Confirm sign conventions by transaction type and apply them consistently in standardized facts and KPI formulas.",
+          "observation": "98 rows contain at least one negative monitored field. actual_consumption_qty=60; actual_consumption_amt=60; closing_qty=42; closing_amt=37.",
+          "productionTreatment": "Separate valid returns/reversals from stock and consumption exceptions before KPI aggregation.",
+          "metrics": {},
           "semanticReview": {
-            "classification": "operational_exception",
-            "confidence": "high",
-            "assessment": "Negative quantities, values, or margins can be valid returns, reversals, corrections, oversold stock, or loss-making sales. They are operational exceptions, not automatic data errors.",
-            "businessQuestion": "Which transaction types and status values define the approved sign convention for each negative field?"
+            "classification": "review_required",
+            "confidence": "medium",
+            "assessment": "The exported condition is confirmed, but the standardization or business treatment must be approved before production use.",
+            "businessQuestion": "Which transaction types authorize each negative sign, and which should trigger an operational alert?"
           }
         }
       ],
-      "evidenceRows": [
-        {
-          "id": "evidence:p4_enterprise_variance_master:negative",
-          "findingId": "p4.enterprise_variance.master:negative_values",
-          "exportLabel": "22 Jun - 21 Jul 2026",
-          "sourceRowNumber": 3,
-          "values": [
-            {
-              "field": "opening_amt",
-              "label": "opening amt",
-              "value": "-56.29"
-            },
-            {
-              "field": "opening_qty",
-              "label": "opening qty",
-              "value": "-0.013"
-            }
-          ],
-          "expected": "Business-approved sign convention",
-          "observed": "One or more exported values are negative",
-          "privacy": "Only issue-relevant non-sensitive cells are included."
-        }
-      ],
+      "evidenceRows": [],
       "reportContext": {
         "mode": "hosted_structure_local_values",
         "statement": "The hosted review shows the complete report schema, every captured export, row-level issue density, and redacted context windows. Full operational rows remain available only in the localhost reviewer.",
@@ -4342,9 +4816,9 @@
             "label": "22 Jun - 21 Jul 2026",
             "rowCount": 426,
             "headerRowNumber": 1,
-            "issueObservationCount": 1,
+            "issueObservationCount": 0,
             "issueDensity": [
-              1,
+              0,
               0,
               0,
               0,
@@ -4383,47 +4857,7 @@
             ]
           }
         ],
-        "contextWindows": [
-          {
-            "id": "context:evidence:p4_enterprise_variance_master:negative",
-            "findingId": "p4.enterprise_variance.master:negative_values",
-            "exportLabel": "22 Jun - 21 Jul 2026",
-            "focusSourceRowNumber": 3,
-            "rows": [
-              {
-                "sourceRowNumber": 2,
-                "state": "context",
-                "values": []
-              },
-              {
-                "sourceRowNumber": 3,
-                "state": "issue",
-                "values": [
-                  {
-                    "field": "opening_amt",
-                    "label": "opening amt",
-                    "value": "-56.29"
-                  },
-                  {
-                    "field": "opening_qty",
-                    "label": "opening qty",
-                    "value": "-0.013"
-                  }
-                ]
-              },
-              {
-                "sourceRowNumber": 4,
-                "state": "context",
-                "values": []
-              },
-              {
-                "sourceRowNumber": 5,
-                "state": "context",
-                "values": []
-              }
-            ]
-          }
-        ],
+        "contextWindows": [],
         "localViewerUrl": "http://127.0.0.1:8765/?report_id=p4.enterprise_variance.master"
       }
     },
@@ -4461,14 +4895,14 @@
       "readiness": "review_required",
       "decision": "Schema-ready; negative inventory and consumption signs require business treatment before KPI publication.",
       "codexReview": {
-        "status": "business_review",
-        "headline": "Schema is sound; observed rows need business-grain and sign treatment.",
+        "status": "no_encoded_exception",
+        "headline": "No encoded structural or value exception was detected.",
         "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
         "confirmedStructuralErrorCount": 0,
         "classificationCounts": {
-          "operational_exception": 1
+          "review_required": 1
         },
-        "nextDecision": "Approve transaction grain and sign conventions before aggregation."
+        "nextDecision": "Continue period reconciliation and business sign-off before production publication."
       },
       "keyFieldCoverage": [
         {
@@ -4578,74 +5012,33 @@
       ],
       "findings": [
         {
-          "id": "p4.enterprise_variance.normal:negative_values",
-          "category": "sign_review",
-          "severity": "review",
-          "title": "Negative values require signed-off business treatment",
-          "affectedRowCount": 889,
+          "id": "p4.enterprise_variance.normal:negative_inventory_or_consumption",
+          "category": "operational_exception",
+          "issueClass": "operational_exception",
+          "state": "needs_business_definition",
+          "severity": "critical",
+          "title": "Negative inventory and consumption states need sign rules",
+          "affectedRowCount": 204,
           "fields": [
-            "ideal_closing_qty",
-            "ideal_closing_amt",
+            "closing_qty",
+            "closing_amt",
             "actual_consumption_qty",
             "actual_consumption_amt",
-            "closing_qty",
-            "physical_adjusted_closing_qty",
-            "closing_amt",
-            "physical_adjusted_closing_amt"
+            "ideal_closing_qty",
+            "ideal_closing_amt"
           ],
-          "observation": "Negative observations can represent returns, adjustments, or stock corrections; they are not classified as errors automatically.",
-          "productionTreatment": "Confirm sign conventions by transaction type and apply them consistently in standardized facts and KPI formulas.",
+          "observation": "204 rows contain at least one negative monitored field. ideal_closing_qty=197; ideal_closing_amt=191; actual_consumption_qty=60; actual_consumption_amt=60; closing_qty=49; closing_amt=44.",
+          "productionTreatment": "Separate valid returns/reversals from stock and consumption exceptions before KPI aggregation.",
+          "metrics": {},
           "semanticReview": {
-            "classification": "operational_exception",
-            "confidence": "high",
-            "assessment": "Negative quantities, values, or margins can be valid returns, reversals, corrections, oversold stock, or loss-making sales. They are operational exceptions, not automatic data errors.",
-            "businessQuestion": "Which transaction types and status values define the approved sign convention for each negative field?"
+            "classification": "review_required",
+            "confidence": "medium",
+            "assessment": "The exported condition is confirmed, but the standardization or business treatment must be approved before production use.",
+            "businessQuestion": "Which transaction types authorize each negative sign, and which should trigger an operational alert?"
           }
         }
       ],
-      "evidenceRows": [
-        {
-          "id": "evidence:p4_enterprise_variance_normal:negative",
-          "findingId": "p4.enterprise_variance.normal:negative_values",
-          "exportLabel": "21 Apr - 21 Jul 2026",
-          "sourceRowNumber": 38,
-          "values": [
-            {
-              "field": "closing_amt",
-              "label": "closing amt",
-              "value": "-100"
-            },
-            {
-              "field": "closing_qty",
-              "label": "closing qty",
-              "value": "-0.5"
-            },
-            {
-              "field": "ideal_closing_amt",
-              "label": "ideal closing amt",
-              "value": "-100"
-            },
-            {
-              "field": "ideal_closing_qty",
-              "label": "ideal closing qty",
-              "value": "-0.5"
-            },
-            {
-              "field": "physical_adjusted_closing_amt",
-              "label": "physical adjusted closing amt",
-              "value": "-100"
-            },
-            {
-              "field": "physical_adjusted_closing_qty",
-              "label": "physical adjusted closing qty",
-              "value": "-0.5"
-            }
-          ],
-          "expected": "Business-approved sign convention",
-          "observed": "One or more exported values are negative",
-          "privacy": "Only issue-relevant non-sensitive cells are included."
-        }
-      ],
+      "evidenceRows": [],
       "reportContext": {
         "mode": "hosted_structure_local_values",
         "statement": "The hosted review shows the complete report schema, every captured export, row-level issue density, and redacted context windows. Full operational rows remain available only in the localhost reviewer.",
@@ -4886,10 +5279,10 @@
             "label": "21 Apr - 21 Jul 2026",
             "rowCount": 812,
             "headerRowNumber": 1,
-            "issueObservationCount": 1,
+            "issueObservationCount": 0,
             "issueDensity": [
               0,
-              1,
+              0,
               0,
               0,
               0,
@@ -4927,72 +5320,7 @@
             ]
           }
         ],
-        "contextWindows": [
-          {
-            "id": "context:evidence:p4_enterprise_variance_normal:negative",
-            "findingId": "p4.enterprise_variance.normal:negative_values",
-            "exportLabel": "21 Apr - 21 Jul 2026",
-            "focusSourceRowNumber": 38,
-            "rows": [
-              {
-                "sourceRowNumber": 36,
-                "state": "context",
-                "values": []
-              },
-              {
-                "sourceRowNumber": 37,
-                "state": "context",
-                "values": []
-              },
-              {
-                "sourceRowNumber": 38,
-                "state": "issue",
-                "values": [
-                  {
-                    "field": "closing_amt",
-                    "label": "closing amt",
-                    "value": "-100"
-                  },
-                  {
-                    "field": "closing_qty",
-                    "label": "closing qty",
-                    "value": "-0.5"
-                  },
-                  {
-                    "field": "ideal_closing_amt",
-                    "label": "ideal closing amt",
-                    "value": "-100"
-                  },
-                  {
-                    "field": "ideal_closing_qty",
-                    "label": "ideal closing qty",
-                    "value": "-0.5"
-                  },
-                  {
-                    "field": "physical_adjusted_closing_amt",
-                    "label": "physical adjusted closing amt",
-                    "value": "-100"
-                  },
-                  {
-                    "field": "physical_adjusted_closing_qty",
-                    "label": "physical adjusted closing qty",
-                    "value": "-0.5"
-                  }
-                ]
-              },
-              {
-                "sourceRowNumber": 39,
-                "state": "context",
-                "values": []
-              },
-              {
-                "sourceRowNumber": 40,
-                "state": "context",
-                "values": []
-              }
-            ]
-          }
-        ],
+        "contextWindows": [],
         "localViewerUrl": "http://127.0.0.1:8765/?report_id=p4.enterprise_variance.normal"
       }
     },
@@ -5292,6 +5620,7 @@
         "confirmedStructuralErrorCount": 0,
         "classificationCounts": {
           "cost_coverage_gap": 1,
+          "coverage_blocker": 1,
           "operational_exception": 1
         },
         "nextDecision": "Resolve the identified period or field coverage gap before enabling dependent production KPIs."
@@ -5392,47 +5721,83 @@
       "findings": [
         {
           "id": "p2.gross_net_margin.item:zero_cost_coverage",
-          "category": "cost_coverage",
-          "severity": "warning",
-          "title": "Exported purchase-cost coverage changes sharply by period",
+          "category": "coverage",
+          "issueClass": "coverage",
+          "state": "confirmed_issue",
+          "severity": "critical",
+          "title": "Source margin is blocked by period-specific cost gaps",
           "affectedRowCount": 2879,
           "fields": [
+            "net_sale_value",
             "purchase_value",
-            "net_sale_value"
-          ],
-          "observation": "2,879 of 9,774 rows with non-zero net sales have zero exported purchase value (29.5%). Period gap rates: Export 1: 3.7%; Export 2: 47.4%; Export 3: 0.2%.",
-          "productionTreatment": "Do not interpret zero exported purchase value as free cost. Use the approved recipe and ingredient valuation route only after cost coverage and effective dates pass validation.",
-          "semanticReview": {
-            "classification": "cost_coverage_gap",
-            "confidence": "high",
-            "assessment": "Zero exported cost is a source-coverage state, not proof that an item was free and not a margin-formula defect. The period concentration must be resolved before source-reported margin is used.",
-            "businessQuestion": "Why does purchase-cost coverage fall sharply in the affected period, and which approved recipe or valuation source should fill the gap?"
-          }
-        },
-        {
-          "id": "p2.gross_net_margin.item:negative_values",
-          "category": "sign_review",
-          "severity": "review",
-          "title": "Negative values require signed-off business treatment",
-          "affectedRowCount": 270,
-          "fields": [
             "net_margin_percent",
             "gross_margin_percent"
           ],
-          "observation": "Negative observations can represent returns, adjustments, or stock corrections; they are not classified as errors automatically.",
-          "productionTreatment": "Confirm sign conventions by transaction type and apply them consistently in standardized facts and KPI formulas.",
+          "observation": "2,879 non-zero-sales rows have zero exported purchase value. Export-period gaps: 31/844 (3.7%); 2,843/5,995 (47.4%); 5/2,935 (0.2%).",
+          "productionTreatment": "Block source-margin publication for affected periods; do not impute zero cost as free inventory.",
+          "metrics": {
+            "maximum_period_gap_percent": 47.42285237698082
+          },
+          "semanticReview": {
+            "classification": "coverage_blocker",
+            "confidence": "high",
+            "assessment": "The exported evidence directly proves a coverage or freshness gap. Dependent production KPIs remain gated.",
+            "businessQuestion": "Why is purchase-cost coverage concentrated in one period, and which approved cost source should fill the gap?"
+          }
+        },
+        {
+          "id": "p2.gross_net_margin.item:negative_margin",
+          "category": "operational_exception",
+          "issueClass": "operational_exception",
+          "state": "operational_exception",
+          "severity": "critical",
+          "title": "Loss-making sales are arithmetically valid but commercially material",
+          "affectedRowCount": 135,
+          "fields": [
+            "net_sale_value",
+            "purchase_value",
+            "net_margin_percent",
+            "gross_margin_percent"
+          ],
+          "observation": "135 rows have a negative net and gross margin with positive sales.",
+          "productionTreatment": "Show as a margin exception; distinguish promotions and approved loss leaders from recipe/cost defects.",
+          "metrics": {},
           "semanticReview": {
             "classification": "operational_exception",
             "confidence": "high",
-            "assessment": "Negative quantities, values, or margins can be valid returns, reversals, corrections, oversold stock, or loss-making sales. They are operational exceptions, not automatic data errors.",
-            "businessQuestion": "Which transaction types and status values define the approved sign convention for each negative field?"
+            "assessment": "The exported condition is real and decision-relevant, but it may be a valid business event rather than a data defect.",
+            "businessQuestion": "Which negative-margin items are approved promotions versus pricing or recipe-cost issues?"
+          }
+        },
+        {
+          "id": "p2.gross_net_margin.item:missing_recipe",
+          "category": "coverage",
+          "issueClass": "coverage",
+          "state": "confirmed_issue",
+          "severity": "major",
+          "title": "A small sold-item set lacks recipe coverage",
+          "affectedRowCount": 191,
+          "fields": [
+            "item_code",
+            "net_sale_value"
+          ],
+          "observation": "6 sold item codes across 191 rows lack a captured recipe, representing 0.74% of eligible net sales.",
+          "productionTreatment": "Keep these rows out of theoretical-consumption variance until recipes or direct-cost rules are approved.",
+          "metrics": {
+            "net_sales_gap_percent": 0.739625641034994
+          },
+          "semanticReview": {
+            "classification": "cost_coverage_gap",
+            "confidence": "high",
+            "assessment": "The exported evidence directly proves a coverage or freshness gap. Dependent production KPIs remain gated.",
+            "businessQuestion": "Are the missing items packaged/direct-cost products or genuinely missing recipes?"
           }
         }
       ],
       "evidenceRows": [
         {
           "id": "evidence:p2_gross_net_margin_item:negative",
-          "findingId": "p2.gross_net_margin.item:negative_values",
+          "findingId": "p2.gross_net_margin.item:negative_margin",
           "exportLabel": "Export 1",
           "sourceRowNumber": 108,
           "values": [
@@ -5724,7 +6089,7 @@
         "contextWindows": [
           {
             "id": "context:evidence:p2_gross_net_margin_item:negative",
-            "findingId": "p2.gross_net_margin.item:negative_values",
+            "findingId": "p2.gross_net_margin.item:negative_margin",
             "exportLabel": "Export 1",
             "focusSourceRowNumber": 108,
             "rows": [
@@ -5805,14 +6170,16 @@
       "readiness": "review_required",
       "decision": "Schema-ready and populated; recipe identifiers, effective dates, and UOM conversion still require master-data approval.",
       "codexReview": {
-        "status": "business_review",
-        "headline": "Schema is sound; observed rows need business-grain and sign treatment.",
+        "status": "coverage_review",
+        "headline": "Schema is sound; critical value coverage remains incomplete.",
         "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
         "confirmedStructuralErrorCount": 0,
         "classificationCounts": {
-          "deduplication_risk": 1
+          "cost_coverage_gap": 1,
+          "deduplication_risk": 1,
+          "review_required": 1
         },
-        "nextDecision": "Approve transaction grain and sign conventions before aggregation."
+        "nextDecision": "Resolve the identified period or field coverage gap before enabling dependent production KPIs."
       },
       "keyFieldCoverage": [
         {
@@ -5870,19 +6237,72 @@
       ],
       "findings": [
         {
-          "id": "p1.item_recipe.detail:duplicate_rows",
-          "category": "duplication",
-          "severity": "warning",
-          "title": "Duplicate source rows were observed",
+          "id": "p1.item_recipe.detail:uom_conversion_required",
+          "category": "identifier_standardization",
+          "issueClass": "identifier_standardization",
+          "state": "confirmed_issue",
+          "severity": "critical",
+          "title": "Exact UOM joins would break most recipe lineage",
+          "affectedRowCount": 810,
+          "fields": [
+            "ingredient_code",
+            "recipe_qty_per_menu_unit",
+            "recipe_unit"
+          ],
+          "observation": "810 recipe rows require UOM conversion among 866 rows whose ingredient code exists in Closing Stock.",
+          "productionTreatment": "Replace exact unit equality with a governed base-unit and conversion-factor dimension.",
+          "metrics": {},
+          "semanticReview": {
+            "classification": "review_required",
+            "confidence": "high",
+            "assessment": "The exported condition is confirmed, but the standardization or business treatment must be approved before production use.",
+            "businessQuestion": "Which POSIST master or approved mapping owns pack, case, piece, gram, and millilitre conversion factors?"
+          }
+        },
+        {
+          "id": "p1.item_recipe.detail:ingredient_not_in_stock_snapshot",
+          "category": "coverage",
+          "issueClass": "coverage",
+          "state": "confirmed_issue",
+          "severity": "major",
+          "title": "Some recipe ingredients are absent from the stock snapshot",
+          "affectedRowCount": 33,
+          "fields": [
+            "ingredient_code",
+            "ingredient_name"
+          ],
+          "observation": "33 recipe rows reference ingredient codes not present in the captured Closing Stock report.",
+          "productionTreatment": "Resolve the item-master/snapshot scope before theoretical consumption publication.",
+          "metrics": {},
+          "semanticReview": {
+            "classification": "cost_coverage_gap",
+            "confidence": "high",
+            "assessment": "The exported evidence directly proves a coverage or freshness gap. Dependent production KPIs remain gated.",
+            "businessQuestion": "Are these ingredients inactive, outlet-excluded, or stored outside the selected stock location?"
+          }
+        },
+        {
+          "id": "p1.item_recipe.detail:exact_duplicate",
+          "category": "grain",
+          "issueClass": "grain",
+          "state": "needs_business_definition",
+          "severity": "minor",
+          "title": "One exact recipe line repeats",
           "affectedRowCount": 1,
-          "fields": [],
-          "observation": "1 duplicate rows were observed across the captured exports.",
-          "productionTreatment": "Deduplicate on the approved business grain before aggregation and preserve duplicate counts as a data-quality measure.",
+          "fields": [
+            "menu_item_number",
+            "ingredient_code",
+            "recipe_qty_per_menu_unit",
+            "recipe_unit"
+          ],
+          "observation": "1 additional exact recipe row is present.",
+          "productionTreatment": "Confirm effective recipe grain before deduplication.",
+          "metrics": {},
           "semanticReview": {
             "classification": "deduplication_risk",
             "confidence": "medium",
-            "assessment": "Exact repeated exported rows create an aggregation risk, but they may represent legitimate repeated events when the report omits a transaction-line key. Do not delete them until the business grain is approved.",
-            "businessQuestion": "Which transaction and line identifiers distinguish legitimate repeated rows from duplicate exports?"
+            "assessment": "The repeated evidence is real, but the export grain is insufficient to prove that equal rows represent duplicate business events.",
+            "businessQuestion": "Does the report omit an effective date or recipe-line identifier that distinguishes the rows?"
           }
         }
       ],
@@ -6357,15 +6777,14 @@
       "readiness": "review_required",
       "decision": "Schema-ready; subtotals reconcile within displayed precision, while two periods are empty and exact duplicate-looking rows remain a grain risk.",
       "codexReview": {
-        "status": "coverage_review",
-        "headline": "Schema is sound; critical value coverage remains incomplete.",
+        "status": "business_review",
+        "headline": "Schema is sound; observed rows need business-grain and sign treatment.",
         "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
         "confirmedStructuralErrorCount": 0,
         "classificationCounts": {
-          "coverage_blocker": 1,
           "deduplication_risk": 1
         },
-        "nextDecision": "Resolve the identified period or field coverage gap before enabling dependent production KPIs."
+        "nextDecision": "Approve transaction grain and sign conventions before aggregation."
       },
       "keyFieldCoverage": [
         {
@@ -6423,35 +6842,28 @@
       ],
       "findings": [
         {
-          "id": "p4.recipe_consumption.item:row_coverage",
-          "category": "coverage",
-          "severity": "warning",
-          "title": "Some captured periods are header-only",
-          "affectedRowCount": 0,
-          "fields": [],
-          "observation": "2 of 4 exports contain no data rows.",
-          "productionTreatment": "Keep period completeness visible and exclude empty periods from trend conclusions.",
-          "semanticReview": {
-            "classification": "coverage_blocker",
-            "confidence": "high",
-            "assessment": "The export contains no usable rows for one or more captured periods. This is a confirmed evidence-coverage gap, regardless of whether the underlying operational system contains data elsewhere.",
-            "businessQuestion": "Is the report genuinely unused, filtered incorrectly, permission-restricted, or populated in another module?"
-          }
-        },
-        {
-          "id": "p4.recipe_consumption.item:duplicate_rows",
-          "category": "duplication",
-          "severity": "warning",
-          "title": "Duplicate source rows were observed",
-          "affectedRowCount": 205,
-          "fields": [],
-          "observation": "205 duplicate rows were observed across the captured exports.",
-          "productionTreatment": "Deduplicate on the approved business grain before aggregation and preserve duplicate counts as a data-quality measure.",
+          "id": "p4.recipe_consumption.item:cross_export_duplicate",
+          "category": "grain",
+          "issueClass": "grain",
+          "state": "needs_business_definition",
+          "severity": "major",
+          "title": "Aggregate recipe-consumption exports cannot be safely appended",
+          "affectedRowCount": 266,
+          "fields": [
+            "item_code",
+            "parent_item_qty",
+            "consumed_qty",
+            "consumed_unit",
+            "consumed_subtotal"
+          ],
+          "observation": "266 additional exact rows repeat across populated exports. Because the report omits event date/transaction keys, equality is not proof of duplicate events.",
+          "productionTreatment": "Use non-overlapping exports or snapshot-replacement logic; never deduplicate solely by value equality.",
+          "metrics": {},
           "semanticReview": {
             "classification": "deduplication_risk",
             "confidence": "medium",
-            "assessment": "Exact repeated exported rows create an aggregation risk, but they may represent legitimate repeated events when the report omits a transaction-line key. Do not delete them until the business grain is approved.",
-            "businessQuestion": "Which transaction and line identifiers distinguish legitimate repeated rows from duplicate exports?"
+            "assessment": "The repeated evidence is real, but the export grain is insufficient to prove that equal rows represent duplicate business events.",
+            "businessQuestion": "Does each export represent a period aggregate, and are date endpoints inclusive?"
           }
         }
       ],

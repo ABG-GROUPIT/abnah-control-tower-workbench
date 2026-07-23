@@ -36,9 +36,9 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
   35,128 rows; all headers, Workbench variants, and encoded arithmetic rules
   align, while two reports and two additional periods remain header-only.
 - The semantic reassessment removed parser-generated GST, margin, movement, and
-  displayed-precision false positives. The Control Tower evidence contract now
-  records 11 aggregate coverage, duplicate-grain, cost, and sign-treatment
-  findings with four minimal non-sensitive sign-review excerpts.
+  displayed-precision false positives. The independent business review now
+  records 19 finding types: 11 critical, 7 major, and 1 minor, alongside 23
+  passed controls and no failed structural or cross-report controls.
 - The exact historical `Vendor Report` contract is retained as a quality-gated
   vendor identity source; phone/address spillover must be repaired locally and
   unsupported lead-time or vendor-item attributes remain null.
@@ -55,7 +55,9 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
 - `Control tower`: page requirements, draft KPI formulas, final source register,
   private audit evidence, prioritized report capture, API gaps, and the
   model/delivery decision.
-- `KPI lineage`: draft KPI selector with an intentionally empty source-to-chart canvas until schemas and UAT prove the mapping.
+- `Data quality`: severity-tiered issue register, passed-control ledger, safe
+  hosted evidence, and optional in-browser loading of the private local packet.
+- `Architecture`: KPI-specific source-to-summary routes and the planned layered model.
 - `Workspace`: editable current revision.
 - `Published`: read-only latest published revision or repository baseline.
 
@@ -67,7 +69,8 @@ Developer:
 2. Run `npm install`.
 3. Run `refresh_atlas.bat` after source changes.
 4. Run `npm run dev`.
-5. Run `npm run typecheck`, `npm run lint`, `npm run data:validate`, and `npm test` before transfer.
+5. Run `npm run build:pages` to verify the GitHub Pages bundle.
+6. Run `npm run typecheck`, `npm run lint`, `npm run data:validate`, and `npm test` before transfer.
 
 AI agent:
 
@@ -122,6 +125,7 @@ Editing in the site does not automatically rewrite source JSON. Export a backup 
 refresh_atlas.bat
 py -3 scripts/import_schema_captures.py --p2 "<P2 README>" --p4 "<P4 README>"
 npm run dev
+npm run build:pages
 npm run data:validate
 npm run typecheck
 npm run lint
@@ -129,3 +133,11 @@ npm test
 ```
 
 Generated files under `schema-pack/generated/` and `public/data/` must not be edited manually.
+
+GitHub Pages deploys `pages-dist/` through `.github/workflows/pages.yml`. The
+static build falls back to browser-local workspace persistence. D1 remains the
+authoritative hosted revision store on the Sites deployment.
+
+The portable deterministic engine, report contracts, localhost row reviewer,
+and regression tests are under `tools/local-auditor/`. Its `input/` and
+`output/` directories are local-only and ignored by Git.
