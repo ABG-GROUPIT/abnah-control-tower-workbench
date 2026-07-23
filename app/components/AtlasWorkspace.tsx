@@ -22,6 +22,7 @@ import type {
 } from "../lib/workspace-types";
 import type { ControlTowerArchitecture } from "../lib/architecture-types";
 import type { ControlTowerRequirements } from "../lib/control-tower-types";
+import type { ControlTowerEvidence } from "../lib/control-tower-evidence-types";
 import { ApiRegistry } from "./ApiRegistry";
 import { ArchitectureGraphWorkspace } from "./ArchitectureGraphWorkspace";
 import { ControlTowerWorkspace } from "./ControlTowerWorkspace";
@@ -33,6 +34,7 @@ interface AtlasWorkspaceProps {
   workspaceSeed: WorkspaceSeed;
   architecture: ControlTowerArchitecture;
   controlTower: ControlTowerRequirements;
+  controlTowerEvidence: ControlTowerEvidence;
 }
 
 type Surface = "discovery" | "api" | "control_tower" | "architecture";
@@ -96,7 +98,7 @@ function customReport(page: string, section: string): ReportWorkspaceDocument {
   };
 }
 
-export function AtlasWorkspace({ atlas, workspaceSeed, architecture, controlTower }: AtlasWorkspaceProps) {
+export function AtlasWorkspace({ atlas, workspaceSeed, architecture, controlTower, controlTowerEvidence }: AtlasWorkspaceProps) {
   const baseline = useMemo(() => documentRecord(workspaceSeed.reports), [workspaceSeed.reports]);
   const [documents, setDocuments] = useState<Record<string, ReportWorkspaceDocument>>(() => documentRecord(workspaceSeed.reports));
   const [publishedDocuments, setPublishedDocuments] = useState<Record<string, ReportWorkspaceDocument>>({});
@@ -358,7 +360,7 @@ export function AtlasWorkspace({ atlas, workspaceSeed, architecture, controlTowe
         </div>
       )}
       {surface === "api" && <ApiRegistry reports={reports.filter((report) => !report.isArchived)} onOpenReport={openApiReport} />}
-      {surface === "control_tower" && <ControlTowerWorkspace requirements={controlTower} onOpenReport={openDiscoveryReport} />}
+      {surface === "control_tower" && <ControlTowerWorkspace requirements={controlTower} evidence={controlTowerEvidence} onOpenReport={openDiscoveryReport} />}
       {surface === "architecture" && <ArchitectureGraphWorkspace architecture={architecture} requirements={controlTower} onOpenReport={openDiscoveryReport} />}
     </main>
   );

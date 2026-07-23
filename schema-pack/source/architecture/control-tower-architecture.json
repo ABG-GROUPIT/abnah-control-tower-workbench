@@ -107,16 +107,16 @@
       "logic": "Use exact batch expiry when present and apply signed-off risk windows.", "alternatives": ["If batch evidence is absent, estimate from receipt age plus approved shelf life and label the result Estimated."], "reportId": "report:p4_stock_admin:07_other_reports:03_expiry_report", "catalogState": "catalogued"
     },
     {
-      "id": "src_purchase_order", "layerId": "source", "groupId": "procurement", "kind": "report", "label": "Purchase Order Report",
-      "description": "Operational PO authority replacing the empty Enterprise Purchase Order screen.", "status": "selected_for_validation", "role": "Purchase order line authority", "pages": ["page_1_risk_action_center", "page_2_procurement_vendor_capital", "page_4_scm_explorer_data_quality"],
+      "id": "src_purchase_order", "layerId": "source", "groupId": "procurement", "kind": "report", "label": "Enterprise Purchase Order Report",
+      "description": "Populated enterprise PO line source, gated by receipt linkage and approved status semantics.", "status": "selected_for_validation", "role": "Purchase order line authority", "pages": ["page_1_risk_action_center", "page_2_procurement_vendor_capital", "page_4_scm_explorer_data_quality"],
       "dataPoints": ["PO and line reference", "Status", "Vendor", "Outlet and store", "Item", "Ordered, processed and remaining quantity", "Expected and close date", "Unit price, tax and total cost"], "inputs": [],
-      "logic": "Export every status separately, then union with source status preserved and one canonical open/closed state.", "alternatives": ["Enterprise Purchase Order is excluded because the UAT report is empty.", "Purchase Detail supplies actual receipt and invoice evidence."], "reportId": "report:p4_stock_admin:03_po_so_reports:01_purchase_order", "catalogState": "catalogued"
+      "logic": "Preserve source status, link each PO line to Enterprise Entry, and derive open or closed state only after business approval.", "alternatives": ["Purchase Detail supplies sparse receipt and invoice reconciliation evidence.", "Regular Purchase Order can be evaluated if enterprise status semantics prove insufficient."], "reportId": "report:p4_stock_admin:01_enterprise_reports:06_enterprise_purchase_order", "catalogState": "catalogued"
     },
     {
       "id": "src_standing_po", "layerId": "source", "groupId": "procurement", "kind": "report", "label": "Standing Purchase Order Report",
       "description": "Optional standing-order context when ABNAH uses releases and exposes linkage keys.", "status": "conditional", "role": "Conditional agreement source", "pages": ["page_2_procurement_vendor_capital", "page_4_scm_explorer_data_quality"],
       "dataPoints": ["Standing PO", "Release PO", "Status", "Vendor", "Item", "Committed quantity", "Release quantity", "Validity period"], "inputs": [],
-      "logic": "Ingest only when populated and a standing-PO-to-release-PO key is proven.", "alternatives": ["Regular Purchase Order Report remains sufficient when standing orders are unused."], "reportId": "report:p4_stock_admin:03_po_so_reports:02_standing_purchase_order", "catalogState": "catalogued"
+      "logic": "Ingest only when populated and a standing-PO-to-release-PO key is proven.", "alternatives": ["Enterprise Purchase Order remains sufficient when standing orders are unused."], "reportId": "report:p4_stock_admin:03_po_so_reports:02_standing_purchase_order", "catalogState": "catalogued"
     },
     {
       "id": "src_purchase_detail", "layerId": "source", "groupId": "procurement", "kind": "report", "label": "Purchase Detail",
@@ -246,7 +246,7 @@
     {"summaryNodeId": "sum_data_quality", "kpiIds": ["ct_negative_stock_count", "ct_zero_stock_with_demand_count", "ct_sold_items_missing_recipe_count", "ct_items_missing_master_count", "ct_uom_mismatch_count", "ct_open_po_missing_expected_date_count"]}
   ],
   "decisions": [
-    {"id": "decision_po_authority", "title": "PO source authority", "decision": "Use Purchase Order Report as the PO authority and exclude Enterprise Purchase Order from the production set.", "rationale": "The enterprise report is empty in UAT; the regular report exposes status, quantities, dates, vendor, item and cost required by the control tower.", "status": "adopted"},
+    {"id": "decision_po_authority", "title": "PO source authority", "decision": "Use Enterprise Purchase Order as the primary PO line source, with Enterprise Entry as receipt evidence.", "rationale": "The latest populated export matches the 27-column contract; production OTIF still requires exact receipt linkage, approved status semantics and an eligible closed-line rule.", "status": "pending_validation"},
     {"id": "decision_layered_model", "title": "Layered model retained", "decision": "Keep RAW to STD to DIM/FACT to SUM as the production architecture.", "rationale": "It separates source fidelity, quality checks, conformed identity and reusable KPI logic while supporting Zoho Analytics ingestion.", "status": "adopted"},
     {"id": "decision_standing_po", "title": "Standing PO conditional", "decision": "Ingest Standing Purchase Order only if ABNAH uses it and release linkage is available.", "rationale": "Without release keys, standing-order analytics would create unprovable PO coverage and liability logic.", "status": "conditional"},
     {"id": "decision_lineage_gate", "title": "Planned versus reviewed lineage", "decision": "Keep this graph labeled planned until local structural and value validation passes.", "rationale": "Presentation readiness must not convert a feasible design into false evidence of implemented or approved mappings.", "status": "pending_validation"}

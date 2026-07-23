@@ -3,7 +3,9 @@
 ## Repository
 
 - [ ] No screenshots or other image files are present.
-- [ ] No credentials, tokens, cookies, row values, or private exports are present.
+- [ ] No credentials, tokens, cookies, full rows, arbitrary report values, or
+  private exports are present. Any Control Tower excerpts are compiler-generated,
+  issue-only, non-sensitive, and limited to one per finding type.
 - [ ] P2/P4 source blueprints are under the correct page/section.
 - [ ] Generated files were rebuilt rather than edited manually.
 - [ ] `schema-pack/manifest.json` matches the generated contracts.

@@ -9,6 +9,7 @@ import {
   ExternalLink,
   FileCheck2,
   FileSpreadsheet,
+  ScanSearch,
   Layers3,
   ListChecks,
   Route,
@@ -20,13 +21,16 @@ import type {
   ControlTowerKpi,
   ControlTowerRequirements,
 } from "../lib/control-tower-types";
+import type { ControlTowerEvidence } from "../lib/control-tower-evidence-types";
+import { ControlTowerEvidenceView } from "./ControlTowerEvidence";
 
 interface ControlTowerWorkspaceProps {
   requirements: ControlTowerRequirements;
+  evidence: ControlTowerEvidence;
   onOpenReport: (reportId: string) => void;
 }
 
-type ControlTowerView = "pages" | "sources" | "delivery";
+type ControlTowerView = "pages" | "sources" | "evidence" | "delivery";
 
 const statusLabel = (value: string) => value.replaceAll("_", " ");
 
@@ -197,7 +201,10 @@ function CaptureGroupSection({ group, onOpenReport }: { group: CaptureGroup; onO
   );
 }
 
-function SourcePlan({ requirements, onOpenReport }: ControlTowerWorkspaceProps) {
+function SourcePlan({
+  requirements,
+  onOpenReport,
+}: Pick<ControlTowerWorkspaceProps, "requirements" | "onOpenReport">) {
   return (
     <div className="ct-reading-column">
       <section className="ct-progress-band">
@@ -312,7 +319,7 @@ function DeliveryPlan({ requirements }: { requirements: ControlTowerRequirements
   );
 }
 
-export function ControlTowerWorkspace({ requirements, onOpenReport }: ControlTowerWorkspaceProps) {
+export function ControlTowerWorkspace({ requirements, evidence, onOpenReport }: ControlTowerWorkspaceProps) {
   const [view, setView] = useState<ControlTowerView>("pages");
   const approvedKpis = requirements.kpis.filter((kpi) => kpi.approvalStatus === "approved").length;
 
@@ -330,11 +337,13 @@ export function ControlTowerWorkspace({ requirements, onOpenReport }: ControlTow
       <nav className="ct-view-tabs" aria-label="Control tower planning views">
         <button type="button" className={view === "pages" ? "is-active" : ""} onClick={() => setView("pages")}><ListChecks aria-hidden="true" size={15} /> Page requirements</button>
         <button type="button" className={view === "sources" ? "is-active" : ""} onClick={() => setView("sources")}><FileSpreadsheet aria-hidden="true" size={15} /> Source capture plan</button>
+        <button type="button" className={view === "evidence" ? "is-active" : ""} onClick={() => setView("evidence")}><ScanSearch aria-hidden="true" size={15} /> Selected sources & audit</button>
         <button type="button" className={view === "delivery" ? "is-active" : ""} onClick={() => setView("delivery")}><DatabaseZap aria-hidden="true" size={15} /> Model & delivery</button>
       </nav>
 
       {view === "pages" ? <PageRequirements requirements={requirements} /> : null}
       {view === "sources" ? <SourcePlan requirements={requirements} onOpenReport={onOpenReport} /> : null}
+      {view === "evidence" ? <ControlTowerEvidenceView evidence={evidence} onOpenReport={onOpenReport} /> : null}
       {view === "delivery" ? <DeliveryPlan requirements={requirements} /> : null}
     </section>
   );

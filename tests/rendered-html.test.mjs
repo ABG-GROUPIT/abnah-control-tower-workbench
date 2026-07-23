@@ -33,10 +33,11 @@ test("server-renders the editable ABNAH schema workspace", async () => {
 });
 
 test("ships screenshot-free workspace and control-tower contracts", async () => {
-  const [workspaceText, atlasText, controlTowerText, architectureText, lineageText, migration, packageJson] = await Promise.all([
+  const [workspaceText, atlasText, controlTowerText, evidenceText, architectureText, lineageText, migration, packageJson] = await Promise.all([
     readFile(new URL("../schema-pack/generated/workspace.json", import.meta.url), "utf8"),
     readFile(new URL("../schema-pack/generated/atlas.json", import.meta.url), "utf8"),
     readFile(new URL("../schema-pack/generated/control-tower-requirements.json", import.meta.url), "utf8"),
+    readFile(new URL("../schema-pack/generated/control-tower-evidence.json", import.meta.url), "utf8"),
     readFile(new URL("../schema-pack/generated/control-tower-architecture.json", import.meta.url), "utf8"),
     readFile(new URL("../schema-pack/generated/kpi-lineage.json", import.meta.url), "utf8"),
     readFile(new URL("../drizzle/0000_faulty_leader.sql", import.meta.url), "utf8"),
@@ -45,6 +46,7 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   const workspace = JSON.parse(workspaceText);
   const atlas = JSON.parse(atlasText);
   const controlTower = JSON.parse(controlTowerText);
+  const evidence = JSON.parse(evidenceText);
   const architecture = JSON.parse(architectureText);
   const lineage = JSON.parse(lineageText);
   const misc = workspace.reports.filter((report) => report.page === "p1_main" && report.section === "06_misc");
@@ -63,13 +65,24 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   assert.equal(architecture.sourceNodes.filter((node) => node.kind === "master").length, 2);
   assert.equal(architecture.modelNodes.length, 58);
   assert.equal(new Set(architecture.kpiRoutes.flatMap((route) => route.kpiIds)).size, 35);
-  assert.ok(architecture.sourceNodes.some((node) => node.id === "src_purchase_order"));
-  assert.ok(!architecture.sourceNodes.some((node) => node.label === "Enterprise Purchase Order"));
+  assert.ok(architecture.sourceNodes.some(
+    (node) => node.id === "src_purchase_order"
+      && node.label === "Enterprise Purchase Order Report"
+      && node.reportId === "report:p4_stock_admin:01_enterprise_reports:06_enterprise_purchase_order",
+  ));
+  assert.equal(evidence.summary.selectedSourceCount, 22);
+  assert.equal(evidence.summary.auditedReportCount, 20);
+  assert.equal(evidence.summary.auditedFileCount, 26);
+  assert.equal(evidence.summary.schemaVisualMatches, 20);
+  assert.equal(evidence.summary.headerOnlyReportCount, 2);
+  assert.equal(evidence.privacy.fullRowsIncluded, false);
+  assert.equal(evidence.privacy.sensitiveValuesIncluded, false);
   assert.equal(lineage.status, "requirements_received");
   assert.equal(lineage.kpis.filter((kpi) => kpi.approvalStatus === "draft").length, 35);
   assert.equal(lineage.nodes.length, 0);
   assert.equal(lineage.edges.length, 0);
   assert.doesNotMatch(controlTowerText, /\.png\b|AppData\\Local\\Temp|Downloads\\/i);
+  assert.doesNotMatch(evidenceText, /\.png\b|\.jpe?g\b|[A-Za-z]:\\|Downloads\\|file_sha256|file_name/i);
   assert.doesNotMatch(architectureText, /\.png\b|\.jpe?g\b|AppData\\Local\\Temp|Downloads\\/i);
 
   const budget = workspace.reports.find((report) => report.id === "report:p1_main:06_misc:03_budget_dsr_report");

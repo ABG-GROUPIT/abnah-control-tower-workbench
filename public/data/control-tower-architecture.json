@@ -513,8 +513,8 @@
       "layerId": "source",
       "groupId": "procurement",
       "kind": "report",
-      "label": "Purchase Order Report",
-      "description": "Operational PO authority replacing the empty Enterprise Purchase Order screen.",
+      "label": "Enterprise Purchase Order Report",
+      "description": "Populated enterprise PO line source, gated by receipt linkage and approved status semantics.",
       "status": "selected_for_validation",
       "role": "Purchase order line authority",
       "pages": [
@@ -533,12 +533,12 @@
         "Unit price, tax and total cost"
       ],
       "inputs": [],
-      "logic": "Export every status separately, then union with source status preserved and one canonical open/closed state.",
+      "logic": "Preserve source status, link each PO line to Enterprise Entry, and derive open or closed state only after business approval.",
       "alternatives": [
-        "Enterprise Purchase Order is excluded because the UAT report is empty.",
-        "Purchase Detail supplies actual receipt and invoice evidence."
+        "Purchase Detail supplies sparse receipt and invoice reconciliation evidence.",
+        "Regular Purchase Order can be evaluated if enterprise status semantics prove insufficient."
       ],
-      "reportId": "report:p4_stock_admin:03_po_so_reports:01_purchase_order",
+      "reportId": "report:p4_stock_admin:01_enterprise_reports:06_enterprise_purchase_order",
       "catalogState": "catalogued"
     },
     {
@@ -567,7 +567,7 @@
       "inputs": [],
       "logic": "Ingest only when populated and a standing-PO-to-release-PO key is proven.",
       "alternatives": [
-        "Regular Purchase Order Report remains sufficient when standing orders are unused."
+        "Enterprise Purchase Order remains sufficient when standing orders are unused."
       ],
       "reportId": "report:p4_stock_admin:03_po_so_reports:02_standing_purchase_order",
       "catalogState": "catalogued"
@@ -2642,9 +2642,9 @@
     {
       "id": "decision_po_authority",
       "title": "PO source authority",
-      "decision": "Use Purchase Order Report as the PO authority and exclude Enterprise Purchase Order from the production set.",
-      "rationale": "The enterprise report is empty in UAT; the regular report exposes status, quantities, dates, vendor, item and cost required by the control tower.",
-      "status": "adopted"
+      "decision": "Use Enterprise Purchase Order as the primary PO line source, with Enterprise Entry as receipt evidence.",
+      "rationale": "The latest populated export matches the 27-column contract; production OTIF still requires exact receipt linkage, approved status semantics and an eligible closed-line rule.",
+      "status": "pending_validation"
     },
     {
       "id": "decision_layered_model",

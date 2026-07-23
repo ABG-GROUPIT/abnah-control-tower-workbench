@@ -14,7 +14,9 @@ Prohibited:
 
 - screenshots or image files;
 - screenshot/local evidence paths in new blueprints;
-- report row values or customer/vendor records;
+- full report rows, arbitrary values, or customer/vendor records;
+- audit excerpts not generated under the issue-only, non-sensitive evidence
+  policy;
 - cookies, access tokens, API keys, passwords, or signed URLs;
 - secrets copied into notes or test results.
 

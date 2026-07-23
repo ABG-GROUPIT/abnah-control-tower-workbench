@@ -1,0 +1,3343 @@
+{
+  "contractVersion": "1.0.0",
+  "status": "deterministic_evidence_compiled",
+  "asOfDate": "2026-07-23",
+  "sourcePolicy": "Issue-only evidence derived locally. Screenshots, full rows, local paths, file names, hashes, credentials, and sensitive values are excluded.",
+  "privacy": {
+    "rawFilesRemainLocal": true,
+    "fullRowsIncluded": false,
+    "sensitiveValuesIncluded": false,
+    "issueExcerptPolicy": "At most one non-sensitive row excerpt per deterministic finding type."
+  },
+  "decision": {
+    "headline": "Schemas align; actual values are not yet ready for direct KPI publication.",
+    "reason": "Synthetic data is used for the demonstrator because essential reports have coverage gaps, periods are not aligned, and several exported amount or margin fields require deterministic reconciliation.",
+    "productionRule": "Raw exports remain authoritative evidence. Standardized calculations, exception flags, and business sign-off are required before production KPIs are published."
+  },
+  "summary": {
+    "selectedSourceCount": 22,
+    "primarySourceCount": 10,
+    "auxiliarySourceCount": 6,
+    "controlSourceCount": 6,
+    "auditedReportCount": 20,
+    "auditedFileCount": 26,
+    "auditedRowCount": 35128,
+    "schemaContractMatches": 26,
+    "schemaVisualMatches": 20,
+    "headerOnlyReportCount": 2,
+    "deterministicIssueRowCount": 13020
+  },
+  "sourceRegister": [
+    {
+      "id": "source:rawn_ct_gross_net_margin",
+      "sourceName": "Gross/Net Margin Report",
+      "sourceTable": "RAWN_CT_gross_net_margin",
+      "modelRole": "primary",
+      "roleGroup": "primary",
+      "pages": [
+        "P3",
+        "P4"
+      ],
+      "requiredFields": [
+        "sale_date",
+        "bill_number",
+        "item_code",
+        "item_name",
+        "item_qty",
+        "net_sale_value",
+        "purchase_value"
+      ],
+      "productionDecision": "Use as the item-sales and source-margin authority after total reconciliation",
+      "fallbackOrReconciliation": "Bill Item Detail Report",
+      "auditReportId": "p2.gross_net_margin.item",
+      "workbenchReportId": "report:p2_reports:07_sales:33_food_sold_report",
+      "auditStatus": "populated",
+      "rowCount": 11511
+    },
+    {
+      "id": "source:rawn_ct_item_recipe_report",
+      "sourceName": "Item Recipe Report",
+      "sourceTable": "RAWN_CT_item_recipe_report",
+      "modelRole": "primary",
+      "roleGroup": "primary",
+      "pages": [
+        "P1",
+        "P3",
+        "P4"
+      ],
+      "requiredFields": [
+        "menu_item_number",
+        "ingredient_code",
+        "recipe_qty_per_menu_unit",
+        "recipe_unit"
+      ],
+      "productionDecision": "Use only after stable item identifiers and UOM conversion are approved",
+      "fallbackOrReconciliation": "Recipe Consumption Report",
+      "auditReportId": "p1.item_recipe.detail",
+      "workbenchReportId": "report:p1_main:06_misc:18_item_recipe_report",
+      "auditStatus": "populated",
+      "rowCount": 899
+    },
+    {
+      "id": "source:rawn_ct_enterprise_variance_normal",
+      "sourceName": "Enterprise Variance Report - normal",
+      "sourceTable": "RAWN_CT_enterprise_variance_normal",
+      "modelRole": "primary",
+      "roleGroup": "primary",
+      "pages": [
+        "P3",
+        "P4"
+      ],
+      "requiredFields": [
+        "opening_qty",
+        "purchase_qty",
+        "stock_in_qty",
+        "stock_out_qty",
+        "return_qty",
+        "closing_qty",
+        "actual_consumption_qty",
+        "average_price"
+      ],
+      "productionDecision": "Use as the month-end actual-consumption checkpoint; month-to-date remains provisional",
+      "fallbackOrReconciliation": "Enterprise Consumption Detail plus movement bridge",
+      "auditReportId": "p4.enterprise_variance.normal",
+      "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:08_enterprise_variance",
+      "auditStatus": "populated",
+      "rowCount": 812
+    },
+    {
+      "id": "source:rawn_ct_closing_stock",
+      "sourceName": "Closing Stock Report",
+      "sourceTable": "RAWN_CT_closing_stock",
+      "modelRole": "primary",
+      "roleGroup": "primary",
+      "pages": [
+        "P1",
+        "P2",
+        "P4"
+      ],
+      "requiredFields": [
+        "stock_date",
+        "item_code",
+        "total_qty",
+        "average_price",
+        "total_amt"
+      ],
+      "productionDecision": "Use source amount when quantity x cost reconciles",
+      "fallbackOrReconciliation": "Enterprise Physical plus Enterprise Opening",
+      "auditReportId": "p4.closing_stock.item",
+      "workbenchReportId": "report:p4_stock_admin:06_analytical_reports:04_closing_stock_report",
+      "auditStatus": "populated",
+      "rowCount": 1148
+    },
+    {
+      "id": "source:rawn_ct_enterprise_purchase_order",
+      "sourceName": "Enterprise Purchase Order Report - item detail",
+      "sourceTable": "RAWN_CT_enterprise_purchase_order",
+      "modelRole": "primary_production_gate",
+      "roleGroup": "primary",
+      "pages": [
+        "P1",
+        "P2",
+        "P4"
+      ],
+      "requiredFields": [
+        "po_number",
+        "po_date",
+        "expected_delivery_date",
+        "po_status",
+        "item_code",
+        "processed_qty",
+        "remaining_balance_qty",
+        "ordered_qty",
+        "unit_price",
+        "total_item_cost"
+      ],
+      "productionDecision": "Populated UAT source; publish PO risk only after receipt linkage, status semantics and closed-line eligibility are approved",
+      "fallbackOrReconciliation": "Purchase Detail with PO details remains a sparse reconciliation fallback",
+      "auditReportId": "p4.enterprise_purchase_order.item",
+      "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:06_enterprise_purchase_order",
+      "auditStatus": "populated",
+      "rowCount": 113
+    },
+    {
+      "id": "source:rawn_ct_enterprise_entry",
+      "sourceName": "Enterprise Entry Report - Stock Entry",
+      "sourceTable": "RAWN_CT_enterprise_entry",
+      "modelRole": "primary",
+      "roleGroup": "primary",
+      "pages": [
+        "P1",
+        "P2",
+        "P4"
+      ],
+      "requiredFields": [
+        "entry_date",
+        "transaction_number",
+        "po_number",
+        "batch_number",
+        "item_code",
+        "entry_qty",
+        "unit_price",
+        "total_amt"
+      ],
+      "productionDecision": "Use as GRN or accepted-receipt authority after PO-number coverage check",
+      "fallbackOrReconciliation": "Purchase Detail",
+      "auditReportId": "p4.enterprise_entry.item",
+      "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:01_enterprise_entry",
+      "auditStatus": "populated",
+      "rowCount": 562
+    },
+    {
+      "id": "source:rawn_ct_enterprise_transfer_from",
+      "sourceName": "Enterprise Transfer Report - Transfer From",
+      "sourceTable": "RAWN_CT_enterprise_transfer_from",
+      "modelRole": "primary",
+      "roleGroup": "primary",
+      "pages": [
+        "P1",
+        "P3",
+        "P4"
+      ],
+      "requiredFields": [
+        "transfer_date",
+        "transaction_number",
+        "item_code",
+        "transfer_qty",
+        "transfer_amt",
+        "receiver_store_kitchen_name"
+      ],
+      "productionDecision": "Pair with Transfer To and reconcile transaction totals",
+      "fallbackOrReconciliation": "Stock In Stock Out Report",
+      "auditReportId": "p4.enterprise_transfer.from_item",
+      "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:01_enterprise_entry",
+      "auditStatus": "populated",
+      "rowCount": 211
+    },
+    {
+      "id": "source:rawn_ct_enterprise_transfer_to",
+      "sourceName": "Enterprise Transfer Report - Transfer To",
+      "sourceTable": "RAWN_CT_enterprise_transfer_to",
+      "modelRole": "primary",
+      "roleGroup": "primary",
+      "pages": [
+        "P1",
+        "P3",
+        "P4"
+      ],
+      "requiredFields": [
+        "transfer_date",
+        "transaction_number",
+        "item_code",
+        "transfer_qty",
+        "transfer_amt",
+        "supplier_store_name"
+      ],
+      "productionDecision": "Pair with Transfer From and reconcile transaction totals",
+      "fallbackOrReconciliation": "Stock In Stock Out Report",
+      "auditReportId": "p4.enterprise_transfer.to_item",
+      "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:01_enterprise_entry",
+      "auditStatus": "populated",
+      "rowCount": 211
+    },
+    {
+      "id": "source:rawn_ct_enterprise_wastage_normal",
+      "sourceName": "Enterprise Wastage Report - normal",
+      "sourceTable": "RAWN_CT_enterprise_wastage_normal",
+      "modelRole": "primary",
+      "roleGroup": "primary",
+      "pages": [
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "requiredFields": [
+        "wastage_date",
+        "transaction_number",
+        "item_code",
+        "wastage_qty",
+        "unit_price",
+        "wastage_amt"
+      ],
+      "productionDecision": "Observed wastage loss authority",
+      "fallbackOrReconciliation": "Gross Sale Wastage only if enterprise report is incomplete",
+      "auditReportId": "p4.enterprise_wastage.normal",
+      "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:12_enterprise_wastage_report",
+      "auditStatus": "populated",
+      "rowCount": 581
+    },
+    {
+      "id": "source:rawn_ct_enterprise_stock_return",
+      "sourceName": "Enterprise Stock Return Report",
+      "sourceTable": "RAWN_CT_enterprise_stock_return",
+      "modelRole": "primary",
+      "roleGroup": "primary",
+      "pages": [
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "requiredFields": [
+        "transaction_number",
+        "stock_entry_date",
+        "return_date",
+        "vendor_name",
+        "item_code",
+        "return_qty",
+        "return_amt"
+      ],
+      "productionDecision": "Join to the original GRN number and item before calculating vendor return rate",
+      "fallbackOrReconciliation": "Bulk Return Report",
+      "auditReportId": "p4.enterprise_stock_return.item",
+      "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:03_enterprise_stock_return",
+      "auditStatus": "header_only",
+      "rowCount": 0
+    },
+    {
+      "id": "source:aux_outlet_master",
+      "sourceName": "AUX Outlet Master",
+      "sourceTable": "AUX_Outlet_Master",
+      "modelRole": "required_dimension",
+      "roleGroup": "auxiliary",
+      "pages": [
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "requiredFields": [
+        "outlet_code",
+        "outlet_name",
+        "region",
+        "city",
+        "latitude",
+        "longitude",
+        "new_matured_flag"
+      ],
+      "productionDecision": "Replace with ABNAH-approved outlet master and verified coordinates",
+      "fallbackOrReconciliation": "None",
+      "auditReportId": "",
+      "workbenchReportId": "",
+      "auditStatus": "not_in_local_export_set",
+      "rowCount": 0
+    },
+    {
+      "id": "source:aux_item_master",
+      "sourceName": "AUX Item Master",
+      "sourceTable": "AUX_Item_Master",
+      "modelRole": "required_dimension",
+      "roleGroup": "auxiliary",
+      "pages": [
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "requiredFields": [
+        "item_code",
+        "canonical_uom",
+        "uom_conversion_factor",
+        "average_price",
+        "reorder_level_qty",
+        "primary_vendor",
+        "shelf_life_days"
+      ],
+      "productionDecision": "Replace with approved item/UOM/vendor master; quantity KPIs are blocked without it",
+      "fallbackOrReconciliation": "Enterprise ReOrder plus item master export",
+      "auditReportId": "",
+      "workbenchReportId": "",
+      "auditStatus": "not_in_local_export_set",
+      "rowCount": 0
+    },
+    {
+      "id": "source:aux_vendor_master",
+      "sourceName": "AUX Vendor Master",
+      "sourceTable": "AUX_Vendor_Master",
+      "modelRole": "required_dimension",
+      "roleGroup": "auxiliary",
+      "pages": [
+        "P1",
+        "P2"
+      ],
+      "requiredFields": [
+        "vendor_code",
+        "vendor_name",
+        "default_lead_time_days",
+        "approved_category_mapping"
+      ],
+      "productionDecision": "Replace with approved vendor master and commercial lead-time rules",
+      "fallbackOrReconciliation": "ERP Vendor Price schema capture",
+      "auditReportId": "",
+      "workbenchReportId": "",
+      "auditStatus": "not_in_local_export_set",
+      "rowCount": 0
+    },
+    {
+      "id": "source:aux_menu_demand_forecast",
+      "sourceName": "AUX Menu Demand Forecast",
+      "sourceTable": "AUX_Menu_Demand_Forecast",
+      "modelRole": "required_feature",
+      "roleGroup": "auxiliary",
+      "pages": [
+        "P1"
+      ],
+      "requiredFields": [
+        "forecast_as_of_month",
+        "forecast_date",
+        "outlet_code",
+        "menu_item_code",
+        "forecast_qty",
+        "forecast_net_sales"
+      ],
+      "productionDecision": "Replace with approved Zoho AutoML or Code Studio forecast and retain model version/confidence",
+      "fallbackOrReconciliation": "Historical rolling baseline",
+      "auditReportId": "",
+      "workbenchReportId": "",
+      "auditStatus": "not_in_local_export_set",
+      "rowCount": 0
+    },
+    {
+      "id": "source:aux_theoretical_consumption",
+      "sourceName": "AUX Theoretical Consumption",
+      "sourceTable": "AUX_Theoretical_Consumption",
+      "modelRole": "validation_reference",
+      "roleGroup": "auxiliary",
+      "pages": [
+        "P3"
+      ],
+      "requiredFields": [
+        "source_period_code",
+        "outlet_code",
+        "item_code",
+        "theoretical_qty",
+        "unit",
+        "average_price"
+      ],
+      "productionDecision": "Recalculate from validated sales and effective recipes in production",
+      "fallbackOrReconciliation": "Recipe Consumption Report",
+      "auditReportId": "",
+      "workbenchReportId": "",
+      "auditStatus": "not_in_local_export_set",
+      "rowCount": 0
+    },
+    {
+      "id": "source:aux_expiry_estimate",
+      "sourceName": "AUX Expiry Estimate",
+      "sourceTable": "AUX_Expiry_Estimate",
+      "modelRole": "conditional_feature",
+      "roleGroup": "auxiliary",
+      "pages": [
+        "P1",
+        "P2",
+        "P4"
+      ],
+      "requiredFields": [
+        "source_period_code",
+        "as_of_date",
+        "outlet_code",
+        "item_code",
+        "qty_at_risk",
+        "expiry_risk_value",
+        "is_estimated"
+      ],
+      "productionDecision": "Always label estimated until batch and expiry evidence is validated",
+      "fallbackOrReconciliation": "Exact Expiry Report or batch-level Enterprise Entry",
+      "auditReportId": "",
+      "workbenchReportId": "",
+      "auditStatus": "not_in_local_export_set",
+      "rowCount": 0
+    },
+    {
+      "id": "source:rawn_ct_bill_item_detail",
+      "sourceName": "Bill Item Detail Report",
+      "sourceTable": "RAWN_CT_bill_item_detail",
+      "modelRole": "reconciliation",
+      "roleGroup": "control",
+      "pages": [
+        "P3",
+        "P4"
+      ],
+      "requiredFields": [
+        "sale_date",
+        "bill_number",
+        "item_code",
+        "item_qty",
+        "net_sale_value"
+      ],
+      "productionDecision": "Reconcile item quantity and net sales against Gross/Net Margin",
+      "fallbackOrReconciliation": "None",
+      "auditReportId": "p2.bill_item_detail.item",
+      "workbenchReportId": "report:p2_reports:07_sales:06_bill_item_detail_report",
+      "auditStatus": "populated",
+      "rowCount": 8138
+    },
+    {
+      "id": "source:rawn_ct_purchase_detail",
+      "sourceName": "Purchase Detail - PO details enabled",
+      "sourceTable": "RAWN_CT_purchase_detail",
+      "modelRole": "fallback_and_reconciliation",
+      "roleGroup": "control",
+      "pages": [
+        "P2",
+        "P4"
+      ],
+      "requiredFields": [
+        "po_number",
+        "po_date",
+        "po_qty",
+        "po_unit_price",
+        "purchase_qty",
+        "purchase_amount",
+        "total_amt"
+      ],
+      "productionDecision": "Fallback for ordered-versus-received value only; cannot by itself support overdue PO or OTIF",
+      "fallbackOrReconciliation": "Enterprise Purchase Order plus Enterprise Entry",
+      "auditReportId": "p4.purchase_detail.po_enabled",
+      "workbenchReportId": "report:p4_stock_admin:02_transactional_reports:05_purchase_detail",
+      "auditStatus": "populated",
+      "rowCount": 288
+    },
+    {
+      "id": "source:rawn_ct_recipe_consumption",
+      "sourceName": "Recipe Consumption Report",
+      "sourceTable": "RAWN_CT_recipe_consumption",
+      "modelRole": "reconciliation",
+      "roleGroup": "control",
+      "pages": [
+        "P3",
+        "P4"
+      ],
+      "requiredFields": [
+        "item_code",
+        "parent_item_qty",
+        "consumed_item_code",
+        "consumed_qty",
+        "consumed_subtotal"
+      ],
+      "productionDecision": "Compare model-derived theoretical consumption to source-reported recipe consumption",
+      "fallbackOrReconciliation": "Item Recipe Report",
+      "auditReportId": "p4.recipe_consumption.item",
+      "workbenchReportId": "report:p4_stock_admin:05_aggregation_reports:07_recipe_consumption_report",
+      "auditStatus": "populated",
+      "rowCount": 1927
+    },
+    {
+      "id": "source:rawn_ct_enterprise_consumption_detail",
+      "sourceName": "Enterprise Consumption Detail",
+      "sourceTable": "RAWN_CT_enterprise_consumption_detail",
+      "modelRole": "reconciliation",
+      "roleGroup": "control",
+      "pages": [
+        "P3",
+        "P4"
+      ],
+      "requiredFields": [
+        "opening_qty",
+        "purchase_qty",
+        "indent_receive_qty",
+        "indent_dispatch_qty",
+        "stock_in_qty",
+        "stock_out_qty",
+        "closing_qty"
+      ],
+      "productionDecision": "Use for movement reconciliation and diagnosis",
+      "fallbackOrReconciliation": "Enterprise Variance Normal",
+      "auditReportId": "p4.enterprise_consumption.detail",
+      "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:04_enterprise_consumption",
+      "auditStatus": "populated",
+      "rowCount": 812
+    },
+    {
+      "id": "source:rawn_ct_enterprise_physical",
+      "sourceName": "Enterprise Physical Report",
+      "sourceTable": "RAWN_CT_enterprise_physical",
+      "modelRole": "publication_gate",
+      "roleGroup": "control",
+      "pages": [
+        "P3",
+        "P4"
+      ],
+      "requiredFields": [
+        "physical_date",
+        "item_code",
+        "physical_qty",
+        "physical_amt"
+      ],
+      "productionDecision": "Use month-end physical counts to mark variance final",
+      "fallbackOrReconciliation": "Closing Stock Report",
+      "auditReportId": "p4.enterprise_physical.item",
+      "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:01_enterprise_entry",
+      "auditStatus": "populated",
+      "rowCount": 6251
+    },
+    {
+      "id": "source:rawn_ct_enterprise_reorder",
+      "sourceName": "Enterprise ReOrder Report",
+      "sourceTable": "RAWN_CT_enterprise_reorder",
+      "modelRole": "dimension_enrichment",
+      "roleGroup": "control",
+      "pages": [
+        "P1",
+        "P4"
+      ],
+      "requiredFields": [
+        "item_code",
+        "reorder_level_qty",
+        "minimum_order_level_qty"
+      ],
+      "productionDecision": "Use as a threshold input only; never replace demand-aware stockout logic",
+      "fallbackOrReconciliation": "Approved Item Master",
+      "auditReportId": "p4.enterprise_reorder.item",
+      "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:05_enterprise_stock_re_order",
+      "auditStatus": "header_only",
+      "rowCount": 0
+    }
+  ],
+  "reportEvidence": [
+    {
+      "reportId": "p2.bill_item_detail.item",
+      "displayName": "Bill Item Detail Report",
+      "selection": {
+        "status": "selected",
+        "modelRole": "reconciliation",
+        "roleGroup": "control",
+        "pages": [
+          "P3",
+          "P4"
+        ],
+        "sourceTable": "RAWN_CT_bill_item_detail",
+        "reason": "Reconcile item quantity and net sales against Gross/Net Margin"
+      },
+      "filesAudited": 2,
+      "rowsAudited": 8138,
+      "emptyFileCount": 0,
+      "duplicateRowCount": 0,
+      "periods": [
+        "Export 1",
+        "Export 2"
+      ],
+      "schema": {
+        "contractMatch": "exact",
+        "contractVariantCount": 1,
+        "status": "exact",
+        "workbenchReportId": "report:p2_reports:07_sales:06_bill_item_detail_report",
+        "matchedVariantId": "primary",
+        "matchedVariantName": "CSV bill item detail",
+        "columnCount": 32,
+        "statement": "Observed CSV header matches its contract exactly; canonical column positions match the captured Workbench variant, including grouped quantity and amount headings."
+      },
+      "readiness": "review_required",
+      "decision": "Schema-ready; use as sales reconciliation evidence, not as the sole net-sales formula authority.",
+      "keyFieldCoverage": [
+        {
+          "field": "bill_number",
+          "label": "bill number",
+          "declaredType": "text",
+          "totalCount": 8138,
+          "nonNullCount": 8138,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "item_qty",
+          "label": "item qty",
+          "declaredType": "decimal",
+          "totalCount": 8138,
+          "nonNullCount": 8138,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        }
+      ],
+      "findings": [
+        {
+          "id": "p2.bill_item_detail.item:bill_item_net_bridge",
+          "category": "business_rule",
+          "severity": "review",
+          "title": "Bill-item net amount does not reconcile to the exported bridge",
+          "affectedRowCount": 6735,
+          "fields": [
+            "net_amt",
+            "line_amt",
+            "discount_amt",
+            "gst_5_amt",
+            "gst_18_amt",
+            "gst_3_amt"
+          ],
+          "observation": "Net amount differs from line amount less discount plus exported GST amounts.",
+          "productionTreatment": "Do not assume the simple discount-and-GST bridge; use the approved net-sales authority and keep this report for reconciliation."
+        }
+      ],
+      "evidenceRows": [
+        {
+          "id": "evidence:p2_bill_item_detail_item:bill_item_net_bridge",
+          "findingId": "p2.bill_item_detail.item:bill_item_net_bridge",
+          "exportLabel": "Export 1",
+          "sourceRowNumber": 25,
+          "values": [
+            {
+              "field": "net_amt",
+              "label": "net amt",
+              "value": "0.00"
+            },
+            {
+              "field": "line_amt",
+              "label": "line amt",
+              "value": "450.00"
+            },
+            {
+              "field": "discount_amt",
+              "label": "discount amt",
+              "value": "450.00"
+            },
+            {
+              "field": "gst_5_amt",
+              "label": "gst 5 amt",
+              "value": "0.00"
+            },
+            {
+              "field": "gst_18_amt",
+              "label": "gst 18 amt",
+              "value": "0.00"
+            },
+            {
+              "field": "gst_3_amt",
+              "label": "gst 3 amt",
+              "value": "0.00"
+            }
+          ],
+          "expected": "net_amt = 1*line_amt + -1*discount_amt + 1*gst_5_amt + 1*gst_18_amt + 1*gst_3_amt = 450.00",
+          "observed": "236.25",
+          "privacy": "Only issue-relevant non-sensitive cells are included."
+        }
+      ]
+    },
+    {
+      "reportId": "p4.bulk_return.item",
+      "displayName": "Bulk Return Report",
+      "selection": {
+        "status": "evaluated_not_selected",
+        "modelRole": "evaluated_fallback",
+        "roleGroup": "evaluated",
+        "pages": [
+          "P2",
+          "P3",
+          "P4"
+        ],
+        "sourceTable": "",
+        "reason": "Retained only as a fallback to Enterprise Stock Return."
+      },
+      "filesAudited": 1,
+      "rowsAudited": 6,
+      "emptyFileCount": 0,
+      "duplicateRowCount": 0,
+      "periods": [
+        "22 Apr - 22 Jul 2026"
+      ],
+      "schema": {
+        "contractMatch": "exact",
+        "contractVariantCount": 1,
+        "status": "exact",
+        "workbenchReportId": "report:p4_stock_admin:04_indent_reports:07_bulk_return_report",
+        "matchedVariantId": "primary",
+        "matchedVariantName": "CSV bulk return detail",
+        "columnCount": 13,
+        "statement": "Observed CSV header matches its contract exactly; canonical column positions match the captured Workbench variant, including grouped quantity and amount headings."
+      },
+      "readiness": "schema_ready_value_checks_passed",
+      "decision": "Schema-ready and populated, but retained only as a fallback return source.",
+      "keyFieldCoverage": [],
+      "findings": [],
+      "evidenceRows": []
+    },
+    {
+      "reportId": "p4.closing_stock.item",
+      "displayName": "Closing Stock Report",
+      "selection": {
+        "status": "selected",
+        "modelRole": "primary",
+        "roleGroup": "primary",
+        "pages": [
+          "P1",
+          "P2",
+          "P4"
+        ],
+        "sourceTable": "RAWN_CT_closing_stock",
+        "reason": "Use source amount when quantity x cost reconciles"
+      },
+      "filesAudited": 1,
+      "rowsAudited": 1148,
+      "emptyFileCount": 0,
+      "duplicateRowCount": 0,
+      "periods": [
+        "Export 1"
+      ],
+      "schema": {
+        "contractMatch": "exact",
+        "contractVariantCount": 1,
+        "status": "exact",
+        "workbenchReportId": "report:p4_stock_admin:06_analytical_reports:04_closing_stock_report",
+        "matchedVariantId": "primary",
+        "matchedVariantName": "CSV closing stock snapshot",
+        "columnCount": 15,
+        "statement": "Observed CSV header matches its contract exactly; canonical column positions match the captured Workbench variant, including grouped quantity and amount headings."
+      },
+      "readiness": "review_required",
+      "decision": "Schema-ready; source value must be reconciled or recomputed before capital and risk KPIs.",
+      "keyFieldCoverage": [
+        {
+          "field": "stock_date",
+          "label": "stock date",
+          "declaredType": "date",
+          "totalCount": 1148,
+          "nonNullCount": 1148,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "item_code",
+          "label": "item code",
+          "declaredType": "text",
+          "totalCount": 1148,
+          "nonNullCount": 1148,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "total_qty",
+          "label": "total qty",
+          "declaredType": "decimal",
+          "totalCount": 1148,
+          "nonNullCount": 1148,
+          "nullCount": 0,
+          "zeroCount": 1033,
+          "negativeCount": 38,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "average_price",
+          "label": "average price",
+          "declaredType": "decimal",
+          "totalCount": 1148,
+          "nonNullCount": 1148,
+          "nullCount": 0,
+          "zeroCount": 774,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "total_amt",
+          "label": "total amt",
+          "declaredType": "decimal",
+          "totalCount": 1148,
+          "nonNullCount": 1148,
+          "nullCount": 0,
+          "zeroCount": 1031,
+          "negativeCount": 40,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        }
+      ],
+      "findings": [
+        {
+          "id": "p4.closing_stock.item:closing_amount_from_qty_price",
+          "category": "business_rule",
+          "severity": "review",
+          "title": "Closing-stock amount differs from quantity multiplied by average price",
+          "affectedRowCount": 24,
+          "fields": [
+            "total_amt",
+            "total_qty",
+            "average_price"
+          ],
+          "observation": "Closing amount differs from total quantity multiplied by average price.",
+          "productionTreatment": "Recalculate closing value and flag source differences before working-capital or expiry-risk publication."
+        },
+        {
+          "id": "p4.closing_stock.item:negative_values",
+          "category": "sign_review",
+          "severity": "review",
+          "title": "Negative values require signed-off business treatment",
+          "affectedRowCount": 116,
+          "fields": [
+            "total_amt",
+            "gk2_main_store_qty",
+            "total_qty"
+          ],
+          "observation": "Negative observations can represent returns, adjustments, or stock corrections; they are not classified as errors automatically.",
+          "productionTreatment": "Confirm sign conventions by transaction type and apply them consistently in standardized facts and KPI formulas."
+        }
+      ],
+      "evidenceRows": [
+        {
+          "id": "evidence:p4_closing_stock_item:closing_amount_from_qty_price",
+          "findingId": "p4.closing_stock.item:closing_amount_from_qty_price",
+          "exportLabel": "Export 1",
+          "sourceRowNumber": 62,
+          "values": [
+            {
+              "field": "total_amt",
+              "label": "total amt",
+              "value": "53500"
+            },
+            {
+              "field": "total_qty",
+              "label": "total qty",
+              "value": "3.333"
+            },
+            {
+              "field": "average_price",
+              "label": "average price",
+              "value": "16050"
+            }
+          ],
+          "expected": "total_amt = total_qty * average_price = 53494.650",
+          "observed": "53500",
+          "privacy": "Only issue-relevant non-sensitive cells are included."
+        },
+        {
+          "id": "evidence:p4_closing_stock_item:negative",
+          "findingId": "p4.closing_stock.item:negative_values",
+          "exportLabel": "Export 1",
+          "sourceRowNumber": 73,
+          "values": [
+            {
+              "field": "gk2_main_store_qty",
+              "label": "gk2 main store qty",
+              "value": "-0.005"
+            },
+            {
+              "field": "total_amt",
+              "label": "total amt",
+              "value": "-70.39"
+            },
+            {
+              "field": "total_qty",
+              "label": "total qty",
+              "value": "-0.005"
+            }
+          ],
+          "expected": "Business-approved sign convention",
+          "observed": "One or more exported values are negative",
+          "privacy": "Only issue-relevant non-sensitive cells are included."
+        }
+      ]
+    },
+    {
+      "reportId": "p4.enterprise_consumption.detail",
+      "displayName": "Enterprise Consumption Report - detail",
+      "selection": {
+        "status": "selected",
+        "modelRole": "reconciliation",
+        "roleGroup": "control",
+        "pages": [
+          "P3",
+          "P4"
+        ],
+        "sourceTable": "RAWN_CT_enterprise_consumption_detail",
+        "reason": "Use for movement reconciliation and diagnosis"
+      },
+      "filesAudited": 1,
+      "rowsAudited": 812,
+      "emptyFileCount": 0,
+      "duplicateRowCount": 0,
+      "periods": [
+        "21 Apr - 21 Jul 2026"
+      ],
+      "schema": {
+        "contractMatch": "exact",
+        "contractVariantCount": 1,
+        "status": "exact",
+        "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:04_enterprise_consumption",
+        "matchedVariantId": "primary",
+        "matchedVariantName": "Enterprise consumption lifecycle",
+        "columnCount": 46,
+        "statement": "Observed CSV header matches its contract exactly; canonical column positions match the captured Workbench variant, including grouped quantity and amount headings."
+      },
+      "readiness": "review_required",
+      "decision": "Schema-ready; use for movement diagnosis while standardized consumption is recomputed.",
+      "keyFieldCoverage": [
+        {
+          "field": "opening_qty",
+          "label": "opening qty",
+          "declaredType": "decimal",
+          "totalCount": 812,
+          "nonNullCount": 812,
+          "nullCount": 0,
+          "zeroCount": 811,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "purchase_qty",
+          "label": "purchase qty",
+          "declaredType": "decimal",
+          "totalCount": 812,
+          "nonNullCount": 812,
+          "nullCount": 0,
+          "zeroCount": 588,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "indent_receive_qty",
+          "label": "indent receive qty",
+          "declaredType": "decimal",
+          "totalCount": 812,
+          "nonNullCount": 812,
+          "nullCount": 0,
+          "zeroCount": 710,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "indent_dispatch_qty",
+          "label": "indent dispatch qty",
+          "declaredType": "decimal",
+          "totalCount": 812,
+          "nonNullCount": 812,
+          "nullCount": 0,
+          "zeroCount": 812,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "stock_in_qty",
+          "label": "stock in qty",
+          "declaredType": "decimal",
+          "totalCount": 812,
+          "nonNullCount": 812,
+          "nullCount": 0,
+          "zeroCount": 607,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "stock_out_qty",
+          "label": "stock out qty",
+          "declaredType": "decimal",
+          "totalCount": 812,
+          "nonNullCount": 812,
+          "nullCount": 0,
+          "zeroCount": 709,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "closing_qty",
+          "label": "closing qty",
+          "declaredType": "decimal",
+          "totalCount": 812,
+          "nonNullCount": 812,
+          "nullCount": 0,
+          "zeroCount": 265,
+          "negativeCount": 49,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        }
+      ],
+      "findings": [
+        {
+          "id": "p4.enterprise_consumption.detail:observed_ideal_closing_formula",
+          "category": "business_rule",
+          "severity": "warning",
+          "title": "Ideal closing does not reconcile to the observed movement formula",
+          "affectedRowCount": 158,
+          "fields": [
+            "ideal_closing_qty",
+            "opening_qty",
+            "stock_in_qty",
+            "consumption_qty",
+            "wastage_qty",
+            "return_qty"
+          ],
+          "observation": "Ideal closing differs from the formula observed across the current populated UAT sample. Stock In is treated as the report's aggregate inflow; purchase and indent breakups are not added again.",
+          "productionTreatment": "Keep the source value in raw, recompute the standardized movement bridge, and do not publish source ideal closing until its definition is signed off."
+        }
+      ],
+      "evidenceRows": [
+        {
+          "id": "evidence:p4_enterprise_consumption_detail:observed_ideal_closing_formula",
+          "findingId": "p4.enterprise_consumption.detail:observed_ideal_closing_formula",
+          "exportLabel": "21 Apr - 21 Jul 2026",
+          "sourceRowNumber": 2,
+          "values": [
+            {
+              "field": "ideal_closing_qty",
+              "label": "ideal closing qty",
+              "value": "1.75"
+            },
+            {
+              "field": "opening_qty",
+              "label": "opening qty",
+              "value": "0.125"
+            },
+            {
+              "field": "stock_in_qty",
+              "label": "stock in qty",
+              "value": "0.625"
+            },
+            {
+              "field": "consumption_qty",
+              "label": "consumption qty",
+              "value": "0"
+            },
+            {
+              "field": "wastage_qty",
+              "label": "wastage qty",
+              "value": "0"
+            },
+            {
+              "field": "return_qty",
+              "label": "return qty",
+              "value": "0"
+            }
+          ],
+          "expected": "ideal_closing_qty = 1*opening_qty + 1*stock_in_qty + -1*consumption_qty + -1*wastage_qty + -1*return_qty = 0.750",
+          "observed": "1.75",
+          "privacy": "Only issue-relevant non-sensitive cells are included."
+        }
+      ]
+    },
+    {
+      "reportId": "p4.enterprise_entry.item",
+      "displayName": "Enterprise Entry Report - Stock Entry",
+      "selection": {
+        "status": "selected",
+        "modelRole": "primary",
+        "roleGroup": "primary",
+        "pages": [
+          "P1",
+          "P2",
+          "P4"
+        ],
+        "sourceTable": "RAWN_CT_enterprise_entry",
+        "reason": "Use as GRN or accepted-receipt authority after PO-number coverage check"
+      },
+      "filesAudited": 1,
+      "rowsAudited": 562,
+      "emptyFileCount": 0,
+      "duplicateRowCount": 0,
+      "periods": [
+        "22 Apr - 22 Jul 2026"
+      ],
+      "schema": {
+        "contractMatch": "exact",
+        "contractVariantCount": 1,
+        "status": "exact",
+        "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:01_enterprise_entry",
+        "matchedVariantId": "stock_entry_csv",
+        "matchedVariantName": "Stock entry CSV",
+        "columnCount": 34,
+        "statement": "Observed CSV header matches its contract exactly; canonical column positions match the captured Workbench variant, including grouped quantity and amount headings."
+      },
+      "readiness": "review_required",
+      "decision": "Schema-ready; PO and batch coverage plus amount reconciliation remain production gates.",
+      "keyFieldCoverage": [
+        {
+          "field": "transaction_number",
+          "label": "transaction number",
+          "declaredType": "text",
+          "totalCount": 562,
+          "nonNullCount": 562,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "po_number",
+          "label": "po number",
+          "declaredType": "text",
+          "totalCount": 562,
+          "nonNullCount": 2,
+          "nullCount": 560,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "weak",
+          "coveragePercent": 0.4
+        },
+        {
+          "field": "batch_number",
+          "label": "batch number",
+          "declaredType": "text",
+          "totalCount": 562,
+          "nonNullCount": 0,
+          "nullCount": 562,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "missing",
+          "coveragePercent": 0.0
+        },
+        {
+          "field": "entry_qty",
+          "label": "entry qty",
+          "declaredType": "decimal",
+          "totalCount": 562,
+          "nonNullCount": 548,
+          "nullCount": 14,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 97.5
+        },
+        {
+          "field": "unit_price",
+          "label": "unit price",
+          "declaredType": "decimal",
+          "totalCount": 562,
+          "nonNullCount": 562,
+          "nullCount": 0,
+          "zeroCount": 14,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "total_amt",
+          "label": "total amt",
+          "declaredType": "decimal",
+          "totalCount": 562,
+          "nonNullCount": 562,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        }
+      ],
+      "findings": [
+        {
+          "id": "p4.enterprise_entry.item:entry_base_from_qty_price",
+          "category": "business_rule",
+          "severity": "review",
+          "title": "Entry base amount differs from quantity multiplied by unit price",
+          "affectedRowCount": 2,
+          "fields": [
+            "base_amt",
+            "entry_qty",
+            "unit_price"
+          ],
+          "observation": "Entry amount differs from quantity multiplied by unit price.",
+          "productionTreatment": "Retain the raw amount, calculate a standardized amount, and expose a row-level reconciliation flag."
+        },
+        {
+          "id": "p4.enterprise_entry.item:entry_total_tax_bridge",
+          "category": "business_rule",
+          "severity": "review",
+          "title": "Entry total tax differs from exported tax components",
+          "affectedRowCount": 7,
+          "fields": [
+            "total_tax_amt",
+            "gst_igst_value",
+            "cess_value",
+            "other_tax_value"
+          ],
+          "observation": "Total tax differs from the exported tax components.",
+          "productionTreatment": "Retain exported tax and components separately; publish a canonical tax only after the missing component or rounding rule is confirmed."
+        }
+      ],
+      "evidenceRows": [
+        {
+          "id": "evidence:p4_enterprise_entry_item:entry_base_from_qty_price",
+          "findingId": "p4.enterprise_entry.item:entry_base_from_qty_price",
+          "exportLabel": "22 Apr - 22 Jul 2026",
+          "sourceRowNumber": 263,
+          "values": [
+            {
+              "field": "base_amt",
+              "label": "base amt",
+              "value": "2712.86"
+            },
+            {
+              "field": "entry_qty",
+              "label": "entry qty",
+              "value": "3000"
+            },
+            {
+              "field": "unit_price",
+              "label": "unit price",
+              "value": "0.9"
+            }
+          ],
+          "expected": "base_amt = entry_qty * unit_price = 2700.0",
+          "observed": "2712.86",
+          "privacy": "Only issue-relevant non-sensitive cells are included."
+        },
+        {
+          "id": "evidence:p4_enterprise_entry_item:entry_total_tax_bridge",
+          "findingId": "p4.enterprise_entry.item:entry_total_tax_bridge",
+          "exportLabel": "22 Apr - 22 Jul 2026",
+          "sourceRowNumber": 52,
+          "values": [
+            {
+              "field": "total_tax_amt",
+              "label": "total tax amt",
+              "value": "75"
+            },
+            {
+              "field": "gst_igst_value",
+              "label": "gst igst value",
+              "value": ""
+            },
+            {
+              "field": "cess_value",
+              "label": "cess value",
+              "value": ""
+            },
+            {
+              "field": "other_tax_value",
+              "label": "other tax value",
+              "value": ""
+            }
+          ],
+          "expected": "total_tax_amt = 1*gst_igst_value + 1*cess_value + 1*other_tax_value = 0",
+          "observed": "75",
+          "privacy": "Only issue-relevant non-sensitive cells are included."
+        }
+      ]
+    },
+    {
+      "reportId": "p4.enterprise_opening.item",
+      "displayName": "Enterprise Opening Report - Opening Stock",
+      "selection": {
+        "status": "evaluated_not_selected",
+        "modelRole": "evaluated_reconciliation",
+        "roleGroup": "evaluated",
+        "pages": [
+          "P3",
+          "P4"
+        ],
+        "sourceTable": "",
+        "reason": "Useful for inventory bridge checks; not a minimum dashboard source."
+      },
+      "filesAudited": 1,
+      "rowsAudited": 3,
+      "emptyFileCount": 0,
+      "duplicateRowCount": 0,
+      "periods": [
+        "22 Apr - 22 Jul 2026"
+      ],
+      "schema": {
+        "contractMatch": "exact",
+        "contractVariantCount": 1,
+        "status": "exact",
+        "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:01_enterprise_entry",
+        "matchedVariantId": "opening_stock_csv",
+        "matchedVariantName": "Opening stock CSV",
+        "columnCount": 15,
+        "statement": "Observed CSV header matches its contract exactly; canonical column positions match the captured Workbench variant, including grouped quantity and amount headings."
+      },
+      "readiness": "schema_ready_value_checks_passed",
+      "decision": "Schema-ready with very limited rows; retained for reconciliation only.",
+      "keyFieldCoverage": [],
+      "findings": [],
+      "evidenceRows": []
+    },
+    {
+      "reportId": "p4.enterprise_physical.item",
+      "displayName": "Enterprise Physical Report - Physical Stock",
+      "selection": {
+        "status": "selected",
+        "modelRole": "publication_gate",
+        "roleGroup": "control",
+        "pages": [
+          "P3",
+          "P4"
+        ],
+        "sourceTable": "RAWN_CT_enterprise_physical",
+        "reason": "Use month-end physical counts to mark variance final"
+      },
+      "filesAudited": 1,
+      "rowsAudited": 6251,
+      "emptyFileCount": 0,
+      "duplicateRowCount": 0,
+      "periods": [
+        "22 Apr - 22 Jul 2026"
+      ],
+      "schema": {
+        "contractMatch": "exact",
+        "contractVariantCount": 1,
+        "status": "exact",
+        "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:01_enterprise_entry",
+        "matchedVariantId": "physical_stock_csv",
+        "matchedVariantName": "Physical stock CSV",
+        "columnCount": 16,
+        "statement": "Observed CSV header matches its contract exactly; canonical column positions match the captured Workbench variant, including grouped quantity and amount headings."
+      },
+      "readiness": "review_required",
+      "decision": "Schema-ready; recompute physical value and use approved month-end checkpoints.",
+      "keyFieldCoverage": [
+        {
+          "field": "physical_date",
+          "label": "physical date",
+          "declaredType": "date",
+          "totalCount": 6251,
+          "nonNullCount": 6251,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "item_code",
+          "label": "item code",
+          "declaredType": "text",
+          "totalCount": 6251,
+          "nonNullCount": 6251,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "physical_qty",
+          "label": "physical qty",
+          "declaredType": "decimal",
+          "totalCount": 6251,
+          "nonNullCount": 6251,
+          "nullCount": 0,
+          "zeroCount": 4055,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "physical_amt",
+          "label": "physical amt",
+          "declaredType": "decimal",
+          "totalCount": 6251,
+          "nonNullCount": 6251,
+          "nullCount": 0,
+          "zeroCount": 4071,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        }
+      ],
+      "findings": [
+        {
+          "id": "p4.enterprise_physical.item:physical_amount_from_qty_price",
+          "category": "business_rule",
+          "severity": "review",
+          "title": "Physical-stock amount differs from quantity multiplied by unit price",
+          "affectedRowCount": 98,
+          "fields": [
+            "physical_amt",
+            "physical_qty",
+            "unit_price"
+          ],
+          "observation": "Physical-stock amount differs from quantity multiplied by unit price.",
+          "productionTreatment": "Recompute the standardized amount from normalized quantity and price before using it in variance KPIs."
+        }
+      ],
+      "evidenceRows": [
+        {
+          "id": "evidence:p4_enterprise_physical_item:physical_amount_from_qty_price",
+          "findingId": "p4.enterprise_physical.item:physical_amount_from_qty_price",
+          "exportLabel": "22 Apr - 22 Jul 2026",
+          "sourceRowNumber": 392,
+          "values": [
+            {
+              "field": "physical_amt",
+              "label": "physical amt",
+              "value": "4016.35"
+            },
+            {
+              "field": "physical_qty",
+              "label": "physical qty",
+              "value": "5000"
+            },
+            {
+              "field": "unit_price",
+              "label": "unit price",
+              "value": "0.8"
+            }
+          ],
+          "expected": "physical_amt = physical_qty * unit_price = 4000.0",
+          "observed": "4016.35",
+          "privacy": "Only issue-relevant non-sensitive cells are included."
+        }
+      ]
+    },
+    {
+      "reportId": "p4.enterprise_purchase_order.item",
+      "displayName": "Enterprise Purchase Order Report - item detail",
+      "selection": {
+        "status": "selected",
+        "modelRole": "primary_production_gate",
+        "roleGroup": "primary",
+        "pages": [
+          "P1",
+          "P2",
+          "P4"
+        ],
+        "sourceTable": "RAWN_CT_enterprise_purchase_order",
+        "reason": "Populated UAT source; publish PO risk only after receipt linkage, status semantics and closed-line eligibility are approved"
+      },
+      "filesAudited": 1,
+      "rowsAudited": 113,
+      "emptyFileCount": 0,
+      "duplicateRowCount": 0,
+      "periods": [
+        "22 Apr - 23 Jul 2026"
+      ],
+      "schema": {
+        "contractMatch": "exact",
+        "contractVariantCount": 1,
+        "status": "exact",
+        "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:06_enterprise_purchase_order",
+        "matchedVariantId": "primary",
+        "matchedVariantName": "CSV purchase order item detail",
+        "columnCount": 27,
+        "statement": "Observed CSV header matches its contract exactly; canonical column positions match the captured Workbench variant, including grouped quantity and amount headings."
+      },
+      "readiness": "review_required",
+      "decision": "Populated and schema-ready; receipt linkage, status semantics, and eligible closed-line rules remain production gates.",
+      "keyFieldCoverage": [
+        {
+          "field": "po_number",
+          "label": "po number",
+          "declaredType": "text",
+          "totalCount": 113,
+          "nonNullCount": 113,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "po_date",
+          "label": "po date",
+          "declaredType": "date",
+          "totalCount": 113,
+          "nonNullCount": 113,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "expected_delivery_date",
+          "label": "expected delivery date",
+          "declaredType": "date",
+          "totalCount": 113,
+          "nonNullCount": 111,
+          "nullCount": 2,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 98.2
+        },
+        {
+          "field": "po_status",
+          "label": "po status",
+          "declaredType": "text",
+          "totalCount": 113,
+          "nonNullCount": 113,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "ordered_qty",
+          "label": "ordered qty",
+          "declaredType": "decimal",
+          "totalCount": 113,
+          "nonNullCount": 113,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "processed_qty",
+          "label": "processed qty",
+          "declaredType": "decimal",
+          "totalCount": 113,
+          "nonNullCount": 113,
+          "nullCount": 0,
+          "zeroCount": 105,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "remaining_balance_qty",
+          "label": "remaining balance qty",
+          "declaredType": "decimal",
+          "totalCount": 113,
+          "nonNullCount": 113,
+          "nullCount": 0,
+          "zeroCount": 8,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "po_close_or_partial_receive_date",
+          "label": "po close or partial receive date",
+          "declaredType": "date",
+          "totalCount": 113,
+          "nonNullCount": 8,
+          "nullCount": 105,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "weak",
+          "coveragePercent": 7.1
+        }
+      ],
+      "findings": [],
+      "evidenceRows": []
+    },
+    {
+      "reportId": "p4.enterprise_reorder.item",
+      "displayName": "Enterprise ReOrder Report",
+      "selection": {
+        "status": "selected",
+        "modelRole": "dimension_enrichment",
+        "roleGroup": "control",
+        "pages": [
+          "P1",
+          "P4"
+        ],
+        "sourceTable": "RAWN_CT_enterprise_reorder",
+        "reason": "Use as a threshold input only; never replace demand-aware stockout logic"
+      },
+      "filesAudited": 1,
+      "rowsAudited": 0,
+      "emptyFileCount": 1,
+      "duplicateRowCount": 0,
+      "periods": [
+        "Snapshot 21 Jul 2026"
+      ],
+      "schema": {
+        "contractMatch": "exact",
+        "contractVariantCount": 1,
+        "status": "exact",
+        "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:05_enterprise_stock_re_order",
+        "matchedVariantId": "primary",
+        "matchedVariantName": "CSV reorder snapshot",
+        "columnCount": 8,
+        "statement": "Observed CSV header matches its contract exactly; canonical column positions match the captured Workbench variant, including grouped quantity and amount headings."
+      },
+      "readiness": "blocked_header_only",
+      "decision": "Header-only export; thresholds must come from an approved item master until populated.",
+      "keyFieldCoverage": [
+        {
+          "field": "item_code",
+          "label": "item code",
+          "declaredType": "text",
+          "totalCount": 0,
+          "nonNullCount": 0,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "missing",
+          "coveragePercent": 0
+        },
+        {
+          "field": "reorder_level_qty",
+          "label": "reorder level qty",
+          "declaredType": "decimal",
+          "totalCount": 0,
+          "nonNullCount": 0,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "missing",
+          "coveragePercent": 0
+        },
+        {
+          "field": "minimum_order_level_qty",
+          "label": "minimum order level qty",
+          "declaredType": "decimal",
+          "totalCount": 0,
+          "nonNullCount": 0,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "missing",
+          "coveragePercent": 0
+        }
+      ],
+      "findings": [
+        {
+          "id": "p4.enterprise_reorder.item:row_coverage",
+          "category": "coverage",
+          "severity": "blocker",
+          "title": "Export is header-only",
+          "affectedRowCount": 0,
+          "fields": [],
+          "observation": "1 of 1 exports contain no data rows.",
+          "productionTreatment": "Keep dependent KPIs blocked until a populated export or approved alternate source is available."
+        }
+      ],
+      "evidenceRows": []
+    },
+    {
+      "reportId": "p4.enterprise_stock_return.item",
+      "displayName": "Enterprise Stock Return / Stock Entry Return",
+      "selection": {
+        "status": "selected",
+        "modelRole": "primary",
+        "roleGroup": "primary",
+        "pages": [
+          "P2",
+          "P3",
+          "P4"
+        ],
+        "sourceTable": "RAWN_CT_enterprise_stock_return",
+        "reason": "Join to the original GRN number and item before calculating vendor return rate"
+      },
+      "filesAudited": 1,
+      "rowsAudited": 0,
+      "emptyFileCount": 1,
+      "duplicateRowCount": 0,
+      "periods": [
+        "Snapshot 22 Jul 2026"
+      ],
+      "schema": {
+        "contractMatch": "exact",
+        "contractVariantCount": 1,
+        "status": "exact",
+        "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:03_enterprise_stock_return",
+        "matchedVariantId": "primary",
+        "matchedVariantName": "CSV stock entry return detail",
+        "columnCount": 36,
+        "statement": "Observed CSV header matches its contract exactly; canonical column positions match the captured Workbench variant, including grouped quantity and amount headings."
+      },
+      "readiness": "blocked_header_only",
+      "decision": "Header-only export; vendor return-rate KPIs remain blocked until populated evidence is available.",
+      "keyFieldCoverage": [
+        {
+          "field": "transaction_number",
+          "label": "transaction number",
+          "declaredType": "text",
+          "totalCount": 0,
+          "nonNullCount": 0,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "missing",
+          "coveragePercent": 0
+        },
+        {
+          "field": "return_date",
+          "label": "return date",
+          "declaredType": "date",
+          "totalCount": 0,
+          "nonNullCount": 0,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "missing",
+          "coveragePercent": 0
+        },
+        {
+          "field": "return_qty",
+          "label": "return qty",
+          "declaredType": "decimal",
+          "totalCount": 0,
+          "nonNullCount": 0,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "missing",
+          "coveragePercent": 0
+        },
+        {
+          "field": "return_amt",
+          "label": "return amt",
+          "declaredType": "decimal",
+          "totalCount": 0,
+          "nonNullCount": 0,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "missing",
+          "coveragePercent": 0
+        }
+      ],
+      "findings": [
+        {
+          "id": "p4.enterprise_stock_return.item:row_coverage",
+          "category": "coverage",
+          "severity": "blocker",
+          "title": "Export is header-only",
+          "affectedRowCount": 0,
+          "fields": [],
+          "observation": "1 of 1 exports contain no data rows.",
+          "productionTreatment": "Keep dependent KPIs blocked until a populated export or approved alternate source is available."
+        }
+      ],
+      "evidenceRows": []
+    },
+    {
+      "reportId": "p4.enterprise_transfer.from_item",
+      "displayName": "Enterprise Transfer Report - Transfer From",
+      "selection": {
+        "status": "selected",
+        "modelRole": "primary",
+        "roleGroup": "primary",
+        "pages": [
+          "P1",
+          "P3",
+          "P4"
+        ],
+        "sourceTable": "RAWN_CT_enterprise_transfer_from",
+        "reason": "Pair with Transfer To and reconcile transaction totals"
+      },
+      "filesAudited": 1,
+      "rowsAudited": 211,
+      "emptyFileCount": 0,
+      "duplicateRowCount": 0,
+      "periods": [
+        "22 Apr - 22 Jul 2026"
+      ],
+      "schema": {
+        "contractMatch": "exact",
+        "contractVariantCount": 1,
+        "status": "exact",
+        "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:01_enterprise_entry",
+        "matchedVariantId": "transfer_from_csv",
+        "matchedVariantName": "Transfer from CSV",
+        "columnCount": 18,
+        "statement": "Observed CSV header matches its contract exactly; canonical column positions match the captured Workbench variant, including grouped quantity and amount headings."
+      },
+      "readiness": "review_required",
+      "decision": "Schema-ready; pair and reconcile against Transfer To before publication.",
+      "keyFieldCoverage": [
+        {
+          "field": "transfer_date",
+          "label": "transfer date",
+          "declaredType": "date",
+          "totalCount": 211,
+          "nonNullCount": 211,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "transaction_number",
+          "label": "transaction number",
+          "declaredType": "text",
+          "totalCount": 211,
+          "nonNullCount": 211,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "item_code",
+          "label": "item code",
+          "declaredType": "text",
+          "totalCount": 211,
+          "nonNullCount": 211,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "transfer_qty",
+          "label": "transfer qty",
+          "declaredType": "decimal",
+          "totalCount": 211,
+          "nonNullCount": 211,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "transfer_amt",
+          "label": "transfer amt",
+          "declaredType": "decimal",
+          "totalCount": 211,
+          "nonNullCount": 211,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "receiver_store_kitchen_name",
+          "label": "receiver store kitchen name",
+          "declaredType": "text",
+          "totalCount": 211,
+          "nonNullCount": 0,
+          "nullCount": 211,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "missing",
+          "coveragePercent": 0.0
+        }
+      ],
+      "findings": [
+        {
+          "id": "p4.enterprise_transfer.from_item:transfer_amount_from_qty_price",
+          "category": "business_rule",
+          "severity": "review",
+          "title": "Transfer amount differs from quantity multiplied by unit price",
+          "affectedRowCount": 1,
+          "fields": [
+            "transfer_amt",
+            "transfer_qty",
+            "unit_price"
+          ],
+          "observation": "Transfer amount differs from quantity multiplied by unit price.",
+          "productionTreatment": "Recompute transfer value and reconcile both transfer directions by transaction before publication."
+        }
+      ],
+      "evidenceRows": [
+        {
+          "id": "evidence:p4_enterprise_transfer_from_item:transfer_amount_from_qty_price",
+          "findingId": "p4.enterprise_transfer.from_item:transfer_amount_from_qty_price",
+          "exportLabel": "22 Apr - 22 Jul 2026",
+          "sourceRowNumber": 196,
+          "values": [
+            {
+              "field": "transfer_amt",
+              "label": "transfer amt",
+              "value": "20.54"
+            },
+            {
+              "field": "transfer_qty",
+              "label": "transfer qty",
+              "value": "100"
+            },
+            {
+              "field": "unit_price",
+              "label": "unit price",
+              "value": "0.21"
+            }
+          ],
+          "expected": "transfer_amt = transfer_qty * unit_price = 21.00",
+          "observed": "20.54",
+          "privacy": "Only issue-relevant non-sensitive cells are included."
+        }
+      ]
+    },
+    {
+      "reportId": "p4.enterprise_transfer.to_item",
+      "displayName": "Enterprise Transfer Report - Transfer To",
+      "selection": {
+        "status": "selected",
+        "modelRole": "primary",
+        "roleGroup": "primary",
+        "pages": [
+          "P1",
+          "P3",
+          "P4"
+        ],
+        "sourceTable": "RAWN_CT_enterprise_transfer_to",
+        "reason": "Pair with Transfer From and reconcile transaction totals"
+      },
+      "filesAudited": 1,
+      "rowsAudited": 211,
+      "emptyFileCount": 0,
+      "duplicateRowCount": 0,
+      "periods": [
+        "22 Apr - 22 Jul 2026"
+      ],
+      "schema": {
+        "contractMatch": "exact",
+        "contractVariantCount": 1,
+        "status": "exact",
+        "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:01_enterprise_entry",
+        "matchedVariantId": "transfer_to_csv",
+        "matchedVariantName": "Transfer to CSV",
+        "columnCount": 16,
+        "statement": "Observed CSV header matches its contract exactly; canonical column positions match the captured Workbench variant, including grouped quantity and amount headings."
+      },
+      "readiness": "review_required",
+      "decision": "Schema-ready; pair and reconcile against Transfer From before publication.",
+      "keyFieldCoverage": [
+        {
+          "field": "transfer_date",
+          "label": "transfer date",
+          "declaredType": "date",
+          "totalCount": 211,
+          "nonNullCount": 211,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "transaction_number",
+          "label": "transaction number",
+          "declaredType": "text",
+          "totalCount": 211,
+          "nonNullCount": 211,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "item_code",
+          "label": "item code",
+          "declaredType": "text",
+          "totalCount": 211,
+          "nonNullCount": 211,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "transfer_qty",
+          "label": "transfer qty",
+          "declaredType": "decimal",
+          "totalCount": 211,
+          "nonNullCount": 211,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "transfer_amt",
+          "label": "transfer amt",
+          "declaredType": "decimal",
+          "totalCount": 211,
+          "nonNullCount": 211,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "supplier_store_name",
+          "label": "supplier store name",
+          "declaredType": "text",
+          "totalCount": 211,
+          "nonNullCount": 211,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        }
+      ],
+      "findings": [
+        {
+          "id": "p4.enterprise_transfer.to_item:transfer_amount_from_qty_price",
+          "category": "business_rule",
+          "severity": "review",
+          "title": "Transfer amount differs from quantity multiplied by unit price",
+          "affectedRowCount": 1,
+          "fields": [
+            "transfer_amt",
+            "transfer_qty",
+            "unit_price"
+          ],
+          "observation": "Transfer amount differs from quantity multiplied by unit price.",
+          "productionTreatment": "Recompute transfer value and reconcile both transfer directions by transaction before publication."
+        }
+      ],
+      "evidenceRows": [
+        {
+          "id": "evidence:p4_enterprise_transfer_to_item:transfer_amount_from_qty_price",
+          "findingId": "p4.enterprise_transfer.to_item:transfer_amount_from_qty_price",
+          "exportLabel": "22 Apr - 22 Jul 2026",
+          "sourceRowNumber": 196,
+          "values": [
+            {
+              "field": "transfer_amt",
+              "label": "transfer amt",
+              "value": "20.54"
+            },
+            {
+              "field": "transfer_qty",
+              "label": "transfer qty",
+              "value": "100"
+            },
+            {
+              "field": "unit_price",
+              "label": "unit price",
+              "value": "0.21"
+            }
+          ],
+          "expected": "transfer_amt = transfer_qty * unit_price = 21.00",
+          "observed": "20.54",
+          "privacy": "Only issue-relevant non-sensitive cells are included."
+        }
+      ]
+    },
+    {
+      "reportId": "p4.enterprise_variance.master",
+      "displayName": "Enterprise Variance Report - master",
+      "selection": {
+        "status": "evaluated_not_selected",
+        "modelRole": "evaluated_reconciliation",
+        "roleGroup": "evaluated",
+        "pages": [
+          "P3",
+          "P4"
+        ],
+        "sourceTable": "",
+        "reason": "Retained as a master-level comparison to the selected normal variance report."
+      },
+      "filesAudited": 1,
+      "rowsAudited": 426,
+      "emptyFileCount": 0,
+      "duplicateRowCount": 0,
+      "periods": [
+        "22 Jun - 21 Jul 2026"
+      ],
+      "schema": {
+        "contractMatch": "exact",
+        "contractVariantCount": 1,
+        "status": "exact",
+        "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:08_enterprise_variance",
+        "matchedVariantId": "master",
+        "matchedVariantName": "Master variance CSV",
+        "columnCount": 38,
+        "statement": "Observed CSV header matches its contract exactly; canonical column positions match the captured Workbench variant, including grouped quantity and amount headings."
+      },
+      "readiness": "review_required",
+      "decision": "Schema-ready; sign conventions require review and normal variance remains the selected source.",
+      "keyFieldCoverage": [],
+      "findings": [
+        {
+          "id": "p4.enterprise_variance.master:negative_values",
+          "category": "sign_review",
+          "severity": "review",
+          "title": "Negative values require signed-off business treatment",
+          "affectedRowCount": 872,
+          "fields": [
+            "opening_qty",
+            "opening_amt",
+            "actual_consumption_qty",
+            "actual_consumption_amt",
+            "closing_qty",
+            "physical_adjusted_closing_qty",
+            "variance_qty",
+            "variance_amt"
+          ],
+          "observation": "Negative observations can represent returns, adjustments, or stock corrections; they are not classified as errors automatically.",
+          "productionTreatment": "Confirm sign conventions by transaction type and apply them consistently in standardized facts and KPI formulas."
+        }
+      ],
+      "evidenceRows": [
+        {
+          "id": "evidence:p4_enterprise_variance_master:negative",
+          "findingId": "p4.enterprise_variance.master:negative_values",
+          "exportLabel": "22 Jun - 21 Jul 2026",
+          "sourceRowNumber": 3,
+          "values": [
+            {
+              "field": "opening_amt",
+              "label": "opening amt",
+              "value": "-56.29"
+            },
+            {
+              "field": "opening_qty",
+              "label": "opening qty",
+              "value": "-0.013"
+            }
+          ],
+          "expected": "Business-approved sign convention",
+          "observed": "One or more exported values are negative",
+          "privacy": "Only issue-relevant non-sensitive cells are included."
+        }
+      ]
+    },
+    {
+      "reportId": "p4.enterprise_variance.normal",
+      "displayName": "Enterprise Variance Report - normal detailed CSV",
+      "selection": {
+        "status": "selected",
+        "modelRole": "primary",
+        "roleGroup": "primary",
+        "pages": [
+          "P3",
+          "P4"
+        ],
+        "sourceTable": "RAWN_CT_enterprise_variance_normal",
+        "reason": "Use as the month-end actual-consumption checkpoint; month-to-date remains provisional"
+      },
+      "filesAudited": 1,
+      "rowsAudited": 812,
+      "emptyFileCount": 0,
+      "duplicateRowCount": 0,
+      "periods": [
+        "21 Apr - 21 Jul 2026"
+      ],
+      "schema": {
+        "contractMatch": "exact",
+        "contractVariantCount": 1,
+        "status": "exact",
+        "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:08_enterprise_variance",
+        "matchedVariantId": "normal_detailed_csv",
+        "matchedVariantName": "Normal detailed CSV",
+        "columnCount": 46,
+        "statement": "Observed CSV header matches its contract exactly; canonical column positions match the captured Workbench variant, including grouped quantity and amount headings."
+      },
+      "readiness": "review_required",
+      "decision": "Schema-ready; negative inventory and consumption signs require business treatment before KPI publication.",
+      "keyFieldCoverage": [
+        {
+          "field": "opening_qty",
+          "label": "opening qty",
+          "declaredType": "decimal",
+          "totalCount": 812,
+          "nonNullCount": 812,
+          "nullCount": 0,
+          "zeroCount": 811,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "purchase_qty",
+          "label": "purchase qty",
+          "declaredType": "decimal",
+          "totalCount": 812,
+          "nonNullCount": 812,
+          "nullCount": 0,
+          "zeroCount": 588,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "stock_in_qty",
+          "label": "stock in qty",
+          "declaredType": "decimal",
+          "totalCount": 812,
+          "nonNullCount": 812,
+          "nullCount": 0,
+          "zeroCount": 607,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "stock_out_qty",
+          "label": "stock out qty",
+          "declaredType": "decimal",
+          "totalCount": 812,
+          "nonNullCount": 812,
+          "nullCount": 0,
+          "zeroCount": 709,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "return_qty",
+          "label": "return qty",
+          "declaredType": "decimal",
+          "totalCount": 812,
+          "nonNullCount": 812,
+          "nullCount": 0,
+          "zeroCount": 806,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "closing_qty",
+          "label": "closing qty",
+          "declaredType": "decimal",
+          "totalCount": 812,
+          "nonNullCount": 812,
+          "nullCount": 0,
+          "zeroCount": 265,
+          "negativeCount": 49,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "actual_consumption_qty",
+          "label": "actual consumption qty",
+          "declaredType": "decimal",
+          "totalCount": 812,
+          "nonNullCount": 812,
+          "nullCount": 0,
+          "zeroCount": 750,
+          "negativeCount": 60,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "average_price",
+          "label": "average price",
+          "declaredType": "decimal",
+          "totalCount": 812,
+          "nonNullCount": 812,
+          "nullCount": 0,
+          "zeroCount": 64,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        }
+      ],
+      "findings": [
+        {
+          "id": "p4.enterprise_variance.normal:negative_values",
+          "category": "sign_review",
+          "severity": "review",
+          "title": "Negative values require signed-off business treatment",
+          "affectedRowCount": 889,
+          "fields": [
+            "ideal_closing_qty",
+            "ideal_closing_amt",
+            "actual_consumption_qty",
+            "actual_consumption_amt",
+            "closing_qty",
+            "physical_adjusted_closing_qty",
+            "closing_amt",
+            "physical_adjusted_closing_amt"
+          ],
+          "observation": "Negative observations can represent returns, adjustments, or stock corrections; they are not classified as errors automatically.",
+          "productionTreatment": "Confirm sign conventions by transaction type and apply them consistently in standardized facts and KPI formulas."
+        }
+      ],
+      "evidenceRows": [
+        {
+          "id": "evidence:p4_enterprise_variance_normal:negative",
+          "findingId": "p4.enterprise_variance.normal:negative_values",
+          "exportLabel": "21 Apr - 21 Jul 2026",
+          "sourceRowNumber": 38,
+          "values": [
+            {
+              "field": "closing_amt",
+              "label": "closing amt",
+              "value": "-100"
+            },
+            {
+              "field": "closing_qty",
+              "label": "closing qty",
+              "value": "-0.5"
+            },
+            {
+              "field": "ideal_closing_amt",
+              "label": "ideal closing amt",
+              "value": "-100"
+            },
+            {
+              "field": "ideal_closing_qty",
+              "label": "ideal closing qty",
+              "value": "-0.5"
+            },
+            {
+              "field": "physical_adjusted_closing_amt",
+              "label": "physical adjusted closing amt",
+              "value": "-100"
+            },
+            {
+              "field": "physical_adjusted_closing_qty",
+              "label": "physical adjusted closing qty",
+              "value": "-0.5"
+            }
+          ],
+          "expected": "Business-approved sign convention",
+          "observed": "One or more exported values are negative",
+          "privacy": "Only issue-relevant non-sensitive cells are included."
+        }
+      ]
+    },
+    {
+      "reportId": "p4.enterprise_wastage.normal",
+      "displayName": "Enterprise Wastage Report - transaction detail",
+      "selection": {
+        "status": "selected",
+        "modelRole": "primary",
+        "roleGroup": "primary",
+        "pages": [
+          "P2",
+          "P3",
+          "P4"
+        ],
+        "sourceTable": "RAWN_CT_enterprise_wastage_normal",
+        "reason": "Observed wastage loss authority"
+      },
+      "filesAudited": 1,
+      "rowsAudited": 581,
+      "emptyFileCount": 0,
+      "duplicateRowCount": 0,
+      "periods": [
+        "22 Apr - 22 Jul 2026"
+      ],
+      "schema": {
+        "contractMatch": "exact",
+        "contractVariantCount": 1,
+        "status": "exact",
+        "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:12_enterprise_wastage_report",
+        "matchedVariantId": "transaction_detail_csv",
+        "matchedVariantName": "Transaction detail CSV",
+        "columnCount": 15,
+        "statement": "Observed CSV header matches its contract exactly; canonical column positions match the captured Workbench variant, including grouped quantity and amount headings."
+      },
+      "readiness": "review_required",
+      "decision": "Schema-ready; calculate canonical wastage value from normalized quantity and price.",
+      "keyFieldCoverage": [
+        {
+          "field": "wastage_date",
+          "label": "wastage date",
+          "declaredType": "date",
+          "totalCount": 581,
+          "nonNullCount": 581,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "transaction_number",
+          "label": "transaction number",
+          "declaredType": "text",
+          "totalCount": 581,
+          "nonNullCount": 581,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "item_code",
+          "label": "item code",
+          "declaredType": "text",
+          "totalCount": 581,
+          "nonNullCount": 581,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "wastage_qty",
+          "label": "wastage qty",
+          "declaredType": "decimal",
+          "totalCount": 581,
+          "nonNullCount": 581,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "unit_price",
+          "label": "unit price",
+          "declaredType": "decimal",
+          "totalCount": 581,
+          "nonNullCount": 581,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "wastage_amt",
+          "label": "wastage amt",
+          "declaredType": "decimal",
+          "totalCount": 581,
+          "nonNullCount": 581,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        }
+      ],
+      "findings": [
+        {
+          "id": "p4.enterprise_wastage.normal:wastage_amount_from_qty_price",
+          "category": "business_rule",
+          "severity": "review",
+          "title": "Wastage amount differs from quantity multiplied by unit price",
+          "affectedRowCount": 57,
+          "fields": [
+            "wastage_amt",
+            "wastage_qty",
+            "unit_price"
+          ],
+          "observation": "Wastage amount differs from quantity multiplied by unit price.",
+          "productionTreatment": "Use a calculated wastage value for KPI logic and preserve the exported amount for audit."
+        }
+      ],
+      "evidenceRows": [
+        {
+          "id": "evidence:p4_enterprise_wastage_normal:wastage_amount_from_qty_price",
+          "findingId": "p4.enterprise_wastage.normal:wastage_amount_from_qty_price",
+          "exportLabel": "22 Apr - 22 Jul 2026",
+          "sourceRowNumber": 7,
+          "values": [
+            {
+              "field": "wastage_amt",
+              "label": "wastage amt",
+              "value": "4.9"
+            },
+            {
+              "field": "wastage_qty",
+              "label": "wastage qty",
+              "value": "50"
+            },
+            {
+              "field": "unit_price",
+              "label": "unit price",
+              "value": "0.1"
+            }
+          ],
+          "expected": "wastage_amt = wastage_qty * unit_price = 5.0",
+          "observed": "4.9",
+          "privacy": "Only issue-relevant non-sensitive cells are included."
+        }
+      ]
+    },
+    {
+      "reportId": "p2.gross_net_margin.item",
+      "displayName": "Gross/Net Margin Report - bill item detail",
+      "selection": {
+        "status": "selected",
+        "modelRole": "primary",
+        "roleGroup": "primary",
+        "pages": [
+          "P3",
+          "P4"
+        ],
+        "sourceTable": "RAWN_CT_gross_net_margin",
+        "reason": "Use as the item-sales and source-margin authority after total reconciliation"
+      },
+      "filesAudited": 3,
+      "rowsAudited": 11511,
+      "emptyFileCount": 0,
+      "duplicateRowCount": 0,
+      "periods": [
+        "Export 1",
+        "Export 2",
+        "Export 3"
+      ],
+      "schema": {
+        "contractMatch": "exact",
+        "contractVariantCount": 1,
+        "status": "exact",
+        "workbenchReportId": "report:p2_reports:07_sales:33_food_sold_report",
+        "matchedVariantId": "primary",
+        "matchedVariantName": "CSV gross/net margin detail",
+        "columnCount": 26,
+        "statement": "Observed CSV header matches its contract exactly; canonical column positions match the captured Workbench variant, including grouped quantity and amount headings."
+      },
+      "readiness": "review_required",
+      "decision": "Schema-ready; margin percentages and value bridges remain a production calculation gate.",
+      "keyFieldCoverage": [
+        {
+          "field": "sale_date",
+          "label": "sale date",
+          "declaredType": "date",
+          "totalCount": 11511,
+          "nonNullCount": 11511,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "bill_number",
+          "label": "bill number",
+          "declaredType": "text",
+          "totalCount": 11511,
+          "nonNullCount": 11511,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "item_code",
+          "label": "item code",
+          "declaredType": "text",
+          "totalCount": 11511,
+          "nonNullCount": 11511,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "item_name",
+          "label": "item name",
+          "declaredType": "text",
+          "totalCount": 11511,
+          "nonNullCount": 11511,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "item_qty",
+          "label": "item qty",
+          "declaredType": "decimal",
+          "totalCount": 11511,
+          "nonNullCount": 11511,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "net_sale_value",
+          "label": "net sale value",
+          "declaredType": "decimal",
+          "totalCount": 11511,
+          "nonNullCount": 11511,
+          "nullCount": 0,
+          "zeroCount": 1737,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "purchase_value",
+          "label": "purchase value",
+          "declaredType": "decimal",
+          "totalCount": 11511,
+          "nonNullCount": 11511,
+          "nullCount": 0,
+          "zeroCount": 3422,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        }
+      ],
+      "findings": [
+        {
+          "id": "p2.gross_net_margin.item:gross_margin_formula",
+          "category": "business_rule",
+          "severity": "review",
+          "title": "Reported gross margin differs from the conventional exported-value formula",
+          "affectedRowCount": 2886,
+          "fields": [
+            "gross_margin_percent",
+            "gross_sale_value",
+            "purchase_value"
+          ],
+          "observation": "Gross margin percentage differs from the conventional item-level gross-sale margin formula.",
+          "productionTreatment": "Recompute canonical gross margin from approved revenue and cost fields; retain the reported percentage only as a source comparison."
+        },
+        {
+          "id": "p2.gross_net_margin.item:net_margin_formula",
+          "category": "business_rule",
+          "severity": "review",
+          "title": "Reported net margin differs from the conventional exported-value formula",
+          "affectedRowCount": 2885,
+          "fields": [
+            "net_margin_percent",
+            "net_sale_value",
+            "purchase_value"
+          ],
+          "observation": "Net margin percentage differs from the conventional item-level net-sale margin formula.",
+          "productionTreatment": "Recompute canonical net margin from approved net sales and cost; retain the reported percentage only as a source comparison."
+        },
+        {
+          "id": "p2.gross_net_margin.item:negative_values",
+          "category": "sign_review",
+          "severity": "review",
+          "title": "Negative values require signed-off business treatment",
+          "affectedRowCount": 270,
+          "fields": [
+            "net_margin_percent",
+            "gross_margin_percent"
+          ],
+          "observation": "Negative observations can represent returns, adjustments, or stock corrections; they are not classified as errors automatically.",
+          "productionTreatment": "Confirm sign conventions by transaction type and apply them consistently in standardized facts and KPI formulas."
+        }
+      ],
+      "evidenceRows": [
+        {
+          "id": "evidence:p2_gross_net_margin_item:gross_margin_formula",
+          "findingId": "p2.gross_net_margin.item:gross_margin_formula",
+          "exportLabel": "Export 1",
+          "sourceRowNumber": 152,
+          "values": [
+            {
+              "field": "gross_margin_percent",
+              "label": "gross margin percent",
+              "value": "-599.19"
+            },
+            {
+              "field": "gross_sale_value",
+              "label": "gross sale value",
+              "value": "20.35"
+            },
+            {
+              "field": "purchase_value",
+              "label": "purchase value",
+              "value": "142.26"
+            }
+          ],
+          "expected": "gross_margin_percent = (gross_sale_value - purchase_value) / gross_sale_value * 100 = -599.0663390663390663390663391",
+          "observed": "-599.19",
+          "privacy": "Only issue-relevant non-sensitive cells are included."
+        },
+        {
+          "id": "evidence:p2_gross_net_margin_item:net_margin_formula",
+          "findingId": "p2.gross_net_margin.item:net_margin_formula",
+          "exportLabel": "Export 1",
+          "sourceRowNumber": 152,
+          "values": [
+            {
+              "field": "net_margin_percent",
+              "label": "net margin percent",
+              "value": "-634.16"
+            },
+            {
+              "field": "net_sale_value",
+              "label": "net sale value",
+              "value": "19.38"
+            },
+            {
+              "field": "purchase_value",
+              "label": "purchase value",
+              "value": "142.26"
+            }
+          ],
+          "expected": "net_margin_percent = (net_sale_value - purchase_value) / net_sale_value * 100 = -634.0557275541795665634674923",
+          "observed": "-634.16",
+          "privacy": "Only issue-relevant non-sensitive cells are included."
+        },
+        {
+          "id": "evidence:p2_gross_net_margin_item:negative",
+          "findingId": "p2.gross_net_margin.item:negative_values",
+          "exportLabel": "Export 1",
+          "sourceRowNumber": 108,
+          "values": [
+            {
+              "field": "gross_margin_percent",
+              "label": "gross margin percent",
+              "value": "-36.68"
+            },
+            {
+              "field": "net_margin_percent",
+              "label": "net margin percent",
+              "value": "-43.51"
+            }
+          ],
+          "expected": "Business-approved sign convention",
+          "observed": "One or more exported values are negative",
+          "privacy": "Only issue-relevant non-sensitive cells are included."
+        }
+      ]
+    },
+    {
+      "reportId": "p1.item_recipe.detail",
+      "displayName": "Item Recipe Report",
+      "selection": {
+        "status": "selected",
+        "modelRole": "primary",
+        "roleGroup": "primary",
+        "pages": [
+          "P1",
+          "P3",
+          "P4"
+        ],
+        "sourceTable": "RAWN_CT_item_recipe_report",
+        "reason": "Use only after stable item identifiers and UOM conversion are approved"
+      },
+      "filesAudited": 1,
+      "rowsAudited": 899,
+      "emptyFileCount": 0,
+      "duplicateRowCount": 1,
+      "periods": [
+        "Snapshot 21 Jul 2026"
+      ],
+      "schema": {
+        "contractMatch": "exact",
+        "contractVariantCount": 1,
+        "status": "exact",
+        "workbenchReportId": "report:p1_main:06_misc:18_item_recipe_report",
+        "matchedVariantId": "primary",
+        "matchedVariantName": "CSV item recipe detail",
+        "columnCount": 8,
+        "statement": "Observed CSV header matches its contract exactly; canonical column positions match the captured Workbench variant, including grouped quantity and amount headings."
+      },
+      "readiness": "review_required",
+      "decision": "Schema-ready and populated; recipe identifiers, effective dates, and UOM conversion still require master-data approval.",
+      "keyFieldCoverage": [
+        {
+          "field": "menu_item_number",
+          "label": "menu item number",
+          "declaredType": "text",
+          "totalCount": 899,
+          "nonNullCount": 899,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "ingredient_code",
+          "label": "ingredient code",
+          "declaredType": "text",
+          "totalCount": 899,
+          "nonNullCount": 899,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "recipe_qty_per_menu_unit",
+          "label": "recipe qty per menu unit",
+          "declaredType": "decimal",
+          "totalCount": 899,
+          "nonNullCount": 899,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "recipe_unit",
+          "label": "recipe unit",
+          "declaredType": "text",
+          "totalCount": 899,
+          "nonNullCount": 899,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        }
+      ],
+      "findings": [
+        {
+          "id": "p1.item_recipe.detail:duplicate_rows",
+          "category": "duplication",
+          "severity": "warning",
+          "title": "Duplicate source rows were observed",
+          "affectedRowCount": 1,
+          "fields": [],
+          "observation": "1 duplicate rows were observed across the captured exports.",
+          "productionTreatment": "Deduplicate on the approved business grain before aggregation and preserve duplicate counts as a data-quality measure."
+        }
+      ],
+      "evidenceRows": []
+    },
+    {
+      "reportId": "p4.purchase_detail.po_enabled",
+      "displayName": "Purchase Detail - PO details enabled",
+      "selection": {
+        "status": "selected",
+        "modelRole": "fallback_and_reconciliation",
+        "roleGroup": "control",
+        "pages": [
+          "P2",
+          "P4"
+        ],
+        "sourceTable": "RAWN_CT_purchase_detail",
+        "reason": "Fallback for ordered-versus-received value only; cannot by itself support overdue PO or OTIF"
+      },
+      "filesAudited": 1,
+      "rowsAudited": 288,
+      "emptyFileCount": 0,
+      "duplicateRowCount": 0,
+      "periods": [
+        "Export 1"
+      ],
+      "schema": {
+        "contractMatch": "exact",
+        "contractVariantCount": 1,
+        "status": "exact",
+        "workbenchReportId": "report:p4_stock_admin:02_transactional_reports:05_purchase_detail",
+        "matchedVariantId": "primary",
+        "matchedVariantName": "Purchase detail with PO fields",
+        "columnCount": 32,
+        "statement": "Observed CSV header matches its contract exactly; canonical column positions match the captured Workbench variant, including grouped quantity and amount headings."
+      },
+      "readiness": "review_required",
+      "decision": "Schema-ready but PO coverage is sparse; use only as a fallback and reconciliation source.",
+      "keyFieldCoverage": [
+        {
+          "field": "po_number",
+          "label": "po number",
+          "declaredType": "text",
+          "totalCount": 288,
+          "nonNullCount": 2,
+          "nullCount": 286,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "weak",
+          "coveragePercent": 0.7
+        },
+        {
+          "field": "po_date",
+          "label": "po date",
+          "declaredType": "date",
+          "totalCount": 288,
+          "nonNullCount": 2,
+          "nullCount": 286,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "weak",
+          "coveragePercent": 0.7
+        },
+        {
+          "field": "po_qty",
+          "label": "po qty",
+          "declaredType": "decimal",
+          "totalCount": 288,
+          "nonNullCount": 2,
+          "nullCount": 286,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "weak",
+          "coveragePercent": 0.7
+        },
+        {
+          "field": "po_unit_price",
+          "label": "po unit price",
+          "declaredType": "decimal",
+          "totalCount": 288,
+          "nonNullCount": 2,
+          "nullCount": 286,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "weak",
+          "coveragePercent": 0.7
+        },
+        {
+          "field": "purchase_qty",
+          "label": "purchase qty",
+          "declaredType": "decimal",
+          "totalCount": 288,
+          "nonNullCount": 288,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "purchase_amount",
+          "label": "purchase amount",
+          "declaredType": "decimal",
+          "totalCount": 288,
+          "nonNullCount": 288,
+          "nullCount": 0,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        }
+      ],
+      "findings": [],
+      "evidenceRows": []
+    },
+    {
+      "reportId": "p4.recipe_consumption.item",
+      "displayName": "Recipe Consumption Report",
+      "selection": {
+        "status": "selected",
+        "modelRole": "reconciliation",
+        "roleGroup": "control",
+        "pages": [
+          "P3",
+          "P4"
+        ],
+        "sourceTable": "RAWN_CT_recipe_consumption",
+        "reason": "Compare model-derived theoretical consumption to source-reported recipe consumption"
+      },
+      "filesAudited": 4,
+      "rowsAudited": 1927,
+      "emptyFileCount": 2,
+      "duplicateRowCount": 205,
+      "periods": [
+        "21 Mar - 21 Apr 2026",
+        "21 Apr - 21 May 2026",
+        "21 May - 21 Jun 2026",
+        "21 Jun - 21 Jul 2026"
+      ],
+      "schema": {
+        "contractMatch": "exact",
+        "contractVariantCount": 1,
+        "status": "exact",
+        "workbenchReportId": "report:p4_stock_admin:05_aggregation_reports:07_recipe_consumption_report",
+        "matchedVariantId": "primary",
+        "matchedVariantName": "Recipe consumption CSV",
+        "columnCount": 11,
+        "statement": "Observed CSV header matches its contract exactly; canonical column positions match the captured Workbench variant, including grouped quantity and amount headings."
+      },
+      "readiness": "review_required",
+      "decision": "Schema-ready; two periods are empty and populated periods contain duplicate rows and subtotal exceptions.",
+      "keyFieldCoverage": [
+        {
+          "field": "item_code",
+          "label": "item code",
+          "declaredType": "text",
+          "totalCount": 1927,
+          "nonNullCount": 1655,
+          "nullCount": 272,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "partial",
+          "coveragePercent": 85.9
+        },
+        {
+          "field": "parent_item_qty",
+          "label": "parent item qty",
+          "declaredType": "decimal",
+          "totalCount": 1927,
+          "nonNullCount": 272,
+          "nullCount": 1655,
+          "zeroCount": 0,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "weak",
+          "coveragePercent": 14.1
+        },
+        {
+          "field": "consumed_qty",
+          "label": "consumed qty",
+          "declaredType": "decimal",
+          "totalCount": 1927,
+          "nonNullCount": 1927,
+          "nullCount": 0,
+          "zeroCount": 1,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "complete",
+          "coveragePercent": 100.0
+        },
+        {
+          "field": "consumed_subtotal",
+          "label": "consumed subtotal",
+          "declaredType": "decimal",
+          "totalCount": 1927,
+          "nonNullCount": 1655,
+          "nullCount": 272,
+          "zeroCount": 120,
+          "negativeCount": 0,
+          "parseErrorCount": 0,
+          "coverageStatus": "partial",
+          "coveragePercent": 85.9
+        }
+      ],
+      "findings": [
+        {
+          "id": "p4.recipe_consumption.item:parent_subtotal_from_qty_price",
+          "category": "business_rule",
+          "severity": "review",
+          "title": "Recipe parent subtotal differs from quantity multiplied by unit price",
+          "affectedRowCount": 33,
+          "fields": [
+            "parent_subtotal",
+            "parent_item_qty",
+            "parent_unit_price"
+          ],
+          "observation": "Parent subtotal differs from parent quantity multiplied by parent unit price.",
+          "productionTreatment": "Recalculate recipe consumption cost from normalized quantity and price; retain source subtotal as evidence."
+        },
+        {
+          "id": "p4.recipe_consumption.item:row_coverage",
+          "category": "coverage",
+          "severity": "warning",
+          "title": "Some captured periods are header-only",
+          "affectedRowCount": 0,
+          "fields": [],
+          "observation": "2 of 4 exports contain no data rows.",
+          "productionTreatment": "Keep period completeness visible and exclude empty periods from trend conclusions."
+        },
+        {
+          "id": "p4.recipe_consumption.item:duplicate_rows",
+          "category": "duplication",
+          "severity": "warning",
+          "title": "Duplicate source rows were observed",
+          "affectedRowCount": 205,
+          "fields": [],
+          "observation": "205 duplicate rows were observed across the captured exports.",
+          "productionTreatment": "Deduplicate on the approved business grain before aggregation and preserve duplicate counts as a data-quality measure."
+        }
+      ],
+      "evidenceRows": [
+        {
+          "id": "evidence:p4_recipe_consumption_item:parent_subtotal_from_qty_price",
+          "findingId": "p4.recipe_consumption.item:parent_subtotal_from_qty_price",
+          "exportLabel": "21 May - 21 Jun 2026",
+          "sourceRowNumber": 301,
+          "values": [
+            {
+              "field": "parent_subtotal",
+              "label": "parent subtotal",
+              "value": "878.22"
+            },
+            {
+              "field": "parent_item_qty",
+              "label": "parent item qty",
+              "value": "48"
+            },
+            {
+              "field": "parent_unit_price",
+              "label": "parent unit price",
+              "value": "18.3"
+            }
+          ],
+          "expected": "parent_subtotal = parent_item_qty * parent_unit_price = 878.4",
+          "observed": "878.22",
+          "privacy": "Only issue-relevant non-sensitive cells are included."
+        }
+      ]
+    },
+    {
+      "reportId": "p4.stock_in_stock_out.item",
+      "displayName": "Stock In Stock Out Report - movement detail",
+      "selection": {
+        "status": "evaluated_not_selected",
+        "modelRole": "evaluated_fallback",
+        "roleGroup": "evaluated",
+        "pages": [
+          "P1",
+          "P3",
+          "P4"
+        ],
+        "sourceTable": "",
+        "reason": "Retained as a movement fallback when paired transfer reports are incomplete."
+      },
+      "filesAudited": 1,
+      "rowsAudited": 1229,
+      "emptyFileCount": 0,
+      "duplicateRowCount": 0,
+      "periods": [
+        "Snapshot 22 Jul 2026"
+      ],
+      "schema": {
+        "contractMatch": "exact",
+        "contractVariantCount": 1,
+        "status": "exact",
+        "workbenchReportId": "report:p4_stock_admin:02_transactional_reports:10_stock_in_stock_out_report",
+        "matchedVariantId": "primary",
+        "matchedVariantName": "Stock in and stock out",
+        "columnCount": 13,
+        "statement": "Observed CSV header matches its contract exactly; canonical column positions match the captured Workbench variant, including grouped quantity and amount headings."
+      },
+      "readiness": "review_required",
+      "decision": "Schema-ready; subtotal exceptions make paired enterprise transfers the preferred source.",
+      "keyFieldCoverage": [],
+      "findings": [
+        {
+          "id": "p4.stock_in_stock_out.item:stock_in_subtotal_from_qty_price",
+          "category": "business_rule",
+          "severity": "review",
+          "title": "Stock-in subtotal differs from quantity multiplied by unit price",
+          "affectedRowCount": 130,
+          "fields": [
+            "stock_in_subtotal",
+            "stock_in_qty",
+            "unit_price"
+          ],
+          "observation": "Stock-in subtotal differs from stock-in quantity multiplied by unit price.",
+          "productionTreatment": "Use normalized quantity multiplied by approved price for movement value and retain the source subtotal as an exception."
+        },
+        {
+          "id": "p4.stock_in_stock_out.item:stock_out_subtotal_from_qty_price",
+          "category": "business_rule",
+          "severity": "review",
+          "title": "Stock-out subtotal differs from quantity multiplied by unit price",
+          "affectedRowCount": 3,
+          "fields": [
+            "stock_out_subtotal",
+            "stock_out_qty",
+            "unit_price"
+          ],
+          "observation": "Stock-out subtotal differs from stock-out quantity multiplied by unit price.",
+          "productionTreatment": "Use normalized quantity multiplied by approved price for movement value and retain the source subtotal as an exception."
+        }
+      ],
+      "evidenceRows": [
+        {
+          "id": "evidence:p4_stock_in_stock_out_item:stock_in_subtotal_from_qty_price",
+          "findingId": "p4.stock_in_stock_out.item:stock_in_subtotal_from_qty_price",
+          "exportLabel": "Snapshot 22 Jul 2026",
+          "sourceRowNumber": 5,
+          "values": [
+            {
+              "field": "stock_in_subtotal",
+              "label": "stock in subtotal",
+              "value": "1800"
+            },
+            {
+              "field": "stock_in_qty",
+              "label": "stock in qty",
+              "value": "0.667"
+            },
+            {
+              "field": "unit_price",
+              "label": "unit price",
+              "value": "2700"
+            }
+          ],
+          "expected": "stock_in_subtotal = stock_in_qty * unit_price = 1800.900",
+          "observed": "1800",
+          "privacy": "Only issue-relevant non-sensitive cells are included."
+        },
+        {
+          "id": "evidence:p4_stock_in_stock_out_item:stock_out_subtotal_from_qty_price",
+          "findingId": "p4.stock_in_stock_out.item:stock_out_subtotal_from_qty_price",
+          "exportLabel": "Snapshot 22 Jul 2026",
+          "sourceRowNumber": 826,
+          "values": [
+            {
+              "field": "stock_out_subtotal",
+              "label": "stock out subtotal",
+              "value": "3750"
+            },
+            {
+              "field": "stock_out_qty",
+              "label": "stock out qty",
+              "value": "1.042"
+            },
+            {
+              "field": "unit_price",
+              "label": "unit price",
+              "value": "3600"
+            }
+          ],
+          "expected": "stock_out_subtotal = stock_out_qty * unit_price = 3751.200",
+          "observed": "3750",
+          "privacy": "Only issue-relevant non-sensitive cells are included."
+        }
+      ]
+    }
+  ]
+}

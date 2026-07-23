@@ -27,6 +27,9 @@ def main() -> int:
     architecture = json.loads(
         (generated / "control-tower-architecture.json").read_text(encoding="utf-8")
     )
+    evidence = json.loads(
+        (generated / "control-tower-evidence.json").read_text(encoding="utf-8")
+    )
     atlas = json.loads((generated / "atlas.json").read_text(encoding="utf-8"))
     errors: list[str] = []
 
@@ -136,10 +139,11 @@ def main() -> int:
         errors.append("Planned architecture must contain exactly 21 selected/control report screens.")
     if len([item for item in source_nodes if item.get("kind") == "master"]) != 2:
         errors.append("Planned architecture must contain Outlet Master and Vendor Master.")
-    if any(item.get("label") == "Enterprise Purchase Order" for item in source_nodes):
-        errors.append("Empty Enterprise Purchase Order must not be a planned source node.")
-    if not any(item.get("id") == "src_purchase_order" for item in source_nodes):
-        errors.append("Purchase Order Report must be the planned PO source authority.")
+    po_source = next((item for item in source_nodes if item.get("id") == "src_purchase_order"), None)
+    if not po_source:
+        errors.append("Enterprise Purchase Order must be the planned PO source authority.")
+    elif po_source.get("reportId") != "report:p4_stock_admin:01_enterprise_reports:06_enterprise_purchase_order":
+        errors.append("Planned PO authority must reference the captured Enterprise Purchase Order report.")
 
     group_ids = {item.get("id") for item in architecture.get("groups", [])}
     for node in architecture_nodes:
@@ -180,6 +184,87 @@ def main() -> int:
     if "" in decision_ids or duplicates(decision_ids):
         errors.append("Planned architecture decisions need unique non-empty ids.")
 
+    if evidence.get("contractVersion") != "1.0.0":
+        errors.append("Unexpected Control Tower evidence contract version.")
+    summary = evidence.get("summary", {})
+    expected_summary = {
+        "selectedSourceCount": 22,
+        "primarySourceCount": 10,
+        "auxiliarySourceCount": 6,
+        "controlSourceCount": 6,
+        "auditedReportCount": 20,
+        "auditedFileCount": 26,
+        "schemaContractMatches": 26,
+        "schemaVisualMatches": 20,
+        "headerOnlyReportCount": 2,
+    }
+    for field, expected in expected_summary.items():
+        if summary.get(field) != expected:
+            errors.append(
+                f"Control Tower evidence summary {field} must be {expected}, "
+                f"found {summary.get(field)}."
+            )
+    sources = evidence.get("sourceRegister", [])
+    source_ids = [item.get("id", "") for item in sources]
+    if "" in source_ids or duplicates(source_ids):
+        errors.append("Control Tower evidence source ids must be unique and non-empty.")
+    evidence_reports = evidence.get("reportEvidence", [])
+    evidence_report_ids = [item.get("reportId", "") for item in evidence_reports]
+    if "" in evidence_report_ids or duplicates(evidence_report_ids):
+        errors.append("Control Tower evidence report ids must be unique and non-empty.")
+    for report in evidence_reports:
+        schema = report.get("schema", {})
+        if schema.get("contractMatch") != "exact" or schema.get("status") != "exact":
+            errors.append(f"Evidence report {report.get('reportId')} lacks exact schema proof.")
+        if schema.get("workbenchReportId") not in report_ids:
+            errors.append(
+                f"Evidence report {report.get('reportId')} references an unknown Workbench report."
+            )
+        if len(report.get("evidenceRows", [])) > len(report.get("findings", [])):
+            errors.append(
+                f"Evidence report {report.get('reportId')} contains more row excerpts than finding types."
+            )
+        for excerpt in report.get("evidenceRows", []):
+            for value in excerpt.get("values", []):
+                field_name = value.get("field", "").lower()
+                if any(
+                    token in field_name
+                    for token in (
+                        "customer",
+                        "mobile",
+                        "phone",
+                        "email",
+                        "address",
+                        "contact",
+                        "whatsapp",
+                        "card_number",
+                        "user_name",
+                        "waiter",
+                    )
+                ):
+                    errors.append(
+                        f"Evidence excerpt {excerpt.get('id')} contains a sensitive field."
+                    )
+    if evidence.get("privacy", {}).get("fullRowsIncluded") is not False:
+        errors.append("Control Tower evidence must exclude full raw rows.")
+    if evidence.get("privacy", {}).get("sensitiveValuesIncluded") is not False:
+        errors.append("Control Tower evidence must exclude sensitive values.")
+    evidence_text = json.dumps(evidence)
+    if any(
+        token.lower() in evidence_text.lower()
+        for token in (
+            "C:\\Users",
+            "Downloads\\",
+            "file_sha256",
+            "file_name",
+            ".csv",
+            ".png",
+            ".jpg",
+            ".jpeg",
+        )
+    ):
+        errors.append("Control Tower evidence contains a prohibited local artifact reference.")
+
     if errors:
         print("Control-tower validation failed:")
         for error in errors:
@@ -191,7 +276,8 @@ def main() -> int:
         "Control-tower validation passed: "
         f"{len(pages)} pages, {len(kpis)} draft KPIs, {capture_count} report candidates, "
         f"{len(requirements['apiAssessment']['endpoints'])} API candidates, "
-        f"{len(source_nodes)} architecture sources and {len(model_nodes)} planned model nodes."
+        f"{len(source_nodes)} architecture sources, {len(model_nodes)} planned model nodes, "
+        f"{len(sources)} selected sources and {len(evidence_reports)} audited reports."
     )
     return 0
 

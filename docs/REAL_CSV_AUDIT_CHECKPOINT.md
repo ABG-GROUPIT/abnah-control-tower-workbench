@@ -2,10 +2,11 @@
 
 ## Scope
 
-This checkpoint records the first local, value-aware Restroworks export audit without
-moving raw rows into the Workbench repository. The final sanitized packet covers 26 CSV
-files across 20 report contracts. One legacy Purchase Detail `.xls` export was not part
-of the CSV run because an equivalent Purchase Detail CSV was audited.
+This checkpoint records the corrected local, value-aware Restroworks export
+audit without moving raw datasets into the Workbench repository. The audit
+covers 26 CSV files, 20 report contracts, and 35,128 source rows. One legacy
+Purchase Detail `.xls` export was not part of the CSV run because an equivalent
+Purchase Detail CSV was audited.
 
 | Area | Contract or mode | CSV files |
 | --- | --- | ---: |
@@ -63,17 +64,21 @@ or the selected report period.
 | Enterprise Transfer | One amount review mismatch in each direction. |
 | Stock In Stock Out | 130 stock-in and 3 stock-out subtotal review mismatches. |
 | Recipe Consumption | 33 parent subtotal review mismatches and 205 duplicate-row flags across the two populated monthly exports. |
-| Enterprise Entry | Invoice-number type parsing needs review, with 2 base-amount and 7 tax-bridge mismatches. |
-| Purchase Detail | Invoice-number type parsing needs review; most PO fields are absent in the populated rows despite the PO-enabled export shape. |
-| Bill Item Detail | Open/close timestamps need a source-format parser, and the provisional net bridge does not reconcile for many item rows. |
+| Enterprise Entry | Two base-amount and 7 tax-bridge mismatches; PO and batch coverage must be checked for receipt and expiry use. |
+| Enterprise Purchase Order | The 113-row export is now populated and matches all encoded row rules; receipt linkage, status semantics, and eligible closed-line logic remain the production gate. |
+| Purchase Detail | Most PO fields are absent in the populated rows despite the PO-enabled export shape; only 2 of 288 rows carry the PO fields needed for fallback use. |
+| Bill Item Detail | The provisional net bridge does not reconcile for many item rows; timestamps remain valid source text and are not classified as parse defects. |
 | Gross/Net Margin | Negative margin percentages exist; the conventional margin hypotheses do not reproduce many source rows and must not be treated as confirmed Restroworks formulas. |
 
 ## Local Semantic Review
 
-The semantic pass used `qwen2.5:7b-instruct` through localhost Ollama with a separate
-analyst and verifier pass. Deterministic category normalization and grounding reject
-unsupported schema changes and impossible value claims. Model interpretation remains
-secondary to deterministic counts and requires business confirmation.
+The semantic pass used `qwen2.5:7b-instruct` through localhost Ollama with a
+separate analyst and verifier pass. The deterministic profiler was then
+corrected so optional type inference on declared text cannot create false parse
+errors for timestamps or identifiers. Deterministic category normalization and
+grounding reject unsupported schema changes and impossible value claims. Model
+interpretation remains secondary to deterministic counts and requires business
+confirmation.
 
 ## Workbench Effect
 
@@ -83,16 +88,18 @@ secondary to deterministic counts and requires business confirmation.
   previously captured visual modes.
 - Bulk Return and Closing Stock move from pending to captured.
 - Every audit-touched blueprint is `needs_review` until its blank rendering is checked.
-- The repository contains no CSV rows, normalized extracts, screenshots, local paths, or
-  exact business values from the audit.
+- The repository contains no raw CSVs, normalized extracts, screenshots, local
+  paths, filenames, hashes, or sensitive values.
+- `control-tower-evidence.json` contains 18 minimal issue excerpts: one
+  non-sensitive numeric/date excerpt per deterministic finding type, with source
+  row number retained for local verification.
 
 ## Next Review
 
 1. Review all changed blank tables in Discovery, especially Enterprise Entry variants,
    detailed Variance, and Consumption grouped columns.
-2. Confirm Restroworks timestamp formats before treating Bill Item parse failures as data
-   defects.
-3. Confirm source price bases and formulas for the deterministic mismatch queue.
+2. Confirm source price bases and formulas for the deterministic mismatch queue.
+3. Confirm Enterprise Purchase Order status semantics and exact PO-line/GRN linkage.
 4. Obtain populated Enterprise ReOrder and Stock Entry Return exports.
 5. Record accepted formula semantics in model mappings only after the source reports and
    business owners agree.

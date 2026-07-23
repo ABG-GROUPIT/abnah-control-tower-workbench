@@ -8,7 +8,10 @@ Maintain a screenshot-free, evidence-disciplined understanding of ABNAH's Restro
 
 1. Raw screenshots stay outside this repository and outside hosting.
 2. Never store a screenshot filename or local evidence path in a new report blueprint.
-3. Store structural labels and relationships only; never copy report row values or client records.
+3. Report blueprints store structural labels and relationships only. The
+   Control Tower evidence contract may include one compiler-generated,
+   non-sensitive numeric/date excerpt per deterministic finding type; never copy
+   full rows, arbitrary values, or client records.
 4. Preserve source labels exactly, including suspected spelling errors. Put corrections in notes.
 5. Do not claim API coverage until ABNAH UAT access has been tested.
 6. Business-supplied KPI definitions may be stored as `draft`; do not create selected sources, joins, transformations, thresholds, or published mappings without evidence and approval.
