@@ -33,6 +33,12 @@ def main() -> int:
     fidelity = json.loads(
         (generated / "control-tower-fidelity.json").read_text(encoding="utf-8")
     )
+    presentation = json.loads(
+        (generated / "control-tower-presentation.json").read_text(encoding="utf-8")
+    )
+    control_tower_model = json.loads(
+        (generated / "control-tower-model.json").read_text(encoding="utf-8")
+    )
     atlas = json.loads((generated / "atlas.json").read_text(encoding="utf-8"))
     errors: list[str] = []
 
@@ -402,6 +408,124 @@ def main() -> int:
         )
     ):
         errors.append("Control Tower fidelity contains a prohibited local artifact reference.")
+
+    if presentation.get("contractVersion") != "1.0.0":
+        errors.append("Unexpected Control Tower presentation contract version.")
+    presentation_pages = presentation.get("pages", [])
+    presentation_stories = presentation.get("stories", [])
+    source_profiles = presentation.get("sourceProfiles", {})
+    if [page.get("number") for page in presentation_pages] != [1, 2, 3, 4]:
+        errors.append("Presentation contract must contain pages 1 through 4 in order.")
+    presentation_page_ids = {page.get("id", "") for page in presentation_pages}
+    story_ids = [story.get("id", "") for story in presentation_stories]
+    if len(presentation_stories) != 76 or "" in story_ids or duplicates(story_ids):
+        errors.append("Presentation contract must contain 76 unique final KPI/chart stories.")
+    story_kind_counts = {
+        kind: sum(story.get("kind") == kind for story in presentation_stories)
+        for kind in ("kpi", "chart", "table")
+    }
+    if story_kind_counts != {"kpi": 33, "chart": 23, "table": 20}:
+        errors.append(f"Unexpected presentation story-kind counts: {story_kind_counts}")
+    model_table_names = {
+        table.get("physicalName", "") for table in control_tower_model.get("tables", [])
+    }
+    for story in presentation_stories:
+        story_id = story.get("id", "")
+        if story.get("pageId") not in presentation_page_ids:
+            errors.append(f"Presentation story {story_id} references an unknown page.")
+        if story.get("sourceTable") not in source_profiles:
+            errors.append(f"Presentation story {story_id} lacks a source profile.")
+        if story.get("sourceTable") not in model_table_names:
+            errors.append(f"Presentation story {story_id} references an unknown Query Table.")
+        if not all(
+            story.get(field)
+            for field in (
+                "name",
+                "visual",
+                "question",
+                "finalFields",
+                "formula",
+                "aggregation",
+                "talkTrack",
+            )
+        ):
+            errors.append(f"Presentation story {story_id} is incomplete.")
+    for profile_name, profile in source_profiles.items():
+        if profile_name not in model_table_names:
+            errors.append(f"Source profile {profile_name} is not a physical Query Table.")
+        if not all(profile.get(field) for field in ("grain", "reports", "route", "joinLogic", "guardrails")):
+            errors.append(f"Source profile {profile_name} is incomplete.")
+        for source in profile.get("reports", []):
+            report_id = source.get("reportId", "")
+            if report_id and report_id not in report_ids:
+                errors.append(
+                    f"Presentation source {source.get('name')} references an unknown report: {report_id}"
+                )
+            if source.get("evidence") not in {
+                "captured_posist_report",
+                "synthetic_model_input",
+            }:
+                errors.append(
+                    f"Presentation source {source.get('name')} has an invalid evidence level."
+                )
+    presentation_text = json.dumps(presentation)
+    if any(
+        token.lower() in presentation_text.lower()
+        for token in (
+            "C:\\Users",
+            "Downloads\\",
+            ".png",
+            ".jpg",
+            ".jpeg",
+            "customer name",
+            "customer number",
+        )
+    ):
+        errors.append("Control Tower presentation contains prohibited local or sensitive evidence.")
+
+    if control_tower_model.get("contractVersion") != "1.0.0":
+        errors.append("Unexpected Control Tower model contract version.")
+    model_layers = control_tower_model.get("layers", [])
+    model_tables = control_tower_model.get("tables", [])
+    if [layer.get("id") for layer in model_layers] != [
+        "raw",
+        "standardized",
+        "dimension",
+        "fact",
+        "summary",
+    ]:
+        errors.append("Control Tower model layers are missing or out of order.")
+    build_orders = [table.get("buildOrder") for table in model_tables]
+    physical_names = [table.get("physicalName", "") for table in model_tables]
+    if (
+        len(model_tables) != 38
+        or build_orders != list(range(1, 39))
+        or "" in physical_names
+        or duplicates(physical_names)
+    ):
+        errors.append("Control Tower model must contain Query Tables 01 through 38 exactly once.")
+    for table in model_tables:
+        if table.get("dependencyLevel") not in {1, 2, 3}:
+            errors.append(
+                f"Query Table {table.get('physicalName')} has an invalid dependency level."
+            )
+        if not all(
+            table.get(field)
+            for field in ("logicalName", "purpose", "sources", "sql")
+        ):
+            errors.append(f"Query Table {table.get('physicalName')} is incomplete.")
+        missing_dependencies = set(table.get("dependencies", [])) - set(physical_names)
+        if missing_dependencies:
+            errors.append(
+                f"Query Table {table.get('physicalName')} has missing dependencies: "
+                f"{sorted(missing_dependencies)}"
+            )
+    model_text = json.dumps(control_tower_model)
+    if any(
+        token.lower() in model_text.lower()
+        for token in ("C:\\Users", "Downloads\\", ".png", ".jpg", ".jpeg")
+    ):
+        errors.append("Control Tower model contains prohibited local artifact references.")
 
     if errors:
         print("Control-tower validation failed:")

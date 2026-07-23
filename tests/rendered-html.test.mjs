@@ -34,13 +34,15 @@ test("server-renders the editable ABNAH schema workspace", async () => {
 });
 
 test("ships screenshot-free workspace and control-tower contracts", async () => {
-  const [workspaceText, atlasText, controlTowerText, evidenceText, fidelityText, architectureText, lineageText, migration, packageJson] = await Promise.all([
+  const [workspaceText, atlasText, controlTowerText, evidenceText, fidelityText, architectureText, presentationText, modelText, lineageText, migration, packageJson] = await Promise.all([
     readFile(new URL("../schema-pack/generated/workspace.json", import.meta.url), "utf8"),
     readFile(new URL("../schema-pack/generated/atlas.json", import.meta.url), "utf8"),
     readFile(new URL("../schema-pack/generated/control-tower-requirements.json", import.meta.url), "utf8"),
     readFile(new URL("../schema-pack/generated/control-tower-evidence.json", import.meta.url), "utf8"),
     readFile(new URL("../schema-pack/generated/control-tower-fidelity.json", import.meta.url), "utf8"),
     readFile(new URL("../schema-pack/generated/control-tower-architecture.json", import.meta.url), "utf8"),
+    readFile(new URL("../schema-pack/generated/control-tower-presentation.json", import.meta.url), "utf8"),
+    readFile(new URL("../schema-pack/generated/control-tower-model.json", import.meta.url), "utf8"),
     readFile(new URL("../schema-pack/generated/kpi-lineage.json", import.meta.url), "utf8"),
     readFile(new URL("../drizzle/0000_faulty_leader.sql", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
@@ -51,6 +53,8 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   const evidence = JSON.parse(evidenceText);
   const fidelity = JSON.parse(fidelityText);
   const architecture = JSON.parse(architectureText);
+  const presentation = JSON.parse(presentationText);
+  const model = JSON.parse(modelText);
   const lineage = JSON.parse(lineageText);
   const misc = workspace.reports.filter((report) => report.page === "p1_main" && report.section === "06_misc");
 
@@ -69,6 +73,15 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   assert.equal(architecture.sourceNodes.filter((node) => node.kind === "derived_reference").length, 2);
   assert.equal(architecture.modelNodes.length, 58);
   assert.equal(new Set(architecture.kpiRoutes.flatMap((route) => route.kpiIds)).size, 35);
+  assert.equal(presentation.pages.length, 4);
+  assert.equal(presentation.stories.length, 76);
+  assert.equal(presentation.stories.filter((story) => story.kind === "kpi").length, 33);
+  assert.equal(presentation.stories.filter((story) => story.kind === "chart").length, 23);
+  assert.equal(presentation.stories.filter((story) => story.kind === "table").length, 20);
+  assert.equal(model.layers.length, 5);
+  assert.equal(model.tables.length, 38);
+  assert.deepEqual(model.tables.map((table) => table.buildOrder), Array.from({ length: 38 }, (_, index) => index + 1));
+  assert.ok(model.tables.every((table) => table.sql.includes("-- Query Table:")));
   assert.ok(architecture.sourceNodes.some(
     (node) => node.id === "src_purchase_order"
       && node.label === "Enterprise Purchase Order Report"
@@ -124,6 +137,8 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   assert.doesNotMatch(evidenceText, /\.png\b|\.jpe?g\b|[A-Za-z]:\\|Downloads\\|file_sha256|file_name/i);
   assert.doesNotMatch(fidelityText, /\.png\b|\.jpe?g\b|[A-Za-z]:\\|Downloads\\/i);
   assert.doesNotMatch(architectureText, /\.png\b|\.jpe?g\b|AppData\\Local\\Temp|Downloads\\/i);
+  assert.doesNotMatch(presentationText, /\.png\b|\.jpe?g\b|[A-Za-z]:\\|Downloads\\/i);
+  assert.doesNotMatch(modelText, /\.png\b|\.jpe?g\b|[A-Za-z]:\\|Downloads\\/i);
   assert.doesNotMatch(atlasText, /Raw Material Item Detail/i);
 
   const budget = workspace.reports.find((report) => report.id === "report:p1_main:06_misc:03_budget_dsr_report");

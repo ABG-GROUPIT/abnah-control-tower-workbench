@@ -436,6 +436,12 @@ def build(root: Path) -> dict[str, Any]:
     control_tower_source = root / "schema-pack" / "source" / "control_tower" / "control-tower-requirements.json"
     control_tower_evidence_source = root / "schema-pack" / "source" / "control_tower" / "control-tower-evidence.json"
     control_tower_fidelity_source = root / "schema-pack" / "source" / "control_tower" / "control-tower-fidelity.json"
+    control_tower_presentation_source = (
+        root / "schema-pack" / "source" / "control_tower" / "control-tower-presentation.json"
+    )
+    control_tower_model_source = (
+        root / "schema-pack" / "source" / "model" / "control-tower-model.json"
+    )
     architecture_source = root / "schema-pack" / "source" / "architecture" / "control-tower-architecture.json"
     atlas = json.loads((generated_root / "atlas.json").read_text(encoding="utf-8"))
     fields = {item["id"]: item for item in atlas["fields"]}
@@ -531,6 +537,34 @@ def build(root: Path) -> dict[str, Any]:
     write_json(generated_root / "control-tower-architecture.json", architecture)
     write_json(root / "public" / "data" / "control-tower-architecture.json", architecture)
 
+    control_tower_presentation = json.loads(
+        control_tower_presentation_source.read_text(encoding="utf-8")
+    )
+    if control_tower_presentation.get("contractVersion") != "1.0.0":
+        raise ValueError("Unexpected Control Tower presentation contract version.")
+    for collection in ("pages", "stories"):
+        if not isinstance(control_tower_presentation.get(collection), list):
+            raise ValueError(f"Control Tower presentation {collection} must be a list.")
+    if not isinstance(control_tower_presentation.get("sourceProfiles"), dict):
+        raise ValueError("Control Tower presentation sourceProfiles must be an object.")
+    write_json(
+        generated_root / "control-tower-presentation.json",
+        control_tower_presentation,
+    )
+    write_json(
+        root / "public" / "data" / "control-tower-presentation.json",
+        control_tower_presentation,
+    )
+
+    control_tower_model = json.loads(control_tower_model_source.read_text(encoding="utf-8"))
+    if control_tower_model.get("contractVersion") != "1.0.0":
+        raise ValueError("Unexpected Control Tower model contract version.")
+    for collection in ("layers", "tables"):
+        if not isinstance(control_tower_model.get(collection), list):
+            raise ValueError(f"Control Tower model {collection} must be a list.")
+    write_json(generated_root / "control-tower-model.json", control_tower_model)
+    write_json(root / "public" / "data" / "control-tower-model.json", control_tower_model)
+
     lineage = json.loads(lineage_source.read_text(encoding="utf-8"))
     if lineage.get("contractVersion") != "1.0.0":
         raise ValueError("Unexpected KPI lineage contract version.")
@@ -598,6 +632,8 @@ def build(root: Path) -> dict[str, Any]:
     manifest["entry_points"]["control_tower_evidence"] = "schema-pack/generated/control-tower-evidence.json"
     manifest["entry_points"]["control_tower_fidelity"] = "schema-pack/generated/control-tower-fidelity.json"
     manifest["entry_points"]["control_tower_architecture"] = "schema-pack/generated/control-tower-architecture.json"
+    manifest["entry_points"]["control_tower_presentation"] = "schema-pack/generated/control-tower-presentation.json"
+    manifest["entry_points"]["control_tower_model"] = "schema-pack/generated/control-tower-model.json"
     manifest["kpi_lineage_source"] = {
         "path": lineage_source.relative_to(root).as_posix(),
         "sha256": sha256(lineage_source),
@@ -618,6 +654,14 @@ def build(root: Path) -> dict[str, Any]:
         "path": architecture_source.relative_to(root).as_posix(),
         "sha256": sha256(architecture_source),
     }
+    manifest["control_tower_presentation_source"] = {
+        "path": control_tower_presentation_source.relative_to(root).as_posix(),
+        "sha256": sha256(control_tower_presentation_source),
+    }
+    manifest["control_tower_model_source"] = {
+        "path": control_tower_model_source.relative_to(root).as_posix(),
+        "sha256": sha256(control_tower_model_source),
+    }
     manifest["counts"]["workspace_reports"] = len(workspace["reports"])
     manifest["counts"]["structural_blueprints"] = sum(1 for item in source_files if not Path(item["path"]).name.startswith("_"))
     manifest["counts"]["draft_kpis"] = sum(
@@ -629,6 +673,8 @@ def build(root: Path) -> dict[str, Any]:
     manifest["counts"]["published_lineage_maps"] = len(lineage["publications"])
     manifest["counts"]["planned_architecture_sources"] = len(architecture["sourceNodes"])
     manifest["counts"]["planned_architecture_model_nodes"] = len(architecture["modelNodes"])
+    manifest["counts"]["presentation_stories"] = len(control_tower_presentation["stories"])
+    manifest["counts"]["control_tower_query_tables"] = len(control_tower_model["tables"])
     manifest["counts"]["selected_control_tower_sources"] = len(
         control_tower_evidence["sourceRegister"]
     )

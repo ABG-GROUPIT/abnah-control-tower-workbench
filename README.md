@@ -29,7 +29,10 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
 - 8 P1 Misc reports marked unavailable because their screens returned no usable schema.
 - 2 unknown P1 Misc placeholders archived instead of being guessed.
 - 34 public Restroworks API candidates packeted; none are ABNAH UAT verified yet.
-- 35 draft control-tower KPI definitions, 0 approved KPIs, and 0 published KPI lineage maps.
+- 76 final presentation stories cover every current KPI, chart, detail table,
+  source field set, formula, lookup, filter, and Zoho report configuration.
+- 38 exact Control Tower v2 Query Tables are searchable in the hosted model
+  library with their dependency levels and complete SQL.
 - P2 now has 73 captured schemas, 3 bounded partial schemas, and 79 pending reports.
 - P4 now has 26 captured schemas and 48 pending reports, including all 15 Enterprise reports, four explicit Consumption Report modes, Bulk Return, and Closing Stock.
 - The private CSV audit checkpoint covers 26 exports, 20 report contracts, and
@@ -57,7 +60,8 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
   model/delivery decision.
 - `Data quality`: severity-tiered issue register, passed-control ledger, safe
   hosted evidence, and optional in-browser loading of the private local packet.
-- `Architecture`: KPI-specific source-to-summary routes and the planned layered model.
+- `Architecture`: one-object-at-a-time KPI/chart stories plus a separate
+  five-layer model and exact-SQL library.
 - `Workspace`: editable current revision.
 - `Published`: read-only latest published revision or repository baseline.
 
@@ -65,7 +69,10 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
 
 Developer:
 
-1. Read `docs/ARCHITECTURE.md`, `docs/CONTROL_TOWER_REQUIREMENTS.md`, and `docs/STRUCTURAL_SCHEMA_METHOD.md`.
+1. Read `docs/ARCHITECTURE.md`,
+   `docs/CONTROL_TOWER_KPI_AND_CHART_LINEAGE_HANDBOOK.md`,
+   `docs/PRESENTATION_SAFE_ACTUAL_DATA_ISSUES.md`, and
+   `docs/STRUCTURAL_SCHEMA_METHOD.md`.
 2. Run `npm install`.
 3. Run `refresh_atlas.bat` after source changes.
 4. Run `npm run dev`.
@@ -103,6 +110,7 @@ ABNAH Schema Atlas/
     source/
       report_structures/       portable per-report schema blueprints
       control_tower/            requirements, final sources, and sanitized audit evidence
+      model/                    exact 38-table v2 SQL model and layer metadata
       kpi_lineage/             definitions derived from requirements; mappings still empty
       catalog/                 report, field, API, and decision inputs
       model_sql/               current/proposed model SQL context
@@ -133,6 +141,11 @@ npm test
 ```
 
 Generated files under `schema-pack/generated/` and `public/data/` must not be edited manually.
+
+`npm run data:refresh` first runs the synthetic-demo presentation generator
+when the sibling project is available. That one command resynchronizes the
+76-story contract, both handbooks, the model catalog, and all 38 SQL files
+before rebuilding the browser data.
 
 GitHub Pages deploys `pages-dist/` through `.github/workflows/pages.yml`. The
 static build falls back to browser-local workspace persistence. D1 remains the

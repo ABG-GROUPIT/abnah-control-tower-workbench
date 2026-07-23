@@ -21,10 +21,13 @@ import type {
   WorkspaceRevision,
   WorkspaceSeed,
 } from "../lib/workspace-types";
-import type { ControlTowerArchitecture } from "../lib/architecture-types";
 import type { ControlTowerRequirements } from "../lib/control-tower-types";
 import type { ControlTowerEvidence } from "../lib/control-tower-evidence-types";
 import type { ControlTowerFidelity } from "../lib/control-tower-fidelity-types";
+import type {
+  ControlTowerModel,
+  ControlTowerPresentation,
+} from "../lib/control-tower-presentation-types";
 import { ApiRegistry } from "./ApiRegistry";
 import { ArchitectureGraphWorkspace } from "./ArchitectureGraphWorkspace";
 import { ControlTowerWorkspace } from "./ControlTowerWorkspace";
@@ -35,10 +38,11 @@ import { ReportWorkspacePanel, type ReportTab } from "./ReportWorkspacePanel";
 interface AtlasWorkspaceProps {
   atlas: AtlasData;
   workspaceSeed: WorkspaceSeed;
-  architecture: ControlTowerArchitecture;
   controlTower: ControlTowerRequirements;
   controlTowerEvidence: ControlTowerEvidence;
   controlTowerFidelity: ControlTowerFidelity;
+  controlTowerModel: ControlTowerModel;
+  controlTowerPresentation: ControlTowerPresentation;
   persistenceMode?: "auto" | "browser";
 }
 
@@ -107,10 +111,11 @@ function customReport(page: string, section: string): ReportWorkspaceDocument {
 export function AtlasWorkspace({
   atlas,
   workspaceSeed,
-  architecture,
   controlTower,
   controlTowerEvidence,
   controlTowerFidelity,
+  controlTowerModel,
+  controlTowerPresentation,
   persistenceMode = "auto",
 }: AtlasWorkspaceProps) {
   const baseline = useMemo(() => documentRecord(workspaceSeed.reports), [workspaceSeed.reports]);
@@ -501,7 +506,13 @@ export function AtlasWorkspace({
           onOpenReport={openDiscoveryReport}
         />
       )}
-      {surface === "architecture" && <ArchitectureGraphWorkspace architecture={architecture} requirements={controlTower} onOpenReport={openDiscoveryReport} />}
+      {surface === "architecture" && (
+        <ArchitectureGraphWorkspace
+          presentation={controlTowerPresentation}
+          model={controlTowerModel}
+          onOpenReport={openDiscoveryReport}
+        />
+      )}
     </main>
   );
 }

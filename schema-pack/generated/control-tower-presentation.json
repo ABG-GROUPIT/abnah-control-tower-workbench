@@ -1,0 +1,4589 @@
+{
+  "contractVersion": "1.0.0",
+  "status": "dashboard_build_ready_on_synthetic_baseline",
+  "title": "ABNAH KPI and Chart Story Register",
+  "sourcePolicy": "Schema, lineage, formulas, and redacted issue evidence only. No screenshots, full operational rows, customer fields, or local paths.",
+  "syncPolicy": "Run scripts/build_control_tower_presentation.py after a Query Table or final chart change. The same contract regenerates the handbook and the site snapshot.",
+  "pages": [
+    {
+      "id": "page_1_risk_action_center",
+      "number": 1,
+      "name": "Risk Action Center",
+      "purpose": "Show what needs action now across stockout, menu impact, expiry demonstration, and linked open purchase orders."
+    },
+    {
+      "id": "page_2_procurement_vendor_capital",
+      "number": 2,
+      "name": "Procurement, Vendor & Capital Control",
+      "purpose": "Explain purchase commitments, receipts, vendor performance, price movement, and capital exposure."
+    },
+    {
+      "id": "page_3_consumption_menu_profitability",
+      "number": 3,
+      "name": "Consumption Variance & Menu Profitability",
+      "purpose": "Connect actual and theoretical consumption to leakage, menu cost, sales, and margin."
+    },
+    {
+      "id": "page_4_scm_explorer_data_quality",
+      "number": 4,
+      "name": "SCM Descriptive Explorer & Data Quality",
+      "purpose": "Provide governed totals, trends, drilldowns, exports, and explicit data-quality exceptions."
+    }
+  ],
+  "sourceProfiles": {
+    "05_std_ct_inventory_snapshot.sql": {
+      "grain": "Source period, outlet, and inventory item checkpoint",
+      "reports": [
+        {
+          "name": "Closing Stock Report",
+          "reportId": "report:p4_stock_admin:06_analytical_reports:04_closing_stock_report",
+          "role": "Current quantity, average cost, and closing valuation evidence",
+          "fields": [
+            "Deployment",
+            "Date",
+            "Generation Date",
+            "Item Code",
+            "Item Name",
+            "Category Name",
+            "Unit Name",
+            "Average Price",
+            "Total Qty",
+            "Total Amt"
+          ],
+          "evidence": "captured_posist_report"
+        }
+      ],
+      "route": [
+        "RAWN_CT_closing_stock-Copy",
+        "05_std_ct_inventory_snapshot.sql"
+      ],
+      "lookups": [
+        "outlet_code -> 37_dim_ct_outlet_enriched.sql.outlet_code",
+        "item_code -> 14_dim_ct_item.sql.item_code"
+      ],
+      "joinLogic": "No cross-report join in the final table; normalize outlet, item, period, UOM, quantity, and value.",
+      "guardrails": [
+        "Use one source period for a current-state stock value.",
+        "Do not add quantities across unlike UOMs."
+      ]
+    },
+    "18_fact_ct_sales.sql": {
+      "grain": "Sales date, outlet, bill, and menu item",
+      "reports": [
+        {
+          "name": "Gross/Net Margin Report",
+          "reportId": "report:p2_reports:07_sales:33_food_sold_report",
+          "role": "Bill-item sales, quantity, realized revenue, and source cost evidence",
+          "fields": [
+            "Store Name",
+            "Date",
+            "Bill No.",
+            "Super Category",
+            "Category",
+            "SKU Code / Item No",
+            "SKU / Item Name",
+            "Item Qty",
+            "Net Sale Value",
+            "Purchase Value"
+          ],
+          "evidence": "captured_posist_report"
+        }
+      ],
+      "route": [
+        "RAWN_CT_gross_net_margin-Copy",
+        "01_std_ct_sales_item.sql",
+        "18_fact_ct_sales.sql"
+      ],
+      "lookups": [
+        "outlet_code -> 37_dim_ct_outlet_enriched.sql.outlet_code",
+        "sales_date -> 12_dim_ct_date.sql.calendar_date",
+        "item_code -> 15_dim_ct_menu_item.sql.menu_item_code"
+      ],
+      "joinLogic": "No cross-report join in the fact; preserve the validated bill-item grain.",
+      "guardrails": [
+        "The sales item key is a menu item, not an inventory ingredient.",
+        "Use source purchase value only where cost coverage is approved."
+      ]
+    },
+    "19_fact_ct_theoretical_consumption.sql": {
+      "grain": "Source period, outlet, ingredient, and canonical UOM",
+      "reports": [
+        {
+          "name": "Gross/Net Margin Report",
+          "reportId": "report:p2_reports:07_sales:33_food_sold_report",
+          "role": "Sold menu-item quantities used by the theoretical model",
+          "fields": [
+            "Store Name",
+            "Date",
+            "SKU Code / Item No",
+            "SKU / Item Name",
+            "Item Qty"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "Item Recipe Report",
+          "reportId": "report:p1_main:06_misc:18_item_recipe_report",
+          "role": "Menu-item to ingredient quantity and UOM bridge",
+          "fields": [
+            "Item Number",
+            "Item Name",
+            "Qty",
+            "Recipe Unit",
+            "Ingredient Code",
+            "Ingredient Name"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "Closing Stock Report",
+          "reportId": "report:p4_stock_admin:06_analytical_reports:04_closing_stock_report",
+          "role": "Ingredient UOM and average-cost reference",
+          "fields": [
+            "Item Code",
+            "Item Name",
+            "Unit Name",
+            "Average Price"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "AUX Theoretical Consumption",
+          "reportId": "",
+          "role": "Synthetic three-month baseline derived from sales, recipe, UOM, and cost inputs",
+          "fields": [
+            "source_period_code",
+            "outlet_code",
+            "item_code",
+            "canonical_uom",
+            "theoretical_consumption_qty",
+            "theoretical_consumption_value"
+          ],
+          "evidence": "synthetic_model_input"
+        }
+      ],
+      "route": [
+        "AUX_Theoretical_Consumption-Copy",
+        "03_std_ct_theoretical_consumption.sql",
+        "19_fact_ct_theoretical_consumption.sql"
+      ],
+      "lookups": [
+        "outlet_code -> 37_dim_ct_outlet_enriched.sql.outlet_code",
+        "item_code -> 14_dim_ct_item.sql.item_code"
+      ],
+      "joinLogic": "Sales quantity x governed recipe quantity x approved UOM conversion; cost value uses the normalized ingredient cost.",
+      "guardrails": [
+        "The current three-month values are synthetic, while the POSIST source fields and formula pattern are factual.",
+        "Quantity comparisons require one canonical UOM."
+      ]
+    },
+    "20_fact_ct_actual_consumption.sql": {
+      "grain": "Source period, outlet, inventory item, and canonical UOM",
+      "reports": [
+        {
+          "name": "Enterprise Variance Report",
+          "reportId": "report:p4_stock_admin:01_enterprise_reports:08_enterprise_variance",
+          "role": "Opening, purchase, transfer, return, closing, and actual-consumption movement bridge",
+          "fields": [
+            "Deployment Name",
+            "StoreKitchen Name",
+            "Item Code",
+            "Item Name",
+            "Average Price",
+            "Opening Qty",
+            "Purchase Qty",
+            "Stock In Qty",
+            "Stock Out Qty",
+            "Return Qty",
+            "Closing Qty",
+            "Actual Consumption",
+            "Unit"
+          ],
+          "evidence": "captured_posist_report"
+        }
+      ],
+      "route": [
+        "RAWN_CT_enterprise_variance_normal-Copy",
+        "04_std_ct_inventory_period.sql",
+        "20_fact_ct_actual_consumption.sql"
+      ],
+      "lookups": [
+        "outlet_code -> 37_dim_ct_outlet_enriched.sql.outlet_code",
+        "item_code -> 14_dim_ct_item.sql.item_code"
+      ],
+      "joinLogic": "Actual consumption = opening + receipts + transfer in - transfer out - returns - closing.",
+      "guardrails": [
+        "Signed bridge columns are report formula columns for presentation, not new source facts.",
+        "Quantity totals require one canonical UOM."
+      ]
+    },
+    "21_fact_ct_consumption_variance.sql": {
+      "grain": "Source period, outlet, inventory item, and canonical UOM",
+      "reports": [
+        {
+          "name": "Enterprise Variance Report",
+          "reportId": "report:p4_stock_admin:01_enterprise_reports:08_enterprise_variance",
+          "role": "Opening, purchase, transfer, return, closing, and actual-consumption movement bridge",
+          "fields": [
+            "Deployment Name",
+            "StoreKitchen Name",
+            "Item Code",
+            "Item Name",
+            "Average Price",
+            "Opening Qty",
+            "Purchase Qty",
+            "Stock In Qty",
+            "Stock Out Qty",
+            "Return Qty",
+            "Closing Qty",
+            "Actual Consumption",
+            "Unit"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "Gross/Net Margin Report",
+          "reportId": "report:p2_reports:07_sales:33_food_sold_report",
+          "role": "Sold menu-item quantities used by the theoretical model",
+          "fields": [
+            "Store Name",
+            "Date",
+            "SKU Code / Item No",
+            "SKU / Item Name",
+            "Item Qty"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "Item Recipe Report",
+          "reportId": "report:p1_main:06_misc:18_item_recipe_report",
+          "role": "Menu-item to ingredient quantity and UOM bridge",
+          "fields": [
+            "Item Number",
+            "Item Name",
+            "Qty",
+            "Recipe Unit",
+            "Ingredient Code",
+            "Ingredient Name"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "Closing Stock Report",
+          "reportId": "report:p4_stock_admin:06_analytical_reports:04_closing_stock_report",
+          "role": "Ingredient UOM and average-cost reference",
+          "fields": [
+            "Item Code",
+            "Item Name",
+            "Unit Name",
+            "Average Price"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "AUX Theoretical Consumption",
+          "reportId": "",
+          "role": "Synthetic three-month baseline derived from sales, recipe, UOM, and cost inputs",
+          "fields": [
+            "source_period_code",
+            "outlet_code",
+            "item_code",
+            "canonical_uom",
+            "theoretical_consumption_qty",
+            "theoretical_consumption_value"
+          ],
+          "evidence": "synthetic_model_input"
+        }
+      ],
+      "inherits": [
+        "20_fact_ct_actual_consumption.sql",
+        "19_fact_ct_theoretical_consumption.sql"
+      ],
+      "route": [
+        "20_fact_ct_actual_consumption.sql",
+        "19_fact_ct_theoretical_consumption.sql",
+        "21_fact_ct_consumption_variance.sql"
+      ],
+      "lookups": [
+        "outlet_code -> 37_dim_ct_outlet_enriched.sql.outlet_code",
+        "item_code -> 14_dim_ct_item.sql.item_code"
+      ],
+      "joinLogic": "Join actual and theoretical consumption on source period + outlet + item; calculate signed variance, positive leakage, and low-consumption check.",
+      "guardrails": [
+        "Positive leakage is not the same as signed variance.",
+        "Low consumption is a data/process check, not a favorable saving."
+      ]
+    },
+    "22_fact_ct_purchase_order.sql": {
+      "grain": "Source period, outlet, purchase order, and item line",
+      "reports": [
+        {
+          "name": "Enterprise Purchase Order Report",
+          "reportId": "report:p4_stock_admin:01_enterprise_reports:06_enterprise_purchase_order",
+          "role": "Ordered, processed, remaining, expected-date, status, and commitment-value evidence",
+          "fields": [
+            "Deployment",
+            "Store Name",
+            "Vendor Name",
+            "PO Number",
+            "PO Date",
+            "Expected Delivery",
+            "PO Close Date/Partial Recieve Date",
+            "PO Status",
+            "Item Code",
+            "Item Name",
+            "Total Processed Qty",
+            "Remaining Balance Qty",
+            "Quantity",
+            "Unit",
+            "Unit Price",
+            "Total Item Cost"
+          ],
+          "evidence": "captured_posist_report"
+        }
+      ],
+      "route": [
+        "RAWN_CT_enterprise_purchase_order-Copy",
+        "07_std_ct_purchase_order.sql",
+        "22_fact_ct_purchase_order.sql"
+      ],
+      "lookups": [
+        "outlet_code -> 37_dim_ct_outlet_enriched.sql.outlet_code",
+        "item_code -> 14_dim_ct_item.sql.item_code",
+        "vendor_name -> 16_dim_ct_vendor.sql.vendor_name"
+      ],
+      "joinLogic": "Normalize line status and derive ordered value, open quantity/value, open flag, and delayed flag at PO-line grain.",
+      "guardrails": [
+        "Use distinct PO number for PO counts; row count is a PO-line count.",
+        "Expected-date exceptions are operational states, not automatically source defects."
+      ]
+    },
+    "23_fact_ct_purchase_receipt.sql": {
+      "grain": "Source period, outlet, stock-entry transaction, and item line",
+      "reports": [
+        {
+          "name": "Enterprise Entry Report - Stock Entry",
+          "reportId": "report:p4_stock_admin:01_enterprise_reports:01_enterprise_entry",
+          "role": "GRN/stock-entry receipt quantity, price, tax, total, vendor, and PO reference",
+          "fields": [
+            "Deployment Name",
+            "Store/Kitchen Name",
+            "Vendor Name",
+            "Date",
+            "Transaction Number",
+            "Invoice Number",
+            "PO Number",
+            "Item Code",
+            "Item Name",
+            "Quantity",
+            "Unit",
+            "Unit Price",
+            "Amount",
+            "Total Tax",
+            "Total"
+          ],
+          "evidence": "captured_posist_report"
+        }
+      ],
+      "route": [
+        "RAWN_CT_enterprise_entry-Copy",
+        "08_std_ct_purchase_receipt.sql",
+        "23_fact_ct_purchase_receipt.sql"
+      ],
+      "lookups": [
+        "outlet_code -> 37_dim_ct_outlet_enriched.sql.outlet_code",
+        "item_code -> 14_dim_ct_item.sql.item_code",
+        "vendor_name -> 16_dim_ct_vendor.sql.vendor_name"
+      ],
+      "joinLogic": "Normalize receipt identity, PO reference, quantity, subtotal, tax, and total without dropping the raw identifier.",
+      "guardrails": [
+        "Weighted price is receipt subtotal divided by received quantity.",
+        "PO linkage remains sparse in the audited actual extract."
+      ]
+    },
+    "24_fact_ct_po_receipt_line.sql": {
+      "grain": "Source period, outlet, purchase order, and item line",
+      "reports": [
+        {
+          "name": "Enterprise Purchase Order Report",
+          "reportId": "report:p4_stock_admin:01_enterprise_reports:06_enterprise_purchase_order",
+          "role": "Ordered, processed, remaining, expected-date, status, and commitment-value evidence",
+          "fields": [
+            "Deployment",
+            "Store Name",
+            "Vendor Name",
+            "PO Number",
+            "PO Date",
+            "Expected Delivery",
+            "PO Close Date/Partial Recieve Date",
+            "PO Status",
+            "Item Code",
+            "Item Name",
+            "Total Processed Qty",
+            "Remaining Balance Qty",
+            "Quantity",
+            "Unit",
+            "Unit Price",
+            "Total Item Cost"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "Enterprise Entry Report - Stock Entry",
+          "reportId": "report:p4_stock_admin:01_enterprise_reports:01_enterprise_entry",
+          "role": "GRN/stock-entry receipt quantity, price, tax, total, vendor, and PO reference",
+          "fields": [
+            "Deployment Name",
+            "Store/Kitchen Name",
+            "Vendor Name",
+            "Date",
+            "Transaction Number",
+            "Invoice Number",
+            "PO Number",
+            "Item Code",
+            "Item Name",
+            "Quantity",
+            "Unit",
+            "Unit Price",
+            "Amount",
+            "Total Tax",
+            "Total"
+          ],
+          "evidence": "captured_posist_report"
+        }
+      ],
+      "inherits": [
+        "22_fact_ct_purchase_order.sql",
+        "23_fact_ct_purchase_receipt.sql"
+      ],
+      "route": [
+        "07_std_ct_purchase_order.sql",
+        "08_std_ct_purchase_receipt.sql",
+        "24_fact_ct_po_receipt_line.sql"
+      ],
+      "lookups": [
+        "outlet_code -> 37_dim_ct_outlet_enriched.sql.outlet_code",
+        "item_code -> 14_dim_ct_item.sql.item_code",
+        "vendor_name -> 16_dim_ct_vendor.sql.vendor_name"
+      ],
+      "joinLogic": "Left join PO and receipt lines on source period + outlet + canonical PO number + item code; aggregate receipts before the join.",
+      "guardrails": [
+        "Actual PO-to-GRN linkage was sparse, so OTIF remains a formula demonstration.",
+        "Fill rate uses sums of quantities, never an average of row percentages."
+      ]
+    },
+    "25_fact_ct_menu_profitability.sql": {
+      "grain": "Source period, outlet, and menu item",
+      "reports": [
+        {
+          "name": "Gross/Net Margin Report",
+          "reportId": "report:p2_reports:07_sales:33_food_sold_report",
+          "role": "Bill-item sales, quantity, realized revenue, and source cost evidence",
+          "fields": [
+            "Store Name",
+            "Date",
+            "Bill No.",
+            "Super Category",
+            "Category",
+            "SKU Code / Item No",
+            "SKU / Item Name",
+            "Item Qty",
+            "Net Sale Value",
+            "Purchase Value"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "Item Recipe Report",
+          "reportId": "report:p1_main:06_misc:18_item_recipe_report",
+          "role": "Menu-item to ingredient quantity and UOM bridge",
+          "fields": [
+            "Item Number",
+            "Item Name",
+            "Qty",
+            "Recipe Unit",
+            "Ingredient Code",
+            "Ingredient Name"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "Closing Stock Report",
+          "reportId": "report:p4_stock_admin:06_analytical_reports:04_closing_stock_report",
+          "role": "Ingredient UOM and average-cost reference",
+          "fields": [
+            "Item Code",
+            "Item Name",
+            "Unit Name",
+            "Average Price"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "AUX Theoretical Consumption",
+          "reportId": "",
+          "role": "Synthetic three-month baseline derived from sales, recipe, UOM, and cost inputs",
+          "fields": [
+            "source_period_code",
+            "outlet_code",
+            "item_code",
+            "canonical_uom",
+            "theoretical_consumption_qty",
+            "theoretical_consumption_value"
+          ],
+          "evidence": "synthetic_model_input"
+        }
+      ],
+      "inherits": [
+        "18_fact_ct_sales.sql",
+        "19_fact_ct_theoretical_consumption.sql"
+      ],
+      "route": [
+        "01_std_ct_sales_item.sql",
+        "17_dim_ct_recipe_effective.sql",
+        "25_fact_ct_menu_profitability.sql"
+      ],
+      "lookups": [
+        "outlet_code -> 37_dim_ct_outlet_enriched.sql.outlet_code",
+        "menu_item_code -> 15_dim_ct_menu_item.sql.menu_item_code"
+      ],
+      "joinLogic": "Aggregate menu sales and join effective recipe cost to calculate theoretical cost per unit, COGS, and gross margin.",
+      "guardrails": [
+        "Menu gross margin percent is ratio of summed margin to summed sales.",
+        "Do not average row-level margin percentages."
+      ]
+    },
+    "26_fact_ct_forecast_ingredient_demand.sql": {
+      "grain": "Source period, outlet, forecast menu item, and recipe ingredient",
+      "reports": [
+        {
+          "name": "Item Recipe Report",
+          "reportId": "report:p1_main:06_misc:18_item_recipe_report",
+          "role": "Menu-to-ingredient conversion",
+          "fields": [
+            "Item Number",
+            "Qty",
+            "Recipe Unit",
+            "Ingredient Code",
+            "Ingredient Name"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "AUX Menu Demand Forecast",
+          "reportId": "",
+          "role": "Synthetic seven-day menu demand and net-sales forecast",
+          "fields": [
+            "source_period_code",
+            "outlet_code",
+            "menu_item_code",
+            "forecast_menu_qty",
+            "forecast_net_sales"
+          ],
+          "evidence": "synthetic_model_input"
+        }
+      ],
+      "route": [
+        "AUX_Menu_Demand_Forecast-Copy",
+        "11_std_ct_menu_forecast.sql",
+        "17_dim_ct_recipe_effective.sql",
+        "26_fact_ct_forecast_ingredient_demand.sql"
+      ],
+      "lookups": [
+        "outlet_code -> 37_dim_ct_outlet_enriched.sql.outlet_code",
+        "item_code -> 14_dim_ct_item.sql.item_code",
+        "menu_item_code -> 15_dim_ct_menu_item.sql.menu_item_code"
+      ],
+      "joinLogic": "Join forecast menu item to effective recipe and multiply forecast menu quantity by recipe ingredient quantity.",
+      "guardrails": [
+        "Forecast values are synthetic model output, not observed POSIST demand.",
+        "Production needs an approved forecast source and version policy."
+      ]
+    },
+    "27_fact_ct_inventory_risk.sql": {
+      "grain": "Source period, outlet, and inventory ingredient checkpoint",
+      "reports": [
+        {
+          "name": "Closing Stock Report",
+          "reportId": "report:p4_stock_admin:06_analytical_reports:04_closing_stock_report",
+          "role": "Current quantity, average cost, and closing valuation evidence",
+          "fields": [
+            "Deployment",
+            "Date",
+            "Generation Date",
+            "Item Code",
+            "Item Name",
+            "Category Name",
+            "Unit Name",
+            "Average Price",
+            "Total Qty",
+            "Total Amt"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "Item Recipe Report",
+          "reportId": "report:p1_main:06_misc:18_item_recipe_report",
+          "role": "Menu-to-ingredient conversion",
+          "fields": [
+            "Item Number",
+            "Qty",
+            "Recipe Unit",
+            "Ingredient Code",
+            "Ingredient Name"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "AUX Menu Demand Forecast",
+          "reportId": "",
+          "role": "Synthetic seven-day menu demand and net-sales forecast",
+          "fields": [
+            "source_period_code",
+            "outlet_code",
+            "menu_item_code",
+            "forecast_menu_qty",
+            "forecast_net_sales"
+          ],
+          "evidence": "synthetic_model_input"
+        },
+        {
+          "name": "Enterprise Purchase Order Report",
+          "reportId": "report:p4_stock_admin:01_enterprise_reports:06_enterprise_purchase_order",
+          "role": "Ordered, processed, remaining, expected-date, status, and commitment-value evidence",
+          "fields": [
+            "Deployment",
+            "Store Name",
+            "Vendor Name",
+            "PO Number",
+            "PO Date",
+            "Expected Delivery",
+            "PO Close Date/Partial Recieve Date",
+            "PO Status",
+            "Item Code",
+            "Item Name",
+            "Total Processed Qty",
+            "Remaining Balance Qty",
+            "Quantity",
+            "Unit",
+            "Unit Price",
+            "Total Item Cost"
+          ],
+          "evidence": "captured_posist_report"
+        }
+      ],
+      "inherits": [
+        "05_std_ct_inventory_snapshot.sql",
+        "26_fact_ct_forecast_ingredient_demand.sql",
+        "22_fact_ct_purchase_order.sql"
+      ],
+      "route": [
+        "05_std_ct_inventory_snapshot.sql",
+        "26_fact_ct_forecast_ingredient_demand.sql",
+        "22_fact_ct_purchase_order.sql",
+        "27_fact_ct_inventory_risk.sql"
+      ],
+      "lookups": [
+        "outlet_code -> 37_dim_ct_outlet_enriched.sql.outlet_code",
+        "item_code -> 14_dim_ct_item.sql.item_code"
+      ],
+      "joinLogic": "Join stock, seven-day forecast ingredient demand, and valid open PO quantity on source period + outlet + item.",
+      "guardrails": [
+        "The 15% safety factor is a demo rule pending ABNAH approval.",
+        "Query 27 covers stockout exposure only; expiry is separate."
+      ]
+    },
+    "28_fact_ct_menu_impact.sql": {
+      "grain": "Source period, outlet, risky ingredient, and impacted menu item",
+      "reports": [
+        {
+          "name": "Closing Stock Report",
+          "reportId": "report:p4_stock_admin:06_analytical_reports:04_closing_stock_report",
+          "role": "Current quantity, average cost, and closing valuation evidence",
+          "fields": [
+            "Deployment",
+            "Date",
+            "Generation Date",
+            "Item Code",
+            "Item Name",
+            "Category Name",
+            "Unit Name",
+            "Average Price",
+            "Total Qty",
+            "Total Amt"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "Item Recipe Report",
+          "reportId": "report:p1_main:06_misc:18_item_recipe_report",
+          "role": "Menu-to-ingredient conversion",
+          "fields": [
+            "Item Number",
+            "Qty",
+            "Recipe Unit",
+            "Ingredient Code",
+            "Ingredient Name"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "AUX Menu Demand Forecast",
+          "reportId": "",
+          "role": "Synthetic seven-day menu demand and net-sales forecast",
+          "fields": [
+            "source_period_code",
+            "outlet_code",
+            "menu_item_code",
+            "forecast_menu_qty",
+            "forecast_net_sales"
+          ],
+          "evidence": "synthetic_model_input"
+        },
+        {
+          "name": "Enterprise Purchase Order Report",
+          "reportId": "report:p4_stock_admin:01_enterprise_reports:06_enterprise_purchase_order",
+          "role": "Ordered, processed, remaining, expected-date, status, and commitment-value evidence",
+          "fields": [
+            "Deployment",
+            "Store Name",
+            "Vendor Name",
+            "PO Number",
+            "PO Date",
+            "Expected Delivery",
+            "PO Close Date/Partial Recieve Date",
+            "PO Status",
+            "Item Code",
+            "Item Name",
+            "Total Processed Qty",
+            "Remaining Balance Qty",
+            "Quantity",
+            "Unit",
+            "Unit Price",
+            "Total Item Cost"
+          ],
+          "evidence": "captured_posist_report"
+        }
+      ],
+      "inherits": [
+        "05_std_ct_inventory_snapshot.sql",
+        "26_fact_ct_forecast_ingredient_demand.sql",
+        "22_fact_ct_purchase_order.sql"
+      ],
+      "route": [
+        "05_std_ct_inventory_snapshot.sql",
+        "26_fact_ct_forecast_ingredient_demand.sql",
+        "22_fact_ct_purchase_order.sql",
+        "28_fact_ct_menu_impact.sql"
+      ],
+      "lookups": [
+        "outlet_code -> 37_dim_ct_outlet_enriched.sql.outlet_code",
+        "ingredient_code -> 14_dim_ct_item.sql.item_code",
+        "menu_item_code -> 15_dim_ct_menu_item.sql.menu_item_code"
+      ],
+      "joinLogic": "Identify shortage ingredients, connect them to forecast menu items, and allocate each menu item's forecast sales across its risky ingredients.",
+      "guardrails": [
+        "Sum allocated_forecast_net_sales_at_risk, not the repeating unallocated forecast value.",
+        "Only risk rows are retained."
+      ]
+    },
+    "29_sum_ct_procurement_funnel.sql": {
+      "grain": "Source period, outlet, and vendor",
+      "reports": [
+        {
+          "name": "Enterprise Purchase Order Report",
+          "reportId": "report:p4_stock_admin:01_enterprise_reports:06_enterprise_purchase_order",
+          "role": "Ordered, processed, remaining, expected-date, status, and commitment-value evidence",
+          "fields": [
+            "Deployment",
+            "Store Name",
+            "Vendor Name",
+            "PO Number",
+            "PO Date",
+            "Expected Delivery",
+            "PO Close Date/Partial Recieve Date",
+            "PO Status",
+            "Item Code",
+            "Item Name",
+            "Total Processed Qty",
+            "Remaining Balance Qty",
+            "Quantity",
+            "Unit",
+            "Unit Price",
+            "Total Item Cost"
+          ],
+          "evidence": "captured_posist_report"
+        }
+      ],
+      "inherits": [
+        "22_fact_ct_purchase_order.sql"
+      ],
+      "route": [
+        "22_fact_ct_purchase_order.sql",
+        "29_sum_ct_procurement_funnel.sql"
+      ],
+      "lookups": [
+        "outlet_code -> 37_dim_ct_outlet_enriched.sql.outlet_code",
+        "vendor_name -> 16_dim_ct_vendor.sql.vendor_name"
+      ],
+      "joinLogic": "Group PO lines by source period + outlet + vendor and aggregate ordered, processed, pending, delayed value, and distinct PO counts.",
+      "guardrails": [
+        "Monthly purchase is labelled Ordered Gross Value until the production basis is approved.",
+        "Do not use row count as PO count."
+      ]
+    },
+    "30_sum_ct_vendor_scorecard.sql": {
+      "grain": "Source period, outlet, and vendor",
+      "reports": [
+        {
+          "name": "Enterprise Purchase Order Report",
+          "reportId": "report:p4_stock_admin:01_enterprise_reports:06_enterprise_purchase_order",
+          "role": "Ordered, processed, remaining, expected-date, status, and commitment-value evidence",
+          "fields": [
+            "Deployment",
+            "Store Name",
+            "Vendor Name",
+            "PO Number",
+            "PO Date",
+            "Expected Delivery",
+            "PO Close Date/Partial Recieve Date",
+            "PO Status",
+            "Item Code",
+            "Item Name",
+            "Total Processed Qty",
+            "Remaining Balance Qty",
+            "Quantity",
+            "Unit",
+            "Unit Price",
+            "Total Item Cost"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "Enterprise Entry Report - Stock Entry",
+          "reportId": "report:p4_stock_admin:01_enterprise_reports:01_enterprise_entry",
+          "role": "GRN/stock-entry receipt quantity, price, tax, total, vendor, and PO reference",
+          "fields": [
+            "Deployment Name",
+            "Store/Kitchen Name",
+            "Vendor Name",
+            "Date",
+            "Transaction Number",
+            "Invoice Number",
+            "PO Number",
+            "Item Code",
+            "Item Name",
+            "Quantity",
+            "Unit",
+            "Unit Price",
+            "Amount",
+            "Total Tax",
+            "Total"
+          ],
+          "evidence": "captured_posist_report"
+        }
+      ],
+      "inherits": [
+        "24_fact_ct_po_receipt_line.sql"
+      ],
+      "route": [
+        "24_fact_ct_po_receipt_line.sql",
+        "30_sum_ct_vendor_scorecard.sql"
+      ],
+      "lookups": [
+        "outlet_code -> 37_dim_ct_outlet_enriched.sql.outlet_code",
+        "vendor_name -> 16_dim_ct_vendor.sql.vendor_name"
+      ],
+      "joinLogic": "Aggregate PO/receipt line results into vendor purchase, open exposure, fill, eligible OTIF, and lead-time deviation.",
+      "guardrails": [
+        "Do not average vendor percentages across outlets.",
+        "OTIF and lead deviation remain demonstration metrics until receipt linkage improves."
+      ]
+    },
+    "31_sum_ct_price_movement.sql": {
+      "grain": "Source period, outlet, vendor, item, and canonical UOM",
+      "reports": [
+        {
+          "name": "Enterprise Entry Report - Stock Entry",
+          "reportId": "report:p4_stock_admin:01_enterprise_reports:01_enterprise_entry",
+          "role": "GRN/stock-entry receipt quantity, price, tax, total, vendor, and PO reference",
+          "fields": [
+            "Deployment Name",
+            "Store/Kitchen Name",
+            "Vendor Name",
+            "Date",
+            "Transaction Number",
+            "Invoice Number",
+            "PO Number",
+            "Item Code",
+            "Item Name",
+            "Quantity",
+            "Unit",
+            "Unit Price",
+            "Amount",
+            "Total Tax",
+            "Total"
+          ],
+          "evidence": "captured_posist_report"
+        }
+      ],
+      "inherits": [
+        "23_fact_ct_purchase_receipt.sql"
+      ],
+      "route": [
+        "23_fact_ct_purchase_receipt.sql",
+        "31_sum_ct_price_movement.sql"
+      ],
+      "lookups": [
+        "outlet_code -> 37_dim_ct_outlet_enriched.sql.outlet_code",
+        "item_code -> 14_dim_ct_item.sql.item_code",
+        "vendor_name -> 16_dim_ct_vendor.sql.vendor_name"
+      ],
+      "joinLogic": "Calculate weighted receipt price per period and compare it with the immediately prior synthetic month at the same outlet/vendor/item/UOM grain.",
+      "guardrails": [
+        "Do not aggregate price-change percentages across items or UOMs.",
+        "Use absolute change only for sorting; display the signed change."
+      ]
+    },
+    "32_sum_ct_menu_profitability.sql": {
+      "grain": "Source period, outlet, and menu item",
+      "reports": [
+        {
+          "name": "Gross/Net Margin Report",
+          "reportId": "report:p2_reports:07_sales:33_food_sold_report",
+          "role": "Bill-item sales, quantity, realized revenue, and source cost evidence",
+          "fields": [
+            "Store Name",
+            "Date",
+            "Bill No.",
+            "Super Category",
+            "Category",
+            "SKU Code / Item No",
+            "SKU / Item Name",
+            "Item Qty",
+            "Net Sale Value",
+            "Purchase Value"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "Item Recipe Report",
+          "reportId": "report:p1_main:06_misc:18_item_recipe_report",
+          "role": "Menu-item to ingredient quantity and UOM bridge",
+          "fields": [
+            "Item Number",
+            "Item Name",
+            "Qty",
+            "Recipe Unit",
+            "Ingredient Code",
+            "Ingredient Name"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "Closing Stock Report",
+          "reportId": "report:p4_stock_admin:06_analytical_reports:04_closing_stock_report",
+          "role": "Ingredient UOM and average-cost reference",
+          "fields": [
+            "Item Code",
+            "Item Name",
+            "Unit Name",
+            "Average Price"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "AUX Theoretical Consumption",
+          "reportId": "",
+          "role": "Synthetic three-month baseline derived from sales, recipe, UOM, and cost inputs",
+          "fields": [
+            "source_period_code",
+            "outlet_code",
+            "item_code",
+            "canonical_uom",
+            "theoretical_consumption_qty",
+            "theoretical_consumption_value"
+          ],
+          "evidence": "synthetic_model_input"
+        }
+      ],
+      "inherits": [
+        "25_fact_ct_menu_profitability.sql"
+      ],
+      "route": [
+        "25_fact_ct_menu_profitability.sql",
+        "32_sum_ct_menu_profitability.sql"
+      ],
+      "lookups": [
+        "outlet_code -> 37_dim_ct_outlet_enriched.sql.outlet_code",
+        "menu_item_code -> 15_dim_ct_menu_item.sql.menu_item_code"
+      ],
+      "joinLogic": "Classify menu items into synthetic BCG quadrants from sold quantity and gross margin percent.",
+      "guardrails": [
+        "Use one source period and one outlet, or keep outlet visible.",
+        "BCG thresholds are demonstration rules pending business approval."
+      ]
+    },
+    "33_sum_ct_scm_monthly.sql": {
+      "grain": "Source period and outlet",
+      "reports": [
+        {
+          "name": "Gross/Net Margin Report",
+          "reportId": "report:p2_reports:07_sales:33_food_sold_report",
+          "role": "Bill-item sales, quantity, realized revenue, and source cost evidence",
+          "fields": [
+            "Store Name",
+            "Date",
+            "Bill No.",
+            "Super Category",
+            "Category",
+            "SKU Code / Item No",
+            "SKU / Item Name",
+            "Item Qty",
+            "Net Sale Value",
+            "Purchase Value"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "Closing Stock Report",
+          "reportId": "report:p4_stock_admin:06_analytical_reports:04_closing_stock_report",
+          "role": "Current quantity, average cost, and closing valuation evidence",
+          "fields": [
+            "Deployment",
+            "Date",
+            "Generation Date",
+            "Item Code",
+            "Item Name",
+            "Category Name",
+            "Unit Name",
+            "Average Price",
+            "Total Qty",
+            "Total Amt"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "Enterprise Purchase Order Report",
+          "reportId": "report:p4_stock_admin:01_enterprise_reports:06_enterprise_purchase_order",
+          "role": "Ordered, processed, remaining, expected-date, status, and commitment-value evidence",
+          "fields": [
+            "Deployment",
+            "Store Name",
+            "Vendor Name",
+            "PO Number",
+            "PO Date",
+            "Expected Delivery",
+            "PO Close Date/Partial Recieve Date",
+            "PO Status",
+            "Item Code",
+            "Item Name",
+            "Total Processed Qty",
+            "Remaining Balance Qty",
+            "Quantity",
+            "Unit",
+            "Unit Price",
+            "Total Item Cost"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "Enterprise Variance Report",
+          "reportId": "report:p4_stock_admin:01_enterprise_reports:08_enterprise_variance",
+          "role": "Opening, purchase, transfer, return, closing, and actual-consumption movement bridge",
+          "fields": [
+            "Deployment Name",
+            "StoreKitchen Name",
+            "Item Code",
+            "Item Name",
+            "Average Price",
+            "Opening Qty",
+            "Purchase Qty",
+            "Stock In Qty",
+            "Stock Out Qty",
+            "Return Qty",
+            "Closing Qty",
+            "Actual Consumption",
+            "Unit"
+          ],
+          "evidence": "captured_posist_report"
+        }
+      ],
+      "inherits": [
+        "18_fact_ct_sales.sql",
+        "05_std_ct_inventory_snapshot.sql",
+        "22_fact_ct_purchase_order.sql",
+        "20_fact_ct_actual_consumption.sql"
+      ],
+      "route": [
+        "18_fact_ct_sales.sql",
+        "05_std_ct_inventory_snapshot.sql",
+        "22_fact_ct_purchase_order.sql",
+        "20_fact_ct_actual_consumption.sql",
+        "33_sum_ct_scm_monthly.sql"
+      ],
+      "lookups": [
+        "outlet_code -> 37_dim_ct_outlet_enriched.sql.outlet_code"
+      ],
+      "joinLogic": "Aggregate each fact to source period + outlet before joining sales, stock value, open PO value, and actual consumption value.",
+      "guardrails": [
+        "Current-state stock and working-capital widgets require one source period.",
+        "This is a descriptive monthly summary, not a transaction table."
+      ]
+    },
+    "34_fact_ct_data_quality_exception.sql": {
+      "grain": "One generated exception record",
+      "reports": [
+        {
+          "name": "Closing Stock Report",
+          "reportId": "report:p4_stock_admin:06_analytical_reports:04_closing_stock_report",
+          "role": "Current quantity, average cost, and closing valuation evidence",
+          "fields": [
+            "Deployment",
+            "Date",
+            "Generation Date",
+            "Item Code",
+            "Item Name",
+            "Category Name",
+            "Unit Name",
+            "Average Price",
+            "Total Qty",
+            "Total Amt"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "Item Recipe Report",
+          "reportId": "report:p1_main:06_misc:18_item_recipe_report",
+          "role": "Menu-to-ingredient conversion",
+          "fields": [
+            "Item Number",
+            "Qty",
+            "Recipe Unit",
+            "Ingredient Code",
+            "Ingredient Name"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "AUX Menu Demand Forecast",
+          "reportId": "",
+          "role": "Synthetic seven-day menu demand and net-sales forecast",
+          "fields": [
+            "source_period_code",
+            "outlet_code",
+            "menu_item_code",
+            "forecast_menu_qty",
+            "forecast_net_sales"
+          ],
+          "evidence": "synthetic_model_input"
+        },
+        {
+          "name": "Gross/Net Margin Report",
+          "reportId": "report:p2_reports:07_sales:33_food_sold_report",
+          "role": "Bill-item sales, quantity, realized revenue, and source cost evidence",
+          "fields": [
+            "Store Name",
+            "Date",
+            "Bill No.",
+            "Super Category",
+            "Category",
+            "SKU Code / Item No",
+            "SKU / Item Name",
+            "Item Qty",
+            "Net Sale Value",
+            "Purchase Value"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "Enterprise Purchase Order Report",
+          "reportId": "report:p4_stock_admin:01_enterprise_reports:06_enterprise_purchase_order",
+          "role": "Ordered, processed, remaining, expected-date, status, and commitment-value evidence",
+          "fields": [
+            "Deployment",
+            "Store Name",
+            "Vendor Name",
+            "PO Number",
+            "PO Date",
+            "Expected Delivery",
+            "PO Close Date/Partial Recieve Date",
+            "PO Status",
+            "Item Code",
+            "Item Name",
+            "Total Processed Qty",
+            "Remaining Balance Qty",
+            "Quantity",
+            "Unit",
+            "Unit Price",
+            "Total Item Cost"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "Enterprise Entry Report - Stock Entry",
+          "reportId": "report:p4_stock_admin:01_enterprise_reports:01_enterprise_entry",
+          "role": "GRN/stock-entry receipt quantity, price, tax, total, vendor, and PO reference",
+          "fields": [
+            "Deployment Name",
+            "Store/Kitchen Name",
+            "Vendor Name",
+            "Date",
+            "Transaction Number",
+            "Invoice Number",
+            "PO Number",
+            "Item Code",
+            "Item Name",
+            "Quantity",
+            "Unit",
+            "Unit Price",
+            "Amount",
+            "Total Tax",
+            "Total"
+          ],
+          "evidence": "captured_posist_report"
+        }
+      ],
+      "inherits": [
+        "05_std_ct_inventory_snapshot.sql",
+        "26_fact_ct_forecast_ingredient_demand.sql",
+        "18_fact_ct_sales.sql",
+        "22_fact_ct_purchase_order.sql",
+        "23_fact_ct_purchase_receipt.sql"
+      ],
+      "route": [
+        "Governed source and model checks",
+        "34_fact_ct_data_quality_exception.sql"
+      ],
+      "lookups": [],
+      "joinLogic": "UNION explicit quality controls into a common exception grain with type, period, outlet, record key, item, and reference.",
+      "guardrails": [
+        "Do not create outlet/item lookups; ALL and blank keys are intentional.",
+        "A zero count means the check ran and found no exception."
+      ]
+    },
+    "35_sum_ct_financial_leakage.sql": {
+      "grain": "Source period and outlet",
+      "reports": [
+        {
+          "name": "Enterprise Wastage Report",
+          "reportId": "report:p4_stock_admin:01_enterprise_reports:12_enterprise_wastage_report",
+          "role": "Observed wastage quantity and value",
+          "fields": [
+            "Deployment Name",
+            "Store/Kitchen Name",
+            "Date",
+            "Transaction Number",
+            "Item Code",
+            "Item Name",
+            "Quantity",
+            "Unit",
+            "Unit Price",
+            "Amount"
+          ],
+          "evidence": "captured_posist_report"
+        }
+      ],
+      "route": [
+        "RAWN_CT_enterprise_wastage_normal-Copy",
+        "09_std_ct_wastage.sql",
+        "35_sum_ct_financial_leakage.sql"
+      ],
+      "lookups": [
+        "outlet_code -> 37_dim_ct_outlet_enriched.sql.outlet_code"
+      ],
+      "joinLogic": "Aggregate observed wastage value by period and outlet.",
+      "guardrails": [
+        "Label as Observed Wastage, not total financial leakage.",
+        "Vendor returns and production expiry are unavailable."
+      ]
+    },
+    "36_fact_ct_risky_po.sql": {
+      "grain": "Source period, outlet, open PO, and risky item line",
+      "reports": [
+        {
+          "name": "Closing Stock Report",
+          "reportId": "report:p4_stock_admin:06_analytical_reports:04_closing_stock_report",
+          "role": "Current quantity, average cost, and closing valuation evidence",
+          "fields": [
+            "Deployment",
+            "Date",
+            "Generation Date",
+            "Item Code",
+            "Item Name",
+            "Category Name",
+            "Unit Name",
+            "Average Price",
+            "Total Qty",
+            "Total Amt"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "Item Recipe Report",
+          "reportId": "report:p1_main:06_misc:18_item_recipe_report",
+          "role": "Menu-to-ingredient conversion",
+          "fields": [
+            "Item Number",
+            "Qty",
+            "Recipe Unit",
+            "Ingredient Code",
+            "Ingredient Name"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "AUX Menu Demand Forecast",
+          "reportId": "",
+          "role": "Synthetic seven-day menu demand and net-sales forecast",
+          "fields": [
+            "source_period_code",
+            "outlet_code",
+            "menu_item_code",
+            "forecast_menu_qty",
+            "forecast_net_sales"
+          ],
+          "evidence": "synthetic_model_input"
+        },
+        {
+          "name": "Enterprise Purchase Order Report",
+          "reportId": "report:p4_stock_admin:01_enterprise_reports:06_enterprise_purchase_order",
+          "role": "Ordered, processed, remaining, expected-date, status, and commitment-value evidence",
+          "fields": [
+            "Deployment",
+            "Store Name",
+            "Vendor Name",
+            "PO Number",
+            "PO Date",
+            "Expected Delivery",
+            "PO Close Date/Partial Recieve Date",
+            "PO Status",
+            "Item Code",
+            "Item Name",
+            "Total Processed Qty",
+            "Remaining Balance Qty",
+            "Quantity",
+            "Unit",
+            "Unit Price",
+            "Total Item Cost"
+          ],
+          "evidence": "captured_posist_report"
+        }
+      ],
+      "inherits": [
+        "05_std_ct_inventory_snapshot.sql",
+        "26_fact_ct_forecast_ingredient_demand.sql",
+        "22_fact_ct_purchase_order.sql"
+      ],
+      "route": [
+        "05_std_ct_inventory_snapshot.sql",
+        "26_fact_ct_forecast_ingredient_demand.sql",
+        "22_fact_ct_purchase_order.sql",
+        "36_fact_ct_risky_po.sql"
+      ],
+      "lookups": [
+        "outlet_code -> 37_dim_ct_outlet_enriched.sql.outlet_code",
+        "item_code -> 14_dim_ct_item.sql.item_code",
+        "vendor_name -> 16_dim_ct_vendor.sql.vendor_name"
+      ],
+      "joinLogic": "Retain open PO lines only where the matching item checkpoint is purple, red, or amber.",
+      "guardrails": [
+        "Count distinct PO number, not rows.",
+        "Open PO quantity may reduce shortage risk but does not guarantee on-time receipt."
+      ]
+    },
+    "38_fact_ct_expiry_risk.sql": {
+      "grain": "Source period, outlet, synthetic batch allocation, and item",
+      "reports": [
+        {
+          "name": "Enterprise Entry Report - Stock Entry",
+          "reportId": "report:p4_stock_admin:01_enterprise_reports:01_enterprise_entry",
+          "role": "Receipt date, GRN, PO, vendor, quantity, and cost pattern used for traceable demo tranches",
+          "fields": [
+            "Date",
+            "Transaction Number",
+            "PO Number",
+            "Vendor Name",
+            "Item Code",
+            "Item Name",
+            "Quantity",
+            "Unit",
+            "Unit Price"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "Closing Stock Report",
+          "reportId": "report:p4_stock_admin:06_analytical_reports:04_closing_stock_report",
+          "role": "Current item quantity and average-cost boundary",
+          "fields": [
+            "Date",
+            "Item Code",
+            "Item Name",
+            "Unit Name",
+            "Average Price",
+            "Total Qty"
+          ],
+          "evidence": "captured_posist_report"
+        },
+        {
+          "name": "AUX Expiry Estimate",
+          "reportId": "",
+          "role": "Synthetic FIFO tranche and shelf-life scenario; not a POSIST batch or expiry source",
+          "fields": [
+            "batch_allocation_id",
+            "receipt_date",
+            "estimated_expiry_date",
+            "expiry_qty_at_risk",
+            "expiry_risk_value",
+            "production_use_status"
+          ],
+          "evidence": "synthetic_model_input"
+        }
+      ],
+      "route": [
+        "AUX_Expiry_Estimate-Copy",
+        "38_fact_ct_expiry_risk.sql"
+      ],
+      "lookups": [
+        "outlet_code -> 37_dim_ct_outlet_enriched.sql.outlet_code",
+        "item_code -> 14_dim_ct_item.sql.item_code"
+      ],
+      "joinLogic": "Expose the prebuilt synthetic FIFO/shelf-life scenario with permanent evidence and production-use labels.",
+      "guardrails": [
+        "Every title or subtitle must say Synthetic demo estimate - no POSIST batch/expiry source.",
+        "Do not present the scenario as actual batch ageing or expiry truth."
+      ]
+    }
+  },
+  "stories": [
+    {
+      "id": "CT_P1_Action_Center",
+      "pageId": "page_1_risk_action_center",
+      "name": "Risk Action Center",
+      "kind": "table",
+      "visual": "Tabular",
+      "sourceTable": "27_fact_ct_inventory_risk.sql",
+      "question": "What exact stockout action, owner, and due band should operations see?",
+      "finalFields": [
+        "action_id",
+        "outlet_code",
+        "item_code",
+        "risk_severity",
+        "shortage_qty",
+        "recommended_action",
+        "action_owner",
+        "due_band",
+        "total_risk_value"
+      ],
+      "formula": "Direct fact fields; no dashboard-only calculation.",
+      "aggregation": "One row per risk action",
+      "zoho": {
+        "shelves": [
+          "Columns: action ID, outlet, item, severity, shortage, recommended action, owner, due band"
+        ],
+        "fixedFilters": [
+          "risk_severity <> GREEN"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "New/matured",
+          "Risk severity",
+          "Action owner",
+          "Ingredient category"
+        ],
+        "sort": "risk_severity_rank descending, total_risk_value descending, due_band ascending",
+        "tooltips": [],
+        "formatting": [
+          "Conditional format severity with approved RAG palette",
+          "Enable View Underlying Data"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Risk Action Center starts from Closing Stock Report, Item Recipe Report, AUX Menu Demand Forecast, Enterprise Purchase Order Report. The model follows 05_std_ct_inventory_snapshot.sql -> 26_fact_ct_forecast_ingredient_demand.sql -> 22_fact_ct_purchase_order.sql -> 27_fact_ct_inventory_risk.sql at source period, outlet, and inventory ingredient checkpoint. The relationship rule is: Join stock, seven-day forecast ingredient demand, and valid open PO quantity on source period + outlet + item. In Zoho, use one row per risk action and render it as tabular to answer: What exact stockout action, owner, and due band should operations see?"
+    },
+    {
+      "id": "CT_P1_Expiry_Risk_Detail_Demo",
+      "pageId": "page_1_risk_action_center",
+      "name": "Expiry Risk Detail - Demo",
+      "kind": "table",
+      "visual": "Tabular",
+      "sourceTable": "38_fact_ct_expiry_risk.sql",
+      "question": "How does the synthetic expiry scenario trace each at-risk FIFO tranche?",
+      "finalFields": [
+        "batch_allocation_id",
+        "receipt_date",
+        "grn_number",
+        "po_number",
+        "vendor_name",
+        "item_closing_qty",
+        "estimated_fifo_tranche_qty",
+        "expected_consumption_before_expiry",
+        "expiry_qty_at_risk",
+        "expiry_risk_value",
+        "estimated_expiry_date",
+        "risk_severity",
+        "estimation_method"
+      ],
+      "formula": "Scenario output is already calculated in AUX_Expiry_Estimate-Copy.",
+      "aggregation": "One row per synthetic batch allocation",
+      "zoho": {
+        "shelves": [
+          "Columns: traceability, scenario inputs, at-risk quantity/value, estimated date, severity, method"
+        ],
+        "fixedFilters": [
+          "production_use_status = demo_only_no_posist_batch_or_expiry_source"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "New/matured",
+          "Risk severity",
+          "Action owner",
+          "Ingredient category"
+        ],
+        "sort": "risk_severity_rank descending, expiry_risk_value descending",
+        "tooltips": [],
+        "formatting": [
+          "Permanent synthetic-source qualifier"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Expiry Risk Detail - Demo starts from Enterprise Entry Report - Stock Entry, Closing Stock Report, AUX Expiry Estimate. The model follows AUX_Expiry_Estimate-Copy -> 38_fact_ct_expiry_risk.sql at source period, outlet, synthetic batch allocation, and item. The relationship rule is: Expose the prebuilt synthetic FIFO/shelf-life scenario with permanent evidence and production-use labels. In Zoho, use one row per synthetic batch allocation and render it as tabular to answer: How does the synthetic expiry scenario trace each at-risk FIFO tranche?"
+    },
+    {
+      "id": "CT_P1_KPI_Expiry_Risk_Value_Demo",
+      "pageId": "page_1_risk_action_center",
+      "name": "Expiry Risk Value - Demo Estimate",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "38_fact_ct_expiry_risk.sql",
+      "question": "What value is exposed in the synthetic FIFO and shelf-life scenario?",
+      "finalFields": [
+        "expiry_risk_value",
+        "production_use_status",
+        "is_estimated"
+      ],
+      "formula": "sum(\"expiry_risk_value\")",
+      "aggregation": "Sum expiry risk value",
+      "zoho": {
+        "shelves": [
+          "Measure: Expiry Risk Value - Demo Estimate"
+        ],
+        "fixedFilters": [
+          "production_use_status = demo_only_no_posist_batch_or_expiry_source"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "New/matured",
+          "Risk severity",
+          "Action owner",
+          "Ingredient category"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "INR currency",
+          "Subtitle: Synthetic estimate - no POSIST batch/expiry source"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Expiry Risk Value - Demo Estimate starts from Enterprise Entry Report - Stock Entry, Closing Stock Report, AUX Expiry Estimate. The model follows AUX_Expiry_Estimate-Copy -> 38_fact_ct_expiry_risk.sql at source period, outlet, synthetic batch allocation, and item. The relationship rule is: Expose the prebuilt synthetic FIFO/shelf-life scenario with permanent evidence and production-use labels. In Zoho, use sum expiry risk value and render it as kpi widget to answer: What value is exposed in the synthetic FIFO and shelf-life scenario?"
+    },
+    {
+      "id": "CT_P1_KPI_Menu_Items_At_Risk",
+      "pageId": "page_1_risk_action_center",
+      "name": "Menu Items At Risk",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "28_fact_ct_menu_impact.sql",
+      "question": "How many menu items depend on ingredients that cannot meet the forecast requirement?",
+      "finalFields": [
+        "menu_item_code",
+        "shortage_qty",
+        "risk_severity"
+      ],
+      "formula": "distinctcount(\"menu_item_code\")",
+      "aggregation": "Distinct count of menu_item_code",
+      "zoho": {
+        "shelves": [
+          "Measure: Menu Items At Risk"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "New/matured",
+          "Risk severity",
+          "Action owner",
+          "Ingredient category"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "Whole number"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Menu Items At Risk starts from Closing Stock Report, Item Recipe Report, AUX Menu Demand Forecast, Enterprise Purchase Order Report. The model follows 05_std_ct_inventory_snapshot.sql -> 26_fact_ct_forecast_ingredient_demand.sql -> 22_fact_ct_purchase_order.sql -> 28_fact_ct_menu_impact.sql at source period, outlet, risky ingredient, and impacted menu item. The relationship rule is: Identify shortage ingredients, connect them to forecast menu items, and allocate each menu item's forecast sales across its risky ingredients. In Zoho, use distinct count of menu_item_code and render it as kpi widget to answer: How many menu items depend on ingredients that cannot meet the forecast requirement?"
+    },
+    {
+      "id": "CT_P1_KPI_Open_Risky_PO",
+      "pageId": "page_1_risk_action_center",
+      "name": "Open Risky PO Count",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "36_fact_ct_risky_po.sql",
+      "question": "How many distinct open POs relate to ingredients already in a stockout-risk state?",
+      "finalFields": [
+        "po_number",
+        "risk_severity",
+        "open_po_value"
+      ],
+      "formula": "distinctcount(\"po_number\")",
+      "aggregation": "Distinct count of PO number",
+      "zoho": {
+        "shelves": [
+          "Measure: Open Risky PO Count"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "New/matured",
+          "Risk severity",
+          "Action owner",
+          "Ingredient category"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "Whole number"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Open Risky PO Count starts from Closing Stock Report, Item Recipe Report, AUX Menu Demand Forecast, Enterprise Purchase Order Report. The model follows 05_std_ct_inventory_snapshot.sql -> 26_fact_ct_forecast_ingredient_demand.sql -> 22_fact_ct_purchase_order.sql -> 36_fact_ct_risky_po.sql at source period, outlet, open po, and risky item line. The relationship rule is: Retain open PO lines only where the matching item checkpoint is purple, red, or amber. In Zoho, use distinct count of po number and render it as kpi widget to answer: How many distinct open POs relate to ingredients already in a stockout-risk state?"
+    },
+    {
+      "id": "CT_P1_KPI_Outlets_At_Stockout_Risk",
+      "pageId": "page_1_risk_action_center",
+      "name": "Outlets At Stockout Risk",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "27_fact_ct_inventory_risk.sql",
+      "question": "How many outlets require stockout action in the selected checkpoint?",
+      "finalFields": [
+        "outlet_code",
+        "risk_severity"
+      ],
+      "formula": "distinctcount(if(risk_severity <> 'GREEN', outlet_code, null))",
+      "aggregation": "Distinct count of outlet_code",
+      "zoho": {
+        "shelves": [
+          "Measure: Outlets At Stockout Risk"
+        ],
+        "fixedFilters": [
+          "risk_severity <> GREEN"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "New/matured",
+          "Risk severity",
+          "Action owner",
+          "Ingredient category"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "Whole number"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Outlets At Stockout Risk starts from Closing Stock Report, Item Recipe Report, AUX Menu Demand Forecast, Enterprise Purchase Order Report. The model follows 05_std_ct_inventory_snapshot.sql -> 26_fact_ct_forecast_ingredient_demand.sql -> 22_fact_ct_purchase_order.sql -> 27_fact_ct_inventory_risk.sql at source period, outlet, and inventory ingredient checkpoint. The relationship rule is: Join stock, seven-day forecast ingredient demand, and valid open PO quantity on source period + outlet + item. In Zoho, use distinct count of outlet_code and render it as kpi widget to answer: How many outlets require stockout action in the selected checkpoint?"
+    },
+    {
+      "id": "CT_P1_KPI_Stockout_Risk_Value",
+      "pageId": "page_1_risk_action_center",
+      "name": "Stockout Sales At Risk",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "28_fact_ct_menu_impact.sql",
+      "question": "How much forecast menu revenue is allocated to current ingredient shortages?",
+      "finalFields": [
+        "shortage_qty",
+        "allocated_forecast_net_sales_at_risk"
+      ],
+      "formula": "sum(\"allocated_forecast_net_sales_at_risk\")",
+      "aggregation": "Sum allocated forecast net sales at risk",
+      "zoho": {
+        "shelves": [
+          "Measure: Stockout Sales At Risk"
+        ],
+        "fixedFilters": [
+          "shortage_qty > 0"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "New/matured",
+          "Risk severity",
+          "Action owner",
+          "Ingredient category"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "INR currency",
+          "Compact notation"
+        ]
+      },
+      "caveats": [
+        "Never sum forecast_net_sales_at_risk because it repeats for multi-ingredient menu items."
+      ],
+      "talkTrack": "Stockout Sales At Risk starts from Closing Stock Report, Item Recipe Report, AUX Menu Demand Forecast, Enterprise Purchase Order Report. The model follows 05_std_ct_inventory_snapshot.sql -> 26_fact_ct_forecast_ingredient_demand.sql -> 22_fact_ct_purchase_order.sql -> 28_fact_ct_menu_impact.sql at source period, outlet, risky ingredient, and impacted menu item. The relationship rule is: Identify shortage ingredients, connect them to forecast menu items, and allocate each menu item's forecast sales across its risky ingredients. In Zoho, use sum allocated forecast net sales at risk and render it as kpi widget to answer: How much forecast menu revenue is allocated to current ingredient shortages?"
+    },
+    {
+      "id": "CT_P1_Menu_Impact_Detail",
+      "pageId": "page_1_risk_action_center",
+      "name": "Menu Impact Detail",
+      "kind": "table",
+      "visual": "Tabular",
+      "sourceTable": "28_fact_ct_menu_impact.sql",
+      "question": "Which menu items and forecast sales are exposed by each risky ingredient?",
+      "finalFields": [
+        "ingredient_code",
+        "menu_item_code",
+        "risk_severity",
+        "forecast_menu_qty",
+        "allocated_forecast_net_sales_at_risk"
+      ],
+      "formula": "Allocated sales at risk = forecast menu sales / count of risky ingredients for that menu item.",
+      "aggregation": "Direct rows; sum only the allocated value",
+      "zoho": {
+        "shelves": [
+          "Columns: ingredient, menu item, severity, forecast menu quantity, allocated sales at risk"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "New/matured",
+          "Risk severity",
+          "Action owner",
+          "Ingredient category"
+        ],
+        "sort": "Allocated sales at risk descending",
+        "tooltips": [],
+        "formatting": []
+      },
+      "caveats": [],
+      "talkTrack": "Menu Impact Detail starts from Closing Stock Report, Item Recipe Report, AUX Menu Demand Forecast, Enterprise Purchase Order Report. The model follows 05_std_ct_inventory_snapshot.sql -> 26_fact_ct_forecast_ingredient_demand.sql -> 22_fact_ct_purchase_order.sql -> 28_fact_ct_menu_impact.sql at source period, outlet, risky ingredient, and impacted menu item. The relationship rule is: Identify shortage ingredients, connect them to forecast menu items, and allocate each menu item's forecast sales across its risky ingredients. In Zoho, use direct rows; sum only the allocated value and render it as tabular to answer: Which menu items and forecast sales are exposed by each risky ingredient?"
+    },
+    {
+      "id": "CT_P1_Outlet_Risk_Map",
+      "pageId": "page_1_risk_action_center",
+      "name": "Outlet Risk Map",
+      "kind": "chart",
+      "visual": "Map",
+      "sourceTable": "27_fact_ct_inventory_risk.sql",
+      "question": "Where are stockout-risk outlets located and how severe is their highest current risk?",
+      "finalFields": [
+        "outlet_code",
+        "risk_severity_rank",
+        "shortage_cost_value",
+        "days_cover"
+      ],
+      "formula": "Maximum risk severity rank by outlet; supporting values remain additive or distinct at outlet scope.",
+      "aggregation": "Max severity rank, distinct risk items, sum shortage cost",
+      "zoho": {
+        "shelves": [
+          "Location: outlet via 37_dim_ct_outlet_enriched.sql",
+          "Latitude/longitude: enriched outlet fields",
+          "Color: max risk_severity_rank"
+        ],
+        "fixedFilters": [
+          "risk_severity <> GREEN"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "New/matured",
+          "Risk severity",
+          "Action owner",
+          "Ingredient category"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [
+          "Outlet",
+          "Distinct risk item count",
+          "Shortage cost",
+          "Days cover",
+          "Maximum severity"
+        ],
+        "formatting": []
+      },
+      "caveats": [
+        "Synthetic geography must be replaced by an approved ABNAH outlet reference for production."
+      ],
+      "talkTrack": "Outlet Risk Map starts from Closing Stock Report, Item Recipe Report, AUX Menu Demand Forecast, Enterprise Purchase Order Report. The model follows 05_std_ct_inventory_snapshot.sql -> 26_fact_ct_forecast_ingredient_demand.sql -> 22_fact_ct_purchase_order.sql -> 27_fact_ct_inventory_risk.sql at source period, outlet, and inventory ingredient checkpoint. The relationship rule is: Join stock, seven-day forecast ingredient demand, and valid open PO quantity on source period + outlet + item. In Zoho, use max severity rank, distinct risk items, sum shortage cost and render it as map to answer: Where are stockout-risk outlets located and how severe is their highest current risk?"
+    },
+    {
+      "id": "CT_P1_Stockout_Priority_Stack",
+      "pageId": "page_1_risk_action_center",
+      "name": "Stockout Priority Stack",
+      "kind": "chart",
+      "visual": "Horizontal stacked bar",
+      "sourceTable": "27_fact_ct_inventory_risk.sql",
+      "question": "Which outlets carry the largest shortage-cost exposure by severity?",
+      "finalFields": [
+        "outlet_code",
+        "shortage_cost_value",
+        "risk_severity",
+        "risk_severity_rank"
+      ],
+      "formula": "sum(\"shortage_cost_value\")",
+      "aggregation": "Sum shortage cost value",
+      "zoho": {
+        "shelves": [
+          "Y: outlet",
+          "X: shortage cost value",
+          "Color: risk severity"
+        ],
+        "fixedFilters": [
+          "risk_severity <> GREEN"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "New/matured",
+          "Risk severity",
+          "Action owner",
+          "Ingredient category"
+        ],
+        "sort": "Risk severity rank descending, then shortage cost descending",
+        "tooltips": [
+          "Item count",
+          "Shortage quantity",
+          "Days cover"
+        ],
+        "formatting": [
+          "RAG palette only for severity"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Stockout Priority Stack starts from Closing Stock Report, Item Recipe Report, AUX Menu Demand Forecast, Enterprise Purchase Order Report. The model follows 05_std_ct_inventory_snapshot.sql -> 26_fact_ct_forecast_ingredient_demand.sql -> 22_fact_ct_purchase_order.sql -> 27_fact_ct_inventory_risk.sql at source period, outlet, and inventory ingredient checkpoint. The relationship rule is: Join stock, seven-day forecast ingredient demand, and valid open PO quantity on source period + outlet + item. In Zoho, use sum shortage cost value and render it as horizontal stacked bar to answer: Which outlets carry the largest shortage-cost exposure by severity?"
+    },
+    {
+      "id": "CT_P1_Stockout_Risk_Detail",
+      "pageId": "page_1_risk_action_center",
+      "name": "Stockout Risk Detail",
+      "kind": "table",
+      "visual": "Tabular",
+      "sourceTable": "27_fact_ct_inventory_risk.sql",
+      "question": "Which stock, forecast, safety, inbound, and cost inputs created each shortage?",
+      "finalFields": [
+        "item_code",
+        "current_stock_qty",
+        "forecast_required_qty",
+        "required_qty_with_safety",
+        "valid_open_po_qty",
+        "shortage_qty",
+        "days_cover",
+        "shortage_cost_value",
+        "risk_severity"
+      ],
+      "formula": "shortage_qty = max(0, forecast_required_qty * 1.15 - current_stock_qty - valid_open_po_qty)",
+      "aggregation": "Direct detail rows",
+      "zoho": {
+        "shelves": [
+          "Columns: item, stock, forecast, safety requirement, inbound, shortage, days cover, cost, severity"
+        ],
+        "fixedFilters": [
+          "risk_severity <> GREEN"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "New/matured",
+          "Risk severity",
+          "Action owner",
+          "Ingredient category"
+        ],
+        "sort": "risk_severity_rank descending, shortage_cost_value descending",
+        "tooltips": [],
+        "formatting": []
+      },
+      "caveats": [],
+      "talkTrack": "Stockout Risk Detail starts from Closing Stock Report, Item Recipe Report, AUX Menu Demand Forecast, Enterprise Purchase Order Report. The model follows 05_std_ct_inventory_snapshot.sql -> 26_fact_ct_forecast_ingredient_demand.sql -> 22_fact_ct_purchase_order.sql -> 27_fact_ct_inventory_risk.sql at source period, outlet, and inventory ingredient checkpoint. The relationship rule is: Join stock, seven-day forecast ingredient demand, and valid open PO quantity on source period + outlet + item. In Zoho, use direct detail rows and render it as tabular to answer: Which stock, forecast, safety, inbound, and cost inputs created each shortage?"
+    },
+    {
+      "id": "CT_P1_Vendor_PO_Risk",
+      "pageId": "page_1_risk_action_center",
+      "name": "Vendor PO Risk",
+      "kind": "table",
+      "visual": "Tabular",
+      "sourceTable": "36_fact_ct_risky_po.sql",
+      "question": "Which open vendor POs are linked to current shortage-risk ingredients?",
+      "finalFields": [
+        "po_number",
+        "vendor_name",
+        "expected_delivery_date",
+        "remaining_qty",
+        "open_po_value",
+        "risk_severity"
+      ],
+      "formula": "Direct filtered risky-PO fact rows.",
+      "aggregation": "One row per open risky PO item line",
+      "zoho": {
+        "shelves": [
+          "Columns: PO, vendor, expected date, remaining quantity, liability, severity"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "New/matured",
+          "Risk severity",
+          "Action owner",
+          "Ingredient category"
+        ],
+        "sort": "risk_severity_rank descending, open_po_value descending",
+        "tooltips": [],
+        "formatting": []
+      },
+      "caveats": [],
+      "talkTrack": "Vendor PO Risk starts from Closing Stock Report, Item Recipe Report, AUX Menu Demand Forecast, Enterprise Purchase Order Report. The model follows 05_std_ct_inventory_snapshot.sql -> 26_fact_ct_forecast_ingredient_demand.sql -> 22_fact_ct_purchase_order.sql -> 36_fact_ct_risky_po.sql at source period, outlet, open po, and risky item line. The relationship rule is: Retain open PO lines only where the matching item checkpoint is purple, red, or amber. In Zoho, use one row per open risky po item line and render it as tabular to answer: Which open vendor POs are linked to current shortage-risk ingredients?"
+    },
+    {
+      "id": "CT_P2_Expected_Delivery_Breach",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Expected Delivery Breach",
+      "kind": "table",
+      "visual": "Tabular",
+      "sourceTable": "22_fact_ct_purchase_order.sql",
+      "question": "Which open PO lines have passed their expected delivery date in the model?",
+      "finalFields": [
+        "po_number",
+        "vendor_name",
+        "item_code",
+        "expected_delivery_date",
+        "remaining_qty",
+        "open_po_value",
+        "delayed_po_flag"
+      ],
+      "formula": "Filter \"delayed_po_flag\" = 1",
+      "aggregation": "Direct detail rows",
+      "zoho": {
+        "shelves": [
+          "Columns: PO, vendor, item, expected date, remaining quantity/value"
+        ],
+        "fixedFilters": [
+          "delayed_po_flag = 1"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Vendor",
+          "Ingredient category",
+          "Item",
+          "PO status"
+        ],
+        "sort": "Expected delivery ascending",
+        "tooltips": [],
+        "formatting": []
+      },
+      "caveats": [
+        "Treat as an action queue; a revised date may exist outside the captured report."
+      ],
+      "talkTrack": "Expected Delivery Breach starts from Enterprise Purchase Order Report. The model follows RAWN_CT_enterprise_purchase_order-Copy -> 07_std_ct_purchase_order.sql -> 22_fact_ct_purchase_order.sql at source period, outlet, purchase order, and item line. The relationship rule is: Normalize line status and derive ordered value, open quantity/value, open flag, and delayed flag at PO-line grain. In Zoho, use direct detail rows and render it as tabular to answer: Which open PO lines have passed their expected delivery date in the model?"
+    },
+    {
+      "id": "CT_P2_Expiry_Exposure_Demo",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Expiry Exposure - Demo",
+      "kind": "chart",
+      "visual": "Column",
+      "sourceTable": "38_fact_ct_expiry_risk.sql",
+      "question": "How does the synthetic expiry-risk value vary by period?",
+      "finalFields": [
+        "source_period_code",
+        "expiry_risk_value",
+        "production_use_status"
+      ],
+      "formula": "sum(\"expiry_risk_value\")",
+      "aggregation": "Sum expiry risk value",
+      "zoho": {
+        "shelves": [
+          "X: source period",
+          "Y: expiry risk value"
+        ],
+        "fixedFilters": [
+          "production_use_status = demo_only_no_posist_batch_or_expiry_source"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Vendor",
+          "Ingredient category",
+          "Item",
+          "PO status"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "INR currency",
+          "Subtitle: Synthetic estimate - no POSIST batch/expiry source"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Expiry Exposure - Demo starts from Enterprise Entry Report - Stock Entry, Closing Stock Report, AUX Expiry Estimate. The model follows AUX_Expiry_Estimate-Copy -> 38_fact_ct_expiry_risk.sql at source period, outlet, synthetic batch allocation, and item. The relationship rule is: Expose the prebuilt synthetic FIFO/shelf-life scenario with permanent evidence and production-use labels. In Zoho, use sum expiry risk value and render it as column to answer: How does the synthetic expiry-risk value vary by period?"
+    },
+    {
+      "id": "CT_P2_High_Value_Slow_Stock",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "High Value / Slow Stock",
+      "kind": "table",
+      "visual": "Tabular",
+      "sourceTable": "27_fact_ct_inventory_risk.sql",
+      "question": "Which items combine high closing value with high days cover or weak demand?",
+      "finalFields": [
+        "item_code",
+        "closing_value",
+        "days_cover",
+        "forecast_required_qty",
+        "risk_severity"
+      ],
+      "formula": "Direct inventory-risk rows; ranking uses closing value and days cover.",
+      "aggregation": "One row per item checkpoint",
+      "zoho": {
+        "shelves": [
+          "Columns: item, closing value, days cover, forecast demand, severity"
+        ],
+        "fixedFilters": [
+          "Exactly one source period"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Vendor",
+          "Ingredient category",
+          "Item",
+          "PO status"
+        ],
+        "sort": "Closing value descending, days cover descending",
+        "tooltips": [],
+        "formatting": []
+      },
+      "caveats": [],
+      "talkTrack": "High Value / Slow Stock starts from Closing Stock Report, Item Recipe Report, AUX Menu Demand Forecast, Enterprise Purchase Order Report. The model follows 05_std_ct_inventory_snapshot.sql -> 26_fact_ct_forecast_ingredient_demand.sql -> 22_fact_ct_purchase_order.sql -> 27_fact_ct_inventory_risk.sql at source period, outlet, and inventory ingredient checkpoint. The relationship rule is: Join stock, seven-day forecast ingredient demand, and valid open PO quantity on source period + outlet + item. In Zoho, use one row per item checkpoint and render it as tabular to answer: Which items combine high closing value with high days cover or weak demand?"
+    },
+    {
+      "id": "CT_P2_Ingredient_Price_Trend",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Ingredient Price Trend",
+      "kind": "chart",
+      "visual": "Line",
+      "sourceTable": "23_fact_ct_purchase_receipt.sql",
+      "question": "How has weighted received unit price changed by ingredient over time?",
+      "finalFields": [
+        "source_period_code",
+        "item_code",
+        "received_qty",
+        "receipt_subtotal",
+        "vendor_name"
+      ],
+      "formula": "if(sum(\"received_qty\") <> 0, sum(\"receipt_subtotal\") / sum(\"received_qty\"), null)",
+      "aggregation": "Weighted unit price",
+      "zoho": {
+        "shelves": [
+          "X: source period",
+          "Y: Weighted Unit Price",
+          "Color: item"
+        ],
+        "fixedFilters": [
+          "received_qty > 0"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Vendor",
+          "Ingredient category",
+          "Item",
+          "PO status"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [
+          "Vendor",
+          "Received quantity",
+          "Receipt subtotal"
+        ],
+        "formatting": [
+          "INR per selected UOM"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Ingredient Price Trend starts from Enterprise Entry Report - Stock Entry. The model follows RAWN_CT_enterprise_entry-Copy -> 08_std_ct_purchase_receipt.sql -> 23_fact_ct_purchase_receipt.sql at source period, outlet, stock-entry transaction, and item line. The relationship rule is: Normalize receipt identity, PO reference, quantity, subtotal, tax, and total without dropping the raw identifier. In Zoho, use weighted unit price and render it as line to answer: How has weighted received unit price changed by ingredient over time?"
+    },
+    {
+      "id": "CT_P2_Inventory_Value",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Inventory Value",
+      "kind": "chart",
+      "visual": "Stacked bar",
+      "sourceTable": "05_std_ct_inventory_snapshot.sql",
+      "question": "Where is closing inventory value concentrated by outlet and category?",
+      "finalFields": [
+        "outlet_code",
+        "category_name",
+        "closing_value"
+      ],
+      "formula": "sum(\"closing_value\")",
+      "aggregation": "Sum closing value",
+      "zoho": {
+        "shelves": [
+          "X: outlet",
+          "Y: closing value",
+          "Color: category"
+        ],
+        "fixedFilters": [
+          "Exactly one source period"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Vendor",
+          "Ingredient category",
+          "Item",
+          "PO status"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "INR currency"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Inventory Value starts from Closing Stock Report. The model follows RAWN_CT_closing_stock-Copy -> 05_std_ct_inventory_snapshot.sql at source period, outlet, and inventory item checkpoint. The relationship rule is: No cross-report join in the final table; normalize outlet, item, period, UOM, quantity, and value. In Zoho, use sum closing value and render it as stacked bar to answer: Where is closing inventory value concentrated by outlet and category?"
+    },
+    {
+      "id": "CT_P2_KPI_Closing_Inventory",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Closing Inventory Value",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "33_sum_ct_scm_monthly.sql",
+      "question": "What is the selected checkpoint's closing inventory value?",
+      "finalFields": [
+        "closing_stock_value"
+      ],
+      "formula": "sum(\"closing_stock_value\")",
+      "aggregation": "Sum closing stock value",
+      "zoho": {
+        "shelves": [
+          "Measure: closing stock value"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Vendor",
+          "Ingredient category",
+          "Item",
+          "PO status"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "INR currency"
+        ]
+      },
+      "caveats": [
+        "Require exactly one source period."
+      ],
+      "talkTrack": "Closing Inventory Value starts from Gross/Net Margin Report, Closing Stock Report, Enterprise Purchase Order Report, Enterprise Variance Report. The model follows 18_fact_ct_sales.sql -> 05_std_ct_inventory_snapshot.sql -> 22_fact_ct_purchase_order.sql -> 20_fact_ct_actual_consumption.sql -> 33_sum_ct_scm_monthly.sql at source period and outlet. The relationship rule is: Aggregate each fact to source period + outlet before joining sales, stock value, open PO value, and actual consumption value. In Zoho, use sum closing stock value and render it as kpi widget to answer: What is the selected checkpoint's closing inventory value?"
+    },
+    {
+      "id": "CT_P2_KPI_Fill_Rate",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "PO Fill Rate",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "24_fact_ct_po_receipt_line.sql",
+      "question": "What proportion of ordered quantity was linked to accepted receipt quantity?",
+      "finalFields": [
+        "ordered_qty",
+        "received_qty"
+      ],
+      "formula": "if(sum(\"ordered_qty\") <> 0, sum(\"received_qty\") / sum(\"ordered_qty\") * 100, null)",
+      "aggregation": "Ratio of summed quantities",
+      "zoho": {
+        "shelves": [
+          "Measure: PO Fill Rate %"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Vendor",
+          "Ingredient category",
+          "Item",
+          "PO status"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "Percentage; expected display near 83.25% in all-period synthetic truth"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "PO Fill Rate starts from Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows 07_std_ct_purchase_order.sql -> 08_std_ct_purchase_receipt.sql -> 24_fact_ct_po_receipt_line.sql at source period, outlet, purchase order, and item line. The relationship rule is: Left join PO and receipt lines on source period + outlet + canonical PO number + item code; aggregate receipts before the join. In Zoho, use ratio of summed quantities and render it as kpi widget to answer: What proportion of ordered quantity was linked to accepted receipt quantity?"
+    },
+    {
+      "id": "CT_P2_KPI_Monthly_Purchase",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Ordered Gross Value",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "29_sum_ct_procurement_funnel.sql",
+      "question": "What was the selected-period ordered gross commitment?",
+      "finalFields": [
+        "ordered_value"
+      ],
+      "formula": "sum(\"ordered_value\")",
+      "aggregation": "Sum ordered value",
+      "zoho": {
+        "shelves": [
+          "Measure: ordered value"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Vendor",
+          "Ingredient category",
+          "Item",
+          "PO status"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "INR currency",
+          "Label Ordered Gross Value until basis is approved"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Ordered Gross Value starts from Enterprise Purchase Order Report. The model follows 22_fact_ct_purchase_order.sql -> 29_sum_ct_procurement_funnel.sql at source period, outlet, and vendor. The relationship rule is: Group PO lines by source period + outlet + vendor and aggregate ordered, processed, pending, delayed value, and distinct PO counts. In Zoho, use sum ordered value and render it as kpi widget to answer: What was the selected-period ordered gross commitment?"
+    },
+    {
+      "id": "CT_P2_KPI_OTIF",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Vendor OTIF - Formula Demo",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "24_fact_ct_po_receipt_line.sql",
+      "question": "What share of eligible closed PO lines met both quantity and date conditions in the demonstration?",
+      "finalFields": [
+        "eligible_closed_line_flag",
+        "otif_success_flag"
+      ],
+      "formula": "if(sum(\"eligible_closed_line_flag\") <> 0, sum(\"otif_success_flag\") / sum(\"eligible_closed_line_flag\") * 100, null)",
+      "aggregation": "Ratio of summed flags",
+      "zoho": {
+        "shelves": [
+          "Measure: Vendor OTIF %"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Vendor",
+          "Ingredient category",
+          "Item",
+          "PO status"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "Percentage",
+          "Visible Formula demo label"
+        ]
+      },
+      "caveats": [
+        "Production is blocked by sparse actual PO-to-GRN linkage."
+      ],
+      "talkTrack": "Vendor OTIF - Formula Demo starts from Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows 07_std_ct_purchase_order.sql -> 08_std_ct_purchase_receipt.sql -> 24_fact_ct_po_receipt_line.sql at source period, outlet, purchase order, and item line. The relationship rule is: Left join PO and receipt lines on source period + outlet + canonical PO number + item code; aggregate receipts before the join. In Zoho, use ratio of summed flags and render it as kpi widget to answer: What share of eligible closed PO lines met both quantity and date conditions in the demonstration?"
+    },
+    {
+      "id": "CT_P2_KPI_Open_PO_Count",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Open PO Count",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "29_sum_ct_procurement_funnel.sql",
+      "question": "How many distinct purchase orders remain open?",
+      "finalFields": [
+        "open_po_count"
+      ],
+      "formula": "sum(\"open_po_count\")",
+      "aggregation": "Sum vendor-level distinct PO counts within the selected outlet scope",
+      "zoho": {
+        "shelves": [
+          "Measure: open PO count"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Vendor",
+          "Ingredient category",
+          "Item",
+          "PO status"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "Whole number"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Open PO Count starts from Enterprise Purchase Order Report. The model follows 22_fact_ct_purchase_order.sql -> 29_sum_ct_procurement_funnel.sql at source period, outlet, and vendor. The relationship rule is: Group PO lines by source period + outlet + vendor and aggregate ordered, processed, pending, delayed value, and distinct PO counts. In Zoho, use sum vendor-level distinct po counts within the selected outlet scope and render it as kpi widget to answer: How many distinct purchase orders remain open?"
+    },
+    {
+      "id": "CT_P2_KPI_Open_PO_Liability",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Open PO Liability",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "29_sum_ct_procurement_funnel.sql",
+      "question": "How much value remains committed on open PO lines?",
+      "finalFields": [
+        "pending_value"
+      ],
+      "formula": "sum(\"pending_value\")",
+      "aggregation": "Sum pending value",
+      "zoho": {
+        "shelves": [
+          "Measure: pending value"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Vendor",
+          "Ingredient category",
+          "Item",
+          "PO status"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "INR currency"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Open PO Liability starts from Enterprise Purchase Order Report. The model follows 22_fact_ct_purchase_order.sql -> 29_sum_ct_procurement_funnel.sql at source period, outlet, and vendor. The relationship rule is: Group PO lines by source period + outlet + vendor and aggregate ordered, processed, pending, delayed value, and distinct PO counts. In Zoho, use sum pending value and render it as kpi widget to answer: How much value remains committed on open PO lines?"
+    },
+    {
+      "id": "CT_P2_KPI_Working_Capital",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Working Capital Locked",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "33_sum_ct_scm_monthly.sql",
+      "question": "How much capital is represented by closing inventory plus open PO liability?",
+      "finalFields": [
+        "closing_stock_value",
+        "open_po_value"
+      ],
+      "formula": "sum(\"closing_stock_value\") + sum(\"open_po_value\")",
+      "aggregation": "Reusable aggregate formula",
+      "zoho": {
+        "shelves": [
+          "Measure: Working Capital Locked"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Vendor",
+          "Ingredient category",
+          "Item",
+          "PO status"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "INR currency"
+        ]
+      },
+      "caveats": [
+        "Show closing inventory and open PO liability separately beside this combined KPI.",
+        "Require one source period."
+      ],
+      "talkTrack": "Working Capital Locked starts from Gross/Net Margin Report, Closing Stock Report, Enterprise Purchase Order Report, Enterprise Variance Report. The model follows 18_fact_ct_sales.sql -> 05_std_ct_inventory_snapshot.sql -> 22_fact_ct_purchase_order.sql -> 20_fact_ct_actual_consumption.sql -> 33_sum_ct_scm_monthly.sql at source period and outlet. The relationship rule is: Aggregate each fact to source period + outlet before joining sales, stock value, open PO value, and actual consumption value. In Zoho, use reusable aggregate formula and render it as kpi widget to answer: How much capital is represented by closing inventory plus open PO liability?"
+    },
+    {
+      "id": "CT_P2_Observed_Wastage",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Observed Wastage",
+      "kind": "chart",
+      "visual": "Column",
+      "sourceTable": "35_sum_ct_financial_leakage.sql",
+      "question": "How much source-observed wastage value occurred by period?",
+      "finalFields": [
+        "source_period_code",
+        "leakage_value"
+      ],
+      "formula": "sum(\"leakage_value\")",
+      "aggregation": "Sum observed wastage value",
+      "zoho": {
+        "shelves": [
+          "X: source period",
+          "Y: observed wastage value"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Vendor",
+          "Ingredient category",
+          "Item",
+          "PO status"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "INR currency"
+        ]
+      },
+      "caveats": [
+        "This is observed wastage only, not returns plus expiry plus wastage."
+      ],
+      "talkTrack": "Observed Wastage starts from Enterprise Wastage Report. The model follows RAWN_CT_enterprise_wastage_normal-Copy -> 09_std_ct_wastage.sql -> 35_sum_ct_financial_leakage.sql at source period and outlet. The relationship rule is: Aggregate observed wastage value by period and outlet. In Zoho, use sum observed wastage value and render it as column to answer: How much source-observed wastage value occurred by period?"
+    },
+    {
+      "id": "CT_P2_PO_Status_Distribution",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "PO Status Distribution",
+      "kind": "chart",
+      "visual": "Stacked bar",
+      "sourceTable": "22_fact_ct_purchase_order.sql",
+      "question": "How are purchase orders distributed by normalized status and liability?",
+      "finalFields": [
+        "po_status",
+        "po_number",
+        "open_po_value"
+      ],
+      "formula": "distinctcount(\"po_number\") and sum(\"open_po_value\")",
+      "aggregation": "Distinct PO count plus sum open liability",
+      "zoho": {
+        "shelves": [
+          "X: PO status",
+          "Y: distinct PO count and open liability"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Vendor",
+          "Ingredient category",
+          "Item",
+          "PO status"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [
+          "Ordered value",
+          "Remaining quantity"
+        ],
+        "formatting": []
+      },
+      "caveats": [],
+      "talkTrack": "PO Status Distribution starts from Enterprise Purchase Order Report. The model follows RAWN_CT_enterprise_purchase_order-Copy -> 07_std_ct_purchase_order.sql -> 22_fact_ct_purchase_order.sql at source period, outlet, purchase order, and item line. The relationship rule is: Normalize line status and derive ordered value, open quantity/value, open flag, and delayed flag at PO-line grain. In Zoho, use distinct po count plus sum open liability and render it as stacked bar to answer: How are purchase orders distributed by normalized status and liability?"
+    },
+    {
+      "id": "CT_P2_Pending_By_Vendor",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Pending Value By Vendor",
+      "kind": "chart",
+      "visual": "Horizontal bar",
+      "sourceTable": "29_sum_ct_procurement_funnel.sql",
+      "question": "Which vendors hold the most open PO liability?",
+      "finalFields": [
+        "vendor_name",
+        "pending_value"
+      ],
+      "formula": "sum(\"pending_value\")",
+      "aggregation": "Sum pending value",
+      "zoho": {
+        "shelves": [
+          "Y: vendor",
+          "X: pending value"
+        ],
+        "fixedFilters": [
+          "Open PO summary only"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Vendor",
+          "Ingredient category",
+          "Item",
+          "PO status"
+        ],
+        "sort": "Pending value descending",
+        "tooltips": [],
+        "formatting": [
+          "INR currency"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Pending Value By Vendor starts from Enterprise Purchase Order Report. The model follows 22_fact_ct_purchase_order.sql -> 29_sum_ct_procurement_funnel.sql at source period, outlet, and vendor. The relationship rule is: Group PO lines by source period + outlet + vendor and aggregate ordered, processed, pending, delayed value, and distinct PO counts. In Zoho, use sum pending value and render it as horizontal bar to answer: Which vendors hold the most open PO liability?"
+    },
+    {
+      "id": "CT_P2_Pending_Ingredient_Risk",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Pending Ingredient Risk",
+      "kind": "table",
+      "visual": "Tabular",
+      "sourceTable": "36_fact_ct_risky_po.sql",
+      "question": "Which pending PO ingredients are already tied to operational stockout risk?",
+      "finalFields": [
+        "po_number",
+        "vendor_name",
+        "item_code",
+        "remaining_qty",
+        "open_po_value",
+        "expected_delivery_date",
+        "risk_severity"
+      ],
+      "formula": "Direct risky-PO fact rows.",
+      "aggregation": "One row per open risky PO item line",
+      "zoho": {
+        "shelves": [
+          "Columns: PO, vendor, ingredient, remaining quantity/value, expected date, severity"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Vendor",
+          "Ingredient category",
+          "Item",
+          "PO status"
+        ],
+        "sort": "risk_severity_rank descending, open_po_value descending",
+        "tooltips": [],
+        "formatting": []
+      },
+      "caveats": [],
+      "talkTrack": "Pending Ingredient Risk starts from Closing Stock Report, Item Recipe Report, AUX Menu Demand Forecast, Enterprise Purchase Order Report. The model follows 05_std_ct_inventory_snapshot.sql -> 26_fact_ct_forecast_ingredient_demand.sql -> 22_fact_ct_purchase_order.sql -> 36_fact_ct_risky_po.sql at source period, outlet, open po, and risky item line. The relationship rule is: Retain open PO lines only where the matching item checkpoint is purple, red, or amber. In Zoho, use one row per open risky po item line and render it as tabular to answer: Which pending PO ingredients are already tied to operational stockout risk?"
+    },
+    {
+      "id": "CT_P2_Procurement_Funnel",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Procurement Funnel",
+      "kind": "chart",
+      "visual": "Funnel or grouped horizontal bar",
+      "sourceTable": "29_sum_ct_procurement_funnel.sql",
+      "question": "How does ordered value move through processed, pending, and delayed stages?",
+      "finalFields": [
+        "ordered_value",
+        "processed_value",
+        "pending_value",
+        "delayed_value",
+        "po_count",
+        "open_po_count"
+      ],
+      "formula": "Four direct stage measures from the procurement summary.",
+      "aggregation": "Sum each value measure",
+      "zoho": {
+        "shelves": [
+          "Stages: ordered, processed, pending, delayed"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Vendor",
+          "Ingredient category",
+          "Item",
+          "PO status"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [
+          "PO count",
+          "Open PO count"
+        ],
+        "formatting": []
+      },
+      "caveats": [
+        "Use a grouped horizontal bar if Zoho cannot use measure names as funnel stages."
+      ],
+      "talkTrack": "Procurement Funnel starts from Enterprise Purchase Order Report. The model follows 22_fact_ct_purchase_order.sql -> 29_sum_ct_procurement_funnel.sql at source period, outlet, and vendor. The relationship rule is: Group PO lines by source period + outlet + vendor and aggregate ordered, processed, pending, delayed value, and distinct PO counts. In Zoho, use sum each value measure and render it as funnel or grouped horizontal bar to answer: How does ordered value move through processed, pending, and delayed stages?"
+    },
+    {
+      "id": "CT_P2_Top_Price_Movement",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Top Price Movement",
+      "kind": "chart",
+      "visual": "Divergent or horizontal bar",
+      "sourceTable": "31_sum_ct_price_movement.sql",
+      "question": "Which item/vendor prices changed most from the prior synthetic month?",
+      "finalFields": [
+        "item_code",
+        "vendor_name",
+        "unit_price_change_percent",
+        "absolute_price_change_percent"
+      ],
+      "formula": "Signed change is displayed; absolute change is used only for sorting.",
+      "aggregation": "Direct period-item-vendor-UOM result",
+      "zoho": {
+        "shelves": [
+          "Y: item",
+          "X: unit price change %",
+          "Color: positive/negative"
+        ],
+        "fixedFilters": [
+          "One canonical UOM when comparing quantities/prices"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Vendor",
+          "Ingredient category",
+          "Item",
+          "PO status"
+        ],
+        "sort": "Absolute Price Movement descending",
+        "tooltips": [
+          "Vendor",
+          "Previous weighted price",
+          "Current weighted price"
+        ],
+        "formatting": [
+          "Signed percentage"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Top Price Movement starts from Enterprise Entry Report - Stock Entry. The model follows 23_fact_ct_purchase_receipt.sql -> 31_sum_ct_price_movement.sql at source period, outlet, vendor, item, and canonical uom. The relationship rule is: Calculate weighted receipt price per period and compare it with the immediately prior synthetic month at the same outlet/vendor/item/UOM grain. In Zoho, use direct period-item-vendor-uom result and render it as divergent or horizontal bar to answer: Which item/vendor prices changed most from the prior synthetic month?"
+    },
+    {
+      "id": "CT_P2_Vendor_Performance_Matrix",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Vendor Performance Matrix",
+      "kind": "chart",
+      "visual": "Bubble",
+      "sourceTable": "30_sum_ct_vendor_scorecard.sql",
+      "question": "Which vendors combine low OTIF, lead-time deviation, and high open exposure?",
+      "finalFields": [
+        "vendor_name",
+        "otif_percent",
+        "average_lead_time_deviation_days",
+        "open_po_value"
+      ],
+      "formula": "Use native summary fields at source period + outlet + vendor grain.",
+      "aggregation": "No cross-outlet averaging",
+      "zoho": {
+        "shelves": [
+          "X: OTIF %",
+          "Y: average lead-time deviation",
+          "Size: open PO value",
+          "Text: vendor"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Vendor",
+          "Ingredient category",
+          "Item",
+          "PO status"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [
+          "Fill rate",
+          "Monthly purchase value",
+          "Delayed line count"
+        ],
+        "formatting": []
+      },
+      "caveats": [
+        "Formula demonstration until actual PO-to-GRN linkage improves."
+      ],
+      "talkTrack": "Vendor Performance Matrix starts from Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows 24_fact_ct_po_receipt_line.sql -> 30_sum_ct_vendor_scorecard.sql at source period, outlet, and vendor. The relationship rule is: Aggregate PO/receipt line results into vendor purchase, open exposure, fill, eligible OTIF, and lead-time deviation. In Zoho, use no cross-outlet averaging and render it as bubble to answer: Which vendors combine low OTIF, lead-time deviation, and high open exposure?"
+    },
+    {
+      "id": "CT_P2_Vendor_Price_Comparison",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Vendor Price Comparison",
+      "kind": "chart",
+      "visual": "Grouped bar",
+      "sourceTable": "23_fact_ct_purchase_receipt.sql",
+      "question": "For one ingredient and UOM, which vendor supplied at what weighted price?",
+      "finalFields": [
+        "vendor_name",
+        "item_code",
+        "canonical_uom",
+        "received_qty",
+        "receipt_subtotal"
+      ],
+      "formula": "if(sum(\"received_qty\") <> 0, sum(\"receipt_subtotal\") / sum(\"received_qty\"), null)",
+      "aggregation": "Weighted unit price",
+      "zoho": {
+        "shelves": [
+          "X: vendor",
+          "Y: Weighted Unit Price"
+        ],
+        "fixedFilters": [
+          "Exactly one item",
+          "Exactly one canonical UOM",
+          "received_qty > 0"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Vendor",
+          "Ingredient category",
+          "Item",
+          "PO status"
+        ],
+        "sort": "Weighted unit price ascending",
+        "tooltips": [],
+        "formatting": [
+          "INR per selected UOM"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Vendor Price Comparison starts from Enterprise Entry Report - Stock Entry. The model follows RAWN_CT_enterprise_entry-Copy -> 08_std_ct_purchase_receipt.sql -> 23_fact_ct_purchase_receipt.sql at source period, outlet, stock-entry transaction, and item line. The relationship rule is: Normalize receipt identity, PO reference, quantity, subtotal, tax, and total without dropping the raw identifier. In Zoho, use weighted unit price and render it as grouped bar to answer: For one ingredient and UOM, which vendor supplied at what weighted price?"
+    },
+    {
+      "id": "CT_P2_Vendor_Scorecard",
+      "pageId": "page_2_procurement_vendor_capital",
+      "name": "Vendor Scorecard",
+      "kind": "table",
+      "visual": "Tabular",
+      "sourceTable": "30_sum_ct_vendor_scorecard.sql",
+      "question": "What purchase, exposure, fill, OTIF, lead, and delay profile does each vendor have?",
+      "finalFields": [
+        "vendor_name",
+        "monthly_purchase_value",
+        "open_po_value",
+        "otif_percent",
+        "fill_rate_percent",
+        "average_lead_time_deviation_days",
+        "delayed_line_count"
+      ],
+      "formula": "Direct vendor summary fields.",
+      "aggregation": "One row per period + outlet + vendor",
+      "zoho": {
+        "shelves": [
+          "Columns: vendor, purchase, open liability, OTIF, fill, lead deviation, delayed lines"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Vendor",
+          "Ingredient category",
+          "Item",
+          "PO status"
+        ],
+        "sort": "Open PO value descending",
+        "tooltips": [],
+        "formatting": []
+      },
+      "caveats": [
+        "Do not combine precomputed percentages across outlets."
+      ],
+      "talkTrack": "Vendor Scorecard starts from Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows 24_fact_ct_po_receipt_line.sql -> 30_sum_ct_vendor_scorecard.sql at source period, outlet, and vendor. The relationship rule is: Aggregate PO/receipt line results into vendor purchase, open exposure, fill, eligible OTIF, and lead-time deviation. In Zoho, use one row per period + outlet + vendor and render it as tabular to answer: What purchase, exposure, fill, OTIF, lead, and delay profile does each vendor have?"
+    },
+    {
+      "id": "CT_P3_Actual_vs_Theoretical",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Actual vs Theoretical Consumption",
+      "kind": "chart",
+      "visual": "Grouped bar",
+      "sourceTable": "21_fact_ct_consumption_variance.sql",
+      "question": "For one UOM, where does actual ingredient consumption differ from theoretical?",
+      "finalFields": [
+        "item_code",
+        "actual_consumption_qty",
+        "theoretical_consumption_qty",
+        "canonical_uom"
+      ],
+      "formula": "Display both fact measures at the same joined grain.",
+      "aggregation": "Sum quantities only within one canonical UOM",
+      "zoho": {
+        "shelves": [
+          "X: ingredient",
+          "Y: actual quantity and theoretical quantity"
+        ],
+        "fixedFilters": [
+          "Exactly one canonical UOM"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Menu category",
+          "Menu item",
+          "Ingredient category",
+          "Ingredient",
+          "Canonical UOM"
+        ],
+        "sort": "Absolute variance descending",
+        "tooltips": [],
+        "formatting": []
+      },
+      "caveats": [],
+      "talkTrack": "Actual vs Theoretical Consumption starts from Enterprise Variance Report, Gross/Net Margin Report, Item Recipe Report, Closing Stock Report, AUX Theoretical Consumption. The model follows 20_fact_ct_actual_consumption.sql -> 19_fact_ct_theoretical_consumption.sql -> 21_fact_ct_consumption_variance.sql at source period, outlet, inventory item, and canonical uom. The relationship rule is: Join actual and theoretical consumption on source period + outlet + item; calculate signed variance, positive leakage, and low-consumption check. In Zoho, use sum quantities only within one canonical uom and render it as grouped bar to answer: For one UOM, where does actual ingredient consumption differ from theoretical?"
+    },
+    {
+      "id": "CT_P3_Category_Contribution",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Category Contribution",
+      "kind": "chart",
+      "visual": "Stacked bar or ring",
+      "sourceTable": "25_fact_ct_menu_profitability.sql",
+      "question": "What share of net sales comes from each menu category?",
+      "finalFields": [
+        "category_name",
+        "net_sales"
+      ],
+      "formula": "sum(\"net_sales\") shown as percent of report total",
+      "aggregation": "Sum net sales; Show Values As > % of Total",
+      "zoho": {
+        "shelves": [
+          "Category: category name",
+          "Measure: net sales"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Menu category",
+          "Menu item",
+          "Ingredient category",
+          "Ingredient",
+          "Canonical UOM"
+        ],
+        "sort": "Net sales descending",
+        "tooltips": [],
+        "formatting": [
+          "Percent of total"
+        ]
+      },
+      "caveats": [
+        "Do not create a separate table aggregate formula for percent-of-total."
+      ],
+      "talkTrack": "Category Contribution starts from Gross/Net Margin Report, Item Recipe Report, Closing Stock Report, AUX Theoretical Consumption. The model follows 01_std_ct_sales_item.sql -> 17_dim_ct_recipe_effective.sql -> 25_fact_ct_menu_profitability.sql at source period, outlet, and menu item. The relationship rule is: Aggregate menu sales and join effective recipe cost to calculate theoretical cost per unit, COGS, and gross margin. In Zoho, use sum net sales; show values as > % of total and render it as stacked bar or ring to answer: What share of net sales comes from each menu category?"
+    },
+    {
+      "id": "CT_P3_Consumption_Bridge",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Consumption Bridge",
+      "kind": "chart",
+      "visual": "Combination",
+      "sourceTable": "20_fact_ct_actual_consumption.sql",
+      "question": "How do opening, receipts, transfers, returns, and closing stock reconcile to actual consumption?",
+      "finalFields": [
+        "source_period_code",
+        "opening_qty",
+        "receipt_qty",
+        "transfer_in_qty",
+        "transfer_out_qty",
+        "return_qty",
+        "closing_qty",
+        "calculated_actual_consumption_qty"
+      ],
+      "formula": "opening + receipt + transfer in - transfer out - return - closing",
+      "aggregation": "Sum each bridge component within one canonical UOM",
+      "zoho": {
+        "shelves": [
+          "X: source period",
+          "Bars: opening, receipt, transfer in, signed transfer out, signed return, signed closing",
+          "Line: calculated actual consumption"
+        ],
+        "fixedFilters": [
+          "Exactly one canonical UOM for quantity view"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Menu category",
+          "Menu item",
+          "Ingredient category",
+          "Ingredient",
+          "Canonical UOM"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [
+          "Outlet",
+          "Item",
+          "Actual consumption value"
+        ],
+        "formatting": []
+      },
+      "caveats": [],
+      "talkTrack": "Consumption Bridge starts from Enterprise Variance Report. The model follows RAWN_CT_enterprise_variance_normal-Copy -> 04_std_ct_inventory_period.sql -> 20_fact_ct_actual_consumption.sql at source period, outlet, inventory item, and canonical uom. The relationship rule is: Actual consumption = opening + receipts + transfer in - transfer out - returns - closing. In Zoho, use sum each bridge component within one canonical uom and render it as combination to answer: How do opening, receipts, transfers, returns, and closing stock reconcile to actual consumption?"
+    },
+    {
+      "id": "CT_P3_Consumption_Leakage_Rank",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Consumption Leakage Rank",
+      "kind": "chart",
+      "visual": "Horizontal bar",
+      "sourceTable": "21_fact_ct_consumption_variance.sql",
+      "question": "Which ingredients create the highest positive consumption leakage value?",
+      "finalFields": [
+        "item_code",
+        "leakage_value"
+      ],
+      "formula": "sum(\"leakage_value\")",
+      "aggregation": "Sum leakage value",
+      "zoho": {
+        "shelves": [
+          "Y: ingredient",
+          "X: leakage value"
+        ],
+        "fixedFilters": [
+          "leakage_value > 0"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Menu category",
+          "Menu item",
+          "Ingredient category",
+          "Ingredient",
+          "Canonical UOM"
+        ],
+        "sort": "Leakage value descending",
+        "tooltips": [],
+        "formatting": [
+          "INR currency"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Consumption Leakage Rank starts from Enterprise Variance Report, Gross/Net Margin Report, Item Recipe Report, Closing Stock Report, AUX Theoretical Consumption. The model follows 20_fact_ct_actual_consumption.sql -> 19_fact_ct_theoretical_consumption.sql -> 21_fact_ct_consumption_variance.sql at source period, outlet, inventory item, and canonical uom. The relationship rule is: Join actual and theoretical consumption on source period + outlet + item; calculate signed variance, positive leakage, and low-consumption check. In Zoho, use sum leakage value and render it as horizontal bar to answer: Which ingredients create the highest positive consumption leakage value?"
+    },
+    {
+      "id": "CT_P3_KPI_Consumption_Leakage",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Consumption Leakage Value",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "21_fact_ct_consumption_variance.sql",
+      "question": "What positive actual-over-theoretical consumption variance is valued as leakage?",
+      "finalFields": [
+        "leakage_value"
+      ],
+      "formula": "sum(\"leakage_value\")",
+      "aggregation": "Sum leakage value",
+      "zoho": {
+        "shelves": [
+          "Measure: Consumption Leakage Value"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Menu category",
+          "Menu item",
+          "Ingredient category",
+          "Ingredient",
+          "Canonical UOM"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "INR currency"
+        ]
+      },
+      "caveats": [
+        "Use value, not a mixed-UOM all-item quantity."
+      ],
+      "talkTrack": "Consumption Leakage Value starts from Enterprise Variance Report, Gross/Net Margin Report, Item Recipe Report, Closing Stock Report, AUX Theoretical Consumption. The model follows 20_fact_ct_actual_consumption.sql -> 19_fact_ct_theoretical_consumption.sql -> 21_fact_ct_consumption_variance.sql at source period, outlet, inventory item, and canonical uom. The relationship rule is: Join actual and theoretical consumption on source period + outlet + item; calculate signed variance, positive leakage, and low-consumption check. In Zoho, use sum leakage value and render it as kpi widget to answer: What positive actual-over-theoretical consumption variance is valued as leakage?"
+    },
+    {
+      "id": "CT_P3_KPI_Menu_Gross_Margin",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Menu Gross Margin %",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "25_fact_ct_menu_profitability.sql",
+      "question": "What share of net sales remains after theoretical menu COGS?",
+      "finalFields": [
+        "gross_margin_value",
+        "net_sales"
+      ],
+      "formula": "if(sum(\"net_sales\") <> 0, sum(\"gross_margin_value\") / sum(\"net_sales\") * 100, null)",
+      "aggregation": "Ratio of summed gross margin value to summed net sales",
+      "zoho": {
+        "shelves": [
+          "Measure: Menu Gross Margin %"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Menu category",
+          "Menu item",
+          "Ingredient category",
+          "Ingredient",
+          "Canonical UOM"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "Percentage; expected display near 82.02% in all-period synthetic truth"
+        ]
+      },
+      "caveats": [
+        "Never average gross_margin_percent."
+      ],
+      "talkTrack": "Menu Gross Margin % starts from Gross/Net Margin Report, Item Recipe Report, Closing Stock Report, AUX Theoretical Consumption. The model follows 01_std_ct_sales_item.sql -> 17_dim_ct_recipe_effective.sql -> 25_fact_ct_menu_profitability.sql at source period, outlet, and menu item. The relationship rule is: Aggregate menu sales and join effective recipe cost to calculate theoretical cost per unit, COGS, and gross margin. In Zoho, use ratio of summed gross margin value to summed net sales and render it as kpi widget to answer: What share of net sales remains after theoretical menu COGS?"
+    },
+    {
+      "id": "CT_P3_KPI_Net_Sales",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Net Sales",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "25_fact_ct_menu_profitability.sql",
+      "question": "What net menu sales were realized in the selected scope?",
+      "finalFields": [
+        "net_sales"
+      ],
+      "formula": "sum(\"net_sales\")",
+      "aggregation": "Sum net sales",
+      "zoho": {
+        "shelves": [
+          "Measure: net sales"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Menu category",
+          "Menu item",
+          "Ingredient category",
+          "Ingredient",
+          "Canonical UOM"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "INR currency"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Net Sales starts from Gross/Net Margin Report, Item Recipe Report, Closing Stock Report, AUX Theoretical Consumption. The model follows 01_std_ct_sales_item.sql -> 17_dim_ct_recipe_effective.sql -> 25_fact_ct_menu_profitability.sql at source period, outlet, and menu item. The relationship rule is: Aggregate menu sales and join effective recipe cost to calculate theoretical cost per unit, COGS, and gross margin. In Zoho, use sum net sales and render it as kpi widget to answer: What net menu sales were realized in the selected scope?"
+    },
+    {
+      "id": "CT_P3_KPI_Quantity_Sold",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Quantity Sold",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "25_fact_ct_menu_profitability.sql",
+      "question": "How many menu-item units were sold?",
+      "finalFields": [
+        "sold_qty"
+      ],
+      "formula": "sum(\"sold_qty\")",
+      "aggregation": "Sum sold quantity",
+      "zoho": {
+        "shelves": [
+          "Measure: sold quantity"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Menu category",
+          "Menu item",
+          "Ingredient category",
+          "Ingredient",
+          "Canonical UOM"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "Whole or decimal quantity as source requires"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Quantity Sold starts from Gross/Net Margin Report, Item Recipe Report, Closing Stock Report, AUX Theoretical Consumption. The model follows 01_std_ct_sales_item.sql -> 17_dim_ct_recipe_effective.sql -> 25_fact_ct_menu_profitability.sql at source period, outlet, and menu item. The relationship rule is: Aggregate menu sales and join effective recipe cost to calculate theoretical cost per unit, COGS, and gross margin. In Zoho, use sum sold quantity and render it as kpi widget to answer: How many menu-item units were sold?"
+    },
+    {
+      "id": "CT_P3_KPI_Theoretical_COGS",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Theoretical COGS",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "25_fact_ct_menu_profitability.sql",
+      "question": "What should the sold menu mix have cost under the effective recipe and normalized ingredient cost?",
+      "finalFields": [
+        "sold_qty",
+        "theoretical_cost_per_unit",
+        "theoretical_cogs"
+      ],
+      "formula": "sum(\"theoretical_cogs\")",
+      "aggregation": "Sum theoretical COGS",
+      "zoho": {
+        "shelves": [
+          "Measure: theoretical COGS"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Menu category",
+          "Menu item",
+          "Ingredient category",
+          "Ingredient",
+          "Canonical UOM"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "INR currency"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Theoretical COGS starts from Gross/Net Margin Report, Item Recipe Report, Closing Stock Report, AUX Theoretical Consumption. The model follows 01_std_ct_sales_item.sql -> 17_dim_ct_recipe_effective.sql -> 25_fact_ct_menu_profitability.sql at source period, outlet, and menu item. The relationship rule is: Aggregate menu sales and join effective recipe cost to calculate theoretical cost per unit, COGS, and gross margin. In Zoho, use sum theoretical cogs and render it as kpi widget to answer: What should the sold menu mix have cost under the effective recipe and normalized ingredient cost?"
+    },
+    {
+      "id": "CT_P3_Low_Consumption_Check",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Low Consumption Check",
+      "kind": "table",
+      "visual": "Tabular",
+      "sourceTable": "21_fact_ct_consumption_variance.sql",
+      "question": "Where is theoretical consumption higher than calculated actual consumption?",
+      "finalFields": [
+        "outlet_code",
+        "item_code",
+        "actual_consumption_qty",
+        "theoretical_consumption_qty",
+        "low_consumption_qty",
+        "canonical_uom"
+      ],
+      "formula": "low_consumption_qty = max(0, theoretical consumption - actual consumption)",
+      "aggregation": "Direct detail rows",
+      "zoho": {
+        "shelves": [
+          "Columns: outlet, ingredient, actual, theoretical, delta, UOM"
+        ],
+        "fixedFilters": [
+          "low_consumption_qty > 0",
+          "Exactly one canonical UOM"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Menu category",
+          "Menu item",
+          "Ingredient category",
+          "Ingredient",
+          "Canonical UOM"
+        ],
+        "sort": "Low consumption quantity descending",
+        "tooltips": [],
+        "formatting": []
+      },
+      "caveats": [
+        "Title and explanation must frame this as a data/process check, not a saving."
+      ],
+      "talkTrack": "Low Consumption Check starts from Enterprise Variance Report, Gross/Net Margin Report, Item Recipe Report, Closing Stock Report, AUX Theoretical Consumption. The model follows 20_fact_ct_actual_consumption.sql -> 19_fact_ct_theoretical_consumption.sql -> 21_fact_ct_consumption_variance.sql at source period, outlet, inventory item, and canonical uom. The relationship rule is: Join actual and theoretical consumption on source period + outlet + item; calculate signed variance, positive leakage, and low-consumption check. In Zoho, use direct detail rows and render it as tabular to answer: Where is theoretical consumption higher than calculated actual consumption?"
+    },
+    {
+      "id": "CT_P3_Menu_BCG",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Menu BCG",
+      "kind": "chart",
+      "visual": "Bubble",
+      "sourceTable": "32_sum_ct_menu_profitability.sql",
+      "question": "Which menu items are high/low volume and high/low margin under the demo thresholds?",
+      "finalFields": [
+        "menu_item_code",
+        "sold_qty",
+        "gross_margin_percent",
+        "net_sales",
+        "bcg_quadrant"
+      ],
+      "formula": "Quadrant is preclassified from sold quantity and gross margin percent.",
+      "aggregation": "Direct summary at one period + one outlet + menu item",
+      "zoho": {
+        "shelves": [
+          "X: sold quantity",
+          "Y: gross margin %",
+          "Size: net sales",
+          "Text: menu item",
+          "Color: BCG quadrant"
+        ],
+        "fixedFilters": [
+          "Exactly one source period",
+          "Exactly one outlet or keep outlet visible"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Menu category",
+          "Menu item",
+          "Ingredient category",
+          "Ingredient",
+          "Canonical UOM"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": []
+      },
+      "caveats": [
+        "Thresholds are synthetic demonstration rules."
+      ],
+      "talkTrack": "Menu BCG starts from Gross/Net Margin Report, Item Recipe Report, Closing Stock Report, AUX Theoretical Consumption. The model follows 25_fact_ct_menu_profitability.sql -> 32_sum_ct_menu_profitability.sql at source period, outlet, and menu item. The relationship rule is: Classify menu items into synthetic BCG quadrants from sold quantity and gross margin percent. In Zoho, use direct summary at one period + one outlet + menu item and render it as bubble to answer: Which menu items are high/low volume and high/low margin under the demo thresholds?"
+    },
+    {
+      "id": "CT_P3_Menu_COGS_Detail",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Menu COGS Detail",
+      "kind": "table",
+      "visual": "Tabular",
+      "sourceTable": "25_fact_ct_menu_profitability.sql",
+      "question": "How do sold quantity, recipe cost, COGS, sales, and margin reconcile for each menu item?",
+      "finalFields": [
+        "menu_item_code",
+        "sold_qty",
+        "theoretical_cost_per_unit",
+        "theoretical_cogs",
+        "net_sales",
+        "gross_margin_value",
+        "gross_margin_percent"
+      ],
+      "formula": "gross margin value = net sales - theoretical COGS",
+      "aggregation": "Direct menu profitability rows",
+      "zoho": {
+        "shelves": [
+          "Columns: menu item, sold quantity, theoretical unit cost, COGS, net sales, margin"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Menu category",
+          "Menu item",
+          "Ingredient category",
+          "Ingredient",
+          "Canonical UOM"
+        ],
+        "sort": "Net sales descending",
+        "tooltips": [],
+        "formatting": []
+      },
+      "caveats": [],
+      "talkTrack": "Menu COGS Detail starts from Gross/Net Margin Report, Item Recipe Report, Closing Stock Report, AUX Theoretical Consumption. The model follows 01_std_ct_sales_item.sql -> 17_dim_ct_recipe_effective.sql -> 25_fact_ct_menu_profitability.sql at source period, outlet, and menu item. The relationship rule is: Aggregate menu sales and join effective recipe cost to calculate theoretical cost per unit, COGS, and gross margin. In Zoho, use direct menu profitability rows and render it as tabular to answer: How do sold quantity, recipe cost, COGS, sales, and margin reconcile for each menu item?"
+    },
+    {
+      "id": "CT_P3_Menu_Margin_Rank",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Menu Margin Rank",
+      "kind": "chart",
+      "visual": "Horizontal bar",
+      "sourceTable": "32_sum_ct_menu_profitability.sql",
+      "question": "Which menu items contribute the most gross margin value?",
+      "finalFields": [
+        "menu_item_code",
+        "gross_margin_value",
+        "theoretical_cogs",
+        "gross_margin_percent"
+      ],
+      "formula": "sum(\"gross_margin_value\")",
+      "aggregation": "Sum margin value within selected period/outlet",
+      "zoho": {
+        "shelves": [
+          "Y: menu item",
+          "X: gross margin value"
+        ],
+        "fixedFilters": [
+          "One source period for like-for-like ranking"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Menu category",
+          "Menu item",
+          "Ingredient category",
+          "Ingredient",
+          "Canonical UOM"
+        ],
+        "sort": "Gross margin value descending",
+        "tooltips": [
+          "Theoretical COGS",
+          "Gross margin %"
+        ],
+        "formatting": [
+          "INR currency"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Menu Margin Rank starts from Gross/Net Margin Report, Item Recipe Report, Closing Stock Report, AUX Theoretical Consumption. The model follows 25_fact_ct_menu_profitability.sql -> 32_sum_ct_menu_profitability.sql at source period, outlet, and menu item. The relationship rule is: Classify menu items into synthetic BCG quadrants from sold quantity and gross margin percent. In Zoho, use sum margin value within selected period/outlet and render it as horizontal bar to answer: Which menu items contribute the most gross margin value?"
+    },
+    {
+      "id": "CT_P3_Outlet_Item_Heatmap",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Outlet Item Heatmap",
+      "kind": "chart",
+      "visual": "Heat map",
+      "sourceTable": "25_fact_ct_menu_profitability.sql",
+      "question": "How does menu/category performance vary across outlets?",
+      "finalFields": [
+        "outlet_code",
+        "menu_item_code",
+        "category_name",
+        "net_sales",
+        "sold_qty"
+      ],
+      "formula": "sum(\"net_sales\") or sum(\"sold_qty\")",
+      "aggregation": "Sum selected additive measure",
+      "zoho": {
+        "shelves": [
+          "X: menu item or category",
+          "Y: outlet",
+          "Color: net sales or sold quantity"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Menu category",
+          "Menu item",
+          "Ingredient category",
+          "Ingredient",
+          "Canonical UOM"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [
+          "Gross margin value",
+          "Theoretical COGS"
+        ],
+        "formatting": []
+      },
+      "caveats": [],
+      "talkTrack": "Outlet Item Heatmap starts from Gross/Net Margin Report, Item Recipe Report, Closing Stock Report, AUX Theoretical Consumption. The model follows 01_std_ct_sales_item.sql -> 17_dim_ct_recipe_effective.sql -> 25_fact_ct_menu_profitability.sql at source period, outlet, and menu item. The relationship rule is: Aggregate menu sales and join effective recipe cost to calculate theoretical cost per unit, COGS, and gross margin. In Zoho, use sum selected additive measure and render it as heat map to answer: How does menu/category performance vary across outlets?"
+    },
+    {
+      "id": "CT_P3_Sales_Trend",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Sales Trend",
+      "kind": "chart",
+      "visual": "Line",
+      "sourceTable": "18_fact_ct_sales.sql",
+      "question": "How do net sales and menu quantity move by sales date?",
+      "finalFields": [
+        "sales_date",
+        "net_sales",
+        "sold_qty"
+      ],
+      "formula": "sum(\"net_sales\") and sum(\"sold_qty\")",
+      "aggregation": "Sum additive sales measures by date",
+      "zoho": {
+        "shelves": [
+          "X: sales date",
+          "Y: net sales and sold quantity"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Menu category",
+          "Menu item",
+          "Ingredient category",
+          "Ingredient",
+          "Canonical UOM"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [
+          "Outlet",
+          "Menu item",
+          "Category"
+        ],
+        "formatting": []
+      },
+      "caveats": [],
+      "talkTrack": "Sales Trend starts from Gross/Net Margin Report. The model follows RAWN_CT_gross_net_margin-Copy -> 01_std_ct_sales_item.sql -> 18_fact_ct_sales.sql at sales date, outlet, bill, and menu item. The relationship rule is: No cross-report join in the fact; preserve the validated bill-item grain. In Zoho, use sum additive sales measures by date and render it as line to answer: How do net sales and menu quantity move by sales date?"
+    },
+    {
+      "id": "CT_P3_Theoretical_Consumption_Detail",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Theoretical Consumption Detail",
+      "kind": "table",
+      "visual": "Tabular",
+      "sourceTable": "19_fact_ct_theoretical_consumption.sql",
+      "question": "What ingredient quantity and value should have been consumed?",
+      "finalFields": [
+        "outlet_code",
+        "item_code",
+        "theoretical_consumption_qty",
+        "theoretical_consumption_value",
+        "canonical_uom",
+        "average_unit_cost"
+      ],
+      "formula": "Sold menu quantity x normalized recipe ingredient quantity; value x normalized average cost.",
+      "aggregation": "Direct detail rows",
+      "zoho": {
+        "shelves": [
+          "Columns: outlet, ingredient, theoretical quantity/value, UOM, average cost"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Menu category",
+          "Menu item",
+          "Ingredient category",
+          "Ingredient",
+          "Canonical UOM"
+        ],
+        "sort": "Theoretical consumption value descending",
+        "tooltips": [],
+        "formatting": []
+      },
+      "caveats": [],
+      "talkTrack": "Theoretical Consumption Detail starts from Gross/Net Margin Report, Item Recipe Report, Closing Stock Report, AUX Theoretical Consumption. The model follows AUX_Theoretical_Consumption-Copy -> 03_std_ct_theoretical_consumption.sql -> 19_fact_ct_theoretical_consumption.sql at source period, outlet, ingredient, and canonical uom. The relationship rule is: Sales quantity x governed recipe quantity x approved UOM conversion; cost value uses the normalized ingredient cost. In Zoho, use direct detail rows and render it as tabular to answer: What ingredient quantity and value should have been consumed?"
+    },
+    {
+      "id": "CT_P3_Top_Slow_Menu_Ranking",
+      "pageId": "page_3_consumption_menu_profitability",
+      "name": "Top / Slow Menu Ranking",
+      "kind": "chart",
+      "visual": "Horizontal bar",
+      "sourceTable": "32_sum_ct_menu_profitability.sql",
+      "question": "Which menu items rank highest or lowest on the selected commercial measure?",
+      "finalFields": [
+        "menu_item_code",
+        "sold_qty",
+        "net_sales",
+        "theoretical_cogs",
+        "gross_margin_value"
+      ],
+      "formula": "Use one selected ranking measure; all fields are already at menu summary grain.",
+      "aggregation": "Sum selected additive measure",
+      "zoho": {
+        "shelves": [
+          "Y: menu item",
+          "X: selected sold quantity, net sales, COGS, or margin"
+        ],
+        "fixedFilters": [
+          "One source period for like-for-like ranking"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Menu category",
+          "Menu item",
+          "Ingredient category",
+          "Ingredient",
+          "Canonical UOM"
+        ],
+        "sort": "Selected metric ascending for slow or descending for top",
+        "tooltips": [],
+        "formatting": []
+      },
+      "caveats": [],
+      "talkTrack": "Top / Slow Menu Ranking starts from Gross/Net Margin Report, Item Recipe Report, Closing Stock Report, AUX Theoretical Consumption. The model follows 25_fact_ct_menu_profitability.sql -> 32_sum_ct_menu_profitability.sql at source period, outlet, and menu item. The relationship rule is: Classify menu items into synthetic BCG quadrants from sold quantity and gross margin percent. In Zoho, use sum selected additive measure and render it as horizontal bar to answer: Which menu items rank highest or lowest on the selected commercial measure?"
+    },
+    {
+      "id": "CT_P4_Consumption_Variance_Trend",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Consumption Variance Trend",
+      "kind": "chart",
+      "visual": "Bar / line",
+      "sourceTable": "21_fact_ct_consumption_variance.sql",
+      "question": "How do signed consumption variance and positive leakage change by period?",
+      "finalFields": [
+        "source_period_code",
+        "actual_consumption_value",
+        "theoretical_consumption_value",
+        "leakage_value"
+      ],
+      "formula": "Signed variance = actual value - theoretical value; leakage is positive-only.",
+      "aggregation": "Sum both explicitly labelled value measures",
+      "zoho": {
+        "shelves": [
+          "X: source period",
+          "Y: signed variance value and leakage value"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "INR currency"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Consumption Variance Trend starts from Enterprise Variance Report, Gross/Net Margin Report, Item Recipe Report, Closing Stock Report, AUX Theoretical Consumption. The model follows 20_fact_ct_actual_consumption.sql -> 19_fact_ct_theoretical_consumption.sql -> 21_fact_ct_consumption_variance.sql at source period, outlet, inventory item, and canonical uom. The relationship rule is: Join actual and theoretical consumption on source period + outlet + item; calculate signed variance, positive leakage, and low-consumption check. In Zoho, use sum both explicitly labelled value measures and render it as bar / line to answer: How do signed consumption variance and positive leakage change by period?"
+    },
+    {
+      "id": "CT_P4_DQ_NEGATIVE_STOCK",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Negative Stock Count",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "34_fact_ct_data_quality_exception.sql",
+      "question": "Closing quantity below zero",
+      "finalFields": [
+        "exception_type",
+        "exception_count"
+      ],
+      "formula": "sum(\"exception_count\")",
+      "aggregation": "Sum exception count",
+      "zoho": {
+        "shelves": [
+          "Measure: Data Quality Exception Count"
+        ],
+        "fixedFilters": [
+          "exception_type = NEGATIVE_STOCK"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "Whole number",
+          "Use as Filter for the shared detail table"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Negative Stock Count starts from Closing Stock Report, Item Recipe Report, AUX Menu Demand Forecast, Gross/Net Margin Report, Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows Governed source and model checks -> 34_fact_ct_data_quality_exception.sql at one generated exception record. The relationship rule is: UNION explicit quality controls into a common exception grain with type, period, outlet, record key, item, and reference. In Zoho, use sum exception count and render it as kpi widget to answer: Closing quantity below zero"
+    },
+    {
+      "id": "CT_P4_DQ_OPEN_PO_MISSING_EXPECTED_DELIVERY",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Open PO Missing Expected Delivery Count",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "34_fact_ct_data_quality_exception.sql",
+      "question": "Open PO lacks an expected delivery date",
+      "finalFields": [
+        "exception_type",
+        "exception_count"
+      ],
+      "formula": "sum(\"exception_count\")",
+      "aggregation": "Sum exception count",
+      "zoho": {
+        "shelves": [
+          "Measure: Data Quality Exception Count"
+        ],
+        "fixedFilters": [
+          "exception_type = OPEN_PO_MISSING_EXPECTED_DELIVERY"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "Whole number",
+          "Use as Filter for the shared detail table"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Open PO Missing Expected Delivery Count starts from Closing Stock Report, Item Recipe Report, AUX Menu Demand Forecast, Gross/Net Margin Report, Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows Governed source and model checks -> 34_fact_ct_data_quality_exception.sql at one generated exception record. The relationship rule is: UNION explicit quality controls into a common exception grain with type, period, outlet, record key, item, and reference. In Zoho, use sum exception count and render it as kpi widget to answer: Open PO lacks an expected delivery date"
+    },
+    {
+      "id": "CT_P4_DQ_OPERATIONAL_ITEM_MISSING_MASTER",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Operational Items Missing Master Count",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "34_fact_ct_data_quality_exception.sql",
+      "question": "Operational item does not resolve to the canonical item reference",
+      "finalFields": [
+        "exception_type",
+        "exception_count"
+      ],
+      "formula": "sum(\"exception_count\")",
+      "aggregation": "Sum exception count",
+      "zoho": {
+        "shelves": [
+          "Measure: Data Quality Exception Count"
+        ],
+        "fixedFilters": [
+          "exception_type = OPERATIONAL_ITEM_MISSING_MASTER"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "Whole number",
+          "Use as Filter for the shared detail table"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Operational Items Missing Master Count starts from Closing Stock Report, Item Recipe Report, AUX Menu Demand Forecast, Gross/Net Margin Report, Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows Governed source and model checks -> 34_fact_ct_data_quality_exception.sql at one generated exception record. The relationship rule is: UNION explicit quality controls into a common exception grain with type, period, outlet, record key, item, and reference. In Zoho, use sum exception count and render it as kpi widget to answer: Operational item does not resolve to the canonical item reference"
+    },
+    {
+      "id": "CT_P4_DQ_SOLD_ITEM_MISSING_RECIPE",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Sold Items Missing Recipe Count",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "34_fact_ct_data_quality_exception.sql",
+      "question": "Sold menu item has no effective recipe",
+      "finalFields": [
+        "exception_type",
+        "exception_count"
+      ],
+      "formula": "sum(\"exception_count\")",
+      "aggregation": "Sum exception count",
+      "zoho": {
+        "shelves": [
+          "Measure: Data Quality Exception Count"
+        ],
+        "fixedFilters": [
+          "exception_type = SOLD_ITEM_MISSING_RECIPE"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "Whole number",
+          "Use as Filter for the shared detail table"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Sold Items Missing Recipe Count starts from Closing Stock Report, Item Recipe Report, AUX Menu Demand Forecast, Gross/Net Margin Report, Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows Governed source and model checks -> 34_fact_ct_data_quality_exception.sql at one generated exception record. The relationship rule is: UNION explicit quality controls into a common exception grain with type, period, outlet, record key, item, and reference. In Zoho, use sum exception count and render it as kpi widget to answer: Sold menu item has no effective recipe"
+    },
+    {
+      "id": "CT_P4_DQ_UOM_MISMATCH_WITHOUT_CONVERSION",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "UOM Mismatch Without Conversion Count",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "34_fact_ct_data_quality_exception.sql",
+      "question": "Observed UOMs cannot be governed by an approved conversion",
+      "finalFields": [
+        "exception_type",
+        "exception_count"
+      ],
+      "formula": "sum(\"exception_count\")",
+      "aggregation": "Sum exception count",
+      "zoho": {
+        "shelves": [
+          "Measure: Data Quality Exception Count"
+        ],
+        "fixedFilters": [
+          "exception_type = UOM_MISMATCH_WITHOUT_CONVERSION"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "Whole number",
+          "Use as Filter for the shared detail table"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "UOM Mismatch Without Conversion Count starts from Closing Stock Report, Item Recipe Report, AUX Menu Demand Forecast, Gross/Net Margin Report, Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows Governed source and model checks -> 34_fact_ct_data_quality_exception.sql at one generated exception record. The relationship rule is: UNION explicit quality controls into a common exception grain with type, period, outlet, record key, item, and reference. In Zoho, use sum exception count and render it as kpi widget to answer: Observed UOMs cannot be governed by an approved conversion"
+    },
+    {
+      "id": "CT_P4_DQ_ZERO_STOCK_WITH_DEMAND",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Zero Stock With Demand Count",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "34_fact_ct_data_quality_exception.sql",
+      "question": "Zero closing stock while forecast demand is positive",
+      "finalFields": [
+        "exception_type",
+        "exception_count"
+      ],
+      "formula": "sum(\"exception_count\")",
+      "aggregation": "Sum exception count",
+      "zoho": {
+        "shelves": [
+          "Measure: Data Quality Exception Count"
+        ],
+        "fixedFilters": [
+          "exception_type = ZERO_STOCK_WITH_DEMAND"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "Whole number",
+          "Use as Filter for the shared detail table"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Zero Stock With Demand Count starts from Closing Stock Report, Item Recipe Report, AUX Menu Demand Forecast, Gross/Net Margin Report, Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows Governed source and model checks -> 34_fact_ct_data_quality_exception.sql at one generated exception record. The relationship rule is: UNION explicit quality controls into a common exception grain with type, period, outlet, record key, item, and reference. In Zoho, use sum exception count and render it as kpi widget to answer: Zero closing stock while forecast demand is positive"
+    },
+    {
+      "id": "CT_P4_Data_Quality_Detail",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Data Quality Detail",
+      "kind": "table",
+      "visual": "Tabular",
+      "sourceTable": "34_fact_ct_data_quality_exception.sql",
+      "question": "Which exact governed exception records sit behind each quality tile?",
+      "finalFields": [
+        "exception_type",
+        "source_period_code",
+        "outlet_code",
+        "record_key",
+        "item_code",
+        "reference_number",
+        "definition",
+        "exception_count"
+      ],
+      "formula": "Direct generated exception rows.",
+      "aggregation": "One row per generated exception record",
+      "zoho": {
+        "shelves": [
+          "Columns: exception type, period, outlet, record key, item, PO/reference, definition"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Exception type, period, outlet, record key",
+        "tooltips": [],
+        "formatting": [
+          "Enable underlying data and export"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Data Quality Detail starts from Closing Stock Report, Item Recipe Report, AUX Menu Demand Forecast, Gross/Net Margin Report, Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows Governed source and model checks -> 34_fact_ct_data_quality_exception.sql at one generated exception record. The relationship rule is: UNION explicit quality controls into a common exception grain with type, period, outlet, record key, item, and reference. In Zoho, use one row per generated exception record and render it as tabular to answer: Which exact governed exception records sit behind each quality tile?"
+    },
+    {
+      "id": "CT_P4_Descriptive_Explorer",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "SCM Descriptive Explorer",
+      "kind": "table",
+      "visual": "Pivot or tabular",
+      "sourceTable": "33_sum_ct_scm_monthly.sql",
+      "question": "What governed SCM values can be drilled and exported by period and outlet?",
+      "finalFields": [
+        "source_period_code",
+        "outlet_code",
+        "closing_stock_value",
+        "open_po_value",
+        "net_sales",
+        "actual_consumption_value"
+      ],
+      "formula": "Direct monthly summary values with drill reports for lower grain.",
+      "aggregation": "Sum at selected period/outlet scope",
+      "zoho": {
+        "shelves": [
+          "Rows: period and outlet",
+          "Measures: stock, open PO, sales, actual consumption"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "Enable export and underlying data"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "SCM Descriptive Explorer starts from Gross/Net Margin Report, Closing Stock Report, Enterprise Purchase Order Report, Enterprise Variance Report. The model follows 18_fact_ct_sales.sql -> 05_std_ct_inventory_snapshot.sql -> 22_fact_ct_purchase_order.sql -> 20_fact_ct_actual_consumption.sql -> 33_sum_ct_scm_monthly.sql at source period and outlet. The relationship rule is: Aggregate each fact to source period + outlet before joining sales, stock value, open PO value, and actual consumption value. In Zoho, use sum at selected period/outlet scope and render it as pivot or tabular to answer: What governed SCM values can be drilled and exported by period and outlet?"
+    },
+    {
+      "id": "CT_P4_Expiry_Explorer_Demo",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Expiry Explorer - Demo",
+      "kind": "table",
+      "visual": "Tabular",
+      "sourceTable": "38_fact_ct_expiry_risk.sql",
+      "question": "Which scenario inputs and outputs explain the synthetic expiry exposure?",
+      "finalFields": [
+        "outlet_code",
+        "item_code",
+        "shelf_life_days_assumption",
+        "estimated_fifo_tranche_qty",
+        "estimated_expiry_date",
+        "expiry_qty_at_risk",
+        "expiry_risk_value",
+        "production_use_status"
+      ],
+      "formula": "Direct synthetic scenario rows.",
+      "aggregation": "One row per synthetic batch allocation",
+      "zoho": {
+        "shelves": [
+          "Columns: outlet, item, scenario inputs, estimated date, quantity/value, production-use label"
+        ],
+        "fixedFilters": [
+          "production_use_status = demo_only_no_posist_batch_or_expiry_source"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "Permanent synthetic-source qualifier"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Expiry Explorer - Demo starts from Enterprise Entry Report - Stock Entry, Closing Stock Report, AUX Expiry Estimate. The model follows AUX_Expiry_Estimate-Copy -> 38_fact_ct_expiry_risk.sql at source period, outlet, synthetic batch allocation, and item. The relationship rule is: Expose the prebuilt synthetic FIFO/shelf-life scenario with permanent evidence and production-use labels. In Zoho, use one row per synthetic batch allocation and render it as tabular to answer: Which scenario inputs and outputs explain the synthetic expiry exposure?"
+    },
+    {
+      "id": "CT_P4_GRN_Explorer",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "GRN Explorer",
+      "kind": "table",
+      "visual": "Tabular",
+      "sourceTable": "23_fact_ct_purchase_receipt.sql",
+      "question": "Which receipt lines explain GRN quantity and value?",
+      "finalFields": [
+        "receipt_date",
+        "grn_number",
+        "po_number",
+        "vendor_name",
+        "item_code",
+        "received_qty",
+        "receipt_subtotal",
+        "receipt_tax",
+        "receipt_total",
+        "return_source_status"
+      ],
+      "formula": "Direct normalized stock-entry receipt rows.",
+      "aggregation": "One row per receipt item line",
+      "zoho": {
+        "shelves": [
+          "Columns: receipt date, GRN, PO, vendor, item, quantity, subtotal, tax, total, return-source status"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Receipt date descending",
+        "tooltips": [],
+        "formatting": []
+      },
+      "caveats": [],
+      "talkTrack": "GRN Explorer starts from Enterprise Entry Report - Stock Entry. The model follows RAWN_CT_enterprise_entry-Copy -> 08_std_ct_purchase_receipt.sql -> 23_fact_ct_purchase_receipt.sql at source period, outlet, stock-entry transaction, and item line. The relationship rule is: Normalize receipt identity, PO reference, quantity, subtotal, tax, and total without dropping the raw identifier. In Zoho, use one row per receipt item line and render it as tabular to answer: Which receipt lines explain GRN quantity and value?"
+    },
+    {
+      "id": "CT_P4_Item_Explorer",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Item Explorer",
+      "kind": "table",
+      "visual": "Tabular",
+      "sourceTable": "27_fact_ct_inventory_risk.sql",
+      "question": "Which item checkpoints explain stock, cost, forecast, PO, and risk totals?",
+      "finalFields": [
+        "outlet_code",
+        "item_code",
+        "category_name",
+        "current_stock_qty",
+        "average_unit_cost",
+        "forecast_required_qty",
+        "valid_open_po_qty",
+        "risk_severity"
+      ],
+      "formula": "Direct inventory-risk detail.",
+      "aggregation": "One row per item checkpoint",
+      "zoho": {
+        "shelves": [
+          "Columns: outlet, item, category, stock, cost, forecast, PO, severity"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Outlet, risk rank descending, item",
+        "tooltips": [],
+        "formatting": []
+      },
+      "caveats": [],
+      "talkTrack": "Item Explorer starts from Closing Stock Report, Item Recipe Report, AUX Menu Demand Forecast, Enterprise Purchase Order Report. The model follows 05_std_ct_inventory_snapshot.sql -> 26_fact_ct_forecast_ingredient_demand.sql -> 22_fact_ct_purchase_order.sql -> 27_fact_ct_inventory_risk.sql at source period, outlet, and inventory ingredient checkpoint. The relationship rule is: Join stock, seven-day forecast ingredient demand, and valid open PO quantity on source period + outlet + item. In Zoho, use one row per item checkpoint and render it as tabular to answer: Which item checkpoints explain stock, cost, forecast, PO, and risk totals?"
+    },
+    {
+      "id": "CT_P4_KPI_Active_Menu_Items",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Active Menu Items",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "18_fact_ct_sales.sql",
+      "question": "How many distinct menu items had sales in the selected scope?",
+      "finalFields": [
+        "item_code"
+      ],
+      "formula": "distinctcount(\"item_code\")",
+      "aggregation": "Distinct menu-item count",
+      "zoho": {
+        "shelves": [
+          "Measure: Active Menu Items"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "Whole number"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Active Menu Items starts from Gross/Net Margin Report. The model follows RAWN_CT_gross_net_margin-Copy -> 01_std_ct_sales_item.sql -> 18_fact_ct_sales.sql at sales date, outlet, bill, and menu item. The relationship rule is: No cross-report join in the fact; preserve the validated bill-item grain. In Zoho, use distinct menu-item count and render it as kpi widget to answer: How many distinct menu items had sales in the selected scope?"
+    },
+    {
+      "id": "CT_P4_KPI_Active_Vendors",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Active Vendors",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "22_fact_ct_purchase_order.sql",
+      "question": "How many distinct vendors appear on purchase orders in the selected scope?",
+      "finalFields": [
+        "vendor_name"
+      ],
+      "formula": "distinctcount(\"vendor_name\")",
+      "aggregation": "Distinct vendor count",
+      "zoho": {
+        "shelves": [
+          "Measure: Active Vendors"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "Whole number"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Active Vendors starts from Enterprise Purchase Order Report. The model follows RAWN_CT_enterprise_purchase_order-Copy -> 07_std_ct_purchase_order.sql -> 22_fact_ct_purchase_order.sql at source period, outlet, purchase order, and item line. The relationship rule is: Normalize line status and derive ordered value, open quantity/value, open flag, and delayed flag at PO-line grain. In Zoho, use distinct vendor count and render it as kpi widget to answer: How many distinct vendors appear on purchase orders in the selected scope?"
+    },
+    {
+      "id": "CT_P4_KPI_Actual_Consumption",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Actual Consumption Value",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "33_sum_ct_scm_monthly.sql",
+      "question": "What calculated actual-consumption value is summarized for the selected scope?",
+      "finalFields": [
+        "actual_consumption_value"
+      ],
+      "formula": "sum(\"actual_consumption_value\")",
+      "aggregation": "Sum actual consumption value",
+      "zoho": {
+        "shelves": [
+          "Measure: actual consumption value"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "INR currency"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Actual Consumption Value starts from Gross/Net Margin Report, Closing Stock Report, Enterprise Purchase Order Report, Enterprise Variance Report. The model follows 18_fact_ct_sales.sql -> 05_std_ct_inventory_snapshot.sql -> 22_fact_ct_purchase_order.sql -> 20_fact_ct_actual_consumption.sql -> 33_sum_ct_scm_monthly.sql at source period and outlet. The relationship rule is: Aggregate each fact to source period + outlet before joining sales, stock value, open PO value, and actual consumption value. In Zoho, use sum actual consumption value and render it as kpi widget to answer: What calculated actual-consumption value is summarized for the selected scope?"
+    },
+    {
+      "id": "CT_P4_KPI_Closing_Stock",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Closing Stock Value",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "33_sum_ct_scm_monthly.sql",
+      "question": "What is the selected checkpoint's closing stock value?",
+      "finalFields": [
+        "closing_stock_value"
+      ],
+      "formula": "sum(\"closing_stock_value\")",
+      "aggregation": "Sum closing stock value",
+      "zoho": {
+        "shelves": [
+          "Measure: closing stock value"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "INR currency"
+        ]
+      },
+      "caveats": [
+        "Require one source period."
+      ],
+      "talkTrack": "Closing Stock Value starts from Gross/Net Margin Report, Closing Stock Report, Enterprise Purchase Order Report, Enterprise Variance Report. The model follows 18_fact_ct_sales.sql -> 05_std_ct_inventory_snapshot.sql -> 22_fact_ct_purchase_order.sql -> 20_fact_ct_actual_consumption.sql -> 33_sum_ct_scm_monthly.sql at source period and outlet. The relationship rule is: Aggregate each fact to source period + outlet before joining sales, stock value, open PO value, and actual consumption value. In Zoho, use sum closing stock value and render it as kpi widget to answer: What is the selected checkpoint's closing stock value?"
+    },
+    {
+      "id": "CT_P4_KPI_Consumption_Variance",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Consumption Variance / Leakage",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "21_fact_ct_consumption_variance.sql",
+      "question": "What signed variance or positive leakage measure is selected for the checkpoint?",
+      "finalFields": [
+        "actual_consumption_value",
+        "theoretical_consumption_value",
+        "leakage_value"
+      ],
+      "formula": "sum(actual consumption value - theoretical consumption value) or sum(\"leakage_value\")",
+      "aggregation": "Use one explicitly labelled measure",
+      "zoho": {
+        "shelves": [
+          "Measure: signed variance value or leakage value"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "INR currency"
+        ]
+      },
+      "caveats": [
+        "Do not label positive leakage and signed variance as the same KPI."
+      ],
+      "talkTrack": "Consumption Variance / Leakage starts from Enterprise Variance Report, Gross/Net Margin Report, Item Recipe Report, Closing Stock Report, AUX Theoretical Consumption. The model follows 20_fact_ct_actual_consumption.sql -> 19_fact_ct_theoretical_consumption.sql -> 21_fact_ct_consumption_variance.sql at source period, outlet, inventory item, and canonical uom. The relationship rule is: Join actual and theoretical consumption on source period + outlet + item; calculate signed variance, positive leakage, and low-consumption check. In Zoho, use use one explicitly labelled measure and render it as kpi widget to answer: What signed variance or positive leakage measure is selected for the checkpoint?"
+    },
+    {
+      "id": "CT_P4_KPI_GRN_Value",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "GRN Value",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "23_fact_ct_purchase_receipt.sql",
+      "question": "What accepted receipt total was recorded in the selected scope?",
+      "finalFields": [
+        "receipt_total"
+      ],
+      "formula": "sum(\"receipt_total\")",
+      "aggregation": "Sum receipt total",
+      "zoho": {
+        "shelves": [
+          "Measure: receipt total"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "INR currency"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "GRN Value starts from Enterprise Entry Report - Stock Entry. The model follows RAWN_CT_enterprise_entry-Copy -> 08_std_ct_purchase_receipt.sql -> 23_fact_ct_purchase_receipt.sql at source period, outlet, stock-entry transaction, and item line. The relationship rule is: Normalize receipt identity, PO reference, quantity, subtotal, tax, and total without dropping the raw identifier. In Zoho, use sum receipt total and render it as kpi widget to answer: What accepted receipt total was recorded in the selected scope?"
+    },
+    {
+      "id": "CT_P4_KPI_Net_Sales",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Net Sales",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "33_sum_ct_scm_monthly.sql",
+      "question": "What net sales are summarized for the selected period and outlet?",
+      "finalFields": [
+        "net_sales"
+      ],
+      "formula": "sum(\"net_sales\")",
+      "aggregation": "Sum net sales",
+      "zoho": {
+        "shelves": [
+          "Measure: net sales"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "INR currency"
+        ]
+      },
+      "caveats": [],
+      "talkTrack": "Net Sales starts from Gross/Net Margin Report, Closing Stock Report, Enterprise Purchase Order Report, Enterprise Variance Report. The model follows 18_fact_ct_sales.sql -> 05_std_ct_inventory_snapshot.sql -> 22_fact_ct_purchase_order.sql -> 20_fact_ct_actual_consumption.sql -> 33_sum_ct_scm_monthly.sql at source period and outlet. The relationship rule is: Aggregate each fact to source period + outlet before joining sales, stock value, open PO value, and actual consumption value. In Zoho, use sum net sales and render it as kpi widget to answer: What net sales are summarized for the selected period and outlet?"
+    },
+    {
+      "id": "CT_P4_KPI_Open_PO",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Open PO Value",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "33_sum_ct_scm_monthly.sql",
+      "question": "What open PO value exists in the selected checkpoint?",
+      "finalFields": [
+        "open_po_value"
+      ],
+      "formula": "sum(\"open_po_value\")",
+      "aggregation": "Sum open PO value",
+      "zoho": {
+        "shelves": [
+          "Measure: open PO value"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "INR currency"
+        ]
+      },
+      "caveats": [
+        "Require one source period for current-state display."
+      ],
+      "talkTrack": "Open PO Value starts from Gross/Net Margin Report, Closing Stock Report, Enterprise Purchase Order Report, Enterprise Variance Report. The model follows 18_fact_ct_sales.sql -> 05_std_ct_inventory_snapshot.sql -> 22_fact_ct_purchase_order.sql -> 20_fact_ct_actual_consumption.sql -> 33_sum_ct_scm_monthly.sql at source period and outlet. The relationship rule is: Aggregate each fact to source period + outlet before joining sales, stock value, open PO value, and actual consumption value. In Zoho, use sum open po value and render it as kpi widget to answer: What open PO value exists in the selected checkpoint?"
+    },
+    {
+      "id": "CT_P4_KPI_Open_PO_Lines",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Open PO Line Count",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "22_fact_ct_purchase_order.sql",
+      "question": "How many PO item lines remain open?",
+      "finalFields": [
+        "is_open_po"
+      ],
+      "formula": "sum(\"is_open_po\")",
+      "aggregation": "Sum open-line flag",
+      "zoho": {
+        "shelves": [
+          "Measure: Open PO Line Count"
+        ],
+        "fixedFilters": [
+          "is_open_po = 1"
+        ],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": [
+          "Whole number"
+        ]
+      },
+      "caveats": [
+        "This is not a distinct PO count."
+      ],
+      "talkTrack": "Open PO Line Count starts from Enterprise Purchase Order Report. The model follows RAWN_CT_enterprise_purchase_order-Copy -> 07_std_ct_purchase_order.sql -> 22_fact_ct_purchase_order.sql at source period, outlet, purchase order, and item line. The relationship rule is: Normalize line status and derive ordered value, open quantity/value, open flag, and delayed flag at PO-line grain. In Zoho, use sum open-line flag and render it as kpi widget to answer: How many PO item lines remain open?"
+    },
+    {
+      "id": "CT_P4_KPI_Quantity_Sold",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Quantity Sold",
+      "kind": "kpi",
+      "visual": "KPI widget",
+      "sourceTable": "18_fact_ct_sales.sql",
+      "question": "How many menu-item units were sold?",
+      "finalFields": [
+        "sold_qty"
+      ],
+      "formula": "sum(\"sold_qty\")",
+      "aggregation": "Sum sold quantity",
+      "zoho": {
+        "shelves": [
+          "Measure: sold quantity"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [],
+        "formatting": []
+      },
+      "caveats": [],
+      "talkTrack": "Quantity Sold starts from Gross/Net Margin Report. The model follows RAWN_CT_gross_net_margin-Copy -> 01_std_ct_sales_item.sql -> 18_fact_ct_sales.sql at sales date, outlet, bill, and menu item. The relationship rule is: No cross-report join in the fact; preserve the validated bill-item grain. In Zoho, use sum sold quantity and render it as kpi widget to answer: How many menu-item units were sold?"
+    },
+    {
+      "id": "CT_P4_PO_Explorer",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "PO Explorer",
+      "kind": "table",
+      "visual": "Tabular",
+      "sourceTable": "24_fact_ct_po_receipt_line.sql",
+      "question": "How do ordered, received, remaining, expected, actual, and status fields reconcile by PO line?",
+      "finalFields": [
+        "po_number",
+        "vendor_name",
+        "item_code",
+        "ordered_qty",
+        "received_qty",
+        "remaining_qty",
+        "expected_delivery_date",
+        "actual_receipt_date",
+        "po_status"
+      ],
+      "formula": "PO lines left joined to aggregated receipt lines on canonical business keys.",
+      "aggregation": "One row per PO item line",
+      "zoho": {
+        "shelves": [
+          "Columns: PO, vendor, item, ordered, received, remaining, expected, actual, status"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "PO number, item",
+        "tooltips": [],
+        "formatting": []
+      },
+      "caveats": [],
+      "talkTrack": "PO Explorer starts from Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows 07_std_ct_purchase_order.sql -> 08_std_ct_purchase_receipt.sql -> 24_fact_ct_po_receipt_line.sql at source period, outlet, purchase order, and item line. The relationship rule is: Left join PO and receipt lines on source period + outlet + canonical PO number + item code; aggregate receipts before the join. In Zoho, use one row per po item line and render it as tabular to answer: How do ordered, received, remaining, expected, actual, and status fields reconcile by PO line?"
+    },
+    {
+      "id": "CT_P4_SCM_Monthly_Trend",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "SCM Monthly Trend",
+      "kind": "chart",
+      "visual": "Combination",
+      "sourceTable": "33_sum_ct_scm_monthly.sql",
+      "question": "How do stock value, open PO value, net sales, and actual consumption move together?",
+      "finalFields": [
+        "source_period_code",
+        "closing_stock_value",
+        "open_po_value",
+        "net_sales",
+        "actual_consumption_value"
+      ],
+      "formula": "All four values are pre-aggregated to period + outlet before the summary join.",
+      "aggregation": "Sum each additive value measure",
+      "zoho": {
+        "shelves": [
+          "X: source period",
+          "Bars: closing stock and open PO",
+          "Lines: net sales and actual consumption"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Business-relevant default order",
+        "tooltips": [
+          "Outlet"
+        ],
+        "formatting": []
+      },
+      "caveats": [],
+      "talkTrack": "SCM Monthly Trend starts from Gross/Net Margin Report, Closing Stock Report, Enterprise Purchase Order Report, Enterprise Variance Report. The model follows 18_fact_ct_sales.sql -> 05_std_ct_inventory_snapshot.sql -> 22_fact_ct_purchase_order.sql -> 20_fact_ct_actual_consumption.sql -> 33_sum_ct_scm_monthly.sql at source period and outlet. The relationship rule is: Aggregate each fact to source period + outlet before joining sales, stock value, open PO value, and actual consumption value. In Zoho, use sum each additive value measure and render it as combination to answer: How do stock value, open PO value, net sales, and actual consumption move together?"
+    },
+    {
+      "id": "CT_P4_Sales_Explorer",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Sales Explorer",
+      "kind": "table",
+      "visual": "Tabular",
+      "sourceTable": "18_fact_ct_sales.sql",
+      "question": "Which date/outlet/menu rows explain the descriptive sales totals?",
+      "finalFields": [
+        "sales_date",
+        "outlet_code",
+        "item_code",
+        "category_name",
+        "sold_qty",
+        "net_sales",
+        "realized_unit_price"
+      ],
+      "formula": "Direct bill-item fact detail.",
+      "aggregation": "One row per validated sales item line",
+      "zoho": {
+        "shelves": [
+          "Columns: date, outlet, menu item/category, sold quantity, net sales, realized unit price"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Sales date descending",
+        "tooltips": [],
+        "formatting": []
+      },
+      "caveats": [],
+      "talkTrack": "Sales Explorer starts from Gross/Net Margin Report. The model follows RAWN_CT_gross_net_margin-Copy -> 01_std_ct_sales_item.sql -> 18_fact_ct_sales.sql at sales date, outlet, bill, and menu item. The relationship rule is: No cross-report join in the fact; preserve the validated bill-item grain. In Zoho, use one row per validated sales item line and render it as tabular to answer: Which date/outlet/menu rows explain the descriptive sales totals?"
+    },
+    {
+      "id": "CT_P4_Vendor_Explorer",
+      "pageId": "page_4_scm_explorer_data_quality",
+      "name": "Vendor Explorer",
+      "kind": "table",
+      "visual": "Tabular",
+      "sourceTable": "30_sum_ct_vendor_scorecard.sql",
+      "question": "Which vendor-level values and formula demonstrations explain procurement performance?",
+      "finalFields": [
+        "vendor_name",
+        "monthly_purchase_value",
+        "received_value",
+        "open_po_value",
+        "fill_rate_percent",
+        "otif_percent",
+        "average_lead_time_deviation_days",
+        "delayed_line_count"
+      ],
+      "formula": "Direct vendor scorecard summary.",
+      "aggregation": "One row per period + outlet + vendor",
+      "zoho": {
+        "shelves": [
+          "Columns: vendor, ordered/received value, open liability, fill, eligible OTIF, lead deviation, delayed lines"
+        ],
+        "fixedFilters": [],
+        "userFilters": [
+          "Source period (global, single-select; default month_03)",
+          "Outlet (global, multi-select)",
+          "Region",
+          "Item",
+          "Vendor",
+          "Exception type",
+          "Explorer source"
+        ],
+        "sort": "Open PO value descending",
+        "tooltips": [],
+        "formatting": []
+      },
+      "caveats": [
+        "OTIF and lead deviation remain formula demonstrations."
+      ],
+      "talkTrack": "Vendor Explorer starts from Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows 24_fact_ct_po_receipt_line.sql -> 30_sum_ct_vendor_scorecard.sql at source period, outlet, and vendor. The relationship rule is: Aggregate PO/receipt line results into vendor purchase, open exposure, fill, eligible OTIF, and lead-time deviation. In Zoho, use one row per period + outlet + vendor and render it as tabular to answer: Which vendor-level values and formula demonstrations explain procurement performance?"
+    }
+  ],
+  "counts": {
+    "pages": 4,
+    "stories": 76,
+    "kpis": 33,
+    "charts": 23,
+    "tables": 20,
+    "queryTables": 38
+  }
+}
