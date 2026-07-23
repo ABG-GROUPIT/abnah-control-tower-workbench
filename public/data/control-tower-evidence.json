@@ -18,14 +18,15 @@
     "demoBuild": "ready",
     "productionModelBuild": "ready_with_gates",
     "productionPublication": "blocked_pending_signoff",
-    "requiredLandingTableCount": 16,
-    "queryTableCount": 37,
+    "requiredLandingTableCount": 15,
+    "queryTableCount": 36,
     "dashboardTabCount": 4,
     "migrationRule": "Build v2 in parallel. Do not delete old raw tables before reconciliation, dashboard acceptance, and rollback approval.",
     "nextSequence": [
       "Back up or duplicate the current Zoho workspace.",
-      "Import the 16 RAWN_CT and AUX landing tables with exact names.",
-      "Build the 37 Query Tables in manifest dependency order.",
+      "Import the 15 active RAWN_CT and AUX landing tables with exact names.",
+      "Keep the header-only Stock Return landing contract as gated schema evidence.",
+      "Build the 36 active Query Tables in manifest dependency order.",
       "Validate facts and summaries before assembling the four dashboard tabs.",
       "Train Ask Zia only after dashboard calculations pass."
     ]
@@ -287,7 +288,7 @@
       "id": "source:rawn_ct_enterprise_stock_return",
       "sourceName": "Enterprise Stock Return Report",
       "sourceTable": "RAWN_CT_enterprise_stock_return",
-      "modelRole": "primary",
+      "modelRole": "primary_production_gate",
       "roleGroup": "primary",
       "pages": [
         "P2",
@@ -303,7 +304,7 @@
         "return_qty",
         "return_amt"
       ],
-      "productionDecision": "Join to the original GRN number and item before calculating vendor return rate",
+      "productionDecision": "Header-only in current UAT evidence; keep the schema but exclude return rate and vendor-return leakage until populated rows join to the original GRN and item",
       "fallbackOrReconciliation": "Bulk Return Report",
       "auditReportId": "p4.enterprise_stock_return.item",
       "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:03_enterprise_stock_return",
@@ -3189,7 +3190,7 @@
       "displayName": "Enterprise Stock Return / Stock Entry Return",
       "selection": {
         "status": "selected",
-        "modelRole": "primary",
+        "modelRole": "primary_production_gate",
         "roleGroup": "primary",
         "pages": [
           "P2",
@@ -3197,7 +3198,7 @@
           "P4"
         ],
         "sourceTable": "RAWN_CT_enterprise_stock_return",
-        "reason": "Join to the original GRN number and item before calculating vendor return rate"
+        "reason": "Header-only in current UAT evidence; keep the schema but exclude return rate and vendor-return leakage until populated rows join to the original GRN and item"
       },
       "filesAudited": 1,
       "rowsAudited": 0,

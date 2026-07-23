@@ -1,0 +1,3121 @@
+{
+  "contractVersion": "1.0.0",
+  "asOfDate": "2026-07-23",
+  "status": "verified",
+  "headline": "Source schemas are exact; values and operational distributions remain synthetic.",
+  "scopeStatement": "Twenty validated POSIST CSV contracts were checked against the generated raw source files. Exact means header spelling, order, field count, captured grain, and confirmed empty-state behavior. It does not mean that synthetic values, row counts, identifiers, preamble rows, or missingness frequencies reproduce ABNAH operations.",
+  "handlingPolicy": [
+    "Keep every captured POSIST column in RAW_CT source-shaped CSVs, even when unused.",
+    "Mirror fields confirmed all blank or all zero in the audited UAT exports.",
+    "Do not project confirmed no-signal fields into active standardized, fact, summary, or dashboard logic.",
+    "Treat a header-only report as unavailable, never as a genuine zero result.",
+    "Use RAWN_CT landing tables for Zoho; they intentionally add source period and outlet metadata and canonical field names.",
+    "Keep AUX tables visibly labelled because they are model inputs, not POSIST reports."
+  ],
+  "layers": [
+    {
+      "id": "source_shaped",
+      "label": "RAW_CT source-shaped CSV",
+      "status": "exact_contract",
+      "description": "POSIST header spelling and order, confirmed empty-state behavior, and captured report grain."
+    },
+    {
+      "id": "normalized_landing",
+      "label": "RAWN_CT Zoho landing",
+      "status": "intentional_translation",
+      "description": "Canonical field names plus source period and outlet metadata; not a byte-for-byte POSIST export."
+    },
+    {
+      "id": "analytics",
+      "label": "STD / DIM / FACT / SUM",
+      "status": "projected_fields_only",
+      "description": "Only KPI-relevant fields with usable source evidence are carried into active calculations."
+    }
+  ],
+  "summary": {
+    "validatedReportContracts": 20,
+    "exactHeaderReports": 20,
+    "populatedReportContracts": 18,
+    "headerOnlyReportContracts": 2,
+    "confirmedAllBlankFields": 38,
+    "confirmedAllZeroFields": 31,
+    "ignoredNoSignalFields": 69,
+    "activeReportContracts": 9,
+    "gatedReportContracts": 1,
+    "schemaCaptureOnlyReports": 3,
+    "auxiliaryModelTables": 6
+  },
+  "schemaCaptureOnlyReports": [
+    {
+      "name": "ERP Vendor Price",
+      "status": "captured_headers_not_uat_csv_validated",
+      "handling": "Reference only until a populated UAT export is audited."
+    },
+    {
+      "name": "Enterprise Purchase Summary",
+      "status": "captured_headers_not_uat_csv_validated",
+      "handling": "Reconciliation candidate only; not an active fact source."
+    },
+    {
+      "name": "Enterprise Consolidated Indent",
+      "status": "captured_headers_not_uat_csv_validated",
+      "handling": "Optional workflow source; not used by the current dashboard."
+    }
+  ],
+  "auxiliaryTables": [
+    "AUX_Outlet_Master",
+    "AUX_Item_Master",
+    "AUX_Vendor_Master",
+    "AUX_Menu_Demand_Forecast",
+    "AUX_Theoretical_Consumption",
+    "AUX_Expiry_Estimate"
+  ],
+  "reports": [
+    {
+      "reportId": "p2.bill_item_detail.item",
+      "reportStem": "bill_item_detail",
+      "displayName": "Bill Item Detail Report",
+      "grain": "one row per bill and sold item",
+      "schemaStatus": "exact_validated_contract",
+      "headerMatch": true,
+      "columnCount": 32,
+      "actualFilesAudited": 2,
+      "actualRowsAudited": 8138,
+      "syntheticFilesGenerated": 9,
+      "syntheticRowsGenerated": 14576,
+      "rowPatternStatus": "modelled_at_captured_grain",
+      "downstreamStatus": "audit_or_reconciliation_only",
+      "activeFields": [],
+      "gatedFields": [],
+      "contextOnlyFields": [
+        {
+          "field": "bill_number",
+          "label": "billNumber"
+        },
+        {
+          "field": "bill_state",
+          "label": "State"
+        },
+        {
+          "field": "category_name",
+          "label": "Category Name"
+        },
+        {
+          "field": "close_time",
+          "label": "Close Time"
+        },
+        {
+          "field": "day_serial",
+          "label": "daySerial"
+        },
+        {
+          "field": "deployment_name",
+          "label": "Deployment"
+        },
+        {
+          "field": "discount_amt",
+          "label": "Discount"
+        },
+        {
+          "field": "discount_remarks",
+          "label": "discountRemarks"
+        },
+        {
+          "field": "discount_type",
+          "label": "discountType"
+        },
+        {
+          "field": "gst_18_tax_amt",
+          "label": "GST@18%"
+        },
+        {
+          "field": "gst_18_taxable_amt",
+          "label": "GST@18% Amount"
+        },
+        {
+          "field": "gst_3_tax_amt",
+          "label": "GST@3%"
+        },
+        {
+          "field": "gst_3_taxable_amt",
+          "label": "GST@3% Amount"
+        },
+        {
+          "field": "gst_5_tax_amt",
+          "label": "GST@5%"
+        },
+        {
+          "field": "gst_5_taxable_amt",
+          "label": "GST@5% Amount"
+        },
+        {
+          "field": "item_classification",
+          "label": "Item Classification"
+        },
+        {
+          "field": "item_name",
+          "label": "Item Name"
+        },
+        {
+          "field": "item_number",
+          "label": "Item Number"
+        },
+        {
+          "field": "item_qty",
+          "label": "Qty"
+        },
+        {
+          "field": "item_rate",
+          "label": "Rate"
+        },
+        {
+          "field": "item_section",
+          "label": "itemSection"
+        },
+        {
+          "field": "line_amt",
+          "label": "Amount"
+        },
+        {
+          "field": "net_amt",
+          "label": "netamt"
+        },
+        {
+          "field": "open_time",
+          "label": "Open Time"
+        },
+        {
+          "field": "tab_name",
+          "label": "Tab"
+        },
+        {
+          "field": "table_number",
+          "label": "tableNumber"
+        }
+      ],
+      "ignoredFields": [
+        {
+          "field": "covers",
+          "label": "Covers",
+          "declaredType": "decimal",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "customer_mobile",
+          "label": "customerMobile",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "customer_name",
+          "label": "customerName",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "order_id",
+          "label": "Order Id",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "source",
+          "label": "Source",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "waiter_name",
+          "label": "Waiter Name",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        }
+      ],
+      "fidelityNote": "Header spelling/order and confirmed blank, zero-only, or header-only behavior match the audited POSIST contract. Business values, row counts, identifiers, and event frequency remain controlled synthetic data."
+    },
+    {
+      "reportId": "p4.bulk_return.item",
+      "reportStem": "bulk_return",
+      "displayName": "Bulk Return Report",
+      "grain": "one row per bulk-return transaction and item",
+      "schemaStatus": "exact_validated_contract",
+      "headerMatch": true,
+      "columnCount": 13,
+      "actualFilesAudited": 1,
+      "actualRowsAudited": 6,
+      "syntheticFilesGenerated": 9,
+      "syntheticRowsGenerated": 19,
+      "rowPatternStatus": "modelled_at_captured_grain",
+      "downstreamStatus": "audit_or_reconciliation_only",
+      "activeFields": [],
+      "gatedFields": [],
+      "contextOnlyFields": [
+        {
+          "field": "category_name",
+          "label": "Category Name"
+        },
+        {
+          "field": "deployment_name",
+          "label": "Deployment Name"
+        },
+        {
+          "field": "item_code",
+          "label": "Item Code"
+        },
+        {
+          "field": "item_name",
+          "label": "Item Name"
+        },
+        {
+          "field": "return_date",
+          "label": "Date"
+        },
+        {
+          "field": "return_qty",
+          "label": "Quantity"
+        },
+        {
+          "field": "store_kitchen_name",
+          "label": "Store/Kitchen Name"
+        },
+        {
+          "field": "super_category_name",
+          "label": "Super Category Name"
+        },
+        {
+          "field": "transaction_number",
+          "label": "Transaction Number"
+        },
+        {
+          "field": "unit",
+          "label": "Unit"
+        },
+        {
+          "field": "user_name",
+          "label": "User Name"
+        }
+      ],
+      "ignoredFields": [
+        {
+          "field": "comment",
+          "label": "Comment",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "source",
+          "label": "Source",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        }
+      ],
+      "fidelityNote": "Header spelling/order and confirmed blank, zero-only, or header-only behavior match the audited POSIST contract. Business values, row counts, identifiers, and event frequency remain controlled synthetic data."
+    },
+    {
+      "reportId": "p4.closing_stock.item",
+      "reportStem": "closing_stock",
+      "displayName": "Closing Stock Report",
+      "grain": "one row per deployment, generation date and inventory item",
+      "schemaStatus": "exact_validated_contract",
+      "headerMatch": true,
+      "columnCount": 15,
+      "actualFilesAudited": 1,
+      "actualRowsAudited": 1148,
+      "syntheticFilesGenerated": 9,
+      "syntheticRowsGenerated": 387,
+      "rowPatternStatus": "modelled_at_captured_grain",
+      "downstreamStatus": "active_projected_fields",
+      "activeFields": [
+        {
+          "field": "average_price",
+          "label": "Average Price"
+        },
+        {
+          "field": "category_code",
+          "label": "Category Code"
+        },
+        {
+          "field": "category_name",
+          "label": "Category Name"
+        },
+        {
+          "field": "deployment_name",
+          "label": "Deployment"
+        },
+        {
+          "field": "item_code",
+          "label": "Item Code"
+        },
+        {
+          "field": "item_name",
+          "label": "Item Name"
+        },
+        {
+          "field": "stock_date",
+          "label": "Date"
+        },
+        {
+          "field": "super_category_code",
+          "label": "Super Category Code"
+        },
+        {
+          "field": "super_category_name",
+          "label": "Super Category Name"
+        },
+        {
+          "field": "total_amt",
+          "label": "Total Amt"
+        },
+        {
+          "field": "total_qty",
+          "label": "Total Qty"
+        },
+        {
+          "field": "unit_name",
+          "label": "Unit Name"
+        }
+      ],
+      "gatedFields": [],
+      "contextOnlyFields": [
+        {
+          "field": "generation_date",
+          "label": "Generation Date"
+        },
+        {
+          "field": "generation_time",
+          "label": "Generation Time"
+        },
+        {
+          "field": "gk2_main_store_qty",
+          "label": "GK2 Main Store"
+        }
+      ],
+      "ignoredFields": [],
+      "fidelityNote": "Header spelling/order and confirmed blank, zero-only, or header-only behavior match the audited POSIST contract. Business values, row counts, identifiers, and event frequency remain controlled synthetic data."
+    },
+    {
+      "reportId": "p4.enterprise_consumption.detail",
+      "reportStem": "enterprise_consumption_detail",
+      "displayName": "Enterprise Consumption Report - detail",
+      "grain": "one row per deployment, store/kitchen, item and selected report period",
+      "schemaStatus": "exact_validated_contract",
+      "headerMatch": true,
+      "columnCount": 46,
+      "actualFilesAudited": 1,
+      "actualRowsAudited": 812,
+      "syntheticFilesGenerated": 9,
+      "syntheticRowsGenerated": 387,
+      "rowPatternStatus": "modelled_at_captured_grain",
+      "downstreamStatus": "audit_or_reconciliation_only",
+      "activeFields": [],
+      "gatedFields": [],
+      "contextOnlyFields": [
+        {
+          "field": "average_price",
+          "label": "Average Price"
+        },
+        {
+          "field": "category_name",
+          "label": "Category Name"
+        },
+        {
+          "field": "closing_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "closing_date",
+          "label": "Closing Date"
+        },
+        {
+          "field": "closing_qty",
+          "label": "Closing Qty"
+        },
+        {
+          "field": "consumption_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "consumption_qty",
+          "label": "Consumption Qty"
+        },
+        {
+          "field": "deployment_name",
+          "label": "Deployment Name"
+        },
+        {
+          "field": "ideal_closing_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "ideal_closing_qty",
+          "label": "Ideal Closing Qty"
+        },
+        {
+          "field": "indent_receive_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "indent_receive_qty",
+          "label": "Indent Receive Qty"
+        },
+        {
+          "field": "item_code",
+          "label": "Item Code"
+        },
+        {
+          "field": "item_name",
+          "label": "Item Name"
+        },
+        {
+          "field": "opening_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "opening_date",
+          "label": "Opening Date"
+        },
+        {
+          "field": "opening_qty",
+          "label": "Opening Qty"
+        },
+        {
+          "field": "physical_adjusted_closing_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "physical_adjusted_closing_qty",
+          "label": "Physical Adjusted Closing Qty"
+        },
+        {
+          "field": "physical_gain_loss_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "physical_gain_loss_qty",
+          "label": "PhysicalGain/Loss Qty"
+        },
+        {
+          "field": "purchase_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "purchase_qty",
+          "label": "Purchase Qty"
+        },
+        {
+          "field": "return_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "return_qty",
+          "label": "Return Qty"
+        },
+        {
+          "field": "stock_in_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "stock_in_qty",
+          "label": "Stock In Qty"
+        },
+        {
+          "field": "stock_out_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "stock_out_plus_consumption_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "stock_out_plus_consumption_qty",
+          "label": "Total (Stock Out + Consumption Qty)"
+        },
+        {
+          "field": "stock_out_qty",
+          "label": "Stock Out Qty"
+        },
+        {
+          "field": "store_kitchen_name",
+          "label": "StoreKitchen Name"
+        },
+        {
+          "field": "super_category_name",
+          "label": "Super Category Name"
+        },
+        {
+          "field": "unit",
+          "label": "Unit"
+        },
+        {
+          "field": "wastage_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "wastage_qty",
+          "label": "Wastage Qty"
+        }
+      ],
+      "ignoredFields": [
+        {
+          "field": "indent_dispatch_amt",
+          "label": "Amt",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "indent_dispatch_qty",
+          "label": "Indent Dispatch Qty",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "internal_indent_dispatch_amt",
+          "label": "Amt",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "internal_indent_dispatch_qty",
+          "label": "InternalIndent Dispatch Qty",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "internal_indent_receive_amt",
+          "label": "Amt",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "internal_indent_receive_qty",
+          "label": "InternalIndent Receive Qty",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "reuse_amt",
+          "label": "Amt",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "reuse_qty",
+          "label": "Reuse Qty",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "source_yield_wastage_amt",
+          "label": "Amt",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "source_yield_wastage_qty",
+          "label": "Yield Wastage",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        }
+      ],
+      "fidelityNote": "Header spelling/order and confirmed blank, zero-only, or header-only behavior match the audited POSIST contract. Business values, row counts, identifiers, and event frequency remain controlled synthetic data."
+    },
+    {
+      "reportId": "p4.enterprise_entry.item",
+      "reportStem": "enterprise_entry",
+      "displayName": "Enterprise Entry Report - Stock Entry",
+      "grain": "one row per stock-entry item or document-level charge",
+      "schemaStatus": "exact_validated_contract",
+      "headerMatch": true,
+      "columnCount": 34,
+      "actualFilesAudited": 1,
+      "actualRowsAudited": 562,
+      "syntheticFilesGenerated": 9,
+      "syntheticRowsGenerated": 585,
+      "rowPatternStatus": "modelled_at_captured_grain",
+      "downstreamStatus": "active_projected_fields",
+      "activeFields": [
+        {
+          "field": "base_amt",
+          "label": "Amount"
+        },
+        {
+          "field": "category_name",
+          "label": "Category Name"
+        },
+        {
+          "field": "deployment_name",
+          "label": "Deployment Name"
+        },
+        {
+          "field": "discount_amt",
+          "label": "Discount"
+        },
+        {
+          "field": "entry_date",
+          "label": "Date"
+        },
+        {
+          "field": "entry_qty",
+          "label": "Quantity"
+        },
+        {
+          "field": "invoice_date",
+          "label": "Invoice Date"
+        },
+        {
+          "field": "invoice_number",
+          "label": "Invoice Number"
+        },
+        {
+          "field": "item_code",
+          "label": "Item Code"
+        },
+        {
+          "field": "item_name",
+          "label": "Item Name"
+        },
+        {
+          "field": "po_number",
+          "label": "PO Number"
+        },
+        {
+          "field": "store_kitchen_name",
+          "label": "Store/Kitchen Name"
+        },
+        {
+          "field": "super_category_name",
+          "label": "Super Category Name"
+        },
+        {
+          "field": "total_amt",
+          "label": "Total"
+        },
+        {
+          "field": "total_tax_amt",
+          "label": "Total Tax"
+        },
+        {
+          "field": "transaction_number",
+          "label": "Transaction Number"
+        },
+        {
+          "field": "unit",
+          "label": "Unit"
+        },
+        {
+          "field": "unit_price",
+          "label": "Unit Price"
+        },
+        {
+          "field": "vendor_name",
+          "label": "Vendor Name"
+        }
+      ],
+      "gatedFields": [],
+      "contextOnlyFields": [
+        {
+          "field": "charges_name",
+          "label": "Charges Name"
+        },
+        {
+          "field": "gst_igst_rate",
+          "label": "GST/IGST Rate"
+        },
+        {
+          "field": "gst_igst_value",
+          "label": "GST/IGST Value"
+        },
+        {
+          "field": "user_name",
+          "label": "User Name"
+        }
+      ],
+      "ignoredFields": [
+        {
+          "field": "batch_number",
+          "label": "Batch Number",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "cess_rate",
+          "label": "CESS Rate",
+          "declaredType": "decimal",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "cess_value",
+          "label": "CESS Value",
+          "declaredType": "decimal",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "comment",
+          "label": "Comment",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "item_brand",
+          "label": "Item Brand",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "item_charges_amt",
+          "label": "Item Charges Amount",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "mrp",
+          "label": "MRP",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "other_tax_rate",
+          "label": "Other Taxes Rate",
+          "declaredType": "decimal",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "other_tax_value",
+          "label": "Other Taxes Value",
+          "declaredType": "decimal",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "pr_number",
+          "label": "PR Number",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "source",
+          "label": "Source",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        }
+      ],
+      "fidelityNote": "Header spelling/order and confirmed blank, zero-only, or header-only behavior match the audited POSIST contract. Business values, row counts, identifiers, and event frequency remain controlled synthetic data."
+    },
+    {
+      "reportId": "p4.enterprise_opening.item",
+      "reportStem": "enterprise_opening",
+      "displayName": "Enterprise Opening Report - Opening Stock",
+      "grain": "one row per opening-stock transaction and item",
+      "schemaStatus": "exact_validated_contract",
+      "headerMatch": true,
+      "columnCount": 15,
+      "actualFilesAudited": 1,
+      "actualRowsAudited": 3,
+      "syntheticFilesGenerated": 9,
+      "syntheticRowsGenerated": 387,
+      "rowPatternStatus": "modelled_at_captured_grain",
+      "downstreamStatus": "audit_or_reconciliation_only",
+      "activeFields": [],
+      "gatedFields": [],
+      "contextOnlyFields": [
+        {
+          "field": "category_name",
+          "label": "Category Name"
+        },
+        {
+          "field": "deployment_name",
+          "label": "Deployment Name"
+        },
+        {
+          "field": "item_code",
+          "label": "Item Code"
+        },
+        {
+          "field": "item_name",
+          "label": "Item Name"
+        },
+        {
+          "field": "opening_date",
+          "label": "Date"
+        },
+        {
+          "field": "opening_qty",
+          "label": "Quantity"
+        },
+        {
+          "field": "store_kitchen_name",
+          "label": "Store/Kitchen Name"
+        },
+        {
+          "field": "super_category_name",
+          "label": "Super Category Name"
+        },
+        {
+          "field": "transaction_number",
+          "label": "Transaction Number"
+        },
+        {
+          "field": "unit",
+          "label": "Unit"
+        },
+        {
+          "field": "user_name",
+          "label": "User Name"
+        }
+      ],
+      "ignoredFields": [
+        {
+          "field": "comment",
+          "label": "Comment",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "opening_subtotal",
+          "label": "Sub Total",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "source",
+          "label": "Source",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "unit_price",
+          "label": "Unit Price",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        }
+      ],
+      "fidelityNote": "Header spelling/order and confirmed blank, zero-only, or header-only behavior match the audited POSIST contract. Business values, row counts, identifiers, and event frequency remain controlled synthetic data."
+    },
+    {
+      "reportId": "p4.enterprise_physical.item",
+      "reportStem": "enterprise_physical",
+      "displayName": "Enterprise Physical Report - Physical Stock",
+      "grain": "one row per physical-stock transaction and item",
+      "schemaStatus": "exact_validated_contract",
+      "headerMatch": true,
+      "columnCount": 16,
+      "actualFilesAudited": 1,
+      "actualRowsAudited": 6251,
+      "syntheticFilesGenerated": 9,
+      "syntheticRowsGenerated": 387,
+      "rowPatternStatus": "modelled_at_captured_grain",
+      "downstreamStatus": "audit_or_reconciliation_only",
+      "activeFields": [],
+      "gatedFields": [],
+      "contextOnlyFields": [
+        {
+          "field": "category_name",
+          "label": "Category Name"
+        },
+        {
+          "field": "comment",
+          "label": "Comment"
+        },
+        {
+          "field": "deployment_name",
+          "label": "Deployment Name"
+        },
+        {
+          "field": "item_code",
+          "label": "Item Code"
+        },
+        {
+          "field": "item_name",
+          "label": "Item Name"
+        },
+        {
+          "field": "physical_amt",
+          "label": "Amount"
+        },
+        {
+          "field": "physical_date",
+          "label": "Date"
+        },
+        {
+          "field": "physical_qty",
+          "label": "Quantity"
+        },
+        {
+          "field": "store_kitchen_name",
+          "label": "Store/Kitchen Name"
+        },
+        {
+          "field": "super_category_name",
+          "label": "Super Category Name"
+        },
+        {
+          "field": "transaction_number",
+          "label": "Transaction Number"
+        },
+        {
+          "field": "unit",
+          "label": "Unit"
+        },
+        {
+          "field": "unit_price",
+          "label": "Unit Price"
+        },
+        {
+          "field": "user_name",
+          "label": "User Name"
+        }
+      ],
+      "ignoredFields": [
+        {
+          "field": "item_brand",
+          "label": "Item Brand",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "source",
+          "label": "Source",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        }
+      ],
+      "fidelityNote": "Header spelling/order and confirmed blank, zero-only, or header-only behavior match the audited POSIST contract. Business values, row counts, identifiers, and event frequency remain controlled synthetic data."
+    },
+    {
+      "reportId": "p4.enterprise_purchase_order.item",
+      "reportStem": "enterprise_purchase_order",
+      "displayName": "Enterprise Purchase Order Report - item detail",
+      "grain": "one row per purchase order and item",
+      "schemaStatus": "exact_validated_contract",
+      "headerMatch": true,
+      "columnCount": 27,
+      "actualFilesAudited": 1,
+      "actualRowsAudited": 113,
+      "syntheticFilesGenerated": 9,
+      "syntheticRowsGenerated": 638,
+      "rowPatternStatus": "modelled_at_captured_grain",
+      "downstreamStatus": "active_projected_fields",
+      "activeFields": [
+        {
+          "field": "category_name",
+          "label": "Category Name"
+        },
+        {
+          "field": "deployment_name",
+          "label": "Deployment"
+        },
+        {
+          "field": "expected_delivery_date",
+          "label": "Expected Delivery"
+        },
+        {
+          "field": "item_code",
+          "label": "Item Code"
+        },
+        {
+          "field": "item_name",
+          "label": "Item Name"
+        },
+        {
+          "field": "new_subtotal",
+          "label": "New Subtotal"
+        },
+        {
+          "field": "ordered_qty",
+          "label": "Quantity"
+        },
+        {
+          "field": "po_close_or_partial_receive_date",
+          "label": "PO Close Date/Partial Recieve Date"
+        },
+        {
+          "field": "po_date",
+          "label": "PO Date"
+        },
+        {
+          "field": "po_number",
+          "label": "PO Number"
+        },
+        {
+          "field": "po_status",
+          "label": "PO Status"
+        },
+        {
+          "field": "processed_qty",
+          "label": "Total Processed Qty"
+        },
+        {
+          "field": "remaining_balance_qty",
+          "label": "Remaining Balance Qty"
+        },
+        {
+          "field": "store_name",
+          "label": "Store Name"
+        },
+        {
+          "field": "super_category_name",
+          "label": "Super Category Name"
+        },
+        {
+          "field": "tax_amt",
+          "label": "Tax"
+        },
+        {
+          "field": "total_item_cost",
+          "label": "Total Item Cost"
+        },
+        {
+          "field": "unit",
+          "label": "Unit"
+        },
+        {
+          "field": "unit_price",
+          "label": "Unit Price"
+        },
+        {
+          "field": "vendor_name",
+          "label": "Vendor Name"
+        }
+      ],
+      "gatedFields": [],
+      "contextOnlyFields": [
+        {
+          "field": "subtotal",
+          "label": "Subtotal"
+        }
+      ],
+      "ignoredFields": [
+        {
+          "field": "bill_discount_amt",
+          "label": "Bill Wise Discount Amount",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "comment",
+          "label": "Comment",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "item_brand",
+          "label": "Item Brand",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "item_discount_amt",
+          "label": "Item Wise Discount Amount",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "pr_deployment",
+          "label": "PR Deployment",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "pr_number",
+          "label": "PR Number",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        }
+      ],
+      "fidelityNote": "Header spelling/order and confirmed blank, zero-only, or header-only behavior match the audited POSIST contract. Business values, row counts, identifiers, and event frequency remain controlled synthetic data."
+    },
+    {
+      "reportId": "p4.enterprise_reorder.item",
+      "reportStem": "enterprise_reorder",
+      "displayName": "Enterprise ReOrder Report",
+      "grain": "one row per deployment, store and inventory item at export date",
+      "schemaStatus": "exact_validated_contract",
+      "headerMatch": true,
+      "columnCount": 8,
+      "actualFilesAudited": 1,
+      "actualRowsAudited": 0,
+      "syntheticFilesGenerated": 9,
+      "syntheticRowsGenerated": 0,
+      "rowPatternStatus": "mirrored_header_only",
+      "downstreamStatus": "audit_or_reconciliation_only",
+      "activeFields": [],
+      "gatedFields": [],
+      "contextOnlyFields": [
+        {
+          "field": "available_qty",
+          "label": "Available Qty"
+        },
+        {
+          "field": "deployment_name",
+          "label": "Deployment Name"
+        },
+        {
+          "field": "item_code",
+          "label": "Item Code"
+        },
+        {
+          "field": "item_name",
+          "label": "Item Name"
+        },
+        {
+          "field": "minimum_order_level_qty",
+          "label": "Minimum-Order Level"
+        },
+        {
+          "field": "reorder_level_qty",
+          "label": "Re-Order Level"
+        },
+        {
+          "field": "store_name",
+          "label": "Store Name"
+        },
+        {
+          "field": "unit_name",
+          "label": "Unit Name"
+        }
+      ],
+      "ignoredFields": [
+        {
+          "field": "deployment_name",
+          "label": "Deployment Name",
+          "declaredType": "text",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "store_name",
+          "label": "Store Name",
+          "declaredType": "text",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "item_code",
+          "label": "Item Code",
+          "declaredType": "text",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "item_name",
+          "label": "Item Name",
+          "declaredType": "text",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "reorder_level_qty",
+          "label": "Re-Order Level",
+          "declaredType": "decimal",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "minimum_order_level_qty",
+          "label": "Minimum-Order Level",
+          "declaredType": "decimal",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "available_qty",
+          "label": "Available Qty",
+          "declaredType": "decimal",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "unit_name",
+          "label": "Unit Name",
+          "declaredType": "text",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        }
+      ],
+      "fidelityNote": "Header spelling/order and confirmed blank, zero-only, or header-only behavior match the audited POSIST contract. Business values, row counts, identifiers, and event frequency remain controlled synthetic data."
+    },
+    {
+      "reportId": "p4.enterprise_stock_return.item",
+      "reportStem": "enterprise_stock_return",
+      "displayName": "Enterprise Stock Return / Stock Entry Return",
+      "grain": "one row per original stock-entry item and its vendor return",
+      "schemaStatus": "exact_validated_contract",
+      "headerMatch": true,
+      "columnCount": 36,
+      "actualFilesAudited": 1,
+      "actualRowsAudited": 0,
+      "syntheticFilesGenerated": 9,
+      "syntheticRowsGenerated": 0,
+      "rowPatternStatus": "mirrored_header_only",
+      "downstreamStatus": "gated_source_unavailable",
+      "activeFields": [],
+      "gatedFields": [
+        {
+          "field": "item_code",
+          "label": "Item Code"
+        },
+        {
+          "field": "return_amt",
+          "label": "Return Amount"
+        },
+        {
+          "field": "return_date",
+          "label": "Return Date"
+        },
+        {
+          "field": "return_qty",
+          "label": "Return Qty"
+        },
+        {
+          "field": "stock_entry_date",
+          "label": "Stock Entry Date"
+        },
+        {
+          "field": "transaction_number",
+          "label": "Transaction Number"
+        },
+        {
+          "field": "vendor_name",
+          "label": "Vendor Name"
+        }
+      ],
+      "contextOnlyFields": [
+        {
+          "field": "batch_number",
+          "label": "Batch Number"
+        },
+        {
+          "field": "category_code",
+          "label": "Category Code"
+        },
+        {
+          "field": "category_name",
+          "label": "Category Name"
+        },
+        {
+          "field": "comment",
+          "label": "Comment"
+        },
+        {
+          "field": "deployment_name",
+          "label": "Deployment Name"
+        },
+        {
+          "field": "entry_amt",
+          "label": "Entry Amt"
+        },
+        {
+          "field": "entry_cgst_amt",
+          "label": "CGST"
+        },
+        {
+          "field": "entry_discount_amt",
+          "label": "Discount"
+        },
+        {
+          "field": "entry_igst_amt",
+          "label": "IGST"
+        },
+        {
+          "field": "entry_non_gst_amt",
+          "label": "Non GST"
+        },
+        {
+          "field": "entry_qty",
+          "label": "Entry Qty"
+        },
+        {
+          "field": "entry_sgst_amt",
+          "label": "SGST"
+        },
+        {
+          "field": "entry_subtotal",
+          "label": "Sub Total"
+        },
+        {
+          "field": "entry_unit",
+          "label": "Unit"
+        },
+        {
+          "field": "invoice_number",
+          "label": "Invoice Number"
+        },
+        {
+          "field": "item_name",
+          "label": "Item Name"
+        },
+        {
+          "field": "return_cgst_amt",
+          "label": "Return CGST"
+        },
+        {
+          "field": "return_discount_amt",
+          "label": "Return Discount"
+        },
+        {
+          "field": "return_igst_amt",
+          "label": "Return IGST"
+        },
+        {
+          "field": "return_non_gst_amt",
+          "label": "Return Non GST"
+        },
+        {
+          "field": "return_sgst_amt",
+          "label": "Return SGST"
+        },
+        {
+          "field": "return_subtotal",
+          "label": "Return SubTotal"
+        },
+        {
+          "field": "return_unit",
+          "label": "Return Unit"
+        },
+        {
+          "field": "store_name",
+          "label": "Store Name"
+        },
+        {
+          "field": "super_category_code",
+          "label": "Super Category Code"
+        },
+        {
+          "field": "super_category_name",
+          "label": "Super Category Name"
+        },
+        {
+          "field": "transaction_status",
+          "label": "Transaction Status"
+        },
+        {
+          "field": "unit_price",
+          "label": "Unit Price"
+        },
+        {
+          "field": "vendor_code",
+          "label": "Vendor Code"
+        }
+      ],
+      "ignoredFields": [
+        {
+          "field": "deployment_name",
+          "label": "Deployment Name",
+          "declaredType": "text",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "store_name",
+          "label": "Store Name",
+          "declaredType": "text",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "stock_entry_date",
+          "label": "Stock Entry Date",
+          "declaredType": "date",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "transaction_number",
+          "label": "Transaction Number",
+          "declaredType": "text",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "invoice_number",
+          "label": "Invoice Number",
+          "declaredType": "text",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "batch_number",
+          "label": "Batch Number",
+          "declaredType": "text",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "vendor_code",
+          "label": "Vendor Code",
+          "declaredType": "text",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "vendor_name",
+          "label": "Vendor Name",
+          "declaredType": "text",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "super_category_code",
+          "label": "Super Category Code",
+          "declaredType": "text",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "super_category_name",
+          "label": "Super Category Name",
+          "declaredType": "text",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "category_code",
+          "label": "Category Code",
+          "declaredType": "text",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "category_name",
+          "label": "Category Name",
+          "declaredType": "text",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "item_code",
+          "label": "Item Code",
+          "declaredType": "text",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "item_name",
+          "label": "Item Name",
+          "declaredType": "text",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "comment",
+          "label": "Comment",
+          "declaredType": "text",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "entry_unit",
+          "label": "Unit",
+          "declaredType": "text",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "entry_qty",
+          "label": "Entry Qty",
+          "declaredType": "decimal",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "unit_price",
+          "label": "Unit Price",
+          "declaredType": "decimal",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "entry_subtotal",
+          "label": "Sub Total",
+          "declaredType": "decimal",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "entry_discount_amt",
+          "label": "Discount",
+          "declaredType": "decimal",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "entry_cgst_amt",
+          "label": "CGST",
+          "declaredType": "decimal",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "entry_sgst_amt",
+          "label": "SGST",
+          "declaredType": "decimal",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "entry_igst_amt",
+          "label": "IGST",
+          "declaredType": "decimal",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "entry_non_gst_amt",
+          "label": "Non GST",
+          "declaredType": "decimal",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "entry_amt",
+          "label": "Entry Amt",
+          "declaredType": "decimal",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "return_date",
+          "label": "Return Date",
+          "declaredType": "date",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "return_unit",
+          "label": "Return Unit",
+          "declaredType": "text",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "return_qty",
+          "label": "Return Qty",
+          "declaredType": "decimal",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "return_subtotal",
+          "label": "Return SubTotal",
+          "declaredType": "decimal",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "return_discount_amt",
+          "label": "Return Discount",
+          "declaredType": "decimal",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "return_cgst_amt",
+          "label": "Return CGST",
+          "declaredType": "decimal",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "return_sgst_amt",
+          "label": "Return SGST",
+          "declaredType": "decimal",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "return_igst_amt",
+          "label": "Return IGST",
+          "declaredType": "decimal",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "return_non_gst_amt",
+          "label": "Return Non GST",
+          "declaredType": "decimal",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "return_amt",
+          "label": "Return Amount",
+          "declaredType": "decimal",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        },
+        {
+          "field": "transaction_status",
+          "label": "Transaction Status",
+          "declaredType": "text",
+          "observedState": "no_rows",
+          "syntheticState": "no_rows",
+          "decision": "gated_report",
+          "reason": "The captured POSIST export is header-only. Its schema is retained, but no KPI is published from it."
+        }
+      ],
+      "fidelityNote": "Header spelling/order and confirmed blank, zero-only, or header-only behavior match the audited POSIST contract. Business values, row counts, identifiers, and event frequency remain controlled synthetic data."
+    },
+    {
+      "reportId": "p4.enterprise_transfer.from_item",
+      "reportStem": "enterprise_transfer_from",
+      "displayName": "Enterprise Transfer Report - Transfer From",
+      "grain": "one row per supplier-to-receiver transfer transaction and item",
+      "schemaStatus": "exact_validated_contract",
+      "headerMatch": true,
+      "columnCount": 18,
+      "actualFilesAudited": 1,
+      "actualRowsAudited": 211,
+      "syntheticFilesGenerated": 9,
+      "syntheticRowsGenerated": 18,
+      "rowPatternStatus": "modelled_at_captured_grain",
+      "downstreamStatus": "active_projected_fields",
+      "activeFields": [
+        {
+          "field": "category_name",
+          "label": "Category Name"
+        },
+        {
+          "field": "deployment_name",
+          "label": "Deployment Name"
+        },
+        {
+          "field": "item_code",
+          "label": "Item Code"
+        },
+        {
+          "field": "item_name",
+          "label": "Item Name"
+        },
+        {
+          "field": "super_category_name",
+          "label": "Super Category Name"
+        },
+        {
+          "field": "transaction_number",
+          "label": "Transaction Number"
+        },
+        {
+          "field": "transfer_amt",
+          "label": "Amount"
+        },
+        {
+          "field": "transfer_date",
+          "label": "Date"
+        },
+        {
+          "field": "transfer_qty",
+          "label": "Quantity"
+        },
+        {
+          "field": "unit",
+          "label": "Unit"
+        }
+      ],
+      "gatedFields": [],
+      "contextOnlyFields": [
+        {
+          "field": "receiver_store_kitchen_code",
+          "label": "Receiver Store/Kitchen Code"
+        },
+        {
+          "field": "supplier_store_kitchen_name",
+          "label": "Supplier Store/Kitchen Name"
+        },
+        {
+          "field": "unit_price",
+          "label": "Unit Price"
+        },
+        {
+          "field": "user_name",
+          "label": "User Name"
+        }
+      ],
+      "ignoredFields": [
+        {
+          "field": "comment",
+          "label": "Comment",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "receiver_store_kitchen_name",
+          "label": "Receiver Store/Kitchen Name",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "source",
+          "label": "Source",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "supplier_store_kitchen_code",
+          "label": "Supplier Store/Kitchen Code",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        }
+      ],
+      "fidelityNote": "Header spelling/order and confirmed blank, zero-only, or header-only behavior match the audited POSIST contract. Business values, row counts, identifiers, and event frequency remain controlled synthetic data."
+    },
+    {
+      "reportId": "p4.enterprise_transfer.to_item",
+      "reportStem": "enterprise_transfer_to",
+      "displayName": "Enterprise Transfer Report - Transfer To",
+      "grain": "one row per destination-side transfer transaction and item",
+      "schemaStatus": "exact_validated_contract",
+      "headerMatch": true,
+      "columnCount": 16,
+      "actualFilesAudited": 1,
+      "actualRowsAudited": 211,
+      "syntheticFilesGenerated": 9,
+      "syntheticRowsGenerated": 18,
+      "rowPatternStatus": "modelled_at_captured_grain",
+      "downstreamStatus": "active_projected_fields",
+      "activeFields": [
+        {
+          "field": "category_name",
+          "label": "Category Name"
+        },
+        {
+          "field": "deployment_name",
+          "label": "Deployment Name"
+        },
+        {
+          "field": "item_code",
+          "label": "Item Code"
+        },
+        {
+          "field": "item_name",
+          "label": "Item Name"
+        },
+        {
+          "field": "super_category_name",
+          "label": "Super Category Name"
+        },
+        {
+          "field": "supplier_store_name",
+          "label": "From Store Name"
+        },
+        {
+          "field": "transaction_number",
+          "label": "Transaction Number"
+        },
+        {
+          "field": "transfer_amt",
+          "label": "Amount"
+        },
+        {
+          "field": "transfer_date",
+          "label": "Date"
+        },
+        {
+          "field": "transfer_qty",
+          "label": "Quantity"
+        },
+        {
+          "field": "unit",
+          "label": "Unit"
+        }
+      ],
+      "gatedFields": [],
+      "contextOnlyFields": [
+        {
+          "field": "receiver_store_name",
+          "label": "Transferred To Store Name"
+        },
+        {
+          "field": "unit_price",
+          "label": "Unit Price"
+        },
+        {
+          "field": "user_name",
+          "label": "User Name"
+        }
+      ],
+      "ignoredFields": [
+        {
+          "field": "comment",
+          "label": "Comment",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "source",
+          "label": "Source",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        }
+      ],
+      "fidelityNote": "Header spelling/order and confirmed blank, zero-only, or header-only behavior match the audited POSIST contract. Business values, row counts, identifiers, and event frequency remain controlled synthetic data."
+    },
+    {
+      "reportId": "p4.enterprise_variance.master",
+      "reportStem": "enterprise_variance_master",
+      "displayName": "Enterprise Variance Report - master",
+      "grain": "one row per deployment, store/kitchen and item for the selected period",
+      "schemaStatus": "exact_validated_contract",
+      "headerMatch": true,
+      "columnCount": 38,
+      "actualFilesAudited": 1,
+      "actualRowsAudited": 426,
+      "syntheticFilesGenerated": 9,
+      "syntheticRowsGenerated": 387,
+      "rowPatternStatus": "modelled_at_captured_grain",
+      "downstreamStatus": "audit_or_reconciliation_only",
+      "activeFields": [],
+      "gatedFields": [],
+      "contextOnlyFields": [
+        {
+          "field": "actual_consumption_amt",
+          "label": "Actual Consumption Amt"
+        },
+        {
+          "field": "actual_consumption_qty",
+          "label": "Actual Consumption Qty"
+        },
+        {
+          "field": "category_name",
+          "label": "Category"
+        },
+        {
+          "field": "closing_amt",
+          "label": "Closing Amt"
+        },
+        {
+          "field": "closing_qty",
+          "label": "Closing Qty"
+        },
+        {
+          "field": "consumption_amt",
+          "label": "Consumption Amt"
+        },
+        {
+          "field": "consumption_qty",
+          "label": "Consumption Qty"
+        },
+        {
+          "field": "deployment_name",
+          "label": "Deployment"
+        },
+        {
+          "field": "is_asset",
+          "label": "Is Asset"
+        },
+        {
+          "field": "item_name",
+          "label": "Item Name"
+        },
+        {
+          "field": "item_type",
+          "label": "Item Type"
+        },
+        {
+          "field": "opening_amt",
+          "label": "Opening Amt"
+        },
+        {
+          "field": "opening_qty",
+          "label": "Opening Qty"
+        },
+        {
+          "field": "physical_adjusted_closing_amt",
+          "label": "Physical Adjusted Closing Amt"
+        },
+        {
+          "field": "physical_adjusted_closing_qty",
+          "label": "Physical Adjusted Closing Qty"
+        },
+        {
+          "field": "physical_amt",
+          "label": "Physical Amt"
+        },
+        {
+          "field": "physical_gain_loss_amt",
+          "label": "Physical Gain/Loss Amt"
+        },
+        {
+          "field": "physical_gain_loss_qty",
+          "label": "Physical Gain/Loss Qty"
+        },
+        {
+          "field": "physical_qty",
+          "label": "Physical Qty"
+        },
+        {
+          "field": "price",
+          "label": "Price"
+        },
+        {
+          "field": "stock_in_amt",
+          "label": "Stock In Amt"
+        },
+        {
+          "field": "stock_in_qty",
+          "label": "Stock In Qty"
+        },
+        {
+          "field": "store_kitchen_name",
+          "label": "Store/Kitchen"
+        },
+        {
+          "field": "unit",
+          "label": "Unit"
+        },
+        {
+          "field": "variance_amt",
+          "label": "Variance Amt"
+        },
+        {
+          "field": "variance_qty",
+          "label": "Variance Qty"
+        },
+        {
+          "field": "wastage_amt",
+          "label": "Wastage Amt"
+        },
+        {
+          "field": "wastage_qty",
+          "label": "Wastage Qty"
+        }
+      ],
+      "ignoredFields": [
+        {
+          "field": "production_amt",
+          "label": "Production Amt",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "production_qty",
+          "label": "Production Qty",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "purchase_amt",
+          "label": "Purchase Amt",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "purchase_qty",
+          "label": "Purchase Qty",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "return_amt",
+          "label": "Return Amt",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "return_qty",
+          "label": "Return Qty",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "reuse_amt",
+          "label": "Reuse Amt",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "reuse_qty",
+          "label": "Resue Qty",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "stock_out_amt",
+          "label": "Stock Out Amt",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "stock_out_qty",
+          "label": "Stock Out Qty",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        }
+      ],
+      "fidelityNote": "Header spelling/order and confirmed blank, zero-only, or header-only behavior match the audited POSIST contract. Business values, row counts, identifiers, and event frequency remain controlled synthetic data."
+    },
+    {
+      "reportId": "p4.enterprise_variance.normal",
+      "reportStem": "enterprise_variance_normal",
+      "displayName": "Enterprise Variance Report - normal detailed CSV",
+      "grain": "one row per deployment, store/kitchen and item over the selected variance period",
+      "schemaStatus": "exact_validated_contract",
+      "headerMatch": true,
+      "columnCount": 46,
+      "actualFilesAudited": 1,
+      "actualRowsAudited": 812,
+      "syntheticFilesGenerated": 9,
+      "syntheticRowsGenerated": 387,
+      "rowPatternStatus": "modelled_at_captured_grain",
+      "downstreamStatus": "active_projected_fields",
+      "activeFields": [
+        {
+          "field": "actual_consumption_qty",
+          "label": "Actual Consumption"
+        },
+        {
+          "field": "average_price",
+          "label": "Average Price"
+        },
+        {
+          "field": "category_name",
+          "label": "Category Name"
+        },
+        {
+          "field": "closing_date",
+          "label": "Closing Date"
+        },
+        {
+          "field": "closing_qty",
+          "label": "Closing Qty"
+        },
+        {
+          "field": "deployment_name",
+          "label": "Deployment Name"
+        },
+        {
+          "field": "item_code",
+          "label": "Item Code"
+        },
+        {
+          "field": "item_name",
+          "label": "Item Name"
+        },
+        {
+          "field": "opening_date",
+          "label": "Opening Date"
+        },
+        {
+          "field": "opening_qty",
+          "label": "Opening Qty"
+        },
+        {
+          "field": "physical_qty",
+          "label": "Physical Qty"
+        },
+        {
+          "field": "purchase_qty",
+          "label": "Purchase Qty"
+        },
+        {
+          "field": "return_qty",
+          "label": "Return Qty"
+        },
+        {
+          "field": "stock_in_qty",
+          "label": "Stock In Qty"
+        },
+        {
+          "field": "stock_out_qty",
+          "label": "Stock Out Qty"
+        },
+        {
+          "field": "store_kitchen_name",
+          "label": "StoreKitchen Name"
+        },
+        {
+          "field": "super_category_name",
+          "label": "Super Category Name"
+        },
+        {
+          "field": "unit",
+          "label": "Unit"
+        },
+        {
+          "field": "variance_percent",
+          "label": "Variance Percent"
+        },
+        {
+          "field": "variance_qty",
+          "label": "Variance Qty"
+        },
+        {
+          "field": "wastage_qty",
+          "label": "Wastage Qty"
+        }
+      ],
+      "gatedFields": [],
+      "contextOnlyFields": [
+        {
+          "field": "actual_consumption_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "closing_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "consumption_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "consumption_qty",
+          "label": "Consumption Qty"
+        },
+        {
+          "field": "ideal_closing_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "ideal_closing_qty",
+          "label": "Ideal Closing Qty"
+        },
+        {
+          "field": "latest_physical_date",
+          "label": "Latest Physical"
+        },
+        {
+          "field": "opening_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "physical_adjusted_closing_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "physical_adjusted_closing_qty",
+          "label": "Physical Adjusted Closing Qty"
+        },
+        {
+          "field": "physical_amt",
+          "label": "Physical Amt"
+        },
+        {
+          "field": "physical_gain_loss_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "physical_gain_loss_qty",
+          "label": "PhysicalGain/Loss Qty"
+        },
+        {
+          "field": "purchase_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "return_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "stock_in_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "stock_out_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "stock_out_plus_consumption_amt",
+          "label": "Amt"
+        },
+        {
+          "field": "stock_out_plus_consumption_qty",
+          "label": "Total (Stock Out + Consumption Qty)"
+        },
+        {
+          "field": "variance_amt",
+          "label": "Variance Amt"
+        },
+        {
+          "field": "wastage_amt",
+          "label": "Amt"
+        }
+      ],
+      "ignoredFields": [
+        {
+          "field": "reuse_amt",
+          "label": "Amt",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "reuse_qty",
+          "label": "Reuse Qty",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "source_yield_wastage_amt",
+          "label": "Amt",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "source_yield_wastage_qty",
+          "label": "Yield Wastage",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        }
+      ],
+      "fidelityNote": "Header spelling/order and confirmed blank, zero-only, or header-only behavior match the audited POSIST contract. Business values, row counts, identifiers, and event frequency remain controlled synthetic data."
+    },
+    {
+      "reportId": "p4.enterprise_wastage.normal",
+      "reportStem": "enterprise_wastage_normal",
+      "displayName": "Enterprise Wastage Report - transaction detail",
+      "grain": "one row per deployment, store/kitchen, wastage transaction and item",
+      "schemaStatus": "exact_validated_contract",
+      "headerMatch": true,
+      "columnCount": 15,
+      "actualFilesAudited": 1,
+      "actualRowsAudited": 581,
+      "syntheticFilesGenerated": 9,
+      "syntheticRowsGenerated": 108,
+      "rowPatternStatus": "modelled_at_captured_grain",
+      "downstreamStatus": "active_projected_fields",
+      "activeFields": [
+        {
+          "field": "category_name",
+          "label": "Category Name"
+        },
+        {
+          "field": "comment",
+          "label": "Comment"
+        },
+        {
+          "field": "deployment_name",
+          "label": "Deployment Name"
+        },
+        {
+          "field": "item_code",
+          "label": "Item Code"
+        },
+        {
+          "field": "item_name",
+          "label": "Item Name"
+        },
+        {
+          "field": "store_kitchen_name",
+          "label": "Store/Kitchen Name"
+        },
+        {
+          "field": "super_category_name",
+          "label": "Super Category Name"
+        },
+        {
+          "field": "transaction_number",
+          "label": "Transaction Number"
+        },
+        {
+          "field": "unit",
+          "label": "Unit"
+        },
+        {
+          "field": "unit_price",
+          "label": "Unit Price"
+        },
+        {
+          "field": "wastage_amt",
+          "label": "Amount"
+        },
+        {
+          "field": "wastage_date",
+          "label": "Date"
+        },
+        {
+          "field": "wastage_qty",
+          "label": "Quantity"
+        }
+      ],
+      "gatedFields": [],
+      "contextOnlyFields": [
+        {
+          "field": "user_name",
+          "label": "User Name"
+        }
+      ],
+      "ignoredFields": [
+        {
+          "field": "source",
+          "label": "Source",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        }
+      ],
+      "fidelityNote": "Header spelling/order and confirmed blank, zero-only, or header-only behavior match the audited POSIST contract. Business values, row counts, identifiers, and event frequency remain controlled synthetic data."
+    },
+    {
+      "reportId": "p2.gross_net_margin.item",
+      "reportStem": "gross_net_margin",
+      "displayName": "Gross/Net Margin Report - bill item detail",
+      "grain": "one row per bill and sold item",
+      "schemaStatus": "exact_validated_contract",
+      "headerMatch": true,
+      "columnCount": 26,
+      "actualFilesAudited": 3,
+      "actualRowsAudited": 11511,
+      "syntheticFilesGenerated": 9,
+      "syntheticRowsGenerated": 14576,
+      "rowPatternStatus": "modelled_at_captured_grain",
+      "downstreamStatus": "active_projected_fields",
+      "activeFields": [
+        {
+          "field": "bill_number",
+          "label": "Bill No."
+        },
+        {
+          "field": "category_name",
+          "label": "Category"
+        },
+        {
+          "field": "gross_sale_value",
+          "label": "Gross Sale Value"
+        },
+        {
+          "field": "item_code",
+          "label": "SKU Code / Item No"
+        },
+        {
+          "field": "item_name",
+          "label": "SKU / Item Name"
+        },
+        {
+          "field": "item_qty",
+          "label": "Item Qty"
+        },
+        {
+          "field": "item_rate",
+          "label": "Item Rate"
+        },
+        {
+          "field": "item_subtotal",
+          "label": "Item Subtotal"
+        },
+        {
+          "field": "net_sale_value",
+          "label": "Net Sale Value"
+        },
+        {
+          "field": "purchase_rate",
+          "label": "Purchase Rate"
+        },
+        {
+          "field": "purchase_value",
+          "label": "Purchase Value"
+        },
+        {
+          "field": "sale_date",
+          "label": "Date"
+        },
+        {
+          "field": "source",
+          "label": "Source"
+        },
+        {
+          "field": "super_category_name",
+          "label": "Super Category"
+        },
+        {
+          "field": "tab_type",
+          "label": "Tab Type"
+        },
+        {
+          "field": "tax_amt",
+          "label": "Tax Amount"
+        },
+        {
+          "field": "total_discount_amt",
+          "label": "Total Discount"
+        }
+      ],
+      "gatedFields": [],
+      "contextOnlyFields": [
+        {
+          "field": "complimentary_amt",
+          "label": "Complimentary Amount"
+        },
+        {
+          "field": "customer_name",
+          "label": "Customer Name"
+        },
+        {
+          "field": "customer_number",
+          "label": "Customer Number"
+        },
+        {
+          "field": "discount_amt",
+          "label": "Discount Amount"
+        },
+        {
+          "field": "gross_margin_percent",
+          "label": "Gross Margin%"
+        },
+        {
+          "field": "net_margin_percent",
+          "label": "Net Margin%"
+        },
+        {
+          "field": "offer_name",
+          "label": "Offer"
+        },
+        {
+          "field": "sac_hsn_number",
+          "label": "SAC/HSN No."
+        },
+        {
+          "field": "store_name",
+          "label": "Store Name"
+        }
+      ],
+      "ignoredFields": [],
+      "fidelityNote": "Header spelling/order and confirmed blank, zero-only, or header-only behavior match the audited POSIST contract. Business values, row counts, identifiers, and event frequency remain controlled synthetic data."
+    },
+    {
+      "reportId": "p1.item_recipe.detail",
+      "reportStem": "item_recipe_report",
+      "displayName": "Item Recipe Report",
+      "grain": "one normalized row per menu item and recipe ingredient, inherited from grouped parent rows",
+      "schemaStatus": "exact_validated_contract",
+      "headerMatch": true,
+      "columnCount": 8,
+      "actualFilesAudited": 1,
+      "actualRowsAudited": 899,
+      "syntheticFilesGenerated": 1,
+      "syntheticRowsGenerated": 723,
+      "rowPatternStatus": "modelled_at_captured_grain",
+      "downstreamStatus": "active_projected_fields",
+      "activeFields": [
+        {
+          "field": "ingredient_code",
+          "label": "Ingredient Code"
+        },
+        {
+          "field": "ingredient_name",
+          "label": "Ingredient Name"
+        },
+        {
+          "field": "menu_item_name",
+          "label": "Item Name"
+        },
+        {
+          "field": "menu_item_number",
+          "label": "Item Number"
+        },
+        {
+          "field": "menu_item_type",
+          "label": "Item Type"
+        },
+        {
+          "field": "recipe_item_type",
+          "label": "Recipe Item Type"
+        },
+        {
+          "field": "recipe_qty_per_menu_unit",
+          "label": "Qty"
+        },
+        {
+          "field": "recipe_unit",
+          "label": "Recipe Unit"
+        }
+      ],
+      "gatedFields": [],
+      "contextOnlyFields": [],
+      "ignoredFields": [],
+      "fidelityNote": "Header spelling/order and confirmed blank, zero-only, or header-only behavior match the audited POSIST contract. Business values, row counts, identifiers, and event frequency remain controlled synthetic data."
+    },
+    {
+      "reportId": "p4.purchase_detail.po_enabled",
+      "reportStem": "purchase_detail",
+      "displayName": "Purchase Detail - PO details enabled",
+      "grain": "one row per purchase transaction and item, with linked PO attributes when available",
+      "schemaStatus": "exact_validated_contract",
+      "headerMatch": true,
+      "columnCount": 32,
+      "actualFilesAudited": 1,
+      "actualRowsAudited": 288,
+      "syntheticFilesGenerated": 9,
+      "syntheticRowsGenerated": 585,
+      "rowPatternStatus": "modelled_at_captured_grain",
+      "downstreamStatus": "audit_or_reconciliation_only",
+      "activeFields": [],
+      "gatedFields": [],
+      "contextOnlyFields": [
+        {
+          "field": "category_code",
+          "label": "Category Code"
+        },
+        {
+          "field": "category_name",
+          "label": "Category Name"
+        },
+        {
+          "field": "cgst_tax_amt",
+          "label": "CGST Tax"
+        },
+        {
+          "field": "deployment_name",
+          "label": "Deployment"
+        },
+        {
+          "field": "discount_amt",
+          "label": "Discount"
+        },
+        {
+          "field": "igst_tax_amt",
+          "label": "IGST Tax"
+        },
+        {
+          "field": "invoice_date",
+          "label": "Invoice Date"
+        },
+        {
+          "field": "invoice_number",
+          "label": "Invoice Number"
+        },
+        {
+          "field": "item_code",
+          "label": "Item Code"
+        },
+        {
+          "field": "item_name",
+          "label": "Item Name"
+        },
+        {
+          "field": "po_amount",
+          "label": "PO Amount"
+        },
+        {
+          "field": "po_date",
+          "label": "PO Date"
+        },
+        {
+          "field": "po_number",
+          "label": "Po Number"
+        },
+        {
+          "field": "po_qty",
+          "label": "PO Qty"
+        },
+        {
+          "field": "po_unit",
+          "label": "PO Unit"
+        },
+        {
+          "field": "po_unit_price",
+          "label": "PO Unit Price"
+        },
+        {
+          "field": "purchase_amount",
+          "label": "Purchase Amount"
+        },
+        {
+          "field": "purchase_qty",
+          "label": "Purchase Quantity"
+        },
+        {
+          "field": "purchase_unit",
+          "label": "Purchase Unit"
+        },
+        {
+          "field": "purchase_unit_price",
+          "label": "Purchase Unit Price"
+        },
+        {
+          "field": "sgst_tax_amt",
+          "label": "SGST Tax"
+        },
+        {
+          "field": "super_category_code",
+          "label": "Super Category Code"
+        },
+        {
+          "field": "super_category_name",
+          "label": "Super Category Name"
+        },
+        {
+          "field": "total_amt",
+          "label": "Total"
+        },
+        {
+          "field": "transaction_date",
+          "label": "Date"
+        },
+        {
+          "field": "transaction_number",
+          "label": "Transaction Number"
+        },
+        {
+          "field": "vendor_code",
+          "label": "Vendor Code"
+        },
+        {
+          "field": "vendor_name",
+          "label": "Vendor Name"
+        }
+      ],
+      "ignoredFields": [
+        {
+          "field": "batch_number",
+          "label": "Batch Number",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "company_name",
+          "label": "Company",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "other_tax_amt",
+          "label": "Other Taxes",
+          "declaredType": "decimal",
+          "observedState": "all_zero",
+          "syntheticState": "all_zero",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "po_comment",
+          "label": "PO Comment",
+          "declaredType": "text",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        }
+      ],
+      "fidelityNote": "Header spelling/order and confirmed blank, zero-only, or header-only behavior match the audited POSIST contract. Business values, row counts, identifiers, and event frequency remain controlled synthetic data."
+    },
+    {
+      "reportId": "p4.recipe_consumption.item",
+      "reportStem": "recipe_consumption",
+      "displayName": "Recipe Consumption Report",
+      "grain": "one row per parent item and consumed recipe item",
+      "schemaStatus": "exact_validated_contract",
+      "headerMatch": true,
+      "columnCount": 11,
+      "actualFilesAudited": 4,
+      "actualRowsAudited": 1927,
+      "syntheticFilesGenerated": 9,
+      "syntheticRowsGenerated": 6501,
+      "rowPatternStatus": "modelled_at_captured_grain",
+      "downstreamStatus": "audit_or_reconciliation_only",
+      "activeFields": [],
+      "gatedFields": [],
+      "contextOnlyFields": [
+        {
+          "field": "consumed_qty",
+          "label": "Consumed Quantity"
+        },
+        {
+          "field": "consumed_subtotal",
+          "label": "Subtotal"
+        },
+        {
+          "field": "consumed_unit",
+          "label": "Unit"
+        },
+        {
+          "field": "consumed_unit_price",
+          "label": "Price Per Unit"
+        },
+        {
+          "field": "consumption_source",
+          "label": "Consumption Source"
+        },
+        {
+          "field": "item_code",
+          "label": "Item Code"
+        },
+        {
+          "field": "item_name",
+          "label": "Item Name"
+        },
+        {
+          "field": "item_type",
+          "label": "Type"
+        }
+      ],
+      "ignoredFields": [
+        {
+          "field": "parent_item_qty",
+          "label": "Parent Item Quantity",
+          "declaredType": "decimal",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "parent_subtotal",
+          "label": "Parent Subtotal",
+          "declaredType": "decimal",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        },
+        {
+          "field": "parent_unit_price",
+          "label": "Parent Price Per Unit",
+          "declaredType": "decimal",
+          "observedState": "all_blank",
+          "syntheticState": "all_blank",
+          "decision": "ignored_until_source_populates",
+          "reason": "The audited POSIST exports contain no usable signal in this column, so it is preserved in raw shape but excluded from active Query Tables and dashboard measures."
+        }
+      ],
+      "fidelityNote": "Header spelling/order and confirmed blank, zero-only, or header-only behavior match the audited POSIST contract. Business values, row counts, identifiers, and event frequency remain controlled synthetic data."
+    },
+    {
+      "reportId": "p4.stock_in_stock_out.item",
+      "reportStem": "stock_in_stock_out",
+      "displayName": "Stock In Stock Out Report - movement detail",
+      "grain": "one row per dated item movement between supplier and receiver",
+      "schemaStatus": "exact_validated_contract",
+      "headerMatch": true,
+      "columnCount": 13,
+      "actualFilesAudited": 1,
+      "actualRowsAudited": 1229,
+      "syntheticFilesGenerated": 9,
+      "syntheticRowsGenerated": 36,
+      "rowPatternStatus": "modelled_at_captured_grain",
+      "downstreamStatus": "audit_or_reconciliation_only",
+      "activeFields": [],
+      "gatedFields": [],
+      "contextOnlyFields": [
+        {
+          "field": "item_name",
+          "label": "Item Name"
+        },
+        {
+          "field": "movement_date",
+          "label": "Date"
+        },
+        {
+          "field": "receiver_name",
+          "label": "Receiver"
+        },
+        {
+          "field": "stock_in_qty",
+          "label": "Stock In Qty"
+        },
+        {
+          "field": "stock_in_reference",
+          "label": "Stock In Reference"
+        },
+        {
+          "field": "stock_in_subtotal",
+          "label": "Subtotal"
+        },
+        {
+          "field": "stock_out_qty",
+          "label": "Stock Out Qty"
+        },
+        {
+          "field": "stock_out_reference",
+          "label": "Stock Out Reference"
+        },
+        {
+          "field": "stock_out_subtotal",
+          "label": "Subtotal"
+        },
+        {
+          "field": "store_kitchen_name",
+          "label": "Store/Kitchen"
+        },
+        {
+          "field": "supplier_name",
+          "label": "Supplier"
+        },
+        {
+          "field": "unit",
+          "label": "Unit"
+        },
+        {
+          "field": "unit_price",
+          "label": "Unit Price"
+        }
+      ],
+      "ignoredFields": [],
+      "fidelityNote": "Header spelling/order and confirmed blank, zero-only, or header-only behavior match the audited POSIST contract. Business values, row counts, identifiers, and event frequency remain controlled synthetic data."
+    }
+  ]
+}

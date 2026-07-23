@@ -435,6 +435,7 @@ def build(root: Path) -> dict[str, Any]:
     lineage_source = root / "schema-pack" / "source" / "kpi_lineage" / "kpi-lineage.json"
     control_tower_source = root / "schema-pack" / "source" / "control_tower" / "control-tower-requirements.json"
     control_tower_evidence_source = root / "schema-pack" / "source" / "control_tower" / "control-tower-evidence.json"
+    control_tower_fidelity_source = root / "schema-pack" / "source" / "control_tower" / "control-tower-fidelity.json"
     architecture_source = root / "schema-pack" / "source" / "architecture" / "control-tower-architecture.json"
     atlas = json.loads((generated_root / "atlas.json").read_text(encoding="utf-8"))
     fields = {item["id"]: item for item in atlas["fields"]}
@@ -503,6 +504,23 @@ def build(root: Path) -> dict[str, Any]:
             raise ValueError(f"Control-tower evidence {collection} must be a list.")
     write_json(generated_root / "control-tower-evidence.json", control_tower_evidence)
     write_json(root / "public" / "data" / "control-tower-evidence.json", control_tower_evidence)
+
+    control_tower_fidelity = json.loads(
+        control_tower_fidelity_source.read_text(encoding="utf-8")
+    )
+    if control_tower_fidelity.get("contractVersion") != "1.0.0":
+        raise ValueError("Unexpected control-tower fidelity contract version.")
+    for collection in (
+        "handlingPolicy",
+        "layers",
+        "schemaCaptureOnlyReports",
+        "auxiliaryTables",
+        "reports",
+    ):
+        if not isinstance(control_tower_fidelity.get(collection), list):
+            raise ValueError(f"Control-tower fidelity {collection} must be a list.")
+    write_json(generated_root / "control-tower-fidelity.json", control_tower_fidelity)
+    write_json(root / "public" / "data" / "control-tower-fidelity.json", control_tower_fidelity)
 
     architecture = json.loads(architecture_source.read_text(encoding="utf-8"))
     if architecture.get("contractVersion") != "1.0.0":
@@ -578,6 +596,7 @@ def build(root: Path) -> dict[str, Any]:
     manifest["entry_points"]["kpi_lineage"] = "schema-pack/generated/kpi-lineage.json"
     manifest["entry_points"]["control_tower_requirements"] = "schema-pack/generated/control-tower-requirements.json"
     manifest["entry_points"]["control_tower_evidence"] = "schema-pack/generated/control-tower-evidence.json"
+    manifest["entry_points"]["control_tower_fidelity"] = "schema-pack/generated/control-tower-fidelity.json"
     manifest["entry_points"]["control_tower_architecture"] = "schema-pack/generated/control-tower-architecture.json"
     manifest["kpi_lineage_source"] = {
         "path": lineage_source.relative_to(root).as_posix(),
@@ -590,6 +609,10 @@ def build(root: Path) -> dict[str, Any]:
     manifest["control_tower_evidence_source"] = {
         "path": control_tower_evidence_source.relative_to(root).as_posix(),
         "sha256": sha256(control_tower_evidence_source),
+    }
+    manifest["control_tower_fidelity_source"] = {
+        "path": control_tower_fidelity_source.relative_to(root).as_posix(),
+        "sha256": sha256(control_tower_fidelity_source),
     }
     manifest["control_tower_architecture_source"] = {
         "path": architecture_source.relative_to(root).as_posix(),
@@ -612,6 +635,12 @@ def build(root: Path) -> dict[str, Any]:
     manifest["counts"]["audited_control_tower_reports"] = len(
         control_tower_evidence["reportEvidence"]
     )
+    manifest["counts"]["validated_fidelity_contracts"] = len(
+        control_tower_fidelity["reports"]
+    )
+    manifest["counts"]["ignored_no_signal_fields"] = control_tower_fidelity[
+        "summary"
+    ]["ignoredNoSignalFields"]
     write_json(manifest_path, manifest)
     return workspace
 

@@ -30,6 +30,9 @@ def main() -> int:
     evidence = json.loads(
         (generated / "control-tower-evidence.json").read_text(encoding="utf-8")
     )
+    fidelity = json.loads(
+        (generated / "control-tower-fidelity.json").read_text(encoding="utf-8")
+    )
     atlas = json.loads((generated / "atlas.json").read_text(encoding="utf-8"))
     errors: list[str] = []
 
@@ -279,8 +282,8 @@ def main() -> int:
         errors.append("Control Tower evidence must exclude sensitive values.")
     zoho = evidence.get("zohoReadiness", {})
     if (
-        zoho.get("requiredLandingTableCount") != 16
-        or zoho.get("queryTableCount") != 37
+        zoho.get("requiredLandingTableCount") != 15
+        or zoho.get("queryTableCount") != 36
         or zoho.get("dashboardTabCount") != 4
     ):
         errors.append("Control Tower Zoho readiness counts do not match the approved build pack.")
@@ -300,6 +303,74 @@ def main() -> int:
     ):
         errors.append("Control Tower evidence contains a prohibited local artifact reference.")
 
+    if fidelity.get("contractVersion") != "1.0.0":
+        errors.append("Unexpected Control Tower fidelity contract version.")
+    if fidelity.get("status") != "verified":
+        errors.append("Control Tower fidelity must be verified before publication.")
+    fidelity_summary = fidelity.get("summary", {})
+    expected_fidelity_summary = {
+        "validatedReportContracts": 20,
+        "exactHeaderReports": 20,
+        "populatedReportContracts": 18,
+        "headerOnlyReportContracts": 2,
+        "confirmedAllBlankFields": 38,
+        "confirmedAllZeroFields": 31,
+        "ignoredNoSignalFields": 69,
+        "activeReportContracts": 9,
+        "gatedReportContracts": 1,
+        "schemaCaptureOnlyReports": 3,
+        "auxiliaryModelTables": 6,
+    }
+    for field, expected in expected_fidelity_summary.items():
+        if fidelity_summary.get(field) != expected:
+            errors.append(
+                f"Control Tower fidelity summary {field} must be {expected}, "
+                f"found {fidelity_summary.get(field)}."
+            )
+    fidelity_reports = fidelity.get("reports", [])
+    fidelity_report_ids = [report.get("reportId", "") for report in fidelity_reports]
+    if len(fidelity_reports) != 20 or "" in fidelity_report_ids or duplicates(fidelity_report_ids):
+        errors.append("Control Tower fidelity must contain 20 unique validated report contracts.")
+    for report in fidelity_reports:
+        if not report.get("headerMatch") or report.get("schemaStatus") != "exact_validated_contract":
+            errors.append(
+                f"Fidelity report {report.get('reportId')} lacks exact header proof."
+            )
+        active_fields = {field.get("field") for field in report.get("activeFields", [])}
+        ignored_fields = {field.get("field") for field in report.get("ignoredFields", [])}
+        if active_fields & ignored_fields:
+            errors.append(
+                f"Fidelity report {report.get('reportId')} projects a confirmed no-signal field."
+            )
+        for field in report.get("ignoredFields", []):
+            if field.get("observedState") != field.get("syntheticState"):
+                errors.append(
+                    f"Fidelity field {report.get('reportId')}.{field.get('field')} "
+                    "does not mirror the audited empty-state behavior."
+                )
+        if (
+            report.get("rowPatternStatus") == "mirrored_header_only"
+            and (
+                report.get("actualRowsAudited") != 0
+                or report.get("syntheticRowsGenerated") != 0
+            )
+        ):
+            errors.append(
+                f"Header-only fidelity report {report.get('reportId')} contains rows."
+            )
+    fidelity_text = json.dumps(fidelity)
+    if any(
+        token.lower() in fidelity_text.lower()
+        for token in (
+            "C:\\Users",
+            "Downloads\\",
+            ".png",
+            ".jpg",
+            ".jpeg",
+        )
+    ):
+        errors.append("Control Tower fidelity contains a prohibited local artifact reference.")
+
     if errors:
         print("Control-tower validation failed:")
         for error in errors:
@@ -312,7 +383,8 @@ def main() -> int:
         f"{len(pages)} pages, {len(kpis)} draft KPIs, {capture_count} report candidates, "
         f"{len(requirements['apiAssessment']['endpoints'])} API candidates, "
         f"{len(source_nodes)} architecture sources, {len(model_nodes)} planned model nodes, "
-        f"{len(sources)} selected sources and {len(evidence_reports)} audited reports."
+        f"{len(sources)} selected sources, {len(evidence_reports)} audited reports, and "
+        f"{len(fidelity_reports)} fidelity contracts."
     )
     return 0
 

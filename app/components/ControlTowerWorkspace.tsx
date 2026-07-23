@@ -14,6 +14,7 @@ import {
   ListChecks,
   Route,
   ShieldCheck,
+  TableProperties,
 } from "lucide-react";
 import { useMemo, useState } from "react";
 import type {
@@ -22,15 +23,18 @@ import type {
   ControlTowerRequirements,
 } from "../lib/control-tower-types";
 import type { ControlTowerEvidence } from "../lib/control-tower-evidence-types";
+import type { ControlTowerFidelity } from "../lib/control-tower-fidelity-types";
 import { ControlTowerEvidenceView } from "./ControlTowerEvidence";
+import { ControlTowerFidelityView } from "./ControlTowerFidelity";
 
 interface ControlTowerWorkspaceProps {
   requirements: ControlTowerRequirements;
   evidence: ControlTowerEvidence;
+  fidelity: ControlTowerFidelity;
   onOpenReport: (reportId: string) => void;
 }
 
-type ControlTowerView = "pages" | "sources" | "evidence" | "delivery";
+type ControlTowerView = "pages" | "sources" | "evidence" | "fidelity" | "delivery";
 
 const statusLabel = (value: string) => value.replaceAll("_", " ");
 
@@ -319,7 +323,7 @@ function DeliveryPlan({ requirements }: { requirements: ControlTowerRequirements
   );
 }
 
-export function ControlTowerWorkspace({ requirements, evidence, onOpenReport }: ControlTowerWorkspaceProps) {
+export function ControlTowerWorkspace({ requirements, evidence, fidelity, onOpenReport }: ControlTowerWorkspaceProps) {
   const [view, setView] = useState<ControlTowerView>("pages");
   const approvedKpis = requirements.kpis.filter((kpi) => kpi.approvalStatus === "approved").length;
 
@@ -329,21 +333,23 @@ export function ControlTowerWorkspace({ requirements, evidence, onOpenReport }: 
         <div>
           <span className="section-kicker">Business requirements / source validation workspace</span>
           <h1>Supply Chain Control Tower</h1>
-          <p>{requirements.pages.length} pages / {requirements.kpis.length} draft KPI definitions / {approvedKpis} approved / 0 UAT-verified endpoints</p>
+          <p>{requirements.pages.length} pages / {requirements.kpis.length} draft KPI definitions / {fidelity.summary.exactHeaderReports} exact POSIST contracts / {evidence.zohoReadiness.queryTableCount} active Query Tables / {approvedKpis} KPIs approved</p>
         </div>
-        <div className="ct-header-state"><ShieldCheck aria-hidden="true" size={15} /><span><strong>Requirements received</strong><small>Lineage remains unselected</small></span></div>
+        <div className="ct-header-state"><ShieldCheck aria-hidden="true" size={15} /><span><strong>Source fidelity verified</strong><small>{fidelity.summary.ignoredNoSignalFields} no-signal fields controlled</small></span></div>
       </header>
 
       <nav className="ct-view-tabs" aria-label="Control tower planning views">
         <button type="button" className={view === "pages" ? "is-active" : ""} onClick={() => setView("pages")}><ListChecks aria-hidden="true" size={15} /> Page requirements</button>
         <button type="button" className={view === "sources" ? "is-active" : ""} onClick={() => setView("sources")}><FileSpreadsheet aria-hidden="true" size={15} /> Source capture plan</button>
         <button type="button" className={view === "evidence" ? "is-active" : ""} onClick={() => setView("evidence")}><ScanSearch aria-hidden="true" size={15} /> Selected sources & audit</button>
+        <button type="button" className={view === "fidelity" ? "is-active" : ""} onClick={() => setView("fidelity")}><TableProperties aria-hidden="true" size={15} /> Schema fidelity</button>
         <button type="button" className={view === "delivery" ? "is-active" : ""} onClick={() => setView("delivery")}><DatabaseZap aria-hidden="true" size={15} /> Model & delivery</button>
       </nav>
 
       {view === "pages" ? <PageRequirements requirements={requirements} /> : null}
       {view === "sources" ? <SourcePlan requirements={requirements} onOpenReport={onOpenReport} /> : null}
       {view === "evidence" ? <ControlTowerEvidenceView evidence={evidence} onOpenReport={onOpenReport} /> : null}
+      {view === "fidelity" ? <ControlTowerFidelityView fidelity={fidelity} /> : null}
       {view === "delivery" ? <DeliveryPlan requirements={requirements} /> : null}
     </section>
   );
