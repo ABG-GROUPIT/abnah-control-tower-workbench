@@ -34,7 +34,7 @@ const label = (value: string) => value.replaceAll("_", " ");
 
 function toneForStatus(value: string) {
   if (["exact", "complete", "populated", "schema_ready_value_checks_passed", "no_encoded_exception"].includes(value)) return "green";
-  if (["partial", "review_required", "review", "warning", "definition_review", "business_review", "formula_definition_gate", "operational_exception", "deduplication_risk"].includes(value)) return "amber";
+  if (["partial", "review_required", "review", "warning", "coverage_review", "definition_review", "business_review", "formula_definition_gate", "reconciliation_exception", "cost_coverage_gap", "operational_exception", "deduplication_risk"].includes(value)) return "amber";
   if (["weak", "missing", "header_only", "blocked_header_only", "blocker", "coverage_blocked", "coverage_blocker"].includes(value)) return "red";
   return "neutral";
 }
@@ -148,7 +148,7 @@ function FindingTable({ findings }: { findings: EvidenceFinding[] }) {
   return (
     <div className="ct-table-wrap">
       <table className="ct-table ct-finding-table">
-        <thead><tr><th>State</th><th>Deterministic observation</th><th>Codex semantic review</th><th>Production treatment</th></tr></thead>
+        <thead><tr><th>State</th><th>Evidence observation</th><th>Codex semantic review</th><th>Production treatment</th></tr></thead>
         <tbody>
           {findings.map((finding) => (
             <tr key={finding.id}>
@@ -159,7 +159,7 @@ function FindingTable({ findings }: { findings: EvidenceFinding[] }) {
               <td>
                 <strong>{finding.title}</strong>
                 <code>{finding.fields.join(" / ") || label(finding.category)}</code>
-                <small>{finding.observation} / {numberFormat.format(finding.affectedRowCount)} observations</small>
+                <small>{finding.observation} / {finding.affectedRowCount ? `${numberFormat.format(finding.affectedRowCount)} affected observations` : "period-level finding"}</small>
               </td>
               <td>
                 {finding.semanticReview.assessment}
@@ -224,15 +224,15 @@ function ReportContext({
         <div className="ct-report-map">
           <div>
             <strong>Complete export row map</strong>
-            <small>Every block represents an equal portion of the report; darker blocks contain more flagged observations.</small>
+            <small>Every block represents an equal portion of the report; darker blocks contain more bounded row observations.</small>
           </div>
-          <div className="ct-density-track" aria-label={`Issue density across ${selectedExport.rowCount} rows`}>
+          <div className="ct-density-track" aria-label={`Review observation density across ${selectedExport.rowCount} rows`}>
             {selectedExport.issueDensity.map((count, index) => (
               <i
                 key={`${selectedExport.label}:bucket:${index}`}
                 className={count ? "has-issue" : ""}
                 style={{ opacity: count ? 0.28 + (count / maxDensity) * 0.72 : 1 }}
-                title={count ? `${count} exception observations in this report segment` : "No encoded observation in this report segment"}
+                title={count ? `${count} review observations in this report segment` : "No row-level observation in this report segment"}
               />
             ))}
           </div>
@@ -291,7 +291,7 @@ function ReportContext({
           <b>Highlighted source row {selectedWindow.focusSourceRowNumber}.</b> Surrounding rows and all other report values are intentionally resolved by the localhost reviewer, where every row and flagged cell can be inspected.
         </p>
       ) : (
-        <p className="ct-context-caption">No encoded issue row exists for this export. Its complete schema and row coverage are shown; full values remain local.</p>
+        <p className="ct-context-caption">No row-level excerpt is needed for this export. Its complete schema and row coverage are shown; full values remain local.</p>
       )}
     </section>
   );
@@ -352,7 +352,7 @@ function ReportEvidenceDetail({
 
       <section className="ct-audit-subsection">
         <header>
-          <span><AlertTriangle aria-hidden="true" size={15} /><strong>Issue ledger</strong></span>
+          <span><AlertTriangle aria-hidden="true" size={15} /><strong>Review ledger</strong></span>
           <small>{report.periods.join(" / ")}</small>
         </header>
         <FindingTable findings={report.findings} />
@@ -363,8 +363,8 @@ function ReportEvidenceDetail({
       {report.evidenceRows.length ? (
         <section className="ct-audit-subsection">
           <header>
-            <span><FileWarning aria-hidden="true" size={15} /><strong>Calculation evidence</strong></span>
-            <small>Focused values used by the deterministic rule</small>
+            <span><FileWarning aria-hidden="true" size={15} /><strong>Local evidence excerpt</strong></span>
+            <small>Focused non-sensitive values retained for review</small>
           </header>
           <div className="ct-evidence-rows">
             {report.evidenceRows.map((row, index) => {
@@ -446,7 +446,7 @@ function AuditExplorer({
       <div className="ct-section-heading">
         <div>
           <ShieldCheck aria-hidden="true" size={16} />
-          <span><strong>Local data audit explorer</strong><small>Report-level schema proof, value exceptions, exact source rows, and publication treatment</small></span>
+          <span><strong>Local data audit explorer</strong><small>Schema proof, aggregate risks, bounded row evidence, and publication treatment</small></span>
         </div>
         <div className="ct-segmented" role="group" aria-label="Filter audited reports">
           {(["selected", "evaluated", "all"] as ReportFilter[]).map((item) => (
@@ -482,7 +482,8 @@ export function ControlTowerEvidenceView({ evidence, onOpenReport }: ControlTowe
     [evidence.summary.auditedReportCount, "audited reports"],
     [evidence.summary.auditedFileCount, "local exports"],
     [evidence.summary.auditedRowCount, "rows reviewed"],
-    [evidence.summary.schemaVisualMatches, "visual matches"],
+    [evidence.summary.deterministicIssueRowCount, "rule exceptions"],
+    [evidence.summary.semanticFindingCount, "semantic findings"],
     [evidence.summary.headerOnlyReportCount, "header-only reports"],
   ] as const;
 

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1.0",
-  "generated_at": "2026-07-23T05:37:57+00:00",
+  "generated_at": "2026-07-23T07:26:45+00:00",
   "portable": true,
   "source_inputs": {
     "schema_reference": "external local input; not packaged",
@@ -685,7 +685,7 @@
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/07_sales/06_bill_item_detail_report.json",
-      "sha256": "8bc2cbea6d0d1923d3fca4e5fdc7f2f112e2b74f059d8d2c2c490760414c445f"
+      "sha256": "4d5c570a87bfa9c671fb47ab61b1d8034fd03ff31b7e73a4f6648a9def4bd891"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/07_sales/07_settlement_report.json",
@@ -874,7 +874,7 @@
   },
   "control_tower_evidence_source": {
     "path": "schema-pack/source/control_tower/control-tower-evidence.json",
-    "sha256": "68d9f9835bc468d664c8dc90f4bd918a91036f22301254089c469121be74e182"
+    "sha256": "2b492cbf2acab084dc32ee35bc1633b4f63f8303ee3194bb933c27b0df9aad80"
   },
   "control_tower_architecture_source": {
     "path": "schema-pack/source/architecture/control-tower-architecture.json",

@@ -496,7 +496,7 @@ def build(root: Path) -> dict[str, Any]:
     control_tower_evidence = json.loads(
         control_tower_evidence_source.read_text(encoding="utf-8")
     )
-    if control_tower_evidence.get("contractVersion") != "1.1.0":
+    if control_tower_evidence.get("contractVersion") != "1.2.0":
         raise ValueError("Unexpected control-tower evidence contract version.")
     for collection in ("sourceRegister", "reportEvidence"):
         if not isinstance(control_tower_evidence.get(collection), list):

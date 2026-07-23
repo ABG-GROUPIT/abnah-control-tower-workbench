@@ -10,6 +10,7 @@ export interface EvidenceSummary {
   schemaVisualMatches: number;
   headerOnlyReportCount: number;
   deterministicIssueRowCount: number;
+  semanticFindingCount: number;
 }
 
 export interface EvidenceSource {
@@ -40,7 +41,9 @@ export interface EvidenceFinding {
   semanticReview: {
     classification:
       | "formula_definition_gate"
+      | "reconciliation_exception"
       | "coverage_blocker"
+      | "cost_coverage_gap"
       | "operational_exception"
       | "deduplication_risk"
       | "review_required";
@@ -148,6 +151,7 @@ export interface EvidenceReport {
   codexReview: {
     status:
       | "coverage_blocked"
+      | "coverage_review"
       | "definition_review"
       | "business_review"
       | "no_encoded_exception";

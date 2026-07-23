@@ -1,6 +1,6 @@
 {
   "contractVersion": "1.0.0",
-  "generatedAt": "2026-07-23T05:37:57+00:00",
+  "generatedAt": "2026-07-23T07:26:45+00:00",
   "sourcePolicy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
   "reports": [
     {
@@ -65430,8 +65430,8 @@
           "order": 19
         },
         {
-          "id": "workspace-field:report:p2_reports:07_sales:06_bill_item_detail_report:gst_5_amt",
-          "key": "gst_5_amt",
+          "id": "workspace-field:report:p2_reports:07_sales:06_bill_item_detail_report:gst_5_taxable_amt",
+          "key": "gst_5_taxable_amt",
           "label": "GST@5% Amount",
           "semanticRole": "measure",
           "dataType": "decimal",
@@ -65440,8 +65440,8 @@
           "order": 20
         },
         {
-          "id": "workspace-field:report:p2_reports:07_sales:06_bill_item_detail_report:gst_5_rate",
-          "key": "gst_5_rate",
+          "id": "workspace-field:report:p2_reports:07_sales:06_bill_item_detail_report:gst_5_tax_amt",
+          "key": "gst_5_tax_amt",
           "label": "GST@5%",
           "semanticRole": "measure",
           "dataType": "decimal",
@@ -65450,8 +65450,8 @@
           "order": 21
         },
         {
-          "id": "workspace-field:report:p2_reports:07_sales:06_bill_item_detail_report:gst_18_amt",
-          "key": "gst_18_amt",
+          "id": "workspace-field:report:p2_reports:07_sales:06_bill_item_detail_report:gst_18_taxable_amt",
+          "key": "gst_18_taxable_amt",
           "label": "GST@18% Amount",
           "semanticRole": "measure",
           "dataType": "decimal",
@@ -65460,8 +65460,8 @@
           "order": 22
         },
         {
-          "id": "workspace-field:report:p2_reports:07_sales:06_bill_item_detail_report:gst_18_rate",
-          "key": "gst_18_rate",
+          "id": "workspace-field:report:p2_reports:07_sales:06_bill_item_detail_report:gst_18_tax_amt",
+          "key": "gst_18_tax_amt",
           "label": "GST@18%",
           "semanticRole": "measure",
           "dataType": "decimal",
@@ -65470,8 +65470,8 @@
           "order": 23
         },
         {
-          "id": "workspace-field:report:p2_reports:07_sales:06_bill_item_detail_report:gst_3_amt",
-          "key": "gst_3_amt",
+          "id": "workspace-field:report:p2_reports:07_sales:06_bill_item_detail_report:gst_3_taxable_amt",
+          "key": "gst_3_taxable_amt",
           "label": "GST@3% Amount",
           "semanticRole": "measure",
           "dataType": "decimal",
@@ -65480,8 +65480,8 @@
           "order": 24
         },
         {
-          "id": "workspace-field:report:p2_reports:07_sales:06_bill_item_detail_report:gst_3_rate",
-          "key": "gst_3_rate",
+          "id": "workspace-field:report:p2_reports:07_sales:06_bill_item_detail_report:gst_3_tax_amt",
+          "key": "gst_3_tax_amt",
           "label": "GST@3%",
           "semanticRole": "measure",
           "dataType": "decimal",
@@ -65799,7 +65799,7 @@
               "columnSpan": 1,
               "text": "GST@5% Amount",
               "kind": "field",
-              "fieldId": "gst_5_amt"
+              "fieldId": "gst_5_taxable_amt"
             },
             {
               "id": "primary:cell:21",
@@ -65809,7 +65809,7 @@
               "columnSpan": 1,
               "text": "GST@5%",
               "kind": "field",
-              "fieldId": "gst_5_rate"
+              "fieldId": "gst_5_tax_amt"
             },
             {
               "id": "primary:cell:22",
@@ -65819,7 +65819,7 @@
               "columnSpan": 1,
               "text": "GST@18% Amount",
               "kind": "field",
-              "fieldId": "gst_18_amt"
+              "fieldId": "gst_18_taxable_amt"
             },
             {
               "id": "primary:cell:23",
@@ -65829,7 +65829,7 @@
               "columnSpan": 1,
               "text": "GST@18%",
               "kind": "field",
-              "fieldId": "gst_18_rate"
+              "fieldId": "gst_18_tax_amt"
             },
             {
               "id": "primary:cell:24",
@@ -65839,7 +65839,7 @@
               "columnSpan": 1,
               "text": "GST@3% Amount",
               "kind": "field",
-              "fieldId": "gst_3_amt"
+              "fieldId": "gst_3_taxable_amt"
             },
             {
               "id": "primary:cell:25",
@@ -65849,7 +65849,7 @@
               "columnSpan": 1,
               "text": "GST@3%",
               "kind": "field",
-              "fieldId": "gst_3_rate"
+              "fieldId": "gst_3_tax_amt"
             },
             {
               "id": "primary:cell:26",
@@ -66221,7 +66221,7 @@
         {
           "id": "source-note:report_p2_reports_07_sales_06_bill_item_detail_report",
           "category": "source",
-          "body": "Rows are grouped by business date and bill, with a bill-total row after each bill. Sanitized local audit packet run_20260723_075052 verified CSV header order, canonical field mapping, and declared types. Value-health findings are review evidence and do not alter this blank structure.",
+          "body": "Rows are grouped by business date and bill, with a bill-total row after each bill. The semantic audit verified that each `GST@x% Amount` column is the taxable base and the adjacent `GST@x%` column is the tax value, despite the source label appearing rate-like. With that positional meaning, all populated rows reconcile to exported net amount.",
           "author": "schema reconstruction",
           "createdAt": ""
         }

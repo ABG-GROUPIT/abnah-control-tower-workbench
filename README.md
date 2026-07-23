@@ -33,10 +33,12 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
 - P2 now has 73 captured schemas, 3 bounded partial schemas, and 79 pending reports.
 - P4 now has 26 captured schemas and 48 pending reports, including all 15 Enterprise reports, four explicit Consumption Report modes, Bulk Return, and Closing Stock.
 - The private CSV audit checkpoint covers 26 exports, 20 report contracts, and
-  35,128 rows; all headers and Workbench variants match exactly, while two
-  reports remain header-only.
-- The Control Tower evidence contract records 22 selected sources and 13,020
-  deterministic rule-exception observations using 18 minimal issue-row excerpts.
+  35,128 rows; all headers, Workbench variants, and encoded arithmetic rules
+  align, while two reports and two additional periods remain header-only.
+- The semantic reassessment removed parser-generated GST, margin, movement, and
+  displayed-precision false positives. The Control Tower evidence contract now
+  records 11 aggregate coverage, duplicate-grain, cost, and sign-treatment
+  findings with four minimal non-sensitive sign-review excerpts.
 - Four business pages recorded: Risk Action Center; Procurement, Vendor & Capital Control; Consumption Variance & Menu Profitability; SCM Descriptive Explorer & Data Quality.
 - The current P2/P4 schema capture and corrected deterministic CSV audit are
   compiled into the website baseline; business interpretation and production

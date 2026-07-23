@@ -1,105 +1,94 @@
-# Real CSV Audit Checkpoint
+# Real CSV Semantic Audit Checkpoint
 
 ## Scope
 
-This checkpoint records the corrected local, value-aware Restroworks export
-audit without moving raw datasets into the Workbench repository. The audit
-covers 26 CSV files, 20 report contracts, and 35,128 source rows. One legacy
-Purchase Detail `.xls` export was not part of the CSV run because an equivalent
-Purchase Detail CSV was audited.
+This checkpoint records the Codex-reviewed local Restroworks export audit
+without moving raw datasets into the Workbench repository. It covers 26 CSV
+files, 20 report contracts, and 35,128 source rows.
 
-| Area | Contract or mode | CSV files |
-| --- | --- | ---: |
-| P1 | Item Recipe | 1 |
-| P2 | Bill Item Detail | 2 |
-| P2 | Gross/Net Margin | 3 |
-| P4 | Bulk Return | 1 |
-| P4 | Closing Stock | 1 |
-| P4 | Enterprise Consumption detail | 1 |
-| P4 | Enterprise Entry: Stock Entry | 1 |
-| P4 | Enterprise Entry: Opening Stock | 1 |
-| P4 | Enterprise Entry: Physical Stock | 1 |
-| P4 | Enterprise Entry: Transfer From | 1 |
-| P4 | Enterprise Entry: Transfer To | 1 |
-| P4 | Enterprise Purchase Order | 1 |
-| P4 | Enterprise ReOrder | 1 |
-| P4 | Enterprise Stock Entry Return | 1 |
-| P4 | Enterprise Variance: Master | 1 |
-| P4 | Enterprise Variance: Normal detailed CSV | 1 |
-| P4 | Enterprise Wastage transaction detail | 1 |
-| P4 | Purchase Detail with PO fields | 1 |
-| P4 | Recipe Consumption | 4 |
-| P4 | Stock In Stock Out | 1 |
-
-Opening, physical, and directional transfer exports are Enterprise Entry source modes,
-not new navigation reports. They share the stable Enterprise Entry report identity while
-retaining separate table contracts and grains.
+The local evidence includes P1 Item Recipe; P2 Bill Item Detail and Gross/Net
+Margin; and P4 purchase, entry, PO, inventory, transfer, consumption, variance,
+wastage, return, reorder, recipe-consumption, and reconciliation reports.
+Opening, physical, and directional transfer exports are Enterprise Entry source
+modes with separate contracts and grains.
 
 ## Structural Result
 
-- 26 CSV files matched a reviewed contract; none were unmatched.
-- No observed header insertion, removal, rename, reorder, or row-width contract error
-  remained after report-aware parsing.
-- Repeated positional labels such as `Amt` remain attached to canonical movement fields.
-- Embedded preambles, repeated Bill Item headers, bill summary rows, grouped Item Recipe
-  rows, and auxiliary report totals are handled explicitly.
-- Enterprise ReOrder and Stock Entry Return were header-only. Their headers are known,
-  but value quality and formula behavior are not assessed.
-- The first two Recipe Consumption months were header-only; the next two supplied
-  populated rows for value profiling.
+- All 26 files match a reviewed contract; none are unmatched.
+- All exported headers and all 20 Workbench structural variants match exactly.
+- No type, row-width, shifted-column, or malformed-row error remains.
+- Repeated `Amt` labels remain positionally attached to their parent movement.
+- Embedded preambles, bill summaries, repeated headers, grouped recipe rows,
+  and auxiliary totals are handled explicitly.
+- Enterprise ReOrder and Stock Return are header-only.
+- The first two Recipe Consumption periods are header-only; the next two are
+  populated.
 
-## Deterministic Review Queue
+## Semantic Corrections
 
-These are evidence counts for investigation, not declarations that Restroworks is wrong.
-Negative and zero values may be valid for adjustments, reversals, unavailable processes,
-or the selected report period.
+The earlier audit queue contained parser and formula assumptions that were not
+source defects. They have been removed:
 
-| Report | Deterministic signal requiring review |
+| Earlier signal | Correct interpretation |
 | --- | --- |
-| Enterprise Consumption | Ten all-zero and four mostly-zero fields, negative inventory measures, and 158 rows against the provisional ideal-closing hypothesis. |
-| Enterprise Variance | Negative opening, closing, variance, physical-gain/loss, actual-consumption, and adjusted-closing measures require movement-sign confirmation. |
-| Closing Stock | Negative quantity/value measures and 24 amount-from-quantity/price review mismatches. |
-| Enterprise Physical | 98 quantity-price-amount review mismatches; source formula or price basis must be confirmed. |
-| Enterprise Wastage | 57 quantity-price-amount review mismatches. |
-| Enterprise Transfer | One amount review mismatch in each direction. |
-| Stock In Stock Out | 130 stock-in and 3 stock-out subtotal review mismatches. |
-| Recipe Consumption | 33 parent subtotal review mismatches and 205 duplicate-row flags across the two populated monthly exports. |
-| Enterprise Entry | Two base-amount and 7 tax-bridge mismatches; PO and batch coverage must be checked for receipt and expiry use. |
-| Enterprise Purchase Order | The 113-row export is now populated and matches all encoded row rules; receipt linkage, status semantics, and eligible closed-line logic remain the production gate. |
-| Purchase Detail | Most PO fields are absent in the populated rows despite the PO-enabled export shape; only 2 of 288 rows carry the PO fields needed for fallback use. |
-| Bill Item Detail | The provisional net bridge does not reconcile for many item rows; timestamps remain valid source text and are not classified as parse defects. |
-| Gross/Net Margin | Negative margin percentages exist; the conventional margin hypotheses do not reproduce many source rows and must not be treated as confirmed Restroworks formulas. |
+| Bill-item net bridge | `GST@x% Amount` is the taxable base and adjacent `GST@x%` is the tax value. All 8,138 populated rows reconcile after correcting this positional meaning. |
+| Gross and net margin formulas | Zero exported cost uses a zero-margin source convention. Non-zero-cost rows reconcile after allowing less than INR 0.10 of hidden cost precision. |
+| Consumption ideal closing | The verified bridge includes Purchase and Stock In separately and subtracts Stock Out and Consumption separately. All 812 rows reconcile within 0.001 quantity. |
+| Quantity x price values | Every earlier mismatch is inside the complete uncertainty created by displayed quantity, price, and amount precision. |
+| Entry tax components | Document-charge rows carry Total Tax but leave item tax components blank. Their charge tax resolves to 0%, 3%, 5%, or 18%; item rows reconcile. |
 
-## Local Semantic Review
+The corrected deterministic run has zero business-rule exception rows. Its only
+four deterministic warnings are the header-only ReOrder, Stock Return, and two
+Recipe Consumption exports.
 
-The semantic pass used `qwen2.5:7b-instruct` through localhost Ollama with a
-separate analyst and verifier pass. The deterministic profiler was then
-corrected so optional type inference on declared text cannot create false parse
-errors for timestamps or identifiers. Deterministic category normalization and
-grounding reject unsupported schema changes and impossible value claims. Model
-interpretation remains secondary to deterministic counts and requires business
-confirmation.
+## Remaining Business Risks
+
+- Gross/Net Margin has 2,879 non-zero net-sale rows with zero exported purchase
+  value. The gap rate changes from 3.7% in May to 47.4% in June and 0.2% in the
+  captured July period. This is a cost-coverage discontinuity, not proof of
+  free cost or a margin-formula defect.
+- Enterprise Entry carries PO number on 2 of 562 rows and no batch number.
+  Purchase Detail carries its PO fields on 2 of 288 rows. Deterministic
+  PO-to-receipt and expiry lineage therefore remains weak.
+- Enterprise Opening contains only three populated rows, with zero unit price
+  and subtotal throughout. It supports quantity reconciliation, not valuation.
+- The two populated Recipe Consumption exports contain 205 exact repeated rows.
+  They remain a deduplication risk until the business grain and line key are
+  approved.
+- Negative stock, variance, consumption, and margin observations remain
+  operational exceptions requiring signed-off treatment. They are not
+  automatically classified as source errors.
+
+## Blank And Zero Verification
+
+The local viewer was checked against every non-sensitive source-profile state:
+
+- 804,322 viewable cells compared;
+- 104,335 semantic blank/null cells;
+- 168,329 numeric zero cells;
+- zero source-profile versus normalized-view mismatches.
+
+The localhost reviewer now renders blanks and numeric zeros differently and
+shows per-export counts plus a fidelity status. The hosted Workbench stores only
+aggregate state evidence and tightly bounded non-sensitive exception excerpts.
 
 ## Workbench Effect
 
-- 20 audit mappings update 15 stable source blueprints.
-- Enterprise Entry now exposes five explicit CSV mode tables.
-- Normal detailed Variance and transaction-detail Wastage are added without deleting the
-  previously captured visual modes.
-- Bulk Return and Closing Stock move from pending to captured.
-- Every audit-touched blueprint is `needs_review` until its blank rendering is checked.
-- The repository contains no raw CSVs, normalized extracts, screenshots, local
-  paths, filenames, hashes, or sensitive values.
-- `control-tower-evidence.json` contains 18 minimal issue excerpts: one
-  non-sensitive numeric/date excerpt per deterministic finding type, with source
-  row number retained for local verification.
+- The evidence contract contains 11 semantic findings: coverage blockers,
+  cost-coverage gaps, duplicate-grain risks, and sign-treatment reviews.
+- It contains zero deterministic formula-exception rows and four minimal
+  non-sensitive sign-review excerpts.
+- Bill Item Detail canonical fields now distinguish GST taxable bases from tax
+  values.
+- Synthetic data remains appropriate for the demonstrator because the actual
+  exports cover one operating scope with uneven periods and critical coverage
+  gaps. It is not justified by widespread arithmetic defects.
 
-## Next Review
+## Production Gates
 
-1. Review all changed blank tables in Discovery, especially Enterprise Entry variants,
-   detailed Variance, and Consumption grouped columns.
-2. Confirm source price bases and formulas for the deterministic mismatch queue.
-3. Confirm Enterprise Purchase Order status semantics and exact PO-line/GRN linkage.
-4. Obtain populated Enterprise ReOrder and Stock Entry Return exports.
-5. Record accepted formula semantics in model mappings only after the source reports and
-   business owners agree.
+1. Obtain populated ReOrder and Stock Return evidence or approve alternates.
+2. Resolve the June purchase-cost discontinuity.
+3. Approve PO/receipt linkage and batch/expiry source coverage.
+4. Approve recipe duplicate grain and sign conventions.
+5. Validate equivalent multi-outlet, aligned-period extracts before replacing
+   the synthetic demonstrator with actual production facts.

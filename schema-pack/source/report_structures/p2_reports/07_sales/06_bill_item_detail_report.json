@@ -5,7 +5,7 @@
   "layout_kind": "flat",
   "capture_method": "manual_visual_and_local_csv_contract_review",
   "source_policy": "Schema definitions and sanitized audit summaries only. Raw CSV rows, local evidence, screenshots, paths, and source images are excluded.",
-  "structure_notes": "Rows are grouped by business date and bill, with a bill-total row after each bill. Sanitized local audit packet run_20260723_075052 verified CSV header order, canonical field mapping, and declared types. Value-health findings are review evidence and do not alter this blank structure.",
+  "structure_notes": "Rows are grouped by business date and bill, with a bill-total row after each bill. The semantic audit verified that each `GST@x% Amount` column is the taxable base and the adjacent `GST@x%` column is the tax value, despite the source label appearing rate-like. With that positional meaning, all populated rows reconcile to exported net amount.",
   "data_points": [
     {
       "key": "bill_state",
@@ -128,37 +128,37 @@
       "data_type": "text"
     },
     {
-      "key": "gst_5_amt",
+      "key": "gst_5_taxable_amt",
       "label": "GST@5% Amount",
       "semantic_role": "measure",
       "data_type": "decimal"
     },
     {
-      "key": "gst_5_rate",
+      "key": "gst_5_tax_amt",
       "label": "GST@5%",
       "semantic_role": "measure",
       "data_type": "decimal"
     },
     {
-      "key": "gst_18_amt",
+      "key": "gst_18_taxable_amt",
       "label": "GST@18% Amount",
       "semantic_role": "measure",
       "data_type": "decimal"
     },
     {
-      "key": "gst_18_rate",
+      "key": "gst_18_tax_amt",
       "label": "GST@18%",
       "semantic_role": "measure",
       "data_type": "decimal"
     },
     {
-      "key": "gst_3_amt",
+      "key": "gst_3_taxable_amt",
       "label": "GST@3% Amount",
       "semantic_role": "measure",
       "data_type": "decimal"
     },
     {
-      "key": "gst_3_rate",
+      "key": "gst_3_tax_amt",
       "label": "GST@3%",
       "semantic_role": "measure",
       "data_type": "decimal"
@@ -288,27 +288,27 @@
         },
         {
           "label": "GST@5% Amount",
-          "key": "gst_5_amt"
+          "key": "gst_5_taxable_amt"
         },
         {
           "label": "GST@5%",
-          "key": "gst_5_rate"
+          "key": "gst_5_tax_amt"
         },
         {
           "label": "GST@18% Amount",
-          "key": "gst_18_amt"
+          "key": "gst_18_taxable_amt"
         },
         {
           "label": "GST@18%",
-          "key": "gst_18_rate"
+          "key": "gst_18_tax_amt"
         },
         {
           "label": "GST@3% Amount",
-          "key": "gst_3_amt"
+          "key": "gst_3_taxable_amt"
         },
         {
           "label": "GST@3%",
-          "key": "gst_3_rate"
+          "key": "gst_3_tax_amt"
         },
         {
           "label": "netamt",
