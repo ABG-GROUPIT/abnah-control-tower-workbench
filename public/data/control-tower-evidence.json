@@ -1,18 +1,34 @@
 {
-  "contractVersion": "1.0.0",
+  "contractVersion": "1.1.0",
   "status": "deterministic_evidence_compiled",
   "asOfDate": "2026-07-23",
-  "sourcePolicy": "Issue-only evidence derived locally. Screenshots, full rows, local paths, file names, hashes, credentials, and sensitive values are excluded.",
+  "sourcePolicy": "Hosted evidence contains report schemas, export coverage, issue density, semantic review and redacted context only. Screenshots, full operational rows, local paths, file names, hashes, credentials, and sensitive values are excluded.",
   "privacy": {
     "rawFilesRemainLocal": true,
     "fullRowsIncluded": false,
     "sensitiveValuesIncluded": false,
-    "issueExcerptPolicy": "At most one non-sensitive row excerpt per deterministic finding type."
+    "issueExcerptPolicy": "At most one non-sensitive issue-row excerpt per finding type; surrounding hosted rows are structurally represented but remain redacted."
   },
   "decision": {
     "headline": "Schemas align; actual values are not yet ready for direct KPI publication.",
     "reason": "Synthetic data is used for the demonstrator because essential reports have coverage gaps, periods are not aligned, and several exported amount or margin fields require deterministic reconciliation.",
     "productionRule": "Raw exports remain authoritative evidence. Standardized calculations, exception flags, and business sign-off are required before production KPIs are published."
+  },
+  "zohoReadiness": {
+    "demoBuild": "ready",
+    "productionModelBuild": "ready_with_gates",
+    "productionPublication": "blocked_pending_signoff",
+    "requiredLandingTableCount": 16,
+    "queryTableCount": 37,
+    "dashboardTabCount": 4,
+    "migrationRule": "Build v2 in parallel. Do not delete old raw tables before reconciliation, dashboard acceptance, and rollback approval.",
+    "nextSequence": [
+      "Back up or duplicate the current Zoho workspace.",
+      "Import the 16 RAWN_CT and AUX landing tables with exact names.",
+      "Build the 37 Query Tables in manifest dependency order.",
+      "Validate facts and summaries before assembling the four dashboard tabs.",
+      "Train Ask Zia only after dashboard calculations pass."
+    ]
   },
   "summary": {
     "selectedSourceCount": 22,
@@ -628,6 +644,16 @@
       },
       "readiness": "review_required",
       "decision": "Schema-ready; use as sales reconciliation evidence, not as the sole net-sales formula authority.",
+      "codexReview": {
+        "status": "definition_review",
+        "headline": "Schema is sound; source calculation definitions remain unresolved.",
+        "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
+        "confirmedStructuralErrorCount": 0,
+        "classificationCounts": {
+          "formula_definition_gate": 1
+        },
+        "nextDecision": "Confirm Restroworks formulas, UOM, valuation, tax, and rounding rules before classifying source values as incorrect."
+      },
       "keyFieldCoverage": [
         {
           "field": "bill_number",
@@ -672,7 +698,13 @@
             "gst_3_amt"
           ],
           "observation": "Net amount differs from line amount less discount plus exported GST amounts.",
-          "productionTreatment": "Do not assume the simple discount-and-GST bridge; use the approved net-sales authority and keep this report for reconciliation."
+          "productionTreatment": "Do not assume the simple discount-and-GST bridge; use the approved net-sales authority and keep this report for reconciliation.",
+          "semanticReview": {
+            "classification": "formula_definition_gate",
+            "confidence": "high",
+            "assessment": "The simple bill-item bridge omits possible allocated discounts, taxes, charges, inclusive pricing, and rounding. The high exception rate indicates that the assumed equation is incomplete, not that thousands of source rows are necessarily wrong.",
+            "businessQuestion": "Which components and allocation rules define bill-item Net Amount in this export?"
+          }
         }
       ],
       "evidenceRows": [
@@ -717,7 +749,330 @@
           "observed": "236.25",
           "privacy": "Only issue-relevant non-sensitive cells are included."
         }
-      ]
+      ],
+      "reportContext": {
+        "mode": "hosted_structure_local_values",
+        "statement": "The hosted review shows the complete report schema, every captured export, row-level issue density, and redacted context windows. Full operational rows remain available only in the localhost reviewer.",
+        "columns": [
+          {
+            "field": "bill_state",
+            "label": "bill state",
+            "sensitive": false
+          },
+          {
+            "field": "deployment_name",
+            "label": "deployment name",
+            "sensitive": false
+          },
+          {
+            "field": "order_id",
+            "label": "order id",
+            "sensitive": false
+          },
+          {
+            "field": "bill_number",
+            "label": "bill number",
+            "sensitive": false
+          },
+          {
+            "field": "day_serial",
+            "label": "day serial",
+            "sensitive": false
+          },
+          {
+            "field": "tab_name",
+            "label": "tab name",
+            "sensitive": false
+          },
+          {
+            "field": "table_number",
+            "label": "table number",
+            "sensitive": false
+          },
+          {
+            "field": "open_time",
+            "label": "open time",
+            "sensitive": false
+          },
+          {
+            "field": "close_time",
+            "label": "close time",
+            "sensitive": false
+          },
+          {
+            "field": "category_name",
+            "label": "category name",
+            "sensitive": false
+          },
+          {
+            "field": "item_name",
+            "label": "item name",
+            "sensitive": false
+          },
+          {
+            "field": "item_number",
+            "label": "item number",
+            "sensitive": false
+          },
+          {
+            "field": "item_section",
+            "label": "item section",
+            "sensitive": false
+          },
+          {
+            "field": "item_classification",
+            "label": "item classification",
+            "sensitive": false
+          },
+          {
+            "field": "item_rate",
+            "label": "item rate",
+            "sensitive": false
+          },
+          {
+            "field": "item_qty",
+            "label": "item qty",
+            "sensitive": false
+          },
+          {
+            "field": "line_amt",
+            "label": "line amt",
+            "sensitive": false
+          },
+          {
+            "field": "discount_amt",
+            "label": "discount amt",
+            "sensitive": false
+          },
+          {
+            "field": "discount_type",
+            "label": "discount type",
+            "sensitive": false
+          },
+          {
+            "field": "discount_remarks",
+            "label": "discount remarks",
+            "sensitive": false
+          },
+          {
+            "field": "gst_5_amt",
+            "label": "gst 5 amt",
+            "sensitive": false
+          },
+          {
+            "field": "gst_5_rate",
+            "label": "gst 5 rate",
+            "sensitive": false
+          },
+          {
+            "field": "gst_18_amt",
+            "label": "gst 18 amt",
+            "sensitive": false
+          },
+          {
+            "field": "gst_18_rate",
+            "label": "gst 18 rate",
+            "sensitive": false
+          },
+          {
+            "field": "gst_3_amt",
+            "label": "gst 3 amt",
+            "sensitive": false
+          },
+          {
+            "field": "gst_3_rate",
+            "label": "gst 3 rate",
+            "sensitive": false
+          },
+          {
+            "field": "net_amt",
+            "label": "net amt",
+            "sensitive": false
+          },
+          {
+            "field": "customer_name",
+            "label": "customer name",
+            "sensitive": true
+          },
+          {
+            "field": "customer_mobile",
+            "label": "customer mobile",
+            "sensitive": true
+          },
+          {
+            "field": "covers",
+            "label": "covers",
+            "sensitive": false
+          },
+          {
+            "field": "waiter_name",
+            "label": "waiter name",
+            "sensitive": true
+          },
+          {
+            "field": "source",
+            "label": "source",
+            "sensitive": false
+          }
+        ],
+        "exports": [
+          {
+            "label": "Export 1",
+            "rowCount": 1165,
+            "headerRowNumber": 7,
+            "issueObservationCount": 828,
+            "issueDensity": [
+              4,
+              3,
+              7,
+              9,
+              12,
+              12,
+              17,
+              8,
+              16,
+              15,
+              10,
+              11,
+              8,
+              2,
+              0,
+              3,
+              7,
+              0,
+              3,
+              6,
+              7,
+              3,
+              4,
+              3,
+              10,
+              0,
+              16,
+              15,
+              20,
+              16,
+              15,
+              16,
+              12,
+              19,
+              16,
+              503
+            ]
+          },
+          {
+            "label": "Export 2",
+            "rowCount": 6973,
+            "headerRowNumber": 7,
+            "issueObservationCount": 5907,
+            "issueDensity": [
+              55,
+              89,
+              78,
+              74,
+              72,
+              80,
+              91,
+              76,
+              100,
+              76,
+              92,
+              93,
+              88,
+              81,
+              99,
+              81,
+              94,
+              95,
+              86,
+              89,
+              91,
+              78,
+              88,
+              84,
+              74,
+              64,
+              84,
+              90,
+              70,
+              97,
+              99,
+              89,
+              84,
+              91,
+              101,
+              2934
+            ]
+          }
+        ],
+        "contextWindows": [
+          {
+            "id": "context:evidence:p2_bill_item_detail_item:bill_item_net_bridge",
+            "findingId": "p2.bill_item_detail.item:bill_item_net_bridge",
+            "exportLabel": "Export 1",
+            "focusSourceRowNumber": 25,
+            "rows": [
+              {
+                "sourceRowNumber": 23,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 24,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 25,
+                "state": "issue",
+                "values": [
+                  {
+                    "field": "net_amt",
+                    "label": "net amt",
+                    "value": "0.00"
+                  },
+                  {
+                    "field": "line_amt",
+                    "label": "line amt",
+                    "value": "450.00"
+                  },
+                  {
+                    "field": "discount_amt",
+                    "label": "discount amt",
+                    "value": "450.00"
+                  },
+                  {
+                    "field": "gst_5_amt",
+                    "label": "gst 5 amt",
+                    "value": "0.00"
+                  },
+                  {
+                    "field": "gst_18_amt",
+                    "label": "gst 18 amt",
+                    "value": "0.00"
+                  },
+                  {
+                    "field": "gst_3_amt",
+                    "label": "gst 3 amt",
+                    "value": "0.00"
+                  }
+                ]
+              },
+              {
+                "sourceRowNumber": 26,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 27,
+                "state": "context",
+                "values": []
+              }
+            ]
+          }
+        ],
+        "localViewerUrl": "http://127.0.0.1:8765/?report_id=p2.bill_item_detail.item"
+      }
     },
     {
       "reportId": "p4.bulk_return.item",
@@ -753,9 +1108,136 @@
       },
       "readiness": "schema_ready_value_checks_passed",
       "decision": "Schema-ready and populated, but retained only as a fallback return source.",
+      "codexReview": {
+        "status": "no_encoded_exception",
+        "headline": "No encoded structural or value exception was detected.",
+        "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
+        "confirmedStructuralErrorCount": 0,
+        "classificationCounts": {},
+        "nextDecision": "Continue period reconciliation and business sign-off before production publication."
+      },
       "keyFieldCoverage": [],
       "findings": [],
-      "evidenceRows": []
+      "evidenceRows": [],
+      "reportContext": {
+        "mode": "hosted_structure_local_values",
+        "statement": "The hosted review shows the complete report schema, every captured export, row-level issue density, and redacted context windows. Full operational rows remain available only in the localhost reviewer.",
+        "columns": [
+          {
+            "field": "deployment_name",
+            "label": "deployment name",
+            "sensitive": false
+          },
+          {
+            "field": "store_kitchen_name",
+            "label": "store kitchen name",
+            "sensitive": false
+          },
+          {
+            "field": "user_name",
+            "label": "user name",
+            "sensitive": true
+          },
+          {
+            "field": "return_date",
+            "label": "return date",
+            "sensitive": false
+          },
+          {
+            "field": "transaction_number",
+            "label": "transaction number",
+            "sensitive": false
+          },
+          {
+            "field": "item_code",
+            "label": "item code",
+            "sensitive": false
+          },
+          {
+            "field": "item_name",
+            "label": "item name",
+            "sensitive": false
+          },
+          {
+            "field": "category_name",
+            "label": "category name",
+            "sensitive": false
+          },
+          {
+            "field": "super_category_name",
+            "label": "super category name",
+            "sensitive": false
+          },
+          {
+            "field": "comment",
+            "label": "comment",
+            "sensitive": false
+          },
+          {
+            "field": "return_qty",
+            "label": "return qty",
+            "sensitive": false
+          },
+          {
+            "field": "unit",
+            "label": "unit",
+            "sensitive": false
+          },
+          {
+            "field": "source",
+            "label": "source",
+            "sensitive": false
+          }
+        ],
+        "exports": [
+          {
+            "label": "22 Apr - 22 Jul 2026",
+            "rowCount": 6,
+            "headerRowNumber": 1,
+            "issueObservationCount": 0,
+            "issueDensity": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "contextWindows": [],
+        "localViewerUrl": "http://127.0.0.1:8765/?report_id=p4.bulk_return.item"
+      }
     },
     {
       "reportId": "p4.closing_stock.item",
@@ -791,6 +1273,17 @@
       },
       "readiness": "review_required",
       "decision": "Schema-ready; source value must be reconciled or recomputed before capital and risk KPIs.",
+      "codexReview": {
+        "status": "definition_review",
+        "headline": "Schema is sound; source calculation definitions remain unresolved.",
+        "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
+        "confirmedStructuralErrorCount": 0,
+        "classificationCounts": {
+          "formula_definition_gate": 1,
+          "operational_exception": 1
+        },
+        "nextDecision": "Confirm Restroworks formulas, UOM, valuation, tax, and rounding rules before classifying source values as incorrect."
+      },
       "keyFieldCoverage": [
         {
           "field": "stock_date",
@@ -871,7 +1364,13 @@
             "average_price"
           ],
           "observation": "Closing amount differs from total quantity multiplied by average price.",
-          "productionTreatment": "Recalculate closing value and flag source differences before working-capital or expiry-risk publication."
+          "productionTreatment": "Recalculate closing value and flag source differences before working-capital or expiry-risk publication.",
+          "semanticReview": {
+            "classification": "formula_definition_gate",
+            "confidence": "high",
+            "assessment": "Closing amount may use a valuation basis or precision that differs from the displayed average price. It must be reconciled after canonical UOM and cost-basis approval.",
+            "businessQuestion": "Is Closing Amount calculated from unrounded weighted-average cost, another valuation method, or converted base quantity?"
+          }
         },
         {
           "id": "p4.closing_stock.item:negative_values",
@@ -885,7 +1384,13 @@
             "total_qty"
           ],
           "observation": "Negative observations can represent returns, adjustments, or stock corrections; they are not classified as errors automatically.",
-          "productionTreatment": "Confirm sign conventions by transaction type and apply them consistently in standardized facts and KPI formulas."
+          "productionTreatment": "Confirm sign conventions by transaction type and apply them consistently in standardized facts and KPI formulas.",
+          "semanticReview": {
+            "classification": "operational_exception",
+            "confidence": "high",
+            "assessment": "Negative quantities, values, or margins can be valid returns, reversals, corrections, oversold stock, or loss-making sales. They are operational exceptions, not automatic data errors.",
+            "businessQuestion": "Which transaction types and status values define the approved sign convention for each negative field?"
+          }
         }
       ],
       "evidenceRows": [
@@ -941,7 +1446,235 @@
           "observed": "One or more exported values are negative",
           "privacy": "Only issue-relevant non-sensitive cells are included."
         }
-      ]
+      ],
+      "reportContext": {
+        "mode": "hosted_structure_local_values",
+        "statement": "The hosted review shows the complete report schema, every captured export, row-level issue density, and redacted context windows. Full operational rows remain available only in the localhost reviewer.",
+        "columns": [
+          {
+            "field": "deployment_name",
+            "label": "deployment name",
+            "sensitive": false
+          },
+          {
+            "field": "stock_date",
+            "label": "stock date",
+            "sensitive": false
+          },
+          {
+            "field": "generation_date",
+            "label": "generation date",
+            "sensitive": false
+          },
+          {
+            "field": "generation_time",
+            "label": "generation time",
+            "sensitive": false
+          },
+          {
+            "field": "item_code",
+            "label": "item code",
+            "sensitive": false
+          },
+          {
+            "field": "item_name",
+            "label": "item name",
+            "sensitive": false
+          },
+          {
+            "field": "super_category_code",
+            "label": "super category code",
+            "sensitive": false
+          },
+          {
+            "field": "super_category_name",
+            "label": "super category name",
+            "sensitive": false
+          },
+          {
+            "field": "category_code",
+            "label": "category code",
+            "sensitive": false
+          },
+          {
+            "field": "category_name",
+            "label": "category name",
+            "sensitive": false
+          },
+          {
+            "field": "unit_name",
+            "label": "unit name",
+            "sensitive": false
+          },
+          {
+            "field": "average_price",
+            "label": "average price",
+            "sensitive": false
+          },
+          {
+            "field": "gk2_main_store_qty",
+            "label": "gk2 main store qty",
+            "sensitive": false
+          },
+          {
+            "field": "total_qty",
+            "label": "total qty",
+            "sensitive": false
+          },
+          {
+            "field": "total_amt",
+            "label": "total amt",
+            "sensitive": false
+          }
+        ],
+        "exports": [
+          {
+            "label": "Export 1",
+            "rowCount": 1148,
+            "headerRowNumber": 1,
+            "issueObservationCount": 24,
+            "issueDensity": [
+              0,
+              2,
+              2,
+              0,
+              1,
+              0,
+              2,
+              1,
+              1,
+              1,
+              0,
+              0,
+              2,
+              0,
+              0,
+              2,
+              0,
+              0,
+              2,
+              0,
+              1,
+              0,
+              1,
+              0,
+              2,
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              2,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "contextWindows": [
+          {
+            "id": "context:evidence:p4_closing_stock_item:closing_amount_from_qty_price",
+            "findingId": "p4.closing_stock.item:closing_amount_from_qty_price",
+            "exportLabel": "Export 1",
+            "focusSourceRowNumber": 62,
+            "rows": [
+              {
+                "sourceRowNumber": 60,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 61,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 62,
+                "state": "issue",
+                "values": [
+                  {
+                    "field": "total_amt",
+                    "label": "total amt",
+                    "value": "53500"
+                  },
+                  {
+                    "field": "total_qty",
+                    "label": "total qty",
+                    "value": "3.333"
+                  },
+                  {
+                    "field": "average_price",
+                    "label": "average price",
+                    "value": "16050"
+                  }
+                ]
+              },
+              {
+                "sourceRowNumber": 63,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 64,
+                "state": "context",
+                "values": []
+              }
+            ]
+          },
+          {
+            "id": "context:evidence:p4_closing_stock_item:negative",
+            "findingId": "p4.closing_stock.item:negative_values",
+            "exportLabel": "Export 1",
+            "focusSourceRowNumber": 73,
+            "rows": [
+              {
+                "sourceRowNumber": 71,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 72,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 73,
+                "state": "issue",
+                "values": [
+                  {
+                    "field": "gk2_main_store_qty",
+                    "label": "gk2 main store qty",
+                    "value": "-0.005"
+                  },
+                  {
+                    "field": "total_amt",
+                    "label": "total amt",
+                    "value": "-70.39"
+                  },
+                  {
+                    "field": "total_qty",
+                    "label": "total qty",
+                    "value": "-0.005"
+                  }
+                ]
+              },
+              {
+                "sourceRowNumber": 74,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 75,
+                "state": "context",
+                "values": []
+              }
+            ]
+          }
+        ],
+        "localViewerUrl": "http://127.0.0.1:8765/?report_id=p4.closing_stock.item"
+      }
     },
     {
       "reportId": "p4.enterprise_consumption.detail",
@@ -976,6 +1709,16 @@
       },
       "readiness": "review_required",
       "decision": "Schema-ready; use for movement diagnosis while standardized consumption is recomputed.",
+      "codexReview": {
+        "status": "definition_review",
+        "headline": "Schema is sound; source calculation definitions remain unresolved.",
+        "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
+        "confirmedStructuralErrorCount": 0,
+        "classificationCounts": {
+          "formula_definition_gate": 1
+        },
+        "nextDecision": "Confirm Restroworks formulas, UOM, valuation, tax, and rounding rules before classifying source values as incorrect."
+      },
       "keyFieldCoverage": [
         {
           "field": "opening_qty",
@@ -1085,7 +1828,13 @@
             "return_qty"
           ],
           "observation": "Ideal closing differs from the formula observed across the current populated UAT sample. Stock In is treated as the report's aggregate inflow; purchase and indent breakups are not added again.",
-          "productionTreatment": "Keep the source value in raw, recompute the standardized movement bridge, and do not publish source ideal closing until its definition is signed off."
+          "productionTreatment": "Keep the source value in raw, recompute the standardized movement bridge, and do not publish source ideal closing until its definition is signed off.",
+          "semanticReview": {
+            "classification": "formula_definition_gate",
+            "confidence": "high",
+            "assessment": "This finding disproves the provisional movement equation for the exported Ideal Closing field; it does not prove that the source value is wrong. The field may use a target, physical-count, timing, or unexported movement definition.",
+            "businessQuestion": "What is Restroworks' exact Ideal Closing definition and which movement types and cut-off rules feed it?"
+          }
         }
       ],
       "evidenceRows": [
@@ -1130,7 +1879,346 @@
           "observed": "1.75",
           "privacy": "Only issue-relevant non-sensitive cells are included."
         }
-      ]
+      ],
+      "reportContext": {
+        "mode": "hosted_structure_local_values",
+        "statement": "The hosted review shows the complete report schema, every captured export, row-level issue density, and redacted context windows. Full operational rows remain available only in the localhost reviewer.",
+        "columns": [
+          {
+            "field": "deployment_name",
+            "label": "deployment name",
+            "sensitive": false
+          },
+          {
+            "field": "store_kitchen_name",
+            "label": "store kitchen name",
+            "sensitive": false
+          },
+          {
+            "field": "item_code",
+            "label": "item code",
+            "sensitive": false
+          },
+          {
+            "field": "item_name",
+            "label": "item name",
+            "sensitive": false
+          },
+          {
+            "field": "category_name",
+            "label": "category name",
+            "sensitive": false
+          },
+          {
+            "field": "super_category_name",
+            "label": "super category name",
+            "sensitive": false
+          },
+          {
+            "field": "average_price",
+            "label": "average price",
+            "sensitive": false
+          },
+          {
+            "field": "opening_date",
+            "label": "opening date",
+            "sensitive": false
+          },
+          {
+            "field": "opening_qty",
+            "label": "opening qty",
+            "sensitive": false
+          },
+          {
+            "field": "unit",
+            "label": "unit",
+            "sensitive": false
+          },
+          {
+            "field": "opening_amt",
+            "label": "opening amt",
+            "sensitive": false
+          },
+          {
+            "field": "purchase_qty",
+            "label": "purchase qty",
+            "sensitive": false
+          },
+          {
+            "field": "purchase_amt",
+            "label": "purchase amt",
+            "sensitive": false
+          },
+          {
+            "field": "indent_receive_qty",
+            "label": "indent receive qty",
+            "sensitive": false
+          },
+          {
+            "field": "indent_receive_amt",
+            "label": "indent receive amt",
+            "sensitive": false
+          },
+          {
+            "field": "indent_dispatch_qty",
+            "label": "indent dispatch qty",
+            "sensitive": false
+          },
+          {
+            "field": "indent_dispatch_amt",
+            "label": "indent dispatch amt",
+            "sensitive": false
+          },
+          {
+            "field": "internal_indent_receive_qty",
+            "label": "internal indent receive qty",
+            "sensitive": false
+          },
+          {
+            "field": "internal_indent_receive_amt",
+            "label": "internal indent receive amt",
+            "sensitive": false
+          },
+          {
+            "field": "internal_indent_dispatch_qty",
+            "label": "internal indent dispatch qty",
+            "sensitive": false
+          },
+          {
+            "field": "internal_indent_dispatch_amt",
+            "label": "internal indent dispatch amt",
+            "sensitive": false
+          },
+          {
+            "field": "stock_in_qty",
+            "label": "stock in qty",
+            "sensitive": false
+          },
+          {
+            "field": "stock_in_amt",
+            "label": "stock in amt",
+            "sensitive": false
+          },
+          {
+            "field": "consumption_qty",
+            "label": "consumption qty",
+            "sensitive": false
+          },
+          {
+            "field": "consumption_amt",
+            "label": "consumption amt",
+            "sensitive": false
+          },
+          {
+            "field": "source_yield_wastage_qty",
+            "label": "source yield wastage qty",
+            "sensitive": false
+          },
+          {
+            "field": "source_yield_wastage_amt",
+            "label": "source yield wastage amt",
+            "sensitive": false
+          },
+          {
+            "field": "stock_out_qty",
+            "label": "stock out qty",
+            "sensitive": false
+          },
+          {
+            "field": "stock_out_amt",
+            "label": "stock out amt",
+            "sensitive": false
+          },
+          {
+            "field": "stock_out_plus_consumption_qty",
+            "label": "stock out plus consumption qty",
+            "sensitive": false
+          },
+          {
+            "field": "stock_out_plus_consumption_amt",
+            "label": "stock out plus consumption amt",
+            "sensitive": false
+          },
+          {
+            "field": "wastage_qty",
+            "label": "wastage qty",
+            "sensitive": false
+          },
+          {
+            "field": "wastage_amt",
+            "label": "wastage amt",
+            "sensitive": false
+          },
+          {
+            "field": "reuse_qty",
+            "label": "reuse qty",
+            "sensitive": false
+          },
+          {
+            "field": "reuse_amt",
+            "label": "reuse amt",
+            "sensitive": false
+          },
+          {
+            "field": "return_qty",
+            "label": "return qty",
+            "sensitive": false
+          },
+          {
+            "field": "return_amt",
+            "label": "return amt",
+            "sensitive": false
+          },
+          {
+            "field": "closing_date",
+            "label": "closing date",
+            "sensitive": false
+          },
+          {
+            "field": "closing_qty",
+            "label": "closing qty",
+            "sensitive": false
+          },
+          {
+            "field": "closing_amt",
+            "label": "closing amt",
+            "sensitive": false
+          },
+          {
+            "field": "physical_gain_loss_qty",
+            "label": "physical gain loss qty",
+            "sensitive": false
+          },
+          {
+            "field": "physical_gain_loss_amt",
+            "label": "physical gain loss amt",
+            "sensitive": false
+          },
+          {
+            "field": "ideal_closing_qty",
+            "label": "ideal closing qty",
+            "sensitive": false
+          },
+          {
+            "field": "ideal_closing_amt",
+            "label": "ideal closing amt",
+            "sensitive": false
+          },
+          {
+            "field": "physical_adjusted_closing_qty",
+            "label": "physical adjusted closing qty",
+            "sensitive": false
+          },
+          {
+            "field": "physical_adjusted_closing_amt",
+            "label": "physical adjusted closing amt",
+            "sensitive": false
+          }
+        ],
+        "exports": [
+          {
+            "label": "21 Apr - 21 Jul 2026",
+            "rowCount": 812,
+            "headerRowNumber": 1,
+            "issueObservationCount": 158,
+            "issueDensity": [
+              21,
+              14,
+              13,
+              14,
+              8,
+              12,
+              0,
+              3,
+              6,
+              10,
+              1,
+              8,
+              17,
+              6,
+              4,
+              13,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "contextWindows": [
+          {
+            "id": "context:evidence:p4_enterprise_consumption_detail:observed_ideal_closing_formula",
+            "findingId": "p4.enterprise_consumption.detail:observed_ideal_closing_formula",
+            "exportLabel": "21 Apr - 21 Jul 2026",
+            "focusSourceRowNumber": 2,
+            "rows": [
+              {
+                "sourceRowNumber": 2,
+                "state": "issue",
+                "values": [
+                  {
+                    "field": "ideal_closing_qty",
+                    "label": "ideal closing qty",
+                    "value": "1.75"
+                  },
+                  {
+                    "field": "opening_qty",
+                    "label": "opening qty",
+                    "value": "0.125"
+                  },
+                  {
+                    "field": "stock_in_qty",
+                    "label": "stock in qty",
+                    "value": "0.625"
+                  },
+                  {
+                    "field": "consumption_qty",
+                    "label": "consumption qty",
+                    "value": "0"
+                  },
+                  {
+                    "field": "wastage_qty",
+                    "label": "wastage qty",
+                    "value": "0"
+                  },
+                  {
+                    "field": "return_qty",
+                    "label": "return qty",
+                    "value": "0"
+                  }
+                ]
+              },
+              {
+                "sourceRowNumber": 3,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 4,
+                "state": "context",
+                "values": []
+              }
+            ]
+          }
+        ],
+        "localViewerUrl": "http://127.0.0.1:8765/?report_id=p4.enterprise_consumption.detail"
+      }
     },
     {
       "reportId": "p4.enterprise_entry.item",
@@ -1166,6 +2254,16 @@
       },
       "readiness": "review_required",
       "decision": "Schema-ready; PO and batch coverage plus amount reconciliation remain production gates.",
+      "codexReview": {
+        "status": "definition_review",
+        "headline": "Schema is sound; source calculation definitions remain unresolved.",
+        "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
+        "confirmedStructuralErrorCount": 0,
+        "classificationCounts": {
+          "formula_definition_gate": 2
+        },
+        "nextDecision": "Confirm Restroworks formulas, UOM, valuation, tax, and rounding rules before classifying source values as incorrect."
+      },
       "keyFieldCoverage": [
         {
           "field": "transaction_number",
@@ -1259,7 +2357,13 @@
             "unit_price"
           ],
           "observation": "Entry amount differs from quantity multiplied by unit price.",
-          "productionTreatment": "Retain the raw amount, calculate a standardized amount, and expose a row-level reconciliation flag."
+          "productionTreatment": "Retain the raw amount, calculate a standardized amount, and expose a row-level reconciliation flag.",
+          "semanticReview": {
+            "classification": "formula_definition_gate",
+            "confidence": "medium",
+            "assessment": "The exported base amount does not always equal the visible quantity multiplied by unit price. Pack conversion, price basis, included adjustments, or rounding may explain the difference, so this remains a reconciliation hypothesis.",
+            "businessQuestion": "Are entry quantities and unit prices expressed in the same UOM, and does base amount include conversion, tax, discount, freight, or rounding?"
+          }
         },
         {
           "id": "p4.enterprise_entry.item:entry_total_tax_bridge",
@@ -1274,7 +2378,13 @@
             "other_tax_value"
           ],
           "observation": "Total tax differs from the exported tax components.",
-          "productionTreatment": "Retain exported tax and components separately; publish a canonical tax only after the missing component or rounding rule is confirmed."
+          "productionTreatment": "Retain exported tax and components separately; publish a canonical tax only after the missing component or rounding rule is confirmed.",
+          "semanticReview": {
+            "classification": "formula_definition_gate",
+            "confidence": "medium",
+            "assessment": "The visible tax components do not fully reproduce exported total tax on a small number of rows. This is a definition or component-coverage gap until tax-inclusive pricing and other tax or charge fields are confirmed.",
+            "businessQuestion": "Which tax, cess, charge, and rounding components are included in Total Tax?"
+          }
         }
       ],
       "evidenceRows": [
@@ -1335,7 +2445,335 @@
           "observed": "75",
           "privacy": "Only issue-relevant non-sensitive cells are included."
         }
-      ]
+      ],
+      "reportContext": {
+        "mode": "hosted_structure_local_values",
+        "statement": "The hosted review shows the complete report schema, every captured export, row-level issue density, and redacted context windows. Full operational rows remain available only in the localhost reviewer.",
+        "columns": [
+          {
+            "field": "deployment_name",
+            "label": "deployment name",
+            "sensitive": false
+          },
+          {
+            "field": "store_kitchen_name",
+            "label": "store kitchen name",
+            "sensitive": false
+          },
+          {
+            "field": "user_name",
+            "label": "user name",
+            "sensitive": true
+          },
+          {
+            "field": "vendor_name",
+            "label": "vendor name",
+            "sensitive": false
+          },
+          {
+            "field": "entry_date",
+            "label": "entry date",
+            "sensitive": false
+          },
+          {
+            "field": "transaction_number",
+            "label": "transaction number",
+            "sensitive": false
+          },
+          {
+            "field": "invoice_number",
+            "label": "invoice number",
+            "sensitive": false
+          },
+          {
+            "field": "batch_number",
+            "label": "batch number",
+            "sensitive": false
+          },
+          {
+            "field": "pr_number",
+            "label": "pr number",
+            "sensitive": false
+          },
+          {
+            "field": "po_number",
+            "label": "po number",
+            "sensitive": false
+          },
+          {
+            "field": "invoice_date",
+            "label": "invoice date",
+            "sensitive": false
+          },
+          {
+            "field": "item_code",
+            "label": "item code",
+            "sensitive": false
+          },
+          {
+            "field": "item_name",
+            "label": "item name",
+            "sensitive": false
+          },
+          {
+            "field": "item_brand",
+            "label": "item brand",
+            "sensitive": false
+          },
+          {
+            "field": "category_name",
+            "label": "category name",
+            "sensitive": false
+          },
+          {
+            "field": "super_category_name",
+            "label": "super category name",
+            "sensitive": false
+          },
+          {
+            "field": "comment",
+            "label": "comment",
+            "sensitive": false
+          },
+          {
+            "field": "entry_qty",
+            "label": "entry qty",
+            "sensitive": false
+          },
+          {
+            "field": "unit",
+            "label": "unit",
+            "sensitive": false
+          },
+          {
+            "field": "mrp",
+            "label": "mrp",
+            "sensitive": false
+          },
+          {
+            "field": "unit_price",
+            "label": "unit price",
+            "sensitive": false
+          },
+          {
+            "field": "charges_name",
+            "label": "charges name",
+            "sensitive": false
+          },
+          {
+            "field": "base_amt",
+            "label": "base amt",
+            "sensitive": false
+          },
+          {
+            "field": "discount_amt",
+            "label": "discount amt",
+            "sensitive": false
+          },
+          {
+            "field": "gst_igst_rate",
+            "label": "gst igst rate",
+            "sensitive": false
+          },
+          {
+            "field": "gst_igst_value",
+            "label": "gst igst value",
+            "sensitive": false
+          },
+          {
+            "field": "cess_rate",
+            "label": "cess rate",
+            "sensitive": false
+          },
+          {
+            "field": "cess_value",
+            "label": "cess value",
+            "sensitive": false
+          },
+          {
+            "field": "other_tax_rate",
+            "label": "other tax rate",
+            "sensitive": false
+          },
+          {
+            "field": "other_tax_value",
+            "label": "other tax value",
+            "sensitive": false
+          },
+          {
+            "field": "total_tax_amt",
+            "label": "total tax amt",
+            "sensitive": false
+          },
+          {
+            "field": "item_charges_amt",
+            "label": "item charges amt",
+            "sensitive": false
+          },
+          {
+            "field": "total_amt",
+            "label": "total amt",
+            "sensitive": false
+          },
+          {
+            "field": "source",
+            "label": "source",
+            "sensitive": false
+          }
+        ],
+        "exports": [
+          {
+            "label": "22 Apr - 22 Jul 2026",
+            "rowCount": 562,
+            "headerRowNumber": 1,
+            "issueObservationCount": 9,
+            "issueDensity": [
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              1,
+              1,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "contextWindows": [
+          {
+            "id": "context:evidence:p4_enterprise_entry_item:entry_base_from_qty_price",
+            "findingId": "p4.enterprise_entry.item:entry_base_from_qty_price",
+            "exportLabel": "22 Apr - 22 Jul 2026",
+            "focusSourceRowNumber": 263,
+            "rows": [
+              {
+                "sourceRowNumber": 261,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 262,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 263,
+                "state": "issue",
+                "values": [
+                  {
+                    "field": "base_amt",
+                    "label": "base amt",
+                    "value": "2712.86"
+                  },
+                  {
+                    "field": "entry_qty",
+                    "label": "entry qty",
+                    "value": "3000"
+                  },
+                  {
+                    "field": "unit_price",
+                    "label": "unit price",
+                    "value": "0.9"
+                  }
+                ]
+              },
+              {
+                "sourceRowNumber": 264,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 265,
+                "state": "context",
+                "values": []
+              }
+            ]
+          },
+          {
+            "id": "context:evidence:p4_enterprise_entry_item:entry_total_tax_bridge",
+            "findingId": "p4.enterprise_entry.item:entry_total_tax_bridge",
+            "exportLabel": "22 Apr - 22 Jul 2026",
+            "focusSourceRowNumber": 52,
+            "rows": [
+              {
+                "sourceRowNumber": 50,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 51,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 52,
+                "state": "issue",
+                "values": [
+                  {
+                    "field": "total_tax_amt",
+                    "label": "total tax amt",
+                    "value": "75"
+                  },
+                  {
+                    "field": "gst_igst_value",
+                    "label": "gst igst value",
+                    "value": ""
+                  },
+                  {
+                    "field": "cess_value",
+                    "label": "cess value",
+                    "value": ""
+                  },
+                  {
+                    "field": "other_tax_value",
+                    "label": "other tax value",
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "sourceRowNumber": 53,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 54,
+                "state": "context",
+                "values": []
+              }
+            ]
+          }
+        ],
+        "localViewerUrl": "http://127.0.0.1:8765/?report_id=p4.enterprise_entry.item"
+      }
     },
     {
       "reportId": "p4.enterprise_opening.item",
@@ -1370,9 +2808,146 @@
       },
       "readiness": "schema_ready_value_checks_passed",
       "decision": "Schema-ready with very limited rows; retained for reconciliation only.",
+      "codexReview": {
+        "status": "no_encoded_exception",
+        "headline": "No encoded structural or value exception was detected.",
+        "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
+        "confirmedStructuralErrorCount": 0,
+        "classificationCounts": {},
+        "nextDecision": "Continue period reconciliation and business sign-off before production publication."
+      },
       "keyFieldCoverage": [],
       "findings": [],
-      "evidenceRows": []
+      "evidenceRows": [],
+      "reportContext": {
+        "mode": "hosted_structure_local_values",
+        "statement": "The hosted review shows the complete report schema, every captured export, row-level issue density, and redacted context windows. Full operational rows remain available only in the localhost reviewer.",
+        "columns": [
+          {
+            "field": "deployment_name",
+            "label": "deployment name",
+            "sensitive": false
+          },
+          {
+            "field": "store_kitchen_name",
+            "label": "store kitchen name",
+            "sensitive": false
+          },
+          {
+            "field": "user_name",
+            "label": "user name",
+            "sensitive": true
+          },
+          {
+            "field": "opening_date",
+            "label": "opening date",
+            "sensitive": false
+          },
+          {
+            "field": "transaction_number",
+            "label": "transaction number",
+            "sensitive": false
+          },
+          {
+            "field": "item_code",
+            "label": "item code",
+            "sensitive": false
+          },
+          {
+            "field": "item_name",
+            "label": "item name",
+            "sensitive": false
+          },
+          {
+            "field": "category_name",
+            "label": "category name",
+            "sensitive": false
+          },
+          {
+            "field": "super_category_name",
+            "label": "super category name",
+            "sensitive": false
+          },
+          {
+            "field": "comment",
+            "label": "comment",
+            "sensitive": false
+          },
+          {
+            "field": "opening_qty",
+            "label": "opening qty",
+            "sensitive": false
+          },
+          {
+            "field": "unit",
+            "label": "unit",
+            "sensitive": false
+          },
+          {
+            "field": "unit_price",
+            "label": "unit price",
+            "sensitive": false
+          },
+          {
+            "field": "opening_subtotal",
+            "label": "opening subtotal",
+            "sensitive": false
+          },
+          {
+            "field": "source",
+            "label": "source",
+            "sensitive": false
+          }
+        ],
+        "exports": [
+          {
+            "label": "22 Apr - 22 Jul 2026",
+            "rowCount": 3,
+            "headerRowNumber": 1,
+            "issueObservationCount": 0,
+            "issueDensity": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "contextWindows": [],
+        "localViewerUrl": "http://127.0.0.1:8765/?report_id=p4.enterprise_opening.item"
+      }
     },
     {
       "reportId": "p4.enterprise_physical.item",
@@ -1407,6 +2982,16 @@
       },
       "readiness": "review_required",
       "decision": "Schema-ready; recompute physical value and use approved month-end checkpoints.",
+      "codexReview": {
+        "status": "definition_review",
+        "headline": "Schema is sound; source calculation definitions remain unresolved.",
+        "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
+        "confirmedStructuralErrorCount": 0,
+        "classificationCounts": {
+          "formula_definition_gate": 1
+        },
+        "nextDecision": "Confirm Restroworks formulas, UOM, valuation, tax, and rounding rules before classifying source values as incorrect."
+      },
       "keyFieldCoverage": [
         {
           "field": "physical_date",
@@ -1474,7 +3059,13 @@
             "unit_price"
           ],
           "observation": "Physical-stock amount differs from quantity multiplied by unit price.",
-          "productionTreatment": "Recompute the standardized amount from normalized quantity and price before using it in variance KPIs."
+          "productionTreatment": "Recompute the standardized amount from normalized quantity and price before using it in variance KPIs.",
+          "semanticReview": {
+            "classification": "formula_definition_gate",
+            "confidence": "high",
+            "assessment": "Physical value cannot be treated as a simple quantity-times-visible-price calculation until UOM and valuation basis are aligned. Weighted average, pack conversion, or valuation-date cost can legitimately differ.",
+            "businessQuestion": "Which UOM and valuation price are used to calculate Physical Amount?"
+          }
         }
       ],
       "evidenceRows": [
@@ -1504,7 +3095,191 @@
           "observed": "4016.35",
           "privacy": "Only issue-relevant non-sensitive cells are included."
         }
-      ]
+      ],
+      "reportContext": {
+        "mode": "hosted_structure_local_values",
+        "statement": "The hosted review shows the complete report schema, every captured export, row-level issue density, and redacted context windows. Full operational rows remain available only in the localhost reviewer.",
+        "columns": [
+          {
+            "field": "deployment_name",
+            "label": "deployment name",
+            "sensitive": false
+          },
+          {
+            "field": "store_kitchen_name",
+            "label": "store kitchen name",
+            "sensitive": false
+          },
+          {
+            "field": "user_name",
+            "label": "user name",
+            "sensitive": true
+          },
+          {
+            "field": "physical_date",
+            "label": "physical date",
+            "sensitive": false
+          },
+          {
+            "field": "transaction_number",
+            "label": "transaction number",
+            "sensitive": false
+          },
+          {
+            "field": "item_code",
+            "label": "item code",
+            "sensitive": false
+          },
+          {
+            "field": "item_name",
+            "label": "item name",
+            "sensitive": false
+          },
+          {
+            "field": "item_brand",
+            "label": "item brand",
+            "sensitive": false
+          },
+          {
+            "field": "category_name",
+            "label": "category name",
+            "sensitive": false
+          },
+          {
+            "field": "super_category_name",
+            "label": "super category name",
+            "sensitive": false
+          },
+          {
+            "field": "comment",
+            "label": "comment",
+            "sensitive": false
+          },
+          {
+            "field": "physical_qty",
+            "label": "physical qty",
+            "sensitive": false
+          },
+          {
+            "field": "unit",
+            "label": "unit",
+            "sensitive": false
+          },
+          {
+            "field": "unit_price",
+            "label": "unit price",
+            "sensitive": false
+          },
+          {
+            "field": "physical_amt",
+            "label": "physical amt",
+            "sensitive": false
+          },
+          {
+            "field": "source",
+            "label": "source",
+            "sensitive": false
+          }
+        ],
+        "exports": [
+          {
+            "label": "22 Apr - 22 Jul 2026",
+            "rowCount": 6251,
+            "headerRowNumber": 1,
+            "issueObservationCount": 98,
+            "issueDensity": [
+              0,
+              0,
+              3,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              4,
+              7,
+              2,
+              1,
+              1,
+              3,
+              3,
+              5,
+              8,
+              0,
+              4,
+              0,
+              2,
+              2,
+              4,
+              1,
+              3,
+              3,
+              5,
+              9,
+              7,
+              0,
+              0,
+              4,
+              4,
+              4
+            ]
+          }
+        ],
+        "contextWindows": [
+          {
+            "id": "context:evidence:p4_enterprise_physical_item:physical_amount_from_qty_price",
+            "findingId": "p4.enterprise_physical.item:physical_amount_from_qty_price",
+            "exportLabel": "22 Apr - 22 Jul 2026",
+            "focusSourceRowNumber": 392,
+            "rows": [
+              {
+                "sourceRowNumber": 390,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 391,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 392,
+                "state": "issue",
+                "values": [
+                  {
+                    "field": "physical_amt",
+                    "label": "physical amt",
+                    "value": "4016.35"
+                  },
+                  {
+                    "field": "physical_qty",
+                    "label": "physical qty",
+                    "value": "5000"
+                  },
+                  {
+                    "field": "unit_price",
+                    "label": "unit price",
+                    "value": "0.8"
+                  }
+                ]
+              },
+              {
+                "sourceRowNumber": 393,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 394,
+                "state": "context",
+                "values": []
+              }
+            ]
+          }
+        ],
+        "localViewerUrl": "http://127.0.0.1:8765/?report_id=p4.enterprise_physical.item"
+      }
     },
     {
       "reportId": "p4.enterprise_purchase_order.item",
@@ -1540,6 +3315,14 @@
       },
       "readiness": "review_required",
       "decision": "Populated and schema-ready; receipt linkage, status semantics, and eligible closed-line rules remain production gates.",
+      "codexReview": {
+        "status": "no_encoded_exception",
+        "headline": "No encoded structural or value exception was detected.",
+        "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
+        "confirmedStructuralErrorCount": 0,
+        "classificationCounts": {},
+        "nextDecision": "Continue period reconciliation and business sign-off before production publication."
+      },
       "keyFieldCoverage": [
         {
           "field": "po_number",
@@ -1647,7 +3430,196 @@
         }
       ],
       "findings": [],
-      "evidenceRows": []
+      "evidenceRows": [],
+      "reportContext": {
+        "mode": "hosted_structure_local_values",
+        "statement": "The hosted review shows the complete report schema, every captured export, row-level issue density, and redacted context windows. Full operational rows remain available only in the localhost reviewer.",
+        "columns": [
+          {
+            "field": "deployment_name",
+            "label": "deployment name",
+            "sensitive": false
+          },
+          {
+            "field": "store_name",
+            "label": "store name",
+            "sensitive": false
+          },
+          {
+            "field": "vendor_name",
+            "label": "vendor name",
+            "sensitive": false
+          },
+          {
+            "field": "po_number",
+            "label": "po number",
+            "sensitive": false
+          },
+          {
+            "field": "pr_number",
+            "label": "pr number",
+            "sensitive": false
+          },
+          {
+            "field": "pr_deployment",
+            "label": "pr deployment",
+            "sensitive": false
+          },
+          {
+            "field": "po_date",
+            "label": "po date",
+            "sensitive": false
+          },
+          {
+            "field": "expected_delivery_date",
+            "label": "expected delivery date",
+            "sensitive": false
+          },
+          {
+            "field": "po_close_or_partial_receive_date",
+            "label": "po close or partial receive date",
+            "sensitive": false
+          },
+          {
+            "field": "po_status",
+            "label": "po status",
+            "sensitive": false
+          },
+          {
+            "field": "item_code",
+            "label": "item code",
+            "sensitive": false
+          },
+          {
+            "field": "item_name",
+            "label": "item name",
+            "sensitive": false
+          },
+          {
+            "field": "item_brand",
+            "label": "item brand",
+            "sensitive": false
+          },
+          {
+            "field": "category_name",
+            "label": "category name",
+            "sensitive": false
+          },
+          {
+            "field": "super_category_name",
+            "label": "super category name",
+            "sensitive": false
+          },
+          {
+            "field": "comment",
+            "label": "comment",
+            "sensitive": false
+          },
+          {
+            "field": "processed_qty",
+            "label": "processed qty",
+            "sensitive": false
+          },
+          {
+            "field": "remaining_balance_qty",
+            "label": "remaining balance qty",
+            "sensitive": false
+          },
+          {
+            "field": "ordered_qty",
+            "label": "ordered qty",
+            "sensitive": false
+          },
+          {
+            "field": "unit",
+            "label": "unit",
+            "sensitive": false
+          },
+          {
+            "field": "unit_price",
+            "label": "unit price",
+            "sensitive": false
+          },
+          {
+            "field": "subtotal",
+            "label": "subtotal",
+            "sensitive": false
+          },
+          {
+            "field": "item_discount_amt",
+            "label": "item discount amt",
+            "sensitive": false
+          },
+          {
+            "field": "bill_discount_amt",
+            "label": "bill discount amt",
+            "sensitive": false
+          },
+          {
+            "field": "new_subtotal",
+            "label": "new subtotal",
+            "sensitive": false
+          },
+          {
+            "field": "tax_amt",
+            "label": "tax amt",
+            "sensitive": false
+          },
+          {
+            "field": "total_item_cost",
+            "label": "total item cost",
+            "sensitive": false
+          }
+        ],
+        "exports": [
+          {
+            "label": "22 Apr - 23 Jul 2026",
+            "rowCount": 113,
+            "headerRowNumber": 1,
+            "issueObservationCount": 0,
+            "issueDensity": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "contextWindows": [],
+        "localViewerUrl": "http://127.0.0.1:8765/?report_id=p4.enterprise_purchase_order.item"
+      }
     },
     {
       "reportId": "p4.enterprise_reorder.item",
@@ -1682,6 +3654,16 @@
       },
       "readiness": "blocked_header_only",
       "decision": "Header-only export; thresholds must come from an approved item master until populated.",
+      "codexReview": {
+        "status": "coverage_blocked",
+        "headline": "No structural mismatch; populated evidence is missing.",
+        "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
+        "confirmedStructuralErrorCount": 0,
+        "classificationCounts": {
+          "coverage_blocker": 1
+        },
+        "nextDecision": "Obtain a populated export or approve an alternate source before enabling dependent KPIs."
+      },
       "keyFieldCoverage": [
         {
           "field": "item_code",
@@ -1732,10 +3714,110 @@
           "affectedRowCount": 0,
           "fields": [],
           "observation": "1 of 1 exports contain no data rows.",
-          "productionTreatment": "Keep dependent KPIs blocked until a populated export or approved alternate source is available."
+          "productionTreatment": "Keep dependent KPIs blocked until a populated export or approved alternate source is available.",
+          "semanticReview": {
+            "classification": "coverage_blocker",
+            "confidence": "high",
+            "assessment": "The export contains no usable rows for one or more captured periods. This is a confirmed evidence-coverage gap, regardless of whether the underlying operational system contains data elsewhere.",
+            "businessQuestion": "Is the report genuinely unused, filtered incorrectly, permission-restricted, or populated in another module?"
+          }
         }
       ],
-      "evidenceRows": []
+      "evidenceRows": [],
+      "reportContext": {
+        "mode": "hosted_structure_local_values",
+        "statement": "The hosted review shows the complete report schema, every captured export, row-level issue density, and redacted context windows. Full operational rows remain available only in the localhost reviewer.",
+        "columns": [
+          {
+            "field": "deployment_name",
+            "label": "deployment name",
+            "sensitive": false
+          },
+          {
+            "field": "store_name",
+            "label": "store name",
+            "sensitive": false
+          },
+          {
+            "field": "item_code",
+            "label": "item code",
+            "sensitive": false
+          },
+          {
+            "field": "item_name",
+            "label": "item name",
+            "sensitive": false
+          },
+          {
+            "field": "reorder_level_qty",
+            "label": "reorder level qty",
+            "sensitive": false
+          },
+          {
+            "field": "minimum_order_level_qty",
+            "label": "minimum order level qty",
+            "sensitive": false
+          },
+          {
+            "field": "available_qty",
+            "label": "available qty",
+            "sensitive": false
+          },
+          {
+            "field": "unit_name",
+            "label": "unit name",
+            "sensitive": false
+          }
+        ],
+        "exports": [
+          {
+            "label": "Snapshot 21 Jul 2026",
+            "rowCount": 0,
+            "headerRowNumber": 1,
+            "issueObservationCount": 0,
+            "issueDensity": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "contextWindows": [],
+        "localViewerUrl": "http://127.0.0.1:8765/?report_id=p4.enterprise_reorder.item"
+      }
     },
     {
       "reportId": "p4.enterprise_stock_return.item",
@@ -1771,6 +3853,16 @@
       },
       "readiness": "blocked_header_only",
       "decision": "Header-only export; vendor return-rate KPIs remain blocked until populated evidence is available.",
+      "codexReview": {
+        "status": "coverage_blocked",
+        "headline": "No structural mismatch; populated evidence is missing.",
+        "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
+        "confirmedStructuralErrorCount": 0,
+        "classificationCounts": {
+          "coverage_blocker": 1
+        },
+        "nextDecision": "Obtain a populated export or approve an alternate source before enabling dependent KPIs."
+      },
       "keyFieldCoverage": [
         {
           "field": "transaction_number",
@@ -1834,10 +3926,250 @@
           "affectedRowCount": 0,
           "fields": [],
           "observation": "1 of 1 exports contain no data rows.",
-          "productionTreatment": "Keep dependent KPIs blocked until a populated export or approved alternate source is available."
+          "productionTreatment": "Keep dependent KPIs blocked until a populated export or approved alternate source is available.",
+          "semanticReview": {
+            "classification": "coverage_blocker",
+            "confidence": "high",
+            "assessment": "The export contains no usable rows for one or more captured periods. This is a confirmed evidence-coverage gap, regardless of whether the underlying operational system contains data elsewhere.",
+            "businessQuestion": "Is the report genuinely unused, filtered incorrectly, permission-restricted, or populated in another module?"
+          }
         }
       ],
-      "evidenceRows": []
+      "evidenceRows": [],
+      "reportContext": {
+        "mode": "hosted_structure_local_values",
+        "statement": "The hosted review shows the complete report schema, every captured export, row-level issue density, and redacted context windows. Full operational rows remain available only in the localhost reviewer.",
+        "columns": [
+          {
+            "field": "deployment_name",
+            "label": "deployment name",
+            "sensitive": false
+          },
+          {
+            "field": "store_name",
+            "label": "store name",
+            "sensitive": false
+          },
+          {
+            "field": "stock_entry_date",
+            "label": "stock entry date",
+            "sensitive": false
+          },
+          {
+            "field": "transaction_number",
+            "label": "transaction number",
+            "sensitive": false
+          },
+          {
+            "field": "invoice_number",
+            "label": "invoice number",
+            "sensitive": false
+          },
+          {
+            "field": "batch_number",
+            "label": "batch number",
+            "sensitive": false
+          },
+          {
+            "field": "vendor_code",
+            "label": "vendor code",
+            "sensitive": false
+          },
+          {
+            "field": "vendor_name",
+            "label": "vendor name",
+            "sensitive": false
+          },
+          {
+            "field": "super_category_code",
+            "label": "super category code",
+            "sensitive": false
+          },
+          {
+            "field": "super_category_name",
+            "label": "super category name",
+            "sensitive": false
+          },
+          {
+            "field": "category_code",
+            "label": "category code",
+            "sensitive": false
+          },
+          {
+            "field": "category_name",
+            "label": "category name",
+            "sensitive": false
+          },
+          {
+            "field": "item_code",
+            "label": "item code",
+            "sensitive": false
+          },
+          {
+            "field": "item_name",
+            "label": "item name",
+            "sensitive": false
+          },
+          {
+            "field": "comment",
+            "label": "comment",
+            "sensitive": false
+          },
+          {
+            "field": "entry_unit",
+            "label": "entry unit",
+            "sensitive": false
+          },
+          {
+            "field": "entry_qty",
+            "label": "entry qty",
+            "sensitive": false
+          },
+          {
+            "field": "unit_price",
+            "label": "unit price",
+            "sensitive": false
+          },
+          {
+            "field": "entry_subtotal",
+            "label": "entry subtotal",
+            "sensitive": false
+          },
+          {
+            "field": "entry_discount_amt",
+            "label": "entry discount amt",
+            "sensitive": false
+          },
+          {
+            "field": "entry_cgst_amt",
+            "label": "entry cgst amt",
+            "sensitive": false
+          },
+          {
+            "field": "entry_sgst_amt",
+            "label": "entry sgst amt",
+            "sensitive": false
+          },
+          {
+            "field": "entry_igst_amt",
+            "label": "entry igst amt",
+            "sensitive": false
+          },
+          {
+            "field": "entry_non_gst_amt",
+            "label": "entry non gst amt",
+            "sensitive": false
+          },
+          {
+            "field": "entry_amt",
+            "label": "entry amt",
+            "sensitive": false
+          },
+          {
+            "field": "return_date",
+            "label": "return date",
+            "sensitive": false
+          },
+          {
+            "field": "return_unit",
+            "label": "return unit",
+            "sensitive": false
+          },
+          {
+            "field": "return_qty",
+            "label": "return qty",
+            "sensitive": false
+          },
+          {
+            "field": "return_subtotal",
+            "label": "return subtotal",
+            "sensitive": false
+          },
+          {
+            "field": "return_discount_amt",
+            "label": "return discount amt",
+            "sensitive": false
+          },
+          {
+            "field": "return_cgst_amt",
+            "label": "return cgst amt",
+            "sensitive": false
+          },
+          {
+            "field": "return_sgst_amt",
+            "label": "return sgst amt",
+            "sensitive": false
+          },
+          {
+            "field": "return_igst_amt",
+            "label": "return igst amt",
+            "sensitive": false
+          },
+          {
+            "field": "return_non_gst_amt",
+            "label": "return non gst amt",
+            "sensitive": false
+          },
+          {
+            "field": "return_amt",
+            "label": "return amt",
+            "sensitive": false
+          },
+          {
+            "field": "transaction_status",
+            "label": "transaction status",
+            "sensitive": false
+          }
+        ],
+        "exports": [
+          {
+            "label": "Snapshot 22 Jul 2026",
+            "rowCount": 0,
+            "headerRowNumber": 1,
+            "issueObservationCount": 0,
+            "issueDensity": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "contextWindows": [],
+        "localViewerUrl": "http://127.0.0.1:8765/?report_id=p4.enterprise_stock_return.item"
+      }
     },
     {
       "reportId": "p4.enterprise_transfer.from_item",
@@ -1873,6 +4205,16 @@
       },
       "readiness": "review_required",
       "decision": "Schema-ready; pair and reconcile against Transfer To before publication.",
+      "codexReview": {
+        "status": "definition_review",
+        "headline": "Schema is sound; source calculation definitions remain unresolved.",
+        "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
+        "confirmedStructuralErrorCount": 0,
+        "classificationCounts": {
+          "formula_definition_gate": 1
+        },
+        "nextDecision": "Confirm Restroworks formulas, UOM, valuation, tax, and rounding rules before classifying source values as incorrect."
+      },
       "keyFieldCoverage": [
         {
           "field": "transfer_date",
@@ -1966,7 +4308,13 @@
             "unit_price"
           ],
           "observation": "Transfer amount differs from quantity multiplied by unit price.",
-          "productionTreatment": "Recompute transfer value and reconcile both transfer directions by transaction before publication."
+          "productionTreatment": "Recompute transfer value and reconcile both transfer directions by transaction before publication.",
+          "semanticReview": {
+            "classification": "formula_definition_gate",
+            "confidence": "medium",
+            "assessment": "The isolated transfer differences are compatible with rounding, pack conversion, or a valuation-price basis. They are reconciliation candidates, not confirmed source errors.",
+            "businessQuestion": "Is transfer value based on displayed unit price, weighted cost, source-outlet valuation, or a converted pack quantity?"
+          }
         }
       ],
       "evidenceRows": [
@@ -1996,7 +4344,201 @@
           "observed": "20.54",
           "privacy": "Only issue-relevant non-sensitive cells are included."
         }
-      ]
+      ],
+      "reportContext": {
+        "mode": "hosted_structure_local_values",
+        "statement": "The hosted review shows the complete report schema, every captured export, row-level issue density, and redacted context windows. Full operational rows remain available only in the localhost reviewer.",
+        "columns": [
+          {
+            "field": "deployment_name",
+            "label": "deployment name",
+            "sensitive": false
+          },
+          {
+            "field": "supplier_store_kitchen_code",
+            "label": "supplier store kitchen code",
+            "sensitive": false
+          },
+          {
+            "field": "supplier_store_kitchen_name",
+            "label": "supplier store kitchen name",
+            "sensitive": false
+          },
+          {
+            "field": "receiver_store_kitchen_code",
+            "label": "receiver store kitchen code",
+            "sensitive": false
+          },
+          {
+            "field": "receiver_store_kitchen_name",
+            "label": "receiver store kitchen name",
+            "sensitive": false
+          },
+          {
+            "field": "user_name",
+            "label": "user name",
+            "sensitive": true
+          },
+          {
+            "field": "transfer_date",
+            "label": "transfer date",
+            "sensitive": false
+          },
+          {
+            "field": "transaction_number",
+            "label": "transaction number",
+            "sensitive": false
+          },
+          {
+            "field": "item_code",
+            "label": "item code",
+            "sensitive": false
+          },
+          {
+            "field": "item_name",
+            "label": "item name",
+            "sensitive": false
+          },
+          {
+            "field": "category_name",
+            "label": "category name",
+            "sensitive": false
+          },
+          {
+            "field": "super_category_name",
+            "label": "super category name",
+            "sensitive": false
+          },
+          {
+            "field": "comment",
+            "label": "comment",
+            "sensitive": false
+          },
+          {
+            "field": "transfer_qty",
+            "label": "transfer qty",
+            "sensitive": false
+          },
+          {
+            "field": "unit",
+            "label": "unit",
+            "sensitive": false
+          },
+          {
+            "field": "unit_price",
+            "label": "unit price",
+            "sensitive": false
+          },
+          {
+            "field": "transfer_amt",
+            "label": "transfer amt",
+            "sensitive": false
+          },
+          {
+            "field": "source",
+            "label": "source",
+            "sensitive": false
+          }
+        ],
+        "exports": [
+          {
+            "label": "22 Apr - 22 Jul 2026",
+            "rowCount": 211,
+            "headerRowNumber": 1,
+            "issueObservationCount": 1,
+            "issueDensity": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "contextWindows": [
+          {
+            "id": "context:evidence:p4_enterprise_transfer_from_item:transfer_amount_from_qty_price",
+            "findingId": "p4.enterprise_transfer.from_item:transfer_amount_from_qty_price",
+            "exportLabel": "22 Apr - 22 Jul 2026",
+            "focusSourceRowNumber": 196,
+            "rows": [
+              {
+                "sourceRowNumber": 194,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 195,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 196,
+                "state": "issue",
+                "values": [
+                  {
+                    "field": "transfer_amt",
+                    "label": "transfer amt",
+                    "value": "20.54"
+                  },
+                  {
+                    "field": "transfer_qty",
+                    "label": "transfer qty",
+                    "value": "100"
+                  },
+                  {
+                    "field": "unit_price",
+                    "label": "unit price",
+                    "value": "0.21"
+                  }
+                ]
+              },
+              {
+                "sourceRowNumber": 197,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 198,
+                "state": "context",
+                "values": []
+              }
+            ]
+          }
+        ],
+        "localViewerUrl": "http://127.0.0.1:8765/?report_id=p4.enterprise_transfer.from_item"
+      }
     },
     {
       "reportId": "p4.enterprise_transfer.to_item",
@@ -2032,6 +4574,16 @@
       },
       "readiness": "review_required",
       "decision": "Schema-ready; pair and reconcile against Transfer From before publication.",
+      "codexReview": {
+        "status": "definition_review",
+        "headline": "Schema is sound; source calculation definitions remain unresolved.",
+        "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
+        "confirmedStructuralErrorCount": 0,
+        "classificationCounts": {
+          "formula_definition_gate": 1
+        },
+        "nextDecision": "Confirm Restroworks formulas, UOM, valuation, tax, and rounding rules before classifying source values as incorrect."
+      },
       "keyFieldCoverage": [
         {
           "field": "transfer_date",
@@ -2125,7 +4677,13 @@
             "unit_price"
           ],
           "observation": "Transfer amount differs from quantity multiplied by unit price.",
-          "productionTreatment": "Recompute transfer value and reconcile both transfer directions by transaction before publication."
+          "productionTreatment": "Recompute transfer value and reconcile both transfer directions by transaction before publication.",
+          "semanticReview": {
+            "classification": "formula_definition_gate",
+            "confidence": "medium",
+            "assessment": "The isolated transfer differences are compatible with rounding, pack conversion, or a valuation-price basis. They are reconciliation candidates, not confirmed source errors.",
+            "businessQuestion": "Is transfer value based on displayed unit price, weighted cost, source-outlet valuation, or a converted pack quantity?"
+          }
         }
       ],
       "evidenceRows": [
@@ -2155,7 +4713,191 @@
           "observed": "20.54",
           "privacy": "Only issue-relevant non-sensitive cells are included."
         }
-      ]
+      ],
+      "reportContext": {
+        "mode": "hosted_structure_local_values",
+        "statement": "The hosted review shows the complete report schema, every captured export, row-level issue density, and redacted context windows. Full operational rows remain available only in the localhost reviewer.",
+        "columns": [
+          {
+            "field": "deployment_name",
+            "label": "deployment name",
+            "sensitive": false
+          },
+          {
+            "field": "receiver_store_name",
+            "label": "receiver store name",
+            "sensitive": false
+          },
+          {
+            "field": "supplier_store_name",
+            "label": "supplier store name",
+            "sensitive": false
+          },
+          {
+            "field": "user_name",
+            "label": "user name",
+            "sensitive": true
+          },
+          {
+            "field": "transfer_date",
+            "label": "transfer date",
+            "sensitive": false
+          },
+          {
+            "field": "transaction_number",
+            "label": "transaction number",
+            "sensitive": false
+          },
+          {
+            "field": "item_code",
+            "label": "item code",
+            "sensitive": false
+          },
+          {
+            "field": "item_name",
+            "label": "item name",
+            "sensitive": false
+          },
+          {
+            "field": "category_name",
+            "label": "category name",
+            "sensitive": false
+          },
+          {
+            "field": "super_category_name",
+            "label": "super category name",
+            "sensitive": false
+          },
+          {
+            "field": "comment",
+            "label": "comment",
+            "sensitive": false
+          },
+          {
+            "field": "transfer_qty",
+            "label": "transfer qty",
+            "sensitive": false
+          },
+          {
+            "field": "unit",
+            "label": "unit",
+            "sensitive": false
+          },
+          {
+            "field": "unit_price",
+            "label": "unit price",
+            "sensitive": false
+          },
+          {
+            "field": "transfer_amt",
+            "label": "transfer amt",
+            "sensitive": false
+          },
+          {
+            "field": "source",
+            "label": "source",
+            "sensitive": false
+          }
+        ],
+        "exports": [
+          {
+            "label": "22 Apr - 22 Jul 2026",
+            "rowCount": 211,
+            "headerRowNumber": 1,
+            "issueObservationCount": 1,
+            "issueDensity": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "contextWindows": [
+          {
+            "id": "context:evidence:p4_enterprise_transfer_to_item:transfer_amount_from_qty_price",
+            "findingId": "p4.enterprise_transfer.to_item:transfer_amount_from_qty_price",
+            "exportLabel": "22 Apr - 22 Jul 2026",
+            "focusSourceRowNumber": 196,
+            "rows": [
+              {
+                "sourceRowNumber": 194,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 195,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 196,
+                "state": "issue",
+                "values": [
+                  {
+                    "field": "transfer_amt",
+                    "label": "transfer amt",
+                    "value": "20.54"
+                  },
+                  {
+                    "field": "transfer_qty",
+                    "label": "transfer qty",
+                    "value": "100"
+                  },
+                  {
+                    "field": "unit_price",
+                    "label": "unit price",
+                    "value": "0.21"
+                  }
+                ]
+              },
+              {
+                "sourceRowNumber": 197,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 198,
+                "state": "context",
+                "values": []
+              }
+            ]
+          }
+        ],
+        "localViewerUrl": "http://127.0.0.1:8765/?report_id=p4.enterprise_transfer.to_item"
+      }
     },
     {
       "reportId": "p4.enterprise_variance.master",
@@ -2190,6 +4932,16 @@
       },
       "readiness": "review_required",
       "decision": "Schema-ready; sign conventions require review and normal variance remains the selected source.",
+      "codexReview": {
+        "status": "business_review",
+        "headline": "Schema is sound; observed rows need business-grain and sign treatment.",
+        "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
+        "confirmedStructuralErrorCount": 0,
+        "classificationCounts": {
+          "operational_exception": 1
+        },
+        "nextDecision": "Approve transaction grain and sign conventions before aggregation."
+      },
       "keyFieldCoverage": [],
       "findings": [
         {
@@ -2209,7 +4961,13 @@
             "variance_amt"
           ],
           "observation": "Negative observations can represent returns, adjustments, or stock corrections; they are not classified as errors automatically.",
-          "productionTreatment": "Confirm sign conventions by transaction type and apply them consistently in standardized facts and KPI formulas."
+          "productionTreatment": "Confirm sign conventions by transaction type and apply them consistently in standardized facts and KPI formulas.",
+          "semanticReview": {
+            "classification": "operational_exception",
+            "confidence": "high",
+            "assessment": "Negative quantities, values, or margins can be valid returns, reversals, corrections, oversold stock, or loss-making sales. They are operational exceptions, not automatic data errors.",
+            "businessQuestion": "Which transaction types and status values define the approved sign convention for each negative field?"
+          }
         }
       ],
       "evidenceRows": [
@@ -2234,7 +4992,291 @@
           "observed": "One or more exported values are negative",
           "privacy": "Only issue-relevant non-sensitive cells are included."
         }
-      ]
+      ],
+      "reportContext": {
+        "mode": "hosted_structure_local_values",
+        "statement": "The hosted review shows the complete report schema, every captured export, row-level issue density, and redacted context windows. Full operational rows remain available only in the localhost reviewer.",
+        "columns": [
+          {
+            "field": "deployment_name",
+            "label": "deployment name",
+            "sensitive": false
+          },
+          {
+            "field": "store_kitchen_name",
+            "label": "store kitchen name",
+            "sensitive": false
+          },
+          {
+            "field": "category_name",
+            "label": "category name",
+            "sensitive": false
+          },
+          {
+            "field": "item_type",
+            "label": "item type",
+            "sensitive": false
+          },
+          {
+            "field": "is_asset",
+            "label": "is asset",
+            "sensitive": false
+          },
+          {
+            "field": "item_name",
+            "label": "item name",
+            "sensitive": false
+          },
+          {
+            "field": "unit",
+            "label": "unit",
+            "sensitive": false
+          },
+          {
+            "field": "price",
+            "label": "price",
+            "sensitive": false
+          },
+          {
+            "field": "opening_qty",
+            "label": "opening qty",
+            "sensitive": false
+          },
+          {
+            "field": "opening_amt",
+            "label": "opening amt",
+            "sensitive": false
+          },
+          {
+            "field": "purchase_qty",
+            "label": "purchase qty",
+            "sensitive": false
+          },
+          {
+            "field": "purchase_amt",
+            "label": "purchase amt",
+            "sensitive": false
+          },
+          {
+            "field": "production_qty",
+            "label": "production qty",
+            "sensitive": false
+          },
+          {
+            "field": "production_amt",
+            "label": "production amt",
+            "sensitive": false
+          },
+          {
+            "field": "consumption_qty",
+            "label": "consumption qty",
+            "sensitive": false
+          },
+          {
+            "field": "consumption_amt",
+            "label": "consumption amt",
+            "sensitive": false
+          },
+          {
+            "field": "stock_in_qty",
+            "label": "stock in qty",
+            "sensitive": false
+          },
+          {
+            "field": "stock_in_amt",
+            "label": "stock in amt",
+            "sensitive": false
+          },
+          {
+            "field": "stock_out_qty",
+            "label": "stock out qty",
+            "sensitive": false
+          },
+          {
+            "field": "stock_out_amt",
+            "label": "stock out amt",
+            "sensitive": false
+          },
+          {
+            "field": "wastage_qty",
+            "label": "wastage qty",
+            "sensitive": false
+          },
+          {
+            "field": "wastage_amt",
+            "label": "wastage amt",
+            "sensitive": false
+          },
+          {
+            "field": "reuse_qty",
+            "label": "reuse qty",
+            "sensitive": false
+          },
+          {
+            "field": "reuse_amt",
+            "label": "reuse amt",
+            "sensitive": false
+          },
+          {
+            "field": "return_qty",
+            "label": "return qty",
+            "sensitive": false
+          },
+          {
+            "field": "return_amt",
+            "label": "return amt",
+            "sensitive": false
+          },
+          {
+            "field": "closing_qty",
+            "label": "closing qty",
+            "sensitive": false
+          },
+          {
+            "field": "closing_amt",
+            "label": "closing amt",
+            "sensitive": false
+          },
+          {
+            "field": "physical_qty",
+            "label": "physical qty",
+            "sensitive": false
+          },
+          {
+            "field": "physical_amt",
+            "label": "physical amt",
+            "sensitive": false
+          },
+          {
+            "field": "variance_qty",
+            "label": "variance qty",
+            "sensitive": false
+          },
+          {
+            "field": "variance_amt",
+            "label": "variance amt",
+            "sensitive": false
+          },
+          {
+            "field": "physical_gain_loss_qty",
+            "label": "physical gain loss qty",
+            "sensitive": false
+          },
+          {
+            "field": "physical_gain_loss_amt",
+            "label": "physical gain loss amt",
+            "sensitive": false
+          },
+          {
+            "field": "actual_consumption_qty",
+            "label": "actual consumption qty",
+            "sensitive": false
+          },
+          {
+            "field": "actual_consumption_amt",
+            "label": "actual consumption amt",
+            "sensitive": false
+          },
+          {
+            "field": "physical_adjusted_closing_qty",
+            "label": "physical adjusted closing qty",
+            "sensitive": false
+          },
+          {
+            "field": "physical_adjusted_closing_amt",
+            "label": "physical adjusted closing amt",
+            "sensitive": false
+          }
+        ],
+        "exports": [
+          {
+            "label": "22 Jun - 21 Jul 2026",
+            "rowCount": 426,
+            "headerRowNumber": 1,
+            "issueObservationCount": 0,
+            "issueDensity": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "contextWindows": [
+          {
+            "id": "context:evidence:p4_enterprise_variance_master:negative",
+            "findingId": "p4.enterprise_variance.master:negative_values",
+            "exportLabel": "22 Jun - 21 Jul 2026",
+            "focusSourceRowNumber": 3,
+            "rows": [
+              {
+                "sourceRowNumber": 2,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 3,
+                "state": "issue",
+                "values": [
+                  {
+                    "field": "opening_amt",
+                    "label": "opening amt",
+                    "value": "-56.29"
+                  },
+                  {
+                    "field": "opening_qty",
+                    "label": "opening qty",
+                    "value": "-0.013"
+                  }
+                ]
+              },
+              {
+                "sourceRowNumber": 4,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 5,
+                "state": "context",
+                "values": []
+              }
+            ]
+          }
+        ],
+        "localViewerUrl": "http://127.0.0.1:8765/?report_id=p4.enterprise_variance.master"
+      }
     },
     {
       "reportId": "p4.enterprise_variance.normal",
@@ -2269,6 +5311,16 @@
       },
       "readiness": "review_required",
       "decision": "Schema-ready; negative inventory and consumption signs require business treatment before KPI publication.",
+      "codexReview": {
+        "status": "business_review",
+        "headline": "Schema is sound; observed rows need business-grain and sign treatment.",
+        "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
+        "confirmedStructuralErrorCount": 0,
+        "classificationCounts": {
+          "operational_exception": 1
+        },
+        "nextDecision": "Approve transaction grain and sign conventions before aggregation."
+      },
       "keyFieldCoverage": [
         {
           "field": "opening_qty",
@@ -2393,7 +5445,13 @@
             "physical_adjusted_closing_amt"
           ],
           "observation": "Negative observations can represent returns, adjustments, or stock corrections; they are not classified as errors automatically.",
-          "productionTreatment": "Confirm sign conventions by transaction type and apply them consistently in standardized facts and KPI formulas."
+          "productionTreatment": "Confirm sign conventions by transaction type and apply them consistently in standardized facts and KPI formulas.",
+          "semanticReview": {
+            "classification": "operational_exception",
+            "confidence": "high",
+            "assessment": "Negative quantities, values, or margins can be valid returns, reversals, corrections, oversold stock, or loss-making sales. They are operational exceptions, not automatic data errors.",
+            "businessQuestion": "Which transaction types and status values define the approved sign convention for each negative field?"
+          }
         }
       ],
       "evidenceRows": [
@@ -2438,7 +5496,356 @@
           "observed": "One or more exported values are negative",
           "privacy": "Only issue-relevant non-sensitive cells are included."
         }
-      ]
+      ],
+      "reportContext": {
+        "mode": "hosted_structure_local_values",
+        "statement": "The hosted review shows the complete report schema, every captured export, row-level issue density, and redacted context windows. Full operational rows remain available only in the localhost reviewer.",
+        "columns": [
+          {
+            "field": "deployment_name",
+            "label": "deployment name",
+            "sensitive": false
+          },
+          {
+            "field": "store_kitchen_name",
+            "label": "store kitchen name",
+            "sensitive": false
+          },
+          {
+            "field": "item_code",
+            "label": "item code",
+            "sensitive": false
+          },
+          {
+            "field": "item_name",
+            "label": "item name",
+            "sensitive": false
+          },
+          {
+            "field": "category_name",
+            "label": "category name",
+            "sensitive": false
+          },
+          {
+            "field": "super_category_name",
+            "label": "super category name",
+            "sensitive": false
+          },
+          {
+            "field": "average_price",
+            "label": "average price",
+            "sensitive": false
+          },
+          {
+            "field": "opening_date",
+            "label": "opening date",
+            "sensitive": false
+          },
+          {
+            "field": "opening_qty",
+            "label": "opening qty",
+            "sensitive": false
+          },
+          {
+            "field": "unit",
+            "label": "unit",
+            "sensitive": false
+          },
+          {
+            "field": "opening_amt",
+            "label": "opening amt",
+            "sensitive": false
+          },
+          {
+            "field": "purchase_qty",
+            "label": "purchase qty",
+            "sensitive": false
+          },
+          {
+            "field": "purchase_amt",
+            "label": "purchase amt",
+            "sensitive": false
+          },
+          {
+            "field": "stock_in_qty",
+            "label": "stock in qty",
+            "sensitive": false
+          },
+          {
+            "field": "stock_in_amt",
+            "label": "stock in amt",
+            "sensitive": false
+          },
+          {
+            "field": "consumption_qty",
+            "label": "consumption qty",
+            "sensitive": false
+          },
+          {
+            "field": "consumption_amt",
+            "label": "consumption amt",
+            "sensitive": false
+          },
+          {
+            "field": "source_yield_wastage_qty",
+            "label": "source yield wastage qty",
+            "sensitive": false
+          },
+          {
+            "field": "source_yield_wastage_amt",
+            "label": "source yield wastage amt",
+            "sensitive": false
+          },
+          {
+            "field": "stock_out_qty",
+            "label": "stock out qty",
+            "sensitive": false
+          },
+          {
+            "field": "stock_out_amt",
+            "label": "stock out amt",
+            "sensitive": false
+          },
+          {
+            "field": "stock_out_plus_consumption_qty",
+            "label": "stock out plus consumption qty",
+            "sensitive": false
+          },
+          {
+            "field": "stock_out_plus_consumption_amt",
+            "label": "stock out plus consumption amt",
+            "sensitive": false
+          },
+          {
+            "field": "wastage_qty",
+            "label": "wastage qty",
+            "sensitive": false
+          },
+          {
+            "field": "wastage_amt",
+            "label": "wastage amt",
+            "sensitive": false
+          },
+          {
+            "field": "reuse_qty",
+            "label": "reuse qty",
+            "sensitive": false
+          },
+          {
+            "field": "reuse_amt",
+            "label": "reuse amt",
+            "sensitive": false
+          },
+          {
+            "field": "return_qty",
+            "label": "return qty",
+            "sensitive": false
+          },
+          {
+            "field": "return_amt",
+            "label": "return amt",
+            "sensitive": false
+          },
+          {
+            "field": "closing_date",
+            "label": "closing date",
+            "sensitive": false
+          },
+          {
+            "field": "closing_qty",
+            "label": "closing qty",
+            "sensitive": false
+          },
+          {
+            "field": "closing_amt",
+            "label": "closing amt",
+            "sensitive": false
+          },
+          {
+            "field": "latest_physical_date",
+            "label": "latest physical date",
+            "sensitive": false
+          },
+          {
+            "field": "physical_qty",
+            "label": "physical qty",
+            "sensitive": false
+          },
+          {
+            "field": "physical_amt",
+            "label": "physical amt",
+            "sensitive": false
+          },
+          {
+            "field": "variance_qty",
+            "label": "variance qty",
+            "sensitive": false
+          },
+          {
+            "field": "variance_amt",
+            "label": "variance amt",
+            "sensitive": false
+          },
+          {
+            "field": "variance_percent",
+            "label": "variance percent",
+            "sensitive": false
+          },
+          {
+            "field": "physical_gain_loss_qty",
+            "label": "physical gain loss qty",
+            "sensitive": false
+          },
+          {
+            "field": "physical_gain_loss_amt",
+            "label": "physical gain loss amt",
+            "sensitive": false
+          },
+          {
+            "field": "actual_consumption_qty",
+            "label": "actual consumption qty",
+            "sensitive": false
+          },
+          {
+            "field": "actual_consumption_amt",
+            "label": "actual consumption amt",
+            "sensitive": false
+          },
+          {
+            "field": "ideal_closing_qty",
+            "label": "ideal closing qty",
+            "sensitive": false
+          },
+          {
+            "field": "ideal_closing_amt",
+            "label": "ideal closing amt",
+            "sensitive": false
+          },
+          {
+            "field": "physical_adjusted_closing_qty",
+            "label": "physical adjusted closing qty",
+            "sensitive": false
+          },
+          {
+            "field": "physical_adjusted_closing_amt",
+            "label": "physical adjusted closing amt",
+            "sensitive": false
+          }
+        ],
+        "exports": [
+          {
+            "label": "21 Apr - 21 Jul 2026",
+            "rowCount": 812,
+            "headerRowNumber": 1,
+            "issueObservationCount": 0,
+            "issueDensity": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "contextWindows": [
+          {
+            "id": "context:evidence:p4_enterprise_variance_normal:negative",
+            "findingId": "p4.enterprise_variance.normal:negative_values",
+            "exportLabel": "21 Apr - 21 Jul 2026",
+            "focusSourceRowNumber": 38,
+            "rows": [
+              {
+                "sourceRowNumber": 36,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 37,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 38,
+                "state": "issue",
+                "values": [
+                  {
+                    "field": "closing_amt",
+                    "label": "closing amt",
+                    "value": "-100"
+                  },
+                  {
+                    "field": "closing_qty",
+                    "label": "closing qty",
+                    "value": "-0.5"
+                  },
+                  {
+                    "field": "ideal_closing_amt",
+                    "label": "ideal closing amt",
+                    "value": "-100"
+                  },
+                  {
+                    "field": "ideal_closing_qty",
+                    "label": "ideal closing qty",
+                    "value": "-0.5"
+                  },
+                  {
+                    "field": "physical_adjusted_closing_amt",
+                    "label": "physical adjusted closing amt",
+                    "value": "-100"
+                  },
+                  {
+                    "field": "physical_adjusted_closing_qty",
+                    "label": "physical adjusted closing qty",
+                    "value": "-0.5"
+                  }
+                ]
+              },
+              {
+                "sourceRowNumber": 39,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 40,
+                "state": "context",
+                "values": []
+              }
+            ]
+          }
+        ],
+        "localViewerUrl": "http://127.0.0.1:8765/?report_id=p4.enterprise_variance.normal"
+      }
     },
     {
       "reportId": "p4.enterprise_wastage.normal",
@@ -2474,6 +5881,16 @@
       },
       "readiness": "review_required",
       "decision": "Schema-ready; calculate canonical wastage value from normalized quantity and price.",
+      "codexReview": {
+        "status": "definition_review",
+        "headline": "Schema is sound; source calculation definitions remain unresolved.",
+        "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
+        "confirmedStructuralErrorCount": 0,
+        "classificationCounts": {
+          "formula_definition_gate": 1
+        },
+        "nextDecision": "Confirm Restroworks formulas, UOM, valuation, tax, and rounding rules before classifying source values as incorrect."
+      },
       "keyFieldCoverage": [
         {
           "field": "wastage_date",
@@ -2567,7 +5984,13 @@
             "unit_price"
           ],
           "observation": "Wastage amount differs from quantity multiplied by unit price.",
-          "productionTreatment": "Use a calculated wastage value for KPI logic and preserve the exported amount for audit."
+          "productionTreatment": "Use a calculated wastage value for KPI logic and preserve the exported amount for audit.",
+          "semanticReview": {
+            "classification": "formula_definition_gate",
+            "confidence": "high",
+            "assessment": "Wastage amount may use valuation cost or converted base quantity rather than the visible display quantity and price. The mismatch should be retained, but it is not a confirmed error without the valuation rule.",
+            "businessQuestion": "What valuation price and UOM conversion does Restroworks apply to Wastage Amount?"
+          }
         }
       ],
       "evidenceRows": [
@@ -2597,7 +6020,186 @@
           "observed": "4.9",
           "privacy": "Only issue-relevant non-sensitive cells are included."
         }
-      ]
+      ],
+      "reportContext": {
+        "mode": "hosted_structure_local_values",
+        "statement": "The hosted review shows the complete report schema, every captured export, row-level issue density, and redacted context windows. Full operational rows remain available only in the localhost reviewer.",
+        "columns": [
+          {
+            "field": "deployment_name",
+            "label": "deployment name",
+            "sensitive": false
+          },
+          {
+            "field": "store_kitchen_name",
+            "label": "store kitchen name",
+            "sensitive": false
+          },
+          {
+            "field": "user_name",
+            "label": "user name",
+            "sensitive": true
+          },
+          {
+            "field": "wastage_date",
+            "label": "wastage date",
+            "sensitive": false
+          },
+          {
+            "field": "transaction_number",
+            "label": "transaction number",
+            "sensitive": false
+          },
+          {
+            "field": "item_code",
+            "label": "item code",
+            "sensitive": false
+          },
+          {
+            "field": "item_name",
+            "label": "item name",
+            "sensitive": false
+          },
+          {
+            "field": "category_name",
+            "label": "category name",
+            "sensitive": false
+          },
+          {
+            "field": "super_category_name",
+            "label": "super category name",
+            "sensitive": false
+          },
+          {
+            "field": "comment",
+            "label": "comment",
+            "sensitive": false
+          },
+          {
+            "field": "wastage_qty",
+            "label": "wastage qty",
+            "sensitive": false
+          },
+          {
+            "field": "unit",
+            "label": "unit",
+            "sensitive": false
+          },
+          {
+            "field": "unit_price",
+            "label": "unit price",
+            "sensitive": false
+          },
+          {
+            "field": "wastage_amt",
+            "label": "wastage amt",
+            "sensitive": false
+          },
+          {
+            "field": "source",
+            "label": "source",
+            "sensitive": false
+          }
+        ],
+        "exports": [
+          {
+            "label": "22 Apr - 22 Jul 2026",
+            "rowCount": 581,
+            "headerRowNumber": 1,
+            "issueObservationCount": 57,
+            "issueDensity": [
+              2,
+              5,
+              1,
+              1,
+              6,
+              5,
+              6,
+              1,
+              0,
+              1,
+              2,
+              3,
+              7,
+              3,
+              1,
+              2,
+              1,
+              0,
+              1,
+              2,
+              5,
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "contextWindows": [
+          {
+            "id": "context:evidence:p4_enterprise_wastage_normal:wastage_amount_from_qty_price",
+            "findingId": "p4.enterprise_wastage.normal:wastage_amount_from_qty_price",
+            "exportLabel": "22 Apr - 22 Jul 2026",
+            "focusSourceRowNumber": 7,
+            "rows": [
+              {
+                "sourceRowNumber": 5,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 6,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 7,
+                "state": "issue",
+                "values": [
+                  {
+                    "field": "wastage_amt",
+                    "label": "wastage amt",
+                    "value": "4.9"
+                  },
+                  {
+                    "field": "wastage_qty",
+                    "label": "wastage qty",
+                    "value": "50"
+                  },
+                  {
+                    "field": "unit_price",
+                    "label": "unit price",
+                    "value": "0.1"
+                  }
+                ]
+              },
+              {
+                "sourceRowNumber": 8,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 9,
+                "state": "context",
+                "values": []
+              }
+            ]
+          }
+        ],
+        "localViewerUrl": "http://127.0.0.1:8765/?report_id=p4.enterprise_wastage.normal"
+      }
     },
     {
       "reportId": "p2.gross_net_margin.item",
@@ -2634,6 +6236,17 @@
       },
       "readiness": "review_required",
       "decision": "Schema-ready; margin percentages and value bridges remain a production calculation gate.",
+      "codexReview": {
+        "status": "definition_review",
+        "headline": "Schema is sound; source calculation definitions remain unresolved.",
+        "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
+        "confirmedStructuralErrorCount": 0,
+        "classificationCounts": {
+          "formula_definition_gate": 2,
+          "operational_exception": 1
+        },
+        "nextDecision": "Confirm Restroworks formulas, UOM, valuation, tax, and rounding rules before classifying source values as incorrect."
+      },
       "keyFieldCoverage": [
         {
           "field": "sale_date",
@@ -2740,7 +6353,13 @@
             "purchase_value"
           ],
           "observation": "Gross margin percentage differs from the conventional item-level gross-sale margin formula.",
-          "productionTreatment": "Recompute canonical gross margin from approved revenue and cost fields; retain the reported percentage only as a source comparison."
+          "productionTreatment": "Recompute canonical gross margin from approved revenue and cost fields; retain the reported percentage only as a source comparison.",
+          "semanticReview": {
+            "classification": "formula_definition_gate",
+            "confidence": "high",
+            "assessment": "The conventional margin equation does not match the exported percentage for much of the sample. Tax basis, realized sales definition, purchase-value basis, or percentage scaling must be confirmed before treating the source field as wrong.",
+            "businessQuestion": "What exact revenue, cost, tax, discount, and scaling basis defines Gross Margin Percent?"
+          }
         },
         {
           "id": "p2.gross_net_margin.item:net_margin_formula",
@@ -2754,7 +6373,13 @@
             "purchase_value"
           ],
           "observation": "Net margin percentage differs from the conventional item-level net-sale margin formula.",
-          "productionTreatment": "Recompute canonical net margin from approved net sales and cost; retain the reported percentage only as a source comparison."
+          "productionTreatment": "Recompute canonical net margin from approved net sales and cost; retain the reported percentage only as a source comparison.",
+          "semanticReview": {
+            "classification": "formula_definition_gate",
+            "confidence": "high",
+            "assessment": "The conventional net-margin equation does not reproduce the exported percentage. This is a source-definition gap and should not be presented as a confirmed data defect.",
+            "businessQuestion": "What exact numerator and denominator define Net Margin Percent in Restroworks?"
+          }
         },
         {
           "id": "p2.gross_net_margin.item:negative_values",
@@ -2767,7 +6392,13 @@
             "gross_margin_percent"
           ],
           "observation": "Negative observations can represent returns, adjustments, or stock corrections; they are not classified as errors automatically.",
-          "productionTreatment": "Confirm sign conventions by transaction type and apply them consistently in standardized facts and KPI formulas."
+          "productionTreatment": "Confirm sign conventions by transaction type and apply them consistently in standardized facts and KPI formulas.",
+          "semanticReview": {
+            "classification": "operational_exception",
+            "confidence": "high",
+            "assessment": "Negative quantities, values, or margins can be valid returns, reversals, corrections, oversold stock, or loss-making sales. They are operational exceptions, not automatic data errors.",
+            "businessQuestion": "Which transaction types and status values define the approved sign convention for each negative field?"
+          }
         }
       ],
       "evidenceRows": [
@@ -2844,7 +6475,422 @@
           "observed": "One or more exported values are negative",
           "privacy": "Only issue-relevant non-sensitive cells are included."
         }
-      ]
+      ],
+      "reportContext": {
+        "mode": "hosted_structure_local_values",
+        "statement": "The hosted review shows the complete report schema, every captured export, row-level issue density, and redacted context windows. Full operational rows remain available only in the localhost reviewer.",
+        "columns": [
+          {
+            "field": "store_name",
+            "label": "store name",
+            "sensitive": false
+          },
+          {
+            "field": "sale_date",
+            "label": "sale date",
+            "sensitive": false
+          },
+          {
+            "field": "bill_number",
+            "label": "bill number",
+            "sensitive": false
+          },
+          {
+            "field": "tab_type",
+            "label": "tab type",
+            "sensitive": false
+          },
+          {
+            "field": "source",
+            "label": "source",
+            "sensitive": false
+          },
+          {
+            "field": "customer_name",
+            "label": "customer name",
+            "sensitive": true
+          },
+          {
+            "field": "customer_number",
+            "label": "customer number",
+            "sensitive": true
+          },
+          {
+            "field": "super_category_name",
+            "label": "super category name",
+            "sensitive": false
+          },
+          {
+            "field": "category_name",
+            "label": "category name",
+            "sensitive": false
+          },
+          {
+            "field": "sac_hsn_number",
+            "label": "sac hsn number",
+            "sensitive": false
+          },
+          {
+            "field": "item_code",
+            "label": "item code",
+            "sensitive": false
+          },
+          {
+            "field": "item_name",
+            "label": "item name",
+            "sensitive": false
+          },
+          {
+            "field": "item_rate",
+            "label": "item rate",
+            "sensitive": false
+          },
+          {
+            "field": "item_qty",
+            "label": "item qty",
+            "sensitive": false
+          },
+          {
+            "field": "item_subtotal",
+            "label": "item subtotal",
+            "sensitive": false
+          },
+          {
+            "field": "offer_name",
+            "label": "offer name",
+            "sensitive": false
+          },
+          {
+            "field": "discount_amt",
+            "label": "discount amt",
+            "sensitive": false
+          },
+          {
+            "field": "complimentary_amt",
+            "label": "complimentary amt",
+            "sensitive": false
+          },
+          {
+            "field": "total_discount_amt",
+            "label": "total discount amt",
+            "sensitive": false
+          },
+          {
+            "field": "net_sale_value",
+            "label": "net sale value",
+            "sensitive": false
+          },
+          {
+            "field": "tax_amt",
+            "label": "tax amt",
+            "sensitive": false
+          },
+          {
+            "field": "gross_sale_value",
+            "label": "gross sale value",
+            "sensitive": false
+          },
+          {
+            "field": "purchase_rate",
+            "label": "purchase rate",
+            "sensitive": false
+          },
+          {
+            "field": "purchase_value",
+            "label": "purchase value",
+            "sensitive": false
+          },
+          {
+            "field": "net_margin_percent",
+            "label": "net margin percent",
+            "sensitive": false
+          },
+          {
+            "field": "gross_margin_percent",
+            "label": "gross margin percent",
+            "sensitive": false
+          }
+        ],
+        "exports": [
+          {
+            "label": "Export 1",
+            "rowCount": 1165,
+            "headerRowNumber": 5,
+            "issueObservationCount": 73,
+            "issueDensity": [
+              0,
+              0,
+              0,
+              0,
+              2,
+              4,
+              5,
+              0,
+              2,
+              2,
+              4,
+              6,
+              4,
+              0,
+              4,
+              2,
+              2,
+              0,
+              0,
+              0,
+              4,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              4,
+              2,
+              4,
+              2,
+              8,
+              2,
+              2,
+              0,
+              4
+            ]
+          },
+          {
+            "label": "Export 2",
+            "rowCount": 6973,
+            "headerRowNumber": 5,
+            "issueObservationCount": 5688,
+            "issueDensity": [
+              306,
+              108,
+              326,
+              286,
+              312,
+              340,
+              308,
+              332,
+              326,
+              332,
+              362,
+              316,
+              326,
+              320,
+              256,
+              332,
+              366,
+              322,
+              8,
+              8,
+              8,
+              18,
+              12,
+              18,
+              18,
+              10,
+              6,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2
+            ]
+          },
+          {
+            "label": "Export 3",
+            "rowCount": 3373,
+            "headerRowNumber": 5,
+            "issueObservationCount": 10,
+            "issueDensity": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0,
+              2,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "contextWindows": [
+          {
+            "id": "context:evidence:p2_gross_net_margin_item:gross_margin_formula",
+            "findingId": "p2.gross_net_margin.item:gross_margin_formula",
+            "exportLabel": "Export 1",
+            "focusSourceRowNumber": 152,
+            "rows": [
+              {
+                "sourceRowNumber": 150,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 151,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 152,
+                "state": "issue",
+                "values": [
+                  {
+                    "field": "gross_margin_percent",
+                    "label": "gross margin percent",
+                    "value": "-599.19"
+                  },
+                  {
+                    "field": "gross_sale_value",
+                    "label": "gross sale value",
+                    "value": "20.35"
+                  },
+                  {
+                    "field": "purchase_value",
+                    "label": "purchase value",
+                    "value": "142.26"
+                  }
+                ]
+              },
+              {
+                "sourceRowNumber": 153,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 154,
+                "state": "context",
+                "values": []
+              }
+            ]
+          },
+          {
+            "id": "context:evidence:p2_gross_net_margin_item:net_margin_formula",
+            "findingId": "p2.gross_net_margin.item:net_margin_formula",
+            "exportLabel": "Export 1",
+            "focusSourceRowNumber": 152,
+            "rows": [
+              {
+                "sourceRowNumber": 150,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 151,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 152,
+                "state": "issue",
+                "values": [
+                  {
+                    "field": "net_margin_percent",
+                    "label": "net margin percent",
+                    "value": "-634.16"
+                  },
+                  {
+                    "field": "net_sale_value",
+                    "label": "net sale value",
+                    "value": "19.38"
+                  },
+                  {
+                    "field": "purchase_value",
+                    "label": "purchase value",
+                    "value": "142.26"
+                  }
+                ]
+              },
+              {
+                "sourceRowNumber": 153,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 154,
+                "state": "context",
+                "values": []
+              }
+            ]
+          },
+          {
+            "id": "context:evidence:p2_gross_net_margin_item:negative",
+            "findingId": "p2.gross_net_margin.item:negative_values",
+            "exportLabel": "Export 1",
+            "focusSourceRowNumber": 108,
+            "rows": [
+              {
+                "sourceRowNumber": 106,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 107,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 108,
+                "state": "issue",
+                "values": [
+                  {
+                    "field": "gross_margin_percent",
+                    "label": "gross margin percent",
+                    "value": "-36.68"
+                  },
+                  {
+                    "field": "net_margin_percent",
+                    "label": "net margin percent",
+                    "value": "-43.51"
+                  }
+                ]
+              },
+              {
+                "sourceRowNumber": 109,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 110,
+                "state": "context",
+                "values": []
+              }
+            ]
+          }
+        ],
+        "localViewerUrl": "http://127.0.0.1:8765/?report_id=p2.gross_net_margin.item"
+      }
     },
     {
       "reportId": "p1.item_recipe.detail",
@@ -2880,6 +6926,16 @@
       },
       "readiness": "review_required",
       "decision": "Schema-ready and populated; recipe identifiers, effective dates, and UOM conversion still require master-data approval.",
+      "codexReview": {
+        "status": "business_review",
+        "headline": "Schema is sound; observed rows need business-grain and sign treatment.",
+        "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
+        "confirmedStructuralErrorCount": 0,
+        "classificationCounts": {
+          "deduplication_risk": 1
+        },
+        "nextDecision": "Approve transaction grain and sign conventions before aggregation."
+      },
       "keyFieldCoverage": [
         {
           "field": "menu_item_number",
@@ -2943,10 +6999,110 @@
           "affectedRowCount": 1,
           "fields": [],
           "observation": "1 duplicate rows were observed across the captured exports.",
-          "productionTreatment": "Deduplicate on the approved business grain before aggregation and preserve duplicate counts as a data-quality measure."
+          "productionTreatment": "Deduplicate on the approved business grain before aggregation and preserve duplicate counts as a data-quality measure.",
+          "semanticReview": {
+            "classification": "deduplication_risk",
+            "confidence": "medium",
+            "assessment": "Exact repeated exported rows create an aggregation risk, but they may represent legitimate repeated events when the report omits a transaction-line key. Do not delete them until the business grain is approved.",
+            "businessQuestion": "Which transaction and line identifiers distinguish legitimate repeated rows from duplicate exports?"
+          }
         }
       ],
-      "evidenceRows": []
+      "evidenceRows": [],
+      "reportContext": {
+        "mode": "hosted_structure_local_values",
+        "statement": "The hosted review shows the complete report schema, every captured export, row-level issue density, and redacted context windows. Full operational rows remain available only in the localhost reviewer.",
+        "columns": [
+          {
+            "field": "menu_item_type",
+            "label": "menu item type",
+            "sensitive": false
+          },
+          {
+            "field": "menu_item_number",
+            "label": "menu item number",
+            "sensitive": false
+          },
+          {
+            "field": "menu_item_name",
+            "label": "menu item name",
+            "sensitive": false
+          },
+          {
+            "field": "recipe_item_type",
+            "label": "recipe item type",
+            "sensitive": false
+          },
+          {
+            "field": "recipe_qty_per_menu_unit",
+            "label": "recipe qty per menu unit",
+            "sensitive": false
+          },
+          {
+            "field": "recipe_unit",
+            "label": "recipe unit",
+            "sensitive": false
+          },
+          {
+            "field": "ingredient_code",
+            "label": "ingredient code",
+            "sensitive": false
+          },
+          {
+            "field": "ingredient_name",
+            "label": "ingredient name",
+            "sensitive": false
+          }
+        ],
+        "exports": [
+          {
+            "label": "Snapshot 21 Jul 2026",
+            "rowCount": 899,
+            "headerRowNumber": 2,
+            "issueObservationCount": 0,
+            "issueDensity": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "contextWindows": [],
+        "localViewerUrl": "http://127.0.0.1:8765/?report_id=p1.item_recipe.detail"
+      }
     },
     {
       "reportId": "p4.purchase_detail.po_enabled",
@@ -2981,6 +7137,14 @@
       },
       "readiness": "review_required",
       "decision": "Schema-ready but PO coverage is sparse; use only as a fallback and reconciliation source.",
+      "codexReview": {
+        "status": "no_encoded_exception",
+        "headline": "No encoded structural or value exception was detected.",
+        "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
+        "confirmedStructuralErrorCount": 0,
+        "classificationCounts": {},
+        "nextDecision": "Continue period reconciliation and business sign-off before production publication."
+      },
       "keyFieldCoverage": [
         {
           "field": "po_number",
@@ -3062,7 +7226,221 @@
         }
       ],
       "findings": [],
-      "evidenceRows": []
+      "evidenceRows": [],
+      "reportContext": {
+        "mode": "hosted_structure_local_values",
+        "statement": "The hosted review shows the complete report schema, every captured export, row-level issue density, and redacted context windows. Full operational rows remain available only in the localhost reviewer.",
+        "columns": [
+          {
+            "field": "item_code",
+            "label": "item code",
+            "sensitive": false
+          },
+          {
+            "field": "item_name",
+            "label": "item name",
+            "sensitive": false
+          },
+          {
+            "field": "company_name",
+            "label": "company name",
+            "sensitive": false
+          },
+          {
+            "field": "deployment_name",
+            "label": "deployment name",
+            "sensitive": false
+          },
+          {
+            "field": "transaction_date",
+            "label": "transaction date",
+            "sensitive": false
+          },
+          {
+            "field": "invoice_date",
+            "label": "invoice date",
+            "sensitive": false
+          },
+          {
+            "field": "po_date",
+            "label": "po date",
+            "sensitive": false
+          },
+          {
+            "field": "po_number",
+            "label": "po number",
+            "sensitive": false
+          },
+          {
+            "field": "transaction_number",
+            "label": "transaction number",
+            "sensitive": false
+          },
+          {
+            "field": "vendor_code",
+            "label": "vendor code",
+            "sensitive": false
+          },
+          {
+            "field": "vendor_name",
+            "label": "vendor name",
+            "sensitive": false
+          },
+          {
+            "field": "invoice_number",
+            "label": "invoice number",
+            "sensitive": false
+          },
+          {
+            "field": "batch_number",
+            "label": "batch number",
+            "sensitive": false
+          },
+          {
+            "field": "category_code",
+            "label": "category code",
+            "sensitive": false
+          },
+          {
+            "field": "category_name",
+            "label": "category name",
+            "sensitive": false
+          },
+          {
+            "field": "super_category_code",
+            "label": "super category code",
+            "sensitive": false
+          },
+          {
+            "field": "super_category_name",
+            "label": "super category name",
+            "sensitive": false
+          },
+          {
+            "field": "po_qty",
+            "label": "po qty",
+            "sensitive": false
+          },
+          {
+            "field": "po_unit",
+            "label": "po unit",
+            "sensitive": false
+          },
+          {
+            "field": "po_unit_price",
+            "label": "po unit price",
+            "sensitive": false
+          },
+          {
+            "field": "po_amount",
+            "label": "po amount",
+            "sensitive": false
+          },
+          {
+            "field": "po_comment",
+            "label": "po comment",
+            "sensitive": false
+          },
+          {
+            "field": "purchase_qty",
+            "label": "purchase qty",
+            "sensitive": false
+          },
+          {
+            "field": "purchase_unit",
+            "label": "purchase unit",
+            "sensitive": false
+          },
+          {
+            "field": "purchase_unit_price",
+            "label": "purchase unit price",
+            "sensitive": false
+          },
+          {
+            "field": "purchase_amount",
+            "label": "purchase amount",
+            "sensitive": false
+          },
+          {
+            "field": "discount_amt",
+            "label": "discount amt",
+            "sensitive": false
+          },
+          {
+            "field": "cgst_tax_amt",
+            "label": "cgst tax amt",
+            "sensitive": false
+          },
+          {
+            "field": "sgst_tax_amt",
+            "label": "sgst tax amt",
+            "sensitive": false
+          },
+          {
+            "field": "igst_tax_amt",
+            "label": "igst tax amt",
+            "sensitive": false
+          },
+          {
+            "field": "other_tax_amt",
+            "label": "other tax amt",
+            "sensitive": false
+          },
+          {
+            "field": "total_amt",
+            "label": "total amt",
+            "sensitive": false
+          }
+        ],
+        "exports": [
+          {
+            "label": "Export 1",
+            "rowCount": 288,
+            "headerRowNumber": 6,
+            "issueObservationCount": 0,
+            "issueDensity": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "contextWindows": [],
+        "localViewerUrl": "http://127.0.0.1:8765/?report_id=p4.purchase_detail.po_enabled"
+      }
     },
     {
       "reportId": "p4.recipe_consumption.item",
@@ -3100,6 +7478,18 @@
       },
       "readiness": "review_required",
       "decision": "Schema-ready; two periods are empty and populated periods contain duplicate rows and subtotal exceptions.",
+      "codexReview": {
+        "status": "definition_review",
+        "headline": "Schema is sound; source calculation definitions remain unresolved.",
+        "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
+        "confirmedStructuralErrorCount": 0,
+        "classificationCounts": {
+          "coverage_blocker": 1,
+          "deduplication_risk": 1,
+          "formula_definition_gate": 1
+        },
+        "nextDecision": "Confirm Restroworks formulas, UOM, valuation, tax, and rounding rules before classifying source values as incorrect."
+      },
       "keyFieldCoverage": [
         {
           "field": "item_code",
@@ -3167,7 +7557,13 @@
             "parent_unit_price"
           ],
           "observation": "Parent subtotal differs from parent quantity multiplied by parent unit price.",
-          "productionTreatment": "Recalculate recipe consumption cost from normalized quantity and price; retain source subtotal as evidence."
+          "productionTreatment": "Recalculate recipe consumption cost from normalized quantity and price; retain source subtotal as evidence.",
+          "semanticReview": {
+            "classification": "formula_definition_gate",
+            "confidence": "high",
+            "assessment": "Recipe parent subtotal may be allocated across child ingredients or calculated at a different recipe and UOM grain. A simple parent quantity-times-price equation is not yet authoritative.",
+            "businessQuestion": "Is Parent Subtotal a parent-line value, a child allocation, or a converted recipe cost?"
+          }
         },
         {
           "id": "p4.recipe_consumption.item:row_coverage",
@@ -3177,7 +7573,13 @@
           "affectedRowCount": 0,
           "fields": [],
           "observation": "2 of 4 exports contain no data rows.",
-          "productionTreatment": "Keep period completeness visible and exclude empty periods from trend conclusions."
+          "productionTreatment": "Keep period completeness visible and exclude empty periods from trend conclusions.",
+          "semanticReview": {
+            "classification": "coverage_blocker",
+            "confidence": "high",
+            "assessment": "The export contains no usable rows for one or more captured periods. This is a confirmed evidence-coverage gap, regardless of whether the underlying operational system contains data elsewhere.",
+            "businessQuestion": "Is the report genuinely unused, filtered incorrectly, permission-restricted, or populated in another module?"
+          }
         },
         {
           "id": "p4.recipe_consumption.item:duplicate_rows",
@@ -3187,7 +7589,13 @@
           "affectedRowCount": 205,
           "fields": [],
           "observation": "205 duplicate rows were observed across the captured exports.",
-          "productionTreatment": "Deduplicate on the approved business grain before aggregation and preserve duplicate counts as a data-quality measure."
+          "productionTreatment": "Deduplicate on the approved business grain before aggregation and preserve duplicate counts as a data-quality measure.",
+          "semanticReview": {
+            "classification": "deduplication_risk",
+            "confidence": "medium",
+            "assessment": "Exact repeated exported rows create an aggregation risk, but they may represent legitimate repeated events when the report omits a transaction-line key. Do not delete them until the business grain is approved.",
+            "businessQuestion": "Which transaction and line identifiers distinguish legitimate repeated rows from duplicate exports?"
+          }
         }
       ],
       "evidenceRows": [
@@ -3217,7 +7625,298 @@
           "observed": "878.22",
           "privacy": "Only issue-relevant non-sensitive cells are included."
         }
-      ]
+      ],
+      "reportContext": {
+        "mode": "hosted_structure_local_values",
+        "statement": "The hosted review shows the complete report schema, every captured export, row-level issue density, and redacted context windows. Full operational rows remain available only in the localhost reviewer.",
+        "columns": [
+          {
+            "field": "item_type",
+            "label": "item type",
+            "sensitive": false
+          },
+          {
+            "field": "item_code",
+            "label": "item code",
+            "sensitive": false
+          },
+          {
+            "field": "item_name",
+            "label": "item name",
+            "sensitive": false
+          },
+          {
+            "field": "parent_item_qty",
+            "label": "parent item qty",
+            "sensitive": false
+          },
+          {
+            "field": "parent_unit_price",
+            "label": "parent unit price",
+            "sensitive": false
+          },
+          {
+            "field": "parent_subtotal",
+            "label": "parent subtotal",
+            "sensitive": false
+          },
+          {
+            "field": "consumed_qty",
+            "label": "consumed qty",
+            "sensitive": false
+          },
+          {
+            "field": "consumed_unit",
+            "label": "consumed unit",
+            "sensitive": false
+          },
+          {
+            "field": "consumed_unit_price",
+            "label": "consumed unit price",
+            "sensitive": false
+          },
+          {
+            "field": "consumed_subtotal",
+            "label": "consumed subtotal",
+            "sensitive": false
+          },
+          {
+            "field": "consumption_source",
+            "label": "consumption source",
+            "sensitive": false
+          }
+        ],
+        "exports": [
+          {
+            "label": "21 Mar - 21 Apr 2026",
+            "rowCount": 0,
+            "headerRowNumber": 1,
+            "issueObservationCount": 0,
+            "issueDensity": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "label": "21 Apr - 21 May 2026",
+            "rowCount": 0,
+            "headerRowNumber": 1,
+            "issueObservationCount": 0,
+            "issueDensity": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "label": "21 May - 21 Jun 2026",
+            "rowCount": 961,
+            "headerRowNumber": 1,
+            "issueObservationCount": 18,
+            "issueDensity": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              1,
+              3,
+              0,
+              1,
+              0,
+              0,
+              2,
+              0,
+              1,
+              0,
+              2,
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              2,
+              0,
+              1,
+              2,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "label": "21 Jun - 21 Jul 2026",
+            "rowCount": 966,
+            "headerRowNumber": 1,
+            "issueObservationCount": 15,
+            "issueDensity": [
+              1,
+              0,
+              0,
+              1,
+              1,
+              0,
+              1,
+              2,
+              0,
+              3,
+              0,
+              0,
+              1,
+              0,
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "contextWindows": [
+          {
+            "id": "context:evidence:p4_recipe_consumption_item:parent_subtotal_from_qty_price",
+            "findingId": "p4.recipe_consumption.item:parent_subtotal_from_qty_price",
+            "exportLabel": "21 May - 21 Jun 2026",
+            "focusSourceRowNumber": 301,
+            "rows": [
+              {
+                "sourceRowNumber": 299,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 300,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 301,
+                "state": "issue",
+                "values": [
+                  {
+                    "field": "parent_subtotal",
+                    "label": "parent subtotal",
+                    "value": "878.22"
+                  },
+                  {
+                    "field": "parent_item_qty",
+                    "label": "parent item qty",
+                    "value": "48"
+                  },
+                  {
+                    "field": "parent_unit_price",
+                    "label": "parent unit price",
+                    "value": "18.3"
+                  }
+                ]
+              },
+              {
+                "sourceRowNumber": 302,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 303,
+                "state": "context",
+                "values": []
+              }
+            ]
+          }
+        ],
+        "localViewerUrl": "http://127.0.0.1:8765/?report_id=p4.recipe_consumption.item"
+      }
     },
     {
       "reportId": "p4.stock_in_stock_out.item",
@@ -3253,6 +7952,16 @@
       },
       "readiness": "review_required",
       "decision": "Schema-ready; subtotal exceptions make paired enterprise transfers the preferred source.",
+      "codexReview": {
+        "status": "definition_review",
+        "headline": "Schema is sound; source calculation definitions remain unresolved.",
+        "assessment": "Codex independently reviewed the deterministic rule semantics. No confirmed structural error was found in this report's captured CSV contract.",
+        "confirmedStructuralErrorCount": 0,
+        "classificationCounts": {
+          "formula_definition_gate": 2
+        },
+        "nextDecision": "Confirm Restroworks formulas, UOM, valuation, tax, and rounding rules before classifying source values as incorrect."
+      },
       "keyFieldCoverage": [],
       "findings": [
         {
@@ -3267,7 +7976,13 @@
             "unit_price"
           ],
           "observation": "Stock-in subtotal differs from stock-in quantity multiplied by unit price.",
-          "productionTreatment": "Use normalized quantity multiplied by approved price for movement value and retain the source subtotal as an exception."
+          "productionTreatment": "Use normalized quantity multiplied by approved price for movement value and retain the source subtotal as an exception.",
+          "semanticReview": {
+            "classification": "formula_definition_gate",
+            "confidence": "high",
+            "assessment": "Stock-in subtotal may use converted quantity or valuation cost rather than the two visible display fields. The difference is a reconciliation gate.",
+            "businessQuestion": "Which UOM, precision, and price basis calculate Stock In Subtotal?"
+          }
         },
         {
           "id": "p4.stock_in_stock_out.item:stock_out_subtotal_from_qty_price",
@@ -3281,7 +7996,13 @@
             "unit_price"
           ],
           "observation": "Stock-out subtotal differs from stock-out quantity multiplied by unit price.",
-          "productionTreatment": "Use normalized quantity multiplied by approved price for movement value and retain the source subtotal as an exception."
+          "productionTreatment": "Use normalized quantity multiplied by approved price for movement value and retain the source subtotal as an exception.",
+          "semanticReview": {
+            "classification": "formula_definition_gate",
+            "confidence": "medium",
+            "assessment": "The small number of stock-out differences may be explained by rounding, UOM conversion, or valuation basis. They are not confirmed source defects.",
+            "businessQuestion": "Which UOM, precision, and price basis calculate Stock Out Subtotal?"
+          }
         }
       ],
       "evidenceRows": [
@@ -3337,7 +8058,225 @@
           "observed": "3750",
           "privacy": "Only issue-relevant non-sensitive cells are included."
         }
-      ]
+      ],
+      "reportContext": {
+        "mode": "hosted_structure_local_values",
+        "statement": "The hosted review shows the complete report schema, every captured export, row-level issue density, and redacted context windows. Full operational rows remain available only in the localhost reviewer.",
+        "columns": [
+          {
+            "field": "movement_date",
+            "label": "movement date",
+            "sensitive": false
+          },
+          {
+            "field": "store_kitchen_name",
+            "label": "store kitchen name",
+            "sensitive": false
+          },
+          {
+            "field": "supplier_name",
+            "label": "supplier name",
+            "sensitive": false
+          },
+          {
+            "field": "receiver_name",
+            "label": "receiver name",
+            "sensitive": false
+          },
+          {
+            "field": "item_name",
+            "label": "item name",
+            "sensitive": false
+          },
+          {
+            "field": "unit",
+            "label": "unit",
+            "sensitive": false
+          },
+          {
+            "field": "unit_price",
+            "label": "unit price",
+            "sensitive": false
+          },
+          {
+            "field": "stock_in_reference",
+            "label": "stock in reference",
+            "sensitive": false
+          },
+          {
+            "field": "stock_in_qty",
+            "label": "stock in qty",
+            "sensitive": false
+          },
+          {
+            "field": "stock_in_subtotal",
+            "label": "stock in subtotal",
+            "sensitive": false
+          },
+          {
+            "field": "stock_out_reference",
+            "label": "stock out reference",
+            "sensitive": false
+          },
+          {
+            "field": "stock_out_qty",
+            "label": "stock out qty",
+            "sensitive": false
+          },
+          {
+            "field": "stock_out_subtotal",
+            "label": "stock out subtotal",
+            "sensitive": false
+          }
+        ],
+        "exports": [
+          {
+            "label": "Snapshot 22 Jul 2026",
+            "rowCount": 1229,
+            "headerRowNumber": 1,
+            "issueObservationCount": 133,
+            "issueDensity": [
+              4,
+              0,
+              3,
+              5,
+              6,
+              12,
+              6,
+              7,
+              6,
+              0,
+              2,
+              4,
+              0,
+              0,
+              0,
+              0,
+              2,
+              3,
+              0,
+              0,
+              3,
+              16,
+              12,
+              11,
+              3,
+              0,
+              5,
+              0,
+              0,
+              0,
+              0,
+              4,
+              0,
+              0,
+              6,
+              13
+            ]
+          }
+        ],
+        "contextWindows": [
+          {
+            "id": "context:evidence:p4_stock_in_stock_out_item:stock_in_subtotal_from_qty_price",
+            "findingId": "p4.stock_in_stock_out.item:stock_in_subtotal_from_qty_price",
+            "exportLabel": "Snapshot 22 Jul 2026",
+            "focusSourceRowNumber": 5,
+            "rows": [
+              {
+                "sourceRowNumber": 3,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 4,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 5,
+                "state": "issue",
+                "values": [
+                  {
+                    "field": "stock_in_subtotal",
+                    "label": "stock in subtotal",
+                    "value": "1800"
+                  },
+                  {
+                    "field": "stock_in_qty",
+                    "label": "stock in qty",
+                    "value": "0.667"
+                  },
+                  {
+                    "field": "unit_price",
+                    "label": "unit price",
+                    "value": "2700"
+                  }
+                ]
+              },
+              {
+                "sourceRowNumber": 6,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 7,
+                "state": "context",
+                "values": []
+              }
+            ]
+          },
+          {
+            "id": "context:evidence:p4_stock_in_stock_out_item:stock_out_subtotal_from_qty_price",
+            "findingId": "p4.stock_in_stock_out.item:stock_out_subtotal_from_qty_price",
+            "exportLabel": "Snapshot 22 Jul 2026",
+            "focusSourceRowNumber": 826,
+            "rows": [
+              {
+                "sourceRowNumber": 824,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 825,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 826,
+                "state": "issue",
+                "values": [
+                  {
+                    "field": "stock_out_subtotal",
+                    "label": "stock out subtotal",
+                    "value": "3750"
+                  },
+                  {
+                    "field": "stock_out_qty",
+                    "label": "stock out qty",
+                    "value": "1.042"
+                  },
+                  {
+                    "field": "unit_price",
+                    "label": "unit price",
+                    "value": "3600"
+                  }
+                ]
+              },
+              {
+                "sourceRowNumber": 827,
+                "state": "context",
+                "values": []
+              },
+              {
+                "sourceRowNumber": 828,
+                "state": "context",
+                "values": []
+              }
+            ]
+          }
+        ],
+        "localViewerUrl": "http://127.0.0.1:8765/?report_id=p4.stock_in_stock_out.item"
+      }
     }
   ]
 }

@@ -184,7 +184,7 @@ def main() -> int:
     if "" in decision_ids or duplicates(decision_ids):
         errors.append("Planned architecture decisions need unique non-empty ids.")
 
-    if evidence.get("contractVersion") != "1.0.0":
+    if evidence.get("contractVersion") != "1.1.0":
         errors.append("Unexpected Control Tower evidence contract version.")
     summary = evidence.get("summary", {})
     expected_summary = {
@@ -224,6 +224,34 @@ def main() -> int:
             errors.append(
                 f"Evidence report {report.get('reportId')} contains more row excerpts than finding types."
             )
+        codex_review = report.get("codexReview", {})
+        if codex_review.get("confirmedStructuralErrorCount") != 0:
+            errors.append(
+                f"Evidence report {report.get('reportId')} overstates a confirmed structural error."
+            )
+        for finding in report.get("findings", []):
+            semantic = finding.get("semanticReview", {})
+            if not semantic.get("classification") or not semantic.get("assessment"):
+                errors.append(
+                    f"Evidence finding {finding.get('id')} lacks Codex semantic review."
+                )
+        report_context = report.get("reportContext", {})
+        if report_context.get("mode") != "hosted_structure_local_values":
+            errors.append(
+                f"Evidence report {report.get('reportId')} lacks the hosted/local context boundary."
+            )
+        if not str(report_context.get("localViewerUrl", "")).startswith(
+            "http://127.0.0.1:8765/"
+        ):
+            errors.append(
+                f"Evidence report {report.get('reportId')} has a non-loopback local viewer URL."
+            )
+        for window in report_context.get("contextWindows", []):
+            for row in window.get("rows", []):
+                if row.get("state") == "context" and row.get("values"):
+                    errors.append(
+                        f"Evidence context row {window.get('id')} contains hosted operational values."
+                    )
         for excerpt in report.get("evidenceRows", []):
             for value in excerpt.get("values", []):
                 field_name = value.get("field", "").lower()
@@ -249,6 +277,13 @@ def main() -> int:
         errors.append("Control Tower evidence must exclude full raw rows.")
     if evidence.get("privacy", {}).get("sensitiveValuesIncluded") is not False:
         errors.append("Control Tower evidence must exclude sensitive values.")
+    zoho = evidence.get("zohoReadiness", {})
+    if (
+        zoho.get("requiredLandingTableCount") != 16
+        or zoho.get("queryTableCount") != 37
+        or zoho.get("dashboardTabCount") != 4
+    ):
+        errors.append("Control Tower Zoho readiness counts do not match the approved build pack.")
     evidence_text = json.dumps(evidence)
     if any(
         token.lower() in evidence_text.lower()

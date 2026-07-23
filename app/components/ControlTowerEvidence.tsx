@@ -2,10 +2,13 @@
 
 import {
   AlertTriangle,
+  BrainCircuit,
   CheckCircle2,
   ChevronRight,
   ExternalLink,
   FileWarning,
+  Laptop,
+  Rows3,
   Search,
   ShieldCheck,
   TableProperties,
@@ -30,9 +33,9 @@ const numberFormat = new Intl.NumberFormat("en-IN");
 const label = (value: string) => value.replaceAll("_", " ");
 
 function toneForStatus(value: string) {
-  if (["exact", "complete", "populated", "schema_ready_value_checks_passed"].includes(value)) return "green";
-  if (["partial", "review_required", "review", "warning"].includes(value)) return "amber";
-  if (["weak", "missing", "header_only", "blocked_header_only", "blocker"].includes(value)) return "red";
+  if (["exact", "complete", "populated", "schema_ready_value_checks_passed", "no_encoded_exception"].includes(value)) return "green";
+  if (["partial", "review_required", "review", "warning", "definition_review", "business_review", "formula_definition_gate", "operational_exception", "deduplication_risk"].includes(value)) return "amber";
+  if (["weak", "missing", "header_only", "blocked_header_only", "blocker", "coverage_blocked", "coverage_blocker"].includes(value)) return "red";
   return "neutral";
 }
 
@@ -145,19 +148,152 @@ function FindingTable({ findings }: { findings: EvidenceFinding[] }) {
   return (
     <div className="ct-table-wrap">
       <table className="ct-table ct-finding-table">
-        <thead><tr><th>State</th><th>Finding</th><th>Observed</th><th>Production treatment</th></tr></thead>
+        <thead><tr><th>State</th><th>Deterministic observation</th><th>Codex semantic review</th><th>Production treatment</th></tr></thead>
         <tbody>
           {findings.map((finding) => (
             <tr key={finding.id}>
-              <td><EvidencePill value={finding.severity} /><small>{label(finding.category)}</small></td>
-              <td><strong>{finding.title}</strong><code>{finding.fields.join(" / ") || "row coverage"}</code></td>
-              <td>{finding.observation}<small>{numberFormat.format(finding.affectedRowCount)} exception observations</small></td>
+              <td>
+                <EvidencePill value={finding.semanticReview.classification} />
+                <small>{finding.semanticReview.confidence} confidence</small>
+              </td>
+              <td>
+                <strong>{finding.title}</strong>
+                <code>{finding.fields.join(" / ") || label(finding.category)}</code>
+                <small>{finding.observation} / {numberFormat.format(finding.affectedRowCount)} observations</small>
+              </td>
+              <td>
+                {finding.semanticReview.assessment}
+                <small><b>Definition question:</b> {finding.semanticReview.businessQuestion}</small>
+              </td>
               <td>{finding.productionTreatment}</td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
+  );
+}
+
+function ReportContext({
+  report,
+  findingById,
+}: {
+  report: EvidenceReport;
+  findingById: Record<string, EvidenceFinding>;
+}) {
+  const [exportIndex, setExportIndex] = useState(0);
+  const selectedExport = report.reportContext.exports[exportIndex] ?? report.reportContext.exports[0];
+  const availableWindows = report.reportContext.contextWindows.filter(
+    (window) => window.exportLabel === selectedExport?.label,
+  );
+  const [windowId, setWindowId] = useState("");
+  const selectedWindow = availableWindows.find((window) => window.id === windowId) ?? availableWindows[0];
+  const maxDensity = Math.max(1, ...(selectedExport?.issueDensity ?? []));
+
+  return (
+    <section className="ct-audit-subsection ct-report-context">
+      <header>
+        <span><Rows3 aria-hidden="true" size={15} /><strong>Reviewed report context</strong></span>
+        <a href={report.reportContext.localViewerUrl} target="_blank" rel="noreferrer">
+          <Laptop aria-hidden="true" size={14} /> Open full local report
+        </a>
+      </header>
+      <div className="ct-report-context-intro">
+        <p>{report.reportContext.statement}</p>
+        <span><ShieldCheck aria-hidden="true" size={14} /> Operational values never leave the approved PC.</span>
+      </div>
+
+      <div className="ct-report-export-tabs" role="tablist" aria-label="Captured exports">
+        {report.reportContext.exports.map((item, index) => (
+          <button
+            key={`${item.label}:${index}`}
+            type="button"
+            className={index === exportIndex ? "is-active" : ""}
+            onClick={() => {
+              setExportIndex(index);
+              setWindowId("");
+            }}
+          >
+            <span>{item.label}</span>
+            <small>{numberFormat.format(item.rowCount)} rows / {numberFormat.format(item.issueObservationCount)} observations</small>
+          </button>
+        ))}
+      </div>
+
+      {selectedExport ? (
+        <div className="ct-report-map">
+          <div>
+            <strong>Complete export row map</strong>
+            <small>Every block represents an equal portion of the report; darker blocks contain more flagged observations.</small>
+          </div>
+          <div className="ct-density-track" aria-label={`Issue density across ${selectedExport.rowCount} rows`}>
+            {selectedExport.issueDensity.map((count, index) => (
+              <i
+                key={`${selectedExport.label}:bucket:${index}`}
+                className={count ? "has-issue" : ""}
+                style={{ opacity: count ? 0.28 + (count / maxDensity) * 0.72 : 1 }}
+                title={count ? `${count} exception observations in this report segment` : "No encoded observation in this report segment"}
+              />
+            ))}
+          </div>
+          <div className="ct-report-map-scale"><span>first row</span><b>{numberFormat.format(selectedExport.rowCount)} data rows</b><span>last row</span></div>
+        </div>
+      ) : null}
+
+      {availableWindows.length ? (
+        <div className="ct-context-window-picker">
+          <span>Highlighted context</span>
+          <select value={selectedWindow?.id ?? ""} onChange={(event) => setWindowId(event.target.value)}>
+            {availableWindows.map((window) => (
+              <option key={window.id} value={window.id}>
+                Row {window.focusSourceRowNumber}: {findingById[window.findingId]?.title ?? "Observed exception"}
+              </option>
+            ))}
+          </select>
+        </div>
+      ) : null}
+
+      <div className="ct-table-wrap ct-full-report-wrap">
+        <table className="ct-table ct-full-report-table">
+          <thead>
+            <tr>
+              <th className="ct-row-number-cell">Source row</th>
+              {report.reportContext.columns.map((column) => (
+                <th key={column.field}>
+                  <span>{column.label}</span>
+                  <code>{column.field}</code>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {(selectedWindow?.rows ?? [{ sourceRowNumber: 0, state: "context" as const, values: [] }]).map((row) => {
+              const values = Object.fromEntries(row.values.map((value) => [value.field, value.value]));
+              return (
+                <tr key={`${selectedWindow?.id ?? "empty"}:${row.sourceRowNumber}`} className={row.state === "issue" ? "is-issue-row" : ""}>
+                  <th className="ct-row-number-cell">{row.sourceRowNumber || "local"}</th>
+                  {report.reportContext.columns.map((column) => {
+                    const hasValue = Object.hasOwn(values, column.field);
+                    return (
+                      <td key={column.field} className={hasValue ? "is-issue-cell" : ""}>
+                        {hasValue ? <code>{values[column.field] || "blank"}</code> : <span>{column.sensitive ? "protected" : "local"}</span>}
+                      </td>
+                    );
+                  })}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      {selectedWindow ? (
+        <p className="ct-context-caption">
+          <b>Highlighted source row {selectedWindow.focusSourceRowNumber}.</b> Surrounding rows and all other report values are intentionally resolved by the localhost reviewer, where every row and flagged cell can be inspected.
+        </p>
+      ) : (
+        <p className="ct-context-caption">No encoded issue row exists for this export. Its complete schema and row coverage are shown; full values remain local.</p>
+      )}
+    </section>
   );
 }
 
@@ -205,6 +341,15 @@ function ReportEvidenceDetail({
         <EvidencePill value={report.schema.status} />
       </div>
 
+      <div className={`ct-codex-review tone-${toneForStatus(report.codexReview.status)}`}>
+        <BrainCircuit aria-hidden="true" size={18} />
+        <span>
+          <strong>{report.codexReview.headline}</strong>
+          <small>{report.codexReview.assessment} {report.codexReview.nextDecision}</small>
+        </span>
+        <b>{report.codexReview.confirmedStructuralErrorCount} confirmed structural errors</b>
+      </div>
+
       <section className="ct-audit-subsection">
         <header>
           <span><AlertTriangle aria-hidden="true" size={15} /><strong>Issue ledger</strong></span>
@@ -213,11 +358,13 @@ function ReportEvidenceDetail({
         <FindingTable findings={report.findings} />
       </section>
 
+      <ReportContext report={report} findingById={findingById} />
+
       {report.evidenceRows.length ? (
         <section className="ct-audit-subsection">
           <header>
-            <span><FileWarning aria-hidden="true" size={15} /><strong>Issue-row evidence</strong></span>
-            <small>Non-sensitive cells only; source row numbers are retained</small>
+            <span><FileWarning aria-hidden="true" size={15} /><strong>Calculation evidence</strong></span>
+            <small>Focused values used by the deterministic rule</small>
           </header>
           <div className="ct-evidence-rows">
             {report.evidenceRows.map((row, index) => {
@@ -362,6 +509,31 @@ export function ControlTowerEvidenceView({ evidence, onOpenReport }: ControlTowe
         <ShieldCheck aria-hidden="true" size={15} />
         <span><strong>Private evidence boundary</strong> {evidence.sourcePolicy}</span>
       </div>
+
+      <section className="ct-zoho-readiness">
+        <header>
+          <div>
+            <span className="section-kicker">Zoho execution decision</span>
+            <h2>Start the demonstrator now; keep production publication gated.</h2>
+            <p>{evidence.zohoReadiness.migrationRule}</p>
+          </div>
+          <div className="ct-zoho-state-grid">
+            <span><EvidencePill value={evidence.zohoReadiness.demoBuild} /><small>Synthetic demonstrator</small></span>
+            <span><EvidencePill value="review_required" /><small>Production-shaped model</small></span>
+            <span><EvidencePill value="blocker" /><small>Actual KPI publication</small></span>
+          </div>
+        </header>
+        <div className="ct-zoho-build-counts">
+          <span><b>{evidence.zohoReadiness.requiredLandingTableCount}</b><small>landing tables</small></span>
+          <span><b>{evidence.zohoReadiness.queryTableCount}</b><small>Query Tables</small></span>
+          <span><b>{evidence.zohoReadiness.dashboardTabCount}</b><small>dashboard tabs</small></span>
+        </div>
+        <ol>
+          {evidence.zohoReadiness.nextSequence.map((step, index) => (
+            <li key={step}><b>{index + 1}</b><span>{step}</span></li>
+          ))}
+        </ol>
+      </section>
 
       <SourceRegister sources={evidence.sourceRegister} onOpenReport={onOpenReport} />
       <AuditExplorer reports={evidence.reportEvidence} onOpenReport={onOpenReport} />

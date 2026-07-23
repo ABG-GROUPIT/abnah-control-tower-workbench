@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1.0",
-  "generated_at": "2026-07-23T02:35:44+00:00",
+  "generated_at": "2026-07-23T05:37:57+00:00",
   "portable": true,
   "source_inputs": {
     "schema_reference": "external local input; not packaged",
@@ -133,8 +133,8 @@
     "workspace_data": "schema-pack/generated/workspace.json",
     "kpi_lineage": "schema-pack/generated/kpi-lineage.json",
     "control_tower_requirements": "schema-pack/generated/control-tower-requirements.json",
-    "control_tower_architecture": "schema-pack/generated/control-tower-architecture.json",
-    "control_tower_evidence": "schema-pack/generated/control-tower-evidence.json"
+    "control_tower_evidence": "schema-pack/generated/control-tower-evidence.json",
+    "control_tower_architecture": "schema-pack/generated/control-tower-architecture.json"
   },
   "workspace_contract_version": "1.0.0",
   "workspace_source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
@@ -872,12 +872,12 @@
     "path": "schema-pack/source/control_tower/control-tower-requirements.json",
     "sha256": "a12fe23c90c31d1930c1e70b914edb54182180d53db2ec348282a62c670fd8f9"
   },
+  "control_tower_evidence_source": {
+    "path": "schema-pack/source/control_tower/control-tower-evidence.json",
+    "sha256": "68d9f9835bc468d664c8dc90f4bd918a91036f22301254089c469121be74e182"
+  },
   "control_tower_architecture_source": {
     "path": "schema-pack/source/architecture/control-tower-architecture.json",
     "sha256": "d6cc9b6c8c26d06e74b6525a28a4dd7df6cc7902149c620e4eb23290919849ea"
-  },
-  "control_tower_evidence_source": {
-    "path": "schema-pack/source/control_tower/control-tower-evidence.json",
-    "sha256": "cd55399778bc78b1cfc5ead3adc86692bce64ca943721dff18c1127c4d525445"
   }
 }

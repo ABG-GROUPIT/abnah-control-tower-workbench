@@ -28,7 +28,6 @@ import {
   useRef,
   useState,
   type PointerEvent as ReactPointerEvent,
-  type WheelEvent as ReactWheelEvent,
 } from "react";
 import type {
   ArchitectureLayerId,
@@ -47,7 +46,7 @@ interface ArchitectureGraphWorkspaceProps {
   onOpenReport: (reportId: string) => void;
 }
 
-type GraphMode = "executive" | "engineering";
+type GraphMode = "route" | "engineering";
 
 interface GraphNode {
   id: string;
@@ -86,20 +85,7 @@ const LANE_GAP = 24;
 const NODE_GAP = 18;
 const SCENE_TOP = 84;
 
-const statusPriority: Record<string, number> = {
-  required_gap: 6,
-  conditional: 5,
-  selected_for_validation: 4,
-  planned: 3,
-  control_only: 2,
-  definition_ready: 1,
-};
-
 const humanize = (value: string) => value.replaceAll("_", " ");
-
-function unique(values: string[]) {
-  return [...new Set(values)];
-}
 
 function graphFromContracts(
   architecture: ControlTowerArchitecture,
@@ -171,71 +157,6 @@ function graphFromContracts(
   return { nodes: [...staticNodes, ...kpiNodes, ...pageNodes], edges };
 }
 
-function executiveGraph(
-  nodes: GraphNode[],
-  edges: GraphEdge[],
-  architecture: ControlTowerArchitecture,
-  requirements: ControlTowerRequirements,
-) {
-  const groupById = new Map(architecture.groups.map((group) => [group.id, group]));
-  const pageById = new Map(requirements.pages.map((page) => [page.id, page]));
-  const groupKey = (node: GraphNode) => {
-    if (node.layerId === "experience") return node.id;
-    if (node.layerId === "kpi") return `cluster:kpi:${node.groupId}`;
-    return `cluster:${node.layerId}:${node.groupId}`;
-  };
-
-  const grouped = new Map<string, GraphNode[]>();
-  for (const node of nodes) {
-    const key = groupKey(node);
-    grouped.set(key, [...(grouped.get(key) ?? []), node]);
-  }
-
-  const clusterNodes: GraphNode[] = [...grouped.entries()].map(([id, members]) => {
-    if (members.length === 1 && members[0].layerId === "experience") {
-      return { ...members[0], members };
-    }
-    const first = members[0];
-    const architectureGroup = groupById.get(first.groupId);
-    const page = pageById.get(first.groupId);
-    const status = [...members]
-      .sort((a, b) => (statusPriority[b.status] ?? 0) - (statusPriority[a.status] ?? 0))[0]?.status ?? "planned";
-    const label = first.layerId === "kpi"
-      ? `${page ? `Page ${page.number}` : "Page"} KPI definitions`
-      : architectureGroup?.label ?? first.label;
-    return {
-      id,
-      layerId: first.layerId,
-      groupId: first.groupId,
-      label,
-      description: first.layerId === "kpi"
-        ? `${members.length} business definitions routed into this control-tower page.`
-        : architectureGroup?.description ?? first.description,
-      status,
-      role: `${members.length} ${first.layerId === "source" ? "selected sources" : "architecture nodes"}`,
-      pages: unique(members.flatMap((member) => member.pages)),
-      dataPoints: unique(members.flatMap((member) => member.dataPoints)).slice(0, 10),
-      logic: `Open the inspector to review the ${members.length} members represented by this cluster.`,
-      alternatives: unique(members.flatMap((member) => member.alternatives)).slice(0, 6),
-      members,
-    };
-  });
-
-  const nodeToCluster = new Map(nodes.map((node) => [node.id, groupKey(node)]));
-  const edgeKeys = new Set<string>();
-  const clusterEdges: GraphEdge[] = [];
-  for (const edge of edges) {
-    const source = nodeToCluster.get(edge.source);
-    const target = nodeToCluster.get(edge.target);
-    if (!source || !target || source === target) continue;
-    const key = `${source}->${target}`;
-    if (edgeKeys.has(key)) continue;
-    edgeKeys.add(key);
-    clusterEdges.push({ id: key, source, target });
-  }
-  return { nodes: clusterNodes, edges: clusterEdges };
-}
-
 function traceConnected(selectedId: string, edges: GraphEdge[]) {
   if (!selectedId) return new Set<string>();
   const upstream = new Map<string, string[]>();
@@ -273,6 +194,136 @@ function edgePath(source: Position, target: Position) {
   return `M ${sourceX} ${sourceY} C ${loopX} ${sourceY}, ${loopX} ${targetY}, ${target.x + NODE_WIDTH} ${targetY}`;
 }
 
+function RouteOverview({
+  architecture,
+  nodes,
+  focusedKpi,
+  focusedPage,
+  selectedId,
+  onSelect,
+  onOpenReport,
+}: {
+  architecture: ControlTowerArchitecture;
+  nodes: GraphNode[];
+  focusedKpi?: ControlTowerKpi;
+  focusedPage?: ControlTowerPage;
+  selectedId: string;
+  onSelect: (node: GraphNode) => void;
+  onOpenReport: (reportId: string) => void;
+}) {
+  const byLayer = new Map<ArchitectureLayerId, GraphNode[]>();
+  for (const node of nodes) {
+    byLayer.set(node.layerId, [...(byLayer.get(node.layerId) ?? []), node]);
+  }
+  const sources = nodes.filter(
+    (node) => node.source?.kind === "report" || node.source?.kind === "master",
+  );
+  const modelSteps = nodes.filter((node) => node.source?.kind === "table");
+
+  return (
+    <div className="architecture-route-overview">
+      <section className="architecture-route-summary">
+        <div>
+          <span className="section-kicker">
+            {focusedPage ? `Page ${focusedPage.number} / ${focusedPage.name}` : "Complete architecture"}
+          </span>
+          <h2>{focusedKpi?.name ?? "Eight-layer Control Tower architecture"}</h2>
+          <p>
+            {focusedKpi?.businessDefinition
+              ?? "Select a Control Tower page to trace one KPI from captured Restroworks evidence to its final decision surface."}
+          </p>
+        </div>
+        {focusedKpi ? (
+          <dl>
+            <div><dt>Formula</dt><dd><code>{focusedKpi.formula}</code></dd></div>
+            <div><dt>Grain</dt><dd>{focusedKpi.grain}</dd></div>
+            <div><dt>Owner</dt><dd>{focusedKpi.owner}</dd></div>
+            <div><dt>Evidence</dt><dd>{sources.length} sources / {modelSteps.length} model steps</dd></div>
+          </dl>
+        ) : (
+          <div className="architecture-system-counts">
+            {architecture.layers.map((layer) => (
+              <span key={layer.id} data-layer={layer.id}>
+                <i />
+                <b>{nodes.filter((node) => node.layerId === layer.id).length}</b>
+                <small>{layer.shortLabel}</small>
+              </span>
+            ))}
+          </div>
+        )}
+      </section>
+
+      <section className="architecture-route-stages" aria-label="Ordered KPI architecture route">
+        {architecture.layers.map((layer, layerNumber) => {
+          const layerNodes = byLayer.get(layer.id) ?? [];
+          return (
+            <article key={layer.id} className="architecture-route-stage" data-layer={layer.id}>
+              <header>
+                <b>{layerNumber + 1}</b>
+                <span><strong>{layer.shortLabel}</strong><small>{layer.description}</small></span>
+                <em>{layerNodes.length}</em>
+              </header>
+              <div>
+                {layerNodes.slice(0, 6).map((node) => (
+                  <button
+                    key={node.id}
+                    type="button"
+                    className={node.id === selectedId ? "is-selected" : ""}
+                    onClick={() => onSelect(node)}
+                  >
+                    <i />
+                    <span><strong>{node.label}</strong><small>{node.role}</small></span>
+                    <ArrowRight aria-hidden="true" size={12} />
+                  </button>
+                ))}
+                {!layerNodes.length ? <p>No node is required for this selected route.</p> : null}
+                {layerNodes.length > 6 ? <p>+ {layerNodes.length - 6} additional engineering nodes</p> : null}
+              </div>
+            </article>
+          );
+        })}
+      </section>
+
+      {focusedKpi ? (
+        <section className="architecture-route-source-matrix">
+          <header>
+            <span><Database aria-hidden="true" size={15} /><strong>Exact source evidence for this KPI</strong></span>
+            <small>{sources.length} contributing report and master sources</small>
+          </header>
+          <div className="architecture-route-source-grid">
+            {sources.map((source) => (
+              <article key={source.id}>
+                <div>
+                  <span data-layer="source"><i /></span>
+                  <p><strong>{source.label}</strong><small>{source.role}</small></p>
+                  {source.reportId ? (
+                    <button type="button" title={`Open ${source.label} schema`} onClick={() => onOpenReport(source.reportId!)}>
+                      <ExternalLink aria-hidden="true" size={13} />
+                    </button>
+                  ) : null}
+                </div>
+                <ul>{source.dataPoints.map((point) => <li key={`${source.id}:${point}`}>{point}</li>)}</ul>
+              </article>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      <section className="architecture-route-gate">
+        <ShieldCheck aria-hidden="true" size={17} />
+        <span>
+          <strong>{focusedKpi ? "Route isolated and presentation-ready" : "Architecture coverage at first glance"}</strong>
+          <small>
+            {focusedKpi
+              ? `${focusedKpi.formula} Production publication still follows the source, UOM, reconciliation and business-definition gates shown in the inspector.`
+              : "The complete system is summarized by layer. Choose a page and KPI for its exact source-to-decision route."}
+          </small>
+        </span>
+      </section>
+    </div>
+  );
+}
+
 export function ArchitectureGraphWorkspace({
   architecture,
   requirements,
@@ -280,7 +331,7 @@ export function ArchitectureGraphWorkspace({
 }: ArchitectureGraphWorkspaceProps) {
   const initialPage = requirements.pages[0];
   const initialKpiId = initialPage?.kpiIds[0] ?? "";
-  const [mode, setMode] = useState<GraphMode>("engineering");
+  const [mode, setMode] = useState<GraphMode>("route");
   const [pageFocus, setPageFocus] = useState(initialPage?.id ?? "all");
   const [kpiFocus, setKpiFocus] = useState(initialKpiId);
   const [query, setQuery] = useState("");
@@ -338,12 +389,7 @@ export function ArchitectureGraphWorkspace({
     }
     return completeGraph;
   }, [completeGraph, focusedKpi, focusedPage]);
-  const graph = useMemo(
-    () => mode === "executive"
-      ? executiveGraph(scopedCompleteGraph.nodes, scopedCompleteGraph.edges, architecture, requirements)
-      : scopedCompleteGraph,
-    [architecture, mode, requirements, scopedCompleteGraph],
-  );
+  const graph = scopedCompleteGraph;
   const visibleNodes = graph.nodes;
   const visibleIds = useMemo(() => new Set(visibleNodes.map((node) => node.id)), [visibleNodes]);
   const visibleEdges = useMemo(
@@ -425,15 +471,16 @@ export function ArchitectureGraphWorkspace({
   }, [basePositions, visibleNodes]);
 
   useEffect(() => {
+    if (mode !== "engineering") return;
     const frame = requestAnimationFrame(() => fitGraph());
     return () => cancelAnimationFrame(frame);
-  }, [fitGraph]);
+  }, [fitGraph, mode]);
 
   const changeMode = (nextMode: GraphMode) => {
     setMode(nextMode);
     setOffsets({});
     if (focusedKpi) {
-      setSelectedId(nextMode === "executive" ? `cluster:kpi:${focusedKpi.pageId}` : focusedKpi.id);
+      setSelectedId(focusedKpi.id);
     } else {
       setSelectedId("");
     }
@@ -445,14 +492,14 @@ export function ArchitectureGraphWorkspace({
     if (pageId === "all") {
       setKpiFocus("");
       setSelectedId("");
-      setMode("executive");
+      setMode("route");
       return;
     }
     const page = requirements.pages.find((candidate) => candidate.id === pageId);
     const nextKpiId = page?.kpiIds[0] ?? "";
     setKpiFocus(nextKpiId);
     setSelectedId(nextKpiId);
-    setMode("engineering");
+    setMode("route");
     setInspectorOpen(true);
   };
 
@@ -464,7 +511,7 @@ export function ArchitectureGraphWorkspace({
     )) ?? requirements.pages.find((candidate) => candidate.kpiIds.includes(kpiId));
     setPageFocus(page?.id ?? kpi.pageId);
     setKpiFocus(kpiId);
-    setMode("engineering");
+    setMode("route");
     setOffsets({});
     setSelectedId(kpiId);
     setInspectorOpen(true);
@@ -474,10 +521,6 @@ export function ArchitectureGraphWorkspace({
     if (member.kpi) {
       activateKpiRoute(member.kpi.id, pageFocus);
       return;
-    }
-    if (mode === "executive") {
-      setMode("engineering");
-      setOffsets({});
     }
     setSelectedId(member.id);
   };
@@ -496,9 +539,11 @@ export function ArchitectureGraphWorkspace({
     setZoom(next);
   };
 
-  const handleWheel = (event: ReactWheelEvent<HTMLDivElement>) => {
+  const handleWheel = useCallback((event: WheelEvent) => {
     event.preventDefault();
-    const rect = event.currentTarget.getBoundingClientRect();
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+    const rect = viewport.getBoundingClientRect();
     const pointerX = event.clientX - rect.left;
     const pointerY = event.clientY - rect.top;
     const next = Math.max(0.28, Math.min(1.45, zoom * (event.deltaY > 0 ? 0.9 : 1.1)));
@@ -507,7 +552,14 @@ export function ArchitectureGraphWorkspace({
       y: pointerY - (pointerY - current.y) * (next / zoom),
     }));
     setZoom(next);
-  };
+  }, [zoom]);
+
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport || mode !== "engineering") return;
+    viewport.addEventListener("wheel", handleWheel, { passive: false });
+    return () => viewport.removeEventListener("wheel", handleWheel);
+  }, [handleWheel, mode]);
 
   const beginPan = (event: ReactPointerEvent<HTMLDivElement>) => {
     const target = event.target as HTMLElement;
@@ -593,15 +645,15 @@ export function ArchitectureGraphWorkspace({
         </div>
       </header>
 
-      <div className={`architecture-workbench${inspectorOpen ? "" : " inspector-closed"}`}>
+      <div className={`architecture-workbench mode-${mode}${inspectorOpen ? "" : " inspector-closed"}`}>
         <aside className="architecture-controls">
           <div className="architecture-control-section">
-            <span className="architecture-control-label">View depth</span>
+            <span className="architecture-control-label">Presentation depth</span>
             <div className="architecture-mode-switch" role="group" aria-label="Graph detail level">
-              <button type="button" className={mode === "executive" ? "is-active" : ""} onClick={() => changeMode("executive")}><Boxes aria-hidden="true" size={14} /> Executive</button>
+              <button type="button" className={mode === "route" ? "is-active" : ""} onClick={() => changeMode("route")}><Boxes aria-hidden="true" size={14} /> KPI route</button>
               <button type="button" className={mode === "engineering" ? "is-active" : ""} onClick={() => changeMode("engineering")}><GitBranch aria-hidden="true" size={14} /> Engineering</button>
             </div>
-            <p>{mode === "executive" ? "Grouped domains for presentation and decision tracing." : "Every source, table, KPI and page shown individually."}</p>
+            <p>{mode === "route" ? "One KPI, eight ordered layers, exact reports and source fields." : "Every source and table in the selected route with movable nodes and exact edges."}</p>
           </div>
 
           <div className="architecture-control-section">
@@ -643,6 +695,20 @@ export function ArchitectureGraphWorkspace({
           </div>
         </aside>
 
+        {mode === "route" ? (
+          <RouteOverview
+            architecture={architecture}
+            nodes={scopedCompleteGraph.nodes}
+            focusedKpi={focusedKpi}
+            focusedPage={focusedPage}
+            selectedId={selectedId}
+            onSelect={(node) => {
+              setSelectedId(node.id);
+              setInspectorOpen(true);
+            }}
+            onOpenReport={onOpenReport}
+          />
+        ) : (
         <div className="architecture-graph-shell">
           <div className="architecture-graph-toolbar">
             <label className="architecture-search">
@@ -672,7 +738,6 @@ export function ArchitectureGraphWorkspace({
           <div
             ref={viewportRef}
             className="architecture-viewport"
-            onWheel={handleWheel}
             onPointerDown={beginPan}
             onPointerMove={movePan}
             onPointerUp={endPan}
@@ -744,6 +809,7 @@ export function ArchitectureGraphWorkspace({
           </div>
           <div className="architecture-zoom-readout">{Math.round(zoom * 100)}%</div>
         </div>
+        )}
 
         {inspectorOpen && (
           <aside className="architecture-inspector">

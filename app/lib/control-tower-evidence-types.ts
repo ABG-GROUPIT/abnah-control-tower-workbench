@@ -37,6 +37,17 @@ export interface EvidenceFinding {
   fields: string[];
   observation: string;
   productionTreatment: string;
+  semanticReview: {
+    classification:
+      | "formula_definition_gate"
+      | "coverage_blocker"
+      | "operational_exception"
+      | "deduplication_risk"
+      | "review_required";
+    confidence: "high" | "medium" | "low";
+    assessment: string;
+    businessQuestion: string;
+  };
 }
 
 export interface EvidenceRowValue {
@@ -70,6 +81,39 @@ export interface EvidenceFieldCoverage {
   coveragePercent: number;
 }
 
+export interface EvidenceReportContextColumn {
+  field: string;
+  label: string;
+  sensitive: boolean;
+}
+
+export interface EvidenceReportContextRow {
+  sourceRowNumber: number;
+  state: "issue" | "context";
+  values: EvidenceRowValue[];
+}
+
+export interface EvidenceReportContext {
+  mode: "hosted_structure_local_values";
+  statement: string;
+  columns: EvidenceReportContextColumn[];
+  exports: Array<{
+    label: string;
+    rowCount: number;
+    headerRowNumber: number;
+    issueObservationCount: number;
+    issueDensity: number[];
+  }>;
+  contextWindows: Array<{
+    id: string;
+    findingId: string;
+    exportLabel: string;
+    focusSourceRowNumber: number;
+    rows: EvidenceReportContextRow[];
+  }>;
+  localViewerUrl: string;
+}
+
 export interface EvidenceReport {
   reportId: string;
   displayName: string;
@@ -101,9 +145,22 @@ export interface EvidenceReport {
     | "review_required"
     | "schema_ready_value_checks_passed";
   decision: string;
+  codexReview: {
+    status:
+      | "coverage_blocked"
+      | "definition_review"
+      | "business_review"
+      | "no_encoded_exception";
+    headline: string;
+    assessment: string;
+    confirmedStructuralErrorCount: number;
+    classificationCounts: Record<string, number | undefined>;
+    nextDecision: string;
+  };
   keyFieldCoverage: EvidenceFieldCoverage[];
   findings: EvidenceFinding[];
   evidenceRows: EvidenceRow[];
+  reportContext: EvidenceReportContext;
 }
 
 export interface ControlTowerEvidence {
@@ -121,6 +178,16 @@ export interface ControlTowerEvidence {
     headline: string;
     reason: string;
     productionRule: string;
+  };
+  zohoReadiness: {
+    demoBuild: "ready";
+    productionModelBuild: "ready_with_gates";
+    productionPublication: "blocked_pending_signoff";
+    requiredLandingTableCount: number;
+    queryTableCount: number;
+    dashboardTabCount: number;
+    migrationRule: string;
+    nextSequence: string[];
   };
   summary: EvidenceSummary;
   sourceRegister: EvidenceSource[];
