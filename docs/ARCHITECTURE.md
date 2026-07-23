@@ -59,7 +59,7 @@ read-only baseline      editable web workspace
 - `ApiTestEditor` and `ApiRegistry`: endpoint candidates and UAT outcomes.
 - `NotesEditor`: engineering, source, decision, and issue notes.
 - `ControlTowerWorkspace`: read-only business requirements, source plan, and delivery decision browser.
-- `ArchitectureGraphWorkspace`: movable executive and engineering views of the feasible source-to-page architecture, with path tracing and report drillback.
+- `ArchitectureGraphWorkspace`: movable executive and engineering views of the feasible source-to-page architecture. A page and KPI selector scopes the graph to one persistent source-to-page route; node selection only changes inspector detail, so pan, zoom, and source inspection cannot clear the route.
 - `KpiLineageWorkspace`: retained implementation for a future reviewed-lineage surface; the current reviewed mapping contract remains empty.
 
 ### Persistence Layer
@@ -94,4 +94,4 @@ Deploy privately. Authentication at the hosting boundary is required for confide
 
 P2 and P4 require new blueprint files, not new React components. A genuinely new structural shape should first be represented with `grid`; only add a compiler primitive after the pattern repeats and reduces real complexity.
 
-Planned architecture additions are data changes: add source or model nodes and their inputs in the architecture contract, then route summary nodes to KPI IDs. The React graph lays them out automatically. Actual lineage is promoted separately only after local structural and value-integrity evidence passes review. Discovery documents remain factual even if planned definitions or mapping decisions change.
+Planned architecture additions are data changes: add source or model nodes and their inputs in the architecture contract, then route the final model node to KPI IDs. The React graph computes the selected KPI's complete upstream ancestry and selected page endpoint automatically. Keep route scope (`pageFocus` and `kpiFocus`) separate from inspector scope (`selectedId`) when extending the interaction. Actual lineage is promoted separately only after local structural and value-integrity evidence passes review. Discovery documents remain factual even if planned definitions or mapping decisions change.

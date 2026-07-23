@@ -41,7 +41,9 @@ The graph provides two levels:
 - Executive groups nodes by layer and business domain for presentation.
 - Engineering expands every report, master, model table, KPI, and dashboard page.
 
-Users can focus one control-tower page, search data points, pan, zoom, move nodes, select a node to trace upstream and downstream paths, inspect transformation logic and fallbacks, and open catalogued source schemas. Layer, state, source count, and the current validation gate are always visible.
+Selecting a control-tower page activates its first KPI. The KPI selector then isolates only that KPI's complete source, RAW, standardized, dimension, fact, summary, KPI, and page route. Contributing reports and field groups are listed in the inspector. The selected route remains active while users search, pan, zoom, move nodes, inspect another node, switch graph depth, or hide the inspector. Complete-system mode remains available as an executive overview.
+
+Route scope and inspector scope are intentionally independent. A node click changes the inspected contract; it does not reconstruct or clear the KPI route. Layer, state, source count, model-step count, and the current validation gate remain visible.
 
 The planned architecture contract and reviewed lineage contract remain separate. Candidate or feasible relationships belong in the architecture graph. Only evidence-backed, reviewed mappings can enter lineage publications.
 

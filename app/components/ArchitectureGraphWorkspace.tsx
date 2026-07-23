@@ -278,14 +278,17 @@ export function ArchitectureGraphWorkspace({
   requirements,
   onOpenReport,
 }: ArchitectureGraphWorkspaceProps) {
-  const [mode, setMode] = useState<GraphMode>("executive");
-  const [pageFocus, setPageFocus] = useState("all");
+  const initialPage = requirements.pages[0];
+  const initialKpiId = initialPage?.kpiIds[0] ?? "";
+  const [mode, setMode] = useState<GraphMode>("engineering");
+  const [pageFocus, setPageFocus] = useState(initialPage?.id ?? "all");
+  const [kpiFocus, setKpiFocus] = useState(initialKpiId);
   const [query, setQuery] = useState("");
-  const [selectedId, setSelectedId] = useState("");
+  const [selectedId, setSelectedId] = useState(initialKpiId);
   const [zoom, setZoom] = useState(0.82);
   const [pan, setPan] = useState<Position>({ x: 24, y: 18 });
   const [offsets, setOffsets] = useState<Record<string, Position>>({});
-  const [inspectorOpen, setInspectorOpen] = useState(false);
+  const [inspectorOpen, setInspectorOpen] = useState(true);
   const viewportRef = useRef<HTMLDivElement>(null);
   const panSession = useRef<{ pointerId: number; x: number; y: number; pan: Position } | null>(null);
   const nodeSession = useRef<{ pointerId: number; id: string; x: number; y: number; offset: Position; moved: boolean } | null>(null);
@@ -295,16 +298,53 @@ export function ArchitectureGraphWorkspace({
     () => graphFromContracts(architecture, requirements),
     [architecture, requirements],
   );
+  const focusedPage = useMemo(
+    () => requirements.pages.find((page) => page.id === pageFocus),
+    [pageFocus, requirements.pages],
+  );
+  const pageKpis = useMemo(
+    () => focusedPage
+      ? focusedPage.kpiIds
+        .map((kpiId) => requirements.kpis.find((kpi) => kpi.id === kpiId))
+        .filter((kpi): kpi is ControlTowerKpi => Boolean(kpi))
+      : [],
+    [focusedPage, requirements.kpis],
+  );
+  const focusedKpi = useMemo(
+    () => requirements.kpis.find((kpi) => kpi.id === kpiFocus),
+    [kpiFocus, requirements.kpis],
+  );
+  const scopedCompleteGraph = useMemo(() => {
+    if (focusedKpi) {
+      const routeIds = traceConnected(focusedKpi.id, completeGraph.edges);
+      const selectedExperienceId = focusedPage ? `experience:${focusedPage.id}` : "";
+      const nodes = completeGraph.nodes.filter((node) => (
+        routeIds.has(node.id)
+        && (node.layerId !== "experience" || !selectedExperienceId || node.id === selectedExperienceId)
+      ));
+      const nodeIds = new Set(nodes.map((node) => node.id));
+      return {
+        nodes,
+        edges: completeGraph.edges.filter((edge) => nodeIds.has(edge.source) && nodeIds.has(edge.target)),
+      };
+    }
+    if (focusedPage) {
+      const nodes = completeGraph.nodes.filter((node) => node.pages.includes(focusedPage.id));
+      const nodeIds = new Set(nodes.map((node) => node.id));
+      return {
+        nodes,
+        edges: completeGraph.edges.filter((edge) => nodeIds.has(edge.source) && nodeIds.has(edge.target)),
+      };
+    }
+    return completeGraph;
+  }, [completeGraph, focusedKpi, focusedPage]);
   const graph = useMemo(
     () => mode === "executive"
-      ? executiveGraph(completeGraph.nodes, completeGraph.edges, architecture, requirements)
-      : completeGraph,
-    [architecture, completeGraph, mode, requirements],
+      ? executiveGraph(scopedCompleteGraph.nodes, scopedCompleteGraph.edges, architecture, requirements)
+      : scopedCompleteGraph,
+    [architecture, mode, requirements, scopedCompleteGraph],
   );
-  const visibleNodes = useMemo(
-    () => pageFocus === "all" ? graph.nodes : graph.nodes.filter((node) => node.pages.includes(pageFocus)),
-    [graph.nodes, pageFocus],
-  );
+  const visibleNodes = graph.nodes;
   const visibleIds = useMemo(() => new Set(visibleNodes.map((node) => node.id)), [visibleNodes]);
   const visibleEdges = useMemo(
     () => graph.edges.filter((edge) => visibleIds.has(edge.source) && visibleIds.has(edge.target)),
@@ -354,7 +394,12 @@ export function ArchitectureGraphWorkspace({
   };
 
   const selectedNode = visibleNodes.find((node) => node.id === selectedId);
-  const connected = useMemo(() => traceConnected(selectedNode?.id ?? "", visibleEdges), [selectedNode?.id, visibleEdges]);
+  const connected = useMemo(
+    () => focusedKpi
+      ? new Set(visibleNodes.map((node) => node.id))
+      : traceConnected(selectedNode?.id ?? "", visibleEdges),
+    [focusedKpi, selectedNode?.id, visibleEdges, visibleNodes],
+  );
   const normalizedQuery = query.trim().toLowerCase();
   const queryMatches = useMemo(() => new Set(
     normalizedQuery
@@ -382,21 +427,54 @@ export function ArchitectureGraphWorkspace({
   useEffect(() => {
     const frame = requestAnimationFrame(() => fitGraph());
     return () => cancelAnimationFrame(frame);
-  }, [fitGraph, inspectorOpen, mode, pageFocus]);
+  }, [fitGraph]);
 
   const changeMode = (nextMode: GraphMode) => {
     setMode(nextMode);
     setOffsets({});
-    setSelectedId("");
+    if (focusedKpi) {
+      setSelectedId(nextMode === "executive" ? `cluster:kpi:${focusedKpi.pageId}` : focusedKpi.id);
+    } else {
+      setSelectedId("");
+    }
   };
 
   const changePageFocus = (pageId: string) => {
     setPageFocus(pageId);
     setOffsets({});
-    setSelectedId("");
+    if (pageId === "all") {
+      setKpiFocus("");
+      setSelectedId("");
+      setMode("executive");
+      return;
+    }
+    const page = requirements.pages.find((candidate) => candidate.id === pageId);
+    const nextKpiId = page?.kpiIds[0] ?? "";
+    setKpiFocus(nextKpiId);
+    setSelectedId(nextKpiId);
+    setMode("engineering");
+    setInspectorOpen(true);
+  };
+
+  const activateKpiRoute = (kpiId: string, preferredPageId?: string) => {
+    const kpi = requirements.kpis.find((candidate) => candidate.id === kpiId);
+    if (!kpi) return;
+    const page = requirements.pages.find((candidate) => (
+      candidate.id === preferredPageId && candidate.kpiIds.includes(kpiId)
+    )) ?? requirements.pages.find((candidate) => candidate.kpiIds.includes(kpiId));
+    setPageFocus(page?.id ?? kpi.pageId);
+    setKpiFocus(kpiId);
+    setMode("engineering");
+    setOffsets({});
+    setSelectedId(kpiId);
+    setInspectorOpen(true);
   };
 
   const openMember = (member: GraphNode) => {
+    if (member.kpi) {
+      activateKpiRoute(member.kpi.id, pageFocus);
+      return;
+    }
     if (mode === "executive") {
       setMode("engineering");
       setOffsets({});
@@ -436,7 +514,6 @@ export function ArchitectureGraphWorkspace({
     if (event.button !== 0 || target.closest(".architecture-node, button, input")) return;
     event.currentTarget.setPointerCapture(event.pointerId);
     panSession.current = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, pan };
-    setSelectedId("");
   };
   const movePan = (event: ReactPointerEvent<HTMLDivElement>) => {
     const session = panSession.current;
@@ -486,7 +563,15 @@ export function ArchitectureGraphWorkspace({
   const sourceMembers = (selectedNode?.members ?? (selectedNode ? [selectedNode] : []))
     .filter((member) => member.source?.kind === "report" || member.source?.kind === "master");
   const selectedPage = selectedNode?.page;
-  const selectedKpi = selectedNode?.kpi;
+  const selectedKpi = selectedNode?.kpi ?? selectedNode?.members?.find((member) => member.kpi)?.kpi;
+  const routeSources = focusedKpi
+    ? scopedCompleteGraph.nodes.filter((node) => node.source?.kind === "report" || node.source?.kind === "master")
+    : [];
+  const routeModelNodeCount = focusedKpi
+    ? scopedCompleteGraph.nodes.filter((node) => node.source?.kind === "table").length
+    : 0;
+  const reportCount = architecture.sourceNodes.filter((node) => node.kind === "report").length;
+  const masterCount = architecture.sourceNodes.filter((node) => node.kind === "master").length;
 
   return (
     <section className="architecture-surface">
@@ -494,11 +579,11 @@ export function ArchitectureGraphWorkspace({
         <div>
           <span className="section-kicker">Planned architecture / feasibility validation in progress</span>
           <h1>Supply chain intelligence map</h1>
-          <p>Trace the selected source set through RAW, standardized, dimensional, fact and summary layers into all 35 KPIs and four ABNAH control-tower pages.</p>
+          <p>Select a control-tower page and KPI to isolate its exact route from Restroworks fields through RAW, standardized, dimensional, fact and summary layers.</p>
         </div>
         <div className="architecture-header-metrics" aria-label="Architecture coverage">
-          <span><b>21</b> reports</span>
-          <span><b>2</b> masters</span>
+          <span><b>{reportCount}</b> reports</span>
+          <span><b>{masterCount}</b> masters</span>
           <span><b>{architecture.modelNodes.length}</b> model nodes</span>
           <span><b>{requirements.kpis.length}</b> KPIs</span>
         </div>
@@ -529,6 +614,20 @@ export function ArchitectureGraphWorkspace({
                 <span className="architecture-page-number">{page.number}</span><span><strong>{page.name}</strong><small>{page.kpiIds.length} KPI routes</small></span><ArrowRight aria-hidden="true" size={13} />
               </button>
             ))}
+            {focusedPage && (
+              <label className="architecture-route-picker">
+                <span><GitBranch aria-hidden="true" size={13} /> KPI / chart route</span>
+                <select value={kpiFocus} onChange={(event) => activateKpiRoute(event.target.value, focusedPage.id)}>
+                  {pageKpis.map((kpi) => <option key={kpi.id} value={kpi.id}>{kpi.name}</option>)}
+                </select>
+                {focusedKpi && (
+                  <small>
+                    <strong>{routeSources.length} sources</strong>
+                    <span>{routeModelNodeCount} model steps</span>
+                  </small>
+                )}
+              </label>
+            )}
           </div>
 
           <div className="architecture-control-section architecture-layer-key">
@@ -540,7 +639,7 @@ export function ArchitectureGraphWorkspace({
 
           <div className="architecture-assurance-note">
             <ShieldCheck aria-hidden="true" size={16} />
-            <p><strong>Evidence boundary</strong>This is the feasible planned route. Reviewed lineage remains empty until local CSV checks prove the joins and values.</p>
+            <p><strong>Evidence boundary</strong>The three-month synthetic route passes its reconciliation controls. Production promotion still requires populated Restroworks evidence and business sign-off.</p>
           </div>
         </aside>
 
@@ -560,7 +659,15 @@ export function ArchitectureGraphWorkspace({
             </div>
           </div>
           <div className="architecture-graph-caption">
-            <MousePointer2 aria-hidden="true" size={13} /> Drag the canvas to pan. Move any node. Scroll to zoom. Select a node to trace both directions.
+            {focusedKpi && focusedPage ? (
+              <>
+                <GitBranch aria-hidden="true" size={13} />
+                <strong>Page {focusedPage.number} / {focusedKpi.name}</strong>
+                <span>{visibleNodes.length} nodes in this isolated route. Drag or zoom without losing it.</span>
+              </>
+            ) : (
+              <><MousePointer2 aria-hidden="true" size={13} /> Complete architecture overview. Choose a page and KPI to isolate one route.</>
+            )}
           </div>
           <div
             ref={viewportRef}
@@ -617,7 +724,15 @@ export function ArchitectureGraphWorkspace({
                     onPointerMove={moveNode}
                     onPointerUp={endNodeDrag}
                     onPointerCancel={endNodeDrag}
-                    onClick={() => { if (!suppressClick.current) { setSelectedId(node.id); setInspectorOpen(true); } }}
+                    onClick={() => {
+                      if (suppressClick.current) return;
+                      if (node.kpi) {
+                        activateKpiRoute(node.kpi.id, pageFocus);
+                      } else {
+                        setSelectedId(node.id);
+                        setInspectorOpen(true);
+                      }
+                    }}
                   >
                     <span className="architecture-node-top"><i />{humanize(node.status)}{count > 1 && <b>{count}</b>}</span>
                     <strong>{node.label}</strong>
@@ -660,6 +775,33 @@ export function ArchitectureGraphWorkspace({
                     <ol className="architecture-module-list">
                       {selectedPage.visualModules.map((module) => <li key={`${selectedPage.id}:${module.order}`}><b>{module.order}</b><span><strong>{module.name}</strong><small>{module.question}</small></span></li>)}
                     </ol>
+                  </section>
+                )}
+
+                {focusedKpi && (
+                  <section className="architecture-route-evidence">
+                    <h3><GitBranch aria-hidden="true" size={14} /> Contributing source fields</h3>
+                    <p>{routeSources.length} report and master sources feed this isolated KPI route.</p>
+                    {selectedKpi?.id !== focusedKpi.id && (
+                      <dl>
+                        <div><dt>Selected route</dt><dd>{focusedKpi.name}</dd></div>
+                        <div><dt>Formula</dt><dd><code>{focusedKpi.formula}</code></dd></div>
+                        <div><dt>Grain</dt><dd>{focusedKpi.grain}</dd></div>
+                      </dl>
+                    )}
+                    <div className="architecture-route-source-list">
+                      {routeSources.map((source, index) => (
+                        <details key={source.id} open={index === 0 ? true : undefined}>
+                          <summary>
+                            <span><strong>{source.label}</strong><small>{source.role}</small></span>
+                            <b>{source.dataPoints.length} field groups</b>
+                          </summary>
+                          <div className="architecture-chip-list">
+                            {source.dataPoints.map((point) => <span key={`${source.id}:${point}`}>{point}</span>)}
+                          </div>
+                        </details>
+                      ))}
+                    </div>
                   </section>
                 )}
 
