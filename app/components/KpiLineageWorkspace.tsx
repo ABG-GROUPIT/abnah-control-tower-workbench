@@ -35,6 +35,7 @@ export function KpiLineageWorkspace({ atlas, lineage }: KpiLineageWorkspaceProps
   );
   const draftCount = lineage.kpis.filter((kpi) => kpi.approvalStatus === "draft").length;
   const approvedCount = lineage.kpis.filter((kpi) => kpi.approvalStatus === "approved").length;
+  const constrainedCount = lineage.kpis.filter((kpi) => ["blocked", "partial", "provisional"].includes(kpi.approvalStatus)).length;
 
   const nodesForLane = (kinds: readonly string[]) => selectedNodes.filter((node) => kinds.includes(node.kind));
 
@@ -44,7 +45,7 @@ export function KpiLineageWorkspace({ atlas, lineage }: KpiLineageWorkspaceProps
         <div>
           <span className="section-kicker">One KPI at a time / factual source-to-chart mapping</span>
           <h1>KPI lineage</h1>
-          <p>{draftCount} draft definitions / {approvedCount} approved / {lineage.publications.length} published lineage maps / {atlas.reports.length} report candidates available</p>
+          <p>{draftCount} draft / {constrainedCount} constrained / {approvedCount} approved / {lineage.publications.length} published lineage maps / {atlas.reports.length} report candidates available</p>
         </div>
         <span className="locked-label"><LockKeyhole aria-hidden="true" size={14} /> Read-only mapping</span>
       </header>

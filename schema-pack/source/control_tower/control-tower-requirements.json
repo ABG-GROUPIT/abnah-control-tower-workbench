@@ -18,7 +18,7 @@
       "id": "page_1_risk_action_center",
       "number": 1,
       "name": "Risk Action Center",
-      "purpose": "Tell operations and procurement what needs action now: stockout, expiry, vendor risk, impacted menu items, and owner.",
+      "purpose": "Tell operations and procurement what needs action now from source-supported projected stockout, impacted menu items, and open-PO evidence. Expiry remains visibly unavailable.",
       "audiences": ["Operations", "Procurement"],
       "decisionFlow": [
         "Forecast menu demand",
@@ -39,23 +39,23 @@
         "ct_days_cover"
       ],
       "visualModules": [
-        {"order": 1, "name": "Global filters", "question": "Which geography, outlet, category, vendor, and period are in scope?", "logic": "Filter all visuals by date, region, outlet, store or kitchen, item category, super category, vendor, PO status, item code, and new or matured flag."},
-        {"order": 2, "name": "Risk toggle", "question": "Should the page show stockout, expiry, vendor, or all risks?", "logic": "Use a calculated risk type to filter every KPI, table, and map view."},
+        {"order": 1, "name": "Global filters", "question": "Which operational scope is being reviewed?", "logic": "Filter all visuals by date, the single observed outlet, store or kitchen, item category, super category, vendor, PO status, and item code. Do not expose unavailable geography or maturity attributes."},
+        {"order": 2, "name": "Risk toggle", "question": "Should the page show projected stockout, PO risk, or all available risks?", "logic": "Use only source-supported risk types. Keep expiry as an unavailable state, not a selectable numeric risk."},
         {"order": 3, "name": "Decision KPI row", "question": "How serious is the current risk position?", "logic": "Show only action KPIs for outlets, menu items, risk value, and open POs linked to risky ingredients."},
-        {"order": 4, "name": "India outlet risk map", "question": "Where are restaurant risks located?", "logic": "Assign each outlet its highest current severity across stockout, expiry, and vendor risk. Requires verified outlet latitude and longitude."},
+        {"order": 4, "name": "Single-outlet risk summary", "question": "What is the current ABNAH outlet risk position?", "logic": "Summarize the highest current severity for the one observed outlet. Do not render a geographic map without a multi-outlet master and verified coordinates."},
         {"order": 5, "name": "Risk priority stack", "question": "Which risks should be handled first?", "logic": "Sort by severity rank, risk value descending, then expected breach date ascending."},
         {"order": 6, "name": "Action center", "question": "Who has to do what now?", "logic": "Generate rule-based actions with owner, due date, quantity, value, PO, vendor, and impacted menu context."},
         {"order": 7, "name": "Stockout risk detail", "question": "Which ingredients may run short and which menu items are impacted?", "logic": "Compare demand plus safety with current stock plus valid open PO quantity, then calculate shortage and days cover."},
         {"order": 8, "name": "Menu impact detail", "question": "What menu availability and forecast revenue are at risk?", "logic": "Trace every short ingredient through the recipe BOM to dependent menu items and forecasted net sales."},
-        {"order": 9, "name": "Expiry risk detail", "question": "Which stock may expire or become unusable?", "logic": "Use batch expiry when present. Otherwise estimate from FIFO GRN age and shelf life and label the result estimated."},
-        {"order": 10, "name": "Vendor and PO risk overlay", "question": "Is the open PO with a capable vendor?", "logic": "Link risky ingredient POs to vendor OTIF, expected delivery, receipt quantity, and remaining quantity."},
-        {"order": 11, "name": "Recommended mitigation", "question": "What is the best operational response?", "logic": "Start with explicit rules for stock transfer, PO expedite, new PO, alternate vendor, menu alternative, and near-expiry consumption."}
+        {"order": 9, "name": "Expiry availability notice", "question": "Can expiry risk be calculated?", "logic": "Show unavailable because the exact Expiry Report is not enabled and no validated batch-expiry source exists."},
+        {"order": 10, "name": "PO risk overlay", "question": "Which open POs are linked to projected ingredient shortages?", "logic": "Link risky ingredients to open PO quantity, expected date, and remaining quantity. Do not present OTIF as actual until deterministic PO-to-receipt linkage is proven."},
+        {"order": 11, "name": "Recommended mitigation", "question": "What is the best operational response?", "logic": "Use source-supported rules for PO expedite, new PO review, and menu alternative review. Do not recommend alternate vendors or near-expiry consumption without validated supporting sources."}
       ],
       "rules": [
         {"label": "Purple", "meaning": "Active stockout with menu impact", "condition": "current_stock_qty <= 0 AND forecast_demand_qty > 0 AND impacted_menu_item_count > 0"},
-        {"label": "Red", "meaning": "High risk", "condition": "days_cover < vendor_lead_time_days OR shortage_qty > 0 OR high_expiry_value_flag = 1 OR critical_po_vendor_otif < 0.95"},
-        {"label": "Amber", "meaning": "Warning", "condition": "days_cover is between lead time and lead time plus safety days OR pending PO has amber vendor status OR expiry risk is moderate"},
-        {"label": "Green", "meaning": "Healthy", "condition": "available_qty covers demand plus safety AND no expiry or vendor issue exists"},
+        {"label": "Red", "meaning": "High projected shortage", "condition": "forecast_required_qty > current_stock_qty + valid_open_po_qty"},
+        {"label": "Amber", "meaning": "Safety-stock pressure", "condition": "forecast_required_qty * approved_safety_factor > current_stock_qty + valid_open_po_qty"},
+        {"label": "Green", "meaning": "Covered", "condition": "current_stock_qty + valid_open_po_qty covers forecast demand plus approved safety"},
         {"label": "Grey", "meaning": "No data or not applicable", "condition": "recipe, stock, outlet mapping, active outlet, or active SKU evidence is missing"}
       ]
     },
@@ -87,20 +87,20 @@
       ],
       "visualModules": [
         {"order": 1, "name": "Global filters", "question": "Which procurement scope is being reviewed?", "logic": "Filter by date, region, outlet, vendor, item category, PO status, and item code."},
-        {"order": 2, "name": "Decision KPI row", "question": "What is the financial and procurement position?", "logic": "Show inventory value and open PO liability separately, plus purchase value, open POs, fill rate, OTIF, and leakage."},
+        {"order": 2, "name": "Decision KPI row", "question": "What is the financial and procurement position?", "logic": "Show inventory value and open PO liability separately, plus purchase value, open POs, provisional fill rate, and observed wastage. Keep unavailable vendor measures visibly gated."},
         {"order": 3, "name": "Procurement funnel", "question": "Where is the PO pipeline stuck?", "logic": "Compare ordered, processed or received, pending, and delayed quantity and value."},
         {"order": 4, "name": "PO status distribution", "question": "What is the mix of PO statuses?", "logic": "Count and value purchase orders by normalized status."},
         {"order": 5, "name": "Pending by vendor", "question": "Which vendors need follow-up?", "logic": "Sum remaining quantity and open liability by vendor, with overdue state."},
         {"order": 6, "name": "Pending ingredient and menu impact", "question": "Which pending ingredients threaten menu availability?", "logic": "Link pending PO ingredients through recipe BOM and forecast demand to impacted menu count and sales risk."},
         {"order": 7, "name": "Expected delivery breach", "question": "Which open POs are overdue?", "logic": "Expected delivery date is before the as-of date and remaining quantity is greater than zero."},
         {"order": 8, "name": "Standing PO tracker", "question": "How are standing commitments and releases progressing?", "logic": "Keep separate from the normal PO funnel and show only when standing PO and release PO identifiers are available."},
-        {"order": 9, "name": "Vendor performance matrix", "question": "Which vendors are reliable and commercially efficient?", "logic": "Use OTIF on one axis, normalized price variance or lead-time deviation on the other, and open liability as bubble size."},
-        {"order": 10, "name": "Vendor scorecard", "question": "What exactly is wrong with a vendor?", "logic": "Show OTIF, fill rate, lead-time deviation, and return rate separately. Do not use an unsigned weighted score."},
+        {"order": 9, "name": "Vendor commitment matrix", "question": "Which observed vendors carry open value and price movement?", "logic": "Use open liability and normalized price movement from observed PO and receipt evidence. Reserve OTIF and lead-time axes until linkage is production-valid."},
+        {"order": 10, "name": "Vendor scorecard", "question": "Which vendor measures are currently defensible?", "logic": "Show provisional fill rate separately. Show OTIF, lead-time deviation, and vendor return rate as unavailable until their required source contracts are proven."},
         {"order": 11, "name": "Ingredient price trend", "question": "Are raw material prices moving?", "logic": "Compare latest normalized unit price with the previous comparable period."},
         {"order": 12, "name": "Vendor price comparison", "question": "Are vendors charging different comparable prices for one item?", "logic": "Compare normalized unit prices for the same item, UOM basis, period, and outlet scope."},
         {"order": 13, "name": "Top price movement", "question": "Where are cost anomalies?", "logic": "Rank items by normalized price change percent and purchase value impact."},
         {"order": 14, "name": "Inventory value by category and outlet", "question": "Where is capital locked in stock?", "logic": "Sum closing inventory value by item hierarchy and outlet. High value alone is neutral, not a risk."},
-        {"order": 15, "name": "High-value and ageing stock", "question": "Which high-value items need review?", "logic": "Rank by inventory value and enrich with slow consumption or expiry risk where evidence exists."}
+        {"order": 15, "name": "High-value and slow-moving stock", "question": "Which high-value items need review?", "logic": "Rank by closing inventory value and observed consumption velocity. Do not label stock as ageing or expiring without validated age or expiry evidence."}
       ],
       "rules": [
         {"label": "OTIF first", "meaning": "Primary vendor measure", "condition": "Keep OTIF, fill rate, lead time deviation, and return rate separate until score weights are signed off."},
@@ -207,10 +207,10 @@
     }
   ],
   "kpis": [
-    {"id": "ct_outlets_at_risk", "pageId": "page_1_risk_action_center", "name": "Outlets at Risk", "businessDefinition": "Distinct active outlets with at least one current purple, red, or amber supply-chain risk.", "formula": "COUNT_DISTINCT(outlet_id WHERE risk_severity IN ('purple','red','amber'))", "grain": "Selected period and filter scope", "owner": "Operations", "approvalStatus": "draft", "validationStatus": "business_rule_received", "caveats": ["Requires a verified active outlet master and one deterministic highest-severity rule per outlet."]},
+    {"id": "ct_outlets_at_risk", "pageId": "page_1_risk_action_center", "name": "Outlets at Risk", "businessDefinition": "Distinct observed outlets with at least one current purple, red, or amber projected supply risk.", "formula": "COUNT_DISTINCT(observed_outlet_id WHERE risk_severity IN ('purple','red','amber'))", "grain": "Selected period and filter scope", "owner": "Operations", "approvalStatus": "draft", "validationStatus": "source_supported_single_outlet", "caveats": ["ABNAH currently has one outlet in scope; outlet identity is derived from operational reports and no geographic segmentation is claimed."]},
     {"id": "ct_menu_items_at_risk", "pageId": "page_1_risk_action_center", "name": "Menu Items at Risk", "businessDefinition": "Distinct menu items dependent on an ingredient carrying an active supply or expiry risk.", "formula": "COUNT_DISTINCT(menu_item_id WHERE linked_ingredient_risk_severity IN ('purple','red','amber'))", "grain": "Outlet, menu item, as-of date", "owner": "Operations", "approvalStatus": "draft", "validationStatus": "business_rule_received", "caveats": ["Requires stable menu-to-recipe and recipe-to-ingredient identifiers."]},
     {"id": "ct_stockout_risk_value", "pageId": "page_1_risk_action_center", "name": "Stockout Risk Value", "businessDefinition": "Forecasted net sales of menu items dependent on ingredients with a positive projected shortage.", "formula": "SUM(forecast_menu_net_sales WHERE shortage_qty > 0)", "grain": "Outlet, ingredient, forecast horizon", "owner": "Operations", "approvalStatus": "draft", "validationStatus": "business_rule_received", "caveats": ["This is revenue exposure, not guaranteed lost sales.", "Forecast horizon and double-count handling need sign-off."]},
-    {"id": "ct_expiry_risk_value", "pageId": "page_1_risk_action_center", "name": "Expiry Risk Value", "businessDefinition": "Value of stock expected to expire within the approved threshold.", "formula": "SUM(expiry_qty_at_risk * normalized_average_unit_cost)", "grain": "Outlet, store, item, batch or estimate date", "owner": "Supply Chain", "approvalStatus": "draft", "validationStatus": "business_rule_received", "caveats": ["Exact only with batch or expiry data; otherwise label FIFO and shelf-life output estimated."]},
+    {"id": "ct_expiry_risk_value", "pageId": "page_1_risk_action_center", "name": "Expiry Risk Value", "businessDefinition": "Reserved value of stock expected to expire within an approved threshold.", "formula": "UNAVAILABLE", "grain": "Not applicable until batch-expiry data exists", "owner": "Supply Chain", "approvalStatus": "blocked", "validationStatus": "source_unavailable_not_enabled", "caveats": ["The exact Expiry Report is not enabled for ABNAH.", "Return unavailable, not zero; do not estimate from receipt age without approved shelf-life evidence."]},
     {"id": "ct_open_risky_po_count", "pageId": "page_1_risk_action_center", "name": "Open Risk-Linked PO Count", "businessDefinition": "Distinct open purchase orders linked to ingredients carrying an active risk.", "formula": "COUNT_DISTINCT(po_number WHERE po_is_open = 1 AND linked_ingredient_risk = 1)", "grain": "Outlet, PO, as-of date", "owner": "Procurement", "approvalStatus": "draft", "validationStatus": "business_rule_received", "caveats": ["Needs reliable PO status and ingredient identifiers."]},
     {"id": "ct_forecast_menu_qty", "pageId": "page_1_risk_action_center", "name": "Forecast Menu Quantity", "businessDefinition": "Predicted menu-item demand over the selected risk horizon.", "formula": "SUM(forecast_menu_qty)", "grain": "Outlet, menu item, forecast date", "owner": "Operations", "approvalStatus": "draft", "validationStatus": "forecast_method_pending", "caveats": ["Forecast model, horizon, and confidence interval are not yet approved."]},
     {"id": "ct_shortage_qty", "pageId": "page_1_risk_action_center", "name": "Projected Shortage Quantity", "businessDefinition": "Ingredient requirement including safety stock that is not covered by current stock and valid open PO quantity.", "formula": "MAX(0, required_qty_with_safety - (current_stock_qty + valid_open_po_qty))", "grain": "Outlet, store, ingredient, forecast horizon, canonical UOM", "owner": "Supply Chain", "approvalStatus": "draft", "validationStatus": "business_rule_received", "caveats": ["Valid PO must arrive before the expected consumption date.", "All quantities require canonical UOM conversion."]},
@@ -220,12 +220,12 @@
     {"id": "ct_open_po_liability", "pageId": "page_2_procurement_vendor_capital", "name": "Open PO Liability", "businessDefinition": "Remaining committed purchase value on open or partially received PO lines.", "formula": "SUM(remaining_qty_canonical * normalized_unit_price)", "grain": "As-of date, outlet, PO line", "owner": "Procurement", "approvalStatus": "draft", "validationStatus": "business_rule_received", "caveats": ["Exclude cancelled, closed, and expired commitments based on normalized status."]},
     {"id": "ct_working_capital_locked", "pageId": "page_2_procurement_vendor_capital", "name": "Working Capital Locked", "businessDefinition": "Combined view of closing inventory value and open PO liability, with both components still displayed separately.", "formula": "closing_inventory_value + open_po_liability", "grain": "As-of date and selected scope", "owner": "Finance", "approvalStatus": "draft", "validationStatus": "business_rule_received", "caveats": ["Do not hide the two components inside only one total."]},
     {"id": "ct_open_po_count", "pageId": "page_2_procurement_vendor_capital", "name": "Open PO Count", "businessDefinition": "Distinct purchase orders with at least one open or partially received line.", "formula": "COUNT_DISTINCT(po_number WHERE normalized_po_status IN ('open','pending','partially_received'))", "grain": "As-of date, outlet", "owner": "Procurement", "approvalStatus": "draft", "validationStatus": "business_rule_received", "caveats": ["Status normalization requires UAT evidence."]},
-    {"id": "ct_po_fill_rate", "pageId": "page_2_procurement_vendor_capital", "name": "PO Fill Rate", "businessDefinition": "Share of ordered quantity that was processed or received on comparable closed and partial PO lines.", "formula": "SUM(processed_qty_canonical) / NULLIF(SUM(ordered_qty_canonical), 0)", "grain": "Vendor, outlet, item, period", "owner": "Procurement", "approvalStatus": "draft", "validationStatus": "business_rule_received", "caveats": ["Confirm whether processed quantity equals accepted receipt quantity."]},
-    {"id": "ct_vendor_otif", "pageId": "page_2_procurement_vendor_capital", "name": "Vendor OTIF", "businessDefinition": "Share of eligible closed PO lines received on or before expected delivery and in full.", "formula": "COUNT(po_line WHERE on_time = 1 AND in_full = 1) / NULLIF(COUNT(eligible_closed_po_line), 0)", "grain": "Vendor, outlet, period", "owner": "Procurement", "approvalStatus": "draft", "validationStatus": "po_grn_link_required", "caveats": ["Cannot be published from approximate vendor-item-date matching.", "Needs PO-line-to-GRN linkage and an approved in-full tolerance."]},
-    {"id": "ct_lead_time_deviation_days", "pageId": "page_2_procurement_vendor_capital", "name": "Lead Time Deviation", "businessDefinition": "Difference between actual accepted delivery date and expected delivery date.", "formula": "DATEDIFF(actual_delivery_date, expected_delivery_date)", "grain": "PO line or accepted receipt line", "owner": "Procurement", "approvalStatus": "draft", "validationStatus": "po_grn_link_required", "caveats": ["Define treatment of partial receipts and early delivery."]},
-    {"id": "ct_vendor_return_rate", "pageId": "page_2_procurement_vendor_capital", "name": "Vendor Return Rate", "businessDefinition": "Returned quantity as a share of received plus returned quantity for a vendor.", "formula": "SUM(return_qty_canonical) / NULLIF(SUM(received_qty_canonical + return_qty_canonical), 0)", "grain": "Vendor, item, outlet, period", "owner": "Procurement", "approvalStatus": "draft", "validationStatus": "business_rule_received", "caveats": ["Return reason and original receipt linkage are desirable for diagnosis."]},
+    {"id": "ct_po_fill_rate", "pageId": "page_2_procurement_vendor_capital", "name": "PO Fill Rate", "businessDefinition": "Provisional share of ordered quantity represented by the POSIST processed quantity on comparable PO lines.", "formula": "SUM(processed_qty_canonical) / NULLIF(SUM(ordered_qty_canonical), 0)", "grain": "Vendor, outlet, item, period", "owner": "Procurement", "approvalStatus": "provisional", "validationStatus": "processed_quantity_semantics_pending", "caveats": ["Confirm whether processed quantity equals accepted receipt quantity before production publication."]},
+    {"id": "ct_vendor_otif", "pageId": "page_2_procurement_vendor_capital", "name": "Vendor OTIF", "businessDefinition": "Reserved share of eligible closed PO lines received on or before expected delivery and in full.", "formula": "FORMULA_DEMO_ONLY", "grain": "Vendor, outlet, period", "owner": "Procurement", "approvalStatus": "blocked", "validationStatus": "production_source_linkage_unavailable", "caveats": ["Only 2 of 562 reviewed stock-entry rows carried a PO number.", "Do not publish actual OTIF from approximate vendor-item-date matching."]},
+    {"id": "ct_lead_time_deviation_days", "pageId": "page_2_procurement_vendor_capital", "name": "Lead Time Deviation", "businessDefinition": "Reserved difference between actual accepted delivery date and expected delivery date.", "formula": "FORMULA_DEMO_ONLY", "grain": "PO line or accepted receipt line", "owner": "Procurement", "approvalStatus": "blocked", "validationStatus": "production_source_linkage_unavailable", "caveats": ["Expected and actual delivery require deterministic PO-line-to-receipt linkage.", "Define treatment of partial receipts and early delivery before activation."]},
+    {"id": "ct_vendor_return_rate", "pageId": "page_2_procurement_vendor_capital", "name": "Vendor Return Rate", "businessDefinition": "Reserved returned quantity as a share of received plus returned quantity for a vendor.", "formula": "UNAVAILABLE", "grain": "Vendor, item, outlet, period", "owner": "Procurement", "approvalStatus": "blocked", "validationStatus": "source_unavailable_header_only", "caveats": ["Enterprise Stock Return is not available as a populated vendor-return source.", "Bulk Return Report does not provide enough vendor and receipt linkage for this KPI."]},
     {"id": "ct_purchase_price_change_pct", "pageId": "page_2_procurement_vendor_capital", "name": "Purchase Price Change %", "businessDefinition": "Change in comparable normalized unit price from the prior approved period.", "formula": "(current_normalized_unit_price - previous_normalized_unit_price) / NULLIF(previous_normalized_unit_price, 0)", "grain": "Item, canonical UOM, vendor or market scope, period", "owner": "Procurement", "approvalStatus": "draft", "validationStatus": "uom_conversion_required", "caveats": ["Never compare different pack or UOM bases without conversion."]},
-    {"id": "ct_financial_leakage", "pageId": "page_2_procurement_vendor_capital", "name": "Financial Leakage", "businessDefinition": "Observed return, return tax, expiry, and wastage value within the available source scope.", "formula": "SUM(return_amount + return_tax + expiry_loss_value + wastage_value)", "grain": "Outlet, item, vendor where applicable, period", "owner": "Finance", "approvalStatus": "draft", "validationStatus": "source_coverage_pending", "caveats": ["Display source coverage so missing expiry or wastage does not appear as zero loss."]},
+    {"id": "ct_financial_leakage", "pageId": "page_2_procurement_vendor_capital", "name": "Observed Wastage Leakage", "businessDefinition": "Observed wastage value within currently available POSIST source coverage.", "formula": "SUM(wastage_value)", "grain": "Outlet, item, period", "owner": "Finance", "approvalStatus": "partial", "validationStatus": "source_supported_wastage_only", "caveats": ["Vendor-return and expiry loss are unavailable and must not appear as zero.", "Relabel as broader financial leakage only after additional loss sources are enabled and validated."]},
     {"id": "ct_net_sales", "pageId": "page_3_consumption_menu_profitability", "name": "Net Sales", "businessDefinition": "Net sales for valid sold menu-item lines in the selected scope.", "formula": "SUM(net_sales_amount)", "grain": "Date, outlet, menu item", "owner": "Finance", "approvalStatus": "draft", "validationStatus": "reconciliation_required", "caveats": ["Void, return, discount, and tax treatment must reconcile to Restroworks totals."]},
     {"id": "ct_qty_sold", "pageId": "page_3_consumption_menu_profitability", "name": "Quantity Sold", "businessDefinition": "Valid sold menu-item quantity in the selected scope.", "formula": "SUM(sold_qty)", "grain": "Date, outlet, menu item", "owner": "Operations", "approvalStatus": "draft", "validationStatus": "reconciliation_required", "caveats": ["Combo, modifier, void, and return handling require schema validation."]},
     {"id": "ct_theoretical_consumption_qty", "pageId": "page_3_consumption_menu_profitability", "name": "Theoretical Consumption Quantity", "businessDefinition": "Ingredient quantity expected to be consumed from menu-item sales and the effective recipe BOM.", "formula": "SUM(sold_menu_qty * normalized_recipe_ingredient_qty_per_menu_unit)", "grain": "Date, outlet, ingredient, canonical UOM", "owner": "Kitchen", "approvalStatus": "draft", "validationStatus": "recipe_and_uom_required", "caveats": ["Recipe effective dating, base quantity, wastage factor, combos, and modifiers need validation."]},
@@ -291,10 +291,12 @@
       {
         "id": "p4_inventory_consumption_core",
         "priority": "P0",
-        "purpose": "Establish stock checkpoints, actual consumption, theoretical consumption, variance, movements, wastage, and expiry.",
+        "purpose": "Establish stock checkpoints, item identity, actual consumption, theoretical consumption, variance, movements, and wastage. Expiry remains unavailable.",
         "reports": [
           {"reportId": "report:p4_stock_admin:06_analytical_reports:04_closing_stock_report", "name": "Closing Stock Report", "role": "primary_candidate", "reason": "Closing quantity, value, average price, item, store, and outlet checkpoint."},
-          {"reportId": "report:p4_stock_admin:11_item_master_details:01_raw_material_item_detail", "name": "Raw Material Item Detail", "role": "primary_candidate", "reason": "Canonical raw-material identifiers, categories, UOM, shelf life, and status candidates."},
+          {"reportId": "report:p1_main:06_misc:18_item_recipe_report", "name": "Item Recipe Report", "role": "primary_candidate", "reason": "Captured menu-to-ingredient identity, recipe quantity, and recipe UOM evidence."},
+          {"reportId": "report:p4_stock_admin:07_other_reports:05_kitchen_wise_item_report", "name": "Kitchen Wise Item Report", "role": "optional_schema_candidate", "reason": "Exact POSIST report that may enrich item-to-kitchen assignment after a populated CSV contract is captured."},
+          {"reportId": "report:p4_stock_admin:07_other_reports:04_default_cost_report", "name": "Default Cost Report", "role": "optional_schema_candidate", "reason": "Exact POSIST report that may enrich default cost after a populated CSV contract is captured."},
           {"reportId": "report:p4_stock_admin:01_enterprise_reports:04_enterprise_consumption", "name": "Enterprise Consumption", "role": "primary_candidate", "reason": "Enterprise-level consumption fields and period logic."},
           {"reportId": "report:p4_stock_admin:05_aggregation_reports:02_consumption_report", "name": "Consumption Report", "role": "comparison_candidate", "reason": "Operational or aggregate consumption grain comparison."},
           {"reportId": "report:p4_stock_admin:01_enterprise_reports:08_enterprise_variance", "name": "Enterprise Variance", "role": "primary_candidate", "reason": "Enterprise actual-versus-theoretical fields and checkpoint logic."},
@@ -304,27 +306,27 @@
           {"reportId": "report:p4_stock_admin:02_transactional_reports:10_stock_in_stock_out_report", "name": "Stock In Stock Out Report", "role": "primary_candidate", "reason": "Inventory inflow, outflow, transfer, and movement transaction context."},
           {"reportId": "report:p4_stock_admin:05_aggregation_reports:05_movement_report", "name": "Movement Report", "role": "comparison_candidate", "reason": "Potential normalized movement summary or transfer coverage."},
           {"reportId": "report:p4_stock_admin:01_enterprise_reports:12_enterprise_wastage_report", "name": "Enterprise Wastage Report", "role": "primary_candidate", "reason": "Ingredient wastage quantity, value, date, outlet, and reason candidates."},
-          {"reportId": "report:p4_stock_admin:07_other_reports:03_expiry_report", "name": "Expiry Report", "role": "primary_candidate", "reason": "Batch or expiry evidence required to avoid estimated expiry risk."}
+          {"reportId": "report:p4_stock_admin:07_other_reports:03_expiry_report", "name": "Expiry Report", "role": "blocked_not_enabled", "reason": "Exact report exists in the catalogue but is not enabled for ABNAH; expiry remains unavailable."}
         ],
-        "decisionGate": "Actual consumption is final only when opening, receipt, transfer, return, and closing coverage reconcile at a stock-count checkpoint."
+        "decisionGate": "There is no POSIST report named Raw Material Item Detail in the captured catalogue. Build the POC item reference from Closing Stock Report, Enterprise Entry, Enterprise Purchase Order Report, and Item Recipe Report. Actual consumption is final only when movement coverage reconciles at a stock-count checkpoint."
       },
       {
         "id": "p4_vendor_price_returns_reorder",
         "priority": "P1",
-        "purpose": "Add vendor price, return, re-order, and standing commitment context after the P0 lifecycle is understood.",
+        "purpose": "Add vendor price and optional standing-commitment context. Vendor returns and source-defined reorder thresholds remain gated.",
         "reports": [
           {"reportId": "report:p4_stock_admin:01_enterprise_reports:02_erp_vendor_price", "name": "ERP Vendor Price", "role": "primary_candidate", "reason": "Enterprise vendor-item-price view."},
           {"reportId": "report:p4_stock_admin:07_other_reports:06_vendor_pricing_report", "name": "Vendor Pricing Report", "role": "comparison_candidate", "reason": "Operational vendor price comparison context."},
           {"reportId": "report:p4_stock_admin:07_other_reports:13_vendor_last_5_purchase_price", "name": "Vendor Last 5 Purchase Price", "role": "comparison_candidate", "reason": "Recent price history without deriving a lag from transactions."},
           {"reportId": "report:p4_stock_admin:05_aggregation_reports:01_item_wise_inflation_report", "name": "Item Wise Inflation Report", "role": "validation_candidate", "reason": "Validate derived price movement and period comparison."},
           {"reportId": "report:p4_stock_admin:06_analytical_reports:06_pricing_ledger", "name": "Pricing Ledger", "role": "comparison_candidate", "reason": "Historical price and costing audit context."},
-          {"reportId": "report:p4_stock_admin:01_enterprise_reports:03_enterprise_stock_return", "name": "Enterprise Stock Return", "role": "primary_candidate", "reason": "Enterprise vendor-return quantity and value."},
-          {"reportId": "report:p4_stock_admin:02_transactional_reports:04_stock_return", "name": "Stock Return", "role": "comparison_candidate", "reason": "Transaction-level reason, receipt, or vendor linkage."},
-          {"reportId": "report:p4_stock_admin:01_enterprise_reports:05_enterprise_stock_re_order", "name": "Enterprise Stock Re-Order", "role": "primary_candidate", "reason": "Enterprise re-order logic and thresholds."},
-          {"reportId": "report:p4_stock_admin:06_analytical_reports:03_re_order_level", "name": "Re-Order Level", "role": "comparison_candidate", "reason": "Operational re-order threshold and item-store grain."},
+          {"reportId": "report:p4_stock_admin:01_enterprise_reports:03_enterprise_stock_return", "name": "Enterprise Stock Return", "role": "blocked_unavailable", "reason": "Current export is not a populated vendor-return source."},
+          {"reportId": "report:p4_stock_admin:02_transactional_reports:04_stock_return", "name": "Stock Return", "role": "deferred_candidate", "reason": "Evaluate only if ABNAH later exposes populated vendor, item, value, and original-receipt linkage."},
+          {"reportId": "report:p4_stock_admin:01_enterprise_reports:05_enterprise_stock_re_order", "name": "Enterprise Stock Re-Order", "role": "blocked_unavailable", "reason": "Current export is header-only and is excluded from active KPI queries."},
+          {"reportId": "report:p4_stock_admin:06_analytical_reports:03_re_order_level", "name": "Re-Order Level", "role": "optional_schema_candidate", "reason": "Exact alternative report; use only if a populated CSV proves item-store thresholds."},
           {"reportId": "report:p4_stock_admin:03_po_so_reports:02_standing_purchase_order", "name": "Standing Purchase Order", "role": "primary_candidate", "reason": "Required only if standing PO and release mapping are present."}
         ],
-        "decisionGate": "Choose sources only after UOM, effective date, item identity, and outlet coverage comparisons."
+        "decisionGate": "Choose price sources only after UOM, effective date, item identity, and outlet coverage comparisons. Do not calculate vendor return rate or label projected shortage as a POSIST reorder breach."
       },
       {
         "id": "p4_cogs_and_reconciliation",
@@ -375,19 +377,21 @@
       {"endpointId": "api:rw_api_030", "name": "Indent", "fit": "Internal replenishment request and supply context", "status": "candidate", "coverage": ["Indent identifiers", "Supplier and receiver stores", "Item supply quantities"], "gaps": ["ABNAH enablement", "Receipt completion semantics"]}
     ],
     "knownCoverageGaps": [
-      "Canonical outlet master with latitude, longitude, active state, and new or matured flag",
+      "No multi-outlet geography or maturity analysis is needed for the current one-outlet demo; a separate outlet master is not available",
+      "No separate POSIST item-master report is available; the POC item reference is derived from Closing Stock Report, Enterprise Entry, Enterprise Purchase Order Report, and Item Recipe Report",
       "Stable recipe BOM with effective date, base quantity, ingredient identifiers, UOM, and wastage factor",
       "Complete daily or stock-count closing inventory snapshot",
       "Guaranteed purchase-order lifecycle and line-to-GRN relationship",
-      "Vendor master and approved vendor-item relationships",
-      "Expiry or batch inventory",
+      "Optional authoritative Vendor Master and approved vendor-item relationships; observed vendor names are available from PO and entry transactions",
+      "Expiry Report is not enabled and batch-expiry inventory is unavailable",
+      "Enterprise Stock Return and Enterprise Stock Re-Order are unavailable as populated sources",
       "Standing PO and release PO mapping",
       "Complete transfer-in and transfer-out movements"
     ]
   },
   "modelRevision": {
-    "decision": "revise_existing_37_query_model",
-    "rationale": "The current layered structure is reusable, but its synthetic outlet mappings and approximate joins are not production-safe. Revising the core avoids both duplicate models and carrying known assumptions forward.",
+    "decision": "use_revised_35_query_source_defensible_model",
+    "rationale": "The layered structure is reusable, but unsupported scenario masters and unavailable report facts have been removed from active dependencies. The current POC pack uses 35 active query tables and keeps blocked KPIs explicit.",
     "retain": [
       "Layered RAW to STD to DIM/FACT to SUM convention",
       "Core sales, purchase-order, receipt, closing-inventory, recipe, item, vendor, and date concepts",
@@ -395,12 +399,13 @@
       "Reconciliation summaries as test surfaces"
     ],
     "revise": [
-      "Replace three hardcoded outlet unions and CASE mappings with source-driven outlet identity and outlet master joins",
+      "Replace hardcoded outlet unions and CASE mappings with the one outlet identity observed in operational reports",
       "Replace name-based menu and ingredient joins with canonical identifiers plus an explicit unresolved-mapping queue",
       "Remove the arbitrary quantity <= 10 low-stock rule and calculate demand-aware shortage and days cover",
       "Block OTIF and delivery metrics until PO line and GRN linkage is proven; retire approximate vendor-item-date matching from KPI use",
       "Add explicit valid-open-PO timing so inbound quantity is counted only when it arrives before demand",
-      "Separate descriptive inventory pressure from predicted stockout risk"
+      "Separate descriptive inventory pressure from predicted stockout risk",
+      "Return unavailable rather than zero for expiry, vendor return, and blocked delivery metrics"
     ],
     "add": [
       "DIM_UOM_Conversion",
@@ -411,7 +416,6 @@
       "FACT_Actual_Consumption",
       "FACT_Consumption_Variance",
       "FACT_Inventory_Wastage",
-      "FACT_Vendor_Return",
       "FACT_Menu_Demand_Forecast",
       "FACT_Inventory_Risk",
       "FACT_Action_Recommendation",
@@ -422,6 +426,8 @@
       "Weighted vendor criticality score until business weights are approved",
       "Event and competitor enrichment",
       "Exact expiry risk without batch or expiry evidence",
+      "Vendor return rate without a populated vendor-return source",
+      "Source-defined reorder threshold without a populated Re-Order Level source",
       "Standing PO analytics without release identifiers",
       "Menu-level allocation of physical ingredient variance"
     ]

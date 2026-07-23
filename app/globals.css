@@ -267,6 +267,7 @@ code { font-family: var(--font-geist-mono), Consolas, monospace; }
 .status-passed,
 .status-published { background: var(--accent-soft); color: #176451; }
 .status-partial,
+.status-provisional,
 .status-planned,
 .status-in_review { background: var(--amber-soft); color: #7f4b12; }
 .status-unavailable,
@@ -1322,8 +1323,14 @@ code { font-family: var(--font-geist-mono), Consolas, monospace; }
 .architecture-node-top { display: flex; min-width: 0; align-items: center; gap: 4px; overflow: hidden; color: var(--muted); font-size: 6.5px; font-weight: 760; line-height: 1; text-transform: uppercase; white-space: nowrap; }
 .architecture-node-top i { width: 6px; height: 6px; flex: 0 0 auto; border-radius: 50%; background: #9ba7a1; }
 .architecture-node[data-status="selected_for_validation"] .architecture-node-top i { background: var(--accent); }
+.architecture-node[data-status="source_supported_derived"] .architecture-node-top i,
+.architecture-node[data-status="planned_derived"] .architecture-node-top i { background: var(--accent); }
 .architecture-node[data-status="required_gap"] .architecture-node-top i { background: var(--negative); }
+.architecture-node[data-status="unavailable_header_only"] .architecture-node-top i,
+.architecture-node[data-status="unavailable_not_enabled"] .architecture-node-top i,
+.architecture-node[data-status="blocked_source_unavailable"] .architecture-node-top i { background: var(--negative); }
 .architecture-node[data-status="conditional"] .architecture-node-top i { background: var(--amber); }
+.architecture-node[data-status="planned_partial"] .architecture-node-top i { background: var(--amber); }
 .architecture-node[data-status="definition_ready"] .architecture-node-top i { background: var(--blue); }
 .architecture-node[data-status="control_only"] .architecture-node-top i { background: var(--rose); }
 .architecture-node-top b { margin-left: auto; padding: 2px 4px; border-radius: 3px; background: var(--layer-soft); color: var(--layer-color); font-size: 7px; }
@@ -1339,10 +1346,16 @@ code { font-family: var(--font-geist-mono), Consolas, monospace; }
 .architecture-inspector header > div { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; margin-top: 10px; color: var(--muted); font-size: 8px; }
 .architecture-status { display: inline-flex; width: fit-content; padding: 3px 6px; border-radius: 4px; background: #edf0ee; color: #56635d; font-size: 7px; font-weight: 750; text-transform: capitalize; }
 .architecture-status.status-selected_for_validation,
-.architecture-status.status-adopted { background: var(--accent-soft); color: #176451; }
-.architecture-status.status-required_gap { background: var(--negative-soft); color: var(--negative); }
+.architecture-status.status-adopted,
+.architecture-status.status-source_supported_derived,
+.architecture-status.status-planned_derived { background: var(--accent-soft); color: #176451; }
+.architecture-status.status-required_gap,
+.architecture-status.status-unavailable_header_only,
+.architecture-status.status-unavailable_not_enabled,
+.architecture-status.status-blocked_source_unavailable { background: var(--negative-soft); color: var(--negative); }
 .architecture-status.status-conditional,
-.architecture-status.status-pending_validation { background: var(--amber-soft); color: #7f4b12; }
+.architecture-status.status-pending_validation,
+.architecture-status.status-planned_partial { background: var(--amber-soft); color: #7f4b12; }
 .architecture-status.status-definition_ready { background: var(--blue-soft); color: #315f81; }
 .architecture-status.status-control_only { background: var(--rose-soft); color: var(--rose); }
 

@@ -317,4 +317,3 @@ report:p4_stock_admin:07_other_reports:14_yield_report,Yield Report,p4_stock_adm
 report:p4_stock_admin:08_summary:01_deployment_summary,Deployment Summary,p4_stock_admin,08_summary,pending,needs_review,flat,published,0,1,False
 report:p4_stock_admin:09_bill_passing:01_bill_passing,Bill Passing,p4_stock_admin,09_bill_passing,pending,needs_review,flat,published,0,1,False
 report:p4_stock_admin:10_catering:01_catering,Catering,p4_stock_admin,10_catering,pending,needs_review,flat,published,0,1,False
-report:p4_stock_admin:11_item_master_details:01_raw_material_item_detail,Raw Material Item Detail,p4_stock_admin,11_item_master_details,pending,needs_review,flat,published,0,1,False

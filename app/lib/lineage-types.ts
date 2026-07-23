@@ -14,7 +14,7 @@ export interface KpiDefinition {
   name: string;
   businessDefinition: string;
   owner: string;
-  approvalStatus: "draft" | "approved" | "retired";
+  approvalStatus: "draft" | "approved" | "retired" | "blocked" | "provisional" | "partial";
   validationStatus: string;
   grain: string;
   formula: string;

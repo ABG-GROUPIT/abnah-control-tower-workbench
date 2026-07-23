@@ -11,31 +11,31 @@
   },
   "decision": {
     "headline": "Schemas and encoded arithmetic align; remaining risks are coverage and business treatment.",
-    "reason": "Synthetic data remains appropriate for the demonstrator because the actual exports cover one operating scope with uneven periods, two required reports are header-only, PO and batch linkage is sparse, and purchase-cost coverage changes sharply by period.",
-    "productionRule": "Raw exports remain authoritative evidence. Standardized calculations, exception flags, and business sign-off are required before production KPIs are published."
+    "reason": "Synthetic data remains appropriate for the demonstrator because the actual exports cover one operating scope with uneven periods, two evaluated reports are header-only, PO linkage is sparse, and expiry data is not enabled.",
+    "productionRule": "Raw exports remain authoritative evidence. Derived item, outlet, and vendor references may use only observed source fields. Unsupported attributes and KPIs remain null or unavailable until an exact source is validated."
   },
   "zohoReadiness": {
     "demoBuild": "ready",
     "productionModelBuild": "ready_with_gates",
     "productionPublication": "blocked_pending_signoff",
-    "requiredLandingTableCount": 15,
-    "queryTableCount": 36,
+    "requiredLandingTableCount": 11,
+    "queryTableCount": 35,
     "dashboardTabCount": 4,
     "migrationRule": "Build v2 in parallel. Do not delete old raw tables before reconciliation, dashboard acceptance, and rollback approval.",
     "nextSequence": [
       "Back up or duplicate the current Zoho workspace.",
-      "Import the 15 active RAWN_CT and AUX landing tables with exact names.",
-      "Keep the header-only Stock Return landing contract as gated schema evidence.",
-      "Build the 36 active Query Tables in manifest dependency order.",
+      "Import the 9 active RAWN_CT tables and 2 approved model-output tables with exact names.",
+      "Keep Enterprise Stock Return, Enterprise Stock Re-Order, and expiry outside active landing dependencies.",
+      "Build the 35 active Query Tables in manifest dependency order.",
       "Validate facts and summaries before assembling the four dashboard tabs.",
       "Train Ask Zia only after dashboard calculations pass."
     ]
   },
   "summary": {
-    "selectedSourceCount": 22,
-    "primarySourceCount": 10,
-    "auxiliarySourceCount": 6,
-    "controlSourceCount": 6,
+    "selectedSourceCount": 19,
+    "primarySourceCount": 9,
+    "auxiliarySourceCount": 5,
+    "controlSourceCount": 5,
     "auditedReportCount": 20,
     "auditedFileCount": 26,
     "auditedRowCount": 35128,
@@ -286,36 +286,30 @@
     },
     {
       "id": "source:rawn_ct_enterprise_stock_return",
-      "sourceName": "Enterprise Stock Return Report",
+      "sourceName": "Enterprise Stock Return",
       "sourceTable": "RAWN_CT_enterprise_stock_return",
-      "modelRole": "primary_production_gate",
-      "roleGroup": "primary",
+      "modelRole": "unavailable_header_only",
+      "roleGroup": "control",
       "pages": [
         "P2",
         "P3",
         "P4"
       ],
       "requiredFields": [
-        "transaction_number",
-        "stock_entry_date",
-        "return_date",
-        "vendor_name",
-        "item_code",
-        "return_qty",
-        "return_amt"
+        "none"
       ],
-      "productionDecision": "Header-only in current UAT evidence; keep the schema but exclude return rate and vendor-return leakage until populated rows join to the original GRN and item",
-      "fallbackOrReconciliation": "Bulk Return Report",
+      "productionDecision": "Header-only in current evidence; exclude return rate and vendor-return leakage until a populated source links vendor, item, value and original receipt",
+      "fallbackOrReconciliation": "Bulk Return Report provides only internal item-return quantity and is not a vendor-return substitute",
       "auditReportId": "p4.enterprise_stock_return.item",
       "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:03_enterprise_stock_return",
       "auditStatus": "header_only",
       "rowCount": 0
     },
     {
-      "id": "source:aux_outlet_master",
-      "sourceName": "AUX Outlet Master",
-      "sourceTable": "AUX_Outlet_Master",
-      "modelRole": "required_dimension",
+      "id": "source:dim_ct_outlet",
+      "sourceName": "Derived Outlet Reference",
+      "sourceTable": "DIM_CT_Outlet",
+      "modelRole": "derived_dimension",
       "roleGroup": "auxiliary",
       "pages": [
         "P1",
@@ -325,25 +319,20 @@
       ],
       "requiredFields": [
         "outlet_code",
-        "outlet_name",
-        "region",
-        "city",
-        "latitude",
-        "longitude",
-        "new_matured_flag"
+        "outlet_name"
       ],
-      "productionDecision": "Replace with ABNAH-approved outlet master and verified coordinates",
-      "fallbackOrReconciliation": "None",
+      "productionDecision": "Derive from Closing Stock for the current single outlet; region, coordinates and new/matured status remain unavailable",
+      "fallbackOrReconciliation": "Closing Stock Report",
       "auditReportId": "",
       "workbenchReportId": "",
       "auditStatus": "not_in_local_export_set",
       "rowCount": 0
     },
     {
-      "id": "source:aux_item_master",
-      "sourceName": "AUX Item Master",
-      "sourceTable": "AUX_Item_Master",
-      "modelRole": "required_dimension",
+      "id": "source:dim_ct_item",
+      "sourceName": "Derived Item Reference",
+      "sourceTable": "DIM_CT_Item",
+      "modelRole": "derived_dimension",
       "roleGroup": "auxiliary",
       "pages": [
         "P1",
@@ -353,38 +342,34 @@
       ],
       "requiredFields": [
         "item_code",
+        "item_name",
+        "category_name",
+        "super_category_name",
         "canonical_uom",
-        "uom_conversion_factor",
-        "average_price",
-        "reorder_level_qty",
-        "primary_vendor",
-        "shelf_life_days"
+        "baseline_average_price"
       ],
-      "productionDecision": "Replace with approved item/UOM/vendor master; quantity KPIs are blocked without it",
-      "fallbackOrReconciliation": "Enterprise ReOrder plus item master export",
+      "productionDecision": "Derive from Closing Stock and validate against Entry, Purchase Order and Item Recipe; shelf life, reorder, order quantity, criticality and approved vendor mapping remain null",
+      "fallbackOrReconciliation": "Closing Stock Report|Enterprise Entry Report - Stock Entry|Enterprise Purchase Order Report - item detail|Item Recipe Report",
       "auditReportId": "",
       "workbenchReportId": "",
       "auditStatus": "not_in_local_export_set",
       "rowCount": 0
     },
     {
-      "id": "source:aux_vendor_master",
-      "sourceName": "AUX Vendor Master",
-      "sourceTable": "AUX_Vendor_Master",
-      "modelRole": "required_dimension",
+      "id": "source:dim_ct_vendor",
+      "sourceName": "Observed Vendor Reference",
+      "sourceTable": "DIM_CT_Vendor",
+      "modelRole": "derived_dimension",
       "roleGroup": "auxiliary",
       "pages": [
         "P1",
         "P2"
       ],
       "requiredFields": [
-        "vendor_code",
-        "vendor_name",
-        "default_lead_time_days",
-        "approved_category_mapping"
+        "vendor_name"
       ],
-      "productionDecision": "Replace with approved vendor master and commercial lead-time rules",
-      "fallbackOrReconciliation": "ERP Vendor Price schema capture",
+      "productionDecision": "Derive observed names from Purchase Order and Entry; active status, default lead time and approved category mapping await a separate vendor master",
+      "fallbackOrReconciliation": "Enterprise Purchase Order Report - item detail|Enterprise Entry Report - Stock Entry",
       "auditReportId": "",
       "workbenchReportId": "",
       "auditStatus": "not_in_local_export_set",
@@ -439,27 +424,21 @@
       "rowCount": 0
     },
     {
-      "id": "source:aux_expiry_estimate",
-      "sourceName": "AUX Expiry Estimate",
-      "sourceTable": "AUX_Expiry_Estimate",
-      "modelRole": "conditional_feature",
-      "roleGroup": "auxiliary",
+      "id": "source:not_imported",
+      "sourceName": "Expiry Data Unavailable",
+      "sourceTable": "NOT_IMPORTED",
+      "modelRole": "blocked_feature",
+      "roleGroup": "control",
       "pages": [
         "P1",
         "P2",
         "P4"
       ],
       "requiredFields": [
-        "source_period_code",
-        "as_of_date",
-        "outlet_code",
-        "item_code",
-        "qty_at_risk",
-        "expiry_risk_value",
-        "is_estimated"
+        "none"
       ],
-      "productionDecision": "Always label estimated until batch and expiry evidence is validated",
-      "fallbackOrReconciliation": "Exact Expiry Report or batch-level Enterprise Entry",
+      "productionDecision": "Do not calculate or publish expiry quantity or value while the module is unavailable and Enterprise Entry batch is blank",
+      "fallbackOrReconciliation": "Expiry Report or populated batch-expiry evidence",
       "auditReportId": "",
       "workbenchReportId": "",
       "auditStatus": "not_in_local_export_set",
@@ -590,21 +569,19 @@
     },
     {
       "id": "source:rawn_ct_enterprise_reorder",
-      "sourceName": "Enterprise ReOrder Report",
+      "sourceName": "Enterprise Stock Re-Order",
       "sourceTable": "RAWN_CT_enterprise_reorder",
-      "modelRole": "dimension_enrichment",
+      "modelRole": "unavailable_header_only",
       "roleGroup": "control",
       "pages": [
         "P1",
         "P4"
       ],
       "requiredFields": [
-        "item_code",
-        "reorder_level_qty",
-        "minimum_order_level_qty"
+        "none"
       ],
-      "productionDecision": "Use as a threshold input only; never replace demand-aware stockout logic",
-      "fallbackOrReconciliation": "Approved Item Master",
+      "productionDecision": "Exclude from active calculations; use forecast-driven shortage and days cover without claiming source reorder levels",
+      "fallbackOrReconciliation": "Re-Order Level only after a populated CSV is validated",
       "auditReportId": "p4.enterprise_reorder.item",
       "workbenchReportId": "report:p4_stock_admin:01_enterprise_reports:05_enterprise_stock_re_order",
       "auditStatus": "header_only",
@@ -2991,15 +2968,15 @@
       "reportId": "p4.enterprise_reorder.item",
       "displayName": "Enterprise ReOrder Report",
       "selection": {
-        "status": "selected",
-        "modelRole": "dimension_enrichment",
-        "roleGroup": "control",
+        "status": "evaluated_not_selected",
+        "modelRole": "evaluated_unavailable",
+        "roleGroup": "evaluated",
         "pages": [
           "P1",
           "P4"
         ],
-        "sourceTable": "RAWN_CT_enterprise_reorder",
-        "reason": "Use as a threshold input only; never replace demand-aware stockout logic"
+        "sourceTable": "",
+        "reason": "Header-only evidence; excluded from active calculations and replaced by forecast-driven projected shortage."
       },
       "filesAudited": 1,
       "rowsAudited": 0,
@@ -3019,7 +2996,7 @@
         "statement": "Observed CSV header matches its contract exactly; canonical column positions match the captured Workbench variant, including grouped quantity and amount headings."
       },
       "readiness": "blocked_header_only",
-      "decision": "Header-only export; thresholds must come from an approved item master until populated.",
+      "decision": "Header-only export; exclude it from the active model and do not describe projected shortage as a POSIST reorder breach.",
       "codexReview": {
         "status": "coverage_blocked",
         "headline": "No structural mismatch; populated evidence is missing.",
@@ -3189,16 +3166,16 @@
       "reportId": "p4.enterprise_stock_return.item",
       "displayName": "Enterprise Stock Return / Stock Entry Return",
       "selection": {
-        "status": "selected",
-        "modelRole": "primary_production_gate",
-        "roleGroup": "primary",
+        "status": "evaluated_not_selected",
+        "modelRole": "evaluated_unavailable",
+        "roleGroup": "evaluated",
         "pages": [
           "P2",
           "P3",
           "P4"
         ],
-        "sourceTable": "RAWN_CT_enterprise_stock_return",
-        "reason": "Header-only in current UAT evidence; keep the schema but exclude return rate and vendor-return leakage until populated rows join to the original GRN and item"
+        "sourceTable": "",
+        "reason": "Header-only evidence; excluded from the active model and vendor return rate."
       },
       "filesAudited": 1,
       "rowsAudited": 0,
@@ -3218,7 +3195,7 @@
         "statement": "Observed CSV header matches its contract exactly; canonical column positions match the captured Workbench variant, including grouped quantity and amount headings."
       },
       "readiness": "blocked_header_only",
-      "decision": "Header-only export; vendor return-rate KPIs remain blocked until populated evidence is available.",
+      "decision": "Header-only export; exclude it from the active model and keep vendor return rate unavailable.",
       "codexReview": {
         "status": "coverage_blocked",
         "headline": "No structural mismatch; populated evidence is missing.",

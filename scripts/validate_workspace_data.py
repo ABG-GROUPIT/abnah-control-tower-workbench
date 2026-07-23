@@ -51,9 +51,9 @@ P2_CAPTURE_BASELINE = {
     },
 }
 P4_CAPTURE_BASELINE = {
-    "catalog_reports": 74,
-    "schema_statuses": {"captured": 26, "pending": 48},
-    "verification_statuses": {"reviewed": 14, "needs_review": 60},
+    "catalog_reports": 73,
+    "schema_statuses": {"captured": 26, "pending": 47},
+    "verification_statuses": {"reviewed": 14, "needs_review": 59},
     "sections": {
         "01_enterprise_reports": {"reports": 15, "captured": 15},
         "02_transactional_reports": {"reports": 10, "captured": 6},

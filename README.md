@@ -24,7 +24,7 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
 
 ## Current Snapshot
 
-- 319 reports catalogued across P1, P2, and Stock Administration/P4.
+- 318 exact report names catalogued across P1, P2, and Stock Administration/P4.
 - 17 P1 Misc reports encoded as explicit editable structural blueprints.
 - 8 P1 Misc reports marked unavailable because their screens returned no usable schema.
 - 2 unknown P1 Misc placeholders archived instead of being guessed.

@@ -14,7 +14,13 @@ export type ArchitectureNodeStatus =
   | "required_gap"
   | "planned"
   | "definition_ready"
-  | "control_only";
+  | "control_only"
+  | "source_supported_derived"
+  | "unavailable_header_only"
+  | "unavailable_not_enabled"
+  | "planned_derived"
+  | "planned_partial"
+  | "blocked_source_unavailable";
 
 export interface ArchitectureLayer {
   id: ArchitectureLayerId;
@@ -34,7 +40,7 @@ export interface ArchitectureNode {
   id: string;
   layerId: Exclude<ArchitectureLayerId, "kpi" | "experience">;
   groupId: string;
-  kind: "report" | "master" | "table";
+  kind: "report" | "master" | "table" | "derived_reference";
   label: string;
   description: string;
   status: ArchitectureNodeStatus;
@@ -45,7 +51,12 @@ export interface ArchitectureNode {
   logic: string;
   alternatives: string[];
   reportId?: string;
-  catalogState?: "catalogued" | "external_reference";
+  catalogState?:
+    | "catalogued"
+    | "external_reference"
+    | "not_a_report"
+    | "catalogued_unavailable"
+    | "catalogued_not_enabled";
 }
 
 export interface ArchitectureKpiRoute {

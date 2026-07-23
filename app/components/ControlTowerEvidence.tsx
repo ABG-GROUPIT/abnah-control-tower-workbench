@@ -33,9 +33,9 @@ const numberFormat = new Intl.NumberFormat("en-IN");
 const label = (value: string) => value.replaceAll("_", " ");
 
 function toneForStatus(value: string) {
-  if (["exact", "complete", "populated", "schema_ready_value_checks_passed", "no_encoded_exception"].includes(value)) return "green";
-  if (["partial", "review_required", "review", "warning", "coverage_review", "definition_review", "business_review", "formula_definition_gate", "reconciliation_exception", "cost_coverage_gap", "operational_exception", "deduplication_risk"].includes(value)) return "amber";
-  if (["weak", "missing", "header_only", "blocked_header_only", "blocker", "coverage_blocked", "coverage_blocker"].includes(value)) return "red";
+  if (["exact", "complete", "populated", "schema_ready_value_checks_passed", "no_encoded_exception", "derived_reference", "derived_dimension"].includes(value)) return "green";
+  if (["partial", "review_required", "review", "warning", "coverage_review", "definition_review", "business_review", "formula_definition_gate", "reconciliation_exception", "cost_coverage_gap", "operational_exception", "deduplication_risk", "derived_reference_optional_master"].includes(value)) return "amber";
+  if (["weak", "missing", "header_only", "blocked_header_only", "blocker", "coverage_blocked", "coverage_blocker", "gated_unavailable", "unavailable_header_only", "blocked_feature"].includes(value)) return "red";
   return "neutral";
 }
 
@@ -66,8 +66,8 @@ function SourceRegister({
         <div>
           <TableProperties aria-hidden="true" size={16} />
           <span>
-            <strong>Final source register</strong>
-            <small>Selected operational reports, auxiliary inputs, controls, gates, and fallbacks</small>
+            <strong>Governed source register</strong>
+            <small>Active reports, derived references, model outputs, reconciliation controls, and gated sources</small>
           </span>
         </div>
         <span className="ct-register-count">{visible.length} / {sources.length}</span>
@@ -76,7 +76,7 @@ function SourceRegister({
         <div className="ct-segmented" role="group" aria-label="Filter selected sources">
           {(["all", "primary", "auxiliary", "control"] as SourceFilter[]).map((item) => (
             <button key={item} type="button" className={filter === item ? "is-active" : ""} onClick={() => setFilter(item)}>
-              {item === "all" ? "All selected" : label(item)}
+              {item === "all" ? "All sources" : label(item)}
             </button>
           ))}
         </div>
@@ -109,7 +109,15 @@ function SourceRegister({
                 <td><span className="ct-field-list">{source.requiredFields.join(" / ")}</span></td>
                 <td>
                   <EvidencePill value={source.auditStatus} />
-                  <small>{source.auditReportId ? `${numberFormat.format(source.rowCount)} rows reviewed` : "Approved enterprise input still required"}</small>
+                  <small>
+                    {source.auditReportId
+                      ? `${numberFormat.format(source.rowCount)} rows reviewed`
+                      : source.modelRole.startsWith("derived_")
+                        ? "Derived from reviewed operational reports"
+                        : ["gated_unavailable", "unavailable_header_only", "blocked_feature"].includes(source.modelRole)
+                          ? "Excluded from the active landing model"
+                          : "Approved model output"}
+                  </small>
                 </td>
                 <td>
                   {source.productionDecision}
@@ -478,7 +486,7 @@ function AuditExplorer({
 
 export function ControlTowerEvidenceView({ evidence, onOpenReport }: ControlTowerEvidenceProps) {
   const summaryItems = [
-    [evidence.summary.selectedSourceCount, "selected sources"],
+    [evidence.summary.selectedSourceCount, "active sources"],
     [evidence.summary.auditedReportCount, "audited reports"],
     [evidence.summary.auditedFileCount, "local exports"],
     [evidence.summary.auditedRowCount, "rows reviewed"],

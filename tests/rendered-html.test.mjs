@@ -28,7 +28,7 @@ test("server-renders the editable ABNAH schema workspace", async () => {
   assert.match(html, /Architecture/);
   assert.match(html, /Budget DSR Report/);
   assert.match(html, /Blank table structure/);
-  assert.match(html, /319/);
+  assert.match(html, /318/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
 });
 
@@ -63,8 +63,9 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   assert.equal(controlTower.kpis.length, 35);
   assert.equal(controlTower.terminology.preferredTerm, "consumption");
   assert.equal(architecture.status, "planned_architecture_under_feasibility_validation");
-  assert.equal(architecture.sourceNodes.filter((node) => node.kind === "report").length, 21);
-  assert.equal(architecture.sourceNodes.filter((node) => node.kind === "master").length, 2);
+  assert.equal(architecture.sourceNodes.filter((node) => node.kind === "report").length, 20);
+  assert.equal(architecture.sourceNodes.filter((node) => node.kind === "master").length, 1);
+  assert.equal(architecture.sourceNodes.filter((node) => node.kind === "derived_reference").length, 2);
   assert.equal(architecture.modelNodes.length, 58);
   assert.equal(new Set(architecture.kpiRoutes.flatMap((route) => route.kpiIds)).size, 35);
   assert.ok(architecture.sourceNodes.some(
@@ -72,11 +73,13 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
       && node.label === "Enterprise Purchase Order Report"
       && node.reportId === "report:p4_stock_admin:01_enterprise_reports:06_enterprise_purchase_order",
   ));
-  assert.equal(evidence.summary.selectedSourceCount, 22);
+  assert.equal(evidence.summary.selectedSourceCount, 19);
   assert.equal(evidence.summary.auditedReportCount, 20);
   assert.equal(evidence.summary.auditedFileCount, 26);
   assert.equal(evidence.summary.schemaVisualMatches, 20);
   assert.equal(evidence.summary.headerOnlyReportCount, 2);
+  assert.equal(evidence.zohoReadiness.requiredLandingTableCount, 11);
+  assert.equal(evidence.zohoReadiness.queryTableCount, 35);
   assert.equal(evidence.privacy.fullRowsIncluded, false);
   assert.equal(evidence.privacy.sensitiveValuesIncluded, false);
   assert.equal(fidelity.status, "verified");
@@ -84,18 +87,24 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   assert.equal(fidelity.summary.exactHeaderReports, 20);
   assert.equal(fidelity.summary.ignoredNoSignalFields, 69);
   assert.equal(fidelity.summary.headerOnlyReportContracts, 2);
+  assert.equal(fidelity.summary.gatedReportContracts, 2);
+  assert.equal(fidelity.summary.auxiliaryModelTables, 2);
   assert.ok(fidelity.reports.every((report) => report.headerMatch));
   assert.ok(fidelity.reports.every((report) => (
     report.ignoredFields.every((field) => field.observedState === field.syntheticState)
   )));
   assert.equal(lineage.status, "requirements_received");
-  assert.equal(lineage.kpis.filter((kpi) => kpi.approvalStatus === "draft").length, 35);
+  assert.equal(lineage.kpis.filter((kpi) => kpi.approvalStatus === "draft").length, 29);
+  assert.equal(lineage.kpis.filter((kpi) => kpi.approvalStatus === "blocked").length, 4);
+  assert.equal(lineage.kpis.filter((kpi) => kpi.approvalStatus === "provisional").length, 1);
+  assert.equal(lineage.kpis.filter((kpi) => kpi.approvalStatus === "partial").length, 1);
   assert.equal(lineage.nodes.length, 0);
   assert.equal(lineage.edges.length, 0);
   assert.doesNotMatch(controlTowerText, /\.png\b|AppData\\Local\\Temp|Downloads\\/i);
   assert.doesNotMatch(evidenceText, /\.png\b|\.jpe?g\b|[A-Za-z]:\\|Downloads\\|file_sha256|file_name/i);
   assert.doesNotMatch(fidelityText, /\.png\b|\.jpe?g\b|[A-Za-z]:\\|Downloads\\/i);
   assert.doesNotMatch(architectureText, /\.png\b|\.jpe?g\b|AppData\\Local\\Temp|Downloads\\/i);
+  assert.doesNotMatch(atlasText, /Raw Material Item Detail/i);
 
   const budget = workspace.reports.find((report) => report.id === "report:p1_main:06_misc:03_budget_dsr_report");
   const cashier = workspace.reports.find((report) => report.id === "report:p1_main:06_misc:02_cashier_report");

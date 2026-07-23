@@ -1,6 +1,6 @@
 {
   "contractVersion": "1.0.0",
-  "generatedAt": "2026-07-23T07:26:45+00:00",
+  "generatedAt": "2026-07-23T10:02:31+00:00",
   "sourcePolicy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
   "reports": [
     {
@@ -115848,40 +115848,6 @@
       "name": "Catering",
       "page": "p4_stock_admin",
       "section": "10_catering",
-      "domain": "inventory_consumption",
-      "priority": "P1",
-      "schemaStatus": "pending",
-      "verificationStatus": "needs_review",
-      "layoutKind": "flat",
-      "captureMethod": "csv_header_text_first_priority_screenshots_for_grain_filters",
-      "sourcePolicy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
-      "workflowStatus": "published",
-      "version": 0,
-      "isArchived": false,
-      "isCustom": false,
-      "fields": [],
-      "tables": [
-        {
-          "id": "primary",
-          "name": "Schema pending",
-          "rows": 1,
-          "columns": 1,
-          "columnWidths": [
-            150
-          ],
-          "cells": []
-        }
-      ],
-      "apiTests": [],
-      "notes": [],
-      "updatedAt": "",
-      "updatedBy": "generated baseline"
-    },
-    {
-      "id": "report:p4_stock_admin:11_item_master_details:01_raw_material_item_detail",
-      "name": "Raw Material Item Detail",
-      "page": "p4_stock_admin",
-      "section": "11_item_master_details",
       "domain": "inventory_consumption",
       "priority": "P1",
       "schemaStatus": "pending",

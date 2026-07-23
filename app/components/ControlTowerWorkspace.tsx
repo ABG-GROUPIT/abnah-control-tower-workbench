@@ -333,7 +333,7 @@ export function ControlTowerWorkspace({ requirements, evidence, fidelity, onOpen
         <div>
           <span className="section-kicker">Business requirements / source validation workspace</span>
           <h1>Supply Chain Control Tower</h1>
-          <p>{requirements.pages.length} pages / {requirements.kpis.length} draft KPI definitions / {fidelity.summary.exactHeaderReports} exact POSIST contracts / {evidence.zohoReadiness.queryTableCount} active Query Tables / {approvedKpis} KPIs approved</p>
+          <p>{requirements.pages.length} pages / {requirements.kpis.length} governed KPI definitions / {fidelity.summary.exactHeaderReports} exact POSIST contracts / {evidence.zohoReadiness.queryTableCount} active Query Tables / {approvedKpis} KPIs approved</p>
         </div>
         <div className="ct-header-state"><ShieldCheck aria-hidden="true" size={15} /><span><strong>Source fidelity verified</strong><small>{fidelity.summary.ignoredNoSignalFields} no-signal fields controlled</small></span></div>
       </header>

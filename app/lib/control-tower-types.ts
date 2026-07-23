@@ -1,5 +1,11 @@
 export type ControlTowerStatus = "requirements_received_pending_source_validation";
-export type KpiApprovalStatus = "draft" | "approved" | "retired";
+export type KpiApprovalStatus =
+  | "draft"
+  | "approved"
+  | "retired"
+  | "blocked"
+  | "provisional"
+  | "partial";
 export type CapturePriority = "P0" | "P1" | "P2";
 
 export interface ControlTowerRule {
@@ -43,7 +49,15 @@ export interface ControlTowerKpi {
 export interface CaptureReportCandidate {
   reportId: string;
   name: string;
-  role: "primary_candidate" | "comparison_candidate" | "reconciliation_candidate" | "validation_candidate";
+  role:
+    | "primary_candidate"
+    | "comparison_candidate"
+    | "reconciliation_candidate"
+    | "validation_candidate"
+    | "optional_schema_candidate"
+    | "blocked_not_enabled"
+    | "blocked_unavailable"
+    | "deferred_candidate";
   reason: string;
 }
 

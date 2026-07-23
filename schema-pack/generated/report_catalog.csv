@@ -317,4 +317,3 @@ report:p4_stock_admin:07_other_reports:17_bin_packaging_report,Bin Packaging Rep
 report:p4_stock_admin:08_summary:01_deployment_summary,Deployment Summary,p4_stock_admin,08_summary,inventory_consumption,P1,False,schema_text_template_ready,0,0,0,0
 report:p4_stock_admin:09_bill_passing:01_bill_passing,Bill Passing,p4_stock_admin,09_bill_passing,vendor_procurement,P0,True,schema_text_template_ready,0,0,1,0
 report:p4_stock_admin:10_catering:01_catering,Catering,p4_stock_admin,10_catering,inventory_consumption,P1,False,schema_text_template_ready,0,0,0,0
-report:p4_stock_admin:11_item_master_details:01_raw_material_item_detail,Raw Material Item Detail,p4_stock_admin,11_item_master_details,inventory_consumption,P1,False,schema_text_template_ready,0,0,0,0

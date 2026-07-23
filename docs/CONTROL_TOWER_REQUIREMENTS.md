@@ -4,7 +4,7 @@
 
 ABNAH business requirements have been received and translated into a versioned, screenshot-free contract at `schema-pack/source/control_tower/control-tower-requirements.json`.
 
-All 35 KPI definitions are `draft`. The business calculation intent is known, but no report/API source relationship is selected until the remaining schemas and ABNAH UAT payloads prove the required identifiers, grain, and coverage.
+The 35 KPI definitions remain the business contract. Current source feasibility is 29 supported or transparently model-derived, one provisional (`PO Fill Rate`), one partial (`Observed Wastage Leakage`), and four unavailable (`Expiry Risk`, `Vendor OTIF`, `Lead-Time Deviation`, and `Vendor Return Rate`).
 
 The supplied HTML is a presentation reference with synthetic values. It is not a data or formula authority. The requirements workbook is the current business-rule authority.
 
@@ -12,8 +12,8 @@ The supplied HTML is a presentation reference with synthetic values. It is not a
 
 | Page | Name | Decision purpose |
 | --- | --- | --- |
-| 1 | Risk Action Center | Tell operations and procurement what requires action now, why, where, by when, and by whom. |
-| 2 | Procurement, Vendor & Capital Control | Show locked capital, pending and delayed POs, vendor delivery performance, returns, and normalized price movement. |
+| 1 | Risk Action Center | Tell operations and procurement what requires action now from projected shortage, menu impact, and open-PO evidence. |
+| 2 | Procurement, Vendor & Capital Control | Show locked capital, pending and delayed POs, provisional fill, observed vendors, and normalized price movement. |
 | 3 | Consumption Variance & Menu Profitability | Compare theoretical and actual ingredient consumption, value positive leakage, and relate recipe COGS to menu margin. |
 | 4 | SCM Descriptive Explorer & Data Quality | Provide governed drilldowns, exports, trend, and traceable data-quality exceptions. |
 
@@ -56,18 +56,21 @@ When transfer data is unavailable, actual consumption may temporarily use `previ
 | Color | Meaning | Rule intent |
 | --- | --- | --- |
 | Purple | Active stockout with menu impact | Stock is zero/negative, forecast demand is positive, and at least one dependent menu item exists. |
-| Red | High risk | Days cover is below lead time, shortage is positive, expiry exposure is high, or a critical PO vendor has OTIF below 95%. |
-| Amber | Warning | Cover is within the lead-time safety band, a pending PO has an amber vendor, or expiry exposure is moderate. |
-| Green | Healthy | Available quantity covers demand plus safety and no expiry/vendor issue exists. |
-| Grey | No data or not applicable | Recipe, stock, outlet, active SKU, or active outlet evidence is missing. |
+| Red | High projected shortage | Forecast requirement exceeds current stock plus valid open PO quantity. |
+| Amber | Safety-stock pressure | Forecast requirement multiplied by the approved safety factor exceeds current stock plus valid open PO quantity. |
+| Green | Covered | Available stock and valid inbound cover forecast demand plus safety. |
+| Grey | No data or not applicable | Recipe, stock, outlet mapping, or item identity evidence is missing. |
 
-Thresholds beyond the explicit 95% OTIF requirement remain configurable until business sign-off.
+Safety factors and forecast horizons remain configurable until business sign-off. OTIF is a formula demo only and is not part of active RAG until deterministic PO-to-receipt linkage exists.
 
 ## Guardrails
 
 - UOM normalization is a publication gate for quantity, consumption, COGS, and price comparison.
 - OTIF cannot use the current approximate vendor-item-date PO/receipt match. It requires defensible PO-line-to-GRN linkage.
-- Expiry risk is exact only with batch or expiry evidence. FIFO plus shelf life must be labeled estimated.
+- `Expiry Report` is not enabled for ABNAH. Expiry must display `Unavailable`, not zero or an unapproved estimate.
+- `Enterprise Stock Return` and `Enterprise Stock Re-Order` are not populated sources. Vendor return rate is unavailable, and projected shortage must not be called a POSIST reorder breach.
+- There is no captured POSIST report named `Raw Material Item Detail`. Derive the POC item reference from exact operational reports and leave unsupported master attributes null.
+- ABNAH currently has one outlet in scope. Derive its identity from operational rows and do not publish a geographic outlet map.
 - A weighted vendor criticality score remains deferred until business owners approve weights.
 - Standing PO analytics remain separate and hidden unless standing and release identifiers exist.
 - Physical ingredient variance cannot be allocated exactly to individual menu items from stock alone.

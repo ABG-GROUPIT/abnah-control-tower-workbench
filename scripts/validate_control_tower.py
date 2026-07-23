@@ -68,7 +68,14 @@ def main() -> int:
     for kpi in kpis:
         if kpi.get("pageId") not in page_id_set:
             errors.append(f"KPI {kpi.get('id')} references an unknown page.")
-        if kpi.get("approvalStatus") not in {"draft", "approved", "retired"}:
+        if kpi.get("approvalStatus") not in {
+            "draft",
+            "approved",
+            "retired",
+            "blocked",
+            "provisional",
+            "partial",
+        }:
             errors.append(f"KPI {kpi.get('id')} has an invalid approval status.")
         if not all(kpi.get(field) for field in ("name", "businessDefinition", "formula", "grain", "owner", "validationStatus")):
             errors.append(f"KPI {kpi.get('id')} is missing a required definition field.")
@@ -138,10 +145,27 @@ def main() -> int:
     architecture_node_set = set(architecture_node_ids)
     if "" in architecture_node_ids or duplicates(architecture_node_ids):
         errors.append(f"Architecture node ids are empty or duplicated: {duplicates(architecture_node_ids)}")
-    if len([item for item in source_nodes if item.get("kind") == "report"]) != 21:
-        errors.append("Planned architecture must contain exactly 21 selected/control report screens.")
-    if len([item for item in source_nodes if item.get("kind") == "master"]) != 2:
-        errors.append("Planned architecture must contain Outlet Master and Vendor Master.")
+    if len([item for item in source_nodes if item.get("kind") == "report"]) != 20:
+        errors.append("Planned architecture must contain exactly 20 report screens.")
+    derived_source_ids = {
+        item.get("id")
+        for item in source_nodes
+        if item.get("kind") == "derived_reference"
+    }
+    if derived_source_ids != {"src_raw_material", "src_outlet_master"}:
+        errors.append(
+            "Planned architecture must derive item and single-outlet references "
+            "rather than claim unavailable masters."
+        )
+    master_source_ids = {
+        item.get("id")
+        for item in source_nodes
+        if item.get("kind") == "master"
+    }
+    if master_source_ids != {"src_vendor_master"}:
+        errors.append(
+            "Vendor Master must be the only optional authoritative master source."
+        )
     po_source = next((item for item in source_nodes if item.get("id") == "src_purchase_order"), None)
     if not po_source:
         errors.append("Enterprise Purchase Order must be the planned PO source authority.")
@@ -191,10 +215,10 @@ def main() -> int:
         errors.append("Unexpected Control Tower evidence contract version.")
     summary = evidence.get("summary", {})
     expected_summary = {
-        "selectedSourceCount": 22,
-        "primarySourceCount": 10,
-        "auxiliarySourceCount": 6,
-        "controlSourceCount": 6,
+        "selectedSourceCount": 19,
+        "primarySourceCount": 9,
+        "auxiliarySourceCount": 5,
+        "controlSourceCount": 5,
         "auditedReportCount": 20,
         "auditedFileCount": 26,
         "schemaContractMatches": 26,
@@ -282,8 +306,8 @@ def main() -> int:
         errors.append("Control Tower evidence must exclude sensitive values.")
     zoho = evidence.get("zohoReadiness", {})
     if (
-        zoho.get("requiredLandingTableCount") != 15
-        or zoho.get("queryTableCount") != 36
+        zoho.get("requiredLandingTableCount") != 11
+        or zoho.get("queryTableCount") != 35
         or zoho.get("dashboardTabCount") != 4
     ):
         errors.append("Control Tower Zoho readiness counts do not match the approved build pack.")
@@ -317,9 +341,9 @@ def main() -> int:
         "confirmedAllZeroFields": 31,
         "ignoredNoSignalFields": 69,
         "activeReportContracts": 9,
-        "gatedReportContracts": 1,
+        "gatedReportContracts": 2,
         "schemaCaptureOnlyReports": 3,
-        "auxiliaryModelTables": 6,
+        "auxiliaryModelTables": 2,
     }
     for field, expected in expected_fidelity_summary.items():
         if fidelity_summary.get(field) != expected:
@@ -380,10 +404,10 @@ def main() -> int:
     capture_count = len(captured_candidate_ids)
     print(
         "Control-tower validation passed: "
-        f"{len(pages)} pages, {len(kpis)} draft KPIs, {capture_count} report candidates, "
+        f"{len(pages)} pages, {len(kpis)} governed KPI definitions, {capture_count} report candidates, "
         f"{len(requirements['apiAssessment']['endpoints'])} API candidates, "
         f"{len(source_nodes)} architecture sources, {len(model_nodes)} planned model nodes, "
-        f"{len(sources)} selected sources, {len(evidence_reports)} audited reports, and "
+        f"{summary['selectedSourceCount']} active sources, {len(evidence_reports)} audited reports, and "
         f"{len(fidelity_reports)} fidelity contracts."
     )
     return 0

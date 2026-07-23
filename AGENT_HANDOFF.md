@@ -50,7 +50,7 @@ For the live site, use the latest D1 current document. For a clean rebuild or te
 2. Use the stable `report_id`; labels can repeat across P1, P2, and P4.
 3. Search `schema-pack/source/report_structures/` for that ID.
 4. If no blueprint exists, inspect the matching text-only reference chunk.
-5. Do not load all 319 report files when one report answers the task.
+5. Do not load all 318 report files when one report answers the task.
 
 ## Adding P2 or P4
 

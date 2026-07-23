@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1.0",
-  "generated_at": "2026-07-23T07:26:45+00:00",
+  "generated_at": "2026-07-23T10:02:31+00:00",
   "portable": true,
   "source_inputs": {
     "schema_reference": "external local input; not packaged",
@@ -10,9 +10,9 @@
     {
       "source_name": "report_master_index.csv",
       "snapshot_path": "schema-pack/source/catalog/reports.csv",
-      "sha256": "74d94a044175223c8b9164efefdc2620e7c740fd023adf88adca140d1fedb250",
-      "bytes": 133192,
-      "rows": 319,
+      "sha256": "bf740fdb7b707f5cc44a8117cb84d491cb016ef5070733fc7010ed160ae30b68",
+      "bytes": 132655,
+      "rows": 318,
       "logical_name": "reports"
     },
     {
@@ -81,7 +81,7 @@
     }
   ],
   "counts": {
-    "reports": 319,
+    "reports": 318,
     "reports_with_fields": 58,
     "unique_fields": 371,
     "field_occurrences": 783,
@@ -97,23 +97,23 @@
     "node_types": {
       "page": 3,
       "domain": 3,
-      "section": 29,
-      "report": 319,
+      "section": 28,
+      "report": 318,
       "field": 371,
       "api": 34,
       "model": 67
     },
     "edge_types": {
-      "contains": 348,
-      "classifies": 319,
+      "contains": 346,
+      "classifies": 318,
       "exposes_field": 782,
       "api_coverage": 205,
       "model_depends_on": 77,
       "api_maps_to_model": 19
     },
-    "workspace_reports": 319,
+    "workspace_reports": 318,
     "structural_blueprints": 178,
-    "draft_kpis": 35,
+    "draft_kpis": 29,
     "approved_kpis": 0,
     "published_lineage_maps": 0,
     "planned_architecture_sources": 23,
@@ -136,8 +136,8 @@
     "kpi_lineage": "schema-pack/generated/kpi-lineage.json",
     "control_tower_requirements": "schema-pack/generated/control-tower-requirements.json",
     "control_tower_evidence": "schema-pack/generated/control-tower-evidence.json",
-    "control_tower_architecture": "schema-pack/generated/control-tower-architecture.json",
-    "control_tower_fidelity": "schema-pack/generated/control-tower-fidelity.json"
+    "control_tower_fidelity": "schema-pack/generated/control-tower-fidelity.json",
+    "control_tower_architecture": "schema-pack/generated/control-tower-architecture.json"
   },
   "workspace_contract_version": "1.0.0",
   "workspace_source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
@@ -873,18 +873,18 @@
   },
   "control_tower_source": {
     "path": "schema-pack/source/control_tower/control-tower-requirements.json",
-    "sha256": "a12fe23c90c31d1930c1e70b914edb54182180d53db2ec348282a62c670fd8f9"
+    "sha256": "9ff40a58bac9fa8b818e6096d78ca8a4db05fb93361123dc5d221878b181b7b5"
   },
   "control_tower_evidence_source": {
     "path": "schema-pack/source/control_tower/control-tower-evidence.json",
-    "sha256": "725392e3a1c6e47ba83b8762a28cbc36538750b98674e13a1ac64a43a893919f"
-  },
-  "control_tower_architecture_source": {
-    "path": "schema-pack/source/architecture/control-tower-architecture.json",
-    "sha256": "d6cc9b6c8c26d06e74b6525a28a4dd7df6cc7902149c620e4eb23290919849ea"
+    "sha256": "a55e5cae7f2415a2f00cbce6b43141a3d2d3634ab4cfa706e7a034d8c62bc248"
   },
   "control_tower_fidelity_source": {
     "path": "schema-pack/source/control_tower/control-tower-fidelity.json",
-    "sha256": "58846cff3d6a23fde062f5df9f660c913c17d0c342bad13899773be9f56d2cb2"
+    "sha256": "5e9049c2715bf0ee33529e65a5a9de469bfb906f23173517d49fd447e99fdbba"
+  },
+  "control_tower_architecture_source": {
+    "path": "schema-pack/source/architecture/control-tower-architecture.json",
+    "sha256": "1803e6c6fac6c9c4578ac584a949f43abe423d51943423837181b32e73eaf2c5"
   }
 }

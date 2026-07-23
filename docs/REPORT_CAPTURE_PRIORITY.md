@@ -44,7 +44,7 @@ Capture both enterprise and operational names initially. OTIF, fill rate, open l
 ### Inventory, Consumption, and Variance
 
 - Closing Stock Report
-- Raw Material Item Detail
+- Item Recipe Report
 - Enterprise Consumption
 - Consumption Report
 - Enterprise Variance
@@ -54,9 +54,10 @@ Capture both enterprise and operational names initially. OTIF, fill rate, open l
 - Stock In Stock Out Report
 - Movement Report
 - Enterprise Wastage Report
-- Expiry Report
 
-These establish the stock checkpoint, item master, recipe BOM, movement coverage, actual and theoretical consumption, wastage, and exact-versus-estimated expiry boundary.
+There is no captured POSIST report named `Raw Material Item Detail`. For the POC, derive the item reference from the exact fields present in `Closing Stock Report`, `Enterprise Entry`, `Enterprise Purchase Order Report`, and `Item Recipe Report`. This supports item code, name, category, observed UOM, and observed cost; it does not prove shelf life, storage type, active status, or approved vendor mapping.
+
+`Expiry Report` is not enabled for ABNAH and should not be requested for the current demo. Expiry risk must display `Unavailable`, not zero or estimated.
 
 ## P4: P1 Comparison and Validation
 
@@ -67,13 +68,22 @@ These establish the stock checkpoint, item master, recipe BOM, movement coverage
 - Vendor Last 5 Purchase Price
 - Item Wise Inflation Report
 - Pricing Ledger
-- Enterprise Stock Return
-- Stock Return
-- Enterprise Stock Re-Order
-- Re-Order Level
 - Standing Purchase Order
 
-Capture exact headers for all five price reports before selecting a primary. Their names overlap, but they may differ in vendor/item grain, effective date, purchase history, pack UOM, or source costing basis.
+Capture exact headers for the price reports before selecting a primary. Their names overlap, but they may differ in vendor/item grain, effective date, purchase history, pack UOM, or source costing basis.
+
+Do not request `Enterprise Stock Return` or `Enterprise Stock Re-Order` again for this demo: their available exports are not populated. `Stock Return` and `Re-Order Level` are exact surrounding reports to test only if ABNAH can produce populated CSV rows. Until then, vendor return rate is unavailable and replenishment risk is demand-aware projected shortage, not a POSIST reorder breach.
+
+### Optional Item and Vendor Enrichment
+
+- Kitchen Wise Item Report
+- Default Cost Report
+- Vendor Pricing Report
+- Vendor Last 5 Purchase Price
+- Late Delivery Report
+- Vendor Master, using the exact source name shown in ABNAH's interface
+
+These are optional enrichment exports, not blockers for the synthetic demo. `Kitchen Wise Item Report` and `Default Cost Report` may improve the derived item reference. `Late Delivery Report` can validate delivery breach only if it provides reliable PO linkage. A populated vendor master can add stable code, active status, and approved relationships; otherwise the model uses observed vendor names from PO and entry transactions.
 
 ### COGS and Purchase Reconciliation
 

@@ -87,6 +87,13 @@ const SCENE_TOP = 84;
 
 const humanize = (value: string) => value.replaceAll("_", " ");
 
+function kpiArchitectureStatus(kpi: ControlTowerKpi) {
+  if (kpi.approvalStatus === "approved") return "definition_ready";
+  if (kpi.approvalStatus === "blocked") return "blocked_source_unavailable";
+  if (kpi.approvalStatus === "partial" || kpi.approvalStatus === "provisional") return "planned_partial";
+  return "planned";
+}
+
 function graphFromContracts(
   architecture: ControlTowerArchitecture,
   requirements: ControlTowerRequirements,
@@ -113,8 +120,8 @@ function graphFromContracts(
     groupId: kpi.pageId,
     label: kpi.name,
     description: kpi.businessDefinition,
-    status: kpi.approvalStatus === "approved" ? "definition_ready" : "planned",
-    role: "Draft business KPI",
+    status: kpiArchitectureStatus(kpi),
+    role: `${humanize(kpi.approvalStatus)} business KPI`,
     pages: requirements.pages.filter((page) => page.kpiIds.includes(kpi.id)).map((page) => page.id),
     dataPoints: [kpi.grain, kpi.formula],
     logic: kpi.formula,
@@ -216,7 +223,7 @@ function RouteOverview({
     byLayer.set(node.layerId, [...(byLayer.get(node.layerId) ?? []), node]);
   }
   const sources = nodes.filter(
-    (node) => node.source?.kind === "report" || node.source?.kind === "master",
+    (node) => ["report", "master", "derived_reference"].includes(node.source?.kind ?? ""),
   );
   const modelSteps = nodes.filter((node) => node.source?.kind === "table");
 
@@ -617,13 +624,14 @@ export function ArchitectureGraphWorkspace({
   const selectedPage = selectedNode?.page;
   const selectedKpi = selectedNode?.kpi ?? selectedNode?.members?.find((member) => member.kpi)?.kpi;
   const routeSources = focusedKpi
-    ? scopedCompleteGraph.nodes.filter((node) => node.source?.kind === "report" || node.source?.kind === "master")
+    ? scopedCompleteGraph.nodes.filter((node) => ["report", "master", "derived_reference"].includes(node.source?.kind ?? ""))
     : [];
   const routeModelNodeCount = focusedKpi
     ? scopedCompleteGraph.nodes.filter((node) => node.source?.kind === "table").length
     : 0;
   const reportCount = architecture.sourceNodes.filter((node) => node.kind === "report").length;
   const masterCount = architecture.sourceNodes.filter((node) => node.kind === "master").length;
+  const derivedReferenceCount = architecture.sourceNodes.filter((node) => node.kind === "derived_reference").length;
 
   return (
     <section className="architecture-surface">
@@ -636,6 +644,7 @@ export function ArchitectureGraphWorkspace({
         <div className="architecture-header-metrics" aria-label="Architecture coverage">
           <span><b>{reportCount}</b> reports</span>
           <span><b>{masterCount}</b> masters</span>
+          <span><b>{derivedReferenceCount}</b> derived refs</span>
           <span><b>{architecture.modelNodes.length}</b> model nodes</span>
           <span><b>{requirements.kpis.length}</b> KPIs</span>
         </div>
@@ -847,7 +856,7 @@ export function ArchitectureGraphWorkspace({
                 {focusedKpi && (
                   <section className="architecture-route-evidence">
                     <h3><GitBranch aria-hidden="true" size={14} /> Contributing source fields</h3>
-                    <p>{routeSources.length} report and master sources feed this isolated KPI route.</p>
+                    <p>{routeSources.length} report, derived-reference, and master sources feed this isolated KPI route.</p>
                     {selectedKpi?.id !== focusedKpi.id && (
                       <dl>
                         <div><dt>Selected route</dt><dd>{focusedKpi.name}</dd></div>

@@ -41,9 +41,9 @@
     "confirmedAllZeroFields": 31,
     "ignoredNoSignalFields": 69,
     "activeReportContracts": 9,
-    "gatedReportContracts": 1,
+    "gatedReportContracts": 2,
     "schemaCaptureOnlyReports": 3,
-    "auxiliaryModelTables": 6
+    "auxiliaryModelTables": 2
   },
   "schemaCaptureOnlyReports": [
     {
@@ -63,12 +63,8 @@
     }
   ],
   "auxiliaryTables": [
-    "AUX_Outlet_Master",
-    "AUX_Item_Master",
-    "AUX_Vendor_Master",
     "AUX_Menu_Demand_Forecast",
-    "AUX_Theoretical_Consumption",
-    "AUX_Expiry_Estimate"
+    "AUX_Theoretical_Consumption"
   ],
   "reports": [
     {
@@ -1249,7 +1245,7 @@
     {
       "reportId": "p4.enterprise_reorder.item",
       "reportStem": "enterprise_reorder",
-      "displayName": "Enterprise ReOrder Report",
+      "displayName": "Enterprise Stock Re-Order",
       "grain": "one row per deployment, store and inventory item at export date",
       "schemaStatus": "exact_validated_contract",
       "headerMatch": true,
@@ -1259,9 +1255,22 @@
       "syntheticFilesGenerated": 9,
       "syntheticRowsGenerated": 0,
       "rowPatternStatus": "mirrored_header_only",
-      "downstreamStatus": "audit_or_reconciliation_only",
+      "downstreamStatus": "gated_source_unavailable",
       "activeFields": [],
-      "gatedFields": [],
+      "gatedFields": [
+        {
+          "field": "item_code",
+          "label": "Item Code"
+        },
+        {
+          "field": "minimum_order_level_qty",
+          "label": "Minimum-Order Level"
+        },
+        {
+          "field": "reorder_level_qty",
+          "label": "Re-Order Level"
+        }
+      ],
       "contextOnlyFields": [
         {
           "field": "available_qty",
@@ -1272,20 +1281,8 @@
           "label": "Deployment Name"
         },
         {
-          "field": "item_code",
-          "label": "Item Code"
-        },
-        {
           "field": "item_name",
           "label": "Item Name"
-        },
-        {
-          "field": "minimum_order_level_qty",
-          "label": "Minimum-Order Level"
-        },
-        {
-          "field": "reorder_level_qty",
-          "label": "Re-Order Level"
         },
         {
           "field": "store_name",
@@ -1375,7 +1372,7 @@
     {
       "reportId": "p4.enterprise_stock_return.item",
       "reportStem": "enterprise_stock_return",
-      "displayName": "Enterprise Stock Return / Stock Entry Return",
+      "displayName": "Enterprise Stock Return",
       "grain": "one row per original stock-entry item and its vendor return",
       "schemaStatus": "exact_validated_contract",
       "headerMatch": true,

@@ -8,14 +8,14 @@
       "id": "ct_outlets_at_risk",
       "pageId": "page_1_risk_action_center",
       "name": "Outlets at Risk",
-      "businessDefinition": "Distinct active outlets with at least one current purple, red, or amber supply-chain risk.",
+      "businessDefinition": "Distinct observed outlets with at least one current purple, red, or amber projected supply risk.",
       "owner": "Operations",
       "approvalStatus": "draft",
-      "validationStatus": "business_rule_received",
+      "validationStatus": "source_supported_single_outlet",
       "grain": "Selected period and filter scope",
-      "formula": "COUNT_DISTINCT(outlet_id WHERE risk_severity IN ('purple','red','amber'))",
+      "formula": "COUNT_DISTINCT(observed_outlet_id WHERE risk_severity IN ('purple','red','amber'))",
       "caveats": [
-        "Requires a verified active outlet master and one deterministic highest-severity rule per outlet."
+        "ABNAH currently has one outlet in scope; outlet identity is derived from operational reports and no geographic segmentation is claimed."
       ]
     },
     {
@@ -51,14 +51,15 @@
       "id": "ct_expiry_risk_value",
       "pageId": "page_1_risk_action_center",
       "name": "Expiry Risk Value",
-      "businessDefinition": "Value of stock expected to expire within the approved threshold.",
+      "businessDefinition": "Reserved value of stock expected to expire within an approved threshold.",
       "owner": "Supply Chain",
-      "approvalStatus": "draft",
-      "validationStatus": "business_rule_received",
-      "grain": "Outlet, store, item, batch or estimate date",
-      "formula": "SUM(expiry_qty_at_risk * normalized_average_unit_cost)",
+      "approvalStatus": "blocked",
+      "validationStatus": "source_unavailable_not_enabled",
+      "grain": "Not applicable until batch-expiry data exists",
+      "formula": "UNAVAILABLE",
       "caveats": [
-        "Exact only with batch or expiry data; otherwise label FIFO and shelf-life output estimated."
+        "The exact Expiry Report is not enabled for ABNAH.",
+        "Return unavailable, not zero; do not estimate from receipt age without approved shelf-life evidence."
       ]
     },
     {
@@ -192,57 +193,59 @@
       "id": "ct_po_fill_rate",
       "pageId": "page_2_procurement_vendor_capital",
       "name": "PO Fill Rate",
-      "businessDefinition": "Share of ordered quantity that was processed or received on comparable closed and partial PO lines.",
+      "businessDefinition": "Provisional share of ordered quantity represented by the POSIST processed quantity on comparable PO lines.",
       "owner": "Procurement",
-      "approvalStatus": "draft",
-      "validationStatus": "business_rule_received",
+      "approvalStatus": "provisional",
+      "validationStatus": "processed_quantity_semantics_pending",
       "grain": "Vendor, outlet, item, period",
       "formula": "SUM(processed_qty_canonical) / NULLIF(SUM(ordered_qty_canonical), 0)",
       "caveats": [
-        "Confirm whether processed quantity equals accepted receipt quantity."
+        "Confirm whether processed quantity equals accepted receipt quantity before production publication."
       ]
     },
     {
       "id": "ct_vendor_otif",
       "pageId": "page_2_procurement_vendor_capital",
       "name": "Vendor OTIF",
-      "businessDefinition": "Share of eligible closed PO lines received on or before expected delivery and in full.",
+      "businessDefinition": "Reserved share of eligible closed PO lines received on or before expected delivery and in full.",
       "owner": "Procurement",
-      "approvalStatus": "draft",
-      "validationStatus": "po_grn_link_required",
+      "approvalStatus": "blocked",
+      "validationStatus": "production_source_linkage_unavailable",
       "grain": "Vendor, outlet, period",
-      "formula": "COUNT(po_line WHERE on_time = 1 AND in_full = 1) / NULLIF(COUNT(eligible_closed_po_line), 0)",
+      "formula": "FORMULA_DEMO_ONLY",
       "caveats": [
-        "Cannot be published from approximate vendor-item-date matching.",
-        "Needs PO-line-to-GRN linkage and an approved in-full tolerance."
+        "Only 2 of 562 reviewed stock-entry rows carried a PO number.",
+        "Do not publish actual OTIF from approximate vendor-item-date matching."
       ]
     },
     {
       "id": "ct_lead_time_deviation_days",
       "pageId": "page_2_procurement_vendor_capital",
       "name": "Lead Time Deviation",
-      "businessDefinition": "Difference between actual accepted delivery date and expected delivery date.",
+      "businessDefinition": "Reserved difference between actual accepted delivery date and expected delivery date.",
       "owner": "Procurement",
-      "approvalStatus": "draft",
-      "validationStatus": "po_grn_link_required",
+      "approvalStatus": "blocked",
+      "validationStatus": "production_source_linkage_unavailable",
       "grain": "PO line or accepted receipt line",
-      "formula": "DATEDIFF(actual_delivery_date, expected_delivery_date)",
+      "formula": "FORMULA_DEMO_ONLY",
       "caveats": [
-        "Define treatment of partial receipts and early delivery."
+        "Expected and actual delivery require deterministic PO-line-to-receipt linkage.",
+        "Define treatment of partial receipts and early delivery before activation."
       ]
     },
     {
       "id": "ct_vendor_return_rate",
       "pageId": "page_2_procurement_vendor_capital",
       "name": "Vendor Return Rate",
-      "businessDefinition": "Returned quantity as a share of received plus returned quantity for a vendor.",
+      "businessDefinition": "Reserved returned quantity as a share of received plus returned quantity for a vendor.",
       "owner": "Procurement",
-      "approvalStatus": "draft",
-      "validationStatus": "business_rule_received",
+      "approvalStatus": "blocked",
+      "validationStatus": "source_unavailable_header_only",
       "grain": "Vendor, item, outlet, period",
-      "formula": "SUM(return_qty_canonical) / NULLIF(SUM(received_qty_canonical + return_qty_canonical), 0)",
+      "formula": "UNAVAILABLE",
       "caveats": [
-        "Return reason and original receipt linkage are desirable for diagnosis."
+        "Enterprise Stock Return is not available as a populated vendor-return source.",
+        "Bulk Return Report does not provide enough vendor and receipt linkage for this KPI."
       ]
     },
     {
@@ -262,15 +265,16 @@
     {
       "id": "ct_financial_leakage",
       "pageId": "page_2_procurement_vendor_capital",
-      "name": "Financial Leakage",
-      "businessDefinition": "Observed return, return tax, expiry, and wastage value within the available source scope.",
+      "name": "Observed Wastage Leakage",
+      "businessDefinition": "Observed wastage value within currently available POSIST source coverage.",
       "owner": "Finance",
-      "approvalStatus": "draft",
-      "validationStatus": "source_coverage_pending",
-      "grain": "Outlet, item, vendor where applicable, period",
-      "formula": "SUM(return_amount + return_tax + expiry_loss_value + wastage_value)",
+      "approvalStatus": "partial",
+      "validationStatus": "source_supported_wastage_only",
+      "grain": "Outlet, item, period",
+      "formula": "SUM(wastage_value)",
       "caveats": [
-        "Display source coverage so missing expiry or wastage does not appear as zero loss."
+        "Vendor-return and expiry loss are unavailable and must not appear as zero.",
+        "Relabel as broader financial leakage only after additional loss sources are enabled and validated."
       ]
     },
     {

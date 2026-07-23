@@ -12,10 +12,10 @@
   "layers": [
     {
       "id": "source",
-      "label": "Restroworks and master sources",
+      "label": "Restroworks and governed references",
       "shortLabel": "Sources",
       "order": 1,
-      "description": "Selected report exports and authoritative master extracts."
+      "description": "Selected report exports, source-derived references, and optional authoritative masters."
     },
     {
       "id": "raw",
@@ -54,10 +54,10 @@
     },
     {
       "id": "kpi",
-      "label": "Approved KPI definitions",
+      "label": "Governed KPI definitions",
       "shortLabel": "KPI",
       "order": 7,
-      "description": "Business definitions from the four-page ABNAH requirement register."
+      "description": "Supported, provisional, partial, and blocked business definitions from the four-page ABNAH requirement register."
     },
     {
       "id": "experience",
@@ -231,11 +231,11 @@
       "id": "src_raw_material",
       "layerId": "source",
       "groupId": "master_data",
-      "kind": "report",
-      "label": "Raw Material Item Detail",
-      "description": "Raw-material attributes and operational item identity.",
-      "status": "selected_for_validation",
-      "role": "Item master candidate",
+      "kind": "derived_reference",
+      "label": "Derived Item Reference",
+      "description": "Composite item identity derived from exact captured POSIST reports. This is not a POSIST report or master export.",
+      "status": "source_supported_derived",
+      "role": "POC item reference",
       "pages": [
         "page_1_risk_action_center",
         "page_2_procurement_vendor_capital",
@@ -246,19 +246,21 @@
         "Item code",
         "Item name",
         "Category",
-        "Base UOM",
-        "Conversion factor",
-        "Shelf life",
-        "Storage type",
-        "Active status"
+        "Observed UOM",
+        "Observed average cost"
       ],
-      "inputs": [],
-      "logic": "Retain active and inactive values and create an unresolved item-identity queue.",
+      "inputs": [
+        "src_closing_stock",
+        "src_enterprise_entry",
+        "src_purchase_order",
+        "src_item_recipe"
+      ],
+      "logic": "Union item identities from Closing Stock Report, Enterprise Entry Report - Stock Entry, Enterprise Purchase Order Report - item detail, and Item Recipe Report. Resolve by exact item code first and preserve conflicting names or UOMs as quality exceptions.",
       "alternatives": [
-        "Use the Restroworks item-master API when it exposes stronger identifiers or missing attributes."
+        "Kitchen Wise Item Report and Default Cost Report may enrich the reference only after their populated CSV contracts are captured.",
+        "Use an exact vendor-provided item master or Restroworks API endpoint if ABNAH later exposes one."
       ],
-      "reportId": "report:p4_stock_admin:11_item_master_details:01_raw_material_item_detail",
-      "catalogState": "catalogued"
+      "catalogState": "not_a_report"
     },
     {
       "id": "src_enterprise_consumption",
@@ -421,30 +423,22 @@
       "groupId": "inventory",
       "kind": "report",
       "label": "Enterprise Stock Re-Order",
-      "description": "Available stock, reorder level and minimum-order reference.",
-      "status": "selected_for_validation",
-      "role": "Replenishment policy snapshot",
+      "description": "The exact report is present in the catalogue but the available export is header-only and cannot support a threshold fact.",
+      "status": "unavailable_header_only",
+      "role": "Gated source",
       "pages": [
         "page_1_risk_action_center",
         "page_4_scm_explorer_data_quality"
       ],
-      "dataPoints": [
-        "Snapshot date",
-        "Outlet and store",
-        "Item",
-        "Available stock",
-        "Reorder level",
-        "Minimum order level",
-        "UOM",
-        "Status"
-      ],
+      "dataPoints": [],
       "inputs": [],
-      "logic": "Retain healthy rows as the comparison population; never treat a fixed reorder level as demand-aware stockout prediction.",
+      "logic": "Do not load this report into active KPI queries and do not label forecast-based risk as a POSIST reorder breach.",
       "alternatives": [
-        "Use forecast demand and days cover when reorder values are blank or stale."
+        "Use Closing Stock Report plus demand forecast, effective recipes, and valid open PO quantity for projected shortage and days cover.",
+        "Evaluate the exact Re-Order Level report only if a populated CSV becomes available."
       ],
       "reportId": "report:p4_stock_admin:01_enterprise_reports:05_enterprise_stock_re_order",
-      "catalogState": "catalogued"
+      "catalogState": "catalogued_unavailable"
     },
     {
       "id": "src_stock_movement",
@@ -483,30 +477,21 @@
       "groupId": "inventory",
       "kind": "report",
       "label": "Expiry Report",
-      "description": "Current batch or item expiry evidence for exact expiry risk.",
-      "status": "selected_for_validation",
-      "role": "Expiry risk authority",
+      "description": "The exact report is not enabled for ABNAH. Available entry data does not provide usable batch and expiry evidence.",
+      "status": "unavailable_not_enabled",
+      "role": "Blocked source",
       "pages": [
         "page_1_risk_action_center",
         "page_4_scm_explorer_data_quality"
       ],
-      "dataPoints": [
-        "As-of date",
-        "Outlet and store",
-        "Item",
-        "Batch",
-        "Expiry date",
-        "Expiry quantity",
-        "Unit cost",
-        "Expiry value"
-      ],
+      "dataPoints": [],
       "inputs": [],
-      "logic": "Use exact batch expiry when present and apply signed-off risk windows.",
+      "logic": "Return unavailable, not zero. Do not estimate expiry from receipt age without an approved shelf-life source and business sign-off.",
       "alternatives": [
-        "If batch evidence is absent, estimate from receipt age plus approved shelf life and label the result Estimated."
+        "Enable and validate the exact Expiry Report or another batch-level source before publishing expiry quantity or value."
       ],
       "reportId": "report:p4_stock_admin:07_other_reports:03_expiry_report",
-      "catalogState": "catalogued"
+      "catalogState": "catalogued_not_enabled"
     },
     {
       "id": "src_purchase_order",
@@ -609,30 +594,22 @@
       "groupId": "vendor",
       "kind": "report",
       "label": "Enterprise Stock Return",
-      "description": "Vendor return quantity, amount and source-entry reference.",
-      "status": "selected_for_validation",
-      "role": "Vendor return fact authority",
+      "description": "The exact enterprise report is not available as a populated vendor-return source in the current ABNAH access.",
+      "status": "unavailable_header_only",
+      "role": "Gated source",
       "pages": [
         "page_2_procurement_vendor_capital",
         "page_4_scm_explorer_data_quality"
       ],
-      "dataPoints": [
-        "Return date",
-        "Return reference",
-        "Original entry reference",
-        "Vendor",
-        "Outlet and store",
-        "Item",
-        "Return quantity",
-        "Amount and tax"
-      ],
+      "dataPoints": [],
       "inputs": [],
-      "logic": "Normalize return signs and retain the original purchase or entry reference for rate denominators.",
+      "logic": "Do not calculate vendor return rate or vendor-return leakage until a populated return source links vendor, item, quantity, value, and original receipt.",
       "alternatives": [
-        "Stock Entry Return Report may be identical and can be used after header equivalence is proven."
+        "Bulk Return Report can evidence internal item-return quantity but cannot support vendor return rate or value without vendor and receipt linkage.",
+        "Evaluate Stock Return only if ABNAH later exposes populated rows and deterministic receipt linkage."
       ],
       "reportId": "report:p4_stock_admin:01_enterprise_reports:03_enterprise_stock_return",
-      "catalogState": "catalogued"
+      "catalogState": "catalogued_unavailable"
     },
     {
       "id": "src_vendor_price",
@@ -763,11 +740,11 @@
       "id": "src_outlet_master",
       "layerId": "source",
       "groupId": "master_data",
-      "kind": "master",
-      "label": "Outlet Master",
-      "description": "Authoritative outlet identity and India geography extract.",
-      "status": "required_gap",
-      "role": "Required production master",
+      "kind": "derived_reference",
+      "label": "Derived Outlet Reference",
+      "description": "ABNAH currently has one operational outlet in scope, so no separate outlet-master export is required for the demo.",
+      "status": "source_supported_derived",
+      "role": "Single-outlet reference",
       "pages": [
         "page_1_risk_action_center",
         "page_2_procurement_vendor_capital",
@@ -775,20 +752,17 @@
         "page_4_scm_explorer_data_quality"
       ],
       "dataPoints": [
-        "Outlet code",
-        "Outlet name",
-        "Region",
-        "State",
-        "City",
-        "Latitude",
-        "Longitude",
-        "New or matured flag",
-        "Active status"
+        "Observed deployment or outlet code",
+        "Observed outlet name"
       ],
-      "inputs": [],
-      "logic": "Prefer API or authoritative CSV and map source deployment/store identifiers through an explicit bridge.",
+      "inputs": [
+        "src_closing_stock",
+        "src_enterprise_entry",
+        "src_purchase_order"
+      ],
+      "logic": "Derive the one outlet identity from operational reports and keep geography, coordinates, maturity, and active-state attributes unavailable.",
       "alternatives": [
-        "Transaction-derived outlet lists are acceptable for POC only and cannot prove active status or coordinates."
+        "Add an authoritative outlet master only when rollout expands beyond one outlet or a geographic map is explicitly required."
       ]
     },
     {
@@ -882,10 +856,10 @@
       "layerId": "raw",
       "groupId": "master_data",
       "kind": "table",
-      "label": "RAW Item Master",
-      "description": "Raw-material item snapshot.",
-      "status": "planned",
-      "role": "Immutable master landing",
+      "label": "Derived Item Reference",
+      "description": "POC item reference assembled from exact operational reports; not a raw POSIST master table.",
+      "status": "planned_derived",
+      "role": "Composite reference",
       "pages": [
         "page_1_risk_action_center",
         "page_2_procurement_vendor_capital",
@@ -893,16 +867,16 @@
         "page_4_scm_explorer_data_quality"
       ],
       "dataPoints": [
-        "Source item identity",
-        "UOM",
+        "Observed item code",
+        "Observed item name",
+        "Observed UOM",
         "Category",
-        "Shelf life",
-        "Status"
+        "Observed average cost"
       ],
       "inputs": [
         "src_raw_material"
       ],
-      "logic": "Version snapshots and retain source identifiers exactly.",
+      "logic": "Resolve exact item codes across supporting reports and retain every conflicting name, category, UOM, or cost as a data-quality exception.",
       "alternatives": []
     },
     {
@@ -971,8 +945,8 @@
       "layerId": "raw",
       "groupId": "inventory",
       "kind": "table",
-      "label": "RAW Inventory Snapshot",
-      "description": "Closing, reorder and expiry checkpoints.",
+      "label": "RAW Closing Inventory Snapshot",
+      "description": "Closing quantity and value checkpoints from the exact Closing Stock Report.",
       "status": "planned",
       "role": "Immutable snapshot landing",
       "pages": [
@@ -984,17 +958,14 @@
         "As-of date",
         "Location",
         "Item",
-        "Quantity",
-        "Value",
-        "Reorder",
-        "Expiry"
+        "Closing quantity",
+        "Average unit cost",
+        "Closing value"
       ],
       "inputs": [
-        "src_closing_stock",
-        "src_reorder",
-        "src_expiry"
+        "src_closing_stock"
       ],
-      "logic": "Require explicit snapshot or as-of metadata on every row.",
+      "logic": "Require explicit snapshot or as-of metadata on every row. Reorder and expiry remain separate gated concepts.",
       "alternatives": []
     },
     {
@@ -1061,10 +1032,10 @@
       "layerId": "raw",
       "groupId": "vendor",
       "kind": "table",
-      "label": "RAW Vendor Return and Price",
-      "description": "Return transactions and vendor-item price snapshots.",
-      "status": "planned",
-      "role": "Immutable vendor landing",
+      "label": "RAW Vendor Price",
+      "description": "Vendor-item price observations; vendor returns remain unavailable.",
+      "status": "planned_partial",
+      "role": "Immutable price landing",
       "pages": [
         "page_2_procurement_vendor_capital",
         "page_4_scm_explorer_data_quality"
@@ -1072,16 +1043,14 @@
       "dataPoints": [
         "Vendor",
         "Item",
-        "Return",
         "Price",
         "Effective date",
-        "Status"
+        "Published state"
       ],
       "inputs": [
-        "src_stock_return",
         "src_vendor_price"
       ],
-      "logic": "Keep transactional returns separate from effective-dated price observations.",
+      "logic": "Preserve effective-dated quoted prices separately from actual receipt prices. Do not infer vendor returns.",
       "alternatives": []
     },
     {
@@ -1117,28 +1086,25 @@
       "layerId": "raw",
       "groupId": "master_data",
       "kind": "table",
-      "label": "RAW Outlet and Vendor Masters",
-      "description": "Authoritative non-report extracts.",
-      "status": "planned",
-      "role": "Immutable master landing",
+      "label": "RAW Vendor Master",
+      "description": "Optional authoritative vendor extract when ABNAH supplies the exact source.",
+      "status": "conditional",
+      "role": "Optional master landing",
       "pages": [
         "page_1_risk_action_center",
         "page_2_procurement_vendor_capital",
-        "page_3_consumption_menu_profitability",
         "page_4_scm_explorer_data_quality"
       ],
       "dataPoints": [
-        "Stable codes",
-        "Names",
+        "Stable vendor code",
+        "Vendor name",
         "Status",
-        "Geography",
         "Coverage"
       ],
       "inputs": [
-        "src_outlet_master",
         "src_vendor_master"
       ],
-      "logic": "Version source snapshots and reject silent code reuse.",
+      "logic": "Version source snapshots and reject silent code reuse. Until supplied, derive observed vendor names from PO and stock-entry transactions.",
       "alternatives": []
     },
     {
@@ -1315,8 +1281,8 @@
       "layerId": "standardized",
       "groupId": "inventory",
       "kind": "table",
-      "label": "STD Inventory Snapshot",
-      "description": "Canonical closing, reorder and expiry snapshots.",
+      "label": "STD Closing Inventory Snapshot",
+      "description": "Canonical closing stock quantity, average cost, and value.",
       "status": "planned",
       "role": "Snapshot standardization",
       "pages": [
@@ -1327,16 +1293,14 @@
       "dataPoints": [
         "As-of date",
         "Outlet/store/item keys",
-        "Quantity",
-        "Unit cost",
-        "Value",
-        "Expiry date",
-        "Policy level"
+        "Closing quantity",
+        "Average unit cost",
+        "Closing value"
       ],
       "inputs": [
         "raw_inventory_snapshot"
       ],
-      "logic": "Distinguish exact batch expiry from estimated shelf-life dates and validate quantity-value arithmetic.",
+      "logic": "Validate quantity-value arithmetic and preserve missing cost as unavailable. Reorder and expiry are not silently synthesized.",
       "alternatives": []
     },
     {
@@ -2140,7 +2104,7 @@
       "groupId": "inventory",
       "kind": "table",
       "label": "FACT Inventory Risk",
-      "description": "Projected shortage, days cover and expiry risk by ingredient.",
+      "description": "Demand-aware projected shortage and days cover by ingredient; expiry is unavailable.",
       "status": "planned",
       "role": "Decision fact",
       "pages": [
@@ -2152,11 +2116,10 @@
         "Outlet",
         "Ingredient",
         "Available stock",
-        "Demand",
+        "Forecast demand",
         "Valid inbound",
-        "Shortage",
+        "Projected shortage",
         "Days cover",
-        "Expiry risk",
         "Severity"
       ],
       "inputs": [
@@ -2165,7 +2128,7 @@
         "fact_purchase_order",
         "std_inventory_snapshot"
       ],
-      "logic": "Count inbound only when valid open PO delivery precedes demand; separate descriptive pressure from predicted risk.",
+      "logic": "Count inbound only when a valid open PO delivery precedes demand. Label the result projected shortage, never reorder breach or exact expiry risk.",
       "alternatives": []
     },
     {
@@ -2282,25 +2245,19 @@
       "layerId": "summary",
       "groupId": "inventory",
       "kind": "table",
-      "label": "SUM Expiry Risk",
-      "description": "Exact or estimated near-expiry stock value.",
-      "status": "definition_ready",
-      "role": "KPI-ready summary",
+      "label": "Expiry Risk Unavailable",
+      "description": "Reserved KPI slot blocked because ABNAH expiry data is not enabled.",
+      "status": "blocked_source_unavailable",
+      "role": "Unavailable KPI",
       "pages": [
         "page_1_risk_action_center"
       ],
       "dataPoints": [
-        "Risk window",
-        "Expiry quantity",
-        "Unit cost",
-        "Risk value",
-        "Evidence type"
+        "Availability status",
+        "Blocking reason"
       ],
-      "inputs": [
-        "fact_inventory_risk",
-        "std_inventory_snapshot"
-      ],
-      "logic": "Always expose exact versus estimated evidence type.",
+      "inputs": [],
+      "logic": "Display unavailable, never zero. Activate only after a populated batch-expiry source is validated.",
       "alternatives": []
     },
     {

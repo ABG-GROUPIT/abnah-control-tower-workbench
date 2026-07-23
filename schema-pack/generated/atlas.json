@@ -1,9 +1,9 @@
 {
   "schema_version": "1.1.0",
-  "generated_at": "2026-07-23T07:26:45+00:00",
+  "generated_at": "2026-07-23T10:02:31+00:00",
   "title": "ABNAH Data Discovery Atlas",
   "summary": {
-    "reports": 319,
+    "reports": 318,
     "reports_with_fields": 58,
     "unique_fields": 371,
     "field_occurrences": 783,
@@ -19,15 +19,15 @@
     "node_types": {
       "page": 3,
       "domain": 3,
-      "section": 29,
-      "report": 319,
+      "section": 28,
+      "report": 318,
       "field": 371,
       "api": 34,
       "model": 67
     },
     "edge_types": {
-      "contains": 348,
-      "classifies": 319,
+      "contains": 346,
+      "classifies": 318,
       "exposes_field": 782,
       "api_coverage": 205,
       "model_depends_on": 77,
@@ -38,14 +38,14 @@
     "status": "usable_with_warnings",
     "errors": [],
     "warnings": [
-      "261 reports do not yet have captured fields.",
+      "260 reports do not yet have captured fields.",
       "No report-to-API mapping is UAT verified; displayed API links are semantic candidates.",
       "No report-to-model mapping is verified yet.",
       "No ABNAH UAT validation tests have been recorded yet.",
       "No final relational mapping option has been selected yet."
     ],
     "coverage": {
-      "reports_total": 319,
+      "reports_total": 318,
       "reports_with_fields": 58,
       "reports_with_fields_pct": 18.2,
       "reports_with_api_candidates_or_verified": 198,
@@ -466,17 +466,6 @@
       "domain": "platform",
       "page": "p4_stock_admin",
       "section": "10_catering",
-      "description": "Report family in the Restroworks navigation hierarchy."
-    },
-    {
-      "id": "section:p4_stock_admin:11_item_master_details",
-      "type": "section",
-      "label": "Item Master Details",
-      "status": "current",
-      "priority": "P1",
-      "domain": "platform",
-      "page": "p4_stock_admin",
-      "section": "11_item_master_details",
       "description": "Report family in the Restroworks navigation hierarchy."
     },
     {
@@ -5245,21 +5234,6 @@
       "page": "p4_stock_admin",
       "section": "10_catering",
       "description": "Catering in 10 catering.",
-      "evidence_count": 0,
-      "field_count": 0,
-      "schema_ready": false
-    },
-    {
-      "id": "report:p4_stock_admin:11_item_master_details:01_raw_material_item_detail",
-      "type": "report",
-      "label": "Raw Material Item Detail",
-      "status": "schema_text_template_ready",
-      "priority": "P1",
-      "domain": "inventory_consumption",
-      "is_core": false,
-      "page": "p4_stock_admin",
-      "section": "11_item_master_details",
-      "description": "Raw Material Item Detail in 11 item master details.",
       "evidence_count": 0,
       "field_count": 0,
       "schema_ready": false
@@ -10328,16 +10302,6 @@
       "id": "edge:contains:page-p4-stock-admin:section-p4-stock-admin-10-catering",
       "source": "page:p4_stock_admin",
       "target": "section:p4_stock_admin:10_catering",
-      "type": "contains",
-      "label": "contains section",
-      "status": "current",
-      "confidence": 1.0,
-      "rationale": ""
-    },
-    {
-      "id": "edge:contains:page-p4-stock-admin:section-p4-stock-admin-11-item-master-details",
-      "source": "page:p4_stock_admin",
-      "target": "section:p4_stock_admin:11_item_master_details",
       "type": "contains",
       "label": "contains section",
       "status": "current",
@@ -16698,26 +16662,6 @@
       "id": "edge:classifies:domain-inventory-consumption:report-p4-stock-admin-10-catering-01-catering",
       "source": "domain:inventory_consumption",
       "target": "report:p4_stock_admin:10_catering:01_catering",
-      "type": "classifies",
-      "label": "analytical domain",
-      "status": "current",
-      "confidence": 1.0,
-      "rationale": ""
-    },
-    {
-      "id": "edge:contains:section-p4-stock-admin-11-item-master-details:report-p4-stock-admin-11-item-master-details-01-raw-material-item-detail",
-      "source": "section:p4_stock_admin:11_item_master_details",
-      "target": "report:p4_stock_admin:11_item_master_details:01_raw_material_item_detail",
-      "type": "contains",
-      "label": "contains report",
-      "status": "current",
-      "confidence": 1.0,
-      "rationale": ""
-    },
-    {
-      "id": "edge:classifies:domain-inventory-consumption:report-p4-stock-admin-11-item-master-details-01-raw-material-item-detail",
-      "source": "domain:inventory_consumption",
-      "target": "report:p4_stock_admin:11_item_master_details:01_raw_material_item_detail",
       "type": "classifies",
       "label": "analytical domain",
       "status": "current",
@@ -34551,24 +34495,6 @@
       "page": "p4_stock_admin",
       "section": "10_catering",
       "report_folder": "p4_stock_admin/10_catering/01_catering",
-      "domain": "inventory_consumption",
-      "priority": "P1",
-      "is_core": false,
-      "status": "schema_text_template_ready",
-      "capture_method": "csv_header_text_first_priority_screenshots_for_grain_filters",
-      "next_action": "paste CSV headers first; add screenshots only for high-value filters or grouped stock/procurement grain",
-      "field_ids": [],
-      "evidence_count": 0,
-      "questions": [],
-      "api_links": [],
-      "model_links": []
-    },
-    {
-      "id": "report:p4_stock_admin:11_item_master_details:01_raw_material_item_detail",
-      "name": "Raw Material Item Detail",
-      "page": "p4_stock_admin",
-      "section": "11_item_master_details",
-      "report_folder": "p4_stock_admin/11_item_master_details/01_raw_material_item_detail",
       "domain": "inventory_consumption",
       "priority": "P1",
       "is_core": false,
