@@ -2020,6 +2020,37 @@ code { font-family: var(--font-geist-mono), Consolas, monospace; }
   scrollbar-width: thin;
 }
 
+.lineage-field-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 9px;
+  padding: 2px 0 7px;
+  border-bottom: 1px solid var(--line);
+}
+
+.lineage-field-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--muted);
+  font-size: 6px;
+  font-weight: 700;
+}
+
+.lineage-field-legend i {
+  width: 7px;
+  height: 7px;
+  border: 1px solid #cfd8d3;
+  border-radius: 2px;
+  background: var(--surface-soft);
+}
+
+.lineage-field-legend i.is-used {
+  border-color: #168168;
+  background: #dff5ec;
+  box-shadow: 0 0 8px rgba(20, 122, 103, 0.55);
+}
+
 .lineage-source-entry {
   padding: 8px 0 10px;
   border-bottom: 1px solid var(--line);
@@ -2035,6 +2066,14 @@ code { font-family: var(--font-geist-mono), Consolas, monospace; }
 .lineage-source-entry p { display: grid; gap: 3px; margin: 0; }
 .lineage-source-entry strong { font-size: 8px; line-height: 1.3; }
 .lineage-source-entry small { color: var(--muted); font-size: 6px; line-height: 1.35; }
+.lineage-source-entry .lineage-source-field-count {
+  color: #53655d;
+  font-variant-numeric: tabular-nums;
+}
+.lineage-source-entry .lineage-source-field-count b {
+  color: #147a67;
+  font-size: inherit;
+}
 .lineage-source-entry button {
   display: inline-flex;
   width: 22px;
@@ -2072,12 +2111,31 @@ code { font-family: var(--font-geist-mono), Consolas, monospace; }
 }
 .lineage-source-entry li,
 .lineage-field-list li {
+  display: inline-flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 3px;
   padding: 3px 5px;
   border: 1px solid #dde3df;
   border-radius: 3px;
   background: var(--surface-soft);
   color: #445049;
   font-size: 6px;
+}
+
+.lineage-source-entry li.is-used {
+  border-color: #168168;
+  background: #e5f6ef;
+  color: #0d624f;
+  font-weight: 800;
+  box-shadow:
+    0 0 0 1px rgba(20, 122, 103, 0.12),
+    0 0 11px rgba(20, 122, 103, 0.38);
+}
+
+.lineage-source-entry li.is-used svg {
+  flex: 0 0 auto;
+  color: #147a67;
 }
 
 .lineage-stage-section {

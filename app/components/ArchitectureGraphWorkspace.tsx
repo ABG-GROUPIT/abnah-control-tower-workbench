@@ -21,13 +21,16 @@ import { useMemo, useState } from "react";
 import type {
   ControlTowerModel,
   ControlTowerPresentation,
+  PresentationSourceReport,
   PresentationStory,
   PresentationStoryKind,
 } from "../lib/control-tower-presentation-types";
+import type { ReportWorkspaceDocument } from "../lib/workspace-types";
 
 interface ArchitectureGraphWorkspaceProps {
   presentation: ControlTowerPresentation;
   model: ControlTowerModel;
+  reports: ReportWorkspaceDocument[];
   onOpenReport: (reportId: string) => void;
 }
 
@@ -50,6 +53,34 @@ function compactName(value: string) {
   return value.replace(/\.sql$/i, "");
 }
 
+function normalizedFieldLabel(value: string) {
+  return value.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "");
+}
+
+function sourceFieldDisplay(
+  source: PresentationSourceReport,
+  report: ReportWorkspaceDocument | undefined,
+) {
+  const usedKeys = new Set(source.fields.map(normalizedFieldLabel));
+  const fields = report?.fields.length
+    ? report.fields.map((field) => field.label)
+    : source.fields;
+  const uniqueFields = fields.filter((field, index, all) => (
+    all.findIndex((candidate) => normalizedFieldLabel(candidate) === normalizedFieldLabel(field)) === index
+  ));
+  const capturedKeys = new Set(uniqueFields.map(normalizedFieldLabel));
+
+  for (const mappedField of source.fields) {
+    if (!capturedKeys.has(normalizedFieldLabel(mappedField))) uniqueFields.push(mappedField);
+  }
+
+  return uniqueFields.map((field) => ({
+    field,
+    used: usedKeys.has(normalizedFieldLabel(field)),
+    mappedAlias: Boolean(report) && !capturedKeys.has(normalizedFieldLabel(field)),
+  }));
+}
+
 function matchesStory(story: PresentationStory, query: string) {
   const search = query.trim().toLowerCase();
   if (!search) return true;
@@ -67,13 +98,16 @@ function matchesStory(story: PresentationStory, query: string) {
 function EvidenceStage({
   story,
   presentation,
+  reports,
   onOpenReport,
 }: {
   story: PresentationStory;
   presentation: ControlTowerPresentation;
+  reports: ReportWorkspaceDocument[];
   onOpenReport: (reportId: string) => void;
 }) {
   const profile = presentation.sourceProfiles[story.sourceTable];
+  const reportById = new Map(reports.map((report) => [report.id, report]));
   return (
     <article className="lineage-story-stage" data-stage="evidence">
       <header>
@@ -81,28 +115,52 @@ function EvidenceStage({
         <div><b>01</b><strong>Original evidence</strong><small>POSIST reports and governed inputs</small></div>
       </header>
       <div className="lineage-story-stage-body lineage-source-list">
-        {profile.reports.map((source) => (
-          <section key={`${source.name}:${source.evidence}`} className="lineage-source-entry">
-            <div>
-              <span className={`lineage-evidence-mark ${source.evidence === "synthetic_model_input" ? "is-synthetic" : ""}`}>
-                {source.evidence === "synthetic_model_input" ? "AUX" : "POS"}
-              </span>
-              <p><strong>{source.name}</strong><small>{source.role}</small></p>
-              {source.reportId ? (
-                <button
-                  type="button"
-                  title={`Open ${source.name} in schema discovery`}
-                  onClick={() => onOpenReport(source.reportId)}
-                >
-                  <ExternalLink aria-hidden="true" size={14} />
-                </button>
-              ) : null}
-            </div>
-            <ul>
-              {source.fields.map((field) => <li key={`${source.name}:${field}`}>{field}</li>)}
-            </ul>
-          </section>
-        ))}
+        <div className="lineage-field-legend" aria-label="Source field legend">
+          <span><i className="is-used" />Used in selected lineage</span>
+          <span><i />Other captured data point</span>
+        </div>
+        {profile.reports.map((source) => {
+          const report = source.reportId ? reportById.get(source.reportId) : undefined;
+          const displayedFields = sourceFieldDisplay(source, report);
+          const usedCount = displayedFields.filter((field) => field.used).length;
+          return (
+            <section key={`${source.name}:${source.evidence}`} className="lineage-source-entry">
+              <div>
+                <span className={`lineage-evidence-mark ${source.evidence === "synthetic_model_input" ? "is-synthetic" : ""}`}>
+                  {source.evidence === "synthetic_model_input" ? "AUX" : "POS"}
+                </span>
+                <p>
+                  <strong>{source.name}</strong>
+                  <small>{source.role}</small>
+                  <small className="lineage-source-field-count">
+                    <b>{usedCount}</b> used / <b>{displayedFields.length}</b> {report ? "captured fields" : "mapped input fields"}
+                  </small>
+                </p>
+                {source.reportId ? (
+                  <button
+                    type="button"
+                    title={`Open ${source.name} in schema discovery`}
+                    onClick={() => onOpenReport(source.reportId)}
+                  >
+                    <ExternalLink aria-hidden="true" size={14} />
+                  </button>
+                ) : null}
+              </div>
+              <ul>
+                {displayedFields.map(({ field, used, mappedAlias }, index) => (
+                  <li
+                    key={`${source.name}:${field}:${index}`}
+                    className={used ? "is-used" : ""}
+                    title={mappedAlias ? "Mapped lineage label; verify against the captured source label" : undefined}
+                  >
+                    {used ? <BadgeCheck aria-hidden="true" size={9} /> : null}
+                    <span>{field}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          );
+        })}
       </div>
     </article>
   );
@@ -229,9 +287,11 @@ function ZohoStage({ story }: { story: PresentationStory }) {
 
 function StoryWorkspace({
   presentation,
+  reports,
   onOpenReport,
 }: {
   presentation: ControlTowerPresentation;
+  reports: ReportWorkspaceDocument[];
   onOpenReport: (reportId: string) => void;
 }) {
   const [pageId, setPageId] = useState(presentation.pages[0]?.id ?? "all");
@@ -329,7 +389,7 @@ function StoryWorkspace({
           </header>
 
           <div className="lineage-story-flow">
-            <EvidenceStage story={selected} presentation={presentation} onOpenReport={onOpenReport} />
+            <EvidenceStage story={selected} presentation={presentation} reports={reports} onOpenReport={onOpenReport} />
             <RelationshipStage story={selected} presentation={presentation} />
             <CalculationStage story={selected} />
             <ZohoStage story={selected} />
@@ -466,6 +526,7 @@ function ModelWorkspace({ model }: { model: ControlTowerModel }) {
 export function ArchitectureGraphWorkspace({
   presentation,
   model,
+  reports,
   onOpenReport,
 }: ArchitectureGraphWorkspaceProps) {
   const [mode, setMode] = useState<WorkspaceMode>("story");
@@ -498,7 +559,7 @@ export function ArchitectureGraphWorkspace({
         <small>No screenshots or full operational rows are hosted.</small>
       </div>
       {mode === "story" ? (
-        <StoryWorkspace presentation={presentation} onOpenReport={onOpenReport} />
+        <StoryWorkspace presentation={presentation} reports={reports} onOpenReport={onOpenReport} />
       ) : (
         <ModelWorkspace model={model} />
       )}

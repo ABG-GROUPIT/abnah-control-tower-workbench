@@ -510,6 +510,7 @@ export function AtlasWorkspace({
         <ArchitectureGraphWorkspace
           presentation={controlTowerPresentation}
           model={controlTowerModel}
+          reports={reports}
           onOpenReport={openDiscoveryReport}
         />
       )}
