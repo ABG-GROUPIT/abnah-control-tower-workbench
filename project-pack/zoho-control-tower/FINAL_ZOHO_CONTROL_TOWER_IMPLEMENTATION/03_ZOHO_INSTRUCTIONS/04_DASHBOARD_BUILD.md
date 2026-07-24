@@ -418,7 +418,8 @@ At every page gate:
 
 1. Reconcile the unfiltered `month_03` total to the corresponding truth CSV.
 2. Test OUT001, OUT002 and OUT003 separately.
-3. Clear all page filters and confirm the two global filters still work.
+3. Clear all page filters and confirm the two global filters work on mapped
+   components while excluded trends and Query 34 remain unchanged.
 4. Click each report-as-filter component and confirm it affects only the
    intended reports.
 5. Export the detail behind one KPI and trace it to the Query Table.
@@ -444,45 +445,89 @@ https://www.zoho.com/analytics/help/dashboard/filter.html
 
 ## Global Filters
 
-Create only two dashboard-global filters:
+Create only two dashboard-global controls. Add each control once, then customize
+which saved reports respond to it. **Do not map either filter blindly to every
+component.**
 
-| Filter | Configuration | Reason |
+| Filter | Configuration | Application |
 | --- | --- | --- |
-| Source period | Single-select; default `month_03`; map to `source_period_code` or the equivalent forecast period on every component | Inventory is a checkpoint. Allowing all three months would add three snapshots as if simultaneous. |
-| Outlet | Multi-select; default All; map by `outlet_code`, not display name | Outlet code is the conformed key across all facts. |
+| As-of source period | Single-select; default `month_03`; map by `source_period_code` or the equivalent forecast period | Apply to current-state KPI, action and detail reports. Do not apply it to the designated historical trend reports or Query 34 data-quality reports. |
+| Outlet | Multi-select; default All; map by `outlet_code`, not display name | Apply to reports with a genuine outlet-grain key, including historical trends. Do not apply it to Query 34 because some model-wide controls deliberately use `outlet_code = 'ALL'`. |
 
 Steps:
 
 1. Open the dashboard in edit mode.
 2. Open **User Filters**.
 3. Add `source_period_code`.
-4. Map it to every report's equivalent period field.
+4. Map it to current-state reports using the exact exceptions below.
 5. Make it single-select and set `month_03` as the default.
-6. Add outlet and map `outlet_code`.
+6. Add outlet and map `outlet_code` only to reports with a genuine outlet key.
 7. Select **Make User Filters Global** and choose **Make Common Filters as
    Global**. Do not choose **Make Current Tab Filters as Global**, because that
    option would remove the tab-specific filter design.
-8. For a report whose period column has a different name, open the report's
-   dashboard **Options**, keep **Apply Dashboard Filters** enabled, select
-   **Customize**, and map Source period to that report's equivalent period
-   column.
-9. Test every component under each outlet and period before adding page filters.
+8. For each saved report, open dashboard **Options**, keep **Apply Dashboard
+   Filters** enabled, select **Customize**, and map only the global filters
+   allowed by the table below.
+9. Test every mapped component under each outlet and period before adding page
+   filters. Confirm that excluded trend and data-quality reports remain
+   intentionally unchanged.
 
 Do not make category, vendor, PO status, risk type, severity, UOM, region or
 new/matured global. Those fields are absent or have different meanings in some
 facts and will blank unrelated widgets.
 
+### Exact Global-Filter Exceptions
+
+| Tab | As-of source period | Outlet |
+| --- | --- | --- |
+| Page 1 | Apply to every Page 1 component. | Apply to every Page 1 component through `outlet_code`. |
+| Page 2 | Apply to current KPIs and current PO/vendor/inventory reports. Exclude `CT_P2_Ingredient_Price_Trend`, `CT_P2_Observed_Wastage` and `CT_P2_Expiry_Exposure_Demo` so they retain all three periods. | Apply to every Page 2 report that exposes `outlet_code`. |
+| Page 3 | Apply to current KPIs, comparison, leakage, profitability, BCG, contribution, ranking and heat-map reports. Exclude `CT_P3_Consumption_Bridge` and `CT_P3_Sales_Trend`. | Apply to every Page 3 report through `outlet_code`. |
+| Page 4 | Apply to current KPI and explorer reports. Exclude `CT_P4_SCM_Monthly_Trend`, `CT_P4_Consumption_Variance_Trend`, all six Query 34 quality tiles and `CT_P4_Data_Quality_Detail`. | Apply to Page 4 current, trend and explorer reports that have a genuine outlet key. Exclude all Query 34 quality reports. |
+
+For each excluded historical chart, optionally add a tab-local **Trend
+periods** multi-select mapped only to those historical charts, with
+`month_01`, `month_02` and `month_03` selected by default. The global As-of
+period remains `month_03` for current-state cards and details.
+
+Query 34 contains both outlet/period rows and model-wide controls encoded with
+`source_period_code = 'ALL'` and `outlet_code = 'ALL'`. Mapping either global
+filter to Query 34 would hide those model-wide checks. Keep its six tiles and
+detail table outside both global-filter mappings.
+
 ## Page And Report Filter Matrix
 
-| Scope | User filters | Fixed report filters |
-| --- | --- | --- |
-| Page 1 | Region, new/matured, stockout severity, action owner, ingredient category | Stockout risk/action reports: `risk_severity <> GREEN`; stockout commercial impact: `shortage_qty > 0`; expiry detail: `production_use_status = demo_only_no_posist_batch_or_expiry_source` |
-| Page 2 | Region, vendor, ingredient category, item, PO status | Breach table: `delayed_po_flag = 1`; pending reports: `is_open_po = 1`; OTIF: eligible denominator only; price charts: received quantity `> 0` |
-| Page 3 | Region, menu category, menu item, ingredient category, ingredient, canonical UOM | Quantity comparisons: exactly one UOM; low-consumption table: `low_consumption_qty > 0`; leakage rank: `leakage_value > 0` |
-| Page 4 | Region, item, vendor, exception type, explorer source | Each quality tile has one fixed `exception_type`; descriptive totals have no severity filter |
+Create these controls only on the named tab. For every control, open each
+component's dashboard **Options > Apply Dashboard Filters > Customize** and
+map only the compatible reports listed below. A control that is not mapped to a
+component must leave that component unchanged.
+
+| Scope | Tab-local user filter | Apply only to | Do not map to |
+| --- | --- | --- | --- |
+| Page 1 | Region; new/matured | Query 27 stockout, Query 28 menu impact, Query 36 risky PO and Query 38 expiry components through the Query 37 outlet lookup | Reports without the outlet lookup |
+| Page 1 | Stockout severity | Query 27 stockout map, priority, action and detail plus Query 28 stockout menu impact | Query 38 expiry severity or Query 36 vendor/PO severity |
+| Page 1 | Action owner | Query 27 action-center and stockout action/detail reports | Menu impact, expiry and risky-PO reports |
+| Page 1 | Ingredient category | Query 27, Query 28, Query 36 and Query 38 reports that resolve through the item/ingredient lookup | Reports without an ingredient key |
+| Page 2 | Region | Every Page 2 component with the Query 37 outlet lookup | Components without an outlet key |
+| Page 2 | Vendor | PO, receipt, risky-PO, procurement funnel, vendor scorecard and price reports sourced from Queries 22, 23, 24, 29, 30, 31 and 36 | Inventory, working-capital, stock-risk and wastage reports |
+| Page 2 | Ingredient category; item | PO/receipt line, risky-PO, price, inventory-value and high-value stock reports with an item lookup | Procurement funnel and vendor scorecard summaries that have no item grain |
+| Page 2 | PO status | `CT_P2_PO_Status_Distribution` and `CT_P2_Expected_Delivery_Breach` from Query 22 | Funnel, vendor, price, inventory and fixed-open risky-PO reports |
+| Page 3 | Region | Every Page 3 component through its outlet lookup | Reports without an outlet key |
+| Page 3 | Menu category; menu item | Sales, menu-profitability, BCG, contribution, ranking and heat-map reports from Queries 18, 25 and 32 | Ingredient consumption and variance reports |
+| Page 3 | Ingredient category; ingredient | Theoretical, actual, variance, leakage and low-consumption reports from Queries 19, 20 and 21 | Sales and menu-profitability reports |
+| Page 3 | Canonical UOM | Consumption bridge, theoretical detail, actual-versus-theoretical and low-consumption quantity reports | Currency leakage, sales, margin, BCG and menu reports |
+| Page 4 | Region | Current/trend/explorer reports with the Query 37 outlet lookup | Every Query 34 data-quality tile and detail report |
+| Page 4 | Ingredient item | Consumption variance, inventory, PO-line, GRN and expiry ingredient reports | Sales/menu-item and vendor-summary reports |
+| Page 4 | Menu item | Sales explorer and menu-sales reports | Ingredient, inventory, PO, GRN and data-quality reports |
+| Page 4 | Vendor | PO, GRN and vendor explorer reports sourced from Queries 22, 23, 24 and 30 | Sales, consumption, inventory and data-quality reports |
+| Page 4 | Exception type | `CT_P4_Data_Quality_Detail` only | The six quality tiles, because each tile already has a fixed exception type |
 
 Region and new/matured come from the lookup to
 `37_dim_ct_outlet_enriched.sql`. They are synthetic demonstrator attributes.
+
+Do not create **Explorer source** as a common user filter. Native Zoho cannot
+use one field to switch unrelated sales, item, PO, GRN and vendor report
+sources. Keep those explorer reports as separate visible sections.
 
 ### Risk Toggle Boundary
 

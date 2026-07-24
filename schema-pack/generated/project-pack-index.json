@@ -7,7 +7,7 @@
   "policy": "Tracked synthetic, documentation, code, schema, and validation artifacts only. Screenshots, real operational exports, local audit runtime data, credentials, and environment values are excluded.",
   "summary": {
     "files": 710,
-    "sizeBytes": 50629681,
+    "sizeBytes": 50638595,
     "categories": 10,
     "csvFiles": 347,
     "sqlFiles": 132,
@@ -20,7 +20,7 @@
       "label": "Final Zoho implementation",
       "description": "Production handoff imports, Query Tables, dashboard instructions, truth packs, and validation.",
       "count": 113,
-      "sizeBytes": 7922723
+      "sizeBytes": 7927180
     },
     {
       "id": "synthetic_data",
@@ -41,7 +41,7 @@
       "label": "Documentation",
       "description": "Architecture, modeling, dashboard, Zoho, external-signal, validation, and presentation guidance.",
       "count": 70,
-      "sizeBytes": 1791536
+      "sizeBytes": 1795993
     },
     {
       "id": "local_auditor",
@@ -107,8 +107,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "final_zoho",
-      "sizeBytes": 26461,
-      "sha256": "2105aa858367f183e2cc7dc8f99d1faf4fb49655f069bc8d69c96108ddcc48c2",
+      "sizeBytes": 30918,
+      "sha256": "159b627a47b784ac657b2b6f6f1e179cc4d21ae2d0fe19403ddc7003ad5d4f1d",
       "featuredOrder": 2,
       "featuredTitle": "Dashboard build guide",
       "description": "Click-by-click page, chart, filter, color, and publication instructions."
@@ -939,8 +939,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "documentation",
-      "sizeBytes": 26461,
-      "sha256": "2105aa858367f183e2cc7dc8f99d1faf4fb49655f069bc8d69c96108ddcc48c2",
+      "sizeBytes": 30918,
+      "sha256": "159b627a47b784ac657b2b6f6f1e179cc4d21ae2d0fe19403ddc7003ad5d4f1d",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -2617,7 +2617,7 @@
       "kind": "CSV data",
       "category": "final_zoho",
       "sizeBytes": 24070,
-      "sha256": "8a8994b759794ba8013f68393a3f69c01f013ec5dadc01d73f4652d21f941379",
+      "sha256": "ffb00a9343f04497ff9a419c0879f93e6f148ab3ec001d61bc8be989efcc4224",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
