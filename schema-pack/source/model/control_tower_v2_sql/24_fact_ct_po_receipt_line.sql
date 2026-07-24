@@ -58,6 +58,13 @@ SELECT
         ELSE NULL
     END AS "lead_time_deviation_days",
     CASE
+        WHEN p."is_open_po" = 0
+         AND r."receipt_date" IS NOT NULL
+         AND p."expected_delivery_date" IS NOT NULL
+        THEN DATEDIFF(r."receipt_date", p."expected_delivery_date")
+        ELSE NULL
+    END AS "eligible_lead_time_deviation_days",
+    CASE
         WHEN p."is_open_po" = 1
          AND p."expected_delivery_date" IS NULL
         THEN 1 ELSE 0

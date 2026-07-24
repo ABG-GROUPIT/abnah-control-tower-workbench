@@ -6,6 +6,9 @@
 -- Validate CAST/date function behavior once in the target Zoho workspace.
 SELECT
     p.*,
+    -1 * p."transfer_out_qty" AS "bridge_transfer_out_qty",
+    -1 * p."return_qty" AS "bridge_return_qty",
+    -1 * p."closing_qty" AS "bridge_closing_qty",
     p."opening_qty"
       + p."purchase_qty"
       + p."transfer_in_qty"

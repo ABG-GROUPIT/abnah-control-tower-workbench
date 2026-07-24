@@ -18,6 +18,20 @@ SELECT
     a."calculated_actual_consumption_qty" AS "actual_consumption_qty",
     COALESCE(t."theoretical_consumption_qty", 0) AS "theoretical_consumption_qty",
     a."calculated_actual_consumption_qty" - COALESCE(t."theoretical_consumption_qty", 0) AS "variance_qty",
+    (
+        a."calculated_actual_consumption_qty"
+        - COALESCE(t."theoretical_consumption_qty", 0)
+    ) * a."average_unit_cost"
+      AS "signed_consumption_variance_value",
+    CASE
+        WHEN a."calculated_actual_consumption_qty"
+           > COALESCE(t."theoretical_consumption_qty", 0)
+        THEN 'OVER_CONSUMPTION'
+        WHEN a."calculated_actual_consumption_qty"
+           < COALESCE(t."theoretical_consumption_qty", 0)
+        THEN 'UNDER_CONSUMPTION'
+        ELSE 'MATCHED'
+    END AS "consumption_variance_direction",
     CASE
         WHEN a."calculated_actual_consumption_qty" > COALESCE(t."theoretical_consumption_qty", 0)
         THEN (a."calculated_actual_consumption_qty" - COALESCE(t."theoretical_consumption_qty", 0)) * a."average_unit_cost"

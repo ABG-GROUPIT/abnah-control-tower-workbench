@@ -10,8 +10,9 @@ synthetic ABNAH Control Tower v2 build. It covers:
 
 - parent-key and data-type checks;
 - every lookup relationship required by the dashboard model;
-- reusable row formula columns;
-- reusable aggregate formulas;
+- SQL-derived physical dashboard columns;
+- the four reusable aggregate formulas that genuinely require report-time
+  aggregation;
 - direct report aggregations that do not need custom formulas;
 - filter and grain restrictions;
 - table-specific setup for all 38 Query Tables;
@@ -44,6 +45,12 @@ is unavailable. Vendor returns remain unavailable because the captured Stock
 Return report has no operational rows. Neither limitation may be represented
 as actual ABNAH performance.
 
+Every Query 38 report title or subtitle must contain:
+
+```text
+Synthetic demo estimate - no POSIST batch/expiry source
+```
+
 ## Required Execution Order
 
 Complete the work in this exact order:
@@ -51,8 +58,8 @@ Complete the work in this exact order:
 1. Freeze and back up the 38 successful Query Tables.
 2. Validate dimension uniqueness and key data types.
 3. Create the required lookup relationships.
-4. Create the three reusable row formula sets.
-5. Create the reusable aggregate formulas.
+4. Verify the SQL-derived dashboard columns.
+5. Create the four required aggregate formulas.
 6. Validate direct aggregations and table-specific restrictions.
 7. Reconcile formulas to the synthetic truth reference.
 8. Mark the final readiness checklist complete.
@@ -82,10 +89,14 @@ Before changing column types:
 
 1. Export or duplicate the workspace.
 2. Record the backup date and owner.
-3. Keep the 38 SQL files from the final package unchanged.
-4. Do not edit Query Table SQL merely to create a lookup or aggregate formula.
+3. Use the SQL files from the current final package.
+4. If the five dashboard-support columns below are absent, replace and save
+   Queries `20`, `21`, `24`, `31` and `33` from the current package in that
+   order.
 
-Lookups and formulas are Zoho metadata layered over the completed Query Tables.
+This correction is required because Zoho's direct KPI Widget editor asks for a
+physical **Data Column**. Aggregate formulas are report-layer metrics and are
+not reliable substitutes for physical row-level fields in that dropdown.
 
 # Phase 1 - Validate Parent Tables And Data Types
 
@@ -335,93 +346,62 @@ Do not create lookups for:
 The dashboard common filter will map `source_period_code` across reports. It is
 not a dimension lookup.
 
-# Phase 3 - Create Reusable Row Formula Columns
+# Phase 3 - Verify SQL-Derived Physical Columns
 
-These are ordinary formula columns evaluated per row. They are not aggregate
-formulas.
+Do not try to create these as Zoho formula columns. They now come directly from
+the numbered Query Table SQL and therefore appear as selectable fields in the
+report designer and KPI Widget editor.
 
-## How To Add A Formula Column
+## Step 3.1 - Apply The Dashboard-Support SQL Correction
 
-1. Open the specified Query Table.
-2. Select **Add > Formula Column**.
-3. Enter the exact display name.
-4. Paste the exact expression.
-5. Choose the stated data type.
-6. Save and verify three sample rows.
+Replace and save only these Query Tables, in this order:
 
-## 3A - Consumption Bridge Columns
+1. `20_fact_ct_actual_consumption.sql`
+2. `21_fact_ct_consumption_variance.sql`
+3. `24_fact_ct_po_receipt_line.sql`
+4. `31_sum_ct_price_movement.sql`
+5. `33_sum_ct_scm_monthly.sql`
 
-Table:
+Queries `21` and `33` are listed after `20` because they depend on Query `20`.
+No other Query Table needs to be re-created for this correction.
 
-```text
-20_fact_ct_actual_consumption.sql
-```
+## Step 3.2 - Verify The New Columns
 
-Create:
+Open each Query Table in View Mode and confirm the exact physical columns:
 
-| Formula-column name | Expression | Type |
+| Query Table | Physical column | Dashboard use |
 | --- | --- | --- |
-| `Bridge Transfer Out` | `-1 * "transfer_out_qty"` | Decimal Number |
-| `Bridge Return` | `-1 * "return_qty"` | Decimal Number |
-| `Bridge Closing` | `-1 * "closing_qty"` | Decimal Number |
+| `20_fact_ct_actual_consumption.sql` | `bridge_transfer_out_qty` | Negative transfer-out bridge bar |
+| `20_fact_ct_actual_consumption.sql` | `bridge_return_qty` | Negative return bridge bar |
+| `20_fact_ct_actual_consumption.sql` | `bridge_closing_qty` | Negative closing-stock bridge bar |
+| `21_fact_ct_consumption_variance.sql` | `signed_consumption_variance_value` | Signed variance KPI and trend |
+| `21_fact_ct_consumption_variance.sql` | `consumption_variance_direction` | Exact Individual Values filter for over/under/matched rows |
+| `24_fact_ct_po_receipt_line.sql` | `eligible_lead_time_deviation_days` | Average lead-time deviation for eligible closed lines |
+| `31_sum_ct_price_movement.sql` | `price_comparison_key` | Unambiguous outlet/vendor/item/UOM label |
+| `31_sum_ct_price_movement.sql` | `absolute_unit_price_change_percent` | Sort by movement magnitude |
+| `31_sum_ct_price_movement.sql` | `price_movement_direction` | Increase/decrease/no-change color and filter |
+| `33_sum_ct_scm_monthly.sql` | `working_capital_value` | Direct Working Capital KPI Widget |
 
-These signed columns are only for the consumption bridge visual. They do not
-replace `calculated_actual_consumption_qty`.
-
-## 3B - Signed Consumption Variance Value
-
-Table:
-
-```text
-21_fact_ct_consumption_variance.sql
-```
-
-Create:
-
-| Formula-column name | Expression | Type |
-| --- | --- | --- |
-| `Signed Consumption Variance Value` | `"variance_qty" * "average_unit_cost"` | Currency |
-
-Positive means actual consumption exceeds theoretical consumption. Negative
-means actual consumption is below theoretical and must be labelled as a
-data/process check, not automatically as a saving.
-
-## 3C - Eligible Lead-Time Deviation
-
-Table:
-
-```text
-24_fact_ct_po_receipt_line.sql
-```
-
-Create:
-
-| Formula-column name | Expression | Type |
-| --- | --- | --- |
-| `Eligible Lead Time Deviation Days` | `if("eligible_closed_line_flag" = 1, "lead_time_deviation_days", null)` | Decimal Number |
-
-Use the average of this formula column in cross-outlet vendor reports. Do not
-average all lead-time rows because open and ineligible lines are outside the
-approved denominator.
-
-## 3D - Absolute Price Movement
-
-Table:
-
-```text
-31_sum_ct_price_movement.sql
-```
-
-Create:
-
-| Formula-column name | Expression | Type |
-| --- | --- | --- |
-| `Absolute Price Change Percent` | `abs("unit_price_change_percent")` | Decimal Number |
-
-Use this field only to sort the largest movements. Display the signed
-`unit_price_change_percent` in the visual.
+The signed bridge columns do not replace
+`calculated_actual_consumption_qty`. The signed variance is positive when
+actual consumption exceeds theoretical consumption and negative when it is
+below theoretical consumption.
 
 # Phase 4 - Create Reusable Aggregate Formulas
+
+Only the four ratio or weighted-rate metrics in this phase require Aggregate
+Formulas. All sums and counts in the dashboard guide use physical columns and
+the report/widget aggregation control.
+
+An Aggregate Formula is available in the report designer, but it is not added
+as a physical column to the Query Table. Therefore:
+
+- do not search for an Aggregate Formula name in a direct KPI Widget's
+  **Data Column** list;
+- use a direct KPI Widget only when the guide names a physical column;
+- build each Aggregate Formula KPI as a compact saved Summary View and place
+  that saved report on the dashboard;
+- never create a second formula just to rename a physical sum or count.
 
 ## How To Add An Aggregate Formula
 
@@ -442,84 +422,7 @@ For each formula below:
 Aggregate formulas respond to the grouping and filters in each report. Rates
 must therefore divide aggregated numerators by aggregated denominators.
 
-## 4A - Sales
-
-Table:
-
-```text
-18_fact_ct_sales.sql
-```
-
-```text
-Name: Active Menu Items
-Formula: distinctcount("item_code")
-Type: Positive Number
-```
-
-The sales `item_code` represents a menu item.
-
-## 4B - Consumption Variance
-
-Table:
-
-```text
-21_fact_ct_consumption_variance.sql
-```
-
-```text
-Name: Consumption Leakage Value
-Formula: sum("leakage_value")
-Type: Currency
-```
-
-```text
-Name: Signed Consumption Variance Value
-Formula: sum("Signed Consumption Variance Value")
-Type: Currency
-```
-
-```text
-Name: Low Consumption Check Quantity
-Formula: sum("low_consumption_qty")
-Type: Decimal Number
-Restriction: display only when exactly one canonical_uom is selected
-```
-
-## 4C - Purchase Orders
-
-Table:
-
-```text
-22_fact_ct_purchase_order.sql
-```
-
-```text
-Name: Open PO Count
-Formula: distinctcount(if("is_open_po" = 1, "po_number", null))
-Type: Positive Number
-```
-
-```text
-Name: Open PO Line Count
-Formula: sum("is_open_po")
-Type: Positive Number
-```
-
-```text
-Name: Active Vendors
-Formula: distinctcount("vendor_name")
-Type: Positive Number
-```
-
-```text
-Name: Delayed PO Count
-Formula: distinctcount(if("delayed_po_flag" = 1, "po_number", null))
-Type: Positive Number
-```
-
-Do not use row count as PO count. One PO can contain multiple item lines.
-
-## 4D - Purchase Receipts
+## 4A - Weighted Unit Price
 
 Table:
 
@@ -533,16 +436,10 @@ Formula: if(sum("received_qty") <> 0, sum("receipt_subtotal") / sum("received_qt
 Type: Currency
 ```
 
-```text
-Name: GRN Count
-Formula: distinctcount("grn_number")
-Type: Positive Number
-```
-
 Never average row unit prices. A weighted price must divide total receipt
 subtotal by total received quantity.
 
-## 4E - PO Fill Rate And OTIF
+## 4B - PO Fill Rate And OTIF
 
 Table:
 
@@ -571,7 +468,7 @@ The displayed result, not the storage convention, must be `83.25%` and
 Return null when the denominator is zero. Do not convert an absent eligible
 population into `0%`.
 
-## 4F - Menu Profitability
+## 4C - Menu Profitability
 
 Table:
 
@@ -588,134 +485,19 @@ Type: Percentage
 The unfiltered synthetic result must display approximately `82.02%`. Do not
 average the row-level `gross_margin_percent` column.
 
-## 4G - Inventory Risk
+## 4D - Aggregate Formula Inventory Check
 
-Table:
+After completing Phase 4, the required catalog is exactly:
 
-```text
-27_fact_ct_inventory_risk.sql
-```
+| Query Table | Aggregate Formula |
+| --- | --- |
+| `23_fact_ct_purchase_receipt.sql` | `Weighted Unit Price` |
+| `24_fact_ct_po_receipt_line.sql` | `PO Fill Rate %` |
+| `24_fact_ct_po_receipt_line.sql` | `Vendor OTIF %` |
+| `25_fact_ct_menu_profitability.sql` | `Menu Gross Margin %` |
 
-```text
-Name: Outlets At Stockout Risk
-Formula: distinctcount(if("risk_severity" <> 'GREEN', "outlet_code", null))
-Type: Positive Number
-```
-
-```text
-Name: Stockout Risk Item Count
-Formula: distinctcount(if("risk_severity" <> 'GREEN', "action_id", null))
-Type: Positive Number
-```
-
-`total_risk_value` in Query 27 is stockout shortage cost only. It does not
-include expiry.
-
-## 4H - Menu Impact
-
-Table:
-
-```text
-28_fact_ct_menu_impact.sql
-```
-
-```text
-Name: Menu Items At Risk
-Formula: distinctcount("menu_item_code")
-Type: Positive Number
-```
-
-```text
-Name: Stockout Sales At Risk
-Formula: sum("allocated_forecast_net_sales_at_risk")
-Type: Currency
-```
-
-Query 28 contains only risk rows. Sum the allocated field. Do not sum
-`forecast_net_sales_at_risk`, because the unallocated value repeats when a menu
-item depends on several risky ingredients.
-
-## 4I - Working Capital
-
-Table:
-
-```text
-33_sum_ct_scm_monthly.sql
-```
-
-```text
-Name: Working Capital Locked
-Formula: sum("closing_stock_value") + sum("open_po_value")
-Type: Currency
-```
-
-Always show closing inventory value and open PO liability separately near the
-combined working-capital widget.
-
-## 4J - Data Quality
-
-Table:
-
-```text
-34_fact_ct_data_quality_exception.sql
-```
-
-```text
-Name: Data Quality Exception Count
-Formula: sum("exception_count")
-Type: Positive Number
-```
-
-Use one exception-type filter per KPI tile.
-
-## 4K - Risky Purchase Orders
-
-Table:
-
-```text
-36_fact_ct_risky_po.sql
-```
-
-```text
-Name: Open Risky PO Count
-Formula: distinctcount("po_number")
-Type: Positive Number
-```
-
-## 4L - Expiry Demo Estimate
-
-Table:
-
-```text
-38_fact_ct_expiry_risk.sql
-```
-
-```text
-Name: Expiry Items At Risk - Demo Estimate
-Formula: distinctcount("action_id")
-Type: Positive Number
-```
-
-```text
-Name: Outlets With Expiry Risk - Demo Estimate
-Formula: distinctcount("outlet_code")
-Type: Positive Number
-```
-
-Optional single-UOM formula:
-
-```text
-Name: Expiry Quantity At Risk - Single UOM Only
-Formula: sum("expiry_qty_at_risk")
-Type: Decimal Number
-Restriction: display only when exactly one canonical_uom is selected
-```
-
-Every expiry report title or subtitle must contain:
-
-```text
-Synthetic demo estimate - no POSIST batch/expiry source
-```
+If additional formulas from an earlier draft already exist, they do not need
+to be deleted, but do not use them in the direct KPI Widget instructions.
 
 # Phase 5 - Direct Report Aggregations
 
@@ -730,7 +512,9 @@ unless the same display label is required across many reports.
 | `18_fact_ct_sales.sql` | `sold_qty` | Sum | Additive |
 | `19_fact_ct_theoretical_consumption.sql` | `theoretical_consumption_value` | Sum | Additive value |
 | `20_fact_ct_actual_consumption.sql` | `calculated_actual_consumption_value` | Sum | Additive value |
+| `20_fact_ct_actual_consumption.sql` | `bridge_transfer_out_qty`, `bridge_return_qty`, `bridge_closing_qty` | Sum | Single UOM only |
 | `21_fact_ct_consumption_variance.sql` | `leakage_value` | Sum | Additive value |
+| `21_fact_ct_consumption_variance.sql` | `signed_consumption_variance_value` | Sum | Additive signed value |
 | `22_fact_ct_purchase_order.sql` | `gross_order_value` | Sum | Ordered gross basis |
 | `22_fact_ct_purchase_order.sql` | `open_po_value` | Sum | Open liability |
 | `23_fact_ct_purchase_receipt.sql` | `receipt_total` | Sum | Received total basis |
@@ -740,13 +524,21 @@ unless the same display label is required across many reports.
 | `25_fact_ct_menu_profitability.sql` | `gross_margin_value` | Sum | Additive |
 | `27_fact_ct_inventory_risk.sql` | `shortage_cost_value` | Sum | Stockout exposure only |
 | `27_fact_ct_inventory_risk.sql` | `total_risk_value` | Sum | Same stockout-only value in current Query 27 |
+| `28_fact_ct_menu_impact.sql` | `allocated_forecast_net_sales_at_risk` | Sum | Allocated field only |
 | `29_sum_ct_procurement_funnel.sql` | Value fields | Sum | Do not count rows as POs |
 | `30_sum_ct_vendor_scorecard.sql` | `monthly_purchase_value` | Sum | Additive value |
 | `30_sum_ct_vendor_scorecard.sql` | `open_po_value` | Sum | Additive value |
-| `33_sum_ct_scm_monthly.sql` | All four value measures | Sum | Current snapshot widgets require one period |
+| `33_sum_ct_scm_monthly.sql` | All five value measures, including `working_capital_value` | Sum | Current snapshot widgets require one period |
 | `35_sum_ct_financial_leakage.sql` | `leakage_value` | Sum | Observed wastage only |
 | `36_fact_ct_risky_po.sql` | `open_po_value` | Sum | Risky open liability |
 | `38_fact_ct_expiry_risk.sql` | `expiry_risk_value` | Sum | Synthetic estimate only |
+
+For counts in direct KPI Widgets, select the physical identifier and choose
+**Count Distinct**. Examples are `outlet_code`, `menu_item_code`, `po_number`
+and `vendor_name`. Do not search for a business label such as `Open Risky PO
+Count` in the Data Column list.
+
+Do not use row count as PO count. One PO can contain multiple item lines.
 
 ## Values That Must Not Be Aggregated Directly
 
@@ -788,27 +580,27 @@ Use this register as the final pass across all 38 Query Tables.
 | 15 | `15_dim_ct_menu_item.sql` | Validate 110 unique menu-item codes. Use as sales/menu parent. |
 | 16 | `16_dim_ct_vendor.sql` | Validate 70 unique vendor names. Vendor names without vendor codes remain valid observed vendors. |
 | 17 | `17_dim_ct_recipe_effective.sql` | Effective recipe bridge only. No lookup or formula required. |
-| 18 | `18_fact_ct_sales.sql` | Create outlet, sales-date and menu-item lookups. Add Active Menu Items aggregate formula. |
+| 18 | `18_fact_ct_sales.sql` | Create outlet, sales-date and menu-item lookups. Use physical sales fields; count distinct `item_code` for active menu items. |
 | 19 | `19_fact_ct_theoretical_consumption.sql` | Create outlet and item lookups. Use value for mixed-UOM summaries. |
-| 20 | `20_fact_ct_actual_consumption.sql` | Create outlet and item lookups. Add the three signed bridge formula columns. |
-| 21 | `21_fact_ct_consumption_variance.sql` | Create outlet/item lookups and signed variance row formula. Add variance aggregate formulas. |
-| 22 | `22_fact_ct_purchase_order.sql` | Create outlet/item/vendor lookups and PO formulas. Distinguish PO count from PO-line count. |
-| 23 | `23_fact_ct_purchase_receipt.sql` | Create outlet/item/vendor lookups. Add weighted price and GRN count formulas. |
+| 20 | `20_fact_ct_actual_consumption.sql` | Create outlet and item lookups. Verify the three physical signed bridge columns. |
+| 21 | `21_fact_ct_consumption_variance.sql` | Create outlet/item lookups. Verify physical signed variance; sum physical leakage and variance fields. |
+| 22 | `22_fact_ct_purchase_order.sql` | Create outlet/item/vendor lookups. Use physical value/flag fields and distinct PO/vendor identifiers. |
+| 23 | `23_fact_ct_purchase_receipt.sql` | Create outlet/item/vendor lookups. Add only the Weighted Unit Price aggregate formula; count distinct `grn_number` when needed. |
 | 24 | `24_fact_ct_po_receipt_line.sql` | Create outlet/item/vendor lookups. Add fill-rate and OTIF formulas. Keep formula-demo label until actual linkage is approved. |
 | 25 | `25_fact_ct_menu_profitability.sql` | Create outlet/menu lookups. Add aggregate gross-margin percentage. Never average row margin percentage. |
 | 26 | `26_fact_ct_forecast_ingredient_demand.sql` | Create outlet/item/menu lookups. Treat forecast fields as model output, not observed demand. |
-| 27 | `27_fact_ct_inventory_risk.sql` | Create outlet/item lookups and risk counts. Stockout exposure only; keep expiry separate. |
+| 27 | `27_fact_ct_inventory_risk.sql` | Create outlet/item lookups. Use physical `risk_type` in the report Filter shelf and distinct physical identifiers for counts. |
 | 28 | `28_fact_ct_menu_impact.sql` | Create outlet, ingredient and menu lookups. Sum allocated sales-at-risk only. |
 | 29 | `29_sum_ct_procurement_funnel.sql` | Create outlet/vendor lookups. Use value measures as separate funnel stages. |
 | 30 | `30_sum_ct_vendor_scorecard.sql` | Create outlet/vendor lookups. Percentages are native period-outlet-vendor results; do not combine them across outlets. |
-| 31 | `31_sum_ct_price_movement.sql` | Create outlet/item/vendor lookups and absolute-change sort formula. Compare one item and one UOM. |
+| 31 | `31_sum_ct_price_movement.sql` | Create outlet/item/vendor lookups. Use the physical comparison key and absolute-change sort field. Compare one item and one UOM. |
 | 32 | `32_sum_ct_menu_profitability.sql` | Create outlet/menu lookups. Force one source period and one outlet for a BCG view, or retain outlet as a visible grouping. |
-| 33 | `33_sum_ct_scm_monthly.sql` | Create outlet lookup and Working Capital Locked formula. Current-state KPI cards require one source period. |
-| 34 | `34_fact_ct_data_quality_exception.sql` | Add exception-count formula. Do not add outlet/item lookups because `ALL` and blank keys are intentional. |
+| 33 | `33_sum_ct_scm_monthly.sql` | Create outlet lookup. Sum physical `working_capital_value`; current-state KPI cards require one source period. |
+| 34 | `34_fact_ct_data_quality_exception.sql` | Sum physical `exception_count`. Do not add outlet/item lookups because `ALL` and blank keys are intentional. |
 | 35 | `35_sum_ct_financial_leakage.sql` | Create outlet lookup. Label as observed wastage, not total financial leakage. |
-| 36 | `36_fact_ct_risky_po.sql` | Create outlet/item/vendor lookups and distinct risky-PO count. |
+| 36 | `36_fact_ct_risky_po.sql` | Create outlet/item/vendor lookups and count distinct physical `po_number`. |
 | 37 | `37_dim_ct_outlet_enriched.sql` | Validate 3 unique outlets and coordinates. This is the canonical outlet parent. |
-| 38 | `38_fact_ct_expiry_risk.sql` | Validate types; create outlet/item lookups; add expiry formulas; retain explicit synthetic-estimate label. |
+| 38 | `38_fact_ct_expiry_risk.sql` | Validate types; create outlet/item lookups; use physical expiry fields; retain explicit synthetic-estimate label. |
 
 # Phase 7 - Filter And Grain Contract
 
@@ -977,10 +769,12 @@ Do not start dashboard construction until every item is complete.
 | Menu lookup matrix | All five relationships complete | NOT STARTED |
 | Vendor lookup matrix | Seven required relationships complete | NOT STARTED |
 | Sales date lookup | Complete | NOT STARTED |
-| Query 20 bridge formula columns | Three formulas validated | NOT STARTED |
-| Query 21 signed variance formula | Validated | NOT STARTED |
-| Query 31 absolute price formula | Validated | NOT STARTED |
-| Aggregate formula catalog | All required formulas saved | NOT STARTED |
+| Query 20 physical bridge columns | Three fields validated | NOT STARTED |
+| Query 21 physical signed variance/direction | Two fields validated | NOT STARTED |
+| Query 24 eligible lead deviation | Field validated | NOT STARTED |
+| Query 31 physical comparison/sort/direction fields | Three fields validated | NOT STARTED |
+| Query 33 physical working capital | Field validated | NOT STARTED |
+| Aggregate formula catalog | Exactly four required formulas saved | NOT STARTED |
 | Percentage display convention | 83.25%, 51.67%, 82.02% | NOT STARTED |
 | All-period reconciliation | Matches Phase 8 | NOT STARTED |
 | Query 34 exception checks | Matches Phase 8 | NOT STARTED |

@@ -246,6 +246,34 @@ class ControlTowerSqlPackTests(unittest.TestCase):
             query.sql,
         )
 
+    def test_dashboard_widget_support_fields_are_physical_sql_outputs(self) -> None:
+        by_name = {query.name: query.sql for query in self.builder.QUERIES}
+        required = {
+            "FACT_CT_Actual_Consumption": {
+                '"bridge_transfer_out_qty"',
+                '"bridge_return_qty"',
+                '"bridge_closing_qty"',
+            },
+            "FACT_CT_Consumption_Variance": {
+                '"signed_consumption_variance_value"',
+                '"consumption_variance_direction"',
+            },
+            "FACT_CT_PO_Receipt_Line": {
+                '"eligible_lead_time_deviation_days"',
+            },
+            "SUM_CT_Price_Movement": {
+                '"price_comparison_key"',
+                '"absolute_unit_price_change_percent"',
+                '"price_movement_direction"',
+            },
+            "SUM_CT_SCM_Monthly": {
+                '"working_capital_value"',
+            },
+        }
+        for query_name, fields in required.items():
+            for field in fields:
+                self.assertIn(field, by_name[query_name], query_name)
+
     def test_generated_sql_file_count(self) -> None:
         files = list(self.builder.OUTPUT.glob("*.sql"))
         self.assertEqual(len(self.builder.QUERIES), len(files))

@@ -124,7 +124,7 @@
     "audited_control_tower_reports": 20,
     "validated_fidelity_contracts": 21,
     "ignored_no_signal_fields": 69,
-    "project_pack_files": 716,
+    "project_pack_files": 717,
     "project_pack_categories": 10
   },
   "quality_status": "usable_with_warnings",
@@ -896,10 +896,10 @@
   },
   "control_tower_presentation_source": {
     "path": "schema-pack/source/control_tower/control-tower-presentation.json",
-    "sha256": "de11d7e42334c4533b33965f24f4369e8f239da0660fac166704bb0c43ea396f"
+    "sha256": "cad35a3bdcb3bb5c7852a4d7799f65573090fbdfa0465d6f6d8c2d7e39d4c08c"
   },
   "control_tower_model_source": {
     "path": "schema-pack/source/model/control-tower-model.json",
-    "sha256": "d26fa29ce787f72fddb7fa6af326d87d3c3423ce8bb3ecba570a4e9bd29b3e1a"
+    "sha256": "5170811327c4770e962b99c52e321f4109758a0a9e8be2fb4d1c98fa9e1d23c3"
   }
 }

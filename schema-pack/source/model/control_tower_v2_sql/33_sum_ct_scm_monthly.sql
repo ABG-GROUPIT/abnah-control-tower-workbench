@@ -11,6 +11,8 @@ SELECT
     COALESCE(s."net_sales", 0) AS "net_sales",
     COALESCE(i."closing_stock_value", 0) AS "closing_stock_value",
     COALESCE(p."open_po_value", 0) AS "open_po_value",
+    COALESCE(i."closing_stock_value", 0)
+      + COALESCE(p."open_po_value", 0) AS "working_capital_value",
     COALESCE(a."actual_consumption_value", 0) AS "actual_consumption_value"
 FROM (
     SELECT DISTINCT

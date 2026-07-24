@@ -981,6 +981,9 @@ FROM "STD_CT_Theoretical_Consumption" t
         """
 SELECT
     p.*,
+    -1 * p."transfer_out_qty" AS "bridge_transfer_out_qty",
+    -1 * p."return_qty" AS "bridge_return_qty",
+    -1 * p."closing_qty" AS "bridge_closing_qty",
     p."opening_qty"
       + p."purchase_qty"
       + p."transfer_in_qty"
@@ -1019,6 +1022,20 @@ SELECT
     a."calculated_actual_consumption_qty" AS "actual_consumption_qty",
     COALESCE(t."theoretical_consumption_qty", 0) AS "theoretical_consumption_qty",
     a."calculated_actual_consumption_qty" - COALESCE(t."theoretical_consumption_qty", 0) AS "variance_qty",
+    (
+        a."calculated_actual_consumption_qty"
+        - COALESCE(t."theoretical_consumption_qty", 0)
+    ) * a."average_unit_cost"
+      AS "signed_consumption_variance_value",
+    CASE
+        WHEN a."calculated_actual_consumption_qty"
+           > COALESCE(t."theoretical_consumption_qty", 0)
+        THEN 'OVER_CONSUMPTION'
+        WHEN a."calculated_actual_consumption_qty"
+           < COALESCE(t."theoretical_consumption_qty", 0)
+        THEN 'UNDER_CONSUMPTION'
+        ELSE 'MATCHED'
+    END AS "consumption_variance_direction",
     CASE
         WHEN a."calculated_actual_consumption_qty" > COALESCE(t."theoretical_consumption_qty", 0)
         THEN (a."calculated_actual_consumption_qty" - COALESCE(t."theoretical_consumption_qty", 0)) * a."average_unit_cost"
@@ -1133,6 +1150,13 @@ SELECT
         THEN DATEDIFF(r."receipt_date", p."expected_delivery_date")
         ELSE NULL
     END AS "lead_time_deviation_days",
+    CASE
+        WHEN p."is_open_po" = 0
+         AND r."receipt_date" IS NOT NULL
+         AND p."expected_delivery_date" IS NOT NULL
+        THEN DATEDIFF(r."receipt_date", p."expected_delivery_date")
+        ELSE NULL
+    END AS "eligible_lead_time_deviation_days",
     CASE
         WHEN p."is_open_po" = 1
          AND p."expected_delivery_date" IS NULL
@@ -1571,14 +1595,33 @@ SELECT
     c."item_code",
     c."item_name",
     c."canonical_uom",
+    CONCAT(
+        c."outlet_code", ' | ',
+        c."vendor_name", ' | ',
+        c."item_name", ' | ',
+        c."canonical_uom"
+    ) AS "price_comparison_key",
     c."current_unit_price",
     p."current_unit_price" AS "previous_unit_price",
     c."current_unit_price" - p."current_unit_price" AS "unit_price_change",
     CASE
+        WHEN c."current_unit_price" > p."current_unit_price" THEN 'INCREASE'
+        WHEN c."current_unit_price" < p."current_unit_price" THEN 'DECREASE'
+        ELSE 'NO_CHANGE'
+    END AS "price_movement_direction",
+    CASE
         WHEN p."current_unit_price" <> 0
         THEN (c."current_unit_price" - p."current_unit_price") / p."current_unit_price" * 100
         ELSE NULL
-    END AS "unit_price_change_percent"
+    END AS "unit_price_change_percent",
+    CASE
+        WHEN p."current_unit_price" <> 0
+        THEN ABS(
+            (c."current_unit_price" - p."current_unit_price")
+            / p."current_unit_price" * 100
+        )
+        ELSE NULL
+    END AS "absolute_unit_price_change_percent"
 FROM (
     SELECT
         "source_period_code",
@@ -1686,6 +1729,8 @@ SELECT
     COALESCE(s."net_sales", 0) AS "net_sales",
     COALESCE(i."closing_stock_value", 0) AS "closing_stock_value",
     COALESCE(p."open_po_value", 0) AS "open_po_value",
+    COALESCE(i."closing_stock_value", 0)
+      + COALESCE(p."open_po_value", 0) AS "working_capital_value",
     COALESCE(a."actual_consumption_value", 0) AS "actual_consumption_value"
 FROM (
     SELECT DISTINCT

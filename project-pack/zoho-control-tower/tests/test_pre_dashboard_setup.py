@@ -63,19 +63,24 @@ class PreDashboardSetupTests(unittest.TestCase):
             sql = (SQL_ROOT / filename).read_text(encoding="utf-8")
             self.assertIn(f'AS "{key}"', sql, filename)
 
-    def test_formula_source_columns_exist_in_their_sql(self) -> None:
+    def test_dashboard_source_columns_exist_in_their_sql(self) -> None:
         required = {
             "18_fact_ct_sales.sql": {"item_code"},
             "20_fact_ct_actual_consumption.sql": {
                 "transfer_out_qty",
                 "return_qty",
                 "closing_qty",
+                "bridge_transfer_out_qty",
+                "bridge_return_qty",
+                "bridge_closing_qty",
             },
             "21_fact_ct_consumption_variance.sql": {
                 "variance_qty",
                 "average_unit_cost",
                 "leakage_value",
                 "low_consumption_qty",
+                "signed_consumption_variance_value",
+                "consumption_variance_direction",
             },
             "22_fact_ct_purchase_order.sql": {
                 "is_open_po",
@@ -93,6 +98,7 @@ class PreDashboardSetupTests(unittest.TestCase):
                 "received_qty",
                 "eligible_closed_line_flag",
                 "otif_success_flag",
+                "eligible_lead_time_deviation_days",
             },
             "25_fact_ct_menu_profitability.sql": {
                 "net_sales",
@@ -107,10 +113,16 @@ class PreDashboardSetupTests(unittest.TestCase):
                 "menu_item_code",
                 "allocated_forecast_net_sales_at_risk",
             },
-            "31_sum_ct_price_movement.sql": {"unit_price_change_percent"},
+            "31_sum_ct_price_movement.sql": {
+                "price_comparison_key",
+                "unit_price_change_percent",
+                "absolute_unit_price_change_percent",
+                "price_movement_direction",
+            },
             "33_sum_ct_scm_monthly.sql": {
                 "closing_stock_value",
                 "open_po_value",
+                "working_capital_value",
             },
             "34_fact_ct_data_quality_exception.sql": {"exception_count"},
             "36_fact_ct_risky_po.sql": {"po_number"},
@@ -136,9 +148,25 @@ class PreDashboardSetupTests(unittest.TestCase):
             "Do not sum `forecast_net_sales_at_risk`",
             "Default value: month_03",
             "Synthetic demo estimate - no POSIST batch/expiry source",
+            "do not search for an Aggregate Formula name in a direct KPI Widget",
+            "Exactly four required formulas saved",
         }
         for statement in required_text:
             self.assertIn(statement, compact_text)
+
+    def test_only_true_ratio_metrics_are_required_aggregate_formulas(self) -> None:
+        formula_names = set(
+            re.findall(r"^Name: (.+)$", self.text, flags=re.MULTILINE)
+        )
+        self.assertEqual(
+            {
+                "Weighted Unit Price",
+                "PO Fill Rate %",
+                "Vendor OTIF %",
+                "Menu Gross Margin %",
+            },
+            formula_names,
+        )
 
 
 if __name__ == "__main__":

@@ -37,9 +37,9 @@ This is generated from `docs/control_tower_presentation_contract.json`. Update t
 | 2 | [Ingredient Price Trend](#ct-p2-ingredient-price-trend) | chart | Line | `23_fact_ct_purchase_receipt.sql` |
 | 2 | [Inventory Value](#ct-p2-inventory-value) | chart | Stacked bar | `05_std_ct_inventory_snapshot.sql` |
 | 2 | [Closing Inventory Value](#ct-p2-kpi-closing-inventory) | kpi | KPI widget | `33_sum_ct_scm_monthly.sql` |
-| 2 | [PO Fill Rate](#ct-p2-kpi-fill-rate) | kpi | KPI widget | `24_fact_ct_po_receipt_line.sql` |
+| 2 | [PO Fill Rate](#ct-p2-kpi-fill-rate) | kpi | Saved Summary View | `24_fact_ct_po_receipt_line.sql` |
 | 2 | [Ordered Gross Value](#ct-p2-kpi-monthly-purchase) | kpi | KPI widget | `29_sum_ct_procurement_funnel.sql` |
-| 2 | [Vendor OTIF - Formula Demo](#ct-p2-kpi-otif) | kpi | KPI widget | `24_fact_ct_po_receipt_line.sql` |
+| 2 | [Vendor OTIF - Formula Demo](#ct-p2-kpi-otif) | kpi | Saved Summary View | `24_fact_ct_po_receipt_line.sql` |
 | 2 | [Open PO Count](#ct-p2-kpi-open-po-count) | kpi | KPI widget | `29_sum_ct_procurement_funnel.sql` |
 | 2 | [Open PO Liability](#ct-p2-kpi-open-po-liability) | kpi | KPI widget | `29_sum_ct_procurement_funnel.sql` |
 | 2 | [Working Capital Locked](#ct-p2-kpi-working-capital) | kpi | KPI widget | `33_sum_ct_scm_monthly.sql` |
@@ -49,15 +49,15 @@ This is generated from `docs/control_tower_presentation_contract.json`. Update t
 | 2 | [Pending Ingredient Risk](#ct-p2-pending-ingredient-risk) | table | Tabular | `36_fact_ct_risky_po.sql` |
 | 2 | [Procurement Funnel](#ct-p2-procurement-funnel) | chart | Funnel or grouped horizontal bar | `29_sum_ct_procurement_funnel.sql` |
 | 2 | [Top Price Movement](#ct-p2-top-price-movement) | chart | Divergent or horizontal bar | `31_sum_ct_price_movement.sql` |
-| 2 | [Vendor Performance Matrix](#ct-p2-vendor-performance-matrix) | chart | Bubble | `30_sum_ct_vendor_scorecard.sql` |
+| 2 | [Vendor Performance Matrix](#ct-p2-vendor-performance-matrix) | chart | Bubble | `24_fact_ct_po_receipt_line.sql` |
 | 2 | [Vendor Price Comparison](#ct-p2-vendor-price-comparison) | chart | Grouped bar | `23_fact_ct_purchase_receipt.sql` |
-| 2 | [Vendor Scorecard](#ct-p2-vendor-scorecard) | table | Tabular | `30_sum_ct_vendor_scorecard.sql` |
+| 2 | [Vendor Scorecard](#ct-p2-vendor-scorecard) | table | Summary or pivot | `24_fact_ct_po_receipt_line.sql` |
 | 3 | [Actual vs Theoretical Consumption](#ct-p3-actual-vs-theoretical) | chart | Grouped bar | `21_fact_ct_consumption_variance.sql` |
 | 3 | [Category Contribution](#ct-p3-category-contribution) | chart | Stacked bar or ring | `25_fact_ct_menu_profitability.sql` |
 | 3 | [Consumption Bridge](#ct-p3-consumption-bridge) | chart | Combination | `20_fact_ct_actual_consumption.sql` |
 | 3 | [Consumption Leakage Rank](#ct-p3-consumption-leakage-rank) | chart | Horizontal bar | `21_fact_ct_consumption_variance.sql` |
 | 3 | [Consumption Leakage Value](#ct-p3-kpi-consumption-leakage) | kpi | KPI widget | `21_fact_ct_consumption_variance.sql` |
-| 3 | [Menu Gross Margin %](#ct-p3-kpi-menu-gross-margin) | kpi | KPI widget | `25_fact_ct_menu_profitability.sql` |
+| 3 | [Menu Gross Margin %](#ct-p3-kpi-menu-gross-margin) | kpi | Saved Summary View | `25_fact_ct_menu_profitability.sql` |
 | 3 | [Net Sales](#ct-p3-kpi-net-sales) | kpi | KPI widget | `25_fact_ct_menu_profitability.sql` |
 | 3 | [Quantity Sold](#ct-p3-kpi-quantity-sold) | kpi | KPI widget | `25_fact_ct_menu_profitability.sql` |
 | 3 | [Theoretical COGS](#ct-p3-kpi-theoretical-cogs) | kpi | KPI widget | `25_fact_ct_menu_profitability.sql` |
@@ -85,7 +85,7 @@ This is generated from `docs/control_tower_presentation_contract.json`. Update t
 | 4 | [Active Vendors](#ct-p4-kpi-active-vendors) | kpi | KPI widget | `22_fact_ct_purchase_order.sql` |
 | 4 | [Actual Consumption Value](#ct-p4-kpi-actual-consumption) | kpi | KPI widget | `33_sum_ct_scm_monthly.sql` |
 | 4 | [Closing Stock Value](#ct-p4-kpi-closing-stock) | kpi | KPI widget | `33_sum_ct_scm_monthly.sql` |
-| 4 | [Consumption Variance / Leakage](#ct-p4-kpi-consumption-variance) | kpi | KPI widget | `21_fact_ct_consumption_variance.sql` |
+| 4 | [Signed Consumption Variance Value](#ct-p4-kpi-consumption-variance) | kpi | KPI widget | `21_fact_ct_consumption_variance.sql` |
 | 4 | [GRN Value](#ct-p4-kpi-grn-value) | kpi | KPI widget | `23_fact_ct_purchase_receipt.sql` |
 | 4 | [Net Sales](#ct-p4-kpi-net-sales) | kpi | KPI widget | `33_sum_ct_scm_monthly.sql` |
 | 4 | [Open PO Value](#ct-p4-kpi-open-po) | kpi | KPI widget | `33_sum_ct_scm_monthly.sql` |
@@ -147,7 +147,7 @@ Show what needs action now across stockout, menu impact, expiry demonstration, a
 
 **Fixed report filters:**
 
-- risk_severity <> GREEN
+- Filter shelf: risk_type / Individual Values / Include STOCKOUT
 
 **User filters:**
 
@@ -225,7 +225,7 @@ Risk Action Center starts from Closing Stock Report, Item Recipe Report, AUX Men
 
 **Fixed report filters:**
 
-- production_use_status = demo_only_no_posist_batch_or_expiry_source
+- None
 
 **User filters:**
 
@@ -298,11 +298,13 @@ Expiry Risk Detail - Demo starts from Enterprise Entry Report - Stock Entry, Clo
 
 **Shelves/columns:**
 
-- Measure: Expiry Risk Value - Demo Estimate
+- Data Column: expiry_risk_value
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
-- production_use_status = demo_only_no_posist_batch_or_expiry_source
+- None
 
 **User filters:**
 
@@ -378,7 +380,9 @@ Expiry Risk Value - Demo Estimate starts from Enterprise Entry Report - Stock En
 
 **Shelves/columns:**
 
-- Measure: Menu Items At Risk
+- Data Column: menu_item_code
+- Show Value As: Count Distinct
+- Group By: blank
 
 **Fixed report filters:**
 
@@ -457,7 +461,9 @@ Menu Items At Risk starts from Closing Stock Report, Item Recipe Report, AUX Men
 
 **Shelves/columns:**
 
-- Measure: Open Risky PO Count
+- Data Column: po_number
+- Show Value As: Count Distinct
+- Group By: blank
 
 **Fixed report filters:**
 
@@ -523,11 +529,11 @@ Open Risky PO Count starts from Closing Stock Report, Item Recipe Report, AUX Me
 
 ### Calculation
 
-**Final fields:** `outlet_code`, `risk_severity`
+**Final fields:** `outlet_code`, `risk_type`
 
-**Formula:** `distinctcount(if(risk_severity <> 'GREEN', outlet_code, null))`
+**Formula:** `Direct KPI Data Column "outlet_code"; Show Value As Count Distinct.`
 
-**Aggregation:** Distinct count of outlet_code
+**Aggregation:** Distinct count of physical outlet_code
 
 ### Exact Zoho Configuration
 
@@ -535,11 +541,13 @@ Open Risky PO Count starts from Closing Stock Report, Item Recipe Report, AUX Me
 
 **Shelves/columns:**
 
-- Measure: Outlets At Stockout Risk
+- Data Column: outlet_code
+- Show Value As: Count Distinct
+- Group By: blank
 
 **Fixed report filters:**
 
-- risk_severity <> GREEN
+- Filter shelf: risk_type / Individual Values / Include STOCKOUT
 
 **User filters:**
 
@@ -568,7 +576,7 @@ Open Risky PO Count starts from Closing Stock Report, Item Recipe Report, AUX Me
 
 ### How To Explain It
 
-Outlets At Stockout Risk starts from Closing Stock Report, Item Recipe Report, AUX Menu Demand Forecast, Enterprise Purchase Order Report. The model follows 05_std_ct_inventory_snapshot.sql -> 26_fact_ct_forecast_ingredient_demand.sql -> 22_fact_ct_purchase_order.sql -> 27_fact_ct_inventory_risk.sql at source period, outlet, and inventory ingredient checkpoint. The relationship rule is: Join stock, seven-day forecast ingredient demand, and valid open PO quantity on source period + outlet + item. In Zoho, use distinct count of outlet_code and render it as kpi widget to answer: How many outlets require stockout action in the selected checkpoint?
+Outlets At Stockout Risk starts from Closing Stock Report, Item Recipe Report, AUX Menu Demand Forecast, Enterprise Purchase Order Report. The model follows 05_std_ct_inventory_snapshot.sql -> 26_fact_ct_forecast_ingredient_demand.sql -> 22_fact_ct_purchase_order.sql -> 27_fact_ct_inventory_risk.sql at source period, outlet, and inventory ingredient checkpoint. The relationship rule is: Join stock, seven-day forecast ingredient demand, and valid open PO quantity on source period + outlet + item. In Zoho, use distinct count of physical outlet_code and render it as kpi widget to answer: How many outlets require stockout action in the selected checkpoint?
 
 <a id="ct-p1-kpi-stockout-risk-value"></a>
 ## CT_P1_KPI_Stockout_Risk_Value - Stockout Sales At Risk
@@ -614,11 +622,13 @@ Outlets At Stockout Risk starts from Closing Stock Report, Item Recipe Report, A
 
 **Shelves/columns:**
 
-- Measure: Stockout Sales At Risk
+- Data Column: allocated_forecast_net_sales_at_risk
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
-- shortage_qty > 0
+- None
 
 **User filters:**
 
@@ -779,7 +789,7 @@ Menu Impact Detail starts from Closing Stock Report, Item Recipe Report, AUX Men
 
 **Fixed report filters:**
 
-- risk_severity <> GREEN
+- Filter shelf: risk_type / Individual Values / Include STOCKOUT
 
 **User filters:**
 
@@ -864,7 +874,7 @@ Outlet Risk Map starts from Closing Stock Report, Item Recipe Report, AUX Menu D
 
 **Fixed report filters:**
 
-- risk_severity <> GREEN
+- Filter shelf: risk_type / Individual Values / Include STOCKOUT
 
 **User filters:**
 
@@ -944,7 +954,7 @@ Stockout Priority Stack starts from Closing Stock Report, Item Recipe Report, AU
 
 **Fixed report filters:**
 
-- risk_severity <> GREEN
+- Filter shelf: risk_type / Individual Values / Include STOCKOUT
 
 **User filters:**
 
@@ -1089,7 +1099,7 @@ Explain purchase commitments, receipts, vendor performance, price movement, and 
 
 **Final fields:** `po_number`, `vendor_name`, `item_code`, `expected_delivery_date`, `remaining_qty`, `open_po_value`, `delayed_po_flag`
 
-**Formula:** `Filter "delayed_po_flag" = 1`
+**Formula:** `Select the physical delayed flag through the report Filter shelf.`
 
 **Aggregation:** Direct detail rows
 
@@ -1103,7 +1113,7 @@ Explain purchase commitments, receipts, vendor performance, price movement, and 
 
 **Fixed report filters:**
 
-- delayed_po_flag = 1
+- Filter shelf: delayed_po_flag / Individual Values / Include 1
 
 **User filters:**
 
@@ -1182,7 +1192,7 @@ Expected Delivery Breach starts from Enterprise Purchase Order Report. The model
 
 **Fixed report filters:**
 
-- production_use_status = demo_only_no_posist_batch_or_expiry_source
+- None
 
 **User filters:**
 
@@ -1323,7 +1333,7 @@ High Value / Slow Stock starts from Closing Stock Report, Item Recipe Report, AU
 
 **Final fields:** `source_period_code`, `item_code`, `received_qty`, `receipt_subtotal`, `vendor_name`
 
-**Formula:** `if(sum("received_qty") <> 0, sum("receipt_subtotal") / sum("received_qty"), null)`
+**Formula:** `Aggregate Formula "Weighted Unit Price".`
 
 **Aggregation:** Weighted unit price
 
@@ -1339,7 +1349,7 @@ High Value / Slow Stock starts from Closing Stock Report, Item Recipe Report, AU
 
 **Fixed report filters:**
 
-- received_qty > 0
+- None
 
 **User filters:**
 
@@ -1491,7 +1501,9 @@ Inventory Value starts from Closing Stock Report. The model follows RAWN_CT_clos
 
 **Shelves/columns:**
 
-- Measure: closing stock value
+- Data Column: closing_stock_value
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
@@ -1532,7 +1544,7 @@ Closing Inventory Value starts from Gross/Net Margin Report, Closing Stock Repor
 
 **Business question:** What proportion of ordered quantity was linked to accepted receipt quantity?
 
-**Final object:** kpi / KPI widget from `24_fact_ct_po_receipt_line.sql`
+**Final object:** kpi / Saved Summary View from `24_fact_ct_po_receipt_line.sql`
 
 **Final grain:** Source period, outlet, purchase order, and item line
 
@@ -1559,17 +1571,18 @@ Closing Inventory Value starts from Gross/Net Margin Report, Closing Stock Repor
 
 **Final fields:** `ordered_qty`, `received_qty`
 
-**Formula:** `if(sum("ordered_qty") <> 0, sum("received_qty") / sum("ordered_qty") * 100, null)`
+**Formula:** `Aggregate Formula "PO Fill Rate %" in a saved Summary View.`
 
 **Aggregation:** Ratio of summed quantities
 
 ### Exact Zoho Configuration
 
-**Visual:** KPI widget
+**Visual:** Saved Summary View
 
 **Shelves/columns:**
 
-- Measure: PO Fill Rate %
+- Summary value: PO Fill Rate %
+- Grouping: none
 
 **Fixed report filters:**
 
@@ -1599,10 +1612,11 @@ Closing Inventory Value starts from Gross/Net Margin Report, Closing Stock Repor
 
 - Actual PO-to-GRN linkage was sparse, so OTIF remains a formula demonstration.
 - Fill rate uses sums of quantities, never an average of row percentages.
+- The Aggregate Formula is not selected from a direct KPI Widget Data Column list.
 
 ### How To Explain It
 
-PO Fill Rate starts from Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows 07_std_ct_purchase_order.sql -> 08_std_ct_purchase_receipt.sql -> 24_fact_ct_po_receipt_line.sql at source period, outlet, purchase order, and item line. The relationship rule is: Left join PO and receipt lines on source period + outlet + canonical PO number + item code; aggregate receipts before the join. In Zoho, use ratio of summed quantities and render it as kpi widget to answer: What proportion of ordered quantity was linked to accepted receipt quantity?
+PO Fill Rate starts from Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows 07_std_ct_purchase_order.sql -> 08_std_ct_purchase_receipt.sql -> 24_fact_ct_po_receipt_line.sql at source period, outlet, purchase order, and item line. The relationship rule is: Left join PO and receipt lines on source period + outlet + canonical PO number + item code; aggregate receipts before the join. In Zoho, use ratio of summed quantities and render it as saved summary view to answer: What proportion of ordered quantity was linked to accepted receipt quantity?
 
 <a id="ct-p2-kpi-monthly-purchase"></a>
 ## CT_P2_KPI_Monthly_Purchase - Ordered Gross Value
@@ -1644,7 +1658,9 @@ PO Fill Rate starts from Enterprise Purchase Order Report, Enterprise Entry Repo
 
 **Shelves/columns:**
 
-- Measure: ordered value
+- Data Column: ordered_value
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
@@ -1685,7 +1701,7 @@ Ordered Gross Value starts from Enterprise Purchase Order Report. The model foll
 
 **Business question:** What share of eligible closed PO lines met both quantity and date conditions in the demonstration?
 
-**Final object:** kpi / KPI widget from `24_fact_ct_po_receipt_line.sql`
+**Final object:** kpi / Saved Summary View from `24_fact_ct_po_receipt_line.sql`
 
 **Final grain:** Source period, outlet, purchase order, and item line
 
@@ -1712,17 +1728,18 @@ Ordered Gross Value starts from Enterprise Purchase Order Report. The model foll
 
 **Final fields:** `eligible_closed_line_flag`, `otif_success_flag`
 
-**Formula:** `if(sum("eligible_closed_line_flag") <> 0, sum("otif_success_flag") / sum("eligible_closed_line_flag") * 100, null)`
+**Formula:** `Aggregate Formula "Vendor OTIF %" in a saved Summary View.`
 
 **Aggregation:** Ratio of summed flags
 
 ### Exact Zoho Configuration
 
-**Visual:** KPI widget
+**Visual:** Saved Summary View
 
 **Shelves/columns:**
 
-- Measure: Vendor OTIF %
+- Summary value: Vendor OTIF %
+- Grouping: none
 
 **Fixed report filters:**
 
@@ -1754,10 +1771,11 @@ Ordered Gross Value starts from Enterprise Purchase Order Report. The model foll
 - Actual PO-to-GRN linkage was sparse, so OTIF remains a formula demonstration.
 - Fill rate uses sums of quantities, never an average of row percentages.
 - Production is blocked by sparse actual PO-to-GRN linkage.
+- The Aggregate Formula is not selected from a direct KPI Widget Data Column list.
 
 ### How To Explain It
 
-Vendor OTIF - Formula Demo starts from Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows 07_std_ct_purchase_order.sql -> 08_std_ct_purchase_receipt.sql -> 24_fact_ct_po_receipt_line.sql at source period, outlet, purchase order, and item line. The relationship rule is: Left join PO and receipt lines on source period + outlet + canonical PO number + item code; aggregate receipts before the join. In Zoho, use ratio of summed flags and render it as kpi widget to answer: What share of eligible closed PO lines met both quantity and date conditions in the demonstration?
+Vendor OTIF - Formula Demo starts from Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows 07_std_ct_purchase_order.sql -> 08_std_ct_purchase_receipt.sql -> 24_fact_ct_po_receipt_line.sql at source period, outlet, purchase order, and item line. The relationship rule is: Left join PO and receipt lines on source period + outlet + canonical PO number + item code; aggregate receipts before the join. In Zoho, use ratio of summed flags and render it as saved summary view to answer: What share of eligible closed PO lines met both quantity and date conditions in the demonstration?
 
 <a id="ct-p2-kpi-open-po-count"></a>
 ## CT_P2_KPI_Open_PO_Count - Open PO Count
@@ -1799,7 +1817,9 @@ Vendor OTIF - Formula Demo starts from Enterprise Purchase Order Report, Enterpr
 
 **Shelves/columns:**
 
-- Measure: open PO count
+- Data Column: open_po_count
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
@@ -1874,7 +1894,9 @@ Open PO Count starts from Enterprise Purchase Order Report. The model follows 22
 
 **Shelves/columns:**
 
-- Measure: pending value
+- Data Column: pending_value
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
@@ -1939,11 +1961,11 @@ Open PO Liability starts from Enterprise Purchase Order Report. The model follow
 
 ### Calculation
 
-**Final fields:** `closing_stock_value`, `open_po_value`
+**Final fields:** `working_capital_value`
 
-**Formula:** `sum("closing_stock_value") + sum("open_po_value")`
+**Formula:** `sum("working_capital_value")`
 
-**Aggregation:** Reusable aggregate formula
+**Aggregation:** Sum the physical working-capital field
 
 ### Exact Zoho Configuration
 
@@ -1951,7 +1973,9 @@ Open PO Liability starts from Enterprise Purchase Order Report. The model follow
 
 **Shelves/columns:**
 
-- Measure: Working Capital Locked
+- Data Column: working_capital_value
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
@@ -1986,7 +2010,7 @@ Open PO Liability starts from Enterprise Purchase Order Report. The model follow
 
 ### How To Explain It
 
-Working Capital Locked starts from Gross/Net Margin Report, Closing Stock Report, Enterprise Purchase Order Report, Enterprise Variance Report. The model follows 18_fact_ct_sales.sql -> 05_std_ct_inventory_snapshot.sql -> 22_fact_ct_purchase_order.sql -> 20_fact_ct_actual_consumption.sql -> 33_sum_ct_scm_monthly.sql at source period and outlet. The relationship rule is: Aggregate each fact to source period + outlet before joining sales, stock value, open PO value, and actual consumption value. In Zoho, use reusable aggregate formula and render it as kpi widget to answer: How much capital is represented by closing inventory plus open PO liability?
+Working Capital Locked starts from Gross/Net Margin Report, Closing Stock Report, Enterprise Purchase Order Report, Enterprise Variance Report. The model follows 18_fact_ct_sales.sql -> 05_std_ct_inventory_snapshot.sql -> 22_fact_ct_purchase_order.sql -> 20_fact_ct_actual_consumption.sql -> 33_sum_ct_scm_monthly.sql at source period and outlet. The relationship rule is: Aggregate each fact to source period + outlet before joining sales, stock value, open PO value, and actual consumption value. In Zoho, use sum the physical working-capital field and render it as kpi widget to answer: How much capital is represented by closing inventory plus open PO liability?
 
 <a id="ct-p2-observed-wastage"></a>
 ## CT_P2_Observed_Wastage - Observed Wastage
@@ -2403,9 +2427,9 @@ Procurement Funnel starts from Enterprise Purchase Order Report. The model follo
 
 ### Calculation
 
-**Final fields:** `item_code`, `vendor_name`, `unit_price_change_percent`, `absolute_price_change_percent`
+**Final fields:** `price_comparison_key`, `unit_price_change_percent`, `absolute_unit_price_change_percent`, `price_movement_direction`
 
-**Formula:** `Signed change is displayed; absolute change is used only for sorting.`
+**Formula:** `Signed physical change is displayed; absolute physical change is used only for sorting.`
 
 **Aggregation:** Direct period-item-vendor-UOM result
 
@@ -2415,13 +2439,13 @@ Procurement Funnel starts from Enterprise Purchase Order Report. The model follo
 
 **Shelves/columns:**
 
-- Y: item
-- X: unit price change %
-- Color: positive/negative
+- Y: price_comparison_key
+- X: unit_price_change_percent
+- Color: price_movement_direction
 
 **Fixed report filters:**
 
-- One canonical UOM when comparing quantities/prices
+- None
 
 **User filters:**
 
@@ -2433,7 +2457,7 @@ Procurement Funnel starts from Enterprise Purchase Order Report. The model follo
 - Item
 - PO status
 
-**Sort:** Absolute Price Movement descending
+**Sort:** absolute_unit_price_change_percent descending; Top 10
 
 **Tooltips:**
 
@@ -2459,9 +2483,9 @@ Top Price Movement starts from Enterprise Entry Report - Stock Entry. The model 
 
 **Business question:** Which vendors combine low OTIF, lead-time deviation, and high open exposure?
 
-**Final object:** chart / Bubble from `30_sum_ct_vendor_scorecard.sql`
+**Final object:** chart / Bubble from `24_fact_ct_po_receipt_line.sql`
 
-**Final grain:** Source period, outlet, and vendor
+**Final grain:** Source period, outlet, purchase order, and item line
 
 ### Original Evidence
 
@@ -2472,22 +2496,23 @@ Top Price Movement starts from Enterprise Entry Report - Stock Entry. The model 
 
 ### Model Route And Relationship
 
-`24_fact_ct_po_receipt_line.sql -> 30_sum_ct_vendor_scorecard.sql`
+`07_std_ct_purchase_order.sql -> 08_std_ct_purchase_receipt.sql -> 24_fact_ct_po_receipt_line.sql`
 
-**Join/relationship logic:** Aggregate PO/receipt line results into vendor purchase, open exposure, fill, eligible OTIF, and lead-time deviation.
+**Join/relationship logic:** Left join PO and receipt lines on source period + outlet + canonical PO number + item code; aggregate receipts before the join.
 
 **Zoho lookups:**
 
 - `outlet_code -> 37_dim_ct_outlet_enriched.sql.outlet_code`
+- `item_code -> 14_dim_ct_item.sql.item_code`
 - `vendor_name -> 16_dim_ct_vendor.sql.vendor_name`
 
 ### Calculation
 
-**Final fields:** `vendor_name`, `otif_percent`, `average_lead_time_deviation_days`, `open_po_value`
+**Final fields:** `vendor_name`, `eligible_closed_line_flag`, `otif_success_flag`, `eligible_lead_time_deviation_days`, `open_po_value`
 
-**Formula:** `Use native summary fields at source period + outlet + vendor grain.`
+**Formula:** `Use Vendor OTIF % Aggregate Formula and physical eligible lead-time deviation.`
 
-**Aggregation:** No cross-outlet averaging
+**Aggregation:** Group by vendor over Query 24
 
 ### Exact Zoho Configuration
 
@@ -2495,9 +2520,9 @@ Top Price Movement starts from Enterprise Entry Report - Stock Entry. The model 
 
 **Shelves/columns:**
 
-- X: OTIF %
-- Y: average lead-time deviation
-- Size: open PO value
+- X: Vendor OTIF %
+- Y: average eligible_lead_time_deviation_days
+- Size: sum open_po_value
 - Text: vendor
 
 **Fixed report filters:**
@@ -2518,8 +2543,8 @@ Top Price Movement starts from Enterprise Entry Report - Stock Entry. The model 
 
 **Tooltips:**
 
-- Fill rate
-- Monthly purchase value
+- PO Fill Rate %
+- Open PO value
 - Delayed line count
 
 **Formatting:**
@@ -2528,13 +2553,13 @@ Top Price Movement starts from Enterprise Entry Report - Stock Entry. The model 
 
 ### Guardrails
 
-- Do not average vendor percentages across outlets.
-- OTIF and lead deviation remain demonstration metrics until receipt linkage improves.
+- Actual PO-to-GRN linkage was sparse, so OTIF remains a formula demonstration.
+- Fill rate uses sums of quantities, never an average of row percentages.
 - Formula demonstration until actual PO-to-GRN linkage improves.
 
 ### How To Explain It
 
-Vendor Performance Matrix starts from Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows 24_fact_ct_po_receipt_line.sql -> 30_sum_ct_vendor_scorecard.sql at source period, outlet, and vendor. The relationship rule is: Aggregate PO/receipt line results into vendor purchase, open exposure, fill, eligible OTIF, and lead-time deviation. In Zoho, use no cross-outlet averaging and render it as bubble to answer: Which vendors combine low OTIF, lead-time deviation, and high open exposure?
+Vendor Performance Matrix starts from Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows 07_std_ct_purchase_order.sql -> 08_std_ct_purchase_receipt.sql -> 24_fact_ct_po_receipt_line.sql at source period, outlet, purchase order, and item line. The relationship rule is: Left join PO and receipt lines on source period + outlet + canonical PO number + item code; aggregate receipts before the join. In Zoho, use group by vendor over query 24 and render it as bubble to answer: Which vendors combine low OTIF, lead-time deviation, and high open exposure?
 
 <a id="ct-p2-vendor-price-comparison"></a>
 ## CT_P2_Vendor_Price_Comparison - Vendor Price Comparison
@@ -2567,7 +2592,7 @@ Vendor Performance Matrix starts from Enterprise Purchase Order Report, Enterpri
 
 **Final fields:** `vendor_name`, `item_code`, `canonical_uom`, `received_qty`, `receipt_subtotal`
 
-**Formula:** `if(sum("received_qty") <> 0, sum("receipt_subtotal") / sum("received_qty"), null)`
+**Formula:** `Aggregate Formula "Weighted Unit Price".`
 
 **Aggregation:** Weighted unit price
 
@@ -2582,9 +2607,8 @@ Vendor Performance Matrix starts from Enterprise Purchase Order Report, Enterpri
 
 **Fixed report filters:**
 
-- Exactly one item
-- Exactly one canonical UOM
-- received_qty > 0
+- Item user filter: select exactly one value
+- Canonical UOM user filter: select exactly one value
 
 **User filters:**
 
@@ -2620,9 +2644,9 @@ Vendor Price Comparison starts from Enterprise Entry Report - Stock Entry. The m
 
 **Business question:** What purchase, exposure, fill, OTIF, lead, and delay profile does each vendor have?
 
-**Final object:** table / Tabular from `30_sum_ct_vendor_scorecard.sql`
+**Final object:** table / Summary or pivot from `24_fact_ct_po_receipt_line.sql`
 
-**Final grain:** Source period, outlet, and vendor
+**Final grain:** Source period, outlet, purchase order, and item line
 
 ### Original Evidence
 
@@ -2633,30 +2657,31 @@ Vendor Price Comparison starts from Enterprise Entry Report - Stock Entry. The m
 
 ### Model Route And Relationship
 
-`24_fact_ct_po_receipt_line.sql -> 30_sum_ct_vendor_scorecard.sql`
+`07_std_ct_purchase_order.sql -> 08_std_ct_purchase_receipt.sql -> 24_fact_ct_po_receipt_line.sql`
 
-**Join/relationship logic:** Aggregate PO/receipt line results into vendor purchase, open exposure, fill, eligible OTIF, and lead-time deviation.
+**Join/relationship logic:** Left join PO and receipt lines on source period + outlet + canonical PO number + item code; aggregate receipts before the join.
 
 **Zoho lookups:**
 
 - `outlet_code -> 37_dim_ct_outlet_enriched.sql.outlet_code`
+- `item_code -> 14_dim_ct_item.sql.item_code`
 - `vendor_name -> 16_dim_ct_vendor.sql.vendor_name`
 
 ### Calculation
 
-**Final fields:** `vendor_name`, `monthly_purchase_value`, `open_po_value`, `otif_percent`, `fill_rate_percent`, `average_lead_time_deviation_days`, `delayed_line_count`
+**Final fields:** `vendor_name`, `gross_order_value`, `open_po_value`, `ordered_qty`, `received_qty`, `eligible_closed_line_flag`, `otif_success_flag`, `eligible_lead_time_deviation_days`, `delayed_po_flag`
 
-**Formula:** `Direct vendor summary fields.`
+**Formula:** `Use PO Fill Rate % and Vendor OTIF % Aggregate Formulas over Query 24.`
 
-**Aggregation:** One row per period + outlet + vendor
+**Aggregation:** Group by vendor
 
 ### Exact Zoho Configuration
 
-**Visual:** Tabular
+**Visual:** Summary or pivot
 
 **Shelves/columns:**
 
-- Columns: vendor, purchase, open liability, OTIF, fill, lead deviation, delayed lines
+- Columns: vendor, purchase, open liability, OTIF, fill, eligible lead deviation, delayed lines
 
 **Fixed report filters:**
 
@@ -2684,13 +2709,13 @@ Vendor Price Comparison starts from Enterprise Entry Report - Stock Entry. The m
 
 ### Guardrails
 
-- Do not average vendor percentages across outlets.
-- OTIF and lead deviation remain demonstration metrics until receipt linkage improves.
-- Do not combine precomputed percentages across outlets.
+- Actual PO-to-GRN linkage was sparse, so OTIF remains a formula demonstration.
+- Fill rate uses sums of quantities, never an average of row percentages.
+- Do not average precomputed Query 30 percentages across outlets.
 
 ### How To Explain It
 
-Vendor Scorecard starts from Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows 24_fact_ct_po_receipt_line.sql -> 30_sum_ct_vendor_scorecard.sql at source period, outlet, and vendor. The relationship rule is: Aggregate PO/receipt line results into vendor purchase, open exposure, fill, eligible OTIF, and lead-time deviation. In Zoho, use one row per period + outlet + vendor and render it as tabular to answer: What purchase, exposure, fill, OTIF, lead, and delay profile does each vendor have?
+Vendor Scorecard starts from Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows 07_std_ct_purchase_order.sql -> 08_std_ct_purchase_receipt.sql -> 24_fact_ct_po_receipt_line.sql at source period, outlet, purchase order, and item line. The relationship rule is: Left join PO and receipt lines on source period + outlet + canonical PO number + item code; aggregate receipts before the join. In Zoho, use group by vendor and render it as summary or pivot to answer: What purchase, exposure, fill, OTIF, lead, and delay profile does each vendor have?
 
 # Page 3 - Consumption Variance & Menu Profitability
 
@@ -2886,9 +2911,9 @@ Category Contribution starts from Gross/Net Margin Report, Item Recipe Report, C
 
 ### Calculation
 
-**Final fields:** `source_period_code`, `opening_qty`, `receipt_qty`, `transfer_in_qty`, `transfer_out_qty`, `return_qty`, `closing_qty`, `calculated_actual_consumption_qty`
+**Final fields:** `source_period_code`, `opening_qty`, `purchase_qty`, `transfer_in_qty`, `bridge_transfer_out_qty`, `bridge_return_qty`, `bridge_closing_qty`, `calculated_actual_consumption_qty`
 
-**Formula:** `opening + receipt + transfer in - transfer out - return - closing`
+**Formula:** `Physical bridge fields are already signed in Query 20.`
 
 **Aggregation:** Sum each bridge component within one canonical UOM
 
@@ -2899,12 +2924,12 @@ Category Contribution starts from Gross/Net Margin Report, Item Recipe Report, C
 **Shelves/columns:**
 
 - X: source period
-- Bars: opening, receipt, transfer in, signed transfer out, signed return, signed closing
+- Bars: opening, purchase, transfer in, bridge transfer out, bridge return, bridge closing
 - Line: calculated actual consumption
 
 **Fixed report filters:**
 
-- Exactly one canonical UOM for quantity view
+- Canonical UOM user filter: select exactly one value for this quantity view
 
 **User filters:**
 
@@ -2970,7 +2995,7 @@ Consumption Bridge starts from Enterprise Variance Report. The model follows RAW
 
 ### Calculation
 
-**Final fields:** `item_code`, `leakage_value`
+**Final fields:** `item_code`, `leakage_value`, `consumption_variance_direction`
 
 **Formula:** `sum("leakage_value")`
 
@@ -2987,7 +3012,7 @@ Consumption Bridge starts from Enterprise Variance Report. The model follows RAW
 
 **Fixed report filters:**
 
-- leakage_value > 0
+- Filter shelf: consumption_variance_direction / Individual Values / Include OVER_CONSUMPTION
 
 **User filters:**
 
@@ -3063,7 +3088,9 @@ Consumption Leakage Rank starts from Enterprise Variance Report, Gross/Net Margi
 
 **Shelves/columns:**
 
-- Measure: Consumption Leakage Value
+- Data Column: leakage_value
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
@@ -3105,7 +3132,7 @@ Consumption Leakage Value starts from Enterprise Variance Report, Gross/Net Marg
 
 **Business question:** What share of net sales remains after theoretical menu COGS?
 
-**Final object:** kpi / KPI widget from `25_fact_ct_menu_profitability.sql`
+**Final object:** kpi / Saved Summary View from `25_fact_ct_menu_profitability.sql`
 
 **Final grain:** Source period, outlet, and menu item
 
@@ -3133,17 +3160,18 @@ Consumption Leakage Value starts from Enterprise Variance Report, Gross/Net Marg
 
 **Final fields:** `gross_margin_value`, `net_sales`
 
-**Formula:** `if(sum("net_sales") <> 0, sum("gross_margin_value") / sum("net_sales") * 100, null)`
+**Formula:** `Aggregate Formula "Menu Gross Margin %" in a saved Summary View.`
 
 **Aggregation:** Ratio of summed gross margin value to summed net sales
 
 ### Exact Zoho Configuration
 
-**Visual:** KPI widget
+**Visual:** Saved Summary View
 
 **Shelves/columns:**
 
-- Measure: Menu Gross Margin %
+- Summary value: Menu Gross Margin %
+- Grouping: none
 
 **Fixed report filters:**
 
@@ -3175,10 +3203,11 @@ Consumption Leakage Value starts from Enterprise Variance Report, Gross/Net Marg
 - Menu gross margin percent is ratio of summed margin to summed sales.
 - Do not average row-level margin percentages.
 - Never average gross_margin_percent.
+- The Aggregate Formula is not selected from a direct KPI Widget Data Column list.
 
 ### How To Explain It
 
-Menu Gross Margin % starts from Gross/Net Margin Report, Item Recipe Report, Closing Stock Report, AUX Theoretical Consumption. The model follows 01_std_ct_sales_item.sql -> 17_dim_ct_recipe_effective.sql -> 25_fact_ct_menu_profitability.sql at source period, outlet, and menu item. The relationship rule is: Aggregate menu sales and join effective recipe cost to calculate theoretical cost per unit, COGS, and gross margin. In Zoho, use ratio of summed gross margin value to summed net sales and render it as kpi widget to answer: What share of net sales remains after theoretical menu COGS?
+Menu Gross Margin % starts from Gross/Net Margin Report, Item Recipe Report, Closing Stock Report, AUX Theoretical Consumption. The model follows 01_std_ct_sales_item.sql -> 17_dim_ct_recipe_effective.sql -> 25_fact_ct_menu_profitability.sql at source period, outlet, and menu item. The relationship rule is: Aggregate menu sales and join effective recipe cost to calculate theoretical cost per unit, COGS, and gross margin. In Zoho, use ratio of summed gross margin value to summed net sales and render it as saved summary view to answer: What share of net sales remains after theoretical menu COGS?
 
 <a id="ct-p3-kpi-net-sales"></a>
 ## CT_P3_KPI_Net_Sales - Net Sales
@@ -3223,7 +3252,9 @@ Menu Gross Margin % starts from Gross/Net Margin Report, Item Recipe Report, Clo
 
 **Shelves/columns:**
 
-- Measure: net sales
+- Data Column: net_sales
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
@@ -3302,7 +3333,9 @@ Net Sales starts from Gross/Net Margin Report, Item Recipe Report, Closing Stock
 
 **Shelves/columns:**
 
-- Measure: sold quantity
+- Data Column: sold_qty
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
@@ -3381,7 +3414,9 @@ Quantity Sold starts from Gross/Net Margin Report, Item Recipe Report, Closing S
 
 **Shelves/columns:**
 
-- Measure: theoretical COGS
+- Data Column: theoretical_cogs
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
@@ -3449,9 +3484,9 @@ Theoretical COGS starts from Gross/Net Margin Report, Item Recipe Report, Closin
 
 ### Calculation
 
-**Final fields:** `outlet_code`, `item_code`, `actual_consumption_qty`, `theoretical_consumption_qty`, `low_consumption_qty`, `canonical_uom`
+**Final fields:** `outlet_code`, `item_code`, `actual_consumption_qty`, `theoretical_consumption_qty`, `low_consumption_qty`, `canonical_uom`, `consumption_variance_direction`
 
-**Formula:** `low_consumption_qty = max(0, theoretical consumption - actual consumption)`
+**Formula:** `low_consumption_qty is the positive under-consumption difference.`
 
 **Aggregation:** Direct detail rows
 
@@ -3465,8 +3500,8 @@ Theoretical COGS starts from Gross/Net Margin Report, Item Recipe Report, Closin
 
 **Fixed report filters:**
 
-- low_consumption_qty > 0
-- Exactly one canonical UOM
+- Filter shelf: consumption_variance_direction / Individual Values / Include UNDER_CONSUMPTION
+- Canonical UOM user filter: select exactly one value for quantity comparison
 
 **User filters:**
 
@@ -4128,7 +4163,6 @@ Provide governed totals, trends, drilldowns, exports, and explicit data-quality 
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Business-relevant default order
 
@@ -4193,11 +4227,13 @@ Consumption Variance Trend starts from Enterprise Variance Report, Gross/Net Mar
 
 **Shelves/columns:**
 
-- Measure: Data Quality Exception Count
+- Data Column: exception_count
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
-- exception_type = NEGATIVE_STOCK
+- Filter shelf: exception_type / Individual Values / Include NEGATIVE_STOCK
 
 **User filters:**
 
@@ -4207,7 +4243,6 @@ Consumption Variance Trend starts from Enterprise Variance Report, Gross/Net Mar
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Business-relevant default order
 
@@ -4218,12 +4253,12 @@ Consumption Variance Trend starts from Enterprise Variance Report, Gross/Net Mar
 **Formatting:**
 
 - Whole number
-- Use as Filter for the shared detail table
 
 ### Guardrails
 
 - Do not create outlet/item lookups; ALL and blank keys are intentional.
 - A zero count means the check ran and found no exception.
+- Use the Page 4 Exception Type user filter for the shared detail table; a single-number widget has no category dimension to pass.
 
 ### How To Explain It
 
@@ -4273,11 +4308,13 @@ Negative Stock Count starts from Closing Stock Report, Item Recipe Report, AUX M
 
 **Shelves/columns:**
 
-- Measure: Data Quality Exception Count
+- Data Column: exception_count
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
-- exception_type = OPEN_PO_MISSING_EXPECTED_DELIVERY
+- Filter shelf: exception_type / Individual Values / Include OPEN_PO_MISSING_EXPECTED_DELIVERY
 
 **User filters:**
 
@@ -4287,7 +4324,6 @@ Negative Stock Count starts from Closing Stock Report, Item Recipe Report, AUX M
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Business-relevant default order
 
@@ -4298,12 +4334,12 @@ Negative Stock Count starts from Closing Stock Report, Item Recipe Report, AUX M
 **Formatting:**
 
 - Whole number
-- Use as Filter for the shared detail table
 
 ### Guardrails
 
 - Do not create outlet/item lookups; ALL and blank keys are intentional.
 - A zero count means the check ran and found no exception.
+- Use the Page 4 Exception Type user filter for the shared detail table; a single-number widget has no category dimension to pass.
 
 ### How To Explain It
 
@@ -4353,11 +4389,13 @@ Open PO Missing Expected Delivery Count starts from Closing Stock Report, Item R
 
 **Shelves/columns:**
 
-- Measure: Data Quality Exception Count
+- Data Column: exception_count
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
-- exception_type = OPERATIONAL_ITEM_MISSING_MASTER
+- Filter shelf: exception_type / Individual Values / Include OPERATIONAL_ITEM_MISSING_MASTER
 
 **User filters:**
 
@@ -4367,7 +4405,6 @@ Open PO Missing Expected Delivery Count starts from Closing Stock Report, Item R
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Business-relevant default order
 
@@ -4378,12 +4415,12 @@ Open PO Missing Expected Delivery Count starts from Closing Stock Report, Item R
 **Formatting:**
 
 - Whole number
-- Use as Filter for the shared detail table
 
 ### Guardrails
 
 - Do not create outlet/item lookups; ALL and blank keys are intentional.
 - A zero count means the check ran and found no exception.
+- Use the Page 4 Exception Type user filter for the shared detail table; a single-number widget has no category dimension to pass.
 
 ### How To Explain It
 
@@ -4433,11 +4470,13 @@ Operational Items Missing Master Count starts from Closing Stock Report, Item Re
 
 **Shelves/columns:**
 
-- Measure: Data Quality Exception Count
+- Data Column: exception_count
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
-- exception_type = SOLD_ITEM_MISSING_RECIPE
+- Filter shelf: exception_type / Individual Values / Include SOLD_ITEM_MISSING_RECIPE
 
 **User filters:**
 
@@ -4447,7 +4486,6 @@ Operational Items Missing Master Count starts from Closing Stock Report, Item Re
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Business-relevant default order
 
@@ -4458,12 +4496,12 @@ Operational Items Missing Master Count starts from Closing Stock Report, Item Re
 **Formatting:**
 
 - Whole number
-- Use as Filter for the shared detail table
 
 ### Guardrails
 
 - Do not create outlet/item lookups; ALL and blank keys are intentional.
 - A zero count means the check ran and found no exception.
+- Use the Page 4 Exception Type user filter for the shared detail table; a single-number widget has no category dimension to pass.
 
 ### How To Explain It
 
@@ -4513,11 +4551,13 @@ Sold Items Missing Recipe Count starts from Closing Stock Report, Item Recipe Re
 
 **Shelves/columns:**
 
-- Measure: Data Quality Exception Count
+- Data Column: exception_count
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
-- exception_type = UOM_MISMATCH_WITHOUT_CONVERSION
+- Filter shelf: exception_type / Individual Values / Include UOM_MISMATCH_WITHOUT_CONVERSION
 
 **User filters:**
 
@@ -4527,7 +4567,6 @@ Sold Items Missing Recipe Count starts from Closing Stock Report, Item Recipe Re
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Business-relevant default order
 
@@ -4538,12 +4577,12 @@ Sold Items Missing Recipe Count starts from Closing Stock Report, Item Recipe Re
 **Formatting:**
 
 - Whole number
-- Use as Filter for the shared detail table
 
 ### Guardrails
 
 - Do not create outlet/item lookups; ALL and blank keys are intentional.
 - A zero count means the check ran and found no exception.
+- Use the Page 4 Exception Type user filter for the shared detail table; a single-number widget has no category dimension to pass.
 
 ### How To Explain It
 
@@ -4593,11 +4632,13 @@ UOM Mismatch Without Conversion Count starts from Closing Stock Report, Item Rec
 
 **Shelves/columns:**
 
-- Measure: Data Quality Exception Count
+- Data Column: exception_count
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
-- exception_type = ZERO_STOCK_WITH_DEMAND
+- Filter shelf: exception_type / Individual Values / Include ZERO_STOCK_WITH_DEMAND
 
 **User filters:**
 
@@ -4607,7 +4648,6 @@ UOM Mismatch Without Conversion Count starts from Closing Stock Report, Item Rec
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Business-relevant default order
 
@@ -4618,12 +4658,12 @@ UOM Mismatch Without Conversion Count starts from Closing Stock Report, Item Rec
 **Formatting:**
 
 - Whole number
-- Use as Filter for the shared detail table
 
 ### Guardrails
 
 - Do not create outlet/item lookups; ALL and blank keys are intentional.
 - A zero count means the check ran and found no exception.
+- Use the Page 4 Exception Type user filter for the shared detail table; a single-number widget has no category dimension to pass.
 
 ### How To Explain It
 
@@ -4687,7 +4727,6 @@ Zero Stock With Demand Count starts from Closing Stock Report, Item Recipe Repor
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Exception type, period, outlet, record key
 
@@ -4765,7 +4804,6 @@ Data Quality Detail starts from Closing Stock Report, Item Recipe Report, AUX Me
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Business-relevant default order
 
@@ -4832,7 +4870,7 @@ SCM Descriptive Explorer starts from Gross/Net Margin Report, Closing Stock Repo
 
 **Fixed report filters:**
 
-- production_use_status = demo_only_no_posist_batch_or_expiry_source
+- None
 
 **User filters:**
 
@@ -4842,7 +4880,6 @@ SCM Descriptive Explorer starts from Gross/Net Margin Report, Closing Stock Repo
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Business-relevant default order
 
@@ -4918,7 +4955,6 @@ Expiry Explorer - Demo starts from Enterprise Entry Report - Stock Entry, Closin
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Receipt date descending
 
@@ -4996,7 +5032,6 @@ GRN Explorer starts from Enterprise Entry Report - Stock Entry. The model follow
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Outlet, risk rank descending, item
 
@@ -5058,7 +5093,9 @@ Item Explorer starts from Closing Stock Report, Item Recipe Report, AUX Menu Dem
 
 **Shelves/columns:**
 
-- Measure: Active Menu Items
+- Data Column: item_code
+- Show Value As: Count Distinct
+- Group By: blank
 
 **Fixed report filters:**
 
@@ -5072,7 +5109,6 @@ Item Explorer starts from Closing Stock Report, Item Recipe Report, AUX Menu Dem
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Business-relevant default order
 
@@ -5134,7 +5170,9 @@ Active Menu Items starts from Gross/Net Margin Report. The model follows RAWN_CT
 
 **Shelves/columns:**
 
-- Measure: Active Vendors
+- Data Column: vendor_name
+- Show Value As: Count Distinct
+- Group By: blank
 
 **Fixed report filters:**
 
@@ -5148,7 +5186,6 @@ Active Menu Items starts from Gross/Net Margin Report. The model follows RAWN_CT
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Business-relevant default order
 
@@ -5211,7 +5248,9 @@ Active Vendors starts from Enterprise Purchase Order Report. The model follows R
 
 **Shelves/columns:**
 
-- Measure: actual consumption value
+- Data Column: actual_consumption_value
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
@@ -5225,7 +5264,6 @@ Active Vendors starts from Enterprise Purchase Order Report. The model follows R
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Business-relevant default order
 
@@ -5288,7 +5326,9 @@ Actual Consumption Value starts from Gross/Net Margin Report, Closing Stock Repo
 
 **Shelves/columns:**
 
-- Measure: closing stock value
+- Data Column: closing_stock_value
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
@@ -5302,7 +5342,6 @@ Actual Consumption Value starts from Gross/Net Margin Report, Closing Stock Repo
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Business-relevant default order
 
@@ -5325,9 +5364,9 @@ Actual Consumption Value starts from Gross/Net Margin Report, Closing Stock Repo
 Closing Stock Value starts from Gross/Net Margin Report, Closing Stock Report, Enterprise Purchase Order Report, Enterprise Variance Report. The model follows 18_fact_ct_sales.sql -> 05_std_ct_inventory_snapshot.sql -> 22_fact_ct_purchase_order.sql -> 20_fact_ct_actual_consumption.sql -> 33_sum_ct_scm_monthly.sql at source period and outlet. The relationship rule is: Aggregate each fact to source period + outlet before joining sales, stock value, open PO value, and actual consumption value. In Zoho, use sum closing stock value and render it as kpi widget to answer: What is the selected checkpoint's closing stock value?
 
 <a id="ct-p4-kpi-consumption-variance"></a>
-## CT_P4_KPI_Consumption_Variance - Consumption Variance / Leakage
+## CT_P4_KPI_Consumption_Variance - Signed Consumption Variance Value
 
-**Business question:** What signed variance or positive leakage measure is selected for the checkpoint?
+**Business question:** What is the signed actual-versus-theoretical consumption variance value for the checkpoint?
 
 **Final object:** kpi / KPI widget from `21_fact_ct_consumption_variance.sql`
 
@@ -5356,11 +5395,11 @@ Closing Stock Value starts from Gross/Net Margin Report, Closing Stock Report, E
 
 ### Calculation
 
-**Final fields:** `actual_consumption_value`, `theoretical_consumption_value`, `leakage_value`
+**Final fields:** `signed_consumption_variance_value`
 
-**Formula:** `sum(actual consumption value - theoretical consumption value) or sum("leakage_value")`
+**Formula:** `sum("signed_consumption_variance_value")`
 
-**Aggregation:** Use one explicitly labelled measure
+**Aggregation:** Sum the physical signed variance value
 
 ### Exact Zoho Configuration
 
@@ -5368,7 +5407,9 @@ Closing Stock Value starts from Gross/Net Margin Report, Closing Stock Report, E
 
 **Shelves/columns:**
 
-- Measure: signed variance value or leakage value
+- Data Column: signed_consumption_variance_value
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
@@ -5382,7 +5423,6 @@ Closing Stock Value starts from Gross/Net Margin Report, Closing Stock Report, E
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Business-relevant default order
 
@@ -5392,17 +5432,17 @@ Closing Stock Value starts from Gross/Net Margin Report, Closing Stock Report, E
 
 **Formatting:**
 
-- INR currency
+- INR currency; allow negative values
 
 ### Guardrails
 
 - Positive leakage is not the same as signed variance.
 - Low consumption is a data/process check, not a favorable saving.
-- Do not label positive leakage and signed variance as the same KPI.
+- Keep positive leakage as a separate control.
 
 ### How To Explain It
 
-Consumption Variance / Leakage starts from Enterprise Variance Report, Gross/Net Margin Report, Item Recipe Report, Closing Stock Report, AUX Theoretical Consumption. The model follows 20_fact_ct_actual_consumption.sql -> 19_fact_ct_theoretical_consumption.sql -> 21_fact_ct_consumption_variance.sql at source period, outlet, inventory item, and canonical uom. The relationship rule is: Join actual and theoretical consumption on source period + outlet + item; calculate signed variance, positive leakage, and low-consumption check. In Zoho, use use one explicitly labelled measure and render it as kpi widget to answer: What signed variance or positive leakage measure is selected for the checkpoint?
+Signed Consumption Variance Value starts from Enterprise Variance Report, Gross/Net Margin Report, Item Recipe Report, Closing Stock Report, AUX Theoretical Consumption. The model follows 20_fact_ct_actual_consumption.sql -> 19_fact_ct_theoretical_consumption.sql -> 21_fact_ct_consumption_variance.sql at source period, outlet, inventory item, and canonical uom. The relationship rule is: Join actual and theoretical consumption on source period + outlet + item; calculate signed variance, positive leakage, and low-consumption check. In Zoho, use sum the physical signed variance value and render it as kpi widget to answer: What is the signed actual-versus-theoretical consumption variance value for the checkpoint?
 
 <a id="ct-p4-kpi-grn-value"></a>
 ## CT_P4_KPI_GRN_Value - GRN Value
@@ -5445,7 +5485,9 @@ Consumption Variance / Leakage starts from Enterprise Variance Report, Gross/Net
 
 **Shelves/columns:**
 
-- Measure: receipt total
+- Data Column: receipt_total
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
@@ -5459,7 +5501,6 @@ Consumption Variance / Leakage starts from Enterprise Variance Report, Gross/Net
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Business-relevant default order
 
@@ -5522,7 +5563,9 @@ GRN Value starts from Enterprise Entry Report - Stock Entry. The model follows R
 
 **Shelves/columns:**
 
-- Measure: net sales
+- Data Column: net_sales
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
@@ -5536,7 +5579,6 @@ GRN Value starts from Enterprise Entry Report - Stock Entry. The model follows R
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Business-relevant default order
 
@@ -5599,7 +5641,9 @@ Net Sales starts from Gross/Net Margin Report, Closing Stock Report, Enterprise 
 
 **Shelves/columns:**
 
-- Measure: open PO value
+- Data Column: open_po_value
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
@@ -5613,7 +5657,6 @@ Net Sales starts from Gross/Net Margin Report, Closing Stock Report, Enterprise 
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Business-relevant default order
 
@@ -5668,7 +5711,7 @@ Open PO Value starts from Gross/Net Margin Report, Closing Stock Report, Enterpr
 
 **Formula:** `sum("is_open_po")`
 
-**Aggregation:** Sum open-line flag
+**Aggregation:** Sum the physical open-line flag
 
 ### Exact Zoho Configuration
 
@@ -5676,11 +5719,13 @@ Open PO Value starts from Gross/Net Margin Report, Closing Stock Report, Enterpr
 
 **Shelves/columns:**
 
-- Measure: Open PO Line Count
+- Data Column: is_open_po
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
-- is_open_po = 1
+- None
 
 **User filters:**
 
@@ -5690,7 +5735,6 @@ Open PO Value starts from Gross/Net Margin Report, Closing Stock Report, Enterpr
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Business-relevant default order
 
@@ -5706,11 +5750,11 @@ Open PO Value starts from Gross/Net Margin Report, Closing Stock Report, Enterpr
 
 - Use distinct PO number for PO counts; row count is a PO-line count.
 - Expected-date exceptions are operational states, not automatically source defects.
-- This is not a distinct PO count.
+- This is not a distinct PO count. No fixed filter is required because closed lines contribute zero.
 
 ### How To Explain It
 
-Open PO Line Count starts from Enterprise Purchase Order Report. The model follows RAWN_CT_enterprise_purchase_order-Copy -> 07_std_ct_purchase_order.sql -> 22_fact_ct_purchase_order.sql at source period, outlet, purchase order, and item line. The relationship rule is: Normalize line status and derive ordered value, open quantity/value, open flag, and delayed flag at PO-line grain. In Zoho, use sum open-line flag and render it as kpi widget to answer: How many PO item lines remain open?
+Open PO Line Count starts from Enterprise Purchase Order Report. The model follows RAWN_CT_enterprise_purchase_order-Copy -> 07_std_ct_purchase_order.sql -> 22_fact_ct_purchase_order.sql at source period, outlet, purchase order, and item line. The relationship rule is: Normalize line status and derive ordered value, open quantity/value, open flag, and delayed flag at PO-line grain. In Zoho, use sum the physical open-line flag and render it as kpi widget to answer: How many PO item lines remain open?
 
 <a id="ct-p4-kpi-quantity-sold"></a>
 ## CT_P4_KPI_Quantity_Sold - Quantity Sold
@@ -5753,7 +5797,9 @@ Open PO Line Count starts from Enterprise Purchase Order Report. The model follo
 
 **Shelves/columns:**
 
-- Measure: sold quantity
+- Data Column: sold_qty
+- Show Value As: Sum
+- Group By: blank
 
 **Fixed report filters:**
 
@@ -5767,7 +5813,6 @@ Open PO Line Count starts from Enterprise Purchase Order Report. The model follo
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Business-relevant default order
 
@@ -5844,7 +5889,6 @@ Quantity Sold starts from Gross/Net Margin Report. The model follows RAWN_CT_gro
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** PO number, item
 
@@ -5923,7 +5967,6 @@ PO Explorer starts from Enterprise Purchase Order Report, Enterprise Entry Repor
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Business-relevant default order
 
@@ -5999,7 +6042,6 @@ SCM Monthly Trend starts from Gross/Net Margin Report, Closing Stock Report, Ent
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Sales date descending
 
@@ -6075,7 +6117,6 @@ Sales Explorer starts from Gross/Net Margin Report. The model follows RAWN_CT_gr
 - Item
 - Vendor
 - Exception type
-- Explorer source
 
 **Sort:** Open PO value descending
 

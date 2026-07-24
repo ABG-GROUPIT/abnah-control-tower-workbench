@@ -12,14 +12,33 @@ SELECT
     c."item_code" AS "item_code",
     c."item_name" AS "item_name",
     c."canonical_uom" AS "canonical_uom",
+    CONCAT(
+        c."outlet_code", ' | ',
+        c."vendor_name", ' | ',
+        c."item_name", ' | ',
+        c."canonical_uom"
+    ) AS "price_comparison_key",
     c."current_unit_price" AS "current_unit_price",
     p."current_unit_price" AS "previous_unit_price",
     c."current_unit_price" - p."current_unit_price" AS "unit_price_change",
     CASE
+        WHEN c."current_unit_price" > p."current_unit_price" THEN 'INCREASE'
+        WHEN c."current_unit_price" < p."current_unit_price" THEN 'DECREASE'
+        ELSE 'NO_CHANGE'
+    END AS "price_movement_direction",
+    CASE
         WHEN p."current_unit_price" <> 0
         THEN (c."current_unit_price" - p."current_unit_price") / p."current_unit_price" * 100
         ELSE NULL
-    END AS "unit_price_change_percent"
+    END AS "unit_price_change_percent",
+    CASE
+        WHEN p."current_unit_price" <> 0
+        THEN ABS(
+            (c."current_unit_price" - p."current_unit_price")
+            / p."current_unit_price" * 100
+        )
+        ELSE NULL
+    END AS "absolute_unit_price_change_percent"
 FROM (
     SELECT
         "source_period_code" AS "source_period_code",
