@@ -4,11 +4,12 @@
 from __future__ import annotations
 
 import csv
-import hashlib
 import json
 import shutil
 import zipfile
 from pathlib import Path
+
+from project_pack_integrity import canonical_size_sha256
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,14 +22,6 @@ DESTINATION = PAGES_ROOT / "project-pack"
 CONTENT_DESTINATION = DESTINATION / "zoho-control-tower"
 ARCHIVE_PATH = PAGES_ROOT / "ABNAH_COMPLETE_PROJECT_PACK.zip"
 META_FILES = ("README.md", "SOURCE_PROVENANCE.json", "PROJECT_PACK_MANIFEST.csv")
-
-
-def sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for block in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
 
 
 def main() -> None:
@@ -50,7 +43,7 @@ def main() -> None:
         source = PACK_ROOT / relative
         if not source.is_file():
             raise SystemExit(f"Manifest file is missing: {relative.as_posix()}")
-        if source.stat().st_size != int(row["size_bytes"]) or sha256(source) != row["sha256"]:
+        if canonical_size_sha256(source) != (int(row["size_bytes"]), row["sha256"]):
             raise SystemExit(f"Manifest mismatch: {relative.as_posix()}")
         destination = CONTENT_DESTINATION / relative
         destination.parent.mkdir(parents=True, exist_ok=True)

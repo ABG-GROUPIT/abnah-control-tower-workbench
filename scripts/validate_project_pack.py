@@ -5,31 +5,16 @@ from __future__ import annotations
 
 import argparse
 import csv
-import hashlib
 import re
 from pathlib import Path
+
+from project_pack_integrity import TEXT_EXTENSIONS, canonical_size_sha256
 
 
 ROOT = Path(__file__).resolve().parents[1]
 PACK_ROOT = ROOT / "project-pack" / "zoho-control-tower"
 MANIFEST_PATH = ROOT / "project-pack" / "PROJECT_PACK_MANIFEST.csv"
 IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".bmp", ".tif", ".tiff"}
-TEXT_EXTENSIONS = {
-    "",
-    ".bat",
-    ".csv",
-    ".env",
-    ".example",
-    ".html",
-    ".json",
-    ".md",
-    ".ps1",
-    ".py",
-    ".sql",
-    ".txt",
-    ".yaml",
-    ".yml",
-}
 ALLOWED_LOCAL_PLACEHOLDERS = {
     "local_data_auditor/input/.gitkeep",
     "local_data_auditor/input/README.md",
@@ -67,14 +52,6 @@ SECRET_PATTERNS = {
 }
 
 
-def sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for block in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
-
-
 def pack_files() -> dict[str, Path]:
     return {
         path.relative_to(PACK_ROOT).as_posix(): path
@@ -94,11 +71,12 @@ def write_manifest(files: dict[str, Path]) -> None:
         )
         writer.writeheader()
         for relative, path in files.items():
+            size_bytes, digest = canonical_size_sha256(path)
             writer.writerow(
                 {
                     "path": relative,
-                    "size_bytes": path.stat().st_size,
-                    "sha256": sha256(path),
+                    "size_bytes": size_bytes,
+                    "sha256": digest,
                 }
             )
 
@@ -143,7 +121,7 @@ def validate(files: dict[str, Path]) -> None:
 
         expected = manifest.get(relative)
         if expected:
-            actual = (path.stat().st_size, sha256(path))
+            actual = canonical_size_sha256(path)
             if actual != expected:
                 violations.append(f"manifest mismatch: {relative}")
 

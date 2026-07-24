@@ -47,8 +47,10 @@ included so the workflow can be run locally.
 
 ## Integrity
 
-`PROJECT_PACK_MANIFEST.csv` records the size and SHA-256 digest of every file
-under `zoho-control-tower/`. Validate it from the repository root:
+`PROJECT_PACK_MANIFEST.csv` records the canonical size and SHA-256 digest of
+every file under `zoho-control-tower/`. Text files are normalized to LF for
+cross-platform verification; archives and other binary files use their raw
+bytes. Validate it from the repository root:
 
 ```powershell
 py -3 scripts/validate_project_pack.py

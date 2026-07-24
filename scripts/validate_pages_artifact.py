@@ -4,10 +4,11 @@
 from __future__ import annotations
 
 import csv
-import hashlib
 import json
 import zipfile
 from pathlib import Path
+
+from project_pack_integrity import canonical_size_sha256
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -20,14 +21,6 @@ DEPLOYMENT_PATH = PAGES_ROOT / "project-pack-deployment.json"
 ARCHIVE_PATH = PAGES_ROOT / "ABNAH_COMPLETE_PROJECT_PACK.zip"
 META_FILES = ("README.md", "SOURCE_PROVENANCE.json", "PROJECT_PACK_MANIFEST.csv", "INDEX.json")
 FORBIDDEN_SUFFIXES = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp", ".tif", ".tiff"}
-
-
-def sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for block in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
 
 
 def fail(message: str) -> None:
@@ -55,10 +48,8 @@ def main() -> None:
             fail(f"missing hosted file {relative.as_posix()}")
         if published.suffix.lower() in FORBIDDEN_SUFFIXES:
             fail(f"forbidden screenshot or image {relative.as_posix()}")
-        if published.stat().st_size != int(row["size_bytes"]):
-            fail(f"size mismatch for {relative.as_posix()}")
-        if sha256(published) != row["sha256"]:
-            fail(f"checksum mismatch for {relative.as_posix()}")
+        if canonical_size_sha256(published) != (int(row["size_bytes"]), row["sha256"]):
+            fail(f"canonical size or checksum mismatch for {relative.as_posix()}")
         expected_archive_names.add(f"zoho-control-tower/{relative.as_posix()}")
 
     for name in META_FILES:
