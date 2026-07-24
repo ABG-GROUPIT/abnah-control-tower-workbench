@@ -16,7 +16,7 @@ Package baseline:
 - 25,020 synthetic import rows;
 - 38 Query Tables in dependency-safe order;
 - maximum Query Table dependency level 3;
-- 12 truth and acceptance files;
+- 13 truth and acceptance files;
 - 21 captured source-schema contracts;
 - no actual ABNAH operational rows.
 
@@ -47,7 +47,9 @@ Then:
    `03_ZOHO_INSTRUCTIONS/06_VALIDATION_AND_PUBLICATION.md`.
 7. Build the four dashboard pages using
    `03_ZOHO_INSTRUCTIONS/04_DASHBOARD_BUILD.md`.
-8. Configure Ask Zia only after reconciliation passes, using
+8. Reconcile every card and chart against
+   `03_ZOHO_INSTRUCTIONS/04A_DASHBOARD_EXPECTED_RESULTS.md`.
+9. Configure Ask Zia only after reconciliation passes, using
    `03_ZOHO_INSTRUCTIONS/05_ASK_ZIA_SETUP.md`.
 
 Record progress directly in the two checklist CSVs and

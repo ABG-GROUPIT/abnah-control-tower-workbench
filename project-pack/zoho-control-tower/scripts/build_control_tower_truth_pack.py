@@ -522,13 +522,34 @@ def _consumption_model(
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     actual = _numbers(
         _read_landing("enterprise_variance_normal"),
-        ["actual_consumption_qty", "actual_consumption_amt", "average_price"],
+        [
+            "actual_consumption_qty",
+            "actual_consumption_amt",
+            "average_price",
+            "opening_qty",
+            "purchase_qty",
+            "stock_in_qty",
+            "stock_out_qty",
+            "return_qty",
+            "closing_qty",
+        ],
     ).rename(
         columns={
             "source_outlet_code": "outlet_code",
             "source_outlet_name": "outlet_name",
             "unit": "canonical_uom",
         }
+    )
+    actual["actual_consumption_qty"] = (
+        actual["opening_qty"]
+        + actual["purchase_qty"]
+        + actual["stock_in_qty"]
+        - actual["stock_out_qty"]
+        - actual["return_qty"]
+        - actual["closing_qty"]
+    )
+    actual["actual_consumption_amt"] = (
+        actual["actual_consumption_qty"] * actual["average_price"]
     )
     theoretical = _numbers(
         _read_aux("AUX_Theoretical_Consumption"),
@@ -616,15 +637,17 @@ def _page_1(
     menu_impact: pd.DataFrame,
     forecast: pd.DataFrame,
     po: pd.DataFrame,
+    expiry: pd.DataFrame,
 ) -> pd.DataFrame:
     rows = []
     open_po = po[po["is_open_po"]]
     for scope_type, period, outlet in _scopes():
         r = _scope(risk, period, outlet)
-        risky = r[r["risk_severity"] != "GREEN"]
+        risky = r[r["stockout_risk_severity"] != "GREEN"]
         m = _scope(menu_impact, period, outlet)
         f = _scope(forecast, period, outlet)
         p = _scope(open_po, period, outlet)
+        x = _scope(expiry, period, outlet)
         risky_keys = risky[["source_period_code", "outlet_code", "item_code"]]
         risky_po = p.merge(
             risky_keys,
@@ -643,7 +666,7 @@ def _page_1(
                 "stockout_risk_value": stockout_menu[
                     "allocated_forecast_net_sales_at_risk"
                 ].sum(),
-                "expiry_risk_value": risky["expiry_risk_value"].sum(),
+                "expiry_risk_value": x["expiry_risk_value"].sum(),
                 "expiry_source_status": (
                     "synthetic_batch_linked_demo_no_posist_batch_source"
                 ),
@@ -651,17 +674,120 @@ def _page_1(
                 "forecast_menu_qty": f["forecast_qty"].sum(),
                 "projected_shortage_qty_mixed_uom": risky["shortage_qty"].sum(),
                 "shortage_cost_value": risky["shortage_cost_value"].sum(),
-                "total_risk_value": risky["total_risk_value"].sum(),
+                "stockout_inventory_exposure": risky[
+                    "shortage_cost_value"
+                ].sum(),
+                "total_risk_value": risky["shortage_cost_value"].sum(),
+                "combined_demo_inventory_exposure_reference": (
+                    risky["shortage_cost_value"].sum()
+                    + x["expiry_risk_value"].sum()
+                ),
                 "action_count": len(risky),
-                "purple_item_count": (risky["risk_severity"] == "PURPLE").sum(),
-                "red_item_count": (risky["risk_severity"] == "RED").sum(),
-                "amber_item_count": (risky["risk_severity"] == "AMBER").sum(),
+                "purple_item_count": (
+                    risky["stockout_risk_severity"] == "PURPLE"
+                ).sum(),
+                "red_item_count": (
+                    risky["stockout_risk_severity"] == "RED"
+                ).sum(),
+                "amber_item_count": (
+                    risky["stockout_risk_severity"] == "AMBER"
+                ).sum(),
                 "quantity_guardrail": (
                     "Do not display the mixed-UOM shortage total without a UOM filter."
                 ),
             }
         )
     return _round_output(pd.DataFrame(rows))
+
+
+def _query_27_projection(risk: pd.DataFrame) -> pd.DataFrame:
+    projected = risk.copy()
+    projected["snapshot_date"] = projected["stock_date"]
+    projected["risk_severity"] = projected["stockout_risk_severity"]
+    projected["risk_severity_rank"] = projected["risk_severity"].map(
+        {"GREEN": 1, "AMBER": 2, "RED": 3, "PURPLE": 4}
+    )
+    projected["risk_type"] = np.where(
+        projected["risk_severity"] == "GREEN",
+        "HEALTHY",
+        "STOCKOUT",
+    )
+    projected["total_risk_value"] = projected["shortage_cost_value"]
+    projected["criticality"] = np.nan
+    projected["primary_vendor"] = np.nan
+    projected["alternate_vendor"] = np.nan
+    projected["vendor_mapping_status"] = (
+        "vendor_item_approval_mapping_unavailable"
+    )
+    projected["action_id"] = (
+        projected["source_period_code"].astype(str)
+        + ":"
+        + projected["outlet_code"].astype(str)
+        + ":"
+        + projected["item_code"].astype(str)
+    )
+    projected["recommended_action"] = "Monitor"
+    projected.loc[
+        (projected["current_stock_qty"] <= 0)
+        & (projected["forecast_required_qty"] > 0)
+        & (projected["valid_open_po_qty"] == 0),
+        "recommended_action",
+    ] = "Raise purchase order"
+    projected.loc[
+        (projected["shortage_qty"] > 0)
+        & (projected["valid_open_po_qty"] > 0),
+        "recommended_action",
+    ] = "Expedite existing PO"
+    projected["action_owner"] = np.where(
+        projected["shortage_qty"] > 0,
+        "Procurement",
+        "Supply Chain",
+    )
+    projected["due_band"] = "Monitor"
+    projected.loc[
+        projected["risk_severity"] == "AMBER",
+        "due_band",
+    ] = "Due in 3 days"
+    projected.loc[
+        projected["risk_severity"].isin(["PURPLE", "RED"]),
+        "due_band",
+    ] = "Due today"
+    columns = [
+        "source_period_code",
+        "snapshot_date",
+        "outlet_code",
+        "outlet_name",
+        "item_code",
+        "item_name",
+        "category_name",
+        "super_category_name",
+        "canonical_uom",
+        "average_unit_cost",
+        "current_stock_qty",
+        "closing_value",
+        "forecast_required_qty",
+        "required_qty_with_safety",
+        "valid_open_po_qty",
+        "valid_open_po_count",
+        "open_po_value",
+        "shortage_qty",
+        "days_cover",
+        "stockout_risk_severity",
+        "risk_severity",
+        "risk_severity_rank",
+        "risk_type",
+        "shortage_cost_value",
+        "total_risk_value",
+        "criticality",
+        "primary_vendor",
+        "alternate_vendor",
+        "vendor_mapping_status",
+        "action_id",
+        "recommended_action",
+        "action_owner",
+        "due_band",
+    ]
+    return projected[columns]
 
 
 def _page_2(
@@ -985,6 +1111,24 @@ def _acceptance_checks(
             0.01,
         ),
         (
+            "all_period_stockout_action_count",
+            p1["action_count"],
+            16,
+            0,
+        ),
+        (
+            "all_period_stockout_risk_item_count",
+            p1["risk_item_count"],
+            16,
+            0,
+        ),
+        (
+            "all_period_open_risky_po_count",
+            p1["open_risky_po_count"],
+            1,
+            0,
+        ),
+        (
             "expiry_demo_value_present",
             int(p1["expiry_risk_value"] > 0),
             1,
@@ -1078,7 +1222,8 @@ def _write_reference(
             "`exports/control_tower_zoho/truth/` before publication.",
         ]
     )
-    DOC.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    with DOC.open("w", encoding="utf-8", newline="\n") as handle:
+        handle.write("\n".join(lines) + "\n")
 
 
 def build() -> dict[str, int]:
@@ -1132,7 +1277,7 @@ def build() -> dict[str, int]:
         ],
     )
 
-    page_1 = _page_1(risk, menu_impact, forecast, po)
+    page_1 = _page_1(risk, menu_impact, forecast, po, expiry_detail)
     page_2 = _page_2(po, vendor_performance, closing, wastage)
     page_3 = _page_3(variance, menu_profit)
     page_4, dq = _page_4(
@@ -1151,7 +1296,9 @@ def build() -> dict[str, int]:
         "PAGE2_Procurement_Vendor_Truth": page_2,
         "PAGE3_Consumption_Profitability_Truth": page_3,
         "PAGE4_Explorer_Data_Quality_Truth": page_4,
-        "PAGE1_Inventory_Risk_Detail": _round_output(risk),
+        "PAGE1_Inventory_Risk_Detail": _round_output(
+            _query_27_projection(risk)
+        ),
         "PAGE1_Expiry_Risk_Detail": _round_output(expiry_detail),
         "PAGE1_Menu_Impact_Detail": _round_output(menu_impact),
         "PAGE2_Vendor_Performance_Detail": _round_output(vendor_performance),
@@ -1160,13 +1307,19 @@ def build() -> dict[str, int]:
         "PAGE4_Data_Quality_Truth": dq,
     }
     for name, frame in outputs.items():
-        frame.to_csv(TRUTH / f"{name}.csv", index=False, encoding="utf-8-sig")
+        frame.to_csv(
+            TRUTH / f"{name}.csv",
+            index=False,
+            encoding="utf-8-sig",
+            lineterminator="\n",
+        )
 
     checks = _acceptance_checks(page_1, page_4)
     checks.to_csv(
         TRUTH / "CONTROL_TOWER_ACCEPTANCE_CHECKS.csv",
         index=False,
         encoding="utf-8-sig",
+        lineterminator="\n",
     )
     _write_reference(
         {

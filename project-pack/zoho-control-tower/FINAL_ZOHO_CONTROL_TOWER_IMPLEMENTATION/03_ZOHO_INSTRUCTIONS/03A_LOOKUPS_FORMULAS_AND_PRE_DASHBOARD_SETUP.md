@@ -386,7 +386,25 @@ Positive means actual consumption exceeds theoretical consumption. Negative
 means actual consumption is below theoretical and must be labelled as a
 data/process check, not automatically as a saving.
 
-## 3C - Absolute Price Movement
+## 3C - Eligible Lead-Time Deviation
+
+Table:
+
+```text
+24_fact_ct_po_receipt_line.sql
+```
+
+Create:
+
+| Formula-column name | Expression | Type |
+| --- | --- | --- |
+| `Eligible Lead Time Deviation Days` | `if("eligible_closed_line_flag" = 1, "lead_time_deviation_days", null)` | Decimal Number |
+
+Use the average of this formula column in cross-outlet vendor reports. Do not
+average all lead-time rows because open and ineligible lines are outside the
+approved denominator.
+
+## 3D - Absolute Price Movement
 
 Table:
 
@@ -891,13 +909,13 @@ dashboard filter state.
 | Formula or measure | Expected result |
 | --- | ---: |
 | Outlets At Stockout Risk | 3 |
-| Stockout Risk Item Count | 221 |
+| Stockout Risk Item Count | 16 |
 | Menu Items At Risk | 110 |
 | Stockout Sales At Risk | INR 976,271.72 |
 | Query 27 stockout shortage exposure | INR 61,735.03 |
 | Expiry Risk Value - Demo Estimate | INR 628,131.99 |
 | Combined presentation reference only | INR 689,867.02 |
-| Open Risky PO Count | 53 |
+| Open Risky PO Count | 1 |
 | Working Capital Locked | INR 7,702,923.62 |
 | Open PO Count | 79 |
 | Delayed PO Count | 65 |
@@ -911,6 +929,11 @@ dashboard filter state.
 | Consumption Leakage Value | INR 59,388.51 |
 | Menu Gross Margin | INR 4,943,439.41 |
 | Menu Gross Margin % | 82.021% |
+
+The stockout controls above use Query 27 and Query 36 only. The earlier
+combined-risk draft produced 221 actions and 53 risky POs by treating Query 38
+expiry rows as stockout rows; those values are invalid for the final split
+model.
 
 The combined presentation reference is:
 

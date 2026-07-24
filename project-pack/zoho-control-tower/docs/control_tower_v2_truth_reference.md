@@ -18,25 +18,21 @@ This pack is the acceptance baseline for the synthetic three-outlet, three-month
 ### Page 1
 
 - `outlets_at_risk`: 3
-- `risk_item_count`: 221
+- `risk_item_count`: 16
 - `menu_items_at_risk`: 110
 - `stockout_risk_value`: 976271.72
 - `expiry_risk_value`: 628131.99
-- `open_risky_po_count`: 53
+- `open_risky_po_count`: 1
 - `forecast_menu_qty`: 5609.4348
 - `projected_shortage_qty_mixed_uom`: 2064.335129
 - `shortage_cost_value`: 61735.03
 - `stockout_inventory_exposure`: 61735.03
+- `total_risk_value`: 61735.03
 - `combined_demo_inventory_exposure_reference`: 689867.02
-- `action_count`: 221
-- `purple_item_count`: 38
-- `red_item_count`: 104
-- `amber_item_count`: 79
-
-The combined demo reference is stockout shortage exposure plus synthetic
-expiry exposure. Query 27 now retains stockout exposure only, while Query 38
-retains the separately labelled expiry estimate. Do not combine them in
-another Query Table or present the combined value as one evidence class.
+- `action_count`: 16
+- `purple_item_count`: 3
+- `red_item_count`: 13
+- `amber_item_count`: 0
 
 ### Page 2
 
@@ -65,7 +61,7 @@ another Query Table or present the combined value as one evidence class.
 - `menu_item_count`: 110
 - `theoretical_cogs`: 1083602.04
 - `source_reported_purchase_value`: 1083845.34
-- `actual_consumption_value`: 1048330.46
+- `actual_consumption_value`: 1048330.48
 - `consumption_variance_value`: -37258.56
 - `consumption_leakage_value`: 59388.51
 - `low_consumption_check_value`: 96647.07
@@ -77,7 +73,7 @@ another Query Table or present the combined value as one evidence class.
 - `closing_inventory_value`: 7191795.45
 - `open_po_liability`: 511128.17
 - `net_sales`: 6027041.45
-- `actual_consumption_value`: 1048330.46
+- `actual_consumption_value`: 1048330.48
 - `consumption_variance_value`: -37258.56
 - `consumption_leakage_value`: 59388.51
 - `negative_stock_count`: 1
@@ -89,8 +85,8 @@ another Query Table or present the combined value as one evidence class.
 
 ## Automated Checks
 
-- Checks: 9
-- Passed: 9
+- Checks: 12
+- Passed: 12
 - Failed: 0
 
 Every Zoho widget must reconcile to the matching outlet-month row in `exports/control_tower_zoho/truth/` before publication.

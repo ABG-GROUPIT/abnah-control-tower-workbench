@@ -40,6 +40,9 @@ Before creating reports:
 - Every synthetic outlet has a resolved map point in
   `37_dim_ct_outlet_enriched.sql`.
 - Truth files have been generated.
+- Keep `04A_DASHBOARD_EXPECTED_RESULTS.md` open and reconcile every saved
+  report to its expected value, chart point or row count before placing it on a
+  dashboard tab.
 
 ## Lookup Columns
 
@@ -216,15 +219,19 @@ Do not use an unsupported custom chart.
 | `CT_P2_Pending_By_Vendor` | Horizontal bar | `SUM_CT_Procurement_Funnel` | Y: vendor; X: pending value; sort descending |
 | `CT_P2_Pending_Ingredient_Risk` | Tabular | `FACT_CT_Risky_PO` | PO, vendor, ingredient, remaining quantity/value, expected date and severity; link the ingredient drill to Page 1 menu impact |
 | `CT_P2_Expected_Delivery_Breach` | Tabular | `FACT_CT_Purchase_Order` | filter delayed flag=1; show PO, vendor, item, expected date, remaining qty/value |
-| `CT_P2_Vendor_Performance_Matrix` | Bubble | `SUM_CT_Vendor_Scorecard` | X: OTIF%; Y: average lead-time deviation; size: open PO value; text: vendor |
-| `CT_P2_Vendor_Scorecard` | Tabular | `SUM_CT_Vendor_Scorecard` | purchase, open liability, OTIF, fill, lead deviation, delayed lines |
+| `CT_P2_Vendor_Performance_Matrix` | Bubble | `FACT_CT_PO_Receipt_Line` | Group by vendor; X: Vendor OTIF % aggregate formula; Y: average Eligible Lead Time Deviation Days; size: sum open PO value; text: vendor |
+| `CT_P2_Vendor_Scorecard` | Tabular | `FACT_CT_PO_Receipt_Line` | Group by vendor; purchase, open liability, Vendor OTIF %, PO Fill Rate %, average eligible lead deviation and delayed lines |
 | `CT_P2_Ingredient_Price_Trend` | Line | `FACT_CT_Purchase_Receipt` | X: source period; Y: weighted unit price; color: item; vendor as user filter |
 | `CT_P2_Vendor_Price_Comparison` | Grouped bar | `FACT_CT_Purchase_Receipt` | X: vendor; Y: weighted unit price; require one item and one UOM |
-| `CT_P2_Top_Price_Movement` | Divergent or horizontal bar | `SUM_CT_Price_Movement` | Y: item; X: price change%; color positive/negative; sort absolute change |
+| `CT_P2_Top_Price_Movement` | Divergent or horizontal bar | `SUM_CT_Price_Movement` | Y: combined outlet + vendor + item + UOM label; X: price change%; color positive/negative; sort absolute change |
 | `CT_P2_Inventory_Value` | Stacked bar | `STD_CT_Inventory_Snapshot` | X: outlet; Y: closing value; color: category |
-| `CT_P2_High_Value_Slow_Stock` | Tabular | `FACT_CT_Inventory_Risk` | closing value, days cover, forecast demand and severity |
+| `CT_P2_High_Value_Slow_Stock` | Tabular | `FACT_CT_Inventory_Risk` | closing value, days cover, forecast demand and severity; sort closing value descending then days cover descending |
 | `CT_P2_Observed_Wastage` | Column | `SUM_CT_Financial_Leakage` | X: period; Y: observed wastage value |
 | `CT_P2_Expiry_Exposure_Demo` | Column | `FACT_CT_Expiry_Risk` | X: period; Y: expiry risk value; subtitle must state synthetic estimate |
+
+Build the two cross-outlet vendor performance reports from Query 24, not by
+averaging Query 30 percentages. Query 30 remains valid when outlet is shown as
+an explicit row/group or exactly one outlet is selected.
 
 Vendor return rate and vendor-return leakage are intentionally omitted while
 `Enterprise Stock Return` remains header-only. Do not display `0%` or `INR 0`
@@ -270,7 +277,7 @@ Use value, not a mixed-UOM total quantity, for the all-item leakage widget.
 
 | Report | Type | Source | Configuration |
 | --- | --- | --- | --- |
-| `CT_P3_Consumption_Bridge` | Combination | `FACT_CT_Actual_Consumption` | X: period; bars: opening, receipt, transfer in, signed transfer out, signed return, signed closing; line: calculated actual consumption |
+| `CT_P3_Consumption_Bridge` | Combination | `FACT_CT_Actual_Consumption` | Require one UOM; X: period; bars: opening, receipt, transfer in, signed transfer out, signed return, signed closing; line: calculated actual consumption |
 | `CT_P3_Theoretical_Consumption_Detail` | Tabular | `FACT_CT_Theoretical_Consumption` | outlet, ingredient, theoretical quantity/value, UOM and average cost |
 | `CT_P3_Actual_vs_Theoretical` | Grouped bar | `FACT_CT_Consumption_Variance` | X: ingredient; Y: actual qty and theoretical qty; require one UOM filter |
 | `CT_P3_Consumption_Leakage_Rank` | Horizontal bar | `FACT_CT_Consumption_Variance` | Y: ingredient; X: leakage value; sort descending |
@@ -282,7 +289,7 @@ Title the last report as a **data/process check**, not a favorable saving.
 
 | Report | Type | Source | Configuration |
 | --- | --- | --- | --- |
-| `CT_P3_Menu_BCG` | Bubble | `SUM_CT_Menu_Profitability` | X: sold qty; Y: gross margin%; size: net sales; text: menu item; color: quadrant |
+| `CT_P3_Menu_BCG` | Bubble | `SUM_CT_Menu_Profitability` | Keep outlet as an explicit grouping; X: sold qty; Y: gross margin%; size: net sales; text: outlet + menu item; color: quadrant |
 | `CT_P3_Menu_COGS_Detail` | Tabular | `FACT_CT_Menu_Profitability` | menu item, sold quantity, theoretical cost per unit, COGS, net sales and margin |
 | `CT_P3_Menu_Margin_Rank` | Horizontal bar | `SUM_CT_Menu_Profitability` | Y: menu item; X: gross margin value; tooltip COGS and margin% |
 | `CT_P3_Sales_Trend` | Line | `FACT_CT_Sales` | X: sales date; Y: net sales and sold qty |
@@ -319,7 +326,7 @@ Row 7: outlet-item heatmap (12)
 | `CT_P4_KPI_Open_PO` | `SUM_CT_SCM_Monthly` | open PO value |
 | `CT_P4_KPI_Net_Sales` | `SUM_CT_SCM_Monthly` | net sales |
 | `CT_P4_KPI_Actual_Consumption` | `SUM_CT_SCM_Monthly` | actual consumption value |
-| `CT_P4_KPI_Consumption_Variance` | `FACT_CT_Consumption_Variance` | signed variance value or leakage value |
+| `CT_P4_KPI_Consumption_Variance` | `FACT_CT_Consumption_Variance` | Signed Consumption Variance Value; keep leakage as a separate tooltip/control |
 | `CT_P4_KPI_Quantity_Sold` | `FACT_CT_Sales` | sum sold quantity |
 | `CT_P4_KPI_Active_Menu_Items` | `FACT_CT_Sales` | distinct menu item code |
 | `CT_P4_KPI_Open_PO_Lines` | `FACT_CT_Purchase_Order` | count lines with `is_open_po = 1`; show pending quantity only in UOM-filtered detail |

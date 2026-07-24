@@ -48,8 +48,8 @@ if (($queryManifest | Measure-Object -Property dependency_level -Maximum).Maximu
 
 $truthDir = Join-Path $root '04_VALIDATION_AND_LIMITATIONS\TRUTH_PACK'
 $truthFiles = @(Get-ChildItem -LiteralPath $truthDir -Filter '*.csv' -File)
-if ($truthFiles.Count -ne 12) {
-    throw "Expected 12 truth files, found $($truthFiles.Count)"
+if ($truthFiles.Count -ne 13) {
+    throw "Expected 13 truth files, found $($truthFiles.Count)"
 }
 
 $reconciliation = @(
@@ -77,6 +77,7 @@ $required = @(
     '02_QUERY_TABLES\10_std_ct_vendor_report.sql',
     '03_ZOHO_INSTRUCTIONS\03A_LOOKUPS_FORMULAS_AND_PRE_DASHBOARD_SETUP.md',
     '03_ZOHO_INSTRUCTIONS\04_DASHBOARD_BUILD.md',
+    '03_ZOHO_INSTRUCTIONS\04A_DASHBOARD_EXPECTED_RESULTS.md',
     '03_ZOHO_INSTRUCTIONS\05_ASK_ZIA_SETUP.md'
 )
 foreach ($relative in $required) {
@@ -90,4 +91,4 @@ Write-Host 'FINAL ZOHO PACKAGE: PASS' -ForegroundColor Green
 Write-Host "Payload files verified: $($manifest.Count)"
 Write-Host 'Active imports: 14'
 Write-Host 'Query Tables: 38'
-Write-Host 'Truth files: 12'
+Write-Host 'Truth files: 13'

@@ -115,7 +115,7 @@ class FinalZohoPackageTests(unittest.TestCase):
     def test_truth_and_reconciliation_gates_are_packaged_and_passing(self) -> None:
         validation = self.package / "04_VALIDATION_AND_LIMITATIONS"
         truth = list((validation / "TRUTH_PACK").glob("*.csv"))
-        self.assertEqual(12, len(truth))
+        self.assertEqual(13, len(truth))
         reconciliation = _read_rows(validation / "_RECONCILIATION_RESULTS.csv")
         acceptance = _read_rows(
             validation / "TRUTH_PACK" / "CONTROL_TOWER_ACCEPTANCE_CHECKS.csv"
@@ -159,6 +159,25 @@ class FinalZohoPackageTests(unittest.TestCase):
         self.assertIn("Open PO Count", text)
         self.assertIn("Menu Gross Margin %", text)
         self.assertIn("month_03", text)
+        self.assertIn("Stockout Risk Item Count | 16", text)
+        self.assertIn("Open Risky PO Count | 1", text)
+
+    def test_dashboard_expected_results_are_packaged(self) -> None:
+        instructions = self.package / "03_ZOHO_INSTRUCTIONS"
+        expected_results = (
+            instructions / "04A_DASHBOARD_EXPECTED_RESULTS.md"
+        )
+        acceptance = (
+            self.package
+            / "04_VALIDATION_AND_LIMITATIONS"
+            / "TRUTH_PACK"
+            / "DASHBOARD_CHART_ACCEPTANCE.csv"
+        )
+        self.assertTrue(expected_results.is_file())
+        self.assertTrue(acceptance.is_file())
+        text = expected_results.read_text(encoding="utf-8")
+        self.assertIn("Query 27 stockout action rows: **6**", text)
+        self.assertEqual(2511, len(_read_rows(acceptance)))
 
 
 if __name__ == "__main__":

@@ -7,4 +7,7 @@ operational_items_missing_master_count,0.0,0.0,0.0,PASS
 query_table_count,38.0,38.0,0.0,PASS
 maximum_query_dependency_level,3.0,3.0,0.0,PASS
 all_period_stockout_risk_value_reference,976271.72,976271.72,0.01,PASS
+all_period_stockout_action_count,16.0,16.0,0.0,PASS
+all_period_stockout_risk_item_count,16.0,16.0,0.0,PASS
+all_period_open_risky_po_count,1.0,1.0,0.0,PASS
 expiry_demo_value_present,1.0,1.0,0.0,PASS

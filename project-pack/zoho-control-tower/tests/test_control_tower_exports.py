@@ -193,7 +193,7 @@ class ControlTowerExportTests(unittest.TestCase):
         path = EXPORTS / "truth" / "CONTROL_TOWER_ACCEPTANCE_CHECKS.csv"
         with path.open("r", encoding="utf-8-sig", newline="") as handle:
             rows = list(csv.DictReader(handle))
-        self.assertEqual(9, len(rows))
+        self.assertEqual(12, len(rows))
         self.assertEqual({"PASS"}, {row["status"] for row in rows})
 
 

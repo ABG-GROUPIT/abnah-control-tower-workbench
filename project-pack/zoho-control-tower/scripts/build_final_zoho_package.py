@@ -3,6 +3,8 @@ from __future__ import annotations
 import csv
 import hashlib
 import shutil
+import subprocess
+import sys
 from pathlib import Path
 
 
@@ -17,7 +19,7 @@ CONTRACT_SOURCE = ROOT / "local_data_auditor" / "contracts"
 ZOHO_IMPORT_TABLE_SUFFIX = "-Copy"
 EXPECTED_ACTIVE_IMPORTS = 14
 EXPECTED_QUERY_TABLES = 38
-EXPECTED_TRUTH_FILES = 12
+EXPECTED_TRUTH_FILES = 13
 
 INSTRUCTION_FILES = (
     (
@@ -41,6 +43,10 @@ INSTRUCTION_FILES = (
     (
         ROOT / "docs" / "zoho_control_tower_v2_dashboard_click_by_click.md",
         "04_DASHBOARD_BUILD.md",
+    ),
+    (
+        ROOT / "docs" / "ZOHO_DASHBOARD_EXPECTED_RESULTS.md",
+        "04A_DASHBOARD_EXPECTED_RESULTS.md",
     ),
     (
         ROOT / "docs" / "zoho_control_tower_v2_ask_zia.md",
@@ -112,7 +118,7 @@ def write_dict_rows(
 ) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8-sig", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -327,7 +333,7 @@ Package baseline:
 - {expected_rows:,} synthetic import rows;
 - 38 Query Tables in dependency-safe order;
 - maximum Query Table dependency level 3;
-- 12 truth and acceptance files;
+- 13 truth and acceptance files;
 - 21 captured source-schema contracts;
 - no actual ABNAH operational rows.
 
@@ -358,7 +364,9 @@ Then:
    `03_ZOHO_INSTRUCTIONS/06_VALIDATION_AND_PUBLICATION.md`.
 7. Build the four dashboard pages using
    `03_ZOHO_INSTRUCTIONS/04_DASHBOARD_BUILD.md`.
-8. Configure Ask Zia only after reconciliation passes, using
+8. Reconcile every card and chart against
+   `03_ZOHO_INSTRUCTIONS/04A_DASHBOARD_EXPECTED_RESULTS.md`.
+9. Configure Ask Zia only after reconciliation passes, using
    `03_ZOHO_INSTRUCTIONS/05_ASK_ZIA_SETUP.md`.
 
 Record progress directly in the two checklist CSVs and
@@ -419,7 +427,10 @@ python .\\scripts\\build_final_zoho_package.py
 
 from the repository root, then rerun all tests before publishing the revision.
 """
-    (PACKAGE / "START_HERE.md").write_text(content, encoding="utf-8")
+    with (PACKAGE / "START_HERE.md").open(
+        "w", encoding="utf-8", newline="\n"
+    ) as handle:
+        handle.write(content)
 
 
 def write_implementation_status() -> None:
@@ -449,7 +460,10 @@ validation checkpoint passes.
 | Business owner review | NOT STARTED |  |  |  |
 | Publication decision | NOT STARTED |  |  |  |
 """
-    (PACKAGE / "IMPLEMENTATION_STATUS.md").write_text(content, encoding="utf-8")
+    with (PACKAGE / "IMPLEMENTATION_STATUS.md").open(
+        "w", encoding="utf-8", newline="\n"
+    ) as handle:
+        handle.write(content)
 
 
 def write_verifier() -> None:
@@ -503,8 +517,8 @@ if (($queryManifest | Measure-Object -Property dependency_level -Maximum).Maximu
 
 $truthDir = Join-Path $root '04_VALIDATION_AND_LIMITATIONS\TRUTH_PACK'
 $truthFiles = @(Get-ChildItem -LiteralPath $truthDir -Filter '*.csv' -File)
-if ($truthFiles.Count -ne 12) {
-    throw "Expected 12 truth files, found $($truthFiles.Count)"
+if ($truthFiles.Count -ne 13) {
+    throw "Expected 13 truth files, found $($truthFiles.Count)"
 }
 
 $reconciliation = @(
@@ -532,6 +546,7 @@ $required = @(
     '02_QUERY_TABLES\10_std_ct_vendor_report.sql',
     '03_ZOHO_INSTRUCTIONS\03A_LOOKUPS_FORMULAS_AND_PRE_DASHBOARD_SETUP.md',
     '03_ZOHO_INSTRUCTIONS\04_DASHBOARD_BUILD.md',
+    '03_ZOHO_INSTRUCTIONS\04A_DASHBOARD_EXPECTED_RESULTS.md',
     '03_ZOHO_INSTRUCTIONS\05_ASK_ZIA_SETUP.md'
 )
 foreach ($relative in $required) {
@@ -545,9 +560,12 @@ Write-Host 'FINAL ZOHO PACKAGE: PASS' -ForegroundColor Green
 Write-Host "Payload files verified: $($manifest.Count)"
 Write-Host 'Active imports: 14'
 Write-Host 'Query Tables: 38'
-Write-Host 'Truth files: 12'
+Write-Host 'Truth files: 13'
 """
-    (PACKAGE / "VERIFY_PACKAGE.ps1").write_text(content, encoding="utf-8")
+    with (PACKAGE / "VERIFY_PACKAGE.ps1").open(
+        "w", encoding="utf-8", newline="\n"
+    ) as handle:
+        handle.write(content)
 
 
 def file_sha256(path: Path) -> str:
@@ -624,6 +642,13 @@ def write_package_manifest(
 
 
 def build() -> Path:
+    subprocess.run(
+        [
+            sys.executable,
+            str(Path(__file__).with_name("build_dashboard_expected_results.py")),
+        ],
+        check=True,
+    )
     safe_recreate_package()
     active_rows, _ = build_import_folder()
     query_rows = build_query_folder()
