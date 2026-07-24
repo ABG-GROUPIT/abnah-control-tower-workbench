@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "vinext dev",
     "build": "vinext build",
-    "build:pages": "vite build --config vite.pages.config.ts",
+    "build:pages": "python scripts/build_project_pack_index.py && vite build --config vite.pages.config.ts && python scripts/package_github_pages.py && python scripts/validate_pages_artifact.py",
     "preview:pages": "vite preview --config vite.pages.config.ts",
     "start": "wrangler dev --config dist/server/wrangler.json --show-interactive-dev-session=false",
     "data:refresh": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/refresh_atlas.ps1",

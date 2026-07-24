@@ -4,12 +4,14 @@ import controlTowerEvidenceSnapshot from "@/schema-pack/generated/control-tower-
 import controlTowerFidelitySnapshot from "@/schema-pack/generated/control-tower-fidelity.json";
 import controlTowerModelSnapshot from "@/schema-pack/generated/control-tower-model.json";
 import controlTowerPresentationSnapshot from "@/schema-pack/generated/control-tower-presentation.json";
+import projectPackSnapshot from "@/schema-pack/generated/project-pack-index.json";
 import workspaceSnapshot from "@/schema-pack/generated/workspace.json";
 import { AtlasWorkspace } from "./components/AtlasWorkspace";
 import type { AtlasData } from "./lib/atlas-types";
 import type { ControlTowerRequirements } from "./lib/control-tower-types";
 import type { ControlTowerEvidence } from "./lib/control-tower-evidence-types";
 import type { ControlTowerFidelity } from "./lib/control-tower-fidelity-types";
+import type { ProjectPackIndex } from "./lib/project-pack-types";
 import type {
   ControlTowerModel,
   ControlTowerPresentation,
@@ -25,6 +27,7 @@ export default function Home() {
       controlTowerFidelity={controlTowerFidelitySnapshot as ControlTowerFidelity}
       controlTowerModel={controlTowerModelSnapshot as ControlTowerModel}
       controlTowerPresentation={controlTowerPresentationSnapshot as ControlTowerPresentation}
+      projectPack={projectPackSnapshot as ProjectPackIndex}
       workspaceSeed={workspaceSnapshot as WorkspaceSeed}
     />
   );

@@ -55,3 +55,4 @@ __pycache__/
 /.codex-dev-*.log
 /.codex-dev-*.pid
 /.preview-pages.*.log
+/.preview-pages.pid

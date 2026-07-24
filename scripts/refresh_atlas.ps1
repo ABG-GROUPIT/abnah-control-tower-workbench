@@ -25,6 +25,7 @@ if (Get-Command py -ErrorAction SilentlyContinue) {
         Write-Host "POSist source indexes are local-only; retaining the committed portable discovery baseline."
     }
     & py -3 "$PSScriptRoot\build_workspace_data.py" --root $atlasRoot
+    & py -3 "$PSScriptRoot\build_project_pack_index.py"
     & py -3 "$PSScriptRoot\validate_atlas_data.py"
     & py -3 "$PSScriptRoot\validate_workspace_data.py"
     & py -3 "$PSScriptRoot\validate_control_tower.py"
@@ -42,6 +43,7 @@ elseif (Get-Command python -ErrorAction SilentlyContinue) {
         Write-Host "POSist source indexes are local-only; retaining the committed portable discovery baseline."
     }
     & python "$PSScriptRoot\build_workspace_data.py" --root $atlasRoot
+    & python "$PSScriptRoot\build_project_pack_index.py"
     & python "$PSScriptRoot\validate_atlas_data.py"
     & python "$PSScriptRoot\validate_workspace_data.py"
     & python "$PSScriptRoot\validate_control_tower.py"

@@ -24,24 +24,26 @@ Maintain a screenshot-free, evidence-disciplined understanding of ABNAH's Restro
 
 1. `README.md`
 2. `project-pack/README.md`
-3. `schema-pack/manifest.json`
-4. `docs/STRUCTURAL_SCHEMA_METHOD.md`
-5. `docs/CONTROL_TOWER_KPI_AND_CHART_LINEAGE_HANDBOOK.md`
-6. `docs/PRESENTATION_SAFE_ACTUAL_DATA_ISSUES.md`
-7. `schema-pack/source/control_tower/control-tower-presentation.json`
-8. `schema-pack/source/model/control-tower-model.json`
-9. `docs/CONTROL_TOWER_REQUIREMENTS.md`
-10. `docs/REPORT_CAPTURE_PRIORITY.md`
-11. `docs/MODEL_REVISION_PLAN.md`
-12. `schema-pack/source/control_tower/control-tower-requirements.json`
-13. `docs/DATA_CONTRACT.md`
-14. `docs/LOCAL_AUDIT_PACKET_WORKFLOW.md` when a local CSV packet is supplied
-15. `docs/DATA_QUALITY_AND_HOSTING.md` before changing severity, local evidence, or deployment
-16. `docs/SCHEMA_CAPTURE_IMPORT.md` when a local schema-capture README is supplied
-17. `schema-pack/generated/workspace_report_catalog.csv`
-18. The selected report file under `schema-pack/source/report_structures/`
-19. Relevant text chunk under `schema-pack/source/reference_chunks/`
-20. `docs/KPI_LINEAGE_CONTRACT.md` before source selection or publication
+3. `schema-pack/generated/project-pack-index.json` to find any implementation,
+   SQL, dataset, guide, test, or local tool without scanning the whole pack
+4. `schema-pack/manifest.json`
+5. `docs/STRUCTURAL_SCHEMA_METHOD.md`
+6. `docs/CONTROL_TOWER_KPI_AND_CHART_LINEAGE_HANDBOOK.md`
+7. `docs/PRESENTATION_SAFE_ACTUAL_DATA_ISSUES.md`
+8. `schema-pack/source/control_tower/control-tower-presentation.json`
+9. `schema-pack/source/model/control-tower-model.json`
+10. `docs/CONTROL_TOWER_REQUIREMENTS.md`
+11. `docs/REPORT_CAPTURE_PRIORITY.md`
+12. `docs/MODEL_REVISION_PLAN.md`
+13. `schema-pack/source/control_tower/control-tower-requirements.json`
+14. `docs/DATA_CONTRACT.md`
+15. `docs/LOCAL_AUDIT_PACKET_WORKFLOW.md` when a local CSV packet is supplied
+16. `docs/DATA_QUALITY_AND_HOSTING.md` before changing severity, local evidence, or deployment
+17. `docs/SCHEMA_CAPTURE_IMPORT.md` when a local schema-capture README is supplied
+18. `schema-pack/generated/workspace_report_catalog.csv`
+19. The selected report file under `schema-pack/source/report_structures/`
+20. Relevant text chunk under `schema-pack/source/reference_chunks/`
+21. `docs/KPI_LINEAGE_CONTRACT.md` before source selection or publication
 
 ## Truth Model
 
@@ -51,6 +53,9 @@ There are three intentional stores:
 - D1 is the working store for edits, workflow state, and revision history.
 - GitHub Pages uses browser-local persistence and backup export because it has
   no server-side database.
+- GitHub Pages also publishes the validated project pack under
+  `project-pack/zoho-control-tower/`; use the generated project-library index
+  for direct access instead of recursively loading all 710 files.
 
 For the live site, use the latest D1 current document. For a clean rebuild or team transfer, use source blueprints plus an exported D1 backup. Site edits are not automatically promoted into source JSON.
 
@@ -118,6 +123,7 @@ py -3 scripts/validate_workspace_data.py
 py -3 scripts/validate_control_tower.py
 npm run typecheck
 npm run lint
+npm run build:pages
 npm test
 ```
 

@@ -66,8 +66,16 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
   hosted evidence, and optional in-browser loading of the private local packet.
 - `Architecture`: one-object-at-a-time KPI/chart stories plus a separate
   five-layer model and exact-SQL library.
+- `Library`: searchable access to all 710 validated handoff files, pinned
+  implementation references, integrity hashes, direct file links, and the
+  complete downloadable project pack.
 - `Workspace`: editable current revision.
 - `Published`: read-only latest published revision or repository baseline.
+
+Hosted handoff:
+[ABNAH Control Tower Workbench](https://abg-groupit.github.io/abnah-control-tower-workbench/).
+The GitHub Pages build publishes the complete library while continuing to
+exclude screenshots, real POSist exports, local audit rows, and credentials.
 
 ## Start Here
 

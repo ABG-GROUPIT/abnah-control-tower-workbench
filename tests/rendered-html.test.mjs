@@ -27,6 +27,7 @@ test("server-renders the editable ABNAH schema workspace", async () => {
   assert.match(html, /Control tower/);
   assert.match(html, /Data quality/);
   assert.match(html, /Architecture/);
+  assert.match(html, /Library/);
   assert.match(html, /Budget DSR Report/);
   assert.match(html, /Blank table structure/);
   assert.match(html, /318/);
@@ -34,7 +35,7 @@ test("server-renders the editable ABNAH schema workspace", async () => {
 });
 
 test("ships screenshot-free workspace and control-tower contracts", async () => {
-  const [workspaceText, atlasText, controlTowerText, evidenceText, fidelityText, architectureText, presentationText, modelText, lineageText, migration, packageJson] = await Promise.all([
+  const [workspaceText, atlasText, controlTowerText, evidenceText, fidelityText, architectureText, presentationText, modelText, lineageText, projectPackText, migration, packageJson] = await Promise.all([
     readFile(new URL("../schema-pack/generated/workspace.json", import.meta.url), "utf8"),
     readFile(new URL("../schema-pack/generated/atlas.json", import.meta.url), "utf8"),
     readFile(new URL("../schema-pack/generated/control-tower-requirements.json", import.meta.url), "utf8"),
@@ -44,6 +45,7 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
     readFile(new URL("../schema-pack/generated/control-tower-presentation.json", import.meta.url), "utf8"),
     readFile(new URL("../schema-pack/generated/control-tower-model.json", import.meta.url), "utf8"),
     readFile(new URL("../schema-pack/generated/kpi-lineage.json", import.meta.url), "utf8"),
+    readFile(new URL("../schema-pack/generated/project-pack-index.json", import.meta.url), "utf8"),
     readFile(new URL("../drizzle/0000_faulty_leader.sql", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
   ]);
@@ -56,6 +58,7 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   const presentation = JSON.parse(presentationText);
   const model = JSON.parse(modelText);
   const lineage = JSON.parse(lineageText);
+  const projectPack = JSON.parse(projectPackText);
   const misc = workspace.reports.filter((report) => report.page === "p1_main" && report.section === "06_misc");
 
   assert.equal(workspace.contractVersion, "1.0.0");
@@ -133,6 +136,15 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   assert.equal(lineage.kpis.filter((kpi) => kpi.approvalStatus === "partial").length, 1);
   assert.equal(lineage.nodes.length, 0);
   assert.equal(lineage.edges.length, 0);
+  assert.equal(projectPack.summary.files, 710);
+  assert.equal(projectPack.summary.csvFiles, 347);
+  assert.equal(projectPack.summary.sqlFiles, 132);
+  assert.equal(projectPack.summary.guideFiles, 75);
+  assert.equal(projectPack.categories.length, 10);
+  assert.equal(new Set(projectPack.files.map((file) => file.path)).size, 710);
+  assert.ok(projectPack.files.filter((file) => file.featuredOrder !== null).length >= 6);
+  assert.ok(projectPack.files.every((file) => /^[a-f0-9]{64}$/.test(file.sha256)));
+  assert.doesNotMatch(projectPackText, /\.png\b|\.jpe?g\b|AppData\\Local\\Temp|Downloads\\/i);
   assert.doesNotMatch(controlTowerText, /\.png\b|AppData\\Local\\Temp|Downloads\\/i);
   assert.doesNotMatch(evidenceText, /\.png\b|\.jpe?g\b|[A-Za-z]:\\|Downloads\\|file_sha256|file_name/i);
   assert.doesNotMatch(fidelityText, /\.png\b|\.jpe?g\b|[A-Za-z]:\\|Downloads\\/i);
@@ -153,4 +165,6 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   assert.match(migration, /CREATE TABLE `workspace_revisions`/);
   assert.match(packageJson, /"data:workspace"/);
   assert.match(packageJson, /"build:pages"/);
+  assert.match(packageJson, /package_github_pages\.py/);
+  assert.match(packageJson, /validate_pages_artifact\.py/);
 });

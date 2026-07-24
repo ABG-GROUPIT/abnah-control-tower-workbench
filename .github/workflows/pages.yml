@@ -33,6 +33,7 @@ jobs:
           python scripts/validate_workspace_data.py
           python scripts/validate_control_tower.py
           python scripts/validate_schema_privacy.py
+          python scripts/validate_project_pack.py
       - run: npm run typecheck
       - run: npm run build:pages
       - uses: actions/configure-pages@v5

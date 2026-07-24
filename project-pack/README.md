@@ -26,8 +26,11 @@ ABNAH Control Tower project.
 - the earlier model, dashboard, external-signal, and Ask Zia research retained
   for traceability.
 
-The website application, editable schema catalogue, and synchronized
-presentation/model contracts remain at the repository root.
+The website application, editable schema catalogue, synchronized
+presentation/model contracts, and this complete pack are all available from
+the hosted [ABNAH Control Tower Workbench](https://abg-groupit.github.io/abnah-control-tower-workbench/).
+Open its `Library` surface to search individual files or download the complete
+pack as one archive.
 
 ## Deliberately Local Only
 

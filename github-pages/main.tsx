@@ -4,6 +4,7 @@ import controlTowerEvidenceSnapshot from "@/schema-pack/generated/control-tower-
 import controlTowerFidelitySnapshot from "@/schema-pack/generated/control-tower-fidelity.json";
 import controlTowerModelSnapshot from "@/schema-pack/generated/control-tower-model.json";
 import controlTowerPresentationSnapshot from "@/schema-pack/generated/control-tower-presentation.json";
+import projectPackSnapshot from "@/schema-pack/generated/project-pack-index.json";
 import workspaceSnapshot from "@/schema-pack/generated/workspace.json";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
@@ -13,6 +14,7 @@ import type { AtlasData } from "../app/lib/atlas-types";
 import type { ControlTowerRequirements } from "../app/lib/control-tower-types";
 import type { ControlTowerEvidence } from "../app/lib/control-tower-evidence-types";
 import type { ControlTowerFidelity } from "../app/lib/control-tower-fidelity-types";
+import type { ProjectPackIndex } from "../app/lib/project-pack-types";
 import type {
   ControlTowerModel,
   ControlTowerPresentation,
@@ -31,6 +33,7 @@ createRoot(root).render(
       controlTowerFidelity={controlTowerFidelitySnapshot as ControlTowerFidelity}
       controlTowerModel={controlTowerModelSnapshot as ControlTowerModel}
       controlTowerPresentation={controlTowerPresentationSnapshot as ControlTowerPresentation}
+      projectPack={projectPackSnapshot as ProjectPackIndex}
       workspaceSeed={workspaceSnapshot as WorkspaceSeed}
       persistenceMode="browser"
     />

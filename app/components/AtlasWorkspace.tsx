@@ -6,6 +6,7 @@ import {
   Download,
   Eye,
   FileSpreadsheet,
+  FolderArchive,
   LayoutDashboard,
   Network,
   Pencil,
@@ -24,6 +25,7 @@ import type {
 import type { ControlTowerRequirements } from "../lib/control-tower-types";
 import type { ControlTowerEvidence } from "../lib/control-tower-evidence-types";
 import type { ControlTowerFidelity } from "../lib/control-tower-fidelity-types";
+import type { ProjectPackIndex } from "../lib/project-pack-types";
 import type {
   ControlTowerModel,
   ControlTowerPresentation,
@@ -32,6 +34,7 @@ import { ApiRegistry } from "./ApiRegistry";
 import { ArchitectureGraphWorkspace } from "./ArchitectureGraphWorkspace";
 import { ControlTowerWorkspace } from "./ControlTowerWorkspace";
 import { DataQualityWorkspace } from "./DataQualityWorkspace";
+import { ProjectLibraryWorkspace } from "./ProjectLibraryWorkspace";
 import { ReportNavigator } from "./ReportNavigator";
 import { ReportWorkspacePanel, type ReportTab } from "./ReportWorkspacePanel";
 
@@ -43,10 +46,11 @@ interface AtlasWorkspaceProps {
   controlTowerFidelity: ControlTowerFidelity;
   controlTowerModel: ControlTowerModel;
   controlTowerPresentation: ControlTowerPresentation;
+  projectPack: ProjectPackIndex;
   persistenceMode?: "auto" | "browser";
 }
 
-type Surface = "discovery" | "api" | "control_tower" | "data_quality" | "architecture";
+type Surface = "discovery" | "api" | "control_tower" | "data_quality" | "architecture" | "library";
 
 const defaultReportId = "report:p1_main:06_misc:03_budget_dsr_report";
 const browserStorageKey = "abnah-schema-workspace-browser-v1";
@@ -116,6 +120,7 @@ export function AtlasWorkspace({
   controlTowerFidelity,
   controlTowerModel,
   controlTowerPresentation,
+  projectPack,
   persistenceMode = "auto",
 }: AtlasWorkspaceProps) {
   const baseline = useMemo(() => documentRecord(workspaceSeed.reports), [workspaceSeed.reports]);
@@ -443,6 +448,7 @@ export function AtlasWorkspace({
           <button type="button" className={surface === "control_tower" ? "is-active" : ""} onClick={() => setSurface("control_tower")}><LayoutDashboard aria-hidden="true" size={15} /> Control tower</button>
           <button type="button" className={surface === "data_quality" ? "is-active" : ""} onClick={() => setSurface("data_quality")}><ShieldCheck aria-hidden="true" size={15} /> Data quality</button>
           <button type="button" className={surface === "architecture" ? "is-active" : ""} onClick={() => setSurface("architecture")}><Network aria-hidden="true" size={15} /> Architecture</button>
+          <button type="button" className={surface === "library" ? "is-active" : ""} onClick={() => setSurface("library")}><FolderArchive aria-hidden="true" size={15} /> Library</button>
         </nav>
         <div className="app-summary"><span><b>{atlas.summary.reports}</b> reports</span><span><b>{workspaceSeed.reports.filter((report) => report.schemaStatus === "captured").length}</b> captured</span><span className={`persistence-indicator state-${persistenceState}`}>{persistenceState === "ready" ? "Stored" : persistenceState === "loading" ? "Connecting" : "Browser saved"}</span></div>
         <button type="button" className="backup-button" onClick={() => void exportBackup()} disabled={persistenceState === "loading"} title="Export current documents and revision history"><Download aria-hidden="true" size={14} /> Backup</button>
@@ -514,6 +520,7 @@ export function AtlasWorkspace({
           onOpenReport={openDiscoveryReport}
         />
       )}
+      {surface === "library" && <ProjectLibraryWorkspace index={projectPack} />}
     </main>
   );
 }
