@@ -1266,7 +1266,7 @@ def main() -> int:
                 "Import the 10 active RAWN_CT tables and 4 approved model/reference tables with exact names.",
                 "Keep Enterprise Stock Return and Enterprise Stock Re-Order outside active landing dependencies; keep expiry visibly synthetic until a batch source exists.",
                 "Build the 38 active Query Tables in manifest dependency order.",
-                "Validate facts and summaries before assembling the four dashboard tabs.",
+                "Validate facts and summaries before building the four pages of saved views.",
                 "Train Ask Zia only after dashboard calculations pass.",
             ],
         },

@@ -39,10 +39,11 @@ test("server-renders the delivery portal as a separate route", async () => {
   const response = await render("/portal");
   assert.equal(response.status, 200);
   const html = await response.text();
+  assert.match(html, /<title>ABNAH Supply Chain Control Tower<\/title>/i);
   assert.match(html, /ABNAH Supply Chain Control Tower/);
-  assert.match(html, /Zoho secured login/);
-  assert.match(html, /Blueprint/);
-  assert.match(html, /Risk Action Center/);
+  assert.match(html, /Secured analytics access/);
+  assert.match(html, /Sign in with Zoho/);
+  assert.match(html, /Continue after sign-in/);
   assert.doesNotMatch(html, /Schema discovery|Report catalogue/);
 });
 
@@ -148,12 +149,12 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   assert.equal(lineage.kpis.filter((kpi) => kpi.approvalStatus === "partial").length, 1);
   assert.equal(lineage.nodes.length, 0);
   assert.equal(lineage.edges.length, 0);
-  assert.equal(projectPack.summary.files, 729);
+  assert.equal(projectPack.summary.files, 731);
   assert.equal(projectPack.summary.csvFiles, 349);
   assert.equal(projectPack.summary.sqlFiles, 132);
-  assert.equal(projectPack.summary.guideFiles, 85);
+  assert.equal(projectPack.summary.guideFiles, 87);
   assert.equal(projectPack.categories.length, 10);
-  assert.equal(new Set(projectPack.files.map((file) => file.path)).size, 729);
+  assert.equal(new Set(projectPack.files.map((file) => file.path)).size, 731);
   assert.ok(projectPack.files.filter((file) => file.featuredOrder !== null).length >= 6);
   assert.ok(projectPack.files.every((file) => /^[a-f0-9]{64}$/.test(file.sha256)));
   assert.doesNotMatch(projectPackText, /\.png\b|\.jpe?g\b|AppData\\Local\\Temp|Downloads\\/i);

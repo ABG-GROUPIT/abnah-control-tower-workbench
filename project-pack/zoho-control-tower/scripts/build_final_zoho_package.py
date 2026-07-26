@@ -72,6 +72,10 @@ INSTRUCTION_FILES = (
         ROOT / "docs" / "ZOHO_PORTAL_HOSTING_AUTH_HANDOFF.md",
         "08_PORTAL_HOSTING_AUTH_HANDOFF.md",
     ),
+    (
+        ROOT / "docs" / "ZOHO_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md",
+        "09_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md",
+    ),
 )
 
 VALIDATION_FILES = (
@@ -386,15 +390,17 @@ Then:
    `03_ZOHO_INSTRUCTIONS/04B_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md`.
 7. Run the query and KPI gates in
    `03_ZOHO_INSTRUCTIONS/06_VALIDATION_AND_PUBLICATION.md`.
-8. Build the four dashboard pages using
+8. Build the 39 individual saved KPI/report views using
    `03_ZOHO_INSTRUCTIONS/04_DASHBOARD_BUILD.md`.
 9. Reconcile every card and chart against
    `03_ZOHO_INSTRUCTIONS/04A_DASHBOARD_EXPECTED_RESULTS.md`.
-10. Connect the four secured dashboard embeds using
+10. Build, share, embed and filter each view in the exact progressive order in
+   `03_ZOHO_INSTRUCTIONS/09_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md`.
+11. Connect the 39 secured individual-view embeds using
    `03_ZOHO_INSTRUCTIONS/07_EMBEDDED_PORTAL_SETUP.md`.
-11. Complete the company-laptop, hosting and one-file handoff checks in
+12. Complete the company-laptop, hosting and one-file handoff checks in
    `03_ZOHO_INSTRUCTIONS/08_PORTAL_HOSTING_AUTH_HANDOFF.md`.
-12. Configure Ask Zia only after reconciliation passes, using
+13. Configure Ask Zia only after reconciliation passes, using
    `03_ZOHO_INSTRUCTIONS/05_ASK_ZIA_SETUP.md`.
 
 Record progress directly in the two checklist CSVs and
@@ -485,7 +491,7 @@ validation checkpoint passes.
 | Page 3: Consumption Variance and Menu Profitability | NOT STARTED |  |  |  |
 | Page 4: SCM Explorer and Data Quality | NOT STARTED |  |  |  |
 | Ask Zia controlled question bank | NOT STARTED |  |  |  |
-| Four secured Zoho dashboard embeds | NOT STARTED |  |  |  |
+| 39 secured Zoho saved-view embeds | NOT STARTED |  |  |  |
 | Work-email access validation | NOT STARTED |  |  |  |
 | Business owner review | NOT STARTED |  |  |  |
 | Publication decision | NOT STARTED |  |  |  |
@@ -582,6 +588,7 @@ $required = @(
     '03_ZOHO_INSTRUCTIONS\05_ASK_ZIA_SETUP.md',
     '03_ZOHO_INSTRUCTIONS\07_EMBEDDED_PORTAL_SETUP.md',
     '03_ZOHO_INSTRUCTIONS\08_PORTAL_HOSTING_AUTH_HANDOFF.md',
+    '03_ZOHO_INSTRUCTIONS\09_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md',
     '03_ZOHO_INSTRUCTIONS\zoho-secured-embed-handoff.example.json'
 )
 foreach ($relative in $required) {

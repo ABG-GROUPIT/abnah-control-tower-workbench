@@ -83,6 +83,7 @@ $required = @(
     '03_ZOHO_INSTRUCTIONS\05_ASK_ZIA_SETUP.md',
     '03_ZOHO_INSTRUCTIONS\07_EMBEDDED_PORTAL_SETUP.md',
     '03_ZOHO_INSTRUCTIONS\08_PORTAL_HOSTING_AUTH_HANDOFF.md',
+    '03_ZOHO_INSTRUCTIONS\09_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md',
     '03_ZOHO_INSTRUCTIONS\zoho-secured-embed-handoff.example.json'
 )
 foreach ($relative in $required) {

@@ -232,78 +232,84 @@ lookup matrices, row formulas, aggregate formulas, direct aggregations,
 single-period and single-UOM restrictions, truth values and the final
 pre-dashboard checklist. Do not start Phase 4 until that checklist passes.
 
-## Phase 4 - Build The Four Dashboard Tabs
+## Phase 4 - Build And Reconcile The 39 Saved Views
 
-Zoho natively supports multiple dashboard tabs, widgets, reports, filters and
-drag/resizable layouts:
-https://www.zoho.com/analytics/help/dashboard/create-dashboard.html
-
-Create one dashboard:
+The external ABNAH portal uses individual Zoho saved views:
 
 ```text
-ABNAH Supply Chain Control Tower v2
+20 KPI views + 19 chart/table/map views
 ```
 
-Build tabs in this order:
+Build them in this order:
 
 1. `SCM Descriptive Explorer & Data Quality`
 2. `Consumption Variance & Menu Profitability`
 3. `Procurement, Vendor & Capital Control`
 4. `Risk Action Center`
 
-This implementation order proves source totals and drill detail before the
-executive action page is assembled.
+This order proves source totals and drill detail before the executive action
+page is assembled.
 
-Use the exact report names, sources, chart types, shelves, filters and layouts
-in:
+Use the exact report names, sources, chart types, shelves, filters and expected
+results in:
 
 ```text
 docs/zoho_control_tower_v2_dashboard_click_by_click.md
+docs/ZOHO_DASHBOARD_EXPECTED_RESULTS.md
 ```
+
+After each saved view reconciles, generate its secured-with-login individual
+embed URL and connect that exact slot using:
+
+```text
+docs/ZOHO_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md
+```
+
+Do not wait for one complete Zoho dashboard before connecting the portal.
+Unconfigured slots remain as blueprints while completed views go live.
 
 Use **consumption**, not yield, on Page 3.
 
-Add global filters only after every component works:
-
-```text
-source period
-outlet
-```
-
-Set source period to single-select and default it to `month_03`; otherwise three
-inventory checkpoints are added together as though they were simultaneous.
-Region and new/matured may be page-wide display filters through the enriched
-outlet lookup. Category, vendor, PO status, risk type, severity and UOM are
-page/report filters, not dashboard-global filters.
-
-Zoho supports common filters across dashboard tabs:
-https://www.zoho.com/analytics/help/dashboard/filter.html
-
 ## Phase 5 - Match The Supplied Control Tower Visual
 
-Use native Zoho layout, chart configuration, conditional formatting, filters,
-widgets and themes first.
+The ABNAH portal owns the four-page composition, navigation, page filters,
+outer card frames, spacing and responsive layout. Zoho owns the rendered
+content inside each secured iframe.
 
 Match the supplied HTML in this order:
 
-1. page and section hierarchy;
-2. KPI meaning and number format;
-3. chart type and reading direction;
-4. severity semantics;
-5. drill path and report-as-filter behavior;
-6. spacing, labels and neutral background;
-7. final palette.
+1. KPI/report meaning and number format in Zoho;
+2. chart type and reading direction in Zoho;
+3. severity colors, legends and labels in Zoho;
+4. tooltip, drill and underlying-data behavior in Zoho;
+5. page hierarchy, spacing and filter placement in the portal;
+6. cross-device rendering and secured-login behavior.
 
-Do not use JavaScript to inject styles into a native Zoho dashboard. Zoho's
-JavaScript API controls Zoho reports embedded inside an external application:
-https://www.zoho.com/analytics/js-api/
+The portal cannot restyle cross-origin Zoho iframe content. Apply all
+chart-internal colors and number formats before generating the embed URL.
 
-Therefore:
+The portal applies tab-specific controls only to compatible views through
+URL-encoded `ZOHO_CRITERIA`. Current-state period filters do not alter
+historical trend views, and model-wide data-quality checks are not given
+outlet criteria.
 
-| Requirement | Delivery |
-| --- | --- |
-| Four tabs, filters, KPIs, charts, tables, conditional colors | Native Zoho |
-| Host-controlled filter, refresh or export in a custom portal | Zoho JS API after embedding |
+Zoho documents secured individual-view embedding and URL criteria:
+https://www.zoho.com/analytics/help/publishing/embed-reports.html
+
+## Phase 6 - Optional Native Zoho Dashboard
+
+After all 39 saved views reconcile and work in the custom portal, optionally
+assemble them into one native four-tab dashboard named:
+
+```text
+ABNAH Supply Chain Control Tower v2
+```
+
+This is a Zoho-only fallback and an acceptance comparison surface. The custom
+portal does not depend on it.
+
+Zoho supports dashboard tabs and mapped user filters:
+https://www.zoho.com/analytics/help/dashboard/filter.html
 | Pixel-level custom shell around embedded reports | Separate custom application |
 | Arbitrary restyling of native Zoho dashboard internals | Not a supported plan |
 

@@ -89,23 +89,28 @@ FEATURED = {
         "Dashboard expected results",
         "Exact synthetic KPI cards, chart controls, rankings, trends, row counts, tolerances, and stop conditions.",
     ),
-    "docs/CONTROL_TOWER_KPI_AND_CHART_LINEAGE_HANDBOOK.md": (
+    "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/03_ZOHO_INSTRUCTIONS/09_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md": (
         4,
+        "Report embed sequence",
+        "The exact 39-view build, validation, secured embed, handoff, and external-filter workflow.",
+    ),
+    "docs/CONTROL_TOWER_KPI_AND_CHART_LINEAGE_HANDBOOK.md": (
+        5,
         "KPI and chart lineage handbook",
         "All 76 final objects with source fields, formula, aggregation, Zoho shelves, filters, and talk tracks.",
     ),
     "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/02_QUERY_TABLES/QUERY_TABLE_MANIFEST.csv": (
-        5,
+        6,
         "Query Table manifest",
         "The exact 38-table build order and dependency register.",
     ),
     "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/03_ZOHO_INSTRUCTIONS/03A_LOOKUPS_FORMULAS_AND_PRE_DASHBOARD_SETUP.md": (
-        6,
+        7,
         "Lookups and formulas",
         "Many-to-one lookup, aggregate formula, grain, and pre-dashboard setup rules.",
     ),
     "local_data_auditor/README.md": (
-        7,
+        8,
         "Local audit workflow",
         "How to inspect real exports locally without publishing operational rows.",
     ),

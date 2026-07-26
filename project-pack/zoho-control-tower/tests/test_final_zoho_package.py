@@ -186,13 +186,15 @@ class FinalZohoPackageTests(unittest.TestCase):
             "04B_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md",
             "07_EMBEDDED_PORTAL_SETUP.md",
             "08_PORTAL_HOSTING_AUTH_HANDOFF.md",
+            "09_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md",
             "zoho-secured-embed-handoff.example.json",
         ):
             self.assertTrue((instructions / filename).is_file(), filename)
         handoff = (
             instructions / "zoho-secured-embed-handoff.example.json"
         ).read_text(encoding="utf-8")
-        self.assertIn("abnah-zoho-secured-embed-handoff/v1", handoff)
+        self.assertIn("abnah-zoho-report-embed-handoff/v2", handoff)
+        self.assertIn('"integrationMode": "individual_report_views"', handoff)
 
 
 if __name__ == "__main__":

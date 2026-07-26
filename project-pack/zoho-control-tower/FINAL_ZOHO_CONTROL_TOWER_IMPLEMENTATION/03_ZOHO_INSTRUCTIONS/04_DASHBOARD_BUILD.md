@@ -2,7 +2,8 @@
 
 ## Purpose
 
-Build one Zoho Analytics dashboard with four tabs:
+Build the exact saved Zoho KPI, chart, table and map views required by these
+four control-tower pages:
 
 1. Risk Action Center
 2. Procurement, Vendor & Capital Control
@@ -11,9 +12,17 @@ Build one Zoho Analytics dashboard with four tabs:
 
 Use **consumption**, not yield, on Page 3.
 
+The saved views are the canonical delivery objects. Each one is embedded in
+its assigned external portal slot. A native four-tab Zoho dashboard may be
+assembled later as a fallback, but it is not required before portal
+integration.
+
 This guide uses the exact Query Table names saved in Zoho. It does not use
 logical aliases. Complete
 `ZOHO_LOOKUPS_AGGREGATE_FORMULAS_AND_PRE_DASHBOARD_SETUP.md` before starting.
+
+For the exact build, validate, share, embed and external-filter sequence, keep
+`ZOHO_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md` open beside this guide.
 
 If all 38 tables, lookups and the earlier formula list are already complete,
 start with `ZOHO_CURRENT_WORKSPACE_MIGRATION.md`. The reference-first report
@@ -78,25 +87,23 @@ the Query Table, then reopen the widget/report editor.
 
 Use this only when the build register names a physical Data Column.
 
-1. Open the target dashboard tab.
-2. Click **Edit Design**.
-3. Click **Widget** or open **Elements > KPI**.
-4. Choose **KPI Widget**.
-5. Choose **Single Label** or **Single Number**.
-6. Open the **Data** tab.
-7. For **Table**, select the exact numbered Query Table.
-8. For **Data Column**, select the exact physical column from the register.
-9. For **Show Value As** or **Calculation**, choose the stated operation.
-10. Leave **Group By** empty.
-11. Add the fixed filter only when the register says one is required.
-12. Open **Settings > Values**.
-13. Type the exact KPI label in **Primary Value > Label**.
-14. Apply the stated number format.
-15. Leave secondary value, indicator and target blank unless this guide says
+1. Choose **Create > New Report** from the required Query Table, or create the
+   KPI view through the report workspace available in the current Zoho UI.
+2. Choose **KPI Widget**.
+3. Choose **Single Label** or **Single Number**.
+4. Open the **Data** tab.
+5. For **Table**, select the exact numbered Query Table.
+6. For **Data Column**, select the exact physical column from the register.
+7. For **Show Value As** or **Calculation**, choose the stated operation.
+8. Leave **Group By** empty.
+9. Add the fixed filter only when the register says one is required.
+10. Open **Settings > Values**.
+11. Type the exact KPI label in **Primary Value > Label**.
+12. Apply the stated number format.
+13. Leave secondary value, indicator and target blank unless this guide says
     otherwise.
-16. Click **Apply**.
-17. Place the widget in the KPI row.
-18. Save the dashboard.
+14. Click **Apply**.
+15. Save the individual KPI view with the exact `CT_...` name.
 
 If several numbers appear, **Group By** is not empty. If the business label is
 missing from Data Column, that is expected: choose the physical column instead.
@@ -116,12 +123,10 @@ Use this for `PO Fill Rate %`, `Vendor OTIF %` and `Menu Gross Margin %`.
 8. Format the result as percentage with two decimals.
 9. Set the report title to the exact `CT_...` name.
 10. Save the Summary View.
-11. Open the dashboard in edit mode.
-12. Drag the saved Summary View onto the KPI row.
-13. Hide the report toolbar, legend and unnecessary borders.
-14. Keep the report title visible as the KPI label.
-15. Map the dashboard period and outlet filters as specified later in this
-    guide.
+11. Hide the report toolbar, legend and unnecessary borders in its embed
+    settings.
+12. Keep the assigned outer-portal title as the KPI label.
+13. Save the individual Summary View with the exact `CT_...` name.
 
 This saved Summary View replaces a direct KPI Widget for that one ratio. Do not
 try to find the Aggregate Formula in the direct widget Data Column dropdown.

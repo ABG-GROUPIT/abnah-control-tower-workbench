@@ -64,7 +64,7 @@ export interface ZohoPortalPage {
   subtitle: string;
   dashboardViewName: string;
   dashboardEmbedUrl: string;
-  filterStrategy: "native_dashboard" | "url_criteria";
+  filterStrategy: "report_views";
   criteriaTable: string;
   criteriaColumns: Record<string, string>;
   filters: ZohoPortalFilter[];
@@ -87,15 +87,25 @@ export interface ZohoPortalConfig {
 
 export type ZohoPortalUrlOverrides = Record<string, string>;
 
-export interface ZohoPortalHandoffDashboard {
-  dashboardViewName: string;
+export interface ZohoPortalHandoffView {
+  pageId: string;
+  slotKind: "kpi" | "report";
+  zohoViewName: string;
   securedEmbedUrl: string;
 }
 
 export interface ZohoPortalHandoff {
-  schema: "abnah-zoho-secured-embed-handoff/v1";
+  schema: "abnah-zoho-report-embed-handoff/v2";
   generatedAt?: string;
   authMode: "zoho_secured_login";
+  integrationMode: "individual_report_views";
   note?: string;
-  dashboards: Record<string, ZohoPortalHandoffDashboard>;
+  views: Record<string, ZohoPortalHandoffView>;
+}
+
+export interface ZohoPortalFilterBinding {
+  filterId: string;
+  criteriaTable: string;
+  criteriaColumn: string;
+  operator: "equals" | "contains";
 }

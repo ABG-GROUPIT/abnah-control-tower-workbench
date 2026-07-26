@@ -12,6 +12,9 @@ MIGRATION = ROOT / "docs" / "ZOHO_CURRENT_WORKSPACE_MIGRATION.md"
 CAPABILITY = ROOT / "docs" / "ABNAH_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md"
 EMBED = ROOT / "docs" / "ZOHO_EMBEDDED_PORTAL_SETUP.md"
 HOSTING = ROOT / "docs" / "ZOHO_PORTAL_HOSTING_AUTH_HANDOFF.md"
+REPORT_SEQUENCE = (
+    ROOT / "docs" / "ZOHO_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md"
+)
 HANDOFF = REPOSITORY / "config" / "zoho-secured-embed-handoff.example.json"
 PORTAL_PAGE = REPOSITORY / "app" / "portal" / "page.tsx"
 QUERY_TABLES = (
@@ -61,6 +64,33 @@ class EmbeddedPortalContractTests(unittest.TestCase):
         ):
             self.assertIn(expected, metric_ids)
 
+    def test_portal_selectors_use_modeled_values(self) -> None:
+        filters = {
+            (page["id"], item["id"]): item
+            for page in self.config["pages"]
+            for item in page["filters"]
+        }
+        self.assertEqual(
+            [
+                "ALL",
+                "Pending",
+                "Partially Received",
+                "Closed",
+                "Cancelled",
+            ],
+            [
+                option["value"]
+                for option in filters[("p2", "poStatus")]["options"]
+            ],
+        )
+        self.assertEqual(
+            ["ALL", "kg", "litre", "pcs"],
+            [
+                option["value"]
+                for option in filters[("p3", "uom")]["options"]
+            ],
+        )
+
     def test_committed_portal_contains_no_embed_credentials(self) -> None:
         self.assertEqual(
             "zoho_secured_login",
@@ -75,17 +105,31 @@ class EmbeddedPortalContractTests(unittest.TestCase):
     def test_one_file_handoff_is_blank_and_complete(self) -> None:
         handoff = json.loads(HANDOFF.read_text(encoding="utf-8"))
         self.assertEqual(
-            "abnah-zoho-secured-embed-handoff/v1",
+            "abnah-zoho-report-embed-handoff/v2",
             handoff["schema"],
         )
         self.assertEqual("zoho_secured_login", handoff["authMode"])
-        self.assertEqual({"p1", "p2", "p3", "p4"}, set(handoff["dashboards"]))
-        self.assertTrue(
-            all(
-                dashboard["securedEmbedUrl"] == ""
-                for dashboard in handoff["dashboards"].values()
-            )
+        self.assertEqual(
+            "individual_report_views",
+            handoff["integrationMode"],
         )
+
+        expected = {}
+        for page in self.config["pages"]:
+            for slot_kind, objects in (
+                ("kpi", page["metrics"]),
+                ("report", page["panels"]),
+            ):
+                for view in objects:
+                    expected[view["id"]] = {
+                        "pageId": page["id"],
+                        "slotKind": slot_kind,
+                        "zohoViewName": view["zohoViewName"],
+                        "securedEmbedUrl": "",
+                    }
+
+        self.assertEqual(39, len(handoff["views"]))
+        self.assertEqual(expected, handoff["views"])
 
     def test_delivery_portal_has_a_separate_route(self) -> None:
         self.assertTrue(PORTAL_PAGE.is_file(), PORTAL_PAGE)
@@ -95,20 +139,30 @@ class EmbeddedPortalContractTests(unittest.TestCase):
         )
 
     def test_handoff_documents_cover_current_stage_and_security(self) -> None:
-        for path in (MIGRATION, CAPABILITY, EMBED, HOSTING):
+        for path in (
+            MIGRATION,
+            CAPABILITY,
+            EMBED,
+            HOSTING,
+            REPORT_SEQUENCE,
+        ):
             self.assertTrue(path.is_file(), path)
         migration = MIGRATION.read_text(encoding="utf-8")
         self.assertIn("all 38 numbered Query Tables saved", migration)
         self.assertIn("20_fact_ct_actual_consumption.sql", migration)
         self.assertIn("Weighted Unit Price", migration)
         embed = EMBED.read_text(encoding="utf-8")
-        self.assertIn("Zoho secured-login dashboard embeds", embed)
+        self.assertIn("individual saved Zoho views", embed)
         self.assertIn("Do not use:", embed)
-        self.assertIn("GitHub Pages is static", embed)
+        self.assertIn("ZOHO_CRITERIA", embed)
         hosting = HOSTING.read_text(encoding="utf-8")
         self.assertIn("GitHub Pages is not a backend", hosting)
-        self.assertIn("20 KPI cards", hosting)
+        self.assertIn("20 KPI views", hosting)
         self.assertIn("means **this same laptop**", hosting)
+        sequence = REPORT_SEQUENCE.read_text(encoding="utf-8")
+        self.assertIn("39 saved Zoho views", sequence)
+        self.assertIn("Continue after sign-in", sequence)
+        self.assertIn("External Filter Contract", sequence)
 
 
 if __name__ == "__main__":

@@ -65,6 +65,8 @@ Start here:
 - `docs/ZOHO_EMBEDDED_PORTAL_SETUP.md`: secured-login embedding,
   browser-local URL configuration, hosting boundaries and custom-chart
   fallbacks.
+- `docs/ZOHO_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md`: current-stage,
+  39-view build order, sign-in, handoff, and per-view filter contract.
 - `docs/ZOHO_PORTAL_HOSTING_AUTH_HANDOFF.md`: final GitHub Pages versus
   SharePoint decision, Pro-plan gate, login behavior, one-file handoff,
   work-laptop checks and backend boundary.

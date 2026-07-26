@@ -16,7 +16,7 @@
       "subtitle": "Outlet risk, stockout, expiry and mitigation",
       "dashboardViewName": "CT_PAGE_1_Risk_Action_Center",
       "dashboardEmbedUrl": "",
-      "filterStrategy": "native_dashboard",
+      "filterStrategy": "report_views",
       "criteriaTable": "27_fact_ct_inventory_risk.sql",
       "criteriaColumns": {
         "period": "source_period_code",
@@ -228,7 +228,7 @@
       "subtitle": "Purchase exposure, supplier performance and price movement",
       "dashboardViewName": "CT_PAGE_2_Procurement_Vendor_Capital",
       "dashboardEmbedUrl": "",
-      "filterStrategy": "native_dashboard",
+      "filterStrategy": "report_views",
       "criteriaTable": "29_sum_ct_procurement_funnel.sql",
       "criteriaColumns": {
         "period": "source_period_code",
@@ -258,6 +258,18 @@
           ]
         },
         {
+          "id": "outlet",
+          "label": "Outlet",
+          "kind": "select",
+          "defaultValue": "ALL",
+          "options": [
+            { "label": "All outlets", "value": "ALL" },
+            { "label": "Connaught Place", "value": "OUT001" },
+            { "label": "Hauz Khas", "value": "OUT002" },
+            { "label": "Saket Premium", "value": "OUT003" }
+          ]
+        },
+        {
           "id": "category",
           "label": "Ingredient category",
           "kind": "search",
@@ -278,9 +290,10 @@
           "defaultValue": "ALL",
           "options": [
             { "label": "All PO statuses", "value": "ALL" },
-            { "label": "Open", "value": "OPEN" },
-            { "label": "Delayed", "value": "DELAYED" },
-            { "label": "Closed", "value": "CLOSED" }
+            { "label": "Pending", "value": "Pending" },
+            { "label": "Partially Received", "value": "Partially Received" },
+            { "label": "Closed", "value": "Closed" },
+            { "label": "Cancelled", "value": "Cancelled" }
           ]
         },
         {
@@ -430,7 +443,7 @@
       "subtitle": "Actual versus theoretical consumption, leakage and menu economics",
       "dashboardViewName": "CT_PAGE_3_Consumption_Menu_Profitability",
       "dashboardEmbedUrl": "",
-      "filterStrategy": "native_dashboard",
+      "filterStrategy": "report_views",
       "criteriaTable": "25_fact_ct_menu_profitability.sql",
       "criteriaColumns": {
         "period": "source_period_code",
@@ -499,6 +512,18 @@
           "kind": "search",
           "defaultValue": "",
           "placeholder": "Search raw material"
+        },
+        {
+          "id": "uom",
+          "label": "Canonical UOM",
+          "kind": "select",
+          "defaultValue": "ALL",
+          "options": [
+            { "label": "All value-based views", "value": "ALL" },
+            { "label": "Kilogram", "value": "kg" },
+            { "label": "Litre", "value": "litre" },
+            { "label": "Pieces", "value": "pcs" }
+          ]
         }
       ],
       "metrics": [
@@ -616,7 +641,7 @@
       "subtitle": "Month-end trends, source drilldown and model exceptions",
       "dashboardViewName": "CT_PAGE_4_SCM_Explorer_Data_Quality",
       "dashboardEmbedUrl": "",
-      "filterStrategy": "native_dashboard",
+      "filterStrategy": "report_views",
       "criteriaTable": "33_sum_ct_scm_monthly.sql",
       "criteriaColumns": {
         "period": "source_period_code",
@@ -663,6 +688,21 @@
           "kind": "search",
           "defaultValue": "",
           "placeholder": "Search category"
+        },
+        {
+          "id": "exceptionType",
+          "label": "Exception type",
+          "kind": "select",
+          "defaultValue": "ALL",
+          "options": [
+            { "label": "All exceptions", "value": "ALL" },
+            { "label": "Negative stock", "value": "NEGATIVE_STOCK" },
+            { "label": "Zero stock with demand", "value": "ZERO_STOCK_WITH_DEMAND" },
+            { "label": "Missing recipe", "value": "SOLD_ITEM_MISSING_RECIPE" },
+            { "label": "Missing item master", "value": "OPERATIONAL_ITEM_MISSING_MASTER" },
+            { "label": "UOM conversion", "value": "UOM_MISMATCH_WITHOUT_CONVERSION" },
+            { "label": "Missing expected delivery", "value": "OPEN_PO_MISSING_EXPECTED_DELIVERY" }
+          ]
         }
       ],
       "metrics": [

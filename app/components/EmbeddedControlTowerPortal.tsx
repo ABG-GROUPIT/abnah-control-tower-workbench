@@ -22,19 +22,40 @@ import type {
   ZohoPortalCapability,
   ZohoPortalConfig,
   ZohoPortalFilter,
+  ZohoPortalFilterBinding,
   ZohoPortalHandoff,
-  ZohoPortalPage,
+  ZohoPortalMetric,
+  ZohoPortalPanel,
   ZohoPortalPreview,
   ZohoPortalUrlOverrides,
 } from "../lib/zoho-portal-types";
+import {
+  getReportFilterBindings,
+  isViewVisibleForFilters,
+} from "../lib/zoho-report-embed-contract";
 
 const portal = portalSnapshot as unknown as ZohoPortalConfig;
-const urlStorageKey = "abnah-zoho-portal-urls-v1";
-const handoffSchema = "abnah-zoho-secured-embed-handoff/v1";
+const urlStorageKey = "abnah-zoho-report-urls-v2";
+const accessStorageKey = "abnah-zoho-access-preflight-v1";
+const handoffSchema = "abnah-zoho-report-embed-handoff/v2";
 
 type PortalMode = "blueprint" | "live";
 type FilterValues = Record<string, string>;
 type PageFilterValues = Record<string, FilterValues>;
+type PortalView = ZohoPortalMetric | ZohoPortalPanel;
+
+const portalViews = portal.pages.flatMap((page) => [
+  ...page.metrics.map((view) => ({
+    ...view,
+    pageId: page.id,
+    slotKind: "kpi" as const,
+  })),
+  ...page.panels.map((view) => ({
+    ...view,
+    pageId: page.id,
+    slotKind: "report" as const,
+  })),
+]);
 
 const capabilityLabels: Record<ZohoPortalCapability, string> = {
   native: "Zoho native",
@@ -63,21 +84,28 @@ function escapeLiteral(value: string) {
 
 function buildCriteriaUrl(
   baseUrl: string,
-  page: ZohoPortalPage,
+  bindings: ZohoPortalFilterBinding[],
   values: FilterValues,
 ) {
-  if (!baseUrl || page.filterStrategy !== "url_criteria") return baseUrl;
-  const clauses = Object.entries(values).flatMap(([filterId, value]) => {
-    const column = page.criteriaColumns[filterId];
-    if (!column || !value || value === "ALL") return [];
+  if (!baseUrl) return baseUrl;
+  const clauses = bindings.flatMap((binding) => {
+    const value = values[binding.filterId];
+    if (!value || value === "ALL") return [];
+    const comparison =
+      binding.operator === "contains"
+        ? `LIKE '%${escapeLiteral(value)}%'`
+        : `= '${escapeLiteral(value)}'`;
     return [
-      `("${escapeIdentifier(page.criteriaTable)}"."${escapeIdentifier(column)}" = '${escapeLiteral(value)}')`,
+      `("${escapeIdentifier(binding.criteriaTable)}"."${escapeIdentifier(binding.criteriaColumn)}" ${comparison})`,
     ];
   });
-  if (!clauses.length) return baseUrl;
   try {
     const url = new URL(baseUrl);
-    url.searchParams.set("ZOHO_CRITERIA", clauses.join(" AND "));
+    if (clauses.length) {
+      url.searchParams.set("ZOHO_CRITERIA", clauses.join(" AND "));
+    } else {
+      url.searchParams.delete("ZOHO_CRITERIA");
+    }
     return url.toString();
   } catch {
     return baseUrl;
@@ -102,12 +130,12 @@ function sanitizeUrlOverrides(value: unknown): ZohoPortalUrlOverrides {
   if (!value || typeof value !== "object" || Array.isArray(value)) return {};
   const candidate = value as Record<string, unknown>;
   return Object.fromEntries(
-    portal.pages.flatMap((page) => {
-      const rawUrl = candidate[page.id];
+    portalViews.flatMap((view) => {
+      const rawUrl = candidate[view.id];
       if (typeof rawUrl !== "string") return [];
       const cleanUrl = rawUrl.trim();
       return cleanUrl && isSecuredZohoUrl(cleanUrl)
-        ? [[page.id, cleanUrl]]
+        ? [[view.id, cleanUrl]]
         : [];
     }),
   );
@@ -118,14 +146,17 @@ function buildHandoff(urls: ZohoPortalUrlOverrides): ZohoPortalHandoff {
     schema: handoffSchema,
     generatedAt: new Date().toISOString(),
     authMode: "zoho_secured_login",
+    integrationMode: "individual_report_views",
     note:
-      "Secured Zoho iframe src URLs only. This file must not contain passwords, OAuth tokens, client secrets, or operational rows.",
-    dashboards: Object.fromEntries(
-      portal.pages.map((page) => [
-        page.id,
+      "Secured Zoho iframe src URLs for individual saved views only. This file must not contain passwords, OAuth tokens, client secrets, or operational rows.",
+    views: Object.fromEntries(
+      portalViews.map((view) => [
+        view.id,
         {
-          dashboardViewName: page.dashboardViewName,
-          securedEmbedUrl: urls[page.id]?.trim() ?? "",
+          pageId: view.pageId,
+          slotKind: view.slotKind,
+          zohoViewName: view.zohoViewName,
+          securedEmbedUrl: urls[view.id]?.trim() ?? "",
         },
       ]),
     ),
@@ -140,22 +171,27 @@ function parseHandoff(value: unknown): ZohoPortalUrlOverrides {
   if (
     candidate.schema !== handoffSchema ||
     candidate.authMode !== "zoho_secured_login" ||
-    !candidate.dashboards ||
-    typeof candidate.dashboards !== "object"
+    candidate.integrationMode !== "individual_report_views" ||
+    !candidate.views ||
+    typeof candidate.views !== "object"
   ) {
-    throw new Error("Use an ABNAH secured-embed handoff v1 JSON file.");
+    throw new Error(
+      "Use an ABNAH individual-report secured-embed handoff v2 JSON file.",
+    );
   }
   const urls = Object.fromEntries(
-    portal.pages.map((page) => {
-      const dashboard = candidate.dashboards?.[page.id];
+    portalViews.map((view) => {
+      const handoffView = candidate.views?.[view.id];
       const url =
-        dashboard && typeof dashboard.securedEmbedUrl === "string"
-          ? dashboard.securedEmbedUrl.trim()
+        handoffView && typeof handoffView.securedEmbedUrl === "string"
+          ? handoffView.securedEmbedUrl.trim()
           : "";
       if (url && !isSecuredZohoUrl(url)) {
-        throw new Error(`${page.label}: the embed URL is not an approved HTTPS Zoho Analytics URL.`);
+        throw new Error(
+          `${view.zohoViewName}: the embed URL is not an approved HTTPS Zoho Analytics URL.`,
+        );
       }
-      return [page.id, url];
+      return [view.id, url];
     }),
   );
   return sanitizeUrlOverrides(urls);
@@ -363,12 +399,98 @@ function PanelPreview({ type }: { type: ZohoPortalPreview }) {
   return <PlaceholderTable />;
 }
 
+function ReportEmbed({
+  baseUrl,
+  pageId,
+  title,
+  values,
+  view,
+}: {
+  baseUrl: string;
+  pageId: string;
+  title: string;
+  values: FilterValues;
+  view: PortalView;
+}) {
+  const src = useMemo(
+    () =>
+      buildCriteriaUrl(
+        baseUrl,
+        getReportFilterBindings(pageId, view),
+        values,
+      ),
+    [baseUrl, pageId, values, view],
+  );
+
+  return (
+    <div className="portal-report-embed">
+      <iframe
+        key={src}
+        src={src}
+        title={`${title} - Zoho Analytics`}
+        loading="lazy"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+      />
+    </div>
+  );
+}
+
+function FilteredViewNotice() {
+  return (
+    <div className="portal-filtered-view">
+      <span>Excluded by the selected risk scope</span>
+    </div>
+  );
+}
+
+function AccessGate({
+  onContinue,
+  standalone,
+}: {
+  onContinue: () => void;
+  standalone: boolean;
+}) {
+  return (
+    <section className={`portal-access-gate${standalone ? " is-standalone" : ""}`}>
+      <div className="portal-access-card">
+        <span className="portal-access-mark">
+          <ShieldCheck aria-hidden="true" size={22} />
+        </span>
+        <p className="section-kicker">Secured analytics access</p>
+        <h1>{portal.portalName}</h1>
+        <p>
+          Sign in with the Zoho Analytics account that has been granted access
+          to the ABNAH reports, then return here to open the control tower.
+        </p>
+        <div>
+          <a href={portal.auth.loginUrl} target="_blank" rel="noreferrer">
+            <LogIn aria-hidden="true" size={15} />
+            Sign in with Zoho
+          </a>
+          <button type="button" onClick={onContinue}>
+            <Check aria-hidden="true" size={15} />
+            Continue after sign-in
+          </button>
+        </div>
+        <small>
+          Report access is verified by Zoho. The outer portal does not receive
+          or store your password.
+        </small>
+      </div>
+    </section>
+  );
+}
+
 export function EmbeddedControlTowerPortal({
   standalone = false,
 }: {
   standalone?: boolean;
 }) {
   const [pageId, setPageId] = useState(portal.pages[0]?.id ?? "p1");
+  const [configPageId, setConfigPageId] = useState(
+    portal.pages[0]?.id ?? "p1",
+  );
   const [mode, setMode] = useState<PortalMode>("blueprint");
   const [filters, setFilters] = useState<PageFilterValues>(initialFilters);
   const [appliedFilters, setAppliedFilters] =
@@ -377,42 +499,126 @@ export function EmbeddedControlTowerPortal({
   const [draftUrls, setDraftUrls] = useState<ZohoPortalUrlOverrides>({});
   const [configOpen, setConfigOpen] = useState(false);
   const [configMessage, setConfigMessage] = useState("");
+  const [accessReady, setAccessReady] = useState(!standalone);
   const handoffInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const hydrateStoredUrls = globalThis.setTimeout(() => {
       try {
         const stored = globalThis.localStorage?.getItem(urlStorageKey);
-        if (!stored) return;
-        const parsed = sanitizeUrlOverrides(JSON.parse(stored));
-        setUrlOverrides(parsed);
-        setDraftUrls(parsed);
+        if (stored) {
+          const parsed = sanitizeUrlOverrides(JSON.parse(stored));
+          setUrlOverrides(parsed);
+          setDraftUrls(parsed);
+        }
       } catch {
         globalThis.localStorage?.removeItem(urlStorageKey);
       }
+      if (
+        standalone &&
+        globalThis.sessionStorage?.getItem(accessStorageKey) === "ready"
+      ) {
+        setAccessReady(true);
+      }
     }, 0);
     return () => globalThis.clearTimeout(hydrateStoredUrls);
-  }, []);
+  }, [standalone]);
 
   const page = portal.pages.find((item) => item.id === pageId) ?? portal.pages[0]!;
-  const configuredUrl = urlOverrides[page.id] || page.dashboardEmbedUrl;
-  const configuredCount = portal.pages.filter(
-    (item) => urlOverrides[item.id] || item.dashboardEmbedUrl,
+  const configPage =
+    portal.pages.find((item) => item.id === configPageId) ?? portal.pages[0]!;
+  const configuredCount = portalViews.filter(
+    (view) => urlOverrides[view.id],
   ).length;
-  const liveUrl = useMemo(
-    () =>
-      buildCriteriaUrl(
-        configuredUrl,
-        page,
-        appliedFilters[page.id] ?? {},
-      ),
-    [appliedFilters, configuredUrl, page],
-  );
+  const configuredPageCount = [...page.metrics, ...page.panels].filter(
+    (view) => urlOverrides[view.id],
+  ).length;
+  const configPageViews = [
+    ...configPage.metrics.map((view) => ({
+      ...view,
+      slotKind: "kpi" as const,
+    })),
+    ...configPage.panels.map((view) => ({
+      ...view,
+      slotKind: "report" as const,
+    })),
+  ];
+
+  const continueAfterSignIn = () => {
+    globalThis.sessionStorage?.setItem(accessStorageKey, "ready");
+    setAccessReady(true);
+  };
+
+  const openConfiguration = () => {
+    setConfigPageId(page.id);
+    setDraftUrls(urlOverrides);
+    setConfigOpen(true);
+    setConfigMessage("");
+  };
+
+  const configuredUrlFor = (view: PortalView) =>
+    urlOverrides[view.id] ||
+    ("embedUrl" in view && typeof view.embedUrl === "string"
+      ? view.embedUrl
+      : "");
+
+  const viewIsVisible = (view: PortalView) =>
+    isViewVisibleForFilters(
+      page.id,
+      view,
+      appliedFilters[page.id] ?? {},
+    );
+
+  const renderMetricBody = (metric: ZohoPortalMetric) => {
+    const configuredUrl = configuredUrlFor(metric);
+    if (mode === "live" && configuredUrl) {
+      if (!viewIsVisible(metric)) return <FilteredViewNotice />;
+      return (
+        <ReportEmbed
+          baseUrl={configuredUrl}
+          pageId={page.id}
+          title={metric.title}
+          values={appliedFilters[page.id] ?? {}}
+          view={metric}
+        />
+      );
+    }
+    return (
+      <>
+        <strong>{metric.expectedValue}</strong>
+        <p>{metric.detail}</p>
+      </>
+    );
+  };
+
+  const renderPanelBody = (panel: ZohoPortalPanel) => {
+    const configuredUrl = configuredUrlFor(panel);
+    if (mode === "live" && configuredUrl) {
+      if (!viewIsVisible(panel)) return <FilteredViewNotice />;
+      return (
+        <ReportEmbed
+          baseUrl={configuredUrl}
+          pageId={page.id}
+          title={panel.title}
+          values={appliedFilters[page.id] ?? {}}
+          view={panel}
+        />
+      );
+    }
+    return <PanelPreview type={panel.preview} />;
+  };
+
+  const pageViewCount = page.metrics.length + page.panels.length;
 
   const changePage = (nextId: string) => {
     setPageId(nextId);
     const target = portal.pages.find((item) => item.id === nextId);
-    if (!(urlOverrides[nextId] || target?.dashboardEmbedUrl)) {
+    if (
+      !target ||
+      ![...target.metrics, ...target.panels].some(
+        (view) => urlOverrides[view.id],
+      )
+    ) {
       setMode("blueprint");
     }
   };
@@ -424,6 +630,12 @@ export function EmbeddedControlTowerPortal({
     }));
   };
 
+  const applyFilters = () =>
+    setAppliedFilters((current) => ({
+      ...current,
+      [page.id]: filters[page.id] ?? {},
+    }));
+
   const resetFilters = () => {
     const values = Object.fromEntries(
       page.filters.map((filter) => [filter.id, filter.defaultValue]),
@@ -433,19 +645,25 @@ export function EmbeddedControlTowerPortal({
   };
 
   const saveUrls = () => {
-    const invalidPage = portal.pages.find(
-      (item) => draftUrls[item.id] && !isSecuredZohoUrl(draftUrls[item.id]),
+    const invalidView = portalViews.find(
+      (view) => draftUrls[view.id] && !isSecuredZohoUrl(draftUrls[view.id]),
     );
-    if (invalidPage) {
-      setConfigMessage(`${invalidPage.label}: enter an HTTPS Zoho Analytics URL.`);
+    if (invalidView) {
+      setConfigMessage(
+        `${invalidView.zohoViewName}: enter an HTTPS Zoho Analytics URL.`,
+      );
       return;
     }
     const cleaned = Object.fromEntries(
-      Object.entries(draftUrls).map(([key, value]) => [key, value.trim()]),
+      Object.entries(draftUrls)
+        .map(([key, value]) => [key, value.trim()])
+        .filter(([, value]) => value),
     );
     setUrlOverrides(cleaned);
     globalThis.localStorage?.setItem(urlStorageKey, JSON.stringify(cleaned));
-    setConfigMessage("Zoho view URLs saved in this browser.");
+    setConfigMessage(
+      `${Object.keys(cleaned).length} individual Zoho view URLs saved in this browser.`,
+    );
   };
 
   const clearUrls = () => {
@@ -453,7 +671,7 @@ export function EmbeddedControlTowerPortal({
     setUrlOverrides({});
     setMode("blueprint");
     globalThis.localStorage?.removeItem(urlStorageKey);
-    setConfigMessage("Browser-local Zoho view URLs cleared.");
+    setConfigMessage("Browser-local Zoho report URLs cleared.");
   };
 
   const downloadHandoff = () => {
@@ -464,10 +682,12 @@ export function EmbeddedControlTowerPortal({
     const url = URL.createObjectURL(blob);
     const anchor = document.createElement("a");
     anchor.href = url;
-    anchor.download = "abnah-zoho-secured-embed-handoff.json";
+    anchor.download = "abnah-zoho-report-embed-handoff.json";
     anchor.click();
     URL.revokeObjectURL(url);
-    setConfigMessage("One-file handoff downloaded. It contains no credentials or report rows.");
+    setConfigMessage(
+      "One-file report handoff downloaded. It contains no credentials or report rows.",
+    );
   };
 
   const importHandoff = async (file: File | undefined) => {
@@ -478,11 +698,13 @@ export function EmbeddedControlTowerPortal({
       setUrlOverrides(urls);
       globalThis.localStorage?.setItem(urlStorageKey, JSON.stringify(urls));
       setConfigMessage(
-        `${Object.keys(urls).length} secured Zoho dashboard URLs imported and saved in this browser.`,
+        `${Object.keys(urls).length} secured Zoho report URLs imported and saved in this browser.`,
       );
     } catch (error) {
       setConfigMessage(
-        error instanceof Error ? error.message : "The Zoho handoff file could not be read.",
+        error instanceof Error
+          ? error.message
+          : "The Zoho handoff file could not be read.",
       );
     } finally {
       if (handoffInputRef.current) handoffInputRef.current.value = "";
@@ -490,6 +712,14 @@ export function EmbeddedControlTowerPortal({
   };
 
   if (!page) return null;
+  if (!accessReady) {
+    return (
+      <AccessGate
+        onContinue={continueAfterSignIn}
+        standalone={standalone}
+      />
+    );
+  }
 
   return (
     <section
@@ -527,12 +757,8 @@ export function EmbeddedControlTowerPortal({
           </a>
           <button
             type="button"
-            onClick={() => {
-              setDraftUrls(urlOverrides);
-              setConfigOpen(true);
-              setConfigMessage("");
-            }}
-            title="Configure secured Zoho dashboard URLs"
+            onClick={openConfiguration}
+            title="Configure individual secured Zoho report URLs"
           >
             <Settings2 aria-hidden="true" size={15} />
             Configure
@@ -558,136 +784,93 @@ export function EmbeddedControlTowerPortal({
           <button
             type="button"
             className={mode === "live" ? "is-active" : ""}
-            disabled={!configuredUrl}
+            disabled={!configuredPageCount}
             onClick={() => setMode("live")}
           >
             <Monitor aria-hidden="true" size={14} />
-            Live Zoho
+            Live reports
           </button>
         </div>
       </div>
 
-      {mode === "live" && configuredUrl ? (
-        <div className="portal-live-stage">
-          {page.filterStrategy === "url_criteria" ? (
-            <div className="portal-filterbar is-live">
-              {page.filters.map((filter) => (
-                <FilterControl
-                  filter={filter}
-                  key={filter.id}
-                  value={filters[page.id]?.[filter.id] ?? filter.defaultValue}
-                  onChange={(value) => updateFilter(filter.id, value)}
+      <div
+        className={`portal-blueprint-stage${mode === "live" ? " is-live-reports" : ""}`}
+      >
+        <div className={`portal-filterbar${mode === "live" ? " is-live" : ""}`}>
+          {page.filters.map((filter) => (
+            <FilterControl
+              filter={filter}
+              key={filter.id}
+              value={filters[page.id]?.[filter.id] ?? filter.defaultValue}
+              onChange={(value) => updateFilter(filter.id, value)}
+            />
+          ))}
+          <div className="portal-filter-actions">
+            <button
+              type="button"
+              className="is-primary"
+              onClick={applyFilters}
+            >
+              <Check aria-hidden="true" size={14} />
+              Apply
+            </button>
+            <button type="button" onClick={resetFilters}>
+              <RefreshCcw aria-hidden="true" size={14} />
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <div className="portal-kpi-grid">
+          {page.metrics.map((metric) => (
+            <article
+              className={`portal-kpi${mode === "live" && configuredUrlFor(metric) ? " has-live-view" : ""}`}
+              key={metric.id}
+            >
+              <header>
+                <span>{metric.title}</span>
+                <i
+                  className={`capability-${metric.capability}`}
+                  title={capabilityLabels[metric.capability]}
                 />
-              ))}
-              <div className="portal-filter-actions">
-                <button
-                  type="button"
-                  className="is-primary"
-                  onClick={() =>
-                    setAppliedFilters((current) => ({
-                      ...current,
-                      [page.id]: filters[page.id] ?? {},
-                    }))
-                  }
-                >
-                  <Check aria-hidden="true" size={14} />
-                  Apply
-                </button>
-                <button type="button" onClick={resetFilters}>
-                  <RefreshCcw aria-hidden="true" size={14} />
-                  Reset
-                </button>
-              </div>
-            </div>
-          ) : null}
-          <iframe
-            key={liveUrl}
-            src={liveUrl}
-            title={`${page.title} - Zoho Analytics`}
-            loading="eager"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          />
-        </div>
-      ) : (
-        <div className="portal-blueprint-stage">
-          <div className="portal-filterbar">
-            {page.filters.map((filter) => (
-              <FilterControl
-                filter={filter}
-                key={filter.id}
-                value={filters[page.id]?.[filter.id] ?? filter.defaultValue}
-                onChange={(value) => updateFilter(filter.id, value)}
-              />
-            ))}
-            <div className="portal-filter-actions">
-              <button
-                type="button"
-                className="is-primary"
-                onClick={() =>
-                  setAppliedFilters((current) => ({
-                    ...current,
-                    [page.id]: filters[page.id] ?? {},
-                  }))
-                }
+              </header>
+              {renderMetricBody(metric)}
+              <footer
+                title={`${metric.sourceQuery} / ${metric.sourceField} / ${metric.aggregation}`}
               >
-                <Check aria-hidden="true" size={14} />
-                Apply
-              </button>
-              <button type="button" onClick={resetFilters}>
-                <RefreshCcw aria-hidden="true" size={14} />
-                Reset
-              </button>
-            </div>
-          </div>
-
-          <div className="portal-kpi-grid">
-            {page.metrics.map((metric) => (
-              <article className="portal-kpi" key={metric.id}>
-                <header>
-                  <span>{metric.title}</span>
-                  <i
-                    className={`capability-${metric.capability}`}
-                    title={capabilityLabels[metric.capability]}
-                  />
-                </header>
-                <strong>{metric.expectedValue}</strong>
-                <p>{metric.detail}</p>
-                <footer title={`${metric.sourceQuery} / ${metric.sourceField} / ${metric.aggregation}`}>
-                  {metric.zohoViewName}
-                </footer>
-              </article>
-            ))}
-          </div>
-
-          <div className="portal-panel-grid">
-            {page.panels.map((panel) => (
-              <article
-                className={`portal-panel span-${panel.span}`}
-                key={panel.id}
-              >
-                <header>
-                  <div>
-                    <h2>{panel.title}</h2>
-                    <p>{panel.subtitle}</p>
-                  </div>
-                  <span className={`capability-label state-${panel.capability}`}>
-                    {capabilityLabels[panel.capability]}
-                  </span>
-                </header>
-                <PanelPreview type={panel.preview} />
-                <footer>
-                  <code>{panel.zohoViewName}</code>
-                  <span title={panel.sourceFields.join(", ")}>
-                    <Info aria-hidden="true" size={12} />
-                    {panel.sourceFields.length} fields
-                  </span>
-                </footer>
-              </article>
-            ))}
-          </div>
+                {metric.zohoViewName}
+              </footer>
+            </article>
+          ))}
         </div>
-      )}
+
+        <div className="portal-panel-grid">
+          {page.panels.map((panel) => (
+            <article
+              className={`portal-panel span-${panel.span}${mode === "live" && configuredUrlFor(panel) ? " has-live-view" : ""}`}
+              key={panel.id}
+            >
+              <header>
+                <div>
+                  <h2>{panel.title}</h2>
+                  <p>{panel.subtitle}</p>
+                </div>
+                <span className={`capability-label state-${panel.capability}`}>
+                  {capabilityLabels[panel.capability]}
+                </span>
+              </header>
+              {renderPanelBody(panel)}
+              <footer>
+                <code>{panel.zohoViewName}</code>
+                <span title={panel.sourceFields.join(", ")}>
+                  <Info aria-hidden="true" size={12} />
+                  {panel.sourceFields.length} fields
+                </span>
+              </footer>
+            </article>
+          ))}
+        </div>
+      </div>
 
       <nav className="portal-bottom-nav" aria-label="Control tower pages">
         {portal.pages.map((item, index) => (
@@ -714,7 +897,7 @@ export function EmbeddedControlTowerPortal({
             <header>
               <div>
                 <span className="section-kicker">Browser-local configuration</span>
-                <h2 id="portal-config-title">Zoho dashboard embeds</h2>
+                <h2 id="portal-config-title">Zoho report embeds</h2>
               </div>
               <button
                 type="button"
@@ -728,22 +911,48 @@ export function EmbeddedControlTowerPortal({
               <ShieldCheck aria-hidden="true" size={16} />
               <p>
                 Use secured-login embed URLs only. Access remains controlled by
-                the Zoho users with whom each dashboard is shared. No API key
-                or OAuth secret is required for this delivery mode.
+                the Zoho users with whom each saved view is shared. Add only
+                the iframe src URL; no API key or OAuth secret is required.
               </p>
             </div>
+            <div className="portal-config-page-tabs">
+              {portal.pages.map((item, index) => {
+                const total = item.metrics.length + item.panels.length;
+                const connected = [...item.metrics, ...item.panels].filter(
+                  (view) => draftUrls[view.id],
+                ).length;
+                return (
+                  <button
+                    type="button"
+                    key={item.id}
+                    className={item.id === configPage.id ? "is-active" : ""}
+                    onClick={() => setConfigPageId(item.id)}
+                  >
+                    <span>{index + 1}</span>
+                    {connected}/{total}
+                  </button>
+                );
+              })}
+            </div>
             <div className="portal-config-fields">
-              {portal.pages.map((item, index) => (
-                <label key={item.id}>
-                  <span>Page {index + 1} / {item.label}</span>
-                  <small>{item.dashboardViewName}</small>
+              <div className="portal-config-page-heading">
+                <strong>{configPage.title}</strong>
+                <span>{configPageViews.length} individual saved views</span>
+              </div>
+              {configPageViews.map((view) => (
+                <label key={view.id}>
+                  <span>
+                    {view.slotKind === "kpi" ? "KPI" : "Report"} /{" "}
+                    {view.title}
+                  </span>
+                  <small>{view.zohoViewName}</small>
                   <input
-                    value={draftUrls[item.id] ?? ""}
+                    value={draftUrls[view.id] ?? ""}
                     placeholder="https://analytics.zoho.in/open-view/..."
                     onChange={(event) =>
                       setDraftUrls((current) => ({
                         ...current,
-                        [item.id]: event.target.value,
+                        [view.id]: event.target.value,
                       }))
                     }
                   />
@@ -762,7 +971,7 @@ export function EmbeddedControlTowerPortal({
               <button
                 type="button"
                 onClick={() => handoffInputRef.current?.click()}
-                title="Import all four secured Zoho URLs from one handoff file"
+                title="Import all individual secured Zoho report URLs"
               >
                 <Upload aria-hidden="true" size={14} />
                 Import
@@ -770,7 +979,7 @@ export function EmbeddedControlTowerPortal({
               <button
                 type="button"
                 onClick={downloadHandoff}
-                title="Download a transferable four-dashboard handoff file"
+                title="Download the transferable individual-report handoff file"
               >
                 <Download aria-hidden="true" size={14} />
                 Handoff
@@ -793,7 +1002,8 @@ export function EmbeddedControlTowerPortal({
       ) : null}
 
       <span className="portal-config-count" aria-live="polite">
-        {configuredCount} of {portal.pages.length} Zoho pages connected
+        {configuredCount} of {portalViews.length} Zoho views connected /{" "}
+        {configuredPageCount} of {pageViewCount} on this page
       </span>
     </section>
   );
