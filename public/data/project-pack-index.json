@@ -7,7 +7,7 @@
   "policy": "Tracked synthetic, documentation, code, schema, and validation artifacts only. Screenshots, real operational exports, local audit runtime data, credentials, and environment values are excluded.",
   "summary": {
     "files": 724,
-    "sizeBytes": 51202225,
+    "sizeBytes": 51202494,
     "categories": 10,
     "csvFiles": 349,
     "sqlFiles": 132,
@@ -20,7 +20,7 @@
       "label": "Final Zoho implementation",
       "description": "Production handoff imports, Query Tables, dashboard instructions, truth packs, and validation.",
       "count": 118,
-      "sizeBytes": 8161182
+      "sizeBytes": 8161308
     },
     {
       "id": "synthetic_data",
@@ -41,7 +41,7 @@
       "label": "Documentation",
       "description": "Architecture, modeling, dashboard, Zoho, external-signal, validation, and presentation guidance.",
       "count": 74,
-      "sizeBytes": 1847714
+      "sizeBytes": 1847857
     },
     {
       "id": "local_auditor",
@@ -341,8 +341,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "documentation",
-      "sizeBytes": 10395,
-      "sha256": "783ca83c5bc556b3512f831d505943a37aa1b9f1c64fedaedb54adbab6845522",
+      "sizeBytes": 10521,
+      "sha256": "959a45191677598b0f36795c4d74df1c4a4173bd541d5c7ccd242d886762d23d",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -1264,8 +1264,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "documentation",
-      "sizeBytes": 62261,
-      "sha256": "12cb3f05b0b2a0875f96868c6d728d579d88e372eae9166cafc9303d7adae97e",
+      "sizeBytes": 62278,
+      "sha256": "73c8b23be313a27951921e81b5855ad808851c4beb5d9ac945c7ebda1fa86f58",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -2057,8 +2057,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "final_zoho",
-      "sizeBytes": 10395,
-      "sha256": "783ca83c5bc556b3512f831d505943a37aa1b9f1c64fedaedb54adbab6845522",
+      "sizeBytes": 10521,
+      "sha256": "959a45191677598b0f36795c4d74df1c4a4173bd541d5c7ccd242d886762d23d",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -2734,7 +2734,7 @@
       "kind": "CSV data",
       "category": "final_zoho",
       "sizeBytes": 25101,
-      "sha256": "121393d806c4152dc87141a89b318463d384de10c7c7018b73cc6ba75933990d",
+      "sha256": "5a2ba5d19ed3acd76d4e52351702bdcc277b4dd8fd39f13a4d02454b2d57570e",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""

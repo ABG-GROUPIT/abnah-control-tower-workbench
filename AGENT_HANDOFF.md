@@ -21,6 +21,9 @@ Maintain a screenshot-free, evidence-disciplined understanding of ABNAH's Restro
 8. Archive unknown duplicate placeholders rather than deleting or guessing them.
 9. Never commit a Zoho private permalink, OAuth token, refresh token, client
    secret, password, or operational embed response.
+10. Treat ABNAH's supplied Control Tower HTML as authoritative for page
+    structure, KPI/view naming, business intent, interaction hierarchy, and
+    target visual treatment. Treat its hard-coded values as examples only.
 
 ## Read Order
 

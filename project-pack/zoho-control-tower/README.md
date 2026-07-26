@@ -58,8 +58,9 @@ Start here:
 - `docs/ZOHO_CURRENT_WORKSPACE_MIGRATION.md`: exact continuation from a
   workspace where all 38 Query Tables, lookups and earlier formulas are already
   complete.
-- `docs/ABNAH_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md`: reference-by-reference
-  decision on Zoho native, enhanced and custom-finish visuals.
+- `docs/ABNAH_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md`: mapping from ABNAH's
+  supplied visual reference to Zoho native, enhanced and custom-finish
+  visuals.
 - `docs/zoho_control_tower_v2_dashboard_click_by_click.md`
 - `docs/ZOHO_EMBEDDED_PORTAL_SETUP.md`: secured-login embedding,
   browser-local URL configuration, hosting boundaries and custom-chart

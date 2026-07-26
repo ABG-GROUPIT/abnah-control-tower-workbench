@@ -2,9 +2,11 @@
 
 ## Decision
 
-The ABNAH HTML reference is a presentation prototype, not a calculation
-source. Its four-page information architecture is retained, while every final
-number must come from the approved 38-Query-Table model.
+The HTML is the visual reference supplied directly by ABNAH. It is therefore
+authoritative for the four-page information architecture, KPI and view naming,
+business intent, interaction hierarchy, and target visual treatment. It is not
+a calculation source: every final number must come from the approved
+38-Query-Table model.
 
 Use these implementation classes:
 
@@ -14,8 +16,9 @@ Use these implementation classes:
 | Zoho enhanced | Zoho's native analytical view is more useful than the reference rendering | Use the better Zoho view while retaining the reference title and business purpose |
 | Custom finish | Zoho can provide the data, but not the exact reference interaction or chart geometry | Use the stated native fallback for the MVP; add a custom component only after the Zoho report reconciles |
 
-The reference source contains hard-coded example values. Page 4 is especially
-important: its values must never be copied into the production dashboard.
+The ABNAH-provided reference contains hard-coded example values. Page 4 is
+especially important: its values must never be copied into the production
+dashboard.
 
 ## Final Page 1 - Risk Action Center
 
@@ -163,4 +166,3 @@ tokens, refresh tokens and client secrets remain server-side.
 - [Zoho dashboard filters](https://www.zoho.com/analytics/help/dashboard/filter.html)
 - [Zoho KPI widgets](https://www.zoho.com/analytics/help/dashboard/kpi-widgets.html)
 - [Embedding Zoho views](https://www.zoho.com/analytics/help/publishing/embed-reports.html)
-
