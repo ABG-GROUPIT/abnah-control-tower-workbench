@@ -86,19 +86,55 @@ export interface ZohoPortalConfig {
 }
 
 export type ZohoPortalUrlOverrides = Record<string, string>;
+export type ZohoPortalDashboardUrlOverrides = Record<string, string>;
+
+export interface ZohoPortalHandoffReport {
+  viewName: string;
+  securedViewUrl: string;
+}
 
 export interface ZohoPortalHandoffPage {
   dashboardViewName: string;
-  securedDashboardEmbedUrl: string;
+  securedDashboardFallbackUrl: string;
+  reports: Record<string, ZohoPortalHandoffReport>;
 }
 
 export interface ZohoPortalHandoff {
-  schema: "abnah-zoho-dashboard-embed-handoff/v3";
+  schema: "abnah-zoho-view-handoff/v4";
   generatedAt?: string;
   authMode: "zoho_secured_login";
-  integrationMode: "page_dashboard_views";
+  integrationMode: "individual_report_views_with_dashboard_fallbacks";
   note?: string;
   pages: Record<string, ZohoPortalHandoffPage>;
+}
+
+export interface ZohoPortalUrlMaps {
+  reports: ZohoPortalUrlOverrides;
+  dashboards: ZohoPortalDashboardUrlOverrides;
+}
+
+export interface ZohoPortalConfigEnvelope {
+  handoff: ZohoPortalHandoff;
+  version: number;
+  updatedAt: string | null;
+  updatedBy: string | null;
+}
+
+export interface ZohoPortalAuthSession {
+  authenticated: boolean;
+  configured: boolean;
+  canConfigure: boolean;
+  expiresAt?: number;
+  missingEnvironment?: string[];
+  user?: {
+    displayName: string;
+    email: string;
+  };
+  workspace?: {
+    id: string;
+    name: string;
+    organizationId: string;
+  };
 }
 
 export interface ZohoPortalFilterBinding {

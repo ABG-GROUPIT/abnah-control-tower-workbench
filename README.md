@@ -64,7 +64,8 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
   model/delivery decision.
 - `Live portal`: a separate `/portal/` delivery page with the four-page layout
   from ABNAH's supplied visual reference, synthetic acceptance baselines,
-  one-file secured Zoho embed handoff, and explicit native/custom boundaries.
+  verified Zoho OAuth access, a shared individual-view handoff, report-specific
+  filters, dashboard fallbacks, and explicit native/custom boundaries.
 - `Data quality`: severity-tiered issue register, passed-control ledger, safe
   hosted evidence, and optional in-browser loading of the private local packet.
 - `Architecture`: one-object-at-a-time KPI/chart stories plus a separate
@@ -77,10 +78,11 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
 
 Hosted handoff:
 [ABNAH Control Tower Workbench](https://abg-groupit.github.io/abnah-control-tower-workbench/).
-Standalone delivery portal:
-[ABNAH Live Portal](https://abg-groupit.github.io/abnah-control-tower-workbench/portal/).
 The GitHub Pages build publishes the complete library while continuing to
 exclude screenshots, real POSist exports, local audit rows, and credentials.
+The authenticated `/portal` requires the Worker/Sites runtime because static
+GitHub Pages cannot run OAuth callbacks or D1. See
+`docs/ZOHO_PORTAL_RUNTIME.md`.
 
 ## Start Here
 
@@ -88,6 +90,7 @@ Developer:
 
 1. Read `project-pack/README.md`, `docs/ARCHITECTURE.md`,
    `docs/CONTROL_TOWER_KPI_AND_CHART_LINEAGE_HANDBOOK.md`,
+   `docs/ZOHO_PORTAL_RUNTIME.md`,
    `docs/PRESENTATION_SAFE_ACTUAL_DATA_ISSUES.md`, and
    `docs/STRUCTURAL_SCHEMA_METHOD.md`.
 2. Run `npm install`.

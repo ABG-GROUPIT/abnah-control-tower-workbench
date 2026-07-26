@@ -8,7 +8,6 @@ type PortalView = ZohoPortalMetric | ZohoPortalPanel;
 
 const periodExclusions = new Set([
   "CT_P2_Ingredient_Price_Trend",
-  "CT_P3_Consumption_Bridge",
   "CT_P3_Sales_Trend",
   "CT_P4_SCM_Monthly_Trend",
   "CT_P4_Consumption_Variance_Trend",

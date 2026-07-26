@@ -41,10 +41,42 @@ test("server-renders the delivery portal as a separate route", async () => {
   const html = await response.text();
   assert.match(html, /<title>ABNAH Supply Chain Control Tower<\/title>/i);
   assert.match(html, /ABNAH Supply Chain Control Tower/);
-  assert.match(html, /Secured analytics access/);
-  assert.match(html, /Sign in with Zoho/);
-  assert.match(html, /Continue after sign-in/);
+  assert.match(html, /Verified analytics access/);
+  assert.match(html, /Checking this browser for a verified Zoho Analytics session/);
+  assert.match(html, /Verifying session/);
+  assert.doesNotMatch(html, /Continue after sign-in/);
   assert.doesNotMatch(html, /Schema discovery|Report catalogue/);
+});
+
+test("protects the shared Zoho URL handoff and ships the v4 contract", async () => {
+  const response = await render("/api/zoho-portal-config");
+  assert.equal(response.status, 401);
+  assert.deepEqual(await response.json(), {
+    error: "Verified Zoho Analytics access is required.",
+  });
+
+  const handoff = JSON.parse(
+    await readFile(
+      new URL(
+        "../config/zoho-secured-embed-handoff.example.json",
+        import.meta.url,
+      ),
+      "utf8",
+    ),
+  );
+  assert.equal(handoff.schema, "abnah-zoho-view-handoff/v4");
+  assert.equal(
+    handoff.integrationMode,
+    "individual_report_views_with_dashboard_fallbacks",
+  );
+  assert.equal(Object.keys(handoff.pages).length, 4);
+  assert.equal(
+    Object.values(handoff.pages).reduce(
+      (total, page) => total + Object.keys(page.reports).length,
+      0,
+    ),
+    19,
+  );
 });
 
 test("ships screenshot-free workspace and control-tower contracts", async () => {
