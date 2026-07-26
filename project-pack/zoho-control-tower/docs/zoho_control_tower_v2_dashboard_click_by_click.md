@@ -1,538 +1,1697 @@
-# Zoho Control Tower v2 - Exact Dashboard Build
+# ABNAH Zoho Dashboard Click-By-Click Build Manual
 
-## Purpose
+This is the working manual to keep open while building in Zoho Analytics.
+It contains execution steps, not data-model theory.
 
-Build one Zoho Analytics dashboard with four tabs:
+Build the four dashboards in this order:
 
-1. Risk Action Center
-2. Procurement, Vendor & Capital Control
-3. Consumption Variance & Menu Profitability
-4. SCM Descriptive Explorer & Data Quality
+1. `CT_PAGE_1_Risk_Action_Center`
+2. `CT_PAGE_2_Procurement_Vendor_Capital`
+3. `CT_PAGE_3_Consumption_Menu_Profitability`
+4. `CT_PAGE_4_SCM_Explorer_Data_Quality`
 
-Use **consumption**, not yield, on Page 3.
+Use **consumption**, not **yield**, on Page 3.
 
-This guide uses the exact Query Table names saved in Zoho. It does not use
-logical aliases. Complete
-`ZOHO_LOOKUPS_AGGREGATE_FORMULAS_AND_PRE_DASHBOARD_SETUP.md` before starting.
+## Before Clicking Anything
 
-## Read This Before Building A Widget
+1. Confirm Query Tables `01` through `38` have been saved successfully.
+2. Confirm the lookup relationships in
+   `03A_LOOKUPS_FORMULAS_AND_PRE_DASHBOARD_SETUP.md` are complete.
+3. Keep all Aggregate Formulas already created. Do not delete them.
+4. Confirm these four Aggregate Formulas exist:
 
-Zoho has two different metric paths:
-
-| Metric type | Build object | Where the metric appears |
-| --- | --- | --- |
-| Sum, average, count or distinct count of a physical field | Direct KPI Widget | Physical field appears in **Data Column** |
-| Ratio or weighted rate defined as an Aggregate Formula | Saved Summary View | Formula appears in the report designer, not reliably in the KPI Widget **Data Column** list |
-
-Never search for a business label such as `Working Capital Locked`, `Open Risky
-PO Count` or `Consumption Leakage Value` in the direct widget Data Column list.
-Select the exact physical column specified in this guide, then type the
-business label in **Settings > Primary Value > Label**.
-
-The only Aggregate Formulas required for this dashboard are:
-
-| Physical table | Aggregate Formula |
+| Query Table | Aggregate Formula |
 | --- | --- |
 | `23_fact_ct_purchase_receipt.sql` | `Weighted Unit Price` |
 | `24_fact_ct_po_receipt_line.sql` | `PO Fill Rate %` |
 | `24_fact_ct_po_receipt_line.sql` | `Vendor OTIF %` |
 | `25_fact_ct_menu_profitability.sql` | `Menu Gross Margin %` |
 
-The formula symbols used inside the Aggregate Formula editor are formula
-syntax. They are never typed into a report filter.
+5. Build the saved reports first.
+6. Create the dashboard after its saved reports are ready.
+7. Create KPI Widgets inside the dashboard.
+8. Add Dashboard User Filters last.
+9. Validate the default results before changing colors or sharing URLs.
 
-## One-Time SQL Correction
+## KPI Click Register
 
-If Queries 01-38 were created before this guide was updated, replace and save
-only these five Query Tables, in this order:
+Use this register to check the selections in each KPI editor. The detailed
+clicks appear in the page sections below.
 
-1. `20_fact_ct_actual_consumption.sql`
-2. `21_fact_ct_consumption_variance.sql`
-3. `24_fact_ct_po_receipt_line.sql`
-4. `31_sum_ct_price_movement.sql`
-5. `33_sum_ct_scm_monthly.sql`
+| Page | KPI label | Source table | Data Column / value | Calculation | Fixed filter | Expected default |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | Restaurants at Risk | `27_fact_ct_inventory_risk.sql` | `outlet_code` | Count Distinct | `risk_type`: Include `STOCKOUT` | `3` |
+| 1 | Menu Items Impacted | `28_fact_ct_menu_impact.sql` | `menu_item_code` | Count Distinct | None | `110` |
+| 1 | Stockout Risk | `28_fact_ct_menu_impact.sql` | `allocated_forecast_net_sales_at_risk` | Sum | None | `INR 411,695.55` |
+| 1 | Expiry Risk | `38_fact_ct_expiry_risk.sql` | `expiry_risk_value` | Sum | None | `INR 271,399.12` |
+| 1 | Open Actions | `27_fact_ct_inventory_risk.sql` | `action_id` | Count Distinct | `risk_type`: Include `STOCKOUT` | `6` |
+| 2 | Monthly Purchase | `29_sum_ct_procurement_funnel.sql` | `ordered_value` | Sum | None | `INR 1,565,981.32` |
+| 2 | Open PO Exposure | `29_sum_ct_procurement_funnel.sql` | `pending_value` | Sum | None | `INR 177,145.39` |
+| 2 | Delayed PO Value | `29_sum_ct_procurement_funnel.sql` | `delayed_value` | Sum | None | `INR 156,529.82` |
+| 2 | Avg OTIF | `24_fact_ct_po_receipt_line.sql` | Aggregate Formula `Vendor OTIF %` | Saved Summary View | None | `53.70%` |
+| 2 | Price Watch | `31_sum_ct_price_movement.sql` | `item_code` | Count Distinct | None | `42` |
+| 3 | Net Sales | `25_fact_ct_menu_profitability.sql` | `net_sales` | Sum | None | `INR 2,192,475.48` |
+| 3 | Theoretical COGS | `25_fact_ct_menu_profitability.sql` | `theoretical_cogs` | Sum | None | `INR 393,664.46` |
+| 3 | Gross Margin | `25_fact_ct_menu_profitability.sql` | Aggregate Formula `Menu Gross Margin %` | Saved Summary View | None | `82.04%` |
+| 3 | Menu Items | `25_fact_ct_menu_profitability.sql` | `menu_item_code` | Count Distinct | None | `110` |
+| 3 | Consumption Leakage | `21_fact_ct_consumption_variance.sql` | `leakage_value` | Sum | None | `INR 38,632.37` |
+| 4 | Closing Stock Value | `33_sum_ct_scm_monthly.sql` | `closing_stock_value` | Sum | None | `INR 3,344,237.44` |
+| 4 | Open PO Snapshot | `33_sum_ct_scm_monthly.sql` | `open_po_value` | Sum | None | `INR 177,145.39` |
+| 4 | Monthly Sales | `33_sum_ct_scm_monthly.sql` | `net_sales` | Sum | None | `INR 2,192,475.48` |
+| 4 | Actual Consumption | `33_sum_ct_scm_monthly.sql` | `actual_consumption_value` | Sum | None | `INR 377,620.25` |
+| 4 | Variance Value | `21_fact_ct_consumption_variance.sql` | `signed_consumption_variance_value` | Sum | None | `INR -22,106.87` |
 
-Do not recreate Queries 01-19, 22-23, 25-30, 32 or 34-38.
+For direct KPI Widgets, select the physical Data Column and Calculation shown
+above. For `Vendor OTIF %` and `Menu Gross Margin %`, create the one-value
+**Summary View** described below. Do not try to find an Aggregate Formula in
+the direct KPI Widget's Data Column selector.
 
-Confirm these physical columns now appear:
+Keep `PO Fill Rate %` for the Page 2 Vendor Scorecard values. It is not one of
+the five Page 2 header cards.
 
-| Query Table | Required new physical columns |
+## Exact Fixed-Filter Click Sequence
+
+Use these steps whenever this manual says **add a fixed filter**:
+
+1. Open the saved report in **Edit Design**.
+2. Find the field named in the instruction.
+3. Drag that field to the **Filters** shelf.
+4. Choose **Individual Values**.
+5. Choose **Include**.
+6. Tick only the exact value named in the instruction.
+7. Click **Apply**.
+8. Click **Save**.
+
+Do not type SQL operators such as `<>`, `IN`, or `=` into the Zoho report
+interface.
+
+Use these exact fixed-filter selections:
+
+| Object | Filter shelf selection |
 | --- | --- |
-| Query 20 | `bridge_transfer_out_qty`, `bridge_return_qty`, `bridge_closing_qty` |
-| Query 21 | `signed_consumption_variance_value`, `consumption_variance_direction` |
-| Query 24 | `eligible_lead_time_deviation_days` |
-| Query 31 | `price_comparison_key`, `unit_price_change_percent`, `absolute_unit_price_change_percent`, `price_movement_direction` |
-| Query 33 | `working_capital_value` |
+| Restaurants at Risk KPI | `risk_type`: Individual Values, Include `STOCKOUT` |
+| Open Actions KPI | `risk_type`: Individual Values, Include `STOCKOUT` |
+| `CT_P1_Outlet_Risk_Map` | `risk_type`: Individual Values, Include `STOCKOUT` |
+| `CT_P1_Action_Center` | `risk_type`: Individual Values, Include `STOCKOUT` |
+| `CT_P1_Stockout_Risk_Detail` | `risk_type`: Individual Values, Include `STOCKOUT` |
+| `CT_P2_Pending_By_Vendor` | `is_open_po`: Individual Values, Include `1` |
+| `CT_P2_Expected_Delivery_Breach` | `delayed_po_flag`: Individual Values, Include `1` |
+| Negative Stock Rows tile | `exception_type`: Individual Values, Include `NEGATIVE_STOCK` |
+| Zero Stock With Demand tile | `exception_type`: Individual Values, Include `ZERO_STOCK_WITH_DEMAND` |
+| Sold Items Missing Recipe tile | `exception_type`: Individual Values, Include `SOLD_ITEM_MISSING_RECIPE` |
+| Items Missing Master tile | `exception_type`: Individual Values, Include `OPERATIONAL_ITEM_MISSING_MASTER` |
+| UOM Mismatch tile | `exception_type`: Individual Values, Include `UOM_MISMATCH_WITHOUT_CONVERSION` |
+| Open PO Missing Expected Delivery tile | `exception_type`: Individual Values, Include `OPEN_PO_MISSING_EXPECTED_DELIVERY` |
 
-Stop if any of these fields is absent. Refresh the table metadata after saving
-the Query Table, then reopen the widget/report editor.
+## Exact Dashboard-Filter Mapping Click Sequence
 
-# Part 1 - Three Zoho Build Patterns
+Use these steps for every report or KPI named in a mapping table:
 
-## Pattern A - Direct KPI Widget
+1. Open the dashboard in **Edit Design**.
+2. Hover over the report or KPI.
+3. Click **More** or the three-dot menu.
+4. Click **Options**.
+5. Open **Apply Dashboard Filters**.
+6. Click **Customize** or **Map Columns**.
+7. Select the dashboard filter.
+8. Select the exact report column written in the mapping table.
+9. Click **Apply**.
+10. Save the dashboard.
 
-Use this only when the build register names a physical Data Column.
+If the mapping table says `Do not map`, leave that dashboard filter unchecked
+for that object.
 
-1. Open the target dashboard tab.
-2. Click **Edit Design**.
-3. Click **Widget** or open **Elements > KPI**.
-4. Choose **KPI Widget**.
-5. Choose **Single Label** or **Single Number**.
-6. Open the **Data** tab.
-7. For **Table**, select the exact numbered Query Table.
-8. For **Data Column**, select the exact physical column from the register.
-9. For **Show Value As** or **Calculation**, choose the stated operation.
-10. Leave **Group By** empty.
-11. Add the fixed filter only when the register says one is required.
-12. Open **Settings > Values**.
-13. Type the exact KPI label in **Primary Value > Label**.
-14. Apply the stated number format.
-15. Leave secondary value, indicator and target blank unless this guide says
-    otherwise.
-16. Click **Apply**.
-17. Place the widget in the KPI row.
-18. Save the dashboard.
+# Page 1 - Risk Action Center
 
-If several numbers appear, **Group By** is not empty. If the business label is
-missing from Data Column, that is expected: choose the physical column instead.
+Build these reference-required saved reports:
 
-## Pattern B - Aggregate Formula KPI Tile
+1. `CT_P1_Outlet_Risk_Map`
+2. `CT_P1_Action_Center`
+3. `CT_P1_Stockout_Risk_Detail`
+4. `CT_P1_Menu_Impact_Detail`
+5. `CT_P1_Expiry_Risk_Detail_Demo`
+6. `CT_P1_Vendor_PO_Risk`
 
-Use this for `PO Fill Rate %`, `Vendor OTIF %` and `Menu Gross Margin %`.
+## P1-R01 - Outlet Risk Map
 
-1. Click **Create > New Report**.
-2. Choose **Summary View**.
-3. Select the exact physical Query Table named in the register.
-4. In the report designer, locate **Aggregate Formulas** in the left column
-   pane.
-5. Drag the named Aggregate Formula into the summary value area.
+1. Click **+ New**.
+2. Click **New Report**.
+3. Choose **Chart View**.
+4. Select source table `27_fact_ct_inventory_risk.sql`.
+5. Choose the **Map** chart type.
+6. For the outlet/location field, select `outlet_name`.
+7. For latitude, select the lookup field
+   `37_dim_ct_outlet_enriched.sql.latitude`.
+8. For longitude, select the lookup field
+   `37_dim_ct_outlet_enriched.sql.longitude`.
+9. For color, select `risk_severity_rank`.
+10. Set the aggregation of `risk_severity_rank` to **Max**.
+11. Add these tooltip fields:
+    - `outlet_name`
+    - `item_code` with **Count Distinct**
+    - `shortage_cost_value` with **Sum**
+    - `days_cover` with **Min**
+    - `risk_severity` with **Actual**
+12. Add the fixed filter:
+    - field `risk_type`
+    - Include `STOCKOUT`
+13. Open chart **Settings**.
+14. Enable **View Underlying Data**.
+15. Enable **Use as Filter**.
+16. Set severity colors:
+    - `PURPLE` -> `#6C3B8C`
+    - `RED` -> `#C63D3D`
+    - `AMBER` -> `#D49A22`
+    - `GREEN` -> `#2E7D5B`
+17. Click **Save As**.
+18. Save as `CT_P1_Outlet_Risk_Map`.
+
+If Zoho does not expose the lookup latitude and longitude fields, stop and
+repair the `outlet_code` lookup to `37_dim_ct_outlet_enriched.sql`. Do not
+manually type coordinates into the chart.
+
+## P1-R02 - Priority Action Queue
+
+1. Click **+ New**.
+2. Click **New Report**.
+3. Choose **Tabular View**.
+4. Select source table `27_fact_ct_inventory_risk.sql`.
+5. Add columns in this exact order:
+    - `action_id`
+    - `outlet_name`
+    - `item_name`
+    - `risk_severity`
+    - `shortage_qty`
+    - `shortage_cost_value`
+    - `recommended_action`
+    - `action_owner`
+    - `due_band`
+6. Add `risk_severity_rank` as a hidden sort column.
+7. Sort `risk_severity_rank` **Descending**.
+8. Add secondary sort `shortage_cost_value` **Descending**.
+9. Add the fixed filter:
+    - field `risk_type`
+    - Include `STOCKOUT`
+10. Set `shortage_cost_value` to **Currency / INR / 2 decimals**.
+11. Set `shortage_qty` to **Number / 2 decimals**.
+12. Apply conditional formatting to `risk_severity`:
+    - `PURPLE` -> background `#6C3B8C`, white text
+    - `RED` -> background `#C63D3D`, white text
+    - `AMBER` -> background `#D49A22`, dark text
+    - `GREEN` -> background `#2E7D5B`, white text
+13. Enable **View Underlying Data**.
+14. Click **Save As**.
+15. Save as `CT_P1_Action_Center`.
+
+## P1-R03 - Stockout Risk
+
+1. Click **+ New**.
+2. Click **New Report**.
+3. Choose **Tabular View**.
+4. Select source table `27_fact_ct_inventory_risk.sql`.
+5. Add columns in this exact order:
+    - `outlet_name`
+    - `item_code`
+    - `item_name`
+    - `category_name`
+    - `canonical_uom`
+    - `current_stock_qty`
+    - `forecast_required_qty`
+    - `required_qty_with_safety`
+    - `valid_open_po_qty`
+    - `shortage_qty`
+    - `days_cover`
+    - `shortage_cost_value`
+    - `risk_severity`
+6. Sort `risk_severity_rank` **Descending**.
+7. Add secondary sort `shortage_cost_value` **Descending**.
+8. Add the fixed filter:
+    - field `risk_type`
+    - Include `STOCKOUT`
+9. Set `shortage_cost_value` to **Currency / INR / 2 decimals**.
+10. Set quantity fields to **Number / 2 decimals**.
+11. Set `days_cover` to **Number / 1 decimal**.
+12. Apply the Page 1 severity colors to `risk_severity`.
+13. Enable **View Underlying Data**.
+14. Click **Save As**.
+15. Save as `CT_P1_Stockout_Risk_Detail`.
+
+## P1-R04 - Menu Impact
+
+1. Click **+ New**.
+2. Click **New Report**.
+3. Choose **Tabular View**.
+4. Select source table `28_fact_ct_menu_impact.sql`.
+5. Add columns in this exact order:
+    - `outlet_name`
+    - `ingredient_code`
+    - `ingredient_name`
+    - `risk_severity`
+    - `shortage_qty`
+    - `menu_item_code`
+    - `menu_item_name`
+    - `forecast_menu_qty`
+    - `risk_ingredient_count`
+    - `allocated_forecast_net_sales_at_risk`
+6. Sort `risk_severity` in the order `PURPLE`, `RED`, `AMBER`, `GREEN`.
+7. Add secondary sort `allocated_forecast_net_sales_at_risk`
+   **Descending**.
+8. Do not add a fixed risk filter. Query 28 already contains impact rows.
+9. Set `allocated_forecast_net_sales_at_risk` to
+   **Currency / INR / 2 decimals**.
+10. Apply the Page 1 severity colors to `risk_severity`.
+11. Enable **View Underlying Data**.
+12. Click **Save As**.
+13. Save as `CT_P1_Menu_Impact_Detail`.
+
+## P1-R05 - Expiry Risk Demo
+
+1. Click **+ New**.
+2. Click **New Report**.
+3. Choose **Tabular View**.
+4. Select source table `38_fact_ct_expiry_risk.sql`.
+5. Add columns in this exact order:
+    - `outlet_name`
+    - `item_code`
+    - `item_name`
+    - `category_name`
+    - `batch_number`
+    - `receipt_date`
+    - `grn_number`
+    - `po_number`
+    - `vendor_name`
+    - `receipt_source_status`
+    - `canonical_uom`
+    - `item_closing_qty`
+    - `estimated_fifo_tranche_qty`
+    - `expected_consumption_before_expiry`
+    - `expiry_qty_at_risk`
+    - `expiry_risk_value`
+    - `estimated_expiry_date`
+    - `days_to_expiry`
+    - `expiry_batch_risk_status`
+    - `risk_severity`
+    - `estimation_method`
+    - `production_use_status`
+6. Sort `risk_severity_rank` **Descending**.
+7. Add secondary sort `expiry_risk_value` **Descending**.
+8. Set `expiry_risk_value` to **Currency / INR / 2 decimals**.
+9. Apply the Page 1 severity colors to `risk_severity`.
+10. Open report description or subtitle settings.
+11. Enter:
+
+```text
+Synthetic demo estimate - no enabled POSIST batch/expiry source
+```
+
+12. Enable **View Underlying Data**.
+13. Click **Save As**.
+14. Save as `CT_P1_Expiry_Risk_Detail_Demo`.
+
+## P1-R06 - Vendor / PO Mitigation
+
+1. Click **+ New**.
+2. Click **New Report**.
+3. Choose **Tabular View**.
+4. Select source table `36_fact_ct_risky_po.sql`.
+5. Add columns in this exact order:
+    - `po_number`
+    - `outlet_name`
+    - `vendor_name`
+    - `item_code`
+    - `item_name`
+    - `category_name`
+    - `po_status`
+    - `expected_delivery_date`
+    - `remaining_qty`
+    - `canonical_uom`
+    - `open_po_value`
+    - `risk_severity`
+6. Sort `risk_severity` in the order `PURPLE`, `RED`, `AMBER`.
+7. Add secondary sort `open_po_value` **Descending**.
+8. Do not add an open-PO filter. Query 36 already contains only open,
+   non-green risk-linked PO rows.
+9. Set `open_po_value` to **Currency / INR / 2 decimals**.
+10. Apply the Page 1 severity colors.
+11. Enable **View Underlying Data**.
+12. Click **Save As**.
+13. Save as `CT_P1_Vendor_PO_Risk`.
+
+An empty default result is valid for this synthetic checkpoint. Do not replace
+an empty result with invented rows.
+
+## P1-D01 - Create the Dashboard
+
+1. Click **+ New**.
+2. Choose **Dashboard**.
+3. Name it `CT_PAGE_1_Risk_Action_Center`.
+4. Click **Create**.
+5. Click **Edit Design**.
+6. Add a heading text widget:
+
+```text
+Risk Action Center
+Outlet risk, stockout, expiry demonstration and owned mitigation
+```
+
+7. Add the six saved reports from the Page 1 list.
+8. Arrange:
+    - Row 1: five KPI Widgets
+    - Row 2: `CT_P1_Outlet_Risk_Map` on the left and
+      `CT_P1_Action_Center` on the right
+    - Row 3: `CT_P1_Stockout_Risk_Detail` and
+      `CT_P1_Menu_Impact_Detail`
+    - Row 4: `CT_P1_Expiry_Risk_Detail_Demo` and
+      `CT_P1_Vendor_PO_Risk`
+9. Save the dashboard.
+
+## P1-K01 - Restaurants at Risk
+
+1. Open `CT_PAGE_1_Risk_Action_Center` in **Edit Design**.
+2. Click **Widget**.
+3. Choose **KPI Widget**.
+4. Choose **Single Label**.
+5. Open the **Data** tab.
+6. Select table `27_fact_ct_inventory_risk.sql`.
+7. Select Data Column `outlet_code`.
+8. Select Calculation **Count Distinct**.
+9. Leave **Group By** blank.
+10. Open the widget **Filters** tab.
+11. Add field `risk_type`.
+12. Choose **Individual Values > Include > STOCKOUT**.
+13. Open **Settings > Primary Value**.
+14. Set label to `Restaurants at Risk`.
+15. Set format to **Whole Number**.
+16. Leave secondary value and target blank.
+17. Click **Apply**.
+18. Expected result at `month_03`, all outlets: `3`.
+
+## P1-K02 - Menu Items Impacted
+
+1. Add another **KPI Widget > Single Label**.
+2. Select table `28_fact_ct_menu_impact.sql`.
+3. Select Data Column `menu_item_code`.
+4. Select Calculation **Count Distinct**.
+5. Leave **Group By** blank.
+6. Add no fixed filter.
+7. Set label to `Menu Items Impacted`.
+8. Set format to **Whole Number**.
+9. Click **Apply**.
+10. Expected result: `110`.
+
+## P1-K03 - Stockout Risk
+
+1. Add another **KPI Widget > Single Label**.
+2. Select table `28_fact_ct_menu_impact.sql`.
+3. Select Data Column `allocated_forecast_net_sales_at_risk`.
+4. Select Calculation **Sum**.
+5. Leave **Group By** blank.
+6. Add no fixed filter.
+7. Set label to `Stockout Risk`.
+8. Set subtitle to `Forecast sales at risk - next 7 days`.
+9. Set format to **Currency / INR / 2 decimals**.
+10. Click **Apply**.
+11. Expected result: `INR 411,695.55`.
+
+## P1-K04 - Expiry Risk
+
+1. Add another **KPI Widget > Single Label**.
+2. Select table `38_fact_ct_expiry_risk.sql`.
+3. Select Data Column `expiry_risk_value`.
+4. Select Calculation **Sum**.
+5. Leave **Group By** blank.
+6. Set label to `Expiry Risk`.
+7. Set subtitle to:
+
+```text
+Synthetic demo estimate - no enabled POSIST batch/expiry source
+```
+
+8. Set format to **Currency / INR / 2 decimals**.
+9. Click **Apply**.
+10. Expected result: `INR 271,399.12`.
+
+## P1-K05 - Open Actions
+
+1. Add another **KPI Widget > Single Label**.
+2. Select table `27_fact_ct_inventory_risk.sql`.
+3. Select Data Column `action_id`.
+4. Select Calculation **Count Distinct**.
+5. Leave **Group By** blank.
+6. Add widget fixed filter:
+    - `risk_type`
+    - **Individual Values > Include > STOCKOUT**
+7. Set label to `Open Actions`.
+8. Set format to **Whole Number**.
+9. Click **Apply**.
+10. Expected result: `6`.
+
+## P1-F01 - Create Dashboard User Filters
+
+Create these filters in this exact order.
+
+### As-of Source Period
+
+1. Open the dashboard in **Edit Design**.
+2. Click **+ Add User Filters**.
+3. Select table `27_fact_ct_inventory_risk.sql`.
+4. Select column `source_period_code`.
+5. Choose **Dropdown**.
+6. Choose **Single Select**.
+7. Set label to `As-of Source Period`.
+8. Set default to `month_03`.
+9. Click **Apply**.
+
+### Region
+
+1. Click **+ Add User Filters**.
+2. Select the lookup column
+   `37_dim_ct_outlet_enriched.sql.region`.
+3. Choose **Dropdown**.
+4. Choose **Multi Select**.
+5. Set label to `Region`.
+6. Set default to **All**.
+7. Click **Apply**.
+
+### Outlet
+
+1. Click **+ Add User Filters**.
+2. Select table `27_fact_ct_inventory_risk.sql`.
+3. Select column `outlet_code`.
+4. Choose **Dropdown**.
+5. Choose **Multi Select**.
+6. Set label to `Outlet`.
+7. Set default to **All**.
+8. Click **Apply**.
+
+### Raw Material Category
+
+1. Click **+ Add User Filters**.
+2. Select table `27_fact_ct_inventory_risk.sql`.
+3. Select column `category_name`.
+4. Choose **Dropdown**.
+5. Choose **Multi Select**.
+6. Set label to `Raw Material Category`.
+7. Set default to **All**.
+8. Click **Apply**.
+
+### Action Owner
+
+1. Click **+ Add User Filters**.
+2. Select table `27_fact_ct_inventory_risk.sql`.
+3. Select column `action_owner`.
+4. Choose **Dropdown**.
+5. Choose **Multi Select**.
+6. Set label to `Action Owner`.
+7. Set default to **All**.
+8. Click **Apply**.
+
+Do not create the ABNAH `Risk Type` control in the native Zoho dashboard.
+Stockout, expiry and vendor/PO panels come from different source tables. The
+custom portal will implement this control as a section toggle after the URLs
+are handed over.
+
+## P1-F02 - Map the Dashboard Filters
+
+Repeat the dashboard-filter mapping click sequence for each row.
+
+| Object | Period | Outlet | Region | Raw Material Category | Action Owner |
+| --- | --- | --- | --- | --- | --- |
+| Both Query 27 KPI Widgets | `source_period_code` | `outlet_code` | lookup `region` | `category_name` | `action_owner` |
+| `CT_P1_Outlet_Risk_Map` | `source_period_code` | `outlet_code` | lookup `region` | `category_name` | `action_owner` |
+| `CT_P1_Action_Center` | `source_period_code` | `outlet_code` | lookup `region` | `category_name` | `action_owner` |
+| `CT_P1_Stockout_Risk_Detail` | `source_period_code` | `outlet_code` | lookup `region` | `category_name` | `action_owner` |
+| Menu Items Impacted KPI | `source_period_code` | `outlet_code` | lookup `region` | lookup `14_dim_ct_item.sql.category_name` through `ingredient_code` | Do not map |
+| Stockout Risk KPI | `source_period_code` | `outlet_code` | lookup `region` | lookup `14_dim_ct_item.sql.category_name` through `ingredient_code` | Do not map |
+| `CT_P1_Menu_Impact_Detail` | `source_period_code` | `outlet_code` | lookup `region` | lookup `14_dim_ct_item.sql.category_name` through `ingredient_code` | Do not map |
+| Expiry Risk KPI | `source_period_code` | `outlet_code` | physical `region` | `category_name` | `action_owner` |
+| `CT_P1_Expiry_Risk_Detail_Demo` | `source_period_code` | `outlet_code` | physical `region` | `category_name` | `action_owner` |
+| `CT_P1_Vendor_PO_Risk` | `source_period_code` | `outlet_code` | lookup `region` | `category_name` | Do not map |
+
+## P1 Validation
+
+1. Set `As-of Source Period` to `month_03`.
+2. Set Outlet to **All**.
+3. Confirm KPI values: `3`, `110`, `INR 411,695.55`,
+   `INR 271,399.12`, `6`.
+4. Confirm `CT_P1_Action_Center` has `6` rows.
+5. Confirm `CT_P1_Menu_Impact_Detail` has `302` rows.
+6. Confirm the expiry detail has `68` demo rows.
+7. Select `OUT001`, `OUT002`, and `OUT003` separately.
+8. Confirm every compatible KPI and report changes.
+9. Reset Outlet to **All**.
+10. Save the dashboard.
+
+# Page 2 - Procurement, Vendor & Capital Control
+
+Build these reference-required saved reports:
+
+1. `CT_P2_Procurement_Funnel`
+2. `CT_P2_Vendor_Scorecard`
+3. `CT_P2_Ingredient_Price_Trend`
+4. `CT_P2_Top_Price_Movement`
+5. `CT_P2_Pending_By_Vendor`
+6. `CT_P2_Expected_Delivery_Breach`
+
+## P2-R01 - Procurement Funnel
+
+1. Click **+ New**.
+2. Click **New Report**.
+3. Choose **Chart View**.
+4. Select source table `29_sum_ct_procurement_funnel.sql`.
+5. Choose **Horizontal Bar > Clustered**. Do not choose the native Funnel
+   chart because it accepts one value field and this object requires four.
+6. Drag `source_period_code` to the Y-axis/category shelf.
+7. Add these X-axis value fields:
+    - `ordered_value` with **Sum**
+    - `processed_value` with **Sum**
+    - `pending_value` with **Sum**
+    - `delayed_value` with **Sum**
+8. Rename the displayed measures:
+    - Ordered
+    - Processed
+    - Pending
+    - Delayed
+9. Set all four measures to **Currency / INR / 2 decimals**.
+10. Use colors:
+    - Ordered `#4164D9`
+    - Processed `#2E7D5B`
+    - Pending `#D49A22`
+    - Delayed `#C63D3D`
+11. Click **Save As**.
+12. Save as `CT_P2_Procurement_Funnel`.
+
+Do not create another Query Table just to force a funnel shape.
+
+## P2-R02 - Vendor Risk Scorecard
+
+1. Click **+ New**.
+2. Click **New Report**.
+3. Choose **Pivot View**.
+4. Select source table `24_fact_ct_po_receipt_line.sql`.
+5. Drag `vendor_name` to **Rows**.
+6. Add these values:
+    - `gross_order_value` with **Sum**
+    - `open_po_value` with **Sum**
+    - Aggregate Formula `Vendor OTIF %`
+    - Aggregate Formula `PO Fill Rate %`
+    - `eligible_lead_time_deviation_days` with **Average**
+    - `delayed_po_flag` with **Sum**
+7. Rename displayed values:
+    - Monthly Purchase
+    - Open PO Exposure
+    - OTIF %
+    - Fill Rate %
+    - Avg Lead Deviation Days
+    - Delayed Lines
+8. Set purchase and exposure to **Currency / INR / 2 decimals**.
+9. Set OTIF and Fill Rate to **Percentage / 2 decimals**.
+10. Set lead deviation to **Number / 1 decimal**.
+11. Sort `open_po_value` **Descending**.
+12. Apply conditional formatting:
+    - OTIF below `60` -> red
+    - OTIF from `60` to below `80` -> amber
+    - OTIF `80` or above -> green
+13. Add report subtitle:
+
+```text
+Formula demonstration until deterministic PO-to-GRN linkage is approved
+```
+
+14. Enable **View Underlying Data**.
+15. Click **Save As**.
+16. Save as `CT_P2_Vendor_Scorecard`.
+
+## P2-R03 - Raw Material Price Trend
+
+1. Click **+ New**.
+2. Click **New Report**.
+3. Choose **Chart View**.
+4. Select source table `23_fact_ct_purchase_receipt.sql`.
+5. Choose **Line Chart**.
+6. Drag `source_period_code` to the X-axis.
+7. Drag Aggregate Formula `Weighted Unit Price` to the Y-axis.
+8. Drag `vendor_name` to **Color/Series**.
+9. Sort `source_period_code` **Ascending**.
+10. Set the Y-axis format to **Currency / INR / 2 decimals**.
+11. Add a report User Filter:
+    - field `item_code`
+    - dropdown
+    - single select
+    - label `Raw Material`
+12. Add a second report User Filter:
+    - field `vendor_name`
+    - dropdown
+    - multi-select
+    - label `Vendor`
+13. Add a third report User Filter:
+    - field `canonical_uom`
+    - dropdown
+    - single select
+    - label `UOM`
+14. Click **Save As**.
+15. Save as `CT_P2_Ingredient_Price_Trend`.
+
+The dashboard As-of Source Period filter must not be mapped to this chart. The
+chart must keep all three periods.
+
+## P2-R04 - Top Price Movement
+
+1. Click **+ New**.
+2. Click **New Report**.
+3. Choose **Chart View**.
+4. Select source table `31_sum_ct_price_movement.sql`.
+5. Choose **Horizontal Bar**.
+6. Drag `price_comparison_key` to the Y-axis.
+7. Drag `unit_price_change_percent` to the X-axis.
+8. Set aggregation to **Max**.
+9. Drag `price_movement_direction` to **Color/Series**.
+10. Sort by `absolute_unit_price_change_percent` **Descending**.
+11. Set **Top/Bottom N** to **Top 10**.
+12. Set number format to **Percentage / 2 decimals**.
+13. Set colors:
+    - `INCREASE` -> `#C63D3D`
+    - `DECREASE` -> `#2E7D5B`
+    - `NO_CHANGE` -> `#7C8793`
+14. Enable **Use as Filter**.
+15. Click **Save As**.
+16. Save as `CT_P2_Top_Price_Movement`.
+
+## P2-R05 - Pending by Vendor
+
+1. Click **+ New**.
+2. Click **New Report**.
+3. Choose **Tabular View**.
+4. Select source table `22_fact_ct_purchase_order.sql`.
+5. Add columns in this exact order:
+    - `vendor_name`
+    - `item_code`
+    - `item_name`
+    - `category_name`
+    - `remaining_qty`
+    - `canonical_uom`
+    - `open_po_value`
+    - `expected_delivery_date`
+    - `po_number`
+    - `po_status`
+6. Add the fixed filter:
+    - field `is_open_po`
+    - Include `1`
+7. Sort `open_po_value` **Descending**.
+8. Set `open_po_value` to **Currency / INR / 2 decimals**.
+9. Set `remaining_qty` to **Number / 2 decimals**.
+10. Enable **View Underlying Data**.
+11. Click **Save As**.
+12. Save as `CT_P2_Pending_By_Vendor`.
+
+## P2-R06 - Expected Delivery Breach
+
+1. Click **+ New**.
+2. Click **New Report**.
+3. Choose **Tabular View**.
+4. Select source table `22_fact_ct_purchase_order.sql`.
+5. Add columns in this exact order:
+    - `po_number`
+    - `vendor_name`
+    - `outlet_name`
+    - `item_code`
+    - `item_name`
+    - `remaining_qty`
+    - `canonical_uom`
+    - `open_po_value`
+    - `expected_delivery_date`
+    - `as_of_date`
+    - `po_status`
+6. Add the fixed filter:
+    - field `delayed_po_flag`
+    - Include `1`
+7. Sort `expected_delivery_date` **Ascending**.
+8. Add secondary sort `open_po_value` **Descending**.
+9. Set `open_po_value` to **Currency / INR / 2 decimals**.
+10. Apply red conditional formatting to overdue rows.
+11. Enable **View Underlying Data**.
+12. Click **Save As**.
+13. Save as `CT_P2_Expected_Delivery_Breach`.
+
+## P2-D01 - Create the Dashboard
+
+1. Click **+ New**.
+2. Choose **Dashboard**.
+3. Name it `CT_PAGE_2_Procurement_Vendor_Capital`.
+4. Click **Create**.
+5. Click **Edit Design**.
+6. Add heading:
+
+```text
+Procurement, Vendor & Capital Control
+Purchase commitments, vendor reliability, delivery exposure and price movement
+```
+
+7. Add the six Page 2 saved reports.
+8. Arrange:
+    - Row 1: five KPI Widgets
+    - Row 2: Procurement Funnel and Vendor Scorecard
+    - Row 3: Raw Material Price Trend and Top Price Movement
+    - Row 4: Pending by Vendor and Expected Delivery Breach
+9. Save.
+
+## P2-K01 - Monthly Purchase
+
+1. Open the dashboard in **Edit Design**.
+2. Click **Widget > KPI Widget > Single Label**.
+3. Select table `29_sum_ct_procurement_funnel.sql`.
+4. Select Data Column `ordered_value`.
+5. Select Calculation **Sum**.
+6. Leave **Group By** blank.
+7. Set label to `Monthly Purchase`.
+8. Set subtitle to `Ordered gross value`.
+9. Set format to **Currency / INR / 2 decimals**.
+10. Click **Apply**.
+11. Expected result: `INR 1,565,981.32`.
+
+## P2-K02 - Open PO Exposure
+
+1. Add **KPI Widget > Single Label**.
+2. Select table `29_sum_ct_procurement_funnel.sql`.
+3. Select Data Column `pending_value`.
+4. Select Calculation **Sum**.
+5. Leave **Group By** blank.
+6. Set label to `Open PO Exposure`.
+7. Set format to **Currency / INR / 2 decimals**.
+8. Click **Apply**.
+9. Expected result: `INR 177,145.39`.
+
+## P2-K03 - Delayed PO Value
+
+1. Add **KPI Widget > Single Label**.
+2. Select table `29_sum_ct_procurement_funnel.sql`.
+3. Select Data Column `delayed_value`.
+4. Select Calculation **Sum**.
+5. Leave **Group By** blank.
+6. Set label to `Delayed PO Value`.
+7. Set format to **Currency / INR / 2 decimals**.
+8. Click **Apply**.
+9. Expected result: `INR 156,529.82`.
+
+## P2-K04 - Average OTIF
+
+This ratio must be a saved Summary View because it is an Aggregate Formula.
+
+1. Click **+ New**.
+2. Click **New Report**.
+3. Choose **Summary View**.
+4. Select source table `24_fact_ct_po_receipt_line.sql`.
+5. Drag Aggregate Formula `Vendor OTIF %` into the summary value area.
 6. Do not add a grouping field.
-7. Add no report filter unless the register explicitly requires one.
-8. Format the result as percentage with two decimals.
-9. Set the report title to the exact `CT_...` name.
-10. Save the Summary View.
-11. Open the dashboard in edit mode.
-12. Drag the saved Summary View onto the KPI row.
-13. Hide the report toolbar, legend and unnecessary borders.
-14. Keep the report title visible as the KPI label.
-15. Map the dashboard period and outlet filters as specified later in this
-    guide.
+7. Set label to `Avg OTIF`.
+8. Set subtitle to `Formula demo - linkage approval pending`.
+9. Set format to **Percentage / 2 decimals**.
+10. Click **Save As**.
+11. Save as `CT_P2_KPI_OTIF`.
+12. Add this Summary View to the KPI row of the Page 2 dashboard.
+13. Expected result: `53.70%`.
 
-This saved Summary View replaces a direct KPI Widget for that one ratio. Do not
-try to find the Aggregate Formula in the direct widget Data Column dropdown.
+Do not average the row-level `otif_percent` field from Query 30.
 
-## Pattern C - Fixed Report Filter
+## P2-K05 - Price Watch
 
-Zoho report filters are selected through the Filter shelf. Do not type SQL
-criteria into the interface.
+1. Add **KPI Widget > Single Label**.
+2. Select table `31_sum_ct_price_movement.sql`.
+3. Select Data Column `item_code`.
+4. Select Calculation **Count Distinct**.
+5. Leave **Group By** blank.
+6. Set label to `Price Watch`.
+7. Set subtitle to `Raw materials tracked`.
+8. Set format to **Whole Number**.
+9. Click **Apply**.
+10. Expected result: `42`.
 
-1. Open the saved report.
-2. Click **Edit Design**.
-3. Open the **Filters** tab.
-4. Drag the exact physical field to the **Filter Shelf**.
-5. Choose **Individual Values** for a text or flag field.
-6. Tick the exact value or values listed in this guide.
-7. Choose **Include**.
-8. Confirm the selected filter appears in the right-side filter-items box.
-9. Return to **View Mode**.
-10. Validate the row count or total.
-11. Save.
+## P2-F01 - Create Dashboard User Filters
 
-Example: for stockout action reports, drag `risk_type`, choose **Individual
-Values**, tick `STOCKOUT`, and choose **Include**. Do not enter comparison text.
+Create the following filters in order.
 
-# Part 2 - Direct KPI Build Register
+### As-of Source Period
 
-Every direct widget below uses **Group By: blank**.
+1. Click **+ Add User Filters**.
+2. Select table `29_sum_ct_procurement_funnel.sql`.
+3. Select `source_period_code`.
+4. Choose **Dropdown > Single Select**.
+5. Label: `As-of Source Period`.
+6. Default: `month_03`.
+7. Click **Apply**.
 
-## Page 1 - Risk Action Center KPIs
+### Region
 
-| Build order | Report name and label | Physical table | Data Column | Show Value As | Fixed report filter | Format | Default result |
-| ---: | --- | --- | --- | --- | --- | --- | ---: |
-| 1 | `CT_P1_KPI_Outlets_At_Stockout_Risk` / Outlets At Stockout Risk | `27_fact_ct_inventory_risk.sql` | `outlet_code` | Count Distinct | `risk_type`: Individual Values, Include `STOCKOUT` | Whole number | 3 |
-| 2 | `CT_P1_KPI_Menu_Items_At_Risk` / Menu Items At Risk | `28_fact_ct_menu_impact.sql` | `menu_item_code` | Count Distinct | None | Whole number | 110 |
-| 3 | `CT_P1_KPI_Stockout_Risk_Value` / Stockout Sales At Risk | `28_fact_ct_menu_impact.sql` | `allocated_forecast_net_sales_at_risk` | Sum | None | INR, 2 decimals | INR 411,695.55 |
-| 4 | `CT_P1_KPI_Expiry_Risk_Value_Demo` / Expiry Risk Value - Demo Estimate | `38_fact_ct_expiry_risk.sql` | `expiry_risk_value` | Sum | None | INR, 2 decimals | INR 271,399.12 |
-| 5 | `CT_P1_KPI_Open_Risky_PO` / Open Risky PO | `36_fact_ct_risky_po.sql` | `po_number` | Count Distinct | None; Query 36 is already restricted to open risky PO lines | Whole number | 0 |
+1. Click **+ Add User Filters**.
+2. Select lookup field `37_dim_ct_outlet_enriched.sql.region`.
+3. Choose **Dropdown > Multi Select**.
+4. Label: `Region`.
+5. Default: **All**.
+6. Click **Apply**.
 
-The expiry widget subtitle must read:
+### Raw Material Category
 
-```text
-Synthetic demo estimate - no POSIST batch/expiry source
-```
+1. Click **+ Add User Filters**.
+2. Select table `22_fact_ct_purchase_order.sql`.
+3. Select `category_name`.
+4. Choose **Dropdown > Multi Select**.
+5. Label: `Raw Material Category`.
+6. Default: **All**.
+7. Click **Apply**.
 
-## Page 2 - Procurement, Vendor & Capital KPIs
+### Vendor
 
-Build the first five rows with Pattern A. Build the last two with Pattern B.
+1. Click **+ Add User Filters**.
+2. Select table `24_fact_ct_po_receipt_line.sql`.
+3. Select `vendor_name`.
+4. Choose **Dropdown > Multi Select**.
+5. Label: `Vendor`.
+6. Default: **All**.
+7. Click **Apply**.
 
-| Build order | Report name and label | Object | Physical table | Data Column or Aggregate Formula | Calculation | Format | Default result |
-| ---: | --- | --- | --- | --- | --- | --- | ---: |
-| 1 | `CT_P2_KPI_Monthly_Purchase` / Ordered Gross Value | Direct KPI | `29_sum_ct_procurement_funnel.sql` | `ordered_value` | Sum | INR, 2 decimals | INR 1,565,981.32 |
-| 2 | `CT_P2_KPI_Closing_Inventory` / Closing Inventory Value | Direct KPI | `33_sum_ct_scm_monthly.sql` | `closing_stock_value` | Sum | INR, 2 decimals | INR 3,344,237.44 |
-| 3 | `CT_P2_KPI_Open_PO_Liability` / Open PO Liability | Direct KPI | `29_sum_ct_procurement_funnel.sql` | `pending_value` | Sum | INR, 2 decimals | INR 177,145.39 |
-| 4 | `CT_P2_KPI_Working_Capital` / Working Capital Locked | Direct KPI | `33_sum_ct_scm_monthly.sql` | `working_capital_value` | Sum | INR, 2 decimals | INR 3,521,382.83 |
-| 5 | `CT_P2_KPI_Open_PO_Count` / Open PO Count | Direct KPI | `29_sum_ct_procurement_funnel.sql` | `open_po_count` | Sum | Whole number | 28 |
-| 6 | `CT_P2_KPI_Fill_Rate` / PO Fill Rate | Summary View | `24_fact_ct_po_receipt_line.sql` | `PO Fill Rate %` | Aggregate Formula | Percentage, 2 decimals | 86.39% |
-| 7 | `CT_P2_KPI_OTIF` / Vendor OTIF - Formula Demo | Summary View | `24_fact_ct_po_receipt_line.sql` | `Vendor OTIF %` | Aggregate Formula | Percentage, 2 decimals | 53.70% |
+### PO Status
 
-Keep the wording **Ordered Gross Value** until ABNAH approves the production
-purchase-value basis. Keep OTIF visibly marked as a formula demo until actual
-PO-to-GRN linkage passes the documented source gate.
+1. Click **+ Add User Filters**.
+2. Select table `22_fact_ct_purchase_order.sql`.
+3. Select `po_status`.
+4. Choose **Dropdown > Multi Select**.
+5. Label: `PO Status`.
+6. Default: **All**.
+7. Click **Apply**.
 
-## Page 3 - Consumption Variance & Menu Profitability KPIs
-
-Build the first four rows with Pattern A and the last row with Pattern B.
-
-| Build order | Report name and label | Object | Physical table | Data Column or Aggregate Formula | Calculation | Format | Default result |
-| ---: | --- | --- | --- | --- | --- | --- | ---: |
-| 1 | `CT_P3_KPI_Net_Sales` / Net Sales | Direct KPI | `25_fact_ct_menu_profitability.sql` | `net_sales` | Sum | INR, 2 decimals | INR 2,192,475.48 |
-| 2 | `CT_P3_KPI_Quantity_Sold` / Quantity Sold | Direct KPI | `25_fact_ct_menu_profitability.sql` | `sold_qty` | Sum | Whole number | 8,471 |
-| 3 | `CT_P3_KPI_Theoretical_COGS` / Theoretical COGS | Direct KPI | `25_fact_ct_menu_profitability.sql` | `theoretical_cogs` | Sum | INR, 2 decimals | INR 393,664.46 |
-| 4 | `CT_P3_KPI_Consumption_Leakage` / Consumption Leakage Value | Direct KPI | `21_fact_ct_consumption_variance.sql` | `leakage_value` | Sum | INR, 2 decimals | INR 38,632.37 |
-| 5 | `CT_P3_KPI_Menu_Gross_Margin` / Menu Gross Margin | Summary View | `25_fact_ct_menu_profitability.sql` | `Menu Gross Margin %` | Aggregate Formula | Percentage, 2 decimals | 82.04% |
-
-Do not average `gross_margin_percent`. Do not sum mixed-UOM consumption
-quantities into the all-item leakage KPI.
-
-## Page 4 - Descriptive Explorer KPIs
-
-| Build order | Report name and label | Physical table | Data Column | Show Value As | Fixed report filter | Format | Default result |
-| ---: | --- | --- | --- | --- | --- | --- | ---: |
-| 1 | `CT_P4_KPI_Closing_Stock` / Closing Stock Value | `33_sum_ct_scm_monthly.sql` | `closing_stock_value` | Sum | None | INR, 2 decimals | INR 3,344,237.44 |
-| 2 | `CT_P4_KPI_Open_PO` / Open PO Value | `33_sum_ct_scm_monthly.sql` | `open_po_value` | Sum | None | INR, 2 decimals | INR 177,145.39 |
-| 3 | `CT_P4_KPI_Net_Sales` / Net Sales | `33_sum_ct_scm_monthly.sql` | `net_sales` | Sum | None | INR, 2 decimals | INR 2,192,475.48 |
-| 4 | `CT_P4_KPI_Actual_Consumption` / Actual Consumption Value | `33_sum_ct_scm_monthly.sql` | `actual_consumption_value` | Sum | None | INR, 2 decimals | INR 377,620.25 |
-| 5 | `CT_P4_KPI_Consumption_Variance` / Signed Consumption Variance Value | `21_fact_ct_consumption_variance.sql` | `signed_consumption_variance_value` | Sum | None | INR, 2 decimals, allow negative | INR -22,106.87 |
-| 6 | `CT_P4_KPI_Quantity_Sold` / Quantity Sold | `18_fact_ct_sales.sql` | `sold_qty` | Sum | None | Whole number | 8,471 |
-| 7 | `CT_P4_KPI_Active_Menu_Items` / Active Menu Items | `18_fact_ct_sales.sql` | `item_code` | Count Distinct | None | Whole number | 110 |
-| 8 | `CT_P4_KPI_Open_PO_Lines` / Open PO Lines | `22_fact_ct_purchase_order.sql` | `is_open_po` | Sum | None | Whole number | 47 |
-| 9 | `CT_P4_KPI_GRN_Value` / GRN Value | `23_fact_ct_purchase_receipt.sql` | `receipt_total` | Sum | None | INR, 2 decimals | INR 1,504,689.72 |
-| 10 | `CT_P4_KPI_Active_Vendors` / Active Vendors | `22_fact_ct_purchase_order.sql` | `vendor_name` | Count Distinct | None | Whole number | 12 |
-
-These are descriptive totals. Do not color a value red merely because it is
-large.
-
-# Part 3 - Saved Reports To Build
-
-Use **Create > New Report**, select the exact table, configure the shelves,
-apply fixed filters through Pattern C, and save with the exact report name.
-
-## Page 1 Reports
-
-| Report | Type | Physical table | Exact shelves and sort | Fixed filter |
-| --- | --- | --- | --- | --- |
-| `CT_P1_Outlet_Risk_Map` | Map | `27_fact_ct_inventory_risk.sql` | Location: outlet lookup; latitude/longitude: Query 37 fields; color: Max `risk_severity_rank`; tooltip: outlet, Count Distinct `item_code`, Sum `shortage_cost_value`, Min `days_cover`, Max severity rank | `risk_type`: Include `STOCKOUT` |
-| `CT_P1_Stockout_Priority_Stack` | Horizontal stacked bar | `27_fact_ct_inventory_risk.sql` | Y: `outlet_name`; X: Sum `shortage_cost_value`; color: `risk_severity`; sort Max severity rank descending, then value descending | `risk_type`: Include `STOCKOUT` |
-| `CT_P1_Action_Center` | Tabular | `27_fact_ct_inventory_risk.sql` | `action_id`, outlet, item, severity, shortage, `recommended_action`, `action_owner`, `due_band`; sort severity rank descending, total risk value descending | `risk_type`: Include `STOCKOUT` |
-| `CT_P1_Stockout_Risk_Detail` | Tabular | `27_fact_ct_inventory_risk.sql` | item, current stock, forecast, safety requirement, inbound, shortage, days cover, shortage cost, severity | `risk_type`: Include `STOCKOUT` |
-| `CT_P1_Menu_Impact_Detail` | Tabular | `28_fact_ct_menu_impact.sql` | ingredient, menu item, severity, forecast menu quantity, allocated forecast sales at risk | None; Query 28 contains risk rows only |
-| `CT_P1_Expiry_Risk_Detail_Demo` | Tabular | `38_fact_ct_expiry_risk.sql` | outlet, item, batch, receipt date, GRN, PO, vendor, receipt status, closing quantity, FIFO tranche, expected consumption, expiry quantity/value, estimated date, severity, method | None |
-| `CT_P1_Vendor_PO_Risk` | Tabular | `36_fact_ct_risky_po.sql` | PO, vendor, item, expected date, remaining quantity, open liability, severity | None; Query 36 contains open risky PO rows only |
-
-Enable **View Underlying Data** for the action and detail reports. Enable **Use
-as Filter** only on the map and priority stack.
-
-## Page 2 Reports
-
-| Report | Type | Physical table | Exact shelves and sort | Fixed filter |
-| --- | --- | --- | --- | --- |
-| `CT_P2_Procurement_Funnel` | Funnel or grouped horizontal bar | `29_sum_ct_procurement_funnel.sql` | Values: Sum `ordered_value`, Sum `processed_value`, Sum `pending_value`, Sum `delayed_value`; tooltip: Sum `po_count`, Sum `open_po_count` | None |
-| `CT_P2_PO_Status_Distribution` | Stacked bar | `22_fact_ct_purchase_order.sql` | X: `po_status`; Y: Count Distinct `po_number`; secondary value: Sum `open_po_value` | None |
-| `CT_P2_Pending_By_Vendor` | Horizontal bar | `29_sum_ct_procurement_funnel.sql` | Y: `vendor_name`; X: Sum `pending_value`; sort value descending | None |
-| `CT_P2_Pending_Ingredient_Risk` | Tabular | `36_fact_ct_risky_po.sql` | PO, vendor, item, remaining quantity, open value, expected date, severity | None |
-| `CT_P2_Expected_Delivery_Breach` | Tabular | `22_fact_ct_purchase_order.sql` | PO, vendor, item, expected date, remaining quantity, open value | `delayed_po_flag`: Include `1` |
-| `CT_P2_Vendor_Performance_Matrix` | Bubble | `24_fact_ct_po_receipt_line.sql` | Group: `vendor_name`; X: `Vendor OTIF %`; Y: Average `eligible_lead_time_deviation_days`; size: Sum `open_po_value` | None |
-| `CT_P2_Vendor_Scorecard` | Summary or pivot | `24_fact_ct_po_receipt_line.sql` | Row: vendor; values: Sum gross order value, Sum open PO value, `Vendor OTIF %`, `PO Fill Rate %`, Average eligible lead deviation, Sum delayed flag | None |
-| `CT_P2_Ingredient_Price_Trend` | Line | `23_fact_ct_purchase_receipt.sql` | X: `source_period_code`; Y: `Weighted Unit Price`; color: `item_name`; vendor is a user filter | None |
-| `CT_P2_Vendor_Price_Comparison` | Grouped bar | `23_fact_ct_purchase_receipt.sql` | X: `vendor_name`; Y: `Weighted Unit Price`; require one item and one UOM selection | None |
-| `CT_P2_Top_Price_Movement` | Horizontal bar | `31_sum_ct_price_movement.sql` | Y: `price_comparison_key`; X: `unit_price_change_percent`; color: `price_movement_direction`; sort `absolute_unit_price_change_percent` descending; Top 10 | None |
-| `CT_P2_Inventory_Value` | Stacked bar | `05_std_ct_inventory_snapshot.sql` | X: `outlet_name`; Y: Sum `closing_value`; color: `category_name` | None |
-| `CT_P2_High_Value_Slow_Stock` | Tabular | `27_fact_ct_inventory_risk.sql` | closing value, days cover, forecast demand and severity; sort closing value then days cover descending | None |
-| `CT_P2_Observed_Wastage` | Column | `35_sum_ct_financial_leakage.sql` | X: `source_period_code`; Y: Sum `leakage_value` | None |
-| `CT_P2_Expiry_Exposure_Demo` | Column | `38_fact_ct_expiry_risk.sql` | X: `source_period_code`; Y: Sum `expiry_risk_value` | None |
-
-If Funnel cannot accept four value fields as stages, use the grouped horizontal
-bar option. Do not create an unsupported custom chart.
-
-Do not build vendor return rate, standing PO tracking or exact batch expiry as
-actual-source KPIs. Their source gates remain unresolved.
-
-## Page 3 Reports
-
-| Report | Type | Physical table | Exact shelves and sort | Fixed filter |
-| --- | --- | --- | --- | --- |
-| `CT_P3_Consumption_Bridge` | Combination | `20_fact_ct_actual_consumption.sql` | X: `source_period_code`; bars: Sum opening, purchase, transfer in, `bridge_transfer_out_qty`, `bridge_return_qty`, `bridge_closing_qty`; line: Sum calculated actual consumption; require one UOM | None |
-| `CT_P3_Theoretical_Consumption_Detail` | Tabular | `19_fact_ct_theoretical_consumption.sql` | outlet, item, theoretical quantity/value, UOM, average cost | None |
-| `CT_P3_Actual_vs_Theoretical` | Grouped bar | `21_fact_ct_consumption_variance.sql` | X: item; Y: Sum actual quantity and Sum theoretical quantity; require one UOM | None |
-| `CT_P3_Consumption_Leakage_Rank` | Horizontal bar | `21_fact_ct_consumption_variance.sql` | Y: item; X: Sum `leakage_value`; sort descending | `consumption_variance_direction`: Include `OVER_CONSUMPTION` |
-| `CT_P3_Low_Consumption_Check` | Tabular | `21_fact_ct_consumption_variance.sql` | outlet, item, actual, theoretical, variance, low-consumption quantity, UOM | `consumption_variance_direction`: Include `UNDER_CONSUMPTION` |
-| `CT_P3_Menu_BCG` | Bubble | `32_sum_ct_menu_profitability.sql` | X: Sum sold quantity; Y: Max `gross_margin_percent`; size: Sum net sales; text: outlet and menu item; color: `bcg_quadrant`; use one period and retain outlet grouping | None |
-| `CT_P3_Menu_COGS_Detail` | Tabular | `25_fact_ct_menu_profitability.sql` | menu item, sold quantity, theoretical cost per unit, COGS, net sales, margin value | None |
-| `CT_P3_Menu_Margin_Rank` | Horizontal bar | `32_sum_ct_menu_profitability.sql` | Y: menu item; X: Sum gross margin value; tooltip: COGS and row-grain margin percent | None |
-| `CT_P3_Sales_Trend` | Line | `18_fact_ct_sales.sql` | X: sales date; Y: Sum net sales and Sum sold quantity | None |
-| `CT_P3_Category_Contribution` | Ring or stacked bar | `25_fact_ct_menu_profitability.sql` | Category; Sum net sales; **Show Values As: Percent of Total** | None |
-| `CT_P3_Top_Slow_Menu_Ranking` | Horizontal bar | `32_sum_ct_menu_profitability.sql` | Menu item; selected additive metric; sort descending or ascending | None |
-| `CT_P3_Outlet_Item_Heatmap` | Heat map | `25_fact_ct_menu_profitability.sql` | X: menu item or category; Y: outlet; color: Sum net sales or sold quantity | None |
-
-`CT_P3_Low_Consumption_Check` is a data/process check, not a favorable saving.
-The BCG thresholds are synthetic demonstration rules. Do not add a veg/non-veg
-split until an approved menu classification exists.
-
-## Page 4 Reports
-
-| Report | Type | Physical table | Exact shelves | Fixed filter |
-| --- | --- | --- | --- | --- |
-| `CT_P4_SCM_Monthly_Trend` | Combination | `33_sum_ct_scm_monthly.sql` | X: period; bars: Sum stock and open PO; lines: Sum sales and actual consumption | None |
-| `CT_P4_Consumption_Variance_Trend` | Bar/line | `21_fact_ct_consumption_variance.sql` | X: period; Y: Sum signed variance value and Sum leakage value | None |
-| `CT_P4_Descriptive_Explorer` | Pivot or tabular | `33_sum_ct_scm_monthly.sql` | period, outlet, the five physical value fields; export enabled | None |
-| `CT_P4_Sales_Explorer` | Tabular | `18_fact_ct_sales.sql` | date, outlet, menu item/category, sold quantity, net sales, realized unit price | None |
-| `CT_P4_Item_Explorer` | Tabular | `27_fact_ct_inventory_risk.sql` | outlet, item, category, stock, cost, forecast, PO and severity | None |
-| `CT_P4_PO_Explorer` | Tabular | `24_fact_ct_po_receipt_line.sql` | PO, vendor, item, ordered, received, remaining, expected date, receipt date, status | None |
-| `CT_P4_GRN_Explorer` | Tabular | `23_fact_ct_purchase_receipt.sql` | receipt date, GRN, PO, vendor, item, received quantity, subtotal, tax/total, return status | None |
-| `CT_P4_Vendor_Explorer` | Tabular | `30_sum_ct_vendor_scorecard.sql` | vendor, ordered/received value, open liability, fill, eligible OTIF, lead deviation, delayed lines | None; retain outlet as a visible group or select one outlet |
-| `CT_P4_Expiry_Explorer_Demo` | Tabular | `38_fact_ct_expiry_risk.sql` | outlet, item, scenario inputs, estimated date, quantity/value, production-use label | None |
-
-## Page 4 Data-Quality Tiles
-
-Create six direct KPI Widgets from
-`34_fact_ct_data_quality_exception.sql`.
-
-For every tile:
-
-- Data Column: `exception_count`
-- Show Value As: Sum
-- Group By: blank
-- Filter field: `exception_type`
-- Filter method: **Individual Values > Include**
-
-| Tile label | Included value | Default result |
-| --- | --- | ---: |
-| Negative Stock | `NEGATIVE_STOCK` | 1 |
-| Zero Stock With Demand | `ZERO_STOCK_WITH_DEMAND` | 2 |
-| Sold Item Missing Recipe | `SOLD_ITEM_MISSING_RECIPE` | 0 |
-| Operational Item Missing Master | `OPERATIONAL_ITEM_MISSING_MASTER` | 0 |
-| UOM Mismatch Without Conversion | `UOM_MISMATCH_WITHOUT_CONVERSION` | 0 |
-| Open PO Missing Expected Delivery | `OPEN_PO_MISSING_EXPECTED_DELIVERY` | 3 |
-
-Create `CT_P4_Data_Quality_Detail` as a tabular report with exception type,
-period, outlet, record key, item code, reference number and definition.
-
-The six KPI widgets are display tiles. A single-number widget has no grouping
-dimension to pass as a reliable report-as-filter criterion. Use the Page 4
-**Exception Type** user filter, mapped only to the detail table, to inspect one
-exception type.
-
-# Part 4 - Dashboard Assembly
-
-## Create The Dashboard
-
-1. Click **Create > New Dashboard**.
-2. Name it `ABNAH Supply Chain Control Tower v2`.
-3. Add four tabs with the exact names at the start of this guide.
-4. Place the saved reports and KPI objects using the layouts below.
-5. Keep KPI rows at one consistent height.
-6. Give detail tables more vertical space than charts.
-7. Enable smart alignment.
-8. Save after completing each tab.
-
-## Layout
+Use only these values if Zoho asks you to preselect values:
 
 ```text
-Page 1
-Row 1: five KPI objects
-Row 2: risk map (7 columns) | priority stack (5)
-Row 3: action center (12)
-Row 4: stockout detail (6) | menu impact (6)
-Row 5: expiry detail (6) | vendor/PO risk (6)
-
-Page 2
-Row 1: seven KPI objects
-Row 2: procurement flow (5) | vendor matrix (7)
-Row 3: PO status (4) | pending by vendor (4) | delivery breach (4)
-Row 4: pending ingredient risk (6) | vendor price comparison (6)
-Row 5: vendor scorecard (12)
-Row 6: price trend (7) | top price movement (5)
-Row 7: inventory value (6) | high-value stock (6)
-Row 8: observed wastage (6) | expiry exposure demo (6)
-
-Page 3
-Row 1: five KPI objects
-Row 2: consumption bridge (7) | actual versus theoretical (5)
-Row 3: theoretical detail (6) | low-consumption check (6)
-Row 4: leakage rank (6) | menu COGS detail (6)
-Row 5: menu BCG (7) | margin rank (5)
-Row 6: sales trend (4) | category contribution (4) | ranking (4)
-Row 7: outlet-item heatmap (12)
-
-Page 4
-Row 1: sales, sold quantity, menu item, stock and open-PO KPIs
-Row 2: consumption, variance, open-PO lines, GRN and vendor KPIs
-Row 3: monthly trend (7) | variance trend (5)
-Row 4: six data-quality tiles
-Row 5: data-quality detail (12)
-Row 6: sales explorer (6) | item explorer (6)
-Row 7: PO explorer (4) | GRN explorer (4) | vendor explorer (4)
-Row 8: descriptive/export explorer (12)
-Row 9: expiry scenario explorer (12)
+Pending
+Partially Received
+Closed
+Cancelled
 ```
 
-# Part 5 - Dashboard Filters
+### Raw Material
 
-## Do Not Add Every Filter Everywhere
+1. Click **+ Add User Filters**.
+2. Select table `22_fact_ct_purchase_order.sql`.
+3. Select `item_code`.
+4. Choose **Dropdown with Search > Multi Select**.
+5. Label: `Raw Material`.
+6. Default: **All**.
+7. Click **Apply**.
 
-Create only two dashboard-global controls:
+### Outlet
 
-1. **As-of Source Period**
-2. **Outlet**
+The ABNAH visual does not display this Page 2 control, but keep it in the
+native Zoho validation dashboard.
 
-Create the remaining controls on their relevant tab only. For each report,
-open **Options > Apply Dashboard Filters > Customize** and map only the fields
-listed below. A filter that is not mapped must leave that report unchanged.
+1. Click **+ Add User Filters**.
+2. Select `outlet_code`.
+3. Choose **Dropdown > Multi Select**.
+4. Label: `Outlet`.
+5. Default: **All**.
+6. Click **Apply**.
 
-## Global Filter 1 - As-of Source Period
+The custom portal can hide this control while retaining the mapping.
 
-1. Open the dashboard in Edit Mode.
-2. Click **Add User Filters**.
-3. Drag `source_period_code` from a placed current-state report.
-4. Set the display to dropdown.
-5. Set selection to single-select.
-6. Set the label to `As-of Source Period`.
-7. Set the default to `month_03`.
-8. Open each report's filter customization.
-9. Map it to that report's `source_period_code` only when the matrix says
-   **Apply**.
+## P2-F02 - Map the Dashboard Filters
 
-| Tab | Apply | Exclude |
+| Object | Period | Outlet | Region | Category | Vendor | PO Status | Raw Material |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Three Query 29 KPI Widgets | `source_period_code` | `outlet_code` | lookup `region` | Do not map | `vendor_name` | Do not map | Do not map |
+| `CT_P2_Procurement_Funnel` | `source_period_code` | `outlet_code` | lookup `region` | Do not map | `vendor_name` | Do not map | Do not map |
+| `CT_P2_Vendor_Scorecard` | `source_period_code` | `outlet_code` | lookup `region` | `category_name` | `vendor_name` | `po_status` | `item_code` |
+| `CT_P2_KPI_OTIF` | `source_period_code` | `outlet_code` | lookup `region` | `category_name` | `vendor_name` | `po_status` | `item_code` |
+| `CT_P2_Ingredient_Price_Trend` | Do not map | `outlet_code` | lookup `region` | `category_name` | `vendor_name` | Do not map | `item_code` |
+| Price Watch KPI | `source_period_code` | `outlet_code` | lookup `region` | lookup `category_name` | `vendor_name` | Do not map | `item_code` |
+| `CT_P2_Top_Price_Movement` | `source_period_code` | `outlet_code` | lookup `region` | lookup `category_name` | `vendor_name` | Do not map | `item_code` |
+| `CT_P2_Pending_By_Vendor` | `source_period_code` | `outlet_code` | lookup `region` | `category_name` | `vendor_name` | `po_status` | `item_code` |
+| `CT_P2_Expected_Delivery_Breach` | `source_period_code` | `outlet_code` | lookup `region` | `category_name` | `vendor_name` | `po_status` | `item_code` |
+
+## P2 Validation
+
+1. Set period to `month_03`.
+2. Set all other filters to **All**.
+3. Confirm KPI values:
+    - `INR 1,565,981.32`
+    - `INR 177,145.39`
+    - `INR 156,529.82`
+    - `53.70%`
+    - `42`
+4. Confirm Expected Delivery Breach has `38` rows and `21` distinct POs.
+5. Confirm its open exposure totals approximately `INR 156,529.82`.
+6. Confirm Price Trend still contains all three periods.
+7. Select one vendor and confirm only vendor-compatible objects change.
+8. Select one raw material and confirm Query 29 KPI Widgets do not change.
+9. Reset all filters.
+10. Save.
+
+# Page 3 - Consumption Variance & Menu Profitability
+
+Build these reference-required saved reports:
+
+1. `CT_P3_Consumption_Bridge`
+2. `CT_P3_Consumption_Variance`
+3. `CT_P3_Menu_BCG`
+4. `CT_P3_Outlet_Item_Heatmap`
+
+## P3-R01 - Consumption Bridge
+
+1. Click **+ New**.
+2. Click **New Report**.
+3. Choose **Chart View**.
+4. Select source table `20_fact_ct_actual_consumption.sql`.
+5. Choose **Combination Chart**.
+6. Drag `source_period_code` to the X-axis.
+7. Add these bar values in this order:
+    - `opening_qty` with **Sum**
+    - `purchase_qty` with **Sum**
+    - `transfer_in_qty` with **Sum**
+    - `bridge_transfer_out_qty` with **Sum**
+    - `bridge_return_qty` with **Sum**
+    - `bridge_closing_qty` with **Sum**
+8. Add `calculated_actual_consumption_qty` with **Sum** as the line value.
+9. Add report User Filter `item_code`:
+    - dropdown with search
+    - single select
+    - label `Raw Material`
+10. Add report User Filter `canonical_uom`:
+    - dropdown
+    - single select
+    - label `UOM`
+11. Do not display an all-UOM total.
+12. Sort `source_period_code` **Ascending**.
+13. Set quantity formats to **Number / 2 decimals**.
+14. Use colors:
+    - opening `#162552`
+    - purchase `#9A8559`
+    - transfer in `#2E7D5B`
+    - transfer out `#C63D3D`
+    - return `#D49A22`
+    - closing `#7C8793`
+    - actual consumption line `#4164D9`
+15. Click **Save As**.
+16. Save as `CT_P3_Consumption_Bridge`.
+
+## P3-R02 - Consumption Variance
+
+1. Click **+ New**.
+2. Click **New Report**.
+3. Choose **Chart View**.
+4. Select source table `21_fact_ct_consumption_variance.sql`.
+5. Choose **Butterfly Chart**.
+6. Drag `item_name` to the X-axis/category shelf.
+7. Drag `signed_consumption_variance_value` to the Y-axis/value shelf.
+8. Select Calculation **Sum**.
+9. Drag `consumption_variance_direction` to **Color/Series**.
+10. Sort by the absolute visual magnitude, largest first. If Zoho cannot sort
+    by absolute value, sort `signed_consumption_variance_value` descending.
+11. Set format to **Currency / INR / 2 decimals**.
+12. Set colors:
+    - `OVER_CONSUMPTION` -> `#C63D3D`
+    - `UNDER_CONSUMPTION` -> `#D49A22`
+    - `MATCHED` -> `#2E7D5B`
+13. Add subtitle:
+
+```text
+Actual consumption minus theoretical consumption
+```
+
+14. Click **Save As**.
+15. Save as `CT_P3_Consumption_Variance`.
+
+## P3-R03 - Menu BCG Matrix
+
+1. Click **+ New**.
+2. Click **New Report**.
+3. Choose **Chart View**.
+4. Select source table `32_sum_ct_menu_profitability.sql`.
+5. Choose **Bubble Chart**.
+6. Drag `sold_qty` to the X-axis and choose **Sum**.
+7. Drag `gross_margin_percent` to the Y-axis and choose **Max**.
+8. Drag `net_sales` to Bubble Size and choose **Sum**.
+9. Drag `bcg_quadrant` to **Color/Series**.
+10. Drag `menu_item_name` to **Text**.
+11. Drag `outlet_name` to **Tooltip** first. This dimension keeps separate
+    outlet/menu bubbles instead of merging the same menu item across outlets.
+12. Add the remaining tooltip fields:
+    - `menu_item_name`
+    - `sold_qty`
+    - `net_sales`
+    - `gross_margin_value`
+    - `gross_margin_percent`
+13. Add report User Filter `menu_item_code`:
+    - dropdown with search
+    - multi-select
+    - label `Menu Item`
+14. Set quadrant colors:
+    - `Stars` -> `#2E7D5B`
+    - `Niche gems` -> `#4164D9`
+    - `Volume drags` -> `#D49A22`
+    - `Review / rationalize` -> `#C63D3D`
+15. Enable **Use as Filter**.
+16. Click **Save As**.
+17. Save as `CT_P3_Menu_BCG`.
+
+For all-outlet analysis, keep `outlet_name` available as a tooltip and test
+one outlet separately. Do not average `gross_margin_percent`.
+
+## P3-R04 - Item Sales Heatmap
+
+1. Click **+ New**.
+2. Click **New Report**.
+3. Choose **Chart View**.
+4. Select source table `25_fact_ct_menu_profitability.sql`.
+5. Choose **Heat Map**.
+6. Drag `menu_item_name` to the X-axis.
+7. Drag `outlet_name` to the Y-axis.
+8. Drag `net_sales` to Color/Value and choose **Sum**.
+9. Sort by `net_sales` **Descending**.
+10. Set **Top N** menu items to **Top 20** for the first build.
+11. Set tooltip fields:
+    - `super_category_name`
+    - `category_name`
+    - `menu_item_name`
+    - `sold_qty` with Sum
+    - `net_sales` with Sum
+    - `gross_margin_value` with Sum
+12. Use a five-step neutral-to-red heat scale.
+13. Enable **Use as Filter**.
+14. Click **Save As**.
+15. Save as `CT_P3_Outlet_Item_Heatmap`.
+
+The ABNAH custom portal will later switch between super category, category and
+menu-item levels. Build this first Zoho report at menu-item level.
+
+## P3-D01 - Create the Dashboard
+
+1. Click **+ New**.
+2. Choose **Dashboard**.
+3. Name it `CT_PAGE_3_Consumption_Menu_Profitability`.
+4. Click **Create**.
+5. Click **Edit Design**.
+6. Add heading:
+
+```text
+Consumption Variance & Menu Profitability
+Actual versus theoretical consumption, leakage and menu economics
+```
+
+7. Add the four saved reports.
+8. Arrange:
+    - Row 1: five KPI objects
+    - Row 2: Consumption Bridge and Consumption Variance
+    - Row 3: Menu BCG Matrix full width
+    - Row 4: Item Sales Heatmap full width
+9. Save.
+
+## P3-K01 - Net Sales
+
+1. Open the dashboard in **Edit Design**.
+2. Click **Widget > KPI Widget > Single Label**.
+3. Select table `25_fact_ct_menu_profitability.sql`.
+4. Select Data Column `net_sales`.
+5. Select Calculation **Sum**.
+6. Leave **Group By** blank.
+7. Set label to `Net Sales`.
+8. Set format to **Currency / INR / 2 decimals**.
+9. Click **Apply**.
+10. Expected result: `INR 2,192,475.48`.
+
+## P3-K02 - Theoretical COGS
+
+1. Add **KPI Widget > Single Label**.
+2. Select table `25_fact_ct_menu_profitability.sql`.
+3. Select Data Column `theoretical_cogs`.
+4. Select Calculation **Sum**.
+5. Leave **Group By** blank.
+6. Set label to `Theoretical COGS`.
+7. Set subtitle to `Recipe-cost based`.
+8. Set format to **Currency / INR / 2 decimals**.
+9. Click **Apply**.
+10. Expected result: `INR 393,664.46`.
+
+## P3-K03 - Gross Margin
+
+1. Click **+ New**.
+2. Click **New Report**.
+3. Choose **Summary View**.
+4. Select table `25_fact_ct_menu_profitability.sql`.
+5. Drag Aggregate Formula `Menu Gross Margin %` into the value area.
+6. Do not add a grouping field.
+7. Set label to `Gross Margin`.
+8. Set subtitle to `Recipe-cost based`.
+9. Set format to **Percentage / 2 decimals**.
+10. Click **Save As**.
+11. Save as `CT_P3_KPI_Menu_Gross_Margin`.
+12. Add the Summary View to the Page 3 KPI row.
+13. Expected result: `82.04%`.
+
+## P3-K04 - Menu Items
+
+1. Add **KPI Widget > Single Label**.
+2. Select table `25_fact_ct_menu_profitability.sql`.
+3. Select Data Column `menu_item_code`.
+4. Select Calculation **Count Distinct**.
+5. Leave **Group By** blank.
+6. Set label to `Menu Items`.
+7. Set format to **Whole Number**.
+8. Click **Apply**.
+9. Expected result: `110`.
+
+## P3-K05 - Consumption Leakage
+
+1. Add **KPI Widget > Single Label**.
+2. Select table `21_fact_ct_consumption_variance.sql`.
+3. Select Data Column `leakage_value`.
+4. Select Calculation **Sum**.
+5. Leave **Group By** blank.
+6. Set label to `Consumption Leakage`.
+7. Set subtitle to `Positive variance only`.
+8. Set format to **Currency / INR / 2 decimals**.
+9. Click **Apply**.
+10. Expected result: `INR 38,632.37`.
+
+## P3-F01 - Create Dashboard User Filters
+
+### As-of Source Period
+
+1. Click **+ Add User Filters**.
+2. Select table `25_fact_ct_menu_profitability.sql`.
+3. Select `source_period_code`.
+4. Choose **Dropdown > Single Select**.
+5. Label: `As-of Source Period`.
+6. Default: `month_03`.
+7. Click **Apply**.
+
+### Region
+
+1. Click **+ Add User Filters**.
+2. Select lookup field `37_dim_ct_outlet_enriched.sql.region`.
+3. Choose **Dropdown > Multi Select**.
+4. Label: `Region`.
+5. Default: **All**.
+6. Click **Apply**.
+
+### Outlet
+
+1. Click **+ Add User Filters**.
+2. Select `outlet_code`.
+3. Choose **Dropdown > Multi Select**.
+4. Label: `Outlet`.
+5. Default: **All**.
+6. Click **Apply**.
+
+### Menu Super Category
+
+1. Click **+ Add User Filters**.
+2. Select table `25_fact_ct_menu_profitability.sql`.
+3. Select `super_category_name`.
+4. Choose **Dropdown > Multi Select**.
+5. Label: `Menu Super Category`.
+6. Default: **All**.
+7. Click **Apply**.
+
+### Menu Category
+
+1. Click **+ Add User Filters**.
+2. Select table `25_fact_ct_menu_profitability.sql`.
+3. Select `category_name`.
+4. Choose **Dropdown > Multi Select**.
+5. Label: `Menu Category`.
+6. Default: **All**.
+7. Click **Apply**.
+
+### Menu Item
+
+1. Click **+ Add User Filters**.
+2. Select table `25_fact_ct_menu_profitability.sql`.
+3. Select `menu_item_code`.
+4. Choose **Dropdown with Search > Multi Select**.
+5. Label: `Menu Item`.
+6. Default: **All**.
+7. Click **Apply**.
+
+### Raw Material
+
+1. Click **+ Add User Filters**.
+2. Select table `21_fact_ct_consumption_variance.sql`.
+3. Select `item_code`.
+4. Choose **Dropdown with Search > Multi Select**.
+5. Label: `Raw Material`.
+6. Default: **All**.
+7. Click **Apply**.
+
+### UOM
+
+1. Click **+ Add User Filters**.
+2. Select table `21_fact_ct_consumption_variance.sql`.
+3. Select `canonical_uom`.
+4. Choose **Dropdown > Single Select**.
+5. Label: `UOM`.
+6. Select one default UOM when displaying quantities.
+7. Click **Apply**.
+
+## P3-F02 - Map the Dashboard Filters
+
+| Object | Period | Outlet | Region | Menu Super Category | Menu Category | Menu Item | Raw Material | UOM |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Net Sales KPI | `source_period_code` | `outlet_code` | lookup `region` | `super_category_name` | `category_name` | `menu_item_code` | Do not map | Do not map |
+| Theoretical COGS KPI | `source_period_code` | `outlet_code` | lookup `region` | `super_category_name` | `category_name` | `menu_item_code` | Do not map | Do not map |
+| Gross Margin Summary | `source_period_code` | `outlet_code` | lookup `region` | `super_category_name` | `category_name` | `menu_item_code` | Do not map | Do not map |
+| Menu Items KPI | `source_period_code` | `outlet_code` | lookup `region` | `super_category_name` | `category_name` | `menu_item_code` | Do not map | Do not map |
+| Consumption Leakage KPI | `source_period_code` | `outlet_code` | lookup `region` | Do not map | Do not map | Do not map | `item_code` | Do not map |
+| `CT_P3_Consumption_Bridge` | `source_period_code` | `outlet_code` | lookup `region` | Do not map | Do not map | Do not map | `item_code` | `canonical_uom` |
+| `CT_P3_Consumption_Variance` | `source_period_code` | `outlet_code` | lookup `region` | Do not map | Do not map | Do not map | `item_code` | Do not map for value view |
+| `CT_P3_Menu_BCG` | `source_period_code` | `outlet_code` | lookup `region` | `super_category_name` | `category_name` | `menu_item_code` | Do not map | Do not map |
+| `CT_P3_Outlet_Item_Heatmap` | `source_period_code` | `outlet_code` | lookup `region` | `super_category_name` | `category_name` | `menu_item_code` | Do not map | Do not map |
+
+## P3 Validation
+
+1. Set period to `month_03`.
+2. Set Outlet to **All**.
+3. Set menu and ingredient filters to **All**.
+4. Confirm KPI values:
+    - `INR 2,192,475.48`
+    - `INR 393,664.46`
+    - `82.04%`
+    - `110`
+    - `INR 38,632.37`
+5. Select one menu category.
+6. Confirm only menu KPIs, BCG and Heatmap change.
+7. Select one raw material.
+8. Confirm only consumption objects change.
+9. Confirm the Gross Margin card does not average row percentages.
+10. Reset all filters and save.
+
+# Page 4 - SCM Descriptive Explorer & Data Quality
+
+Build these reference-required saved reports:
+
+1. `CT_P4_SCM_Monthly_Trend`
+2. `CT_P4_Data_Quality_Detail`
+3. `CT_P4_Descriptive_Explorer`
+
+Build six Data Quality KPI tiles inside the dashboard.
+
+## P4-R01 - Month-End SCM Trend
+
+1. Click **+ New**.
+2. Click **New Report**.
+3. Choose **Chart View**.
+4. Select source table `33_sum_ct_scm_monthly.sql`.
+5. Choose **Combination Chart**.
+6. Drag `source_period_code` to the X-axis.
+7. Add bar values:
+    - `closing_stock_value` with **Sum**
+    - `open_po_value` with **Sum**
+8. Add line values:
+    - `net_sales` with **Sum**
+    - `actual_consumption_value` with **Sum**
+9. Sort `source_period_code` **Ascending**.
+10. Format every value as **Currency / INR / 2 decimals**.
+11. Use colors:
+    - Closing Stock `#424B56`
+    - Open PO `#E44B51`
+    - Net Sales `#4164D9`
+    - Actual Consumption `#9A8559`
+12. Do not apply the dashboard current-period filter to this trend.
+13. Click **Save As**.
+14. Save as `CT_P4_SCM_Monthly_Trend`.
+
+## P4-R02 - Data Quality Detail
+
+1. Click **+ New**.
+2. Click **New Report**.
+3. Choose **Tabular View**.
+4. Select source table `34_fact_ct_data_quality_exception.sql`.
+5. Add columns in this exact order:
+    - `exception_type`
+    - `source_period_code`
+    - `outlet_code`
+    - `outlet_name`
+    - `exception_record_key`
+    - `item_code`
+    - `reference_number`
+    - `exception_count`
+    - `definition`
+6. Sort `exception_type` **Ascending**.
+7. Add a report User Filter:
+    - field `exception_type`
+    - dropdown
+    - multi-select
+    - label `Exception Type`
+8. Enable **View Underlying Data**.
+9. Enable export.
+10. Click **Save As**.
+11. Save as `CT_P4_Data_Quality_Detail`.
+
+Do not map Source Period or Outlet dashboard filters to Query 34. Query 34
+contains valid model-wide rows with `ALL` keys.
+
+## P4-R03 - SCM Descriptive Explorer
+
+1. Click **+ New**.
+2. Click **New Report**.
+3. Choose **Tabular View**.
+4. Select source table `33_sum_ct_scm_monthly.sql`.
+5. Add columns in this exact order:
+    - `source_period_code`
+    - `outlet_code`
+    - `outlet_name`
+    - `closing_stock_value`
+    - `open_po_value`
+    - `working_capital_value`
+    - `net_sales`
+    - `actual_consumption_value`
+6. Sort `source_period_code` **Descending**.
+7. Add secondary sort `outlet_code` **Ascending**.
+8. Set all measures to **Currency / INR / 2 decimals**.
+9. Enable **View Underlying Data**.
+10. Enable export.
+11. Click **Save As**.
+12. Save as `CT_P4_Descriptive_Explorer`.
+
+## P4-D01 - Create the Dashboard
+
+1. Click **+ New**.
+2. Choose **Dashboard**.
+3. Name it `CT_PAGE_4_SCM_Explorer_Data_Quality`.
+4. Click **Create**.
+5. Click **Edit Design**.
+6. Add heading:
+
+```text
+SCM Descriptive Explorer & Data Quality
+Month-end trend, governed drilldown, export and exception control
+```
+
+7. Add the three Page 4 saved reports.
+8. Arrange:
+    - Row 1: five reference KPI Widgets
+    - Row 2: Month-End SCM Trend full width
+    - Row 3: six Data Quality tiles
+    - Row 4: Data Quality Detail full width
+    - Row 5: SCM Descriptive Explorer full width
+9. Save.
+
+## P4-K01 - Closing Stock Value
+
+1. Open the dashboard in **Edit Design**.
+2. Click **Widget > KPI Widget > Single Label**.
+3. Select table `33_sum_ct_scm_monthly.sql`.
+4. Select Data Column `closing_stock_value`.
+5. Select Calculation **Sum**.
+6. Leave **Group By** blank.
+7. Set label to `Closing Stock Value`.
+8. Set format to **Currency / INR / 2 decimals**.
+9. Click **Apply**.
+10. Expected result: `INR 3,344,237.44`.
+
+## P4-K02 - Open PO Snapshot
+
+1. Add **KPI Widget > Single Label**.
+2. Select table `33_sum_ct_scm_monthly.sql`.
+3. Select Data Column `open_po_value`.
+4. Select Calculation **Sum**.
+5. Leave **Group By** blank.
+6. Set label to `Open PO Snapshot`.
+7. Set format to **Currency / INR / 2 decimals**.
+8. Click **Apply**.
+9. Expected result: `INR 177,145.39`.
+
+## P4-K03 - Monthly Sales
+
+1. Add **KPI Widget > Single Label**.
+2. Select table `33_sum_ct_scm_monthly.sql`.
+3. Select Data Column `net_sales`.
+4. Select Calculation **Sum**.
+5. Leave **Group By** blank.
+6. Set label to `Monthly Sales`.
+7. Set format to **Currency / INR / 2 decimals**.
+8. Click **Apply**.
+9. Expected result: `INR 2,192,475.48`.
+
+## P4-K04 - Actual Consumption
+
+1. Add **KPI Widget > Single Label**.
+2. Select table `33_sum_ct_scm_monthly.sql`.
+3. Select Data Column `actual_consumption_value`.
+4. Select Calculation **Sum**.
+5. Leave **Group By** blank.
+6. Set label to `Actual Consumption`.
+7. Set format to **Currency / INR / 2 decimals**.
+8. Click **Apply**.
+9. Expected result: `INR 377,620.25`.
+
+## P4-K05 - Variance Value
+
+1. Add **KPI Widget > Single Label**.
+2. Select table `21_fact_ct_consumption_variance.sql`.
+3. Select Data Column `signed_consumption_variance_value`.
+4. Select Calculation **Sum**.
+5. Leave **Group By** blank.
+6. Set label to `Variance Value`.
+7. Set subtitle to `Actual consumption minus theoretical consumption`.
+8. Set format to **Currency / INR / 2 decimals**.
+9. Allow negative values.
+10. Click **Apply**.
+11. Expected result: `INR -22,106.87`.
+
+Do not color every negative variance red. Under-consumption can also indicate a
+recipe, stock-count, UOM or process issue.
+
+## P4-Q01 - Negative Stock Tile
+
+1. Click **Widget > KPI Widget > Single Label**.
+2. Select table `34_fact_ct_data_quality_exception.sql`.
+3. Select Data Column `exception_count`.
+4. Select Calculation **Sum**.
+5. Leave **Group By** blank.
+6. Add widget fixed filter:
+    - `exception_type`
+    - Include `NEGATIVE_STOCK`
+7. Set label to `Negative Stock Rows`.
+8. Set format to **Whole Number**.
+9. Set card color to red.
+10. Click **Apply**.
+11. Expected result: `1`.
+
+## P4-Q02 - Zero Stock With Demand Tile
+
+1. Add **KPI Widget > Single Label**.
+2. Use Data Column `exception_count` with **Sum**.
+3. Leave **Group By** blank.
+4. Add fixed filter `exception_type` Include
+   `ZERO_STOCK_WITH_DEMAND`.
+5. Set label to `Zero Stock With Demand`.
+6. Set format to **Whole Number**.
+7. Set card color to red.
+8. Click **Apply**.
+9. Expected result: `2`.
+
+## P4-Q03 - Missing Recipe Tile
+
+1. Add **KPI Widget > Single Label**.
+2. Use Data Column `exception_count` with **Sum**.
+3. Leave **Group By** blank.
+4. Add fixed filter `exception_type` Include
+   `SOLD_ITEM_MISSING_RECIPE`.
+5. Set label to `Sold Items Missing Recipe`.
+6. Set format to **Whole Number**.
+7. Set card color to amber.
+8. Click **Apply**.
+9. Expected result: `0`.
+
+If Zoho renders no matching row as blank rather than `0`, leave the tile as
+blank and validate Query 34 directly. Do not replace a blank no-row result with
+an invented count.
+
+## P4-Q04 - Missing Item Master Tile
+
+1. Add **KPI Widget > Single Label**.
+2. Use Data Column `exception_count` with **Sum**.
+3. Leave **Group By** blank.
+4. Add fixed filter `exception_type` Include
+   `OPERATIONAL_ITEM_MISSING_MASTER`.
+5. Set label to `Items Missing Master`.
+6. Set format to **Whole Number**.
+7. Set card color to amber.
+8. Click **Apply**.
+9. Expected result: `0`.
+
+If Zoho renders no matching row as blank rather than `0`, leave the tile as
+blank and validate Query 34 directly. Do not replace a blank no-row result with
+an invented count.
+
+## P4-Q05 - UOM Mismatch Tile
+
+1. Add **KPI Widget > Single Label**.
+2. Use Data Column `exception_count` with **Sum**.
+3. Leave **Group By** blank.
+4. Add fixed filter `exception_type` Include
+   `UOM_MISMATCH_WITHOUT_CONVERSION`.
+5. Set label to `UOM Mismatch`.
+6. Set format to **Whole Number**.
+7. Set card color to amber.
+8. Click **Apply**.
+9. Expected result: `0`.
+
+If Zoho renders no matching row as blank rather than `0`, leave the tile as
+blank and validate Query 34 directly. Do not replace a blank no-row result with
+an invented count.
+
+## P4-Q06 - Missing Expected Delivery Tile
+
+1. Add **KPI Widget > Single Label**.
+2. Use Data Column `exception_count` with **Sum**.
+3. Leave **Group By** blank.
+4. Add fixed filter `exception_type` Include
+   `OPEN_PO_MISSING_EXPECTED_DELIVERY`.
+5. Set label to `Open PO Missing Expected Delivery`.
+6. Set format to **Whole Number**.
+7. Set card color to red.
+8. Click **Apply**.
+9. Expected result: `3`.
+
+## P4-F01 - Create Dashboard User Filters
+
+### Current Period
+
+1. Click **+ Add User Filters**.
+2. Select table `33_sum_ct_scm_monthly.sql`.
+3. Select `source_period_code`.
+4. Choose **Dropdown > Single Select**.
+5. Label: `Current Period`.
+6. Default: `month_03`.
+7. Click **Apply**.
+
+### Region
+
+1. Click **+ Add User Filters**.
+2. Select lookup field `37_dim_ct_outlet_enriched.sql.region`.
+3. Choose **Dropdown > Multi Select**.
+4. Label: `Region`.
+5. Default: **All**.
+6. Click **Apply**.
+
+### Outlet
+
+1. Click **+ Add User Filters**.
+2. Select `outlet_code`.
+3. Choose **Dropdown > Multi Select**.
+4. Label: `Outlet`.
+5. Default: **All**.
+6. Click **Apply**.
+
+### Raw Material Category
+
+1. Click **+ Add User Filters**.
+2. Select table `21_fact_ct_consumption_variance.sql`.
+3. Select `category_name`.
+4. Choose **Dropdown > Multi Select**.
+5. Label: `Raw Material Category`.
+6. Default: **All**.
+7. Click **Apply**.
+
+### Exception Type
+
+1. Click **+ Add User Filters**.
+2. Select table `34_fact_ct_data_quality_exception.sql`.
+3. Select `exception_type`.
+4. Choose **Dropdown > Multi Select**.
+5. Label: `Exception Type`.
+6. Default: **All**.
+7. Click **Apply**.
+
+## P4-F02 - Map the Dashboard Filters
+
+| Object | Current Period | Outlet | Region | Raw Material Category | Exception Type |
+| --- | --- | --- | --- | --- | --- |
+| Closing Stock KPI | `source_period_code` | `outlet_code` | lookup `region` | Do not map | Do not map |
+| Open PO KPI | `source_period_code` | `outlet_code` | lookup `region` | Do not map | Do not map |
+| Monthly Sales KPI | `source_period_code` | `outlet_code` | lookup `region` | Do not map | Do not map |
+| Actual Consumption KPI | `source_period_code` | `outlet_code` | lookup `region` | Do not map | Do not map |
+| Variance Value KPI | `source_period_code` | `outlet_code` | lookup `region` | `category_name` | Do not map |
+| `CT_P4_SCM_Monthly_Trend` | Do not map | `outlet_code` | lookup `region` | Do not map | Do not map |
+| Six Query 34 tiles | Do not map | Do not map | Do not map | Do not map | Do not map |
+| `CT_P4_Data_Quality_Detail` | Do not map | Do not map | Do not map | Do not map | `exception_type` |
+| `CT_P4_Descriptive_Explorer` | `source_period_code` | `outlet_code` | lookup `region` | Do not map | Do not map |
+
+## P4 Validation
+
+1. Set Current Period to `month_03`.
+2. Set Outlet and Region to **All**.
+3. Confirm the five KPI values:
+    - `INR 3,344,237.44`
+    - `INR 177,145.39`
+    - `INR 2,192,475.48`
+    - `INR 377,620.25`
+    - `INR -22,106.87`
+4. Confirm the monthly trend still shows `month_01`, `month_02`, and
+   `month_03`.
+5. Confirm the six Data Quality tiles do not change when Current Period or
+   Outlet changes.
+6. Select one Exception Type.
+7. Confirm only `CT_P4_Data_Quality_Detail` changes.
+8. Reset filters and save.
+
+# Required Color and Formatting Settings
+
+## Page Accent Colors
+
+| Page | Primary | Secondary |
 | --- | --- | --- |
-| Page 1 | Every Page 1 KPI and report | None |
-| Page 2 | Current KPIs, procurement flow, PO/vendor/inventory/current-risk reports | `CT_P2_Ingredient_Price_Trend`, `CT_P2_Observed_Wastage`, `CT_P2_Expiry_Exposure_Demo` |
-| Page 3 | Current KPIs, comparisons, leakage, profitability, BCG, contribution, ranking and heatmap | `CT_P3_Consumption_Bridge`, `CT_P3_Sales_Trend` |
-| Page 4 | Current KPIs and current explorers | `CT_P4_SCM_Monthly_Trend`, `CT_P4_Consumption_Variance_Trend`, all Query 34 tiles and `CT_P4_Data_Quality_Detail` |
+| Page 1 | `#5B2D82` | `#9A8559` |
+| Page 2 | `#4164D9` | `#223B9C` |
+| Page 3 | `#9A8559` | `#162552` |
+| Page 4 | `#E44B51` | `#424B56` |
 
-The excluded charts are historical trends and must retain all three periods.
-Query 34 also contains model-wide rows whose period is `ALL`; mapping the
-As-of filter would hide them.
-
-## Global Filter 2 - Outlet
-
-1. Add another User Filter.
-2. Drag `outlet_code`.
-3. Set the label to `Outlet`.
-4. Use multi-select.
-5. Keep the default as All.
-6. Map it only to reports with a genuine `outlet_code`.
-7. Exclude all Query 34 tiles and `CT_P4_Data_Quality_Detail`.
-
-Use `outlet_code`, not outlet display name, as the mapping key.
-
-## Tab-Local Filters
-
-Add these filters only on the named tab.
-
-| Tab | Filter label | Physical field | Map only to |
-| --- | --- | --- | --- |
-| Page 1 | Region | Query 37 lookup `region` | Query 27, 28, 36 and 38 reports with outlet lookup |
-| Page 1 | New / Matured | Query 37 lookup `new_matured_flag` | Query 27, 28, 36 and 38 reports with outlet lookup |
-| Page 1 | Stockout Severity | `risk_severity` | Query 27 stockout reports and Query 28 menu impact only |
-| Page 1 | Action Owner | `action_owner` | Query 27 action and stockout-detail reports |
-| Page 1 | Ingredient Category | `category_name` through item lookup | Query 27, 28, 36 and 38 ingredient reports |
-| Page 2 | Region | Query 37 lookup `region` | Page 2 reports with outlet lookup |
-| Page 2 | Vendor | `vendor_name` | Queries 22, 23, 24, 29, 30, 31 and 36 reports |
-| Page 2 | Ingredient Category | item lookup `category_name` | PO/receipt/risky-PO/price/inventory reports with item lookup |
-| Page 2 | Ingredient Item | `item_code` | PO/receipt/risky-PO/price/inventory reports with item grain |
-| Page 2 | PO Status | `po_status` | `CT_P2_PO_Status_Distribution` and `CT_P2_Expected_Delivery_Breach` |
-| Page 3 | Region | Query 37 lookup `region` | Page 3 reports with outlet lookup |
-| Page 3 | Menu Category | `category_name` through menu lookup | Queries 18, 25 and 32 menu reports |
-| Page 3 | Menu Item | menu `item_code` or `menu_item_code` as exposed by source | Queries 18, 25 and 32 menu reports |
-| Page 3 | Ingredient Category | ingredient lookup `category_name` | Queries 19, 20 and 21 |
-| Page 3 | Ingredient | `item_code` | Queries 19, 20 and 21 |
-| Page 3 | Canonical UOM | `canonical_uom` | Quantity-only consumption reports |
-| Page 4 | Region | Query 37 lookup `region` | Non-Query-34 Page 4 reports with outlet lookup |
-| Page 4 | Ingredient | `item_code` | Consumption, inventory, PO-line, GRN and expiry reports |
-| Page 4 | Menu Item | sales/menu item field | Sales explorer and menu reports |
-| Page 4 | Vendor | `vendor_name` | PO, GRN and vendor explorer reports |
-| Page 4 | Exception Type | `exception_type` | `CT_P4_Data_Quality_Detail` only |
-
-Do not map the UOM filter to currency KPIs. Do not map menu filters to
-ingredient facts. Do not map ingredient filters to menu sales facts.
-
-## Filters That Stay Fixed Inside Reports
-
-Apply these through Pattern C:
-
-| Reports | Filter shelf field | Individual Values to Include |
-| --- | --- | --- |
-| Page 1 stockout map, priority, action and stockout detail | `risk_type` | `STOCKOUT` |
-| Page 2 expected delivery breach | `delayed_po_flag` | `1` |
-| Page 3 leakage rank | `consumption_variance_direction` | `OVER_CONSUMPTION` |
-| Page 3 low-consumption check | `consumption_variance_direction` | `UNDER_CONSUMPTION` |
-| Each Page 4 quality tile | `exception_type` | The one exact exception value assigned to that tile |
-
-Query 28 already contains only menu-impact risk rows. Query 36 already contains
-only open risky PO rows. Query 38 is the synthetic expiry-risk scenario. Do not
-add redundant fixed filters to those reports.
-
-# Part 6 - Formatting And Interaction
-
-## Severity Colors
+## RAG Colors
 
 | State | Color |
 | --- | --- |
-| Purple | `#6C3B8C` |
-| Red | `#C63D3D` |
-| Amber | `#D49A22` |
-| Green | `#2E7D5B` |
-| Grey / no data | `#7C8793` |
+| Purple / immediate | `#6C3B8C` |
+| Red / high | `#C63D3D` |
+| Amber / watch | `#D49A22` |
+| Green / healthy | `#2E7D5B` |
+| Grey / unavailable | `#7C8793` |
 
-Reserve these colors for actual states. Use neutral colors for Page 4
-descriptive metrics.
+Use RAG colors only for a real state or exception. Page 4 descriptive totals
+must remain neutral.
 
-Enable **Use as Filter** only for:
+# Save and URL Handoff
 
-- Page 1 risk map and priority stack
-- Page 2 vendor matrix and price movement
-- Page 3 menu BCG and heatmap
+After each saved report is validated:
 
-Do not enable it on every report. Do not rely on single-number quality widgets
-to pass an exception category.
+1. Open the report in **View Mode**.
+2. Click **Share**.
+3. Click **Embed** or **URL / Permalink**.
+4. Choose secured **Access with Login**.
+5. Keep interactive mode enabled.
+6. Copy the individual report URL.
+7. Record it against the exact `CT_...` report name.
 
-Use native Zoho chart and conditional-format settings. JavaScript applies only
-to a later externally embedded portal, not to the native dashboard editor.
+After each page dashboard is validated:
 
-# Part 7 - Validation Gates
+1. Open the dashboard in **View Mode**.
+2. Click **Share**.
+3. Click **Embed**.
+4. Choose secured **Access with Login**.
+5. Copy the dashboard URL.
+6. Record it against the exact `CT_PAGE_...` name.
 
-Keep `ZOHO_DASHBOARD_EXPECTED_RESULTS.md` open while building.
+Provide both the individual report URLs and four dashboard URLs. The individual
+report URLs will populate the custom ABNAH page slots. The dashboard URLs will
+remain the native Zoho validation and fallback views.
 
-For each saved KPI or report:
+# Final Build Order
 
-1. Set As-of Source Period to `month_03`.
-2. Set Outlet to All.
-3. Compare with the expected default result or chart table.
-4. Test OUT001, OUT002 and OUT003 separately.
-5. Clear the Outlet filter.
-6. Confirm historical trends still show all three months.
-7. Confirm Query 34 tiles and detail are unchanged by global period/outlet.
-8. Export one detail report and trace its rows to the Query Table.
-
-Stop and fix the source/report before styling if:
-
-- a direct KPI Data Column is not the exact physical field in this guide;
-- a formula KPI was built as a direct widget instead of a Summary View;
-- Working Capital does not use `working_capital_value`;
-- signed consumption variance does not allow negative values;
-- a stockout report includes `HEALTHY` rows;
-- a trend collapses to `month_03`;
-- Query 34 model-wide checks disappear;
-- stockout and expiry values are combined into one card;
-- an expiry report omits the synthetic-estimate warning.
-
-# Official Zoho References
-
-- Aggregate formulas and report designer:
-  https://www.zoho.com/analytics/help/analyze-data/aggregate-formula.html
-- KPI widgets:
-  https://www.zoho.com/analytics/help/dashboard/kpi-widgets.html
-- Report Filter shelf, Individual Values, Include and Exclude:
-  https://www.zoho.com/analytics/help/chart/applying-filters.html
-- Dashboard user-filter mapping:
-  https://www.zoho.com/analytics/help/dashboard/filter.html
+1. Build and validate all Page 1 saved reports.
+2. Build Page 1 dashboard and KPI Widgets.
+3. Add and map Page 1 dashboard filters.
+4. Repeat for Pages 2, 3, and 4.
+5. Compare all default values with
+   `04A_DASHBOARD_EXPECTED_RESULTS.md`.
+6. Collect individual report URLs.
+7. Collect four dashboard URLs.
+8. Do not publish the custom portal until every URL has been tested while
+   signed in with the intended company Zoho account.

@@ -40,16 +40,29 @@ Then:
    whose names are the filename stem followed by `-Copy`.
 4. Build the 38 Query Tables in the exact order in
    `02_QUERY_TABLES/QUERY_BUILD_CHECKLIST.csv`.
-5. Configure and validate all lookup columns, formula columns and aggregate
+5. Configure and validate all lookup columns and the four active aggregate
    formulas using
    `03_ZOHO_INSTRUCTIONS/03A_LOOKUPS_FORMULAS_AND_PRE_DASHBOARD_SETUP.md`.
-6. Run the query and KPI gates in
+   If the 38 tables, lookups and earlier formulas already exist, use
+   `03_ZOHO_INSTRUCTIONS/03B_CURRENT_WORKSPACE_MIGRATION.md` instead.
+6. Review the reference-to-Zoho decisions in
+   `03_ZOHO_INSTRUCTIONS/04B_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md`.
+7. Run the query and KPI gates in
    `03_ZOHO_INSTRUCTIONS/06_VALIDATION_AND_PUBLICATION.md`.
-7. Build the four dashboard pages using
+8. Build every saved report, KPI widget and dashboard filter using
    `03_ZOHO_INSTRUCTIONS/04_DASHBOARD_BUILD.md`.
-8. Reconcile every card and chart against
+9. Reconcile every card and chart against
    `03_ZOHO_INSTRUCTIONS/04A_DASHBOARD_EXPECTED_RESULTS.md`.
-9. Configure Ask Zia only after reconciliation passes, using
+10. Map each dashboard User Filter to the exact compatible report field using
+    `03_ZOHO_INSTRUCTIONS/05_DASHBOARD_FILTER_MAPPING.md`.
+11. Build, share and hand off each saved report in the order in
+    `03_ZOHO_INSTRUCTIONS/09_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md`.
+12. Connect individual secured report URLs to the ABG custom portal using
+    `03_ZOHO_INSTRUCTIONS/07_EMBEDDED_PORTAL_SETUP.md`.
+    Keep each native page-dashboard URL as a validation and fallback link.
+13. Complete company-laptop, authentication and hosting checks using
+    `03_ZOHO_INSTRUCTIONS/08_PORTAL_HOSTING_AUTH_HANDOFF.md`.
+14. Configure Ask Zia only after reconciliation passes, using
    `03_ZOHO_INSTRUCTIONS/05_ASK_ZIA_SETUP.md`.
 
 Record progress directly in the two checklist CSVs and

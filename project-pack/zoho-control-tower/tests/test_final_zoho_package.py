@@ -177,7 +177,7 @@ class FinalZohoPackageTests(unittest.TestCase):
         self.assertTrue(acceptance.is_file())
         text = expected_results.read_text(encoding="utf-8")
         self.assertIn("Query 27 stockout action rows: **6**", text)
-        self.assertEqual(2511, len(_read_rows(acceptance)))
+        self.assertEqual(2557, len(_read_rows(acceptance)))
 
 
 if __name__ == "__main__":

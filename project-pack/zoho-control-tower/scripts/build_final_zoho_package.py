@@ -41,6 +41,10 @@ INSTRUCTION_FILES = (
         "03A_LOOKUPS_FORMULAS_AND_PRE_DASHBOARD_SETUP.md",
     ),
     (
+        ROOT / "docs" / "ZOHO_CURRENT_WORKSPACE_MIGRATION.md",
+        "03B_CURRENT_WORKSPACE_MIGRATION.md",
+    ),
+    (
         ROOT / "docs" / "zoho_control_tower_v2_dashboard_click_by_click.md",
         "04_DASHBOARD_BUILD.md",
     ),
@@ -49,12 +53,36 @@ INSTRUCTION_FILES = (
         "04A_DASHBOARD_EXPECTED_RESULTS.md",
     ),
     (
+        ROOT / "docs" / "ABNAH_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md",
+        "04B_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md",
+    ),
+    (
         ROOT / "docs" / "zoho_control_tower_v2_ask_zia.md",
         "05_ASK_ZIA_SETUP.md",
     ),
     (
+        ROOT / "docs" / "ZOHO_DASHBOARD_FILTER_MAPPING_MATRIX.md",
+        "05_DASHBOARD_FILTER_MAPPING.md",
+    ),
+    (
         ROOT / "docs" / "zoho_control_tower_v2_validation.md",
         "06_VALIDATION_AND_PUBLICATION.md",
+    ),
+    (
+        ROOT / "docs" / "ZOHO_EMBEDDED_PORTAL_SETUP.md",
+        "07_EMBEDDED_PORTAL_SETUP.md",
+    ),
+    (
+        ROOT / "docs" / "ZOHO_PORTAL_HOSTING_AUTH_HANDOFF.md",
+        "08_PORTAL_HOSTING_AUTH_HANDOFF.md",
+    ),
+    (
+        ROOT / "docs" / "ZOHO_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md",
+        "09_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md",
+    ),
+    (
+        ROOT / "docs" / "zoho-secured-embed-handoff.example.json",
+        "zoho-secured-embed-handoff.example.json",
     ),
 )
 
@@ -357,16 +385,29 @@ Then:
    whose names are the filename stem followed by `-Copy`.
 4. Build the 38 Query Tables in the exact order in
    `02_QUERY_TABLES/QUERY_BUILD_CHECKLIST.csv`.
-5. Configure and validate all lookup columns, formula columns and aggregate
+5. Configure and validate all lookup columns and the four active aggregate
    formulas using
    `03_ZOHO_INSTRUCTIONS/03A_LOOKUPS_FORMULAS_AND_PRE_DASHBOARD_SETUP.md`.
-6. Run the query and KPI gates in
+   If the 38 tables, lookups and earlier formulas already exist, use
+   `03_ZOHO_INSTRUCTIONS/03B_CURRENT_WORKSPACE_MIGRATION.md` instead.
+6. Review the reference-to-Zoho decisions in
+   `03_ZOHO_INSTRUCTIONS/04B_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md`.
+7. Run the query and KPI gates in
    `03_ZOHO_INSTRUCTIONS/06_VALIDATION_AND_PUBLICATION.md`.
-7. Build the four dashboard pages using
+8. Build every saved report, KPI widget and dashboard filter using
    `03_ZOHO_INSTRUCTIONS/04_DASHBOARD_BUILD.md`.
-8. Reconcile every card and chart against
+9. Reconcile every card and chart against
    `03_ZOHO_INSTRUCTIONS/04A_DASHBOARD_EXPECTED_RESULTS.md`.
-9. Configure Ask Zia only after reconciliation passes, using
+10. Map each dashboard User Filter to the exact compatible report field using
+    `03_ZOHO_INSTRUCTIONS/05_DASHBOARD_FILTER_MAPPING.md`.
+11. Build, share and hand off each saved report in the order in
+    `03_ZOHO_INSTRUCTIONS/09_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md`.
+12. Connect individual secured report URLs to the ABG custom portal using
+    `03_ZOHO_INSTRUCTIONS/07_EMBEDDED_PORTAL_SETUP.md`.
+    Keep each native page-dashboard URL as a validation and fallback link.
+13. Complete company-laptop, authentication and hosting checks using
+    `03_ZOHO_INSTRUCTIONS/08_PORTAL_HOSTING_AUTH_HANDOFF.md`.
+14. Configure Ask Zia only after reconciliation passes, using
    `03_ZOHO_INSTRUCTIONS/05_ASK_ZIA_SETUP.md`.
 
 Record progress directly in the two checklist CSVs and
@@ -456,6 +497,9 @@ validation checkpoint passes.
 | Page 2: Procurement, Vendor and Capital Control | NOT STARTED |  |  |  |
 | Page 3: Consumption Variance and Menu Profitability | NOT STARTED |  |  |  |
 | Page 4: SCM Explorer and Data Quality | NOT STARTED |  |  |  |
+| Individual saved-report URL handoff | NOT STARTED |  |  |  |
+| Four native dashboard fallback URLs | NOT STARTED |  |  |  |
+| ABG custom portal filter test | NOT STARTED |  |  |  |
 | Ask Zia controlled question bank | NOT STARTED |  |  |  |
 | Business owner review | NOT STARTED |  |  |  |
 | Publication decision | NOT STARTED |  |  |  |
@@ -547,7 +591,12 @@ $required = @(
     '03_ZOHO_INSTRUCTIONS\03A_LOOKUPS_FORMULAS_AND_PRE_DASHBOARD_SETUP.md',
     '03_ZOHO_INSTRUCTIONS\04_DASHBOARD_BUILD.md',
     '03_ZOHO_INSTRUCTIONS\04A_DASHBOARD_EXPECTED_RESULTS.md',
-    '03_ZOHO_INSTRUCTIONS\05_ASK_ZIA_SETUP.md'
+    '03_ZOHO_INSTRUCTIONS\05_DASHBOARD_FILTER_MAPPING.md',
+    '03_ZOHO_INSTRUCTIONS\05_ASK_ZIA_SETUP.md',
+    '03_ZOHO_INSTRUCTIONS\07_EMBEDDED_PORTAL_SETUP.md',
+    '03_ZOHO_INSTRUCTIONS\08_PORTAL_HOSTING_AUTH_HANDOFF.md',
+    '03_ZOHO_INSTRUCTIONS\09_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md',
+    '03_ZOHO_INSTRUCTIONS\zoho-secured-embed-handoff.example.json'
 )
 foreach ($relative in $required) {
     if (-not (Test-Path -LiteralPath (Join-Path $root $relative) -PathType Leaf)) {

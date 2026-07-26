@@ -33,7 +33,7 @@ Query 27 contains stockout risk only. Query 38 contains the synthetic expiry est
 | CT_P1_KPI_Menu_Items_At_Risk | 110 |
 | CT_P1_KPI_Stockout_Risk_Value | INR 411,695.55 |
 | CT_P1_KPI_Expiry_Risk_Value_Demo | INR 271,399.12 |
-| CT_P1_KPI_Open_Risky_PO | 0 |
+| CT_P1_KPI_Open_Actions | 6 |
 
 ## Page 2 Default KPI Cards
 

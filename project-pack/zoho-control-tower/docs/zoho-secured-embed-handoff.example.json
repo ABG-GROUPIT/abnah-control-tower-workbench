@@ -1,0 +1,116 @@
+{
+  "schema": "abnah-zoho-view-handoff/v4",
+  "authMode": "zoho_secured_login",
+  "integrationMode": "individual_report_views_with_dashboard_fallbacks",
+  "note": "Add only secured-with-login Zoho view URLs. Never add passwords, OAuth tokens, client secrets, or operational report rows.",
+  "pages": {
+    "p1": {
+      "dashboardViewName": "CT_PAGE_1_Risk_Action_Center",
+      "securedDashboardFallbackUrl": "",
+      "reports": {
+        "outletRiskMap": {
+          "viewName": "CT_P1_Outlet_Risk_Map",
+          "securedViewUrl": ""
+        },
+        "actionCenter": {
+          "viewName": "CT_P1_Action_Center",
+          "securedViewUrl": ""
+        },
+        "stockoutRiskDetail": {
+          "viewName": "CT_P1_Stockout_Risk_Detail",
+          "securedViewUrl": ""
+        },
+        "menuImpactDetail": {
+          "viewName": "CT_P1_Menu_Impact_Detail",
+          "securedViewUrl": ""
+        },
+        "expiryRiskDetailDemo": {
+          "viewName": "CT_P1_Expiry_Risk_Detail_Demo",
+          "securedViewUrl": ""
+        },
+        "vendorPoRisk": {
+          "viewName": "CT_P1_Vendor_PO_Risk",
+          "securedViewUrl": ""
+        }
+      }
+    },
+    "p2": {
+      "dashboardViewName": "CT_PAGE_2_Procurement_Vendor_Capital",
+      "securedDashboardFallbackUrl": "",
+      "reports": {
+        "procurementFunnel": {
+          "viewName": "CT_P2_Procurement_Funnel",
+          "securedViewUrl": ""
+        },
+        "vendorScorecard": {
+          "viewName": "CT_P2_Vendor_Scorecard",
+          "securedViewUrl": ""
+        },
+        "ingredientPriceTrend": {
+          "viewName": "CT_P2_Ingredient_Price_Trend",
+          "securedViewUrl": ""
+        },
+        "topPriceMovement": {
+          "viewName": "CT_P2_Top_Price_Movement",
+          "securedViewUrl": ""
+        },
+        "pendingByVendor": {
+          "viewName": "CT_P2_Pending_By_Vendor",
+          "securedViewUrl": ""
+        },
+        "expectedDeliveryBreach": {
+          "viewName": "CT_P2_Expected_Delivery_Breach",
+          "securedViewUrl": ""
+        },
+        "otifSummary": {
+          "viewName": "CT_P2_KPI_OTIF",
+          "securedViewUrl": ""
+        }
+      }
+    },
+    "p3": {
+      "dashboardViewName": "CT_PAGE_3_Consumption_Menu_Profitability",
+      "securedDashboardFallbackUrl": "",
+      "reports": {
+        "consumptionBridge": {
+          "viewName": "CT_P3_Consumption_Bridge",
+          "securedViewUrl": ""
+        },
+        "consumptionVariance": {
+          "viewName": "CT_P3_Consumption_Variance",
+          "securedViewUrl": ""
+        },
+        "menuBcg": {
+          "viewName": "CT_P3_Menu_BCG",
+          "securedViewUrl": ""
+        },
+        "outletItemHeatmap": {
+          "viewName": "CT_P3_Outlet_Item_Heatmap",
+          "securedViewUrl": ""
+        },
+        "grossMarginSummary": {
+          "viewName": "CT_P3_KPI_Menu_Gross_Margin",
+          "securedViewUrl": ""
+        }
+      }
+    },
+    "p4": {
+      "dashboardViewName": "CT_PAGE_4_SCM_Explorer_Data_Quality",
+      "securedDashboardFallbackUrl": "",
+      "reports": {
+        "scmMonthlyTrend": {
+          "viewName": "CT_P4_SCM_Monthly_Trend",
+          "securedViewUrl": ""
+        },
+        "dataQualityDetail": {
+          "viewName": "CT_P4_Data_Quality_Detail",
+          "securedViewUrl": ""
+        },
+        "descriptiveExplorer": {
+          "viewName": "CT_P4_Descriptive_Explorer",
+          "securedViewUrl": ""
+        }
+      }
+    }
+  }
+}

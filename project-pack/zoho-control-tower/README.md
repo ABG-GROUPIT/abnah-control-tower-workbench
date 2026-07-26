@@ -23,19 +23,27 @@ Important architecture note: the direct Neon PostgreSQL connector to Zoho was te
 
 ## Work Laptop Quick Start
 
-The repository includes generated synthetic CSVs, Zoho Query Table SQL, the
-local audit engine, schema contracts, Control Tower documentation, and the
-step-by-step implementation runbooks.
+The two repositories have separate owners and purposes:
+
+| Repository | Use |
+| --- | --- |
+| `https://github.com/arnavkadhe/abnah-schema-workspace` | Zoho manuals, synthetic package, SQL, validation and handoff documents |
+| `https://github.com/ABG-GROUPIT/abnah-control-tower-workbench` | Custom portal application and server deployment |
+
+For Zoho implementation, clone the personal documentation repository:
 
 ```powershell
-git clone https://github.com/arnavkadhe/abnah-zoho-synthetic-demo.git
-cd abnah-zoho-synthetic-demo
+git clone https://github.com/arnavkadhe/abnah-schema-workspace.git
+cd abnah-schema-workspace\project-pack\zoho-control-tower
 powershell -ExecutionPolicy Bypass -File .\setup_work_laptop.ps1
 ```
 
+Clone the ABG repository separately only when working on the custom portal
+application. Do not place client rows or credentials in either repository.
+
 Use `-Regenerate` to rebuild the synthetic package and `-WithOcr` to install
 the optional screenshot OCR dependencies. Read `WORK_LAPTOP_SETUP.md` for the
-complete two-repository handoff and local-data safety rules.
+complete one-repository handoff and local-data safety rules.
 
 ## Control Tower v2
 
@@ -48,14 +56,37 @@ For implementation on another laptop, use the self-contained final package:
 
 Start here:
 
-- `docs/CONTROL_TOWER_V2_START_HERE.md`
+- `FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/START_HERE.md`: current package
+  entry point.
+- `FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/03_ZOHO_INSTRUCTIONS/04_DASHBOARD_BUILD.md`:
+  the one working document to keep open while clicking through all four
+  dashboards.
+- `FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/03_ZOHO_INSTRUCTIONS/05_DASHBOARD_FILTER_MAPPING.md`:
+  the compact object-by-object filter companion.
+- `docs/CONTROL_TOWER_V2_START_HERE.md`: source-model background only.
 - `docs/control_tower_v2_source_kpi_matrix.csv`
 - `docs/zoho_control_tower_v2_import.md`
 - `docs/zoho_control_tower_v2_query_build.md`
 - `docs/ZOHO_LOOKUPS_AGGREGATE_FORMULAS_AND_PRE_DASHBOARD_SETUP.md`: exact
   lookup matrices, row formulas, aggregate formulas, grain restrictions and
   pre-dashboard reconciliation checklist.
+- `docs/ZOHO_CURRENT_WORKSPACE_MIGRATION.md`: exact continuation from a
+  workspace where all 38 Query Tables, lookups and earlier formulas are already
+  complete.
+- `docs/ABNAH_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md`: mapping from ABNAH's
+  supplied visual reference to Zoho native, enhanced and custom-finish
+  visuals.
 - `docs/zoho_control_tower_v2_dashboard_click_by_click.md`
+- `docs/ZOHO_EMBEDDED_PORTAL_SETUP.md`: secured-login embedding,
+  browser-local URL configuration, hosting boundaries and custom-chart
+  fallbacks.
+- `docs/ZOHO_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md`: current-stage,
+  four-dashboard build order, sign-in, secured handoff and filter contract.
+- `docs/ZOHO_DASHBOARD_FILTER_MAPPING_MATRIX.md`: exact page-by-page Query
+  Table, physical field, fixed-filter and dashboard User Filter mappings.
+- `docs/ZOHO_PORTAL_HOSTING_AUTH_HANDOFF.md`: final GitHub Pages versus
+  SharePoint decision, Pro-plan gate, login behavior, one-file handoff,
+  work-laptop checks and backend boundary.
 - `docs/zoho_control_tower_v2_validation.md`
 - `docs/control_tower_v2_truth_reference.md`
 - `docs/ZOHO_CONTROL_TOWER_V2_EXECUTION_RUNBOOK.md`: the authoritative
@@ -67,6 +98,9 @@ Start here:
   and exact Zoho configuration for all 76 final KPI/chart/detail objects.
 - `docs/PRESENTATION_SAFE_ACTUAL_DATA_ISSUES.md`: the three defensible
   fit-for-use findings to present, plus claims that must not be overstated.
+
+Do not use `docs/zoho_dashboard_click_by_click_build.md` for the current
+Control Tower v2 build. It belongs to the earlier six-report prototype.
 
 Build and validate:
 
@@ -94,7 +128,7 @@ Current v2 baseline:
   receipt/GRN lineage and 127 are labelled opening-stock fallbacks
 - 69 confirmed no-signal POSIST fields retained in raw shape and excluded downstream
 - 2 header-only report contracts mirrored and gated
-- 12 synthetic truth/acceptance files
+- 13 synthetic truth/acceptance files
 - 9 control-tower acceptance checks passing
 
 ## 2. Current Build Status

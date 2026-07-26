@@ -20,6 +20,9 @@ validation checkpoint passes.
 | Page 2: Procurement, Vendor and Capital Control | NOT STARTED |  |  |  |
 | Page 3: Consumption Variance and Menu Profitability | NOT STARTED |  |  |  |
 | Page 4: SCM Explorer and Data Quality | NOT STARTED |  |  |  |
+| Individual saved-report URL handoff | NOT STARTED |  |  |  |
+| Four native dashboard fallback URLs | NOT STARTED |  |  |  |
+| ABG custom portal filter test | NOT STARTED |  |  |  |
 | Ask Zia controlled question bank | NOT STARTED |  |  |  |
 | Business owner review | NOT STARTED |  |  |  |
 | Publication decision | NOT STARTED |  |  |  |

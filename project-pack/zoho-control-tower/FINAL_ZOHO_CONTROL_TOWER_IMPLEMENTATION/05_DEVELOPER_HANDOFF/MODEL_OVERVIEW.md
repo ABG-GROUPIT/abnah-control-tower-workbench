@@ -1,5 +1,12 @@
 # ABNAH Control Tower v2 - Start Here
 
+> **Current implementation entry point:** use
+> `FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/START_HERE.md`. For dashboard work,
+> keep
+> `FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/03_ZOHO_INSTRUCTIONS/04_DASHBOARD_BUILD.md`
+> open. The status counts and model discussion below are retained as
+> source-discovery background, not as the current click manual.
+
 ## Purpose
 
 This package turns the validated Restroworks report schemas into a synthetic,
@@ -168,15 +175,19 @@ Do not silently synthesize these fields in the production model.
 - Do not sum kg, litre and pieces into one quantity KPI.
 - High inventory value is descriptive; it is not automatically a risk.
 
-## JavaScript Decision
+## Portal Decision
 
-The four-page control tower can be built with native Zoho charts, KPI widgets,
-dashboard tabs, user filters, report-as-filter behavior and conditional
-formatting. No JavaScript is required for the core dashboard.
+Build the four native Zoho dashboards first for calculation, filter and
+fallback validation. The final ABNAH presentation uses the ABG custom portal:
+individual secured Zoho reports are placed in the custom layout, compatible
+report filters are controlled through Zoho's JavaScript API, and custom KPI
+cards are supplied through the secure server integration or approved
+one-value Summary Views.
 
-Zoho's JavaScript API is for controlling reports embedded in a separate web
-application. Use it only if ABNAH later needs a custom portal shell or behavior
-that native dashboards cannot provide:
+The custom portal application belongs in the `ABG-GROUPIT` repository. These
+implementation manuals belong in the `arnavkadhe` repository.
+
+Official JavaScript API reference:
 https://www.zoho.com/analytics/js-api/
 
 ## Next Production Step

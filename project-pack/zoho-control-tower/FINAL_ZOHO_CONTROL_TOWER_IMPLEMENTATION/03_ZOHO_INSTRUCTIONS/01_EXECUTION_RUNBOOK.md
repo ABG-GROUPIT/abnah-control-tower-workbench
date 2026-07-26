@@ -232,19 +232,18 @@ lookup matrices, row formulas, aggregate formulas, direct aggregations,
 single-period and single-UOM restrictions, truth values and the final
 pre-dashboard checklist. Do not start Phase 4 until that checklist passes.
 
-## Phase 4 - Build The Four Dashboard Tabs
+## Phase 4 - Build And Reconcile The Four Page Dashboards
 
-Zoho natively supports multiple dashboard tabs, widgets, reports, filters and
-drag/resizable layouts:
-https://www.zoho.com/analytics/help/dashboard/create-dashboard.html
-
-Create one dashboard:
+Create these four separate Zoho dashboards:
 
 ```text
-ABNAH Supply Chain Control Tower v2
+CT_PAGE_1_Risk_Action_Center
+CT_PAGE_2_Procurement_Vendor_Capital
+CT_PAGE_3_Consumption_Menu_Profitability
+CT_PAGE_4_SCM_Explorer_Data_Quality
 ```
 
-Build tabs in this order:
+Build them in this order:
 
 1. `SCM Descriptive Explorer & Data Quality`
 2. `Consumption Variance & Menu Profitability`
@@ -254,63 +253,60 @@ Build tabs in this order:
 This implementation order proves source totals and drill detail before the
 executive action page is assembled.
 
-Use the exact report names, sources, chart types, shelves, filters and layouts
-in:
+Use the exact click sequence, report names, physical source columns,
+aggregations, fixed filters and Dashboard User Filter mappings in:
 
 ```text
 docs/zoho_control_tower_v2_dashboard_click_by_click.md
 ```
 
-Use **consumption**, not yield, on Page 3.
-
-Add global filters only after every component works:
+Use the expected result beside each object in:
 
 ```text
-source period
-outlet
+docs/ZOHO_DASHBOARD_EXPECTED_RESULTS.md
 ```
 
-Set source period to single-select and default it to `month_03`; otherwise three
-inventory checkpoints are added together as though they were simultaneous.
-Region and new/matured may be page-wide display filters through the enriched
-outlet lookup. Category, vendor, PO status, risk type, severity and UOM are
-page/report filters, not dashboard-global filters.
-
-Zoho supports common filters across dashboard tabs:
-https://www.zoho.com/analytics/help/dashboard/filter.html
+Use **consumption**, not yield, on Page 3.
 
 ## Phase 5 - Match The Supplied Control Tower Visual
 
-Use native Zoho layout, chart configuration, conditional formatting, filters,
-widgets and themes first.
+The four native Zoho dashboards are the calculation, filter and fallback
+validation layer. The final executive presentation is the ABG custom portal.
+The portal places individual secured Zoho reports into the approved ABNAH
+layout; it does not place one complete Zoho dashboard iframe inside a page.
 
 Match the supplied HTML in this order:
 
-1. page and section hierarchy;
-2. KPI meaning and number format;
-3. chart type and reading direction;
-4. severity semantics;
-5. drill path and report-as-filter behavior;
-6. spacing, labels and neutral background;
-7. final palette.
+1. prove each KPI and report in its native Zoho page dashboard;
+2. apply the exact chart colors and number formats inside Zoho;
+3. generate secured-with-login URLs for each saved report;
+4. place those reports in their custom portal slots;
+5. map only compatible portal filters to each report;
+6. retain the four native dashboard URLs as presentation fallbacks.
 
-Do not use JavaScript to inject styles into a native Zoho dashboard. Zoho's
-JavaScript API controls Zoho reports embedded inside an external application:
-https://www.zoho.com/analytics/js-api/
+Use:
 
-Therefore:
+```text
+docs/ZOHO_DASHBOARD_FILTER_MAPPING_MATRIX.md
+docs/ZOHO_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md
+docs/ZOHO_EMBEDDED_PORTAL_SETUP.md
+docs/zoho-secured-embed-handoff.example.json
+```
 
-| Requirement | Delivery |
-| --- | --- |
-| Four tabs, filters, KPIs, charts, tables, conditional colors | Native Zoho |
-| Host-controlled filter, refresh or export in a custom portal | Zoho JS API after embedding |
-| Pixel-level custom shell around embedded reports | Separate custom application |
-| Arbitrary restyling of native Zoho dashboard internals | Not a supported plan |
+KPI Widgets remain inside native Zoho dashboards for validation. The custom
+KPI cards use secure approved aggregate retrieval or one-value Summary Views;
+they cannot read an individual dashboard KPI Widget URL.
 
-Start with native Zoho. Approve a custom embedded shell only if the native result
-cannot meet a specific signed-off presentation requirement.
+## Phase 6 - Secure Portal Handoff
 
-## Phase 6 - Train Ask Zia
+1. Share every required saved report with the approved company Zoho account.
+2. Use secured **Access with Login**.
+3. Complete the first JavaScript filter test before collecting all URLs.
+4. Enter only secured view URLs in the v4 handoff JSON.
+5. Never enter credentials, OAuth secrets or operational report rows.
+6. Validate all four native dashboard fallback URLs on the company laptop.
+
+## Phase 7 - Train Ask Zia
 
 Train Ask Zia only after the dashboard calculations pass.
 

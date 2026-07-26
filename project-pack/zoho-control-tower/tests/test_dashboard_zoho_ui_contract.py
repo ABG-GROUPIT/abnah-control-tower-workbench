@@ -18,16 +18,23 @@ class DashboardZohoUiContractTests(unittest.TestCase):
             "`outlet_code` | Count Distinct",
             "`allocated_forecast_net_sales_at_risk` | Sum",
             "`expiry_risk_value` | Sum",
-            "`working_capital_value` | Sum",
+            "`action_id` | Count Distinct",
+            "`ordered_value` | Sum",
+            "`pending_value` | Sum",
+            "`delayed_value` | Sum",
+            "`net_sales` | Sum",
+            "`theoretical_cogs` | Sum",
+            "`leakage_value` | Sum",
+            "`closing_stock_value` | Sum",
+            "`open_po_value` | Sum",
+            "`actual_consumption_value` | Sum",
             "`signed_consumption_variance_value` | Sum",
-            "`is_open_po` | Sum",
-            "`receipt_total` | Sum",
         }
         for mapping in required_mappings:
             self.assertIn(mapping, self.text)
 
     def test_ratio_kpis_use_saved_summary_views(self) -> None:
-        self.assertIn("Pattern B - Aggregate Formula KPI Tile", self.text)
+        self.assertIn("Saved Summary View", self.text)
         for formula in (
             "PO Fill Rate %",
             "Vendor OTIF %",
@@ -36,18 +43,19 @@ class DashboardZohoUiContractTests(unittest.TestCase):
             self.assertIn(f"`{formula}`", self.text)
         compact_text = " ".join(self.text.split())
         self.assertIn(
-            "Do not try to find the Aggregate Formula in the direct widget",
+            "Do not try to find an Aggregate Formula in the direct KPI Widget's "
+            "Data Column selector.",
             compact_text,
         )
 
     def test_report_filters_use_zoho_filter_shelf_controls(self) -> None:
         for instruction in (
-            "Filter Shelf",
+            "Filter shelf selection",
             "Individual Values",
             "Choose **Include**",
             "`risk_type`: Individual Values, Include `STOCKOUT`",
-            "`delayed_po_flag`: Include `1`",
-            "`consumption_variance_direction`: Include `UNDER_CONSUMPTION`",
+            "`is_open_po`: Individual Values, Include `1`",
+            "`delayed_po_flag`: Individual Values, Include `1`",
         ):
             self.assertIn(instruction, self.text)
 
@@ -62,23 +70,12 @@ class DashboardZohoUiContractTests(unittest.TestCase):
         for criterion in forbidden_ui_criteria:
             self.assertNotIn(criterion, self.text)
 
-    def test_only_five_queries_require_resave(self) -> None:
-        expected = (
-            "20_fact_ct_actual_consumption.sql",
-            "21_fact_ct_consumption_variance.sql",
-            "24_fact_ct_po_receipt_line.sql",
-            "31_sum_ct_price_movement.sql",
-            "33_sum_ct_scm_monthly.sql",
-        )
-        section = self.text.split("## One-Time SQL Correction", 1)[1].split(
-            "# Part 1", 1
-        )[0]
-        for filename in expected:
-            self.assertIn(f"`{filename}`", section)
+    def test_guide_starts_after_all_queries_are_saved(self) -> None:
         self.assertIn(
-            "Do not recreate Queries 01-19, 22-23, 25-30, 32 or 34-38.",
-            section,
+            "Confirm Query Tables `01` through `38` have been saved successfully.",
+            self.text,
         )
+        self.assertNotIn("## One-Time SQL Correction", self.text)
 
 
 if __name__ == "__main__":

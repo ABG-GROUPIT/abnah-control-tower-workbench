@@ -580,9 +580,9 @@ def _build_records(models: dict[str, pd.DataFrame]) -> list[dict[str, object]]:
             "currency",
         ),
         (
-            "CT_P1_KPI_Open_Risky_PO",
-            "open_risky_po_count",
-            p1["open_risky_po_count"],
+            "CT_P1_KPI_Open_Actions",
+            "open_action_count",
+            p1["action_count"],
             "count",
         ),
     ]
@@ -995,6 +995,39 @@ def _build_records(models: dict[str, pd.DataFrame]) -> list[dict[str, object]]:
             "CT_P3_Low_Consumption_Check",
             "low_consumption_value",
             group["low_consumption_value"].sum(),
+            category=f"{item_code} - {item_name}",
+            secondary_category=uom,
+            display_format="currency",
+        )
+    variance_chart = variance.copy()
+    variance_chart["consumption_variance_direction"] = np.select(
+        [
+            variance_chart["variance_qty"] > 0,
+            variance_chart["variance_qty"] < 0,
+        ],
+        ["OVER_CONSUMPTION", "UNDER_CONSUMPTION"],
+        default="MATCHED",
+    )
+    for (
+        item_code,
+        item_name,
+        uom,
+        direction,
+    ), group in variance_chart.groupby(
+        [
+            "item_code",
+            "item_name",
+            "canonical_uom",
+            "consumption_variance_direction",
+        ]
+    ):
+        _record(
+            records,
+            "Page 3",
+            "CT_P3_Consumption_Variance",
+            "signed_consumption_variance_value",
+            group["signed_variance_value"].sum(),
+            series=direction,
             category=f"{item_code} - {item_name}",
             secondary_category=uom,
             display_format="currency",
