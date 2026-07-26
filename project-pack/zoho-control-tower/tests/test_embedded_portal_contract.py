@@ -15,6 +15,7 @@ HOSTING = ROOT / "docs" / "ZOHO_PORTAL_HOSTING_AUTH_HANDOFF.md"
 REPORT_SEQUENCE = (
     ROOT / "docs" / "ZOHO_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md"
 )
+FILTER_MAPPING = ROOT / "docs" / "ZOHO_DASHBOARD_FILTER_MAPPING_MATRIX.md"
 HANDOFF = REPOSITORY / "config" / "zoho-secured-embed-handoff.example.json"
 PORTAL_PAGE = REPOSITORY / "app" / "portal" / "page.tsx"
 QUERY_TABLES = (
@@ -39,6 +40,12 @@ class EmbeddedPortalContractTests(unittest.TestCase):
         self.assertTrue(all(len(page["metrics"]) == 5 for page in pages))
         self.assertEqual(20, sum(len(page["metrics"]) for page in pages))
         self.assertEqual(19, sum(len(page["panels"]) for page in pages))
+        self.assertTrue(
+            all(
+                page["filterStrategy"] == "zoho_dashboard_user_filters"
+                for page in pages
+            )
+        )
 
     def test_every_portal_object_has_a_packaged_query_source(self) -> None:
         source_queries = {
@@ -105,31 +112,24 @@ class EmbeddedPortalContractTests(unittest.TestCase):
     def test_one_file_handoff_is_blank_and_complete(self) -> None:
         handoff = json.loads(HANDOFF.read_text(encoding="utf-8"))
         self.assertEqual(
-            "abnah-zoho-report-embed-handoff/v2",
+            "abnah-zoho-dashboard-embed-handoff/v3",
             handoff["schema"],
         )
         self.assertEqual("zoho_secured_login", handoff["authMode"])
         self.assertEqual(
-            "individual_report_views",
+            "page_dashboard_views",
             handoff["integrationMode"],
         )
 
-        expected = {}
-        for page in self.config["pages"]:
-            for slot_kind, objects in (
-                ("kpi", page["metrics"]),
-                ("report", page["panels"]),
-            ):
-                for view in objects:
-                    expected[view["id"]] = {
-                        "pageId": page["id"],
-                        "slotKind": slot_kind,
-                        "zohoViewName": view["zohoViewName"],
-                        "securedEmbedUrl": "",
-                    }
-
-        self.assertEqual(39, len(handoff["views"]))
-        self.assertEqual(expected, handoff["views"])
+        expected = {
+            page["id"]: {
+                "dashboardViewName": page["dashboardViewName"],
+                "securedDashboardEmbedUrl": "",
+            }
+            for page in self.config["pages"]
+        }
+        self.assertEqual(4, len(handoff["pages"]))
+        self.assertEqual(expected, handoff["pages"])
 
     def test_delivery_portal_has_a_separate_route(self) -> None:
         self.assertTrue(PORTAL_PAGE.is_file(), PORTAL_PAGE)
@@ -145,6 +145,7 @@ class EmbeddedPortalContractTests(unittest.TestCase):
             EMBED,
             HOSTING,
             REPORT_SEQUENCE,
+            FILTER_MAPPING,
         ):
             self.assertTrue(path.is_file(), path)
         migration = MIGRATION.read_text(encoding="utf-8")
@@ -152,17 +153,21 @@ class EmbeddedPortalContractTests(unittest.TestCase):
         self.assertIn("20_fact_ct_actual_consumption.sql", migration)
         self.assertIn("Weighted Unit Price", migration)
         embed = EMBED.read_text(encoding="utf-8")
-        self.assertIn("individual saved Zoho views", embed)
+        self.assertIn("four complete secured Zoho dashboards", embed)
         self.assertIn("Do not use:", embed)
-        self.assertIn("ZOHO_CRITERIA", embed)
+        self.assertIn("Dashboard User Filters", embed)
         hosting = HOSTING.read_text(encoding="utf-8")
         self.assertIn("GitHub Pages is not a backend", hosting)
-        self.assertIn("20 KPI views", hosting)
+        self.assertIn("20 KPI objects", hosting)
         self.assertIn("means **this same laptop**", hosting)
         sequence = REPORT_SEQUENCE.read_text(encoding="utf-8")
-        self.assertIn("39 saved Zoho views", sequence)
-        self.assertIn("Continue after sign-in", sequence)
-        self.assertIn("External Filter Contract", sequence)
+        self.assertIn("Build and secure these four dashboards", sequence)
+        self.assertIn("Dashboard User Filters", sequence)
+        self.assertIn("secured-with-login dashboard iframe URLs", sequence)
+        mapping = FILTER_MAPPING.read_text(encoding="utf-8")
+        self.assertIn("Query 34", mapping)
+        self.assertIn("source_period_code", mapping)
+        self.assertIn("outlet_code", mapping)
 
 
 if __name__ == "__main__":

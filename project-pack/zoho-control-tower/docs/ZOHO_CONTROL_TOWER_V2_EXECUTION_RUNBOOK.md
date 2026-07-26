@@ -232,12 +232,17 @@ lookup matrices, row formulas, aggregate formulas, direct aggregations,
 single-period and single-UOM restrictions, truth values and the final
 pre-dashboard checklist. Do not start Phase 4 until that checklist passes.
 
-## Phase 4 - Build And Reconcile The 39 Saved Views
+## Phase 4 - Build And Reconcile The Four Page Dashboards
 
-The external ABNAH portal uses individual Zoho saved views:
+Zoho KPI Widgets are dashboard-only objects. Build saved chart, pivot, summary
+and tabular reports, then place those reports and five KPI objects inside each
+of these page dashboards:
 
 ```text
-20 KPI views + 19 chart/table/map views
+CT_PAGE_1_Risk_Action_Center
+CT_PAGE_2_Procurement_Vendor_Capital
+CT_PAGE_3_Consumption_Menu_Profitability
+CT_PAGE_4_SCM_Explorer_Data_Quality
 ```
 
 Build them in this order:
@@ -258,23 +263,30 @@ docs/zoho_control_tower_v2_dashboard_click_by_click.md
 docs/ZOHO_DASHBOARD_EXPECTED_RESULTS.md
 ```
 
-After each saved view reconciles, generate its secured-with-login individual
-embed URL and connect that exact slot using:
+After each page dashboard reconciles, generate its one secured-with-login
+dashboard embed URL and connect that page using:
 
 ```text
 docs/ZOHO_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md
 ```
 
-Do not wait for one complete Zoho dashboard before connecting the portal.
-Unconfigured slots remain as blueprints while completed views go live.
+Use the exact per-query field mappings and exclusions in:
+
+```text
+docs/ZOHO_DASHBOARD_FILTER_MAPPING_MATRIX.md
+```
+
+Unconfigured pages remain as blueprints while completed page dashboards go
+live.
 
 Use **consumption**, not yield, on Page 3.
 
 ## Phase 5 - Match The Supplied Control Tower Visual
 
-The ABNAH portal owns the four-page composition, navigation, page filters,
-outer card frames, spacing and responsive layout. Zoho owns the rendered
-content inside each secured iframe.
+Zoho owns each live page's KPI rendering, dashboard User Filters, charts,
+tooltips, drill behavior and internal layout. The ABNAH portal owns the outer
+navigation, sign-in preflight, blueprint/reference view and page launch
+experience.
 
 Match the supplied HTML in this order:
 
@@ -282,41 +294,35 @@ Match the supplied HTML in this order:
 2. chart type and reading direction in Zoho;
 3. severity colors, legends and labels in Zoho;
 4. tooltip, drill and underlying-data behavior in Zoho;
-5. page hierarchy, spacing and filter placement in the portal;
+5. page hierarchy, spacing and filter placement in each Zoho page dashboard;
 6. cross-device rendering and secured-login behavior.
 
 The portal cannot restyle cross-origin Zoho iframe content. Apply all
 chart-internal colors and number formats before generating the embed URL.
 
-The portal applies tab-specific controls only to compatible views through
-URL-encoded `ZOHO_CRITERIA`. Current-state period filters do not alter
-historical trend views, and model-wide data-quality checks are not given
-outlet criteria.
+Dashboard User Filters apply only to explicitly mapped compatible objects.
+Current-state period filters do not alter historical trend views, and Query 34
+model-wide data-quality checks are excluded from period/outlet filtering.
 
-Zoho documents secured individual-view embedding and URL criteria:
-https://www.zoho.com/analytics/help/publishing/embed-reports.html
+Zoho documents dashboard filters, KPI Widgets and secured embedding:
 
-## Phase 6 - Optional Native Zoho Dashboard
+- https://www.zoho.com/analytics/help/dashboard/filter.html
+- https://www.zoho.com/analytics/help/dashboard/kpi-widgets.html
+- https://www.zoho.com/analytics/help/publishing/embed-reports.html
 
-After all 39 saved views reconcile and work in the custom portal, optionally
-assemble them into one native four-tab dashboard named:
+## Phase 6 - Secure And Embed The Four Dashboards
 
-```text
-ABNAH Supply Chain Control Tower v2
-```
+Share each page dashboard with the approved company Zoho viewer account. Use
+secured **Access with Login**, then copy the four iframe `src` URLs into the
+v3 handoff. Do not create standalone KPI embed URLs.
 
-This is a Zoho-only fallback and an acceptance comparison surface. The custom
-portal does not depend on it.
-
-Zoho supports dashboard tabs and mapped user filters:
-https://www.zoho.com/analytics/help/dashboard/filter.html
 | Pixel-level custom shell around embedded reports | Separate custom application |
 | Arbitrary restyling of native Zoho dashboard internals | Not a supported plan |
 
 Start with native Zoho. Approve a custom embedded shell only if the native result
 cannot meet a specific signed-off presentation requirement.
 
-## Phase 6 - Train Ask Zia
+## Phase 7 - Train Ask Zia
 
 Train Ask Zia only after the dashboard calculations pass.
 

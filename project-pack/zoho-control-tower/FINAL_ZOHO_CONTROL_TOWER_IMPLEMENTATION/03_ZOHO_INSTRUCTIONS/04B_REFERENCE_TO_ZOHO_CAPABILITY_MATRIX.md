@@ -176,7 +176,8 @@ The custom portal may own:
 - the exact action-card queue and detail drawer;
 - the exact waterfall presentation;
 - page-level secured Zoho embeds;
-- later, per-view embeds with validated `ZOHO_CRITERIA`.
+- later, approved API-fed custom visuals where native Zoho cannot reproduce a
+  signed-off interaction.
 
 It must not calculate business KPIs in browser code. A custom visual consumes
 an approved aggregate or row set from Zoho/server APIs and renders it. OAuth

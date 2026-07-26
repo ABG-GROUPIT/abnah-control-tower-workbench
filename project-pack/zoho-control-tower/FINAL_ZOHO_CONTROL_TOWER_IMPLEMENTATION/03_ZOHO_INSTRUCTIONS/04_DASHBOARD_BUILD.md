@@ -12,10 +12,18 @@ four control-tower pages:
 
 Use **consumption**, not yield, on Page 3.
 
-The saved views are the canonical delivery objects. Each one is embedded in
-its assigned external portal slot. A native four-tab Zoho dashboard may be
-assembled later as a fallback, but it is not required before portal
-integration.
+Saved chart, pivot, summary and tabular views are reusable report objects.
+KPI Widgets are created only inside a dashboard and are not independently
+shared. The canonical delivery objects are these four Zoho page dashboards:
+
+1. `CT_PAGE_1_Risk_Action_Center`
+2. `CT_PAGE_2_Procurement_Vendor_Capital`
+3. `CT_PAGE_3_Consumption_Menu_Profitability`
+4. `CT_PAGE_4_SCM_Explorer_Data_Quality`
+
+Each page dashboard contains five KPI objects plus its saved reports. Its
+Dashboard User Filters control all compatible objects through explicit column
+mapping. The external portal embeds one complete secured dashboard per page.
 
 This guide uses the exact Query Table names saved in Zoho. It does not use
 logical aliases. Complete
@@ -87,9 +95,8 @@ the Query Table, then reopen the widget/report editor.
 
 Use this only when the build register names a physical Data Column.
 
-1. Choose **Create > New Report** from the required Query Table, or create the
-   KPI view through the report workspace available in the current Zoho UI.
-2. Choose **KPI Widget**.
+1. Open the required `CT_PAGE_...` dashboard in Edit Mode.
+2. Choose **Widget > KPI Widget**.
 3. Choose **Single Label** or **Single Number**.
 4. Open the **Data** tab.
 5. For **Table**, select the exact numbered Query Table.
@@ -103,7 +110,8 @@ Use this only when the build register names a physical Data Column.
 13. Leave secondary value, indicator and target blank unless this guide says
     otherwise.
 14. Click **Apply**.
-15. Save the individual KPI view with the exact `CT_...` name.
+15. Apply the widget and use the exact `CT_...` name as its dashboard object
+    title.
 
 If several numbers appear, **Group By** is not empty. If the business label is
 missing from Data Column, that is expected: choose the physical column instead.
@@ -123,10 +131,10 @@ Use this for `PO Fill Rate %`, `Vendor OTIF %` and `Menu Gross Margin %`.
 8. Format the result as percentage with two decimals.
 9. Set the report title to the exact `CT_...` name.
 10. Save the Summary View.
-11. Hide the report toolbar, legend and unnecessary borders in its embed
+11. Hide the report toolbar, legend and unnecessary borders in its report
     settings.
-12. Keep the assigned outer-portal title as the KPI label.
-13. Save the individual Summary View with the exact `CT_...` name.
+12. Add the Summary View to the matching `CT_PAGE_...` dashboard.
+13. Keep the exact `CT_...` report title as the KPI label.
 
 This saved Summary View replaces a direct KPI Widget for that one ratio. Do not
 try to find the Aggregate Formula in the direct widget Data Column dropdown.
@@ -397,12 +405,13 @@ Extended rows: variance trend, sales/item/PO/GRN/vendor explorers and expiry sce
 
 ## Do Not Add Every Filter Everywhere
 
-Create only two dashboard-global controls:
+Create these two common controls inside every page dashboard:
 
 1. **As-of Source Period**
 2. **Outlet**
 
-Create the remaining controls on their relevant tab only. For each report,
+Create the remaining controls only on their relevant page dashboard. For each
+KPI/report,
 open **Options > Apply Dashboard Filters > Customize** and map only the fields
 listed below. A filter that is not mapped must leave that report unchanged.
 
@@ -520,7 +529,7 @@ to a later externally embedded portal, not to the native dashboard editor.
 
 Keep `ZOHO_DASHBOARD_EXPECTED_RESULTS.md` open while building.
 
-For each saved KPI or report:
+For each dashboard KPI Widget or saved report:
 
 1. Set As-of Source Period to `month_03`.
 2. Set Outlet to All.

@@ -49,17 +49,21 @@ Then:
    `03_ZOHO_INSTRUCTIONS/04B_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md`.
 7. Run the query and KPI gates in
    `03_ZOHO_INSTRUCTIONS/06_VALIDATION_AND_PUBLICATION.md`.
-8. Build the 39 individual saved KPI/report views using
+8. Build saved reports and the five KPI Widgets inside each of the four page
+   dashboards using
    `03_ZOHO_INSTRUCTIONS/04_DASHBOARD_BUILD.md`.
 9. Reconcile every card and chart against
    `03_ZOHO_INSTRUCTIONS/04A_DASHBOARD_EXPECTED_RESULTS.md`.
-10. Build, share, embed and filter each view in the exact progressive order in
+10. Map every dashboard User Filter to the exact compatible Query Table field
+    using
+    `03_ZOHO_INSTRUCTIONS/05_DASHBOARD_FILTER_MAPPING.md`.
+11. Build, share, embed and filter each page dashboard in the exact progressive order in
    `03_ZOHO_INSTRUCTIONS/09_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md`.
-11. Connect the 39 secured individual-view embeds using
+12. Connect the four secured page-dashboard embeds using
    `03_ZOHO_INSTRUCTIONS/07_EMBEDDED_PORTAL_SETUP.md`.
-12. Complete the company-laptop, hosting and one-file handoff checks in
+13. Complete the company-laptop, hosting and one-file handoff checks in
    `03_ZOHO_INSTRUCTIONS/08_PORTAL_HOSTING_AUTH_HANDOFF.md`.
-13. Configure Ask Zia only after reconciliation passes, using
+14. Configure Ask Zia only after reconciliation passes, using
    `03_ZOHO_INSTRUCTIONS/05_ASK_ZIA_SETUP.md`.
 
 Record progress directly in the two checklist CSVs and

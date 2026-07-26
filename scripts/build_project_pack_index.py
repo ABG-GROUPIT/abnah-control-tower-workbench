@@ -92,7 +92,7 @@ FEATURED = {
     "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/03_ZOHO_INSTRUCTIONS/09_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md": (
         4,
         "Report embed sequence",
-        "The exact 39-view build, validation, secured embed, handoff, and external-filter workflow.",
+        "The exact four-dashboard build, validation, secured embed, handoff, and User Filter workflow.",
     ),
     "docs/CONTROL_TOWER_KPI_AND_CHART_LINEAGE_HANDBOOK.md": (
         5,

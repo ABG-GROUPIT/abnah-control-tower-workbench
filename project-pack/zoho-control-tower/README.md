@@ -66,7 +66,9 @@ Start here:
   browser-local URL configuration, hosting boundaries and custom-chart
   fallbacks.
 - `docs/ZOHO_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md`: current-stage,
-  39-view build order, sign-in, handoff, and per-view filter contract.
+  four-dashboard build order, sign-in, secured handoff and filter contract.
+- `docs/ZOHO_DASHBOARD_FILTER_MAPPING_MATRIX.md`: exact page-by-page Query
+  Table, physical field, fixed-filter and dashboard User Filter mappings.
 - `docs/ZOHO_PORTAL_HOSTING_AUTH_HANDOFF.md`: final GitHub Pages versus
   SharePoint decision, Pro-plan gate, login behavior, one-file handoff,
   work-laptop checks and backend boundary.

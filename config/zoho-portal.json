@@ -16,7 +16,7 @@
       "subtitle": "Outlet risk, stockout, expiry and mitigation",
       "dashboardViewName": "CT_PAGE_1_Risk_Action_Center",
       "dashboardEmbedUrl": "",
-      "filterStrategy": "report_views",
+      "filterStrategy": "zoho_dashboard_user_filters",
       "criteriaTable": "27_fact_ct_inventory_risk.sql",
       "criteriaColumns": {
         "period": "source_period_code",
@@ -228,7 +228,7 @@
       "subtitle": "Purchase exposure, supplier performance and price movement",
       "dashboardViewName": "CT_PAGE_2_Procurement_Vendor_Capital",
       "dashboardEmbedUrl": "",
-      "filterStrategy": "report_views",
+      "filterStrategy": "zoho_dashboard_user_filters",
       "criteriaTable": "29_sum_ct_procurement_funnel.sql",
       "criteriaColumns": {
         "period": "source_period_code",
@@ -443,7 +443,7 @@
       "subtitle": "Actual versus theoretical consumption, leakage and menu economics",
       "dashboardViewName": "CT_PAGE_3_Consumption_Menu_Profitability",
       "dashboardEmbedUrl": "",
-      "filterStrategy": "report_views",
+      "filterStrategy": "zoho_dashboard_user_filters",
       "criteriaTable": "25_fact_ct_menu_profitability.sql",
       "criteriaColumns": {
         "period": "source_period_code",
@@ -641,7 +641,7 @@
       "subtitle": "Month-end trends, source drilldown and model exceptions",
       "dashboardViewName": "CT_PAGE_4_SCM_Explorer_Data_Quality",
       "dashboardEmbedUrl": "",
-      "filterStrategy": "report_views",
+      "filterStrategy": "zoho_dashboard_user_filters",
       "criteriaTable": "33_sum_ct_scm_monthly.sql",
       "criteriaColumns": {
         "period": "source_period_code",

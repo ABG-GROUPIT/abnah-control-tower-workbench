@@ -18,36 +18,29 @@ TARGETS = (
 
 def main() -> None:
     portal = json.loads(PORTAL_CONFIG.read_text(encoding="utf-8"))
-    views: dict[str, dict[str, str]] = {}
+    pages: dict[str, dict[str, str]] = {}
     for page in portal["pages"]:
-        for slot_kind, items in (
-            ("kpi", page["metrics"]),
-            ("report", page["panels"]),
-        ):
-            for item in items:
-                views[item["id"]] = {
-                    "pageId": page["id"],
-                    "slotKind": slot_kind,
-                    "zohoViewName": item["zohoViewName"],
-                    "securedEmbedUrl": "",
-                }
+        pages[page["id"]] = {
+            "dashboardViewName": page["dashboardViewName"],
+            "securedDashboardEmbedUrl": "",
+        }
 
     payload = {
-        "schema": "abnah-zoho-report-embed-handoff/v2",
+        "schema": "abnah-zoho-dashboard-embed-handoff/v3",
         "authMode": "zoho_secured_login",
-        "integrationMode": "individual_report_views",
+        "integrationMode": "page_dashboard_views",
         "note": (
-            "Paste only each individual saved view's secured-with-login iframe "
-            "src URL. Never add passwords, OAuth tokens, client secrets, or "
-            "report rows."
+            "Paste only each page dashboard's secured-with-login iframe src "
+            "URL. Never add passwords, OAuth tokens, client secrets, or report "
+            "rows."
         ),
-        "views": views,
+        "pages": pages,
     }
     serialized = f"{json.dumps(payload, indent=2)}\n"
     for target in TARGETS:
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(serialized, encoding="utf-8")
-        print(f"Wrote {target.relative_to(ROOT)} with {len(views)} view slots.")
+        print(f"Wrote {target.relative_to(ROOT)} with {len(pages)} dashboard slots.")
 
 
 if __name__ == "__main__":

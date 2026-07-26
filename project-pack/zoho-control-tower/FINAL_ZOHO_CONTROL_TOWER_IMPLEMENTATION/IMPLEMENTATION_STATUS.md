@@ -21,7 +21,7 @@ validation checkpoint passes.
 | Page 3: Consumption Variance and Menu Profitability | NOT STARTED |  |  |  |
 | Page 4: SCM Explorer and Data Quality | NOT STARTED |  |  |  |
 | Ask Zia controlled question bank | NOT STARTED |  |  |  |
-| 39 secured Zoho saved-view embeds | NOT STARTED |  |  |  |
+| Four secured Zoho page-dashboard embeds | NOT STARTED |  |  |  |
 | Work-email access validation | NOT STARTED |  |  |  |
 | Business owner review | NOT STARTED |  |  |  |
 | Publication decision | NOT STARTED |  |  |  |

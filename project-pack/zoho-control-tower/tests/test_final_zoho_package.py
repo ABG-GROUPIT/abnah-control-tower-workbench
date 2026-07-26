@@ -193,8 +193,8 @@ class FinalZohoPackageTests(unittest.TestCase):
         handoff = (
             instructions / "zoho-secured-embed-handoff.example.json"
         ).read_text(encoding="utf-8")
-        self.assertIn("abnah-zoho-report-embed-handoff/v2", handoff)
-        self.assertIn('"integrationMode": "individual_report_views"', handoff)
+        self.assertIn("abnah-zoho-dashboard-embed-handoff/v3", handoff)
+        self.assertIn('"integrationMode": "page_dashboard_views"', handoff)
 
 
 if __name__ == "__main__":

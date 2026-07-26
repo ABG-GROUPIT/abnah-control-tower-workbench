@@ -1,100 +1,72 @@
 # Zoho Portal Hosting, Authentication And Handoff
 
-## Final MVP Decision
-
-Use:
+## Final MVP Architecture
 
 ```text
 Static ABNAH portal shell
         |
-        | 39 individual secured-with-login Zoho view embeds
+        | four secured-with-login Zoho dashboard embeds
         v
-20 KPI views + 19 chart/table/map views
+4 page dashboards
         |
+        | 5 KPI Widgets + saved reports + Dashboard User Filters per page
         v
 Approved 38-Query-Table model
 ```
 
-The delivery portal is a separate `/portal/` page. The Schema Atlas contains a
-launch link; the live portal is not an Atlas tab.
+Zoho KPI Widgets are dashboard-only objects. Do not expect a Share action on
+an individual KPI and do not create a separate KPI iframe.
 
-Do not put one complete Zoho dashboard iframe into each page. Individual view
-embeds preserve the external ABNAH page composition.
+The delivery portal is a separate `/portal/` page. The Schema Atlas links to
+it; the live portal is not an Atlas tab.
 
-## GitHub Pages Responsibility
+## Responsibilities
 
 GitHub Pages can host:
 
-- the four-page shell and navigation;
-- the supplied ABNAH hierarchy and color system;
-- the sign-in preflight screen;
-- twenty KPI slots and nineteen report slots;
-- secured Zoho iframes;
-- browser-local import/export of the view URL handoff;
-- external filter controls that generate documented `ZOHO_CRITERIA`.
+- the outer four-page shell and navigation;
+- the sign-in preflight;
+- blueprint/reference screens;
+- four secured Zoho dashboard iframes;
+- browser-local import/export of the four dashboard URLs.
 
 Zoho handles:
 
-- authentication for report data;
-- sharing permissions;
-- refreshed data;
-- Query Table execution;
-- report rendering;
-- supported tooltip, drill and underlying-data interactions.
+- viewer authentication and sharing permissions;
+- dashboard User Filters and their mapped fields;
+- KPI, report, drill and tooltip rendering;
+- Query Table execution and refreshed data.
 
 Saving or refreshing data in Zoho does not require rebuilding GitHub Pages.
 
-## Backend Boundary
-
-GitHub Pages is not a backend. It cannot securely:
-
-- keep OAuth client secrets or refresh tokens;
-- mint short-lived embed URLs;
-- proxy private Zoho APIs;
-- verify a Zoho session for the outer shell;
-- enforce a company-email allowlist around the shell;
-- retrieve Query 27 rows for custom action cards;
-- retrieve Query 20 aggregates for a custom waterfall.
-
-Never commit a password, OAuth token, client secret or actual ABNAH report row.
+GitHub Pages is not a backend. It cannot securely store OAuth secrets, mint
+short-lived embed URLs, proxy private APIs, verify a Zoho session for the outer
+shell or enforce a company-email allowlist. Never commit credentials or actual
+ABNAH operational rows.
 
 ## Sign-In Flow
 
-The portal now presents the Zoho access screen before the control tower.
-
 1. The viewer chooses **Sign in with Zoho**.
 2. Zoho Analytics opens in a normal tab.
-3. The viewer signs in using the account granted Viewer access.
+3. The viewer signs in with an account granted access to all four dashboards.
 4. The viewer returns and chooses **Continue after sign-in**.
-5. Secured report iframes reuse the Zoho browser session.
-6. Zoho checks access to every saved view.
+5. Each secured dashboard iframe reuses the Zoho browser session.
+6. Zoho remains the actual report-access gate.
 
-The static portal cannot read Zoho cookies across origins. The Continue button
-cannot automatically confirm authentication. It only enforces the correct
-sequence. Zoho remains the actual report-access gate.
-
-For true organization SSO before the outer shell opens, configure Zoho
-Directory with Microsoft Entra ID or use an approved Embedded Analytics/JWT
-architecture. That requires administrator and licensing approval.
+The static portal cannot inspect Zoho cookies across origins. The Continue
+button confirms the sequence, not the login state.
 
 ## Pro-Plan Gate
 
-Do not infer entitlement from the word `Pro` alone. The required MVP feature is
-available when the view UI exposes:
+Do not infer entitlement from the plan name. Confirm that a completed
+dashboard exposes:
 
 ```text
-Share > Embed > Access with Login / secured login
+Share > Embed > Access with Login
 ```
 
-If that option works for an individual saved report, the MVP needs no API key
-or backend.
-
-Do not assume that the current plan includes:
-
-- private no-login permalinks;
-- a white-label portal add-on;
-- short-lived Embed URL API entitlement;
-- JWT embedded SSO.
+If that works, the MVP requires no client secret, API key or backend. Keep the
+dashboard interactive so native User Filters remain available.
 
 ## One-File Handoff
 
@@ -107,81 +79,58 @@ config/zoho-secured-embed-handoff.example.json
 Schema:
 
 ```text
-abnah-zoho-report-embed-handoff/v2
+abnah-zoho-dashboard-embed-handoff/v3
 ```
 
-The handoff contains 39 entries:
+It contains four entries, each with:
 
-- saved view name;
 - page ID;
-- KPI/report slot type;
+- exact Zoho dashboard name;
 - blank or configured secured iframe `src`.
 
-It contains no user credential.
+It contains no credential or report row.
 
 Procedure:
 
-1. Generate a secured embed from each saved Zoho view.
+1. Generate a secured embed from each completed page dashboard.
 2. Copy only the iframe `src`.
-3. Open `/portal/`.
-4. Choose **Configure**.
-5. Select the relevant page.
-6. Paste the URL beside the exact `CT_...` view name.
-7. Choose **Save locally**.
-8. Choose **Handoff** to export all mappings.
-9. Use **Configure > Import** on another approved browser.
+3. Open `/portal/` and choose **Configure**.
+4. Select the matching page and paste its dashboard URL.
+5. Choose **Save locally**.
+6. Use **Handoff** to export all four mappings.
+7. Import that handoff on another approved browser.
 
 The URLs are saved in that browser profile. Clearing browser site data removes
 them.
 
 ## Filter And Refresh Flow
 
-The portal builds a separate filter expression for every applicable saved
-view:
-
 ```text
-Outer filter selection
+Zoho dashboard User Filter
         |
         v
-Per-view table/column contract
+explicit per-object column mapping
         |
         v
-URL-encoded ZOHO_CRITERIA
-        |
-        v
-Secured Zoho report reload
+compatible KPI Widgets and saved reports update together
 ```
 
+Use `ZOHO_DASHBOARD_FILTER_MAPPING_MATRIX.md` for the exact Query Table fields.
 Historical trends are excluded from the current-period filter. Query 34
-model-wide quality checks are excluded from period/outlet filters. Menu,
-ingredient, vendor, UOM and status controls are applied only to compatible
-sources.
+model-wide checks are excluded from period and outlet filters. Scoped item,
+vendor, UOM, status and exception filters apply only to compatible objects.
 
-`ZOHO_CRITERIA` is a view filter, not row-level security. Zoho login, sharing
-and any approved share criteria enforce security.
-
-The Zoho JavaScript API can later replace reload-based filtering with
-`applyUserFilter` if it is validated under the ABNAH plan and every report has
-the required named User Filters. The current URL-criteria implementation is
-backend-free and officially documented.
+Fixed business conditions remain inside the relevant KPI/report design. The
+outer portal does not calculate or filter business values.
 
 ## Visual Boundary
 
-The external portal controls:
+The external portal controls navigation, sign-in preflight, page launch and
+blueprint/reference screens. Zoho controls every pixel inside the live
+cross-origin dashboard iframe, including KPI colors, chart palettes, legends,
+labels, number formats and filter layout.
 
-- page background;
-- section hierarchy;
-- card/panel frames;
-- labels;
-- filter layout;
-- navigation;
-- responsive behavior.
-
-Zoho controls the pixels rendered inside each report iframe. Configure report
-palettes, legends, labels, number formats and conditional formatting in Zoho.
-The outer portal cannot inject CSS into a cross-origin iframe.
-
-Risk colors:
+Configure these internal styles in Zoho:
 
 - purple `#6F2DBD`;
 - red `#E24950`;
@@ -189,79 +138,41 @@ Risk colors:
 - green `#168D61`;
 - grey `#9A9A9A`.
 
-The mapping covers all four reference pages, 20 KPI cards and 19 report
-sections.
-
-Two exact finishes remain conditional:
-
-- the Page 1 action-card queue needs approved row retrieval for a true custom
-  card renderer; the MVP embeds a sorted Zoho table;
-- the Page 3 waterfall needs approved aggregate retrieval or a supported Zoho
-  waterfall; the MVP embeds the combination chart.
-
-The portal must not recalculate stockout, expiry, OTIF, consumption, variance,
-leakage, COGS or margin.
+The mapping covers all four reference pages, 20 KPI objects and 19 requested
+visual/report sections.
 
 ## GitHub Pages Versus SharePoint
 
-Use GitHub Pages for the current demonstration when:
+Use GitHub Pages for the demonstration when a public empty shell is acceptable,
+Zoho protects all report data and no server-side OAuth is required.
 
-- a public empty shell is acceptable;
-- report data stays protected by Zoho;
-- easy Git-based handoff is important;
-- no server-side OAuth is required.
-
-Use SharePoint when:
-
-- the outer shell must be company-only;
-- ABG requires the Entra/SharePoint access gate;
-- IT approves the Zoho iframe domain;
-- the custom portal is packaged through an approved SharePoint/SPFx route.
-
-SharePoint is still not a Zoho backend. It does not replace secured Zoho
-sharing or automatically supply arbitrary client-side scripts through the
-standard Embed web part.
+Use SharePoint when the outer shell itself must be company-only and IT has
+approved the Zoho iframe domain. SharePoint still does not replace secured
+Zoho sharing or become a Zoho backend.
 
 ## Company-Laptop Acceptance
 
 - `/portal/` opens.
 - `https://analytics.zoho.in/` opens in a normal tab.
 - The company account can sign in.
-- Each configured saved view is shared to that account.
-- The v2 handoff imports.
-- Live reports preserve the external layout.
-- Period and outlet filters skip the documented exclusions.
-- A page refresh loads current Zoho views.
+- All four dashboards are shared to that account.
+- The v3 handoff imports.
+- Dashboard User Filters update mapped KPI/report objects.
+- A page refresh loads current Zoho dashboard data.
 - No credential or operational row is in the handoff or repository.
 
 ## Local Report Reviewer
 
 The local reviewer remains separate because it contains operational rows.
+`127.0.0.1` means **this same laptop**. Run the viewer on the laptop that opens
+it, leave the terminal active and use `http://127.0.0.1:8765/`.
 
-`127.0.0.1` means **this same laptop**. Run the viewer on the company laptop
-that opens it:
-
-1. Run `run_local_report_viewer.bat`.
-2. Leave the terminal open.
-3. Open `http://127.0.0.1:8765/`.
-4. Check `http://127.0.0.1:8765/health`.
-
-Diagnostic:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\diagnose_local_report_viewer.ps1
-```
-
-`Connection refused` means no process is listening. It does not mean port 8765
-is inherently insecure.
+`Connection refused` means no process is listening on that laptop. It does not
+mean port 8765 is inherently insecure.
 
 ## Official References
 
-- [Zoho secured embedding and URL criteria](https://www.zoho.com/analytics/help/publishing/embed-reports.html)
-- [Zoho JavaScript API](https://www.zoho.com/analytics/js-api/)
-- [Zoho applyUserFilter](https://www.zoho.com/analytics/js-api/apply-user-filter.html)
 - [Zoho dashboard filters](https://www.zoho.com/analytics/help/dashboard/filter.html)
+- [Zoho KPI Widgets](https://www.zoho.com/analytics/help/dashboard/kpi-widgets.html)
+- [Zoho secured embedding](https://www.zoho.com/analytics/help/publishing/embed-reports.html)
 - [Zoho Directory and Entra SSO](https://www.zoho.com/analytics/help/zoho-directory.html)
-- [Zoho short-lived Embed URL API](https://www.zoho.com/analytics/api/v2/embed-api/embed-url.html)
-- [SharePoint iframe domain controls](https://support.microsoft.com/en-US/SharePoint/sites-pages/allow-or-restrict-the-ability-to-embed-content-on-sharepoint-pages)
-- [SharePoint Embed web part](https://support.microsoft.com/en-US/SharePoint/sites-pages/add-content-to-your-page-using-the-embed-web-part)
