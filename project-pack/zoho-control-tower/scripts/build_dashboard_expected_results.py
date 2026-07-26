@@ -553,6 +553,8 @@ def _build_records(models: dict[str, pd.DataFrame]) -> list[dict[str, object]]:
     variance = _scope(models["variance"])
     menu_profit = _scope(models["menu_profit"])
     sales = _scope(models["sales"])
+    procurement = _scope(models["procurement"])
+    price_movement = _scope(models["price_movement"])
 
     page_1_kpis = [
         (
@@ -580,9 +582,9 @@ def _build_records(models: dict[str, pd.DataFrame]) -> list[dict[str, object]]:
             "currency",
         ),
         (
-            "CT_P1_KPI_Open_Risky_PO",
-            "open_risky_po_count",
-            p1["open_risky_po_count"],
+            "CT_P1_KPI_Open_Actions",
+            "open_action_count",
+            risk.loc[risk["risk_type"] == "STOCKOUT", "action_id"].nunique(),
             "count",
         ),
     ]
@@ -682,12 +684,22 @@ def _build_records(models: dict[str, pd.DataFrame]) -> list[dict[str, object]]:
 
     page_2_kpis = [
         ("CT_P2_KPI_Monthly_Purchase", p2["monthly_purchase_value_ordered_gross"], "currency"),
-        ("CT_P2_KPI_Closing_Inventory", p2["closing_inventory_value"], "currency"),
         ("CT_P2_KPI_Open_PO_Liability", p2["open_po_liability"], "currency"),
+        (
+            "CT_P2_KPI_Delayed_PO_Value",
+            procurement["delayed_value"].sum(),
+            "currency",
+        ),
+        ("CT_P2_KPI_OTIF", p2["vendor_otif_percent"], "percentage"),
+        (
+            "CT_P2_KPI_Price_Watch",
+            price_movement["item_code"].nunique(),
+            "count",
+        ),
+        ("CT_P2_KPI_Closing_Inventory", p2["closing_inventory_value"], "currency"),
         ("CT_P2_KPI_Working_Capital", p2["working_capital_locked"], "currency"),
         ("CT_P2_KPI_Open_PO_Count", p2["open_po_count"], "count"),
         ("CT_P2_KPI_Fill_Rate", p2["po_fill_rate_percent"], "percentage"),
-        ("CT_P2_KPI_OTIF", p2["vendor_otif_percent"], "percentage"),
     ]
     for report, value, fmt in page_2_kpis:
         _record(records, "Page 2", report, "display_value", value, display_format=fmt)
@@ -918,18 +930,23 @@ def _build_records(models: dict[str, pd.DataFrame]) -> list[dict[str, object]]:
 
     page_3_kpis = [
         ("CT_P3_KPI_Net_Sales", p3["net_sales"], "currency"),
-        ("CT_P3_KPI_Quantity_Sold", p3["quantity_sold"], "count"),
         ("CT_P3_KPI_Theoretical_COGS", p3["theoretical_cogs"], "currency"),
-        (
-            "CT_P3_KPI_Consumption_Leakage",
-            p3["consumption_leakage_value"],
-            "currency",
-        ),
         (
             "CT_P3_KPI_Menu_Gross_Margin",
             p3["menu_gross_margin_percent"],
             "percentage",
         ),
+        (
+            "CT_P3_KPI_Menu_Items",
+            menu_profit["menu_item_code"].nunique(),
+            "count",
+        ),
+        (
+            "CT_P3_KPI_Consumption_Leakage",
+            p3["consumption_leakage_value"],
+            "currency",
+        ),
+        ("CT_P3_KPI_Quantity_Sold", p3["quantity_sold"], "count"),
     ]
     for report, value, fmt in page_3_kpis:
         _record(records, "Page 3", report, "display_value", value, display_format=fmt)
@@ -979,6 +996,16 @@ def _build_records(models: dict[str, pd.DataFrame]) -> list[dict[str, object]]:
                 secondary_category=uom,
                 display_format="quantity",
             )
+        _record(
+            records,
+            "Page 3",
+            "CT_P3_Consumption_Variance",
+            "signed_consumption_variance_value",
+            group["signed_variance_value"].sum(),
+            category=f"{item_code} - {item_name}",
+            secondary_category=uom,
+            display_format="currency",
+        )
         _record(
             records,
             "Page 3",
@@ -1314,9 +1341,42 @@ def _default_kpi_rows(
     records: list[dict[str, object]],
     page: str,
 ) -> list[list[object]]:
+    reference_core = {
+        "Page 1": {
+            "CT_P1_KPI_Outlets_At_Stockout_Risk",
+            "CT_P1_KPI_Menu_Items_At_Risk",
+            "CT_P1_KPI_Stockout_Risk_Value",
+            "CT_P1_KPI_Expiry_Risk_Value_Demo",
+            "CT_P1_KPI_Open_Actions",
+        },
+        "Page 2": {
+            "CT_P2_KPI_Monthly_Purchase",
+            "CT_P2_KPI_Open_PO_Liability",
+            "CT_P2_KPI_Delayed_PO_Value",
+            "CT_P2_KPI_OTIF",
+            "CT_P2_KPI_Price_Watch",
+        },
+        "Page 3": {
+            "CT_P3_KPI_Net_Sales",
+            "CT_P3_KPI_Theoretical_COGS",
+            "CT_P3_KPI_Menu_Gross_Margin",
+            "CT_P3_KPI_Menu_Items",
+            "CT_P3_KPI_Consumption_Leakage",
+        },
+        "Page 4": {
+            "CT_P4_KPI_Closing_Stock",
+            "CT_P4_KPI_Open_PO",
+            "CT_P4_KPI_Net_Sales",
+            "CT_P4_KPI_Actual_Consumption",
+            "CT_P4_KPI_Consumption_Variance",
+        },
+    }
     result = []
     for row in records:
-        if row["page"] != page or "_KPI_" not in str(row["report_name"]):
+        if (
+            row["page"] != page
+            or row["report_name"] not in reference_core[page]
+        ):
             continue
         value = row["expected_value"]
         fmt = row["display_format"]
@@ -1364,7 +1424,8 @@ def _write_markdown(
         "",
         "## Correct Query 27 / Query 38 Boundary",
         "",
-        "Query 27 contains stockout risk only. Query 38 contains the synthetic "
+        "Query 27 is the stockout/healthy inventory-risk fact; Page 1 action "
+        "objects filter `risk_type = STOCKOUT`. Query 38 contains the synthetic "
         "expiry estimate. Under the default `month_03 / All outlets` state:",
         "",
         "- Query 27 stockout action rows: **6**, not 74.",

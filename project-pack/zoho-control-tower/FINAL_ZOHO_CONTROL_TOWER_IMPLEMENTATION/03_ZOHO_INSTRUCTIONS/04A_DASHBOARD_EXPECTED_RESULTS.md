@@ -17,7 +17,7 @@ The exhaustive machine-readable point set is `04_VALIDATION_AND_LIMITATIONS/TRUT
 
 ## Correct Query 27 / Query 38 Boundary
 
-Query 27 contains stockout risk only. Query 38 contains the synthetic expiry estimate. Under the default `month_03 / All outlets` state:
+Query 27 is the stockout/healthy inventory-risk fact; Page 1 action objects filter `risk_type = STOCKOUT`. Query 38 contains the synthetic expiry estimate. Under the default `month_03 / All outlets` state:
 
 - Query 27 stockout action rows: **6**, not 74.
 - Query 38 expiry estimate rows: **68**.
@@ -33,29 +33,27 @@ Query 27 contains stockout risk only. Query 38 contains the synthetic expiry est
 | CT_P1_KPI_Menu_Items_At_Risk | 110 |
 | CT_P1_KPI_Stockout_Risk_Value | INR 411,695.55 |
 | CT_P1_KPI_Expiry_Risk_Value_Demo | INR 271,399.12 |
-| CT_P1_KPI_Open_Risky_PO | 0 |
+| CT_P1_KPI_Open_Actions | 6 |
 
 ## Page 2 Default KPI Cards
 
 | Zoho report | Expected display |
 | --- | --- |
 | CT_P2_KPI_Monthly_Purchase | INR 1,565,981.32 |
-| CT_P2_KPI_Closing_Inventory | INR 3,344,237.44 |
 | CT_P2_KPI_Open_PO_Liability | INR 177,145.39 |
-| CT_P2_KPI_Working_Capital | INR 3,521,382.83 |
-| CT_P2_KPI_Open_PO_Count | 28 |
-| CT_P2_KPI_Fill_Rate | 86.3942% |
+| CT_P2_KPI_Delayed_PO_Value | INR 156,529.82 |
 | CT_P2_KPI_OTIF | 53.7037% |
+| CT_P2_KPI_Price_Watch | 42 |
 
 ## Page 3 Default KPI Cards
 
 | Zoho report | Expected display |
 | --- | --- |
 | CT_P3_KPI_Net_Sales | INR 2,192,475.48 |
-| CT_P3_KPI_Quantity_Sold | 8,471 |
 | CT_P3_KPI_Theoretical_COGS | INR 393,664.46 |
-| CT_P3_KPI_Consumption_Leakage | INR 38,632.37 |
 | CT_P3_KPI_Menu_Gross_Margin | 82.0447% |
+| CT_P3_KPI_Menu_Items | 110 |
+| CT_P3_KPI_Consumption_Leakage | INR 38,632.37 |
 
 ## Page 4 Default KPI Cards
 
@@ -66,11 +64,6 @@ Query 27 contains stockout risk only. Query 38 contains the synthetic expiry est
 | CT_P4_KPI_Net_Sales | INR 2,192,475.48 |
 | CT_P4_KPI_Actual_Consumption | INR 377,620.25 |
 | CT_P4_KPI_Consumption_Variance | INR -22,106.87 |
-| CT_P4_KPI_Quantity_Sold | 8,471 |
-| CT_P4_KPI_Active_Menu_Items | 110 |
-| CT_P4_KPI_Open_PO_Lines | 47 |
-| CT_P4_KPI_GRN_Value | INR 1,504,689.72 |
-| CT_P4_KPI_Active_Vendors | 12 |
 
 ## Page 1 Chart Checks
 

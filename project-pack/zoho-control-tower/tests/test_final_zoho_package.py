@@ -177,7 +177,16 @@ class FinalZohoPackageTests(unittest.TestCase):
         self.assertTrue(acceptance.is_file())
         text = expected_results.read_text(encoding="utf-8")
         self.assertIn("Query 27 stockout action rows: **6**", text)
-        self.assertEqual(2511, len(_read_rows(acceptance)))
+        self.assertEqual(2557, len(_read_rows(acceptance)))
+
+    def test_current_stage_and_embed_guides_are_packaged(self) -> None:
+        instructions = self.package / "03_ZOHO_INSTRUCTIONS"
+        for filename in (
+            "03B_CURRENT_WORKSPACE_MIGRATION.md",
+            "04B_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md",
+            "07_EMBEDDED_PORTAL_SETUP.md",
+        ):
+            self.assertTrue((instructions / filename).is_file(), filename)
 
 
 if __name__ == "__main__":

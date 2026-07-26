@@ -62,6 +62,9 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
 - `Control tower`: page requirements, draft KPI formulas, final source register,
   private audit evidence, prioritized report capture, API gaps, and the
   model/delivery decision.
+- `Live portal`: four-page ABNAH reference layout with synthetic acceptance
+  baselines, browser-local secured Zoho embed configuration, and explicit
+  native/custom visualization boundaries.
 - `Data quality`: severity-tiered issue register, passed-control ledger, safe
   hosted evidence, and optional in-browser loading of the private local packet.
 - `Architecture`: one-object-at-a-time KPI/chart stories plus a separate

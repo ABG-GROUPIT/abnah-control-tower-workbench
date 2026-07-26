@@ -242,77 +242,23 @@ exceed Zoho's limit.
 
 ## Aggregate Formulas
 
-Create formulas from the indicated table using **Add > Aggregate Formula**.
-Zoho aggregate formulas are evaluated at report grouping grain, so ratio KPIs
-must divide aggregate numerators by aggregate denominators.
+Only four reusable metrics need **Add > Aggregate Formula**. Direct sums,
+counts and distinct counts are selected in the report or KPI Widget editor
+from physical fields.
 
 Official formula guidance:
 https://www.zoho.com/analytics/help/analyze-data/aggregate-formula.html
 
-### `FACT_CT_Inventory_Risk`
+### `FACT_CT_Purchase_Receipt`
 
 ```text
-Outlets At Stockout Risk
-distinctcount(if("risk_severity" <> 'GREEN', "outlet_code", null))
-
-Stockout Risk Item Count
-distinctcount(if("risk_severity" <> 'GREEN', "action_id", null))
-
-Shortage Cost Value
-sum("shortage_cost_value")
-
-Stockout Inventory Exposure
-sum("total_risk_value")
+Weighted Unit Price
+if(sum("received_qty") <> 0,
+sum("receipt_subtotal") / sum("received_qty"),
+null)
 ```
 
-In Query 27, `total_risk_value` intentionally equals shortage cost only. Show
-stockout exposure from Query 27 and the visibly labelled expiry estimate from
-Query 38 as separate KPI cards. Do not add the two sources in another Query
-Table, and keep forecast menu revenue at risk as a separate commercial-impact
-measure.
-
-### `FACT_CT_Expiry_Risk`
-
-```text
-Expiry Risk Value - Demo Estimate
-sum("expiry_risk_value")
-
-Expiry Items At Risk - Demo Estimate
-distinctcount("action_id")
-
-Outlets With Expiry Risk - Demo Estimate
-distinctcount("outlet_code")
-
-Expiry Quantity At Risk - Single UOM Only
-sum("expiry_qty_at_risk")
-```
-
-Always retain **Demo estimate - no POSIST batch/expiry source** in the report
-title or subtitle. Show the quantity formula only when one canonical UOM is
-fixed.
-
-### `FACT_CT_Menu_Impact`
-
-```text
-Menu Items At Risk
-distinctcount("menu_item_code")
-
-Stockout Risk Value
-sum("allocated_forecast_net_sales_at_risk")
-```
-
-Query 28 contains only risk rows. Do not sum `forecast_net_sales_at_risk`
-directly. It repeats when one menu item depends on several risky ingredients.
-
-### `FACT_CT_Risky_PO`
-
-```text
-Open Risky PO Count
-distinctcount("po_number")
-
-Open Risky PO Liability
-sum("open_po_value")
-```
+Never use a simple average of row unit prices for the price-trend chart.
 
 ### `FACT_CT_PO_Receipt_Line`
 
@@ -337,57 +283,31 @@ set while the Enterprise Stock Return contract has no rows.
 ### `FACT_CT_Menu_Profitability`
 
 ```text
-Net Sales
-sum("net_sales")
-
-Quantity Sold
-sum("sold_qty")
-
-Theoretical COGS
-sum("theoretical_cogs")
-
-Menu Gross Margin
-sum("gross_margin_value")
-
 Menu Gross Margin %
 if(sum("net_sales") <> 0,
 sum("gross_margin_value") / sum("net_sales") * 100,
 null)
 ```
 
-### `FACT_CT_Consumption_Variance`
+Do not average the row `gross_margin_percent` field.
 
-```text
-Consumption Leakage Value
-sum("leakage_value")
+### Direct Aggregations
 
-Low Consumption Check Quantity
-sum("low_consumption_qty")
-```
+Use the physical field and the report/widget calculation control for:
 
-Show quantity only at one canonical UOM or item/category grain. Across mixed UOM
-scope, use value rather than adding kg, litre and pieces.
+- Query 27 outlet/action counts and shortage-value sums;
+- Query 28 menu-item counts and allocated sales-at-risk sums;
+- Query 38 expiry counts and value sums;
+- Query 36 PO counts and value sums;
+- Query 25 net sales, sold quantity, COGS and gross-margin value;
+- Query 21 leakage and signed-variance values;
+- Query 33 closing stock, open PO, sales, actual consumption and
+  `working_capital_value`.
 
-### `SUM_CT_SCM_Monthly`
-
-```text
-Working Capital Locked
-sum("closing_stock_value") + sum("open_po_value")
-```
-
-Keep `closing_stock_value` and `open_po_value` as separate widgets beside the
-combined formula so the composition remains auditable.
-
-### `FACT_CT_Purchase_Receipt`
-
-```text
-Weighted Unit Price
-if(sum("received_qty") <> 0,
-sum("receipt_subtotal") / sum("received_qty"),
-null)
-```
-
-Never use a simple average of row unit prices for the price-trend chart.
+If the earlier, longer aggregate-formula catalog was already created, do not
+delete it during migration. Mark those direct sum/count aliases as legacy and
+do not select them in the final direct KPI widgets. Follow
+`ZOHO_CURRENT_WORKSPACE_MIGRATION.md`.
 
 ## Production PO Gate
 

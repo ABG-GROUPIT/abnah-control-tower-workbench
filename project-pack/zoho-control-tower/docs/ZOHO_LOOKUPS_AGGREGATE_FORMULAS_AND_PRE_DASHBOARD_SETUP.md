@@ -18,6 +18,10 @@ synthetic ABNAH Control Tower v2 build. It covers:
 - table-specific setup for all 38 Query Tables;
 - reconciliation checks before dashboard construction.
 
+If all 38 Query Tables, lookups and the earlier formula catalog are already
+complete, do not repeat this runbook. Continue from
+`ZOHO_CURRENT_WORKSPACE_MIGRATION.md`.
+
 The physical Zoho table names in this build are the numbered SQL filenames,
 including the `.sql` suffix. For example:
 

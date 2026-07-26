@@ -16,15 +16,21 @@ class DashboardZohoUiContractTests(unittest.TestCase):
     def test_direct_kpis_name_real_physical_columns(self) -> None:
         required_mappings = {
             "`outlet_code` | Count Distinct",
+            "`action_id` | Count Distinct",
             "`allocated_forecast_net_sales_at_risk` | Sum",
             "`expiry_risk_value` | Sum",
-            "`working_capital_value` | Sum",
+            "`delayed_value` | Sum",
+            "`item_code` | Count Distinct",
             "`signed_consumption_variance_value` | Sum",
             "`is_open_po` | Sum",
             "`receipt_total` | Sum",
         }
         for mapping in required_mappings:
             self.assertIn(mapping, self.text)
+        self.assertIn(
+            "Query 33 Sum `working_capital_value`",
+            self.text,
+        )
 
     def test_ratio_kpis_use_saved_summary_views(self) -> None:
         self.assertIn("Pattern B - Aggregate Formula KPI Tile", self.text)

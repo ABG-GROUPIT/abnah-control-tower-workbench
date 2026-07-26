@@ -8,6 +8,7 @@ import {
   FileSpreadsheet,
   FolderArchive,
   LayoutDashboard,
+  Monitor,
   Network,
   Pencil,
   ShieldCheck,
@@ -34,6 +35,7 @@ import { ApiRegistry } from "./ApiRegistry";
 import { ArchitectureGraphWorkspace } from "./ArchitectureGraphWorkspace";
 import { ControlTowerWorkspace } from "./ControlTowerWorkspace";
 import { DataQualityWorkspace } from "./DataQualityWorkspace";
+import { EmbeddedControlTowerPortal } from "./EmbeddedControlTowerPortal";
 import { ProjectLibraryWorkspace } from "./ProjectLibraryWorkspace";
 import { ReportNavigator } from "./ReportNavigator";
 import { ReportWorkspacePanel, type ReportTab } from "./ReportWorkspacePanel";
@@ -50,7 +52,14 @@ interface AtlasWorkspaceProps {
   persistenceMode?: "auto" | "browser";
 }
 
-type Surface = "discovery" | "api" | "control_tower" | "data_quality" | "architecture" | "library";
+type Surface =
+  | "discovery"
+  | "api"
+  | "control_tower"
+  | "live_portal"
+  | "data_quality"
+  | "architecture"
+  | "library";
 
 const defaultReportId = "report:p1_main:06_misc:03_budget_dsr_report";
 const browserStorageKey = "abnah-schema-workspace-browser-v1";
@@ -446,6 +455,7 @@ export function AtlasWorkspace({
           <button type="button" className={surface === "discovery" ? "is-active" : ""} onClick={() => setSurface("discovery")}><FileSpreadsheet aria-hidden="true" size={15} /> Discovery</button>
           <button type="button" className={surface === "api" ? "is-active" : ""} onClick={() => setSurface("api")}><Braces aria-hidden="true" size={15} /> API validation</button>
           <button type="button" className={surface === "control_tower" ? "is-active" : ""} onClick={() => setSurface("control_tower")}><LayoutDashboard aria-hidden="true" size={15} /> Control tower</button>
+          <button type="button" className={surface === "live_portal" ? "is-active" : ""} onClick={() => setSurface("live_portal")}><Monitor aria-hidden="true" size={15} /> Live portal</button>
           <button type="button" className={surface === "data_quality" ? "is-active" : ""} onClick={() => setSurface("data_quality")}><ShieldCheck aria-hidden="true" size={15} /> Data quality</button>
           <button type="button" className={surface === "architecture" ? "is-active" : ""} onClick={() => setSurface("architecture")}><Network aria-hidden="true" size={15} /> Architecture</button>
           <button type="button" className={surface === "library" ? "is-active" : ""} onClick={() => setSurface("library")}><FolderArchive aria-hidden="true" size={15} /> Library</button>
@@ -506,6 +516,7 @@ export function AtlasWorkspace({
           onOpenReport={openDiscoveryReport}
         />
       )}
+      {surface === "live_portal" && <EmbeddedControlTowerPortal />}
       {surface === "data_quality" && (
         <DataQualityWorkspace
           evidence={controlTowerEvidence}

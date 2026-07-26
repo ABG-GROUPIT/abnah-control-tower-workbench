@@ -19,6 +19,8 @@ Maintain a screenshot-free, evidence-disciplined understanding of ABNAH's Restro
    require evidence and business approval.
 7. Empty and unavailable reports remain explicit states; do not fabricate columns.
 8. Archive unknown duplicate placeholders rather than deleting or guessing them.
+9. Never commit a Zoho private permalink, OAuth token, refresh token, client
+   secret, password, or operational embed response.
 
 ## Read Order
 
@@ -44,6 +46,12 @@ Maintain a screenshot-free, evidence-disciplined understanding of ABNAH's Restro
 19. The selected report file under `schema-pack/source/report_structures/`
 20. Relevant text chunk under `schema-pack/source/reference_chunks/`
 21. `docs/KPI_LINEAGE_CONTRACT.md` before source selection or publication
+22. `project-pack/zoho-control-tower/docs/ZOHO_CURRENT_WORKSPACE_MIGRATION.md`
+    before changing the completed 38-table Zoho workspace
+23. `project-pack/zoho-control-tower/docs/ABNAH_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md`
+    before changing the final report set
+24. `project-pack/zoho-control-tower/docs/ZOHO_EMBEDDED_PORTAL_SETUP.md`
+    before changing embeds, authentication or hosting
 
 ## Truth Model
 

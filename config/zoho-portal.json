@@ -1,0 +1,765 @@
+{
+  "version": "2026-07-26",
+  "portalName": "ABNAH Supply Chain Control Tower",
+  "baselineLabel": "Synthetic validation baseline / month_03 / all outlets",
+  "auth": {
+    "mode": "zoho_secured_login",
+    "loginUrl": "https://analytics.zoho.in/",
+    "allowedEmail": "CONFIGURE_IN_ZOHO_SHARING",
+    "shellProtection": "public_shell_zoho_protected_views"
+  },
+  "pages": [
+    {
+      "id": "p1",
+      "label": "Risk Action Center",
+      "title": "Risk Action Center",
+      "subtitle": "Outlet risk, stockout, expiry and mitigation",
+      "dashboardViewName": "CT_PAGE_1_Risk_Action_Center",
+      "dashboardEmbedUrl": "",
+      "filterStrategy": "native_dashboard",
+      "criteriaTable": "27_fact_ct_inventory_risk.sql",
+      "criteriaColumns": {
+        "period": "source_period_code",
+        "outlet": "outlet_code",
+        "risk": "risk_type",
+        "category": "category_name",
+        "owner": "action_owner"
+      },
+      "filters": [
+        {
+          "id": "period",
+          "label": "As-of period",
+          "kind": "select",
+          "defaultValue": "month_03",
+          "options": [
+            { "label": "Month 03", "value": "month_03" },
+            { "label": "Month 02", "value": "month_02" },
+            { "label": "Month 01", "value": "month_01" }
+          ]
+        },
+        {
+          "id": "region",
+          "label": "Region",
+          "kind": "select",
+          "defaultValue": "ALL",
+          "options": [
+            { "label": "All regions", "value": "ALL" },
+            { "label": "North", "value": "North" }
+          ]
+        },
+        {
+          "id": "outlet",
+          "label": "Outlet",
+          "kind": "select",
+          "defaultValue": "ALL",
+          "options": [
+            { "label": "All outlets", "value": "ALL" },
+            { "label": "Connaught Place", "value": "OUT001" },
+            { "label": "Hauz Khas", "value": "OUT002" },
+            { "label": "Saket Premium", "value": "OUT003" }
+          ]
+        },
+        {
+          "id": "risk",
+          "label": "Risk",
+          "kind": "select",
+          "defaultValue": "ALL",
+          "options": [
+            { "label": "All risks", "value": "ALL" },
+            { "label": "Stockout", "value": "STOCKOUT" },
+            { "label": "Expiry", "value": "EXPIRY" }
+          ]
+        },
+        {
+          "id": "category",
+          "label": "Ingredient category",
+          "kind": "search",
+          "defaultValue": "",
+          "placeholder": "Search category"
+        },
+        {
+          "id": "owner",
+          "label": "Owner",
+          "kind": "select",
+          "defaultValue": "ALL",
+          "options": [
+            { "label": "All owners", "value": "ALL" },
+            { "label": "Procurement", "value": "Procurement" },
+            { "label": "Supply Chain", "value": "Supply Chain" }
+          ]
+        }
+      ],
+      "metrics": [
+        {
+          "id": "p1-outlets-risk",
+          "title": "Restaurants at risk",
+          "expectedValue": "3",
+          "detail": "Stockout evidence scope",
+          "zohoViewName": "CT_P1_KPI_Outlets_At_Stockout_Risk",
+          "sourceQuery": "27_fact_ct_inventory_risk.sql",
+          "sourceField": "outlet_code",
+          "aggregation": "Count Distinct; risk_type = STOCKOUT",
+          "capability": "native"
+        },
+        {
+          "id": "p1-menu-impact",
+          "title": "Menu items impacted",
+          "expectedValue": "110",
+          "detail": "Current shortage pathways",
+          "zohoViewName": "CT_P1_KPI_Menu_Items_At_Risk",
+          "sourceQuery": "28_fact_ct_menu_impact.sql",
+          "sourceField": "menu_item_code",
+          "aggregation": "Count Distinct",
+          "capability": "native"
+        },
+        {
+          "id": "p1-stockout",
+          "title": "Stockout risk",
+          "expectedValue": "INR 411,695.55",
+          "detail": "Forecast sales at risk",
+          "zohoViewName": "CT_P1_KPI_Stockout_Risk_Value",
+          "sourceQuery": "28_fact_ct_menu_impact.sql",
+          "sourceField": "allocated_forecast_net_sales_at_risk",
+          "aggregation": "Sum",
+          "capability": "native"
+        },
+        {
+          "id": "p1-expiry",
+          "title": "Expiry risk",
+          "expectedValue": "INR 271,399.12",
+          "detail": "Synthetic demo estimate",
+          "zohoViewName": "CT_P1_KPI_Expiry_Risk_Value_Demo",
+          "sourceQuery": "38_fact_ct_expiry_risk.sql",
+          "sourceField": "expiry_risk_value",
+          "aggregation": "Sum",
+          "capability": "native"
+        },
+        {
+          "id": "p1-actions",
+          "title": "Open actions",
+          "expectedValue": "6",
+          "detail": "Current stockout actions",
+          "zohoViewName": "CT_P1_KPI_Open_Actions",
+          "sourceQuery": "27_fact_ct_inventory_risk.sql",
+          "sourceField": "action_id",
+          "aggregation": "Count Distinct; risk_type = STOCKOUT",
+          "capability": "native"
+        }
+      ],
+      "panels": [
+        {
+          "id": "p1-risk-map",
+          "title": "Outlet risk map",
+          "subtitle": "Severity, exposure and affected ingredients",
+          "zohoViewName": "CT_P1_Outlet_Risk_Map",
+          "sourceQuery": "27_fact_ct_inventory_risk.sql",
+          "sourceFields": ["outlet_code", "risk_severity_rank", "shortage_cost_value", "days_cover"],
+          "capability": "native",
+          "preview": "map",
+          "span": "half",
+          "embedUrl": ""
+        },
+        {
+          "id": "p1-action-queue",
+          "title": "Priority action queue",
+          "subtitle": "Owner, due band and recommended action",
+          "zohoViewName": "CT_P1_Action_Center",
+          "sourceQuery": "27_fact_ct_inventory_risk.sql",
+          "sourceFields": ["action_id", "risk_severity", "recommended_action", "action_owner", "due_band"],
+          "capability": "custom_required",
+          "preview": "queue",
+          "span": "half",
+          "embedUrl": ""
+        },
+        {
+          "id": "p1-stockout-detail",
+          "title": "Stockout risk",
+          "subtitle": "Requirement, stock, inbound and days cover",
+          "zohoViewName": "CT_P1_Stockout_Risk_Detail",
+          "sourceQuery": "27_fact_ct_inventory_risk.sql",
+          "sourceFields": ["item_name", "forecast_required_qty", "current_stock_qty", "valid_open_po_qty", "days_cover"],
+          "capability": "native",
+          "preview": "table",
+          "span": "half",
+          "embedUrl": ""
+        },
+        {
+          "id": "p1-menu-detail",
+          "title": "Menu impact",
+          "subtitle": "Blocked menu items and forecast sales exposure",
+          "zohoViewName": "CT_P1_Menu_Impact_Detail",
+          "sourceQuery": "28_fact_ct_menu_impact.sql",
+          "sourceFields": ["ingredient_code", "menu_item_code", "forecast_menu_qty", "allocated_forecast_net_sales_at_risk"],
+          "capability": "native",
+          "preview": "table",
+          "span": "half",
+          "embedUrl": ""
+        },
+        {
+          "id": "p1-expiry-detail",
+          "title": "Expiry risk",
+          "subtitle": "Synthetic batch-linked estimate",
+          "zohoViewName": "CT_P1_Expiry_Risk_Detail_Demo",
+          "sourceQuery": "38_fact_ct_expiry_risk.sql",
+          "sourceFields": ["item_name", "estimated_expiry_date", "expiry_qty_at_risk", "expiry_risk_value", "risk_severity"],
+          "capability": "native",
+          "preview": "table",
+          "span": "half",
+          "embedUrl": ""
+        },
+        {
+          "id": "p1-po-mitigation",
+          "title": "Vendor / PO mitigation",
+          "subtitle": "Open risky PO lines and delivery exposure",
+          "zohoViewName": "CT_P1_Vendor_PO_Risk",
+          "sourceQuery": "36_fact_ct_risky_po.sql",
+          "sourceFields": ["po_number", "vendor_name", "item_name", "expected_delivery_date", "open_po_value"],
+          "capability": "native",
+          "preview": "table",
+          "span": "half",
+          "embedUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "label": "Procurement & Vendor",
+      "title": "Procurement, Vendor & Capital Control",
+      "subtitle": "Purchase exposure, supplier performance and price movement",
+      "dashboardViewName": "CT_PAGE_2_Procurement_Vendor_Capital",
+      "dashboardEmbedUrl": "",
+      "filterStrategy": "native_dashboard",
+      "criteriaTable": "29_sum_ct_procurement_funnel.sql",
+      "criteriaColumns": {
+        "period": "source_period_code",
+        "outlet": "outlet_code",
+        "vendor": "vendor_name"
+      },
+      "filters": [
+        {
+          "id": "period",
+          "label": "As-of period",
+          "kind": "select",
+          "defaultValue": "month_03",
+          "options": [
+            { "label": "Month 03", "value": "month_03" },
+            { "label": "Month 02", "value": "month_02" },
+            { "label": "Month 01", "value": "month_01" }
+          ]
+        },
+        {
+          "id": "region",
+          "label": "Region",
+          "kind": "select",
+          "defaultValue": "ALL",
+          "options": [
+            { "label": "All regions", "value": "ALL" },
+            { "label": "North", "value": "North" }
+          ]
+        },
+        {
+          "id": "category",
+          "label": "Ingredient category",
+          "kind": "search",
+          "defaultValue": "",
+          "placeholder": "Search category"
+        },
+        {
+          "id": "vendor",
+          "label": "Vendor",
+          "kind": "search",
+          "defaultValue": "",
+          "placeholder": "Search vendor"
+        },
+        {
+          "id": "poStatus",
+          "label": "PO status",
+          "kind": "select",
+          "defaultValue": "ALL",
+          "options": [
+            { "label": "All PO statuses", "value": "ALL" },
+            { "label": "Open", "value": "OPEN" },
+            { "label": "Delayed", "value": "DELAYED" },
+            { "label": "Closed", "value": "CLOSED" }
+          ]
+        },
+        {
+          "id": "rawMaterial",
+          "label": "Raw material",
+          "kind": "search",
+          "defaultValue": "",
+          "placeholder": "Search raw material"
+        }
+      ],
+      "metrics": [
+        {
+          "id": "p2-purchase",
+          "title": "Monthly purchase",
+          "expectedValue": "INR 1,565,981.32",
+          "detail": "Ordered gross value",
+          "zohoViewName": "CT_P2_KPI_Monthly_Purchase",
+          "sourceQuery": "29_sum_ct_procurement_funnel.sql",
+          "sourceField": "ordered_value",
+          "aggregation": "Sum",
+          "capability": "native"
+        },
+        {
+          "id": "p2-open-po",
+          "title": "Open PO exposure",
+          "expectedValue": "INR 177,145.39",
+          "detail": "Current pending value",
+          "zohoViewName": "CT_P2_KPI_Open_PO_Liability",
+          "sourceQuery": "29_sum_ct_procurement_funnel.sql",
+          "sourceField": "pending_value",
+          "aggregation": "Sum",
+          "capability": "native"
+        },
+        {
+          "id": "p2-delayed-po",
+          "title": "Delayed PO value",
+          "expectedValue": "INR 156,529.82",
+          "detail": "Overdue open liability",
+          "zohoViewName": "CT_P2_KPI_Delayed_PO_Value",
+          "sourceQuery": "29_sum_ct_procurement_funnel.sql",
+          "sourceField": "delayed_value",
+          "aggregation": "Sum",
+          "capability": "native"
+        },
+        {
+          "id": "p2-otif",
+          "title": "Vendor OTIF",
+          "expectedValue": "53.70%",
+          "detail": "Weighted eligible-line rate",
+          "zohoViewName": "CT_P2_KPI_OTIF",
+          "sourceQuery": "24_fact_ct_po_receipt_line.sql",
+          "sourceField": "Vendor OTIF %",
+          "aggregation": "Aggregate Formula",
+          "capability": "native_better"
+        },
+        {
+          "id": "p2-price-watch",
+          "title": "Price watch",
+          "expectedValue": "42",
+          "detail": "Raw materials tracked",
+          "zohoViewName": "CT_P2_KPI_Price_Watch",
+          "sourceQuery": "31_sum_ct_price_movement.sql",
+          "sourceField": "item_code",
+          "aggregation": "Count Distinct",
+          "capability": "native"
+        }
+      ],
+      "panels": [
+        {
+          "id": "p2-funnel",
+          "title": "Procurement funnel",
+          "subtitle": "Ordered, processed, pending and delayed value",
+          "zohoViewName": "CT_P2_Procurement_Funnel",
+          "sourceQuery": "29_sum_ct_procurement_funnel.sql",
+          "sourceFields": ["ordered_value", "processed_value", "pending_value", "delayed_value"],
+          "capability": "native",
+          "preview": "funnel",
+          "span": "half",
+          "embedUrl": ""
+        },
+        {
+          "id": "p2-scorecard",
+          "title": "Vendor risk scorecard",
+          "subtitle": "Exposure, OTIF, fill rate and delay",
+          "zohoViewName": "CT_P2_Vendor_Scorecard",
+          "sourceQuery": "24_fact_ct_po_receipt_line.sql",
+          "sourceFields": ["vendor_name", "gross_order_value", "open_po_value", "Vendor OTIF %", "PO Fill Rate %"],
+          "capability": "native",
+          "preview": "scorecard",
+          "span": "half",
+          "embedUrl": ""
+        },
+        {
+          "id": "p2-price-trend",
+          "title": "Raw material price trend",
+          "subtitle": "Weighted receipt price by period",
+          "zohoViewName": "CT_P2_Ingredient_Price_Trend",
+          "sourceQuery": "23_fact_ct_purchase_receipt.sql",
+          "sourceFields": ["source_period_code", "item_name", "vendor_name", "Weighted Unit Price"],
+          "capability": "native",
+          "preview": "line",
+          "span": "half",
+          "embedUrl": ""
+        },
+        {
+          "id": "p2-price-movement",
+          "title": "Top price movement",
+          "subtitle": "Signed unit-price change by comparable item",
+          "zohoViewName": "CT_P2_Top_Price_Movement",
+          "sourceQuery": "31_sum_ct_price_movement.sql",
+          "sourceFields": ["price_comparison_key", "unit_price_change_percent", "price_movement_direction"],
+          "capability": "native_better",
+          "preview": "movement",
+          "span": "half",
+          "embedUrl": ""
+        },
+        {
+          "id": "p2-pending-vendor",
+          "title": "Pending by vendor",
+          "subtitle": "Open liability ranked by supplier",
+          "zohoViewName": "CT_P2_Pending_By_Vendor",
+          "sourceQuery": "29_sum_ct_procurement_funnel.sql",
+          "sourceFields": ["vendor_name", "pending_value", "open_po_count"],
+          "capability": "native",
+          "preview": "table",
+          "span": "half",
+          "embedUrl": ""
+        },
+        {
+          "id": "p2-breach",
+          "title": "Expected delivery breach",
+          "subtitle": "Delayed PO lines requiring escalation",
+          "zohoViewName": "CT_P2_Expected_Delivery_Breach",
+          "sourceQuery": "22_fact_ct_purchase_order.sql",
+          "sourceFields": ["po_number", "vendor_name", "item_name", "expected_delivery_date", "open_po_value"],
+          "capability": "native",
+          "preview": "table",
+          "span": "half",
+          "embedUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "label": "Consumption & Menu",
+      "title": "Consumption Variance & Menu Profitability",
+      "subtitle": "Actual versus theoretical consumption, leakage and menu economics",
+      "dashboardViewName": "CT_PAGE_3_Consumption_Menu_Profitability",
+      "dashboardEmbedUrl": "",
+      "filterStrategy": "native_dashboard",
+      "criteriaTable": "25_fact_ct_menu_profitability.sql",
+      "criteriaColumns": {
+        "period": "source_period_code",
+        "outlet": "outlet_code",
+        "category": "category_name",
+        "menuItem": "menu_item_code"
+      },
+      "filters": [
+        {
+          "id": "period",
+          "label": "As-of period",
+          "kind": "select",
+          "defaultValue": "month_03",
+          "options": [
+            { "label": "Month 03", "value": "month_03" },
+            { "label": "Month 02", "value": "month_02" },
+            { "label": "Month 01", "value": "month_01" }
+          ]
+        },
+        {
+          "id": "region",
+          "label": "Region",
+          "kind": "select",
+          "defaultValue": "ALL",
+          "options": [
+            { "label": "All regions", "value": "ALL" },
+            { "label": "North", "value": "North" }
+          ]
+        },
+        {
+          "id": "outlet",
+          "label": "Outlet",
+          "kind": "select",
+          "defaultValue": "ALL",
+          "options": [
+            { "label": "All outlets", "value": "ALL" },
+            { "label": "Connaught Place", "value": "OUT001" },
+            { "label": "Hauz Khas", "value": "OUT002" },
+            { "label": "Saket Premium", "value": "OUT003" }
+          ]
+        },
+        {
+          "id": "superCategory",
+          "label": "Super category",
+          "kind": "search",
+          "defaultValue": "",
+          "placeholder": "Search super category"
+        },
+        {
+          "id": "category",
+          "label": "Menu category",
+          "kind": "search",
+          "defaultValue": "",
+          "placeholder": "Search menu category"
+        },
+        {
+          "id": "menuItem",
+          "label": "Menu item",
+          "kind": "search",
+          "defaultValue": "",
+          "placeholder": "Search menu item"
+        },
+        {
+          "id": "rawMaterial",
+          "label": "Raw material",
+          "kind": "search",
+          "defaultValue": "",
+          "placeholder": "Search raw material"
+        }
+      ],
+      "metrics": [
+        {
+          "id": "p3-sales",
+          "title": "Net sales",
+          "expectedValue": "INR 2,192,475.48",
+          "detail": "Selected scope",
+          "zohoViewName": "CT_P3_KPI_Net_Sales",
+          "sourceQuery": "25_fact_ct_menu_profitability.sql",
+          "sourceField": "net_sales",
+          "aggregation": "Sum",
+          "capability": "native"
+        },
+        {
+          "id": "p3-cogs",
+          "title": "Theoretical COGS",
+          "expectedValue": "INR 393,664.46",
+          "detail": "Recipe-cost basis",
+          "zohoViewName": "CT_P3_KPI_Theoretical_COGS",
+          "sourceQuery": "25_fact_ct_menu_profitability.sql",
+          "sourceField": "theoretical_cogs",
+          "aggregation": "Sum",
+          "capability": "native"
+        },
+        {
+          "id": "p3-margin",
+          "title": "Gross margin",
+          "expectedValue": "82.04%",
+          "detail": "Weighted sales margin",
+          "zohoViewName": "CT_P3_KPI_Menu_Gross_Margin",
+          "sourceQuery": "25_fact_ct_menu_profitability.sql",
+          "sourceField": "Menu Gross Margin %",
+          "aggregation": "Aggregate Formula",
+          "capability": "native_better"
+        },
+        {
+          "id": "p3-items",
+          "title": "Menu items",
+          "expectedValue": "110",
+          "detail": "Active in selected scope",
+          "zohoViewName": "CT_P3_KPI_Menu_Items",
+          "sourceQuery": "25_fact_ct_menu_profitability.sql",
+          "sourceField": "menu_item_code",
+          "aggregation": "Count Distinct",
+          "capability": "native"
+        },
+        {
+          "id": "p3-leakage",
+          "title": "Consumption leakage",
+          "expectedValue": "INR 38,632.37",
+          "detail": "Positive variance value",
+          "zohoViewName": "CT_P3_KPI_Consumption_Leakage",
+          "sourceQuery": "21_fact_ct_consumption_variance.sql",
+          "sourceField": "leakage_value",
+          "aggregation": "Sum",
+          "capability": "native"
+        }
+      ],
+      "panels": [
+        {
+          "id": "p3-bridge",
+          "title": "Consumption bridge",
+          "subtitle": "Opening, movement, closing and calculated consumption",
+          "zohoViewName": "CT_P3_Consumption_Bridge",
+          "sourceQuery": "20_fact_ct_actual_consumption.sql",
+          "sourceFields": ["opening_qty", "purchase_qty", "transfer_in_qty", "bridge_transfer_out_qty", "bridge_return_qty", "bridge_closing_qty", "calculated_actual_consumption_qty"],
+          "capability": "custom_required",
+          "preview": "waterfall",
+          "span": "half",
+          "embedUrl": ""
+        },
+        {
+          "id": "p3-variance",
+          "title": "Consumption variance",
+          "subtitle": "Under-consumption check versus over-consumption leakage",
+          "zohoViewName": "CT_P3_Consumption_Variance",
+          "sourceQuery": "21_fact_ct_consumption_variance.sql",
+          "sourceFields": ["item_name", "signed_consumption_variance_value", "consumption_variance_direction"],
+          "capability": "native_better",
+          "preview": "butterfly",
+          "span": "half",
+          "embedUrl": ""
+        },
+        {
+          "id": "p3-bcg",
+          "title": "Menu BCG matrix",
+          "subtitle": "Volume, gross margin and sales value",
+          "zohoViewName": "CT_P3_Menu_BCG",
+          "sourceQuery": "32_sum_ct_menu_profitability.sql",
+          "sourceFields": ["menu_item_code", "sold_qty", "gross_margin_percent", "net_sales", "bcg_quadrant"],
+          "capability": "native_better",
+          "preview": "bcg",
+          "span": "full",
+          "embedUrl": ""
+        },
+        {
+          "id": "p3-heatmap",
+          "title": "Item sales heatmap",
+          "subtitle": "Outlet and menu performance intensity",
+          "zohoViewName": "CT_P3_Outlet_Item_Heatmap",
+          "sourceQuery": "25_fact_ct_menu_profitability.sql",
+          "sourceFields": ["outlet_code", "menu_item_code", "category_name", "net_sales", "sold_qty", "gross_margin_percent"],
+          "capability": "native_better",
+          "preview": "heatmap",
+          "span": "full",
+          "embedUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "label": "Explorer & Quality",
+      "title": "SCM Descriptive Explorer & Data Quality",
+      "subtitle": "Month-end trends, source drilldown and model exceptions",
+      "dashboardViewName": "CT_PAGE_4_SCM_Explorer_Data_Quality",
+      "dashboardEmbedUrl": "",
+      "filterStrategy": "native_dashboard",
+      "criteriaTable": "33_sum_ct_scm_monthly.sql",
+      "criteriaColumns": {
+        "period": "source_period_code",
+        "outlet": "outlet_code"
+      },
+      "filters": [
+        {
+          "id": "period",
+          "label": "Period",
+          "kind": "select",
+          "defaultValue": "month_03",
+          "options": [
+            { "label": "Current period", "value": "month_03" },
+            { "label": "All 3 months", "value": "ALL" },
+            { "label": "Month 02", "value": "month_02" },
+            { "label": "Month 01", "value": "month_01" }
+          ]
+        },
+        {
+          "id": "region",
+          "label": "Region",
+          "kind": "select",
+          "defaultValue": "ALL",
+          "options": [
+            { "label": "All regions", "value": "ALL" },
+            { "label": "North", "value": "North" }
+          ]
+        },
+        {
+          "id": "outlet",
+          "label": "Outlet",
+          "kind": "select",
+          "defaultValue": "ALL",
+          "options": [
+            { "label": "All outlets", "value": "ALL" },
+            { "label": "Connaught Place", "value": "OUT001" },
+            { "label": "Hauz Khas", "value": "OUT002" },
+            { "label": "Saket Premium", "value": "OUT003" }
+          ]
+        },
+        {
+          "id": "category",
+          "label": "Ingredient category",
+          "kind": "search",
+          "defaultValue": "",
+          "placeholder": "Search category"
+        }
+      ],
+      "metrics": [
+        {
+          "id": "p4-stock",
+          "title": "Closing stock value",
+          "expectedValue": "INR 3,344,237.44",
+          "detail": "Current month-end snapshot",
+          "zohoViewName": "CT_P4_KPI_Closing_Stock",
+          "sourceQuery": "33_sum_ct_scm_monthly.sql",
+          "sourceField": "closing_stock_value",
+          "aggregation": "Sum",
+          "capability": "native"
+        },
+        {
+          "id": "p4-po",
+          "title": "Open PO snapshot",
+          "expectedValue": "INR 177,145.39",
+          "detail": "Current pending liability",
+          "zohoViewName": "CT_P4_KPI_Open_PO",
+          "sourceQuery": "33_sum_ct_scm_monthly.sql",
+          "sourceField": "open_po_value",
+          "aggregation": "Sum",
+          "capability": "native"
+        },
+        {
+          "id": "p4-sales",
+          "title": "Monthly sales",
+          "expectedValue": "INR 2,192,475.48",
+          "detail": "Net sales",
+          "zohoViewName": "CT_P4_KPI_Net_Sales",
+          "sourceQuery": "33_sum_ct_scm_monthly.sql",
+          "sourceField": "net_sales",
+          "aggregation": "Sum",
+          "capability": "native"
+        },
+        {
+          "id": "p4-consumption",
+          "title": "Actual consumption",
+          "expectedValue": "INR 377,620.25",
+          "detail": "Calculated inventory movement",
+          "zohoViewName": "CT_P4_KPI_Actual_Consumption",
+          "sourceQuery": "33_sum_ct_scm_monthly.sql",
+          "sourceField": "actual_consumption_value",
+          "aggregation": "Sum",
+          "capability": "native"
+        },
+        {
+          "id": "p4-variance",
+          "title": "Variance value",
+          "expectedValue": "INR -22,106.87",
+          "detail": "Actual minus theoretical",
+          "zohoViewName": "CT_P4_KPI_Consumption_Variance",
+          "sourceQuery": "21_fact_ct_consumption_variance.sql",
+          "sourceField": "signed_consumption_variance_value",
+          "aggregation": "Sum",
+          "capability": "native"
+        }
+      ],
+      "panels": [
+        {
+          "id": "p4-trend",
+          "title": "Month-end SCM trend",
+          "subtitle": "Stock, open PO, sales and consumption",
+          "zohoViewName": "CT_P4_SCM_Monthly_Trend",
+          "sourceQuery": "33_sum_ct_scm_monthly.sql",
+          "sourceFields": ["source_period_code", "closing_stock_value", "open_po_value", "net_sales", "actual_consumption_value"],
+          "capability": "native",
+          "preview": "combo",
+          "span": "full",
+          "embedUrl": ""
+        },
+        {
+          "id": "p4-quality",
+          "title": "Data quality exceptions",
+          "subtitle": "Checks that must pass before production automation",
+          "zohoViewName": "CT_P4_Data_Quality_Detail",
+          "sourceQuery": "34_fact_ct_data_quality_exception.sql",
+          "sourceFields": ["exception_type", "exception_count", "record_key", "exception_definition"],
+          "capability": "native",
+          "preview": "quality",
+          "span": "full",
+          "embedUrl": ""
+        },
+        {
+          "id": "p4-explorer",
+          "title": "SCM descriptive explorer",
+          "subtitle": "Source-aligned drilldown and export",
+          "zohoViewName": "CT_P4_Descriptive_Explorer",
+          "sourceQuery": "33_sum_ct_scm_monthly.sql",
+          "sourceFields": ["source_period_code", "outlet_code", "closing_stock_value", "open_po_value", "net_sales", "actual_consumption_value"],
+          "capability": "native_better",
+          "preview": "table",
+          "span": "full",
+          "embedUrl": ""
+        }
+      ]
+    }
+  ]
+}

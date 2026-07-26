@@ -41,6 +41,10 @@ INSTRUCTION_FILES = (
         "03A_LOOKUPS_FORMULAS_AND_PRE_DASHBOARD_SETUP.md",
     ),
     (
+        ROOT / "docs" / "ZOHO_CURRENT_WORKSPACE_MIGRATION.md",
+        "03B_CURRENT_WORKSPACE_MIGRATION.md",
+    ),
+    (
         ROOT / "docs" / "zoho_control_tower_v2_dashboard_click_by_click.md",
         "04_DASHBOARD_BUILD.md",
     ),
@@ -49,12 +53,20 @@ INSTRUCTION_FILES = (
         "04A_DASHBOARD_EXPECTED_RESULTS.md",
     ),
     (
+        ROOT / "docs" / "ABNAH_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md",
+        "04B_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md",
+    ),
+    (
         ROOT / "docs" / "zoho_control_tower_v2_ask_zia.md",
         "05_ASK_ZIA_SETUP.md",
     ),
     (
         ROOT / "docs" / "zoho_control_tower_v2_validation.md",
         "06_VALIDATION_AND_PUBLICATION.md",
+    ),
+    (
+        ROOT / "docs" / "ZOHO_EMBEDDED_PORTAL_SETUP.md",
+        "07_EMBEDDED_PORTAL_SETUP.md",
     ),
 )
 
@@ -357,16 +369,22 @@ Then:
    whose names are the filename stem followed by `-Copy`.
 4. Build the 38 Query Tables in the exact order in
    `02_QUERY_TABLES/QUERY_BUILD_CHECKLIST.csv`.
-5. Configure and validate all lookup columns, formula columns and aggregate
+5. Configure and validate all lookup columns and the four active aggregate
    formulas using
    `03_ZOHO_INSTRUCTIONS/03A_LOOKUPS_FORMULAS_AND_PRE_DASHBOARD_SETUP.md`.
-6. Run the query and KPI gates in
+   If the 38 tables, lookups and earlier formulas already exist, use
+   `03_ZOHO_INSTRUCTIONS/03B_CURRENT_WORKSPACE_MIGRATION.md` instead.
+6. Review the reference-to-Zoho decisions in
+   `03_ZOHO_INSTRUCTIONS/04B_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md`.
+7. Run the query and KPI gates in
    `03_ZOHO_INSTRUCTIONS/06_VALIDATION_AND_PUBLICATION.md`.
-7. Build the four dashboard pages using
+8. Build the four dashboard pages using
    `03_ZOHO_INSTRUCTIONS/04_DASHBOARD_BUILD.md`.
-8. Reconcile every card and chart against
+9. Reconcile every card and chart against
    `03_ZOHO_INSTRUCTIONS/04A_DASHBOARD_EXPECTED_RESULTS.md`.
-9. Configure Ask Zia only after reconciliation passes, using
+10. Connect the four secured dashboard embeds using
+   `03_ZOHO_INSTRUCTIONS/07_EMBEDDED_PORTAL_SETUP.md`.
+11. Configure Ask Zia only after reconciliation passes, using
    `03_ZOHO_INSTRUCTIONS/05_ASK_ZIA_SETUP.md`.
 
 Record progress directly in the two checklist CSVs and
@@ -457,6 +475,8 @@ validation checkpoint passes.
 | Page 3: Consumption Variance and Menu Profitability | NOT STARTED |  |  |  |
 | Page 4: SCM Explorer and Data Quality | NOT STARTED |  |  |  |
 | Ask Zia controlled question bank | NOT STARTED |  |  |  |
+| Four secured Zoho dashboard embeds | NOT STARTED |  |  |  |
+| Work-email access validation | NOT STARTED |  |  |  |
 | Business owner review | NOT STARTED |  |  |  |
 | Publication decision | NOT STARTED |  |  |  |
 """
@@ -545,9 +565,12 @@ $required = @(
     '01_IMPORT_FILES\RAWN_CT_vendor_report.csv',
     '02_QUERY_TABLES\10_std_ct_vendor_report.sql',
     '03_ZOHO_INSTRUCTIONS\03A_LOOKUPS_FORMULAS_AND_PRE_DASHBOARD_SETUP.md',
+    '03_ZOHO_INSTRUCTIONS\03B_CURRENT_WORKSPACE_MIGRATION.md',
     '03_ZOHO_INSTRUCTIONS\04_DASHBOARD_BUILD.md',
     '03_ZOHO_INSTRUCTIONS\04A_DASHBOARD_EXPECTED_RESULTS.md',
-    '03_ZOHO_INSTRUCTIONS\05_ASK_ZIA_SETUP.md'
+    '03_ZOHO_INSTRUCTIONS\04B_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md',
+    '03_ZOHO_INSTRUCTIONS\05_ASK_ZIA_SETUP.md',
+    '03_ZOHO_INSTRUCTIONS\07_EMBEDDED_PORTAL_SETUP.md'
 )
 foreach ($relative in $required) {
     if (-not (Test-Path -LiteralPath (Join-Path $root $relative) -PathType Leaf)) {

@@ -15,6 +15,11 @@ This guide uses the exact Query Table names saved in Zoho. It does not use
 logical aliases. Complete
 `ZOHO_LOOKUPS_AGGREGATE_FORMULAS_AND_PRE_DASHBOARD_SETUP.md` before starting.
 
+If all 38 tables, lookups and the earlier formula list are already complete,
+start with `ZOHO_CURRENT_WORKSPACE_MIGRATION.md`. The reference-first report
+selection and native/custom decisions are defined in
+`ABNAH_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md`.
+
 ## Read This Before Building A Widget
 
 Zoho has two different metric paths:
@@ -153,7 +158,7 @@ Every direct widget below uses **Group By: blank**.
 | 2 | `CT_P1_KPI_Menu_Items_At_Risk` / Menu Items At Risk | `28_fact_ct_menu_impact.sql` | `menu_item_code` | Count Distinct | None | Whole number | 110 |
 | 3 | `CT_P1_KPI_Stockout_Risk_Value` / Stockout Sales At Risk | `28_fact_ct_menu_impact.sql` | `allocated_forecast_net_sales_at_risk` | Sum | None | INR, 2 decimals | INR 411,695.55 |
 | 4 | `CT_P1_KPI_Expiry_Risk_Value_Demo` / Expiry Risk Value - Demo Estimate | `38_fact_ct_expiry_risk.sql` | `expiry_risk_value` | Sum | None | INR, 2 decimals | INR 271,399.12 |
-| 5 | `CT_P1_KPI_Open_Risky_PO` / Open Risky PO | `36_fact_ct_risky_po.sql` | `po_number` | Count Distinct | None; Query 36 is already restricted to open risky PO lines | Whole number | 0 |
+| 5 | `CT_P1_KPI_Open_Actions` / Open Actions | `27_fact_ct_inventory_risk.sql` | `action_id` | Count Distinct | `risk_type`: Individual Values, Include `STOCKOUT` | Whole number | 6 |
 
 The expiry widget subtitle must read:
 
@@ -163,38 +168,52 @@ Synthetic demo estimate - no POSIST batch/expiry source
 
 ## Page 2 - Procurement, Vendor & Capital KPIs
 
-Build the first five rows with Pattern A. Build the last two with Pattern B.
+Build rows 1, 2, 3 and 5 with Pattern A. Build row 4 with Pattern B.
 
 | Build order | Report name and label | Object | Physical table | Data Column or Aggregate Formula | Calculation | Format | Default result |
 | ---: | --- | --- | --- | --- | --- | --- | ---: |
-| 1 | `CT_P2_KPI_Monthly_Purchase` / Ordered Gross Value | Direct KPI | `29_sum_ct_procurement_funnel.sql` | `ordered_value` | Sum | INR, 2 decimals | INR 1,565,981.32 |
-| 2 | `CT_P2_KPI_Closing_Inventory` / Closing Inventory Value | Direct KPI | `33_sum_ct_scm_monthly.sql` | `closing_stock_value` | Sum | INR, 2 decimals | INR 3,344,237.44 |
-| 3 | `CT_P2_KPI_Open_PO_Liability` / Open PO Liability | Direct KPI | `29_sum_ct_procurement_funnel.sql` | `pending_value` | Sum | INR, 2 decimals | INR 177,145.39 |
-| 4 | `CT_P2_KPI_Working_Capital` / Working Capital Locked | Direct KPI | `33_sum_ct_scm_monthly.sql` | `working_capital_value` | Sum | INR, 2 decimals | INR 3,521,382.83 |
-| 5 | `CT_P2_KPI_Open_PO_Count` / Open PO Count | Direct KPI | `29_sum_ct_procurement_funnel.sql` | `open_po_count` | Sum | Whole number | 28 |
-| 6 | `CT_P2_KPI_Fill_Rate` / PO Fill Rate | Summary View | `24_fact_ct_po_receipt_line.sql` | `PO Fill Rate %` | Aggregate Formula | Percentage, 2 decimals | 86.39% |
-| 7 | `CT_P2_KPI_OTIF` / Vendor OTIF - Formula Demo | Summary View | `24_fact_ct_po_receipt_line.sql` | `Vendor OTIF %` | Aggregate Formula | Percentage, 2 decimals | 53.70% |
+| 1 | `CT_P2_KPI_Monthly_Purchase` / Monthly Purchase | Direct KPI | `29_sum_ct_procurement_funnel.sql` | `ordered_value` | Sum | INR, 2 decimals | INR 1,565,981.32 |
+| 2 | `CT_P2_KPI_Open_PO_Liability` / Open PO Exposure | Direct KPI | `29_sum_ct_procurement_funnel.sql` | `pending_value` | Sum | INR, 2 decimals | INR 177,145.39 |
+| 3 | `CT_P2_KPI_Delayed_PO_Value` / Delayed PO Value | Direct KPI | `29_sum_ct_procurement_funnel.sql` | `delayed_value` | Sum | INR, 2 decimals | INR 156,529.82 |
+| 4 | `CT_P2_KPI_OTIF` / Vendor OTIF - Formula Demo | Summary View | `24_fact_ct_po_receipt_line.sql` | `Vendor OTIF %` | Aggregate Formula | Percentage, 2 decimals | 53.70% |
+| 5 | `CT_P2_KPI_Price_Watch` / Price Watch | Direct KPI | `31_sum_ct_price_movement.sql` | `item_code` | Count Distinct | Whole number | 42 |
 
 Keep the wording **Ordered Gross Value** until ABNAH approves the production
 purchase-value basis. Keep OTIF visibly marked as a formula demo until actual
 PO-to-GRN linkage passes the documented source gate.
 
+The earlier Closing Inventory, Working Capital, Open PO Count and Fill Rate
+cards remain valid extended controls. Build them only after the five reference
+cards above reconcile:
+
+| Extended report | Physical field or formula | Default |
+| --- | --- | ---: |
+| `CT_P2_KPI_Closing_Inventory` | Query 33 Sum `closing_stock_value` | INR 3,344,237.44 |
+| `CT_P2_KPI_Working_Capital` | Query 33 Sum `working_capital_value` | INR 3,521,382.83 |
+| `CT_P2_KPI_Open_PO_Count` | Query 29 Sum `open_po_count` | 28 |
+| `CT_P2_KPI_Fill_Rate` | Query 24 `PO Fill Rate %` Summary View | 86.39% |
+
 ## Page 3 - Consumption Variance & Menu Profitability KPIs
 
-Build the first four rows with Pattern A and the last row with Pattern B.
+Build rows 1, 2, 4 and 5 with Pattern A. Build row 3 with Pattern B.
 
 | Build order | Report name and label | Object | Physical table | Data Column or Aggregate Formula | Calculation | Format | Default result |
 | ---: | --- | --- | --- | --- | --- | --- | ---: |
 | 1 | `CT_P3_KPI_Net_Sales` / Net Sales | Direct KPI | `25_fact_ct_menu_profitability.sql` | `net_sales` | Sum | INR, 2 decimals | INR 2,192,475.48 |
-| 2 | `CT_P3_KPI_Quantity_Sold` / Quantity Sold | Direct KPI | `25_fact_ct_menu_profitability.sql` | `sold_qty` | Sum | Whole number | 8,471 |
-| 3 | `CT_P3_KPI_Theoretical_COGS` / Theoretical COGS | Direct KPI | `25_fact_ct_menu_profitability.sql` | `theoretical_cogs` | Sum | INR, 2 decimals | INR 393,664.46 |
-| 4 | `CT_P3_KPI_Consumption_Leakage` / Consumption Leakage Value | Direct KPI | `21_fact_ct_consumption_variance.sql` | `leakage_value` | Sum | INR, 2 decimals | INR 38,632.37 |
-| 5 | `CT_P3_KPI_Menu_Gross_Margin` / Menu Gross Margin | Summary View | `25_fact_ct_menu_profitability.sql` | `Menu Gross Margin %` | Aggregate Formula | Percentage, 2 decimals | 82.04% |
+| 2 | `CT_P3_KPI_Theoretical_COGS` / Theoretical COGS | Direct KPI | `25_fact_ct_menu_profitability.sql` | `theoretical_cogs` | Sum | INR, 2 decimals | INR 393,664.46 |
+| 3 | `CT_P3_KPI_Menu_Gross_Margin` / Gross Margin | Summary View | `25_fact_ct_menu_profitability.sql` | `Menu Gross Margin %` | Aggregate Formula | Percentage, 2 decimals | 82.04% |
+| 4 | `CT_P3_KPI_Menu_Items` / Menu Items | Direct KPI | `25_fact_ct_menu_profitability.sql` | `menu_item_code` | Count Distinct | Whole number | 110 |
+| 5 | `CT_P3_KPI_Consumption_Leakage` / Consumption Leakage | Direct KPI | `21_fact_ct_consumption_variance.sql` | `leakage_value` | Sum | INR, 2 decimals | INR 38,632.37 |
 
 Do not average `gross_margin_percent`. Do not sum mixed-UOM consumption
 quantities into the all-item leakage KPI.
 
+`CT_P3_KPI_Quantity_Sold` remains an optional extended card. It is not one of
+the five reference cards.
+
 ## Page 4 - Descriptive Explorer KPIs
+
+Build rows 1-5 as the reference KPI row.
 
 | Build order | Report name and label | Physical table | Data Column | Show Value As | Fixed report filter | Format | Default result |
 | ---: | --- | --- | --- | --- | --- | --- | ---: |
@@ -209,8 +228,8 @@ quantities into the all-item leakage KPI.
 | 9 | `CT_P4_KPI_GRN_Value` / GRN Value | `23_fact_ct_purchase_receipt.sql` | `receipt_total` | Sum | None | INR, 2 decimals | INR 1,504,689.72 |
 | 10 | `CT_P4_KPI_Active_Vendors` / Active Vendors | `22_fact_ct_purchase_order.sql` | `vendor_name` | Count Distinct | None | Whole number | 12 |
 
-These are descriptive totals. Do not color a value red merely because it is
-large.
+Rows 6-10 are extended descriptive controls. These are descriptive totals. Do
+not color a value red merely because it is large.
 
 # Part 3 - Saved Reports To Build
 
@@ -262,6 +281,7 @@ actual-source KPIs. Their source gates remain unresolved.
 | Report | Type | Physical table | Exact shelves and sort | Fixed filter |
 | --- | --- | --- | --- | --- |
 | `CT_P3_Consumption_Bridge` | Combination | `20_fact_ct_actual_consumption.sql` | X: `source_period_code`; bars: Sum opening, purchase, transfer in, `bridge_transfer_out_qty`, `bridge_return_qty`, `bridge_closing_qty`; line: Sum calculated actual consumption; require one UOM | None |
+| `CT_P3_Consumption_Variance` | Butterfly | `21_fact_ct_consumption_variance.sql` | Dimension: item; value: Sum `signed_consumption_variance_value`; color: `consumption_variance_direction`; sort by absolute value | None |
 | `CT_P3_Theoretical_Consumption_Detail` | Tabular | `19_fact_ct_theoretical_consumption.sql` | outlet, item, theoretical quantity/value, UOM, average cost | None |
 | `CT_P3_Actual_vs_Theoretical` | Grouped bar | `21_fact_ct_consumption_variance.sql` | X: item; Y: Sum actual quantity and Sum theoretical quantity; require one UOM | None |
 | `CT_P3_Consumption_Leakage_Rank` | Horizontal bar | `21_fact_ct_consumption_variance.sql` | Y: item; X: Sum `leakage_value`; sort descending | `consumption_variance_direction`: Include `OVER_CONSUMPTION` |
@@ -346,34 +366,26 @@ Row 4: stockout detail (6) | menu impact (6)
 Row 5: expiry detail (6) | vendor/PO risk (6)
 
 Page 2
-Row 1: seven KPI objects
-Row 2: procurement flow (5) | vendor matrix (7)
-Row 3: PO status (4) | pending by vendor (4) | delivery breach (4)
-Row 4: pending ingredient risk (6) | vendor price comparison (6)
-Row 5: vendor scorecard (12)
-Row 6: price trend (7) | top price movement (5)
-Row 7: inventory value (6) | high-value stock (6)
-Row 8: observed wastage (6) | expiry exposure demo (6)
+Row 1: five reference KPI objects
+Row 2: procurement funnel (6) | vendor scorecard (6)
+Row 3: price trend (6) | top price movement (6)
+Row 4: pending by vendor (6) | delivery breach (6)
+Extended rows: PO status, vendor matrix, inventory/capital controls, wastage and expiry scenario
 
 Page 3
 Row 1: five KPI objects
-Row 2: consumption bridge (7) | actual versus theoretical (5)
-Row 3: theoretical detail (6) | low-consumption check (6)
-Row 4: leakage rank (6) | menu COGS detail (6)
-Row 5: menu BCG (7) | margin rank (5)
-Row 6: sales trend (4) | category contribution (4) | ranking (4)
-Row 7: outlet-item heatmap (12)
+Row 2: consumption bridge (6) | consumption variance (6)
+Row 3: menu BCG (12)
+Row 4: outlet-item heatmap (12)
+Extended rows: actual/theoretical detail, leakage rank, menu COGS, margin rank, sales trend, category contribution and ranking
 
 Page 4
-Row 1: sales, sold quantity, menu item, stock and open-PO KPIs
-Row 2: consumption, variance, open-PO lines, GRN and vendor KPIs
-Row 3: monthly trend (7) | variance trend (5)
-Row 4: six data-quality tiles
-Row 5: data-quality detail (12)
-Row 6: sales explorer (6) | item explorer (6)
-Row 7: PO explorer (4) | GRN explorer (4) | vendor explorer (4)
-Row 8: descriptive/export explorer (12)
-Row 9: expiry scenario explorer (12)
+Row 1: five reference KPI objects
+Row 2: monthly trend (12)
+Row 3: six data-quality tiles
+Row 4: data-quality detail (12)
+Row 5: descriptive/export explorer (12)
+Extended rows: variance trend, sales/item/PO/GRN/vendor explorers and expiry scenario
 ```
 
 # Part 5 - Dashboard Filters

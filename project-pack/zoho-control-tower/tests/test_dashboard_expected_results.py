@@ -63,8 +63,8 @@ class DashboardExpectedResultsTests(unittest.TestCase):
             return float(matches[0]["expected_value"])
 
         self.assertEqual(
-            0,
-            expected("CT_P1_KPI_Open_Risky_PO", "open_risky_po_count"),
+            6,
+            expected("CT_P1_KPI_Open_Actions", "open_action_count"),
         )
         self.assertEqual(
             6,
