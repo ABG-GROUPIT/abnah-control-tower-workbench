@@ -19,8 +19,11 @@ ABNAH Control Tower project.
 - all 38 final Control Tower Query Tables and their build manifests;
 - click-by-click Zoho import, lookup, formula, dashboard, Ask Zia, validation,
   and publication instructions;
-- the separate live-portal route, secured-login hosting/authentication
-  decision, and one-file 39-view handoff;
+- the separate GitHub Pages live-portal route, Supabase/Zoho verified
+  authentication, and one-file 19-report plus four-fallback handoff;
+- a generated `portal_runtime/` folder containing the exact GitHub Pages
+  client, Supabase migration, Edge Function, public runtime config, and
+  deployment workflow;
 - KPI/source matrices, truth packs, reconciliation outputs, fidelity registers,
   limitations, and presentation-safe issue documentation;
 - the synthetic-data generators, local CSV auditor, schema contracts, tests,

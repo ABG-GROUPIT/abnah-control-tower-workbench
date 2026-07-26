@@ -53,7 +53,9 @@ The refresh command rebuilds both the discovery catalog and structural workspace
 
 ## G. Back Up Before Transfer
 
-Use the `Backup` action in the top bar while authenticated. It exports all D1 current documents and revision payloads as JSON. Store that export in the approved secure handoff location, not in this repository when it contains internal notes.
+Use the `Backup` action in the top bar. It exports the current browser workspace
+as JSON. Store that export in the approved secure handoff location, not in this
+repository when it contains internal notes.
 
 Source JSON plus the backup export is the complete transfer package. Source JSON alone omits browser-only revisions.
 

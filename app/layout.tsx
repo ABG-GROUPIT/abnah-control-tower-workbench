@@ -13,7 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://abnah-schema-workspace.cfsckksbk4.chatgpt.site"),
+  metadataBase: new URL(
+    "https://abg-groupit.github.io/abnah-control-tower-workbench/",
+  ),
   title: "ABNAH Schema Workspace",
   description:
     "ABNAH report discovery, planned control-tower architecture, KPI requirements, API evidence and versioned schema review.",

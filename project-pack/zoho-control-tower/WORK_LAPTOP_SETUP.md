@@ -119,14 +119,19 @@ Follow:
 docs/ZOHO_PORTAL_HOSTING_AUTH_HANDOFF.md
 ```
 
-No key is required for the secured-login MVP. Import the four secured Zoho
-iframe `src` URLs using one JSON file based on:
+The GitHub Pages frontend requires the deployed Supabase `abnah-portal` Edge
+Function. Its secrets and Zoho OAuth client are configured once by the project
+owner; they are never copied to this laptop or repository.
+
+Import the 19 secured Zoho report URLs and four dashboard fallback URLs using
+one JSON file based on:
 
 ```text
 config/zoho-secured-embed-handoff.example.json
 ```
 
-The file must not contain a password, OAuth token, client secret or report row.
+The file must not contain a password, OAuth token, client secret, opaque session
+or report row.
 
 ## 5. Rebuild The Website Only When Needed
 

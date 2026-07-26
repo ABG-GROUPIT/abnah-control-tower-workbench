@@ -18,21 +18,29 @@ TARGETS = (
 
 def main() -> None:
     portal = json.loads(PORTAL_CONFIG.read_text(encoding="utf-8"))
-    pages: dict[str, dict[str, str]] = {}
+    pages: dict[str, dict[str, object]] = {}
     for page in portal["pages"]:
         pages[page["id"]] = {
             "dashboardViewName": page["dashboardViewName"],
-            "securedDashboardEmbedUrl": "",
+            "securedDashboardFallbackUrl": "",
+            "reports": {
+                panel["id"]: {
+                    "viewName": panel["zohoViewName"],
+                    "securedViewUrl": "",
+                }
+                for panel in page["panels"]
+            },
         }
 
     payload = {
-        "schema": "abnah-zoho-dashboard-embed-handoff/v3",
+        "schema": "abnah-zoho-view-handoff/v4",
         "authMode": "zoho_secured_login",
-        "integrationMode": "page_dashboard_views",
+        "integrationMode": "individual_report_views_with_dashboard_fallbacks",
         "note": (
-            "Paste only each page dashboard's secured-with-login iframe src "
-            "URL. Never add passwords, OAuth tokens, client secrets, or report "
-            "rows."
+            "Paste secured Zoho view URLs only. Dashboard URLs are native "
+            "fallbacks; individual report URLs fill the custom control-tower "
+            "layout. Never add passwords, OAuth tokens, client secrets, or "
+            "report rows."
         ),
         "pages": pages,
     }
@@ -40,7 +48,11 @@ def main() -> None:
     for target in TARGETS:
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(serialized, encoding="utf-8")
-        print(f"Wrote {target.relative_to(ROOT)} with {len(pages)} dashboard slots.")
+        report_count = sum(len(page["reports"]) for page in pages.values())
+        print(
+            f"Wrote {target.relative_to(ROOT)} with {report_count} report "
+            f"slots and {len(pages)} dashboard fallbacks."
+        )
 
 
 if __name__ == "__main__":

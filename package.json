@@ -6,16 +6,17 @@
     "node": ">=22.13.0"
   },
   "scripts": {
-    "dev": "vinext dev",
-    "build": "vinext build",
-    "build:pages": "python scripts/build_project_pack_index.py && vite build --config vite.pages.config.ts && python scripts/package_github_pages.py && python scripts/validate_pages_artifact.py",
+    "dev": "vite --config vite.pages.config.ts --host 127.0.0.1",
+    "build": "npm run build:pages",
+    "build:pages": "python scripts/sync_portal_runtime_to_pack.py && python scripts/validate_project_pack.py && python scripts/build_project_pack_index.py && vite build --config vite.pages.config.ts && python scripts/package_github_pages.py && python scripts/validate_pages_artifact.py",
     "preview:pages": "vite preview --config vite.pages.config.ts",
-    "start": "wrangler dev --config dist/server/wrangler.json --show-interactive-dev-session=false",
+    "start": "npm run preview:pages",
     "data:refresh": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/refresh_atlas.ps1",
     "data:workspace": "py -3 scripts/build_workspace_data.py",
     "data:validate": "py -3 scripts/validate_atlas_data.py && py -3 scripts/validate_workspace_data.py && py -3 scripts/validate_control_tower.py && py -3 scripts/validate_schema_privacy.py && py -3 scripts/validate_project_pack.py",
+    "portal:sync": "py -3 scripts/sync_portal_runtime_to_pack.py",
     "typecheck": "tsc --noEmit -p tsconfig.app.json",
-    "test": "npm run build && node --test tests/rendered-html.test.mjs",
+    "test": "npm run build:pages && node --test tests/rendered-html.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate"
   },

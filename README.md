@@ -34,9 +34,10 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
   source field set, formula, lookup, filter, and Zoho report configuration.
 - 38 exact Control Tower v2 Query Tables are searchable in the hosted model
   library with their dependency levels and complete SQL.
-- One self-contained `project-pack/zoho-control-tower/` now carries all 710
+- One self-contained `project-pack/zoho-control-tower/` now carries all 752
   tracked synthetic-data, Zoho implementation, SQL, validation, local-auditor,
-  API-packet, generator, test, and handoff files in this ABG repository.
+  API-packet, generator, test, portal-runtime, and handoff files in this ABG
+  repository.
 - P2 now has 73 captured schemas, 3 bounded partial schemas, and 79 pending reports.
 - P4 now has 26 captured schemas and 48 pending reports, including all 15 Enterprise reports, four explicit Consumption Report modes, Bulk Return, and Closing Stock.
 - The private CSV audit checkpoint covers 26 exports, 20 report contracts, and
@@ -78,12 +79,13 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
 
 Hosted handoff:
 [ABNAH Control Tower Workbench](https://abg-groupit.github.io/abnah-control-tower-workbench/).
-Worker/Sites portal:
-[ABNAH Live Control Tower](https://abnah-schema-workspace.cfsckksbk4.chatgpt.site/portal).
+Live portal:
+[ABNAH Supply Chain Control Tower](https://abg-groupit.github.io/abnah-control-tower-workbench/portal/).
 The GitHub Pages build publishes the complete library while continuing to
 exclude screenshots, real POSist exports, local audit rows, and credentials.
-The authenticated `/portal` requires the Worker/Sites runtime because static
-GitHub Pages cannot run OAuth callbacks or D1. See
+GitHub Pages is the only frontend host. The authenticated `/portal/` delegates
+Zoho OAuth, workspace verification, opaque sessions, and the shared URL handoff
+to the Supabase Edge Function under `supabase/`. See
 `docs/ZOHO_PORTAL_RUNTIME.md`.
 
 ## Start Here
@@ -124,13 +126,15 @@ Business reviewer:
 ```text
 ABNAH Schema Atlas/
   app/                         workspace UI and API routes
-  db/                          D1 current-document and revision storage
   drizzle/                     database migration history
   docs/                        architecture, intake, operations, transfer
   project-pack/
     zoho-control-tower/        complete synthetic demo and Zoho implementation
     PROJECT_PACK_MANIFEST.csv  SHA-256 inventory of every bundled project file
   scripts/                     builders and validators
+  supabase/
+    functions/                 Zoho OAuth and portal-config Edge Function
+    migrations/                private session/config tables with RLS enabled
   schema-pack/
     source/
       report_structures/       portable per-report schema blueprints
@@ -147,8 +151,11 @@ ABNAH Schema Atlas/
 ## Data Authorities
 
 - Portable baseline: `schema-pack/source/` compiled into `schema-pack/generated/`.
-- Hosted working state: D1 current documents and immutable revisions.
-- Published presentation: latest D1 published revision, falling back to the generated baseline when no edited publication exists.
+- GitHub Pages working state: browser-local draft documents over the generated
+  repository baseline.
+- Portal runtime state: Supabase stores only OAuth state hashes, encrypted Zoho
+  tokens behind opaque sessions, and the secured view-URL handoff.
+- Published presentation: the generated repository baseline committed to Git.
 
 Editing in the site does not automatically rewrite source JSON. Export a backup before transfer and intentionally reconcile approved edits into source blueprints.
 
@@ -175,8 +182,8 @@ repository retained only as a fallback. That one command resynchronizes the
 before rebuilding the browser data.
 
 GitHub Pages deploys `pages-dist/` through `.github/workflows/pages.yml`. The
-static build falls back to browser-local workspace persistence. D1 remains the
-authoritative hosted revision store on the Sites deployment.
+static Atlas uses browser-local workspace persistence. Supabase is the only
+production backend and is used solely by the secured `/portal/` surface.
 
 The portable deterministic engine, report contracts, localhost row reviewer,
 and regression tests are under `tools/local-auditor/`. Its `input/` and

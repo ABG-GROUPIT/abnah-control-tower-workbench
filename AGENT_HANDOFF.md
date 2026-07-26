@@ -64,14 +64,21 @@ Maintain a screenshot-free, evidence-disciplined understanding of ABNAH's Restro
 There are three intentional stores:
 
 - Source blueprints are the transferable baseline in version control.
-- D1 is the working store for edits, workflow state, and revision history.
+- GitHub Pages keeps working edits in browser-local storage. Approved,
+  transferable state belongs in source blueprints and Git.
+- Supabase is the only production backend. It is limited to Zoho OAuth state,
+  encrypted portal sessions, and the versioned secured-view URL handoff.
 - GitHub Pages uses browser-local persistence and backup export because it has
   no server-side database.
 - GitHub Pages also publishes the validated project pack under
   `project-pack/zoho-control-tower/`; use the generated project-library index
   for direct access instead of recursively loading every file.
 
-For the live site, use the latest D1 current document. For a clean rebuild or team transfer, use source blueprints plus an exported D1 backup. Site edits are not automatically promoted into source JSON.
+For the live Atlas, use the committed generated baseline plus any explicit
+browser backup under review. For a clean rebuild or team transfer, use source
+blueprints and Git; browser edits are not automatically promoted into source
+JSON. The `/portal/` frontend is hosted only on GitHub Pages and calls the
+Supabase function described in `docs/ZOHO_PORTAL_RUNTIME.md`.
 
 The presentation architecture is generated differently: update the canonical
 Query Tables or dashboard story register under

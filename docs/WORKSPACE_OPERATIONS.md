@@ -17,7 +17,10 @@ Only the current in-review revision can transition to published. Published mode 
 
 ## Conflicts
 
-Every save supplies the version the editor loaded. If a newer revision already exists, the API returns `409`. Reload the report, compare changes, and reapply intentionally. Do not bypass version checks.
+GitHub Pages does not merge edits across browsers. Export a backup before
+handoff, nominate one source editor for each schema batch, and reconcile
+approved changes into source control. Git conflicts are resolved during review,
+not inside the browser workspace.
 
 ## Archive
 
@@ -25,19 +28,20 @@ Archive is a soft state. Archived reports are hidden from the default navigator 
 
 ## Backup
 
-The top-bar `Backup` action requires an authenticated editor and returns:
+The top-bar `Backup` action returns:
 
-- all current D1 documents;
-- all immutable revision documents;
-- workflow actions, actors, versions, and timestamps.
+- all current browser documents;
+- current workflow status, version, and timestamp metadata.
 
 Backups do not include screenshots, credentials, or external local files.
 
-There is no one-click restore UI. Keep source blueprints current, and treat the backup as recovery/transfer material for a controlled database restore or reconciliation.
+There is no one-click restore UI. Keep source blueprints current, and treat the
+backup as recovery/transfer material for controlled reconciliation.
 
 ## Local Development
 
-Localhost writes use `local-editor@abnah`. This convenience must never be replicated as a hosted bypass. Hosted writes require the authenticated user email header.
+Local development and GitHub Pages both use browser-local drafts. The secured
+executive portal has no development bypass; it requires the Supabase/Zoho flow.
 
 ## Operational Limits
 

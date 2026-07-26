@@ -14,7 +14,10 @@ Flat, grouped-column, grouped-row, mixed, and freeform source descriptions compi
 
 ## D-004: Portable Baseline Plus Durable Working Store
 
-Version-controlled source blueprints provide transferability. D1 provides current edits and immutable revisions. Neither silently overwrites the other.
+Version-controlled source blueprints are the durable, transferable authority.
+GitHub Pages keeps in-progress edits in the current browser until a reviewer
+exports and reconciles them. Supabase is reserved for the secured portal
+session and URL handoff, not discovery documents.
 
 ## D-005: Controlled Publication
 
@@ -38,7 +41,8 @@ Future lineage is scoped to a selected KPI across fixed source-to-chart lanes. T
 
 ## D-010: Backup Export, Controlled Restore
 
-Authenticated users can export all current documents and revisions. Bulk restore is kept out of the UI until overwrite and authorization rules are designed.
+Users can export the current browser workspace. Bulk restore is kept out of the
+UI until overwrite and authorization rules are designed.
 
 ## D-011: Consumption Terminology
 

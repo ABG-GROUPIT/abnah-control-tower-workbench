@@ -21,12 +21,12 @@ schema-pack/generated/workspace.json
 read-only baseline      editable web workspace
                               |
                               v
-                 D1 current documents + revisions
+                 browser-local draft documents
                               |
                     draft -> review -> publish
                               |
                               v
-                    read-only Published view
+               backup JSON / source reconciliation
 ```
 
 ## Layers
@@ -64,31 +64,33 @@ read-only baseline      editable web workspace
 
 ### Persistence Layer
 
-D1 stores:
+The GitHub Pages workspace stores draft report documents in the current
+browser's `localStorage`. `Backup` exports the browser state for controlled
+transfer. Approved changes become durable and shared only after they are
+reconciled into `schema-pack/source/`, validated, committed, and redeployed.
 
-- one current document per report;
-- every save or workflow transition as an immutable revision;
-- actor, version, action, workflow state, and timestamp.
-
-Writes use optimistic version checks. A stale editor receives HTTP `409` instead of overwriting a newer revision.
+The separate executive portal uses Supabase only for Zoho OAuth state, encrypted
+token sessions, and the versioned map of secured Zoho view URLs. It does not
+store schema drafts or operational report rows.
 
 ## Workflow
 
 All modifications become `draft`. A draft can be submitted as `in_review`. Only an `in_review` current revision can be published or returned to draft. Published mode never edits data.
 
-Generated baselines have version `0`. The first D1 save becomes version `1`.
+Generated baselines have version `0`. The first browser-local save becomes
+version `1`.
 
 ## Security Boundary
 
-- R2 is disabled; no image/object storage is configured.
-- Hosted writes require `oai-authenticated-user-email` from the authenticated host.
-- Localhost uses a local editor identity for development.
-- Request bodies are capped at 2 MB.
-- Documents are sanitized and unknown keys are removed.
-- Limits: 50 tables, 500 rows, 500 columns, and 100,000 cells per report.
-- The source policy is overwritten server-side and cannot be weakened by a client.
+- GitHub Pages receives only the sanitized, screenshot-free repository bundle.
+- Browser-local schema drafts are not shared until an explicit backup or commit.
+- Supabase tables have RLS enabled and no `anon` or `authenticated` grants.
+- Zoho and Supabase secrets remain in Edge Function environment variables.
+- The portal requires verified access to the configured Zoho workspace.
+- Limits remain 50 tables, 500 rows, 500 columns, and 100,000 cells per report.
 
-Deploy privately. Authentication at the hosting boundary is required for confidentiality; the application write check is not a substitute for private site access.
+Do not publish confidential data to GitHub Pages. The repository validators,
+not frontend authentication, define the Atlas confidentiality boundary.
 
 ## Extension Points
 

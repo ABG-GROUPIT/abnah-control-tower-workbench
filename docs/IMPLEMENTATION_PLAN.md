@@ -6,8 +6,7 @@
 - Universal editable grid with merge/unmerge, row/column editing, widths, table management, paste, undo, and redo.
 - Editable data points, API tests, notes, and report metadata.
 - Draft, review, publish, archive, and read-only Published view.
-- D1 optimistic persistence and immutable revision history.
-- Authenticated full workspace backup export.
+- Browser-local persistence and explicit workspace backup export.
 - P1 Misc explicit structural blueprints: 17 captured, 8 unavailable, 2 archived unknown.
 - Empty, versioned KPI-lineage contract.
 - Screenshot-free source policy and validators.
@@ -49,6 +48,7 @@ Business definitions are now recorded as draft. For each KPI, compare possible s
 
 - Controlled backup restore utility.
 - Role separation between editor, reviewer, and publisher if required.
-- Automated source-blueprint reconciliation from approved D1 publications.
+- Automated source-blueprint reconciliation from approved browser backups.
 - UAT payload schema packet import that explicitly strips values and secrets.
-- Private production deployment and scheduled D1 export under ABNAH ownership.
+- Optional Supabase-backed shared schema review after its authorization and
+  overwrite contract is approved.

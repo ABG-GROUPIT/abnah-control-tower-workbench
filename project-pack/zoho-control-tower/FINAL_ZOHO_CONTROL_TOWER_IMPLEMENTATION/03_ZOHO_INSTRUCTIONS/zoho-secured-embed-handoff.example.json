@@ -1,24 +1,108 @@
 {
-  "schema": "abnah-zoho-dashboard-embed-handoff/v3",
+  "schema": "abnah-zoho-view-handoff/v4",
   "authMode": "zoho_secured_login",
-  "integrationMode": "page_dashboard_views",
-  "note": "Paste only each page dashboard's secured-with-login iframe src URL. Never add passwords, OAuth tokens, client secrets, or report rows.",
+  "integrationMode": "individual_report_views_with_dashboard_fallbacks",
+  "note": "Paste secured Zoho view URLs only. Dashboard URLs are native fallbacks; individual report URLs fill the custom control-tower layout. Never add passwords, OAuth tokens, client secrets, or report rows.",
   "pages": {
     "p1": {
       "dashboardViewName": "CT_PAGE_1_Risk_Action_Center",
-      "securedDashboardEmbedUrl": ""
+      "securedDashboardFallbackUrl": "",
+      "reports": {
+        "p1-risk-map": {
+          "viewName": "CT_P1_Outlet_Risk_Map",
+          "securedViewUrl": ""
+        },
+        "p1-action-queue": {
+          "viewName": "CT_P1_Action_Center",
+          "securedViewUrl": ""
+        },
+        "p1-stockout-detail": {
+          "viewName": "CT_P1_Stockout_Risk_Detail",
+          "securedViewUrl": ""
+        },
+        "p1-menu-detail": {
+          "viewName": "CT_P1_Menu_Impact_Detail",
+          "securedViewUrl": ""
+        },
+        "p1-expiry-detail": {
+          "viewName": "CT_P1_Expiry_Risk_Detail_Demo",
+          "securedViewUrl": ""
+        },
+        "p1-po-mitigation": {
+          "viewName": "CT_P1_Vendor_PO_Risk",
+          "securedViewUrl": ""
+        }
+      }
     },
     "p2": {
       "dashboardViewName": "CT_PAGE_2_Procurement_Vendor_Capital",
-      "securedDashboardEmbedUrl": ""
+      "securedDashboardFallbackUrl": "",
+      "reports": {
+        "p2-funnel": {
+          "viewName": "CT_P2_Procurement_Funnel",
+          "securedViewUrl": ""
+        },
+        "p2-scorecard": {
+          "viewName": "CT_P2_Vendor_Scorecard",
+          "securedViewUrl": ""
+        },
+        "p2-price-trend": {
+          "viewName": "CT_P2_Ingredient_Price_Trend",
+          "securedViewUrl": ""
+        },
+        "p2-price-movement": {
+          "viewName": "CT_P2_Top_Price_Movement",
+          "securedViewUrl": ""
+        },
+        "p2-pending-vendor": {
+          "viewName": "CT_P2_Pending_By_Vendor",
+          "securedViewUrl": ""
+        },
+        "p2-breach": {
+          "viewName": "CT_P2_Expected_Delivery_Breach",
+          "securedViewUrl": ""
+        }
+      }
     },
     "p3": {
       "dashboardViewName": "CT_PAGE_3_Consumption_Menu_Profitability",
-      "securedDashboardEmbedUrl": ""
+      "securedDashboardFallbackUrl": "",
+      "reports": {
+        "p3-bridge": {
+          "viewName": "CT_P3_Consumption_Bridge",
+          "securedViewUrl": ""
+        },
+        "p3-variance": {
+          "viewName": "CT_P3_Consumption_Variance",
+          "securedViewUrl": ""
+        },
+        "p3-bcg": {
+          "viewName": "CT_P3_Menu_BCG",
+          "securedViewUrl": ""
+        },
+        "p3-heatmap": {
+          "viewName": "CT_P3_Outlet_Item_Heatmap",
+          "securedViewUrl": ""
+        }
+      }
     },
     "p4": {
       "dashboardViewName": "CT_PAGE_4_SCM_Explorer_Data_Quality",
-      "securedDashboardEmbedUrl": ""
+      "securedDashboardFallbackUrl": "",
+      "reports": {
+        "p4-trend": {
+          "viewName": "CT_P4_SCM_Monthly_Trend",
+          "securedViewUrl": ""
+        },
+        "p4-quality": {
+          "viewName": "CT_P4_Data_Quality_Detail",
+          "securedViewUrl": ""
+        },
+        "p4-explorer": {
+          "viewName": "CT_P4_Descriptive_Explorer",
+          "securedViewUrl": ""
+        }
+      }
     }
   }
 }

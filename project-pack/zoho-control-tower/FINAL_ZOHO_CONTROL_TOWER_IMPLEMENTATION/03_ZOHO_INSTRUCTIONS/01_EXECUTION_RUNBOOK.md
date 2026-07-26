@@ -276,17 +276,19 @@ Use the exact per-query field mappings and exclusions in:
 docs/ZOHO_DASHBOARD_FILTER_MAPPING_MATRIX.md
 ```
 
-Unconfigured pages remain as blueprints while completed page dashboards go
-live.
+Unconfigured report slots remain as blueprints while connected individual
+views go live. Each complete page dashboard remains available as a native
+fallback.
 
 Use **consumption**, not yield, on Page 3.
 
 ## Phase 5 - Match The Supplied Control Tower Visual
 
-Zoho owns each live page's KPI rendering, dashboard User Filters, charts,
-tooltips, drill behavior and internal layout. The ABNAH portal owns the outer
-navigation, sign-in preflight, blueprint/reference view and page launch
-experience.
+The ABNAH portal owns the four-page composition, navigation, verified sign-in,
+custom filters, blueprint/reference view, and report-slot layout. Zoho owns
+each cross-origin report's internal chart pixels, tooltips, drill behavior, and
+exports. Native fallback dashboards own their KPI Widgets and Dashboard User
+Filters.
 
 Match the supplied HTML in this order:
 
@@ -294,7 +296,7 @@ Match the supplied HTML in this order:
 2. chart type and reading direction in Zoho;
 3. severity colors, legends and labels in Zoho;
 4. tooltip, drill and underlying-data behavior in Zoho;
-5. page hierarchy, spacing and filter placement in each Zoho page dashboard;
+5. page hierarchy, spacing and filter placement in the custom portal;
 6. cross-device rendering and secured-login behavior.
 
 The portal cannot restyle cross-origin Zoho iframe content. Apply all
@@ -310,11 +312,12 @@ Zoho documents dashboard filters, KPI Widgets and secured embedding:
 - https://www.zoho.com/analytics/help/dashboard/kpi-widgets.html
 - https://www.zoho.com/analytics/help/publishing/embed-reports.html
 
-## Phase 6 - Secure And Embed The Four Dashboards
+## Phase 6 - Secure Views And Dashboard Fallbacks
 
-Share each page dashboard with the approved company Zoho viewer account. Use
-secured **Access with Login**, then copy the four iframe `src` URLs into the
-v3 handoff. Do not create standalone KPI embed URLs.
+Share the 19 saved report views and four page dashboards with the approved
+company Zoho viewer account. Use secured **Access with Login**, then copy the
+19 report URLs and four fallback URLs into the v4 handoff. Do not create
+standalone KPI Widget embed URLs.
 
 | Pixel-level custom shell around embedded reports | Separate custom application |
 | Arbitrary restyling of native Zoho dashboard internals | Not a supported plan |

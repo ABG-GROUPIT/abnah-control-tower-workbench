@@ -22,32 +22,40 @@ Prohibited:
 
 ## Hosted Controls
 
-- Keep the site private to authorized users.
-- R2 is disabled.
-- D1 is the only configured runtime data binding.
-- Hosted write and backup requests require the authenticated user email header.
-- Published mode is a UI read-only surface; private hosting still controls who can read it.
-- All save payloads are sanitized and bounded.
+- GitHub Pages contains only the repository-approved, screenshot-free bundle.
+- Atlas edits remain browser-local and are not silently uploaded.
+- The executive portal is locked behind Zoho OAuth and allowed-workspace
+  verification in Supabase.
+- Supabase RLS blocks direct browser access to portal state tables.
+- All Zoho and Supabase secrets remain server-side.
+- Published mode is a UI read-only surface; do not treat it as a confidentiality
+  boundary for content committed to GitHub.
 
 ## Recovery Layers
 
 1. Version-controlled source blueprints reconstruct the baseline.
-2. D1 current records recover the latest working documents.
-3. Immutable D1 revisions recover prior states and publication history.
-4. Authenticated JSON backup exports current documents and all revisions for transfer.
+2. Browser-local state recovers in-progress work on the same profile.
+3. JSON backup exports the current workspace for controlled transfer.
+4. Git history recovers approved source and prior published baselines.
+5. Supabase recovers only portal sessions and the URL-only handoff.
 
 ## Backup Procedure
 
-1. Open the private workspace as an authenticated editor.
+1. Open the GitHub Pages workspace.
 2. Select `Backup`.
-3. Verify the JSON has `documents` and `revisions` collections.
+3. Verify the JSON has the `documents` collection.
 4. Store it in ABNAH's approved secure storage.
 5. Do not commit the backup if internal notes make it unsuitable for source control.
 
 ## Restore Limitation
 
-Automated import is intentionally not exposed in the UI because a bulk write can overwrite reviewed state. Restore should be performed by a developer after validating IDs, versions, and target environment. Until that utility is added, source blueprints remain the primary rebuild path and backup JSON is reconciliation material.
+Automated import is intentionally not exposed in the UI because a bulk write can
+overwrite reviewed state. Source blueprints remain the primary rebuild path and
+backup JSON is reconciliation material.
 
 ## Incident Rule
 
-If prohibited data is pasted into a note or test result, stop publication, remove it in a new revision, rotate any exposed secret, and purge the affected hosted record through an administrator. Revision history is immutable by normal UI design, so secret exposure requires administrative database cleanup.
+If prohibited data is pasted into a note or test result, stop publication,
+remove it from browser state and source, rotate any exposed secret, and purge it
+from Git history according to company procedure. If it reached Supabase portal
+configuration, remove it and rotate the affected backend secret.

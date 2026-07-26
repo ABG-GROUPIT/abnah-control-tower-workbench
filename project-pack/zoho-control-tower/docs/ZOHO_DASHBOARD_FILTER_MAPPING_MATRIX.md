@@ -1,10 +1,10 @@
 # Zoho Dashboard KPI, User Filter And Embed Contract
 
-## Final Architecture Decision
+## Native Dashboard And Custom Portal Roles
 
 Zoho KPI Widgets are dashboard elements. They are not standalone saved reports
-and do not provide an independent Share/Embed action. Therefore the production
-POC must use four secured Zoho dashboard views:
+and do not provide an independent Share/Embed action. Build these four secured
+Zoho dashboards as native KPI/filter validation and fallback surfaces:
 
 1. `CT_PAGE_1_Risk_Action_Center`
 2. `CT_PAGE_2_Procurement_Vendor_Capital`
@@ -12,21 +12,20 @@ POC must use four secured Zoho dashboard views:
 4. `CT_PAGE_4_SCM_Explorer_Data_Quality`
 
 Each dashboard contains its five KPI Widgets plus its saved chart, pivot,
-summary and tabular reports. The dashboard owns the user filters. The external
-portal embeds one complete secured dashboard per page and does not try to
-embed a KPI Widget separately.
+summary and tabular reports. The dashboard owns its native user filters.
 
-This correction changes only dashboard construction and embedding. It does not
-require another SQL change, lookup rebuild or Aggregate Formula cleanup.
+The custom GitHub Pages portal separately embeds the 19 saved report views into
+the approved external composition. Its page controls apply `ZOHO_CRITERIA`
+only where the same field/grain mapping is valid. It does not embed a KPI
+Widget separately.
 
 Saved chart, pivot, summary and tabular reports must all be added to their
-matching page dashboard. Do not enter their individual Share URLs in the
-current portal. The only four portal URLs are the secured page-dashboard
-embeds, which preserve Dashboard User Filters for KPI Widgets and reports
-together.
+matching page dashboard and shared individually for the custom portal. The v4
+handoff contains 19 individual report URLs plus four complete-dashboard
+fallbacks.
 
-The live iframe displays the Zoho dashboard UI. The custom portal controls only
-the outer shell and Blueprint reference in this implementation.
+This delivery correction does not require another SQL change, lookup rebuild,
+or Aggregate Formula cleanup.
 
 ## Three Different Filter Types
 
@@ -181,7 +180,8 @@ Exact Query 34 exception values include:
 11. Validate All outlets, `OUT001`, `OUT002` and `OUT003`.
 12. Share the complete dashboard, choose secured **Access with Login**, and
     copy only the iframe `src` URL.
-13. In the external portal, configure that one URL for the matching page.
+13. In the external portal, configure it as the matching page's native
+    fallback. Configure the saved report views separately in their named slots.
 
 # Acceptance Checks
 

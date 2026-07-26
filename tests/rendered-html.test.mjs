@@ -1,69 +1,102 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { access, readdir, readFile } from "node:fs/promises";
 import test from "node:test";
 
-async function render(path = "/") {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  const { default: worker } = await import(workerUrl.href);
-
-  return worker.fetch(
-    new Request(`http://localhost${path}`, { headers: { accept: "text/html" } }),
-    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
-    { waitUntil() {}, passThroughOnException() {} },
+async function pagesBundleText() {
+  const assets = await readdir(
+    new URL("../pages-dist/assets/", import.meta.url),
+    { withFileTypes: true },
   );
+  const scripts = await Promise.all(
+    assets
+      .filter((entry) => entry.isFile() && entry.name.endsWith(".js"))
+      .map((entry) =>
+        readFile(
+          new URL(`../pages-dist/assets/${entry.name}`, import.meta.url),
+          "utf8",
+        ),
+      ),
+  );
+  return scripts.join("\n");
 }
 
-test("server-renders the editable ABNAH schema workspace", async () => {
-  const response = await render();
-  assert.equal(response.status, 200);
-  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
-
-  const html = await response.text();
-  assert.match(html, /<title>ABNAH Schema Workspace<\/title>/i);
-  assert.match(html, /Schema Workspace/);
-  assert.match(html, /Discovery/);
-  assert.match(html, /API validation/);
-  assert.match(html, /Control tower/);
-  assert.match(html, /Live portal/);
-  assert.match(html, /Data quality/);
-  assert.match(html, /Architecture/);
-  assert.match(html, /Library/);
-  assert.match(html, /Budget DSR Report/);
-  assert.match(html, /Blank table structure/);
-  assert.match(html, /318/);
-  assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
+test("builds the editable ABNAH workspace for GitHub Pages", async () => {
+  const html = await readFile(
+    new URL("../pages-dist/index.html", import.meta.url),
+    "utf8",
+  );
+  const bundle = await pagesBundleText();
+  assert.match(html, /<title>ABNAH Control Tower Workbench<\/title>/i);
+  assert.match(html, /Content-Security-Policy/);
+  assert.match(bundle, /Schema Workspace/);
+  assert.match(bundle, /Discovery/);
+  assert.match(bundle, /API validation/);
+  assert.match(bundle, /Control tower/);
+  assert.match(bundle, /Live portal/);
+  assert.match(bundle, /Data quality/);
+  assert.match(bundle, /Architecture/);
+  assert.match(bundle, /Library/);
+  assert.match(bundle, /Budget DSR Report/);
+  assert.match(bundle, /Blank table structure/);
+  assert.doesNotMatch(
+    bundle,
+    /codex-preview|Your site is taking shape|react-loading-skeleton/i,
+  );
 });
 
-test("server-renders the delivery portal as a separate route", async () => {
-  const response = await render("/portal");
-  assert.equal(response.status, 200);
-  const html = await response.text();
-  assert.match(html, /<title>ABNAH Supply Chain Control Tower<\/title>/i);
-  assert.match(html, /ABNAH Supply Chain Control Tower/);
-  assert.match(html, /Verified analytics access/);
-  assert.match(html, /Checking this browser for a verified Zoho Analytics session/);
-  assert.match(html, /Verifying session/);
-  assert.doesNotMatch(html, /Continue after sign-in/);
-  assert.doesNotMatch(html, /Schema discovery|Report catalogue/);
+test("publishes the secured delivery portal as a GitHub Pages route", async () => {
+  const [rootHtml, portalHtml, bundle] = await Promise.all([
+    readFile(new URL("../pages-dist/index.html", import.meta.url), "utf8"),
+    readFile(new URL("../pages-dist/portal/index.html", import.meta.url), "utf8"),
+    pagesBundleText(),
+  ]);
+  assert.equal(portalHtml, rootHtml);
+  assert.match(bundle, /ABNAH Supply Chain Control Tower/);
+  assert.match(bundle, /Verified analytics access/);
+  assert.match(
+    bundle,
+    /Checking this browser for a verified Zoho Analytics session/,
+  );
+  assert.match(bundle, /Supabase configuration required/);
+  assert.doesNotMatch(bundle, /Continue after sign-in/);
 });
 
-test("protects the shared Zoho URL handoff and ships the v4 contract", async () => {
-  const response = await render("/api/zoho-portal-config");
-  assert.equal(response.status, 401);
-  assert.deepEqual(await response.json(), {
-    error: "Verified Zoho Analytics access is required.",
-  });
-
-  const handoff = JSON.parse(
-    await readFile(
+test("ships the Supabase security boundary and v4 handoff contract", async () => {
+  const [handoff, runtime, edgeFunction, migration, client] = await Promise.all([
+    readFile(
       new URL(
         "../config/zoho-secured-embed-handoff.example.json",
         import.meta.url,
       ),
       "utf8",
     ),
-  );
+    readFile(
+      new URL("../config/supabase-portal.json", import.meta.url),
+      "utf8",
+    ),
+    readFile(
+      new URL(
+        "../supabase/functions/abnah-portal/index.ts",
+        import.meta.url,
+      ),
+      "utf8",
+    ),
+    readFile(
+      new URL(
+        "../supabase/migrations/20260727000100_abnah_portal.sql",
+        import.meta.url,
+      ),
+      "utf8",
+    ),
+    readFile(
+      new URL("../app/lib/supabase-portal-client.ts", import.meta.url),
+      "utf8",
+    ),
+  ]).then(([handoffText, runtimeText, ...rest]) => [
+    JSON.parse(handoffText),
+    JSON.parse(runtimeText),
+    ...rest,
+  ]);
   assert.equal(handoff.schema, "abnah-zoho-view-handoff/v4");
   assert.equal(
     handoff.integrationMode,
@@ -76,6 +109,22 @@ test("protects the shared Zoho URL handoff and ships the v4 contract", async () 
       0,
     ),
     19,
+  );
+  assert.match(
+    runtime.returnUrl,
+    /^https:\/\/abg-groupit\.github\.io\/abnah-control-tower-workbench\/portal\/$/,
+  );
+  assert.match(runtime.functionBaseUrl, /\.supabase\.co\/functions\/v1\/abnah-portal$/);
+  assert.match(edgeFunction, /ZOHO_ALLOWED_WORKSPACE_ID/);
+  assert.match(edgeFunction, /abnah_portal_sessions/);
+  assert.match(migration, /enable row level security/);
+  assert.match(migration, /revoke all .* from anon, authenticated/);
+  assert.match(client, /sessionStorage/);
+  assert.match(client, /`Bearer \$\{token\}`/);
+  assert.doesNotMatch(client, /\/api\/zoho-auth|\/api\/zoho-portal-config/);
+  await assert.rejects(
+    access(new URL("../.openai/hosting.json", import.meta.url)),
+    /ENOENT/,
   );
 });
 
@@ -181,12 +230,12 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   assert.equal(lineage.kpis.filter((kpi) => kpi.approvalStatus === "partial").length, 1);
   assert.equal(lineage.nodes.length, 0);
   assert.equal(lineage.edges.length, 0);
-  assert.equal(projectPack.summary.files, 733);
+  assert.equal(projectPack.summary.files, 752);
   assert.equal(projectPack.summary.csvFiles, 349);
-  assert.equal(projectPack.summary.sqlFiles, 132);
-  assert.equal(projectPack.summary.guideFiles, 89);
+  assert.equal(projectPack.summary.sqlFiles, 133);
+  assert.equal(projectPack.summary.guideFiles, 91);
   assert.equal(projectPack.categories.length, 10);
-  assert.equal(new Set(projectPack.files.map((file) => file.path)).size, 733);
+  assert.equal(new Set(projectPack.files.map((file) => file.path)).size, 752);
   assert.ok(projectPack.files.filter((file) => file.featuredOrder !== null).length >= 6);
   assert.ok(projectPack.files.every((file) => /^[a-f0-9]{64}$/.test(file.sha256)));
   assert.doesNotMatch(projectPackText, /\.png\b|\.jpe?g\b|AppData\\Local\\Temp|Downloads\\/i);

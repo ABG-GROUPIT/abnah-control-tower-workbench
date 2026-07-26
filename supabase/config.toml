@@ -1,0 +1,4 @@
+project_id = "abnah-control-tower"
+
+[functions.abnah-portal]
+verify_jwt = false

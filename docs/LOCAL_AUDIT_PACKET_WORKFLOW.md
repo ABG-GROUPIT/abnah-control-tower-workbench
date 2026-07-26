@@ -104,4 +104,5 @@ The current worked example is summarized in `docs/REAL_CSV_AUDIT_CHECKPOINT.md`.
 
 Retain the packet ID in the schema note or change record, not its local filesystem
 path. Transfer source blueprints, generated indexes, documentation and the normal
-D1 backup. Raw audit evidence remains in the approved secure storage location.
+browser workspace backup. Raw audit evidence remains in the approved secure
+storage location.

@@ -63,12 +63,14 @@ py -3 tools/local-auditor/local_report_viewer.py `
 Open `http://127.0.0.1:8765/`. Download the private packet only when it will be
 opened locally in the Data Quality page.
 
-## Deployments
+## Deployment
 
-The same source supports two deployments:
+There is one frontend deployment:
 
-- Sites: full worker application with D1 revision storage.
-- GitHub Pages: static presentation with browser-local workspace storage.
+- GitHub Pages: Atlas, project library, Data Quality surface, and `/portal/`.
+
+The portal's OAuth and URL-only runtime API is the `abnah-portal` Supabase Edge
+Function. It is backend infrastructure, not a second website.
 
 Build and validate the Pages version:
 
@@ -89,5 +91,5 @@ directory.
 2. Review high-impact observations in the localhost viewer.
 3. Compile only `public_business_review.json` into the Control Tower evidence.
 4. Run `refresh_atlas.bat`.
-5. Run privacy validation, typecheck, both production builds, and UI checks.
+5. Run privacy validation, typecheck, the Pages production build, and UI checks.
 6. Commit and deploy only after the deployable tree contains no raw rows.

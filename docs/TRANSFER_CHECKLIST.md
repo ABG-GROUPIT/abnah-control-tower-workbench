@@ -14,14 +14,16 @@
 - [ ] `npm run lint` passes.
 - [ ] `npm test` passes.
 
-## Hosted Working State
+## Browser Working State
 
 - [ ] All intended drafts are saved.
 - [ ] In-review reports have an assigned reviewer outside the tool if needed.
 - [ ] Published mode shows only approved revisions.
-- [ ] A current authenticated workspace backup was exported.
+- [ ] A current browser workspace backup was exported.
 - [ ] Backup JSON is stored in approved secure storage.
-- [ ] D1 project/binding ownership and deployment credentials are transferred separately.
+- [ ] Supabase project ownership and Edge Function secrets are transferred
+      separately from the repository.
+- [ ] `config/supabase-portal.json` points to the transferred Supabase project.
 
 ## Knowledge Handoff
 
@@ -35,7 +37,10 @@
 
 ## Clean Copy
 
-Transfer source code and schema pack. Exclude machine-specific build/runtime folders such as `node_modules/`, `dist/`, `build/`, and `.wrangler/`. Run `npm install` and regenerate contracts in the receiving environment.
+Transfer source code and schema pack. Exclude machine-specific build/runtime
+folders such as `node_modules/`, `dist/`, `pages-dist/`, and local Supabase
+environment files. Run `npm install` and regenerate contracts in the receiving
+environment.
 
 ## Acceptance
 

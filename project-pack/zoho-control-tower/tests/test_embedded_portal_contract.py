@@ -112,19 +112,26 @@ class EmbeddedPortalContractTests(unittest.TestCase):
     def test_one_file_handoff_is_blank_and_complete(self) -> None:
         handoff = json.loads(HANDOFF.read_text(encoding="utf-8"))
         self.assertEqual(
-            "abnah-zoho-dashboard-embed-handoff/v3",
+            "abnah-zoho-view-handoff/v4",
             handoff["schema"],
         )
         self.assertEqual("zoho_secured_login", handoff["authMode"])
         self.assertEqual(
-            "page_dashboard_views",
+            "individual_report_views_with_dashboard_fallbacks",
             handoff["integrationMode"],
         )
 
         expected = {
             page["id"]: {
                 "dashboardViewName": page["dashboardViewName"],
-                "securedDashboardEmbedUrl": "",
+                "securedDashboardFallbackUrl": "",
+                "reports": {
+                    panel["id"]: {
+                        "viewName": panel["zohoViewName"],
+                        "securedViewUrl": "",
+                    }
+                    for panel in page["panels"]
+                },
             }
             for page in self.config["pages"]
         }
@@ -153,17 +160,17 @@ class EmbeddedPortalContractTests(unittest.TestCase):
         self.assertIn("20_fact_ct_actual_consumption.sql", migration)
         self.assertIn("Weighted Unit Price", migration)
         embed = EMBED.read_text(encoding="utf-8")
-        self.assertIn("four complete secured Zoho dashboards", embed)
+        self.assertIn("19 secured individual report views", embed)
         self.assertIn("Do not use:", embed)
-        self.assertIn("Dashboard User Filters", embed)
+        self.assertIn("ZOHO_CRITERIA", embed)
         hosting = HOSTING.read_text(encoding="utf-8")
-        self.assertIn("GitHub Pages is not a backend", hosting)
-        self.assertIn("20 KPI objects", hosting)
+        self.assertIn("GitHub Pages is the only frontend host", hosting)
+        self.assertIn("Supabase Edge Function", hosting)
         self.assertIn("means **this same laptop**", hosting)
         sequence = REPORT_SEQUENCE.read_text(encoding="utf-8")
-        self.assertIn("Build and secure these four dashboards", sequence)
-        self.assertIn("Dashboard User Filters", sequence)
-        self.assertIn("secured-with-login dashboard iframe URLs", sequence)
+        self.assertIn("19 saved-report URLs", sequence)
+        self.assertIn("native fallbacks", sequence)
+        self.assertIn("abnah-zoho-view-handoff/v4", sequence)
         mapping = FILTER_MAPPING.read_text(encoding="utf-8")
         self.assertIn("Query 34", mapping)
         self.assertIn("source_period_code", mapping)

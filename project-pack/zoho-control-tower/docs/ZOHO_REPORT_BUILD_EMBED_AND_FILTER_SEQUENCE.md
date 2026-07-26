@@ -19,8 +19,9 @@ still depend on them.
 
 ## Correct Delivery Architecture
 
-Zoho KPI Widgets exist only inside dashboards. They cannot be treated as
-standalone shareable report views. Build and secure these four dashboards:
+Build every chart, pivot, summary, and tabular object as a saved secured view.
+The custom portal places 19 of those views into its own layout. Also build and
+secure these four complete dashboards as native validation/fallback surfaces:
 
 ```text
 CT_PAGE_1_Risk_Action_Center
@@ -35,29 +36,28 @@ CT_PAGE_4_SCM_Explorer_Data_Quality
         v
 saved chart / pivot / summary / tabular reports
         |
-        v
-5 KPI Widgets + saved reports inside each page dashboard
-        |
-        | dashboard User Filters
-        v
-4 secured-with-login dashboard iframe URLs
-        |
-        v
-ABNAH external portal: one complete dashboard per page
+        +-----------------------------+
+        |                             |
+        v                             v
+19 individual secured views    4 complete dashboards
+        |                             |
+        | custom ZOHO_CRITERIA        | native filters/KPI Widgets
+        v                             v
+custom GitHub Pages layout      native fallbacks
 ```
 
-Do not create 20 standalone KPI embed URLs. The portal handoff contains four
-dashboard URLs.
+Do not create 20 standalone KPI embed URLs. KPI Widgets remain dashboard-only.
+The v4 portal handoff contains 19 saved-report URLs and four dashboard fallback
+URLs.
 
 Saved chart, pivot, summary and tabular views are still required: build,
-validate and add each one to its page dashboard. Their individual Share URLs
-are optional QA links only and are not entered into the current portal.
+validate, share, and add each one to its page dashboard. Paste each individual
+secured URL into the exact matching custom portal slot.
 
-Embedding the complete dashboard preserves native shared filtering but renders
-the Zoho dashboard UI inside the live iframe. The custom portal remains the
-outer shell and Blueprint reference; it cannot restyle the dashboard iframe.
-An exact custom live composition would require separately embedded reports,
-external filter synchronization and separately rendered KPI values.
+The custom portal synchronizes only compatible individual report views. The
+complete dashboards preserve native filtering and live KPI Widgets, but open
+separately as fallbacks. Cross-origin Zoho iframe pixels remain under Zoho
+control.
 
 ## Governing Guides
 
@@ -84,7 +84,8 @@ For each page:
 6. Add and map the dashboard User Filters.
 7. Reconcile All outlets, `OUT001`, `OUT002` and `OUT003`.
 8. Apply colors, number formats and layout only after values reconcile.
-9. Share and embed the complete page dashboard.
+9. Share each saved view and the complete page dashboard.
+10. Connect the individual views and dashboard fallback in the portal.
 
 ## KPI Widget Rule
 
@@ -104,8 +105,8 @@ an Aggregate Formula in the KPI Widget physical Data Column list.
 
 ## Filter Rule
 
-Dashboard User Filters are the live controls. A KPI Widget does not need or
-provide its own togglable filter.
+Dashboard User Filters are the live controls inside native fallbacks. A KPI
+Widget does not need or provide its own togglable filter.
 
 For every placed KPI/report:
 
@@ -126,6 +127,9 @@ Only As-of Source Period and Outlet are broadly shared. Category, item, vendor,
 PO status, UOM and exception filters are scoped to compatible facts. A filter
 that does not exist at a summary table's grain must not be faked.
 
+For the custom page, use the same field/grain rule. The portal adds
+`ZOHO_CRITERIA` only to the saved views mapped in its report contract.
+
 ## Fixed Filters
 
 These remain fixed inside reports/widgets:
@@ -143,32 +147,37 @@ the physical field and tick the required value.
 
 ## Share And Embed
 
-Repeat once per page dashboard:
+For each of the 19 saved report views:
 
-1. Open the completed dashboard in View Mode.
-2. Choose **Share** and grant the company Zoho viewer account read access.
-3. Choose **Embed**.
-4. Select secured **Access with Login**.
-5. Keep the dashboard interactive so its User Filters work.
-6. Copy only the iframe `src` URL.
-7. Open the ABNAH portal **Configure** drawer.
-8. Select the matching page.
-9. Paste the one dashboard URL and save locally.
+1. Open the view in View Mode.
+2. Share it with the company Zoho viewer account.
+3. Generate secured **Access with Login**.
+4. Copy only the secured HTTPS URL.
+5. Paste it into the matching named portal report slot.
+
+For each complete page dashboard:
+
+1. Share it with the same viewer.
+2. Generate secured **Access with Login**.
+3. Keep it interactive so native User Filters work.
+4. Paste it into that page's **Native fallback** slot.
+5. Save the shared handoff through the verified portal.
 
 The handoff format is:
 
 ```text
 config/zoho-secured-embed-handoff.example.json
-abnah-zoho-dashboard-embed-handoff/v3
+abnah-zoho-view-handoff/v4
 ```
 
-It stores four dashboard URLs and no credentials or rows.
+It stores 19 report URLs, four dashboard fallback URLs, and no credentials or
+rows.
 
 ## Authentication
 
-The viewer signs into Zoho Analytics in a normal browser tab and returns to the
-portal. The secured dashboard iframe reuses that Zoho session. Zoho remains the
-access-control boundary.
+The viewer selects **Continue with Zoho**. The Supabase Edge Function completes
+OAuth, verifies access to the configured Zoho workspace, and issues an opaque
+portal session. Zoho still enforces access to each secured report/dashboard.
 
 Do not use:
 
@@ -189,5 +198,5 @@ Do not embed a page until:
 - one Canonical UOM is used for quantity comparisons;
 - the dashboard opens for the intended Zoho viewer account.
 
-After these checks, connect its secured dashboard URL and continue to the next
-page.
+After these checks, connect its individual report URLs and secured dashboard
+fallback, then continue to the next page.

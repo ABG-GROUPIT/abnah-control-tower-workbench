@@ -74,7 +74,10 @@ The editor supports:
 - add, rename, reorder through selection, and remove complete tables;
 - undo and redo during the current editing session.
 
-After a complex structure is corrected in the browser, export its report JSON and reconcile the approved shape into the source blueprint. D1 preserves the revision, but the source file preserves portability.
+After a complex structure is corrected in the browser, export its report JSON
+and reconcile the approved shape into the source blueprint. Browser state keeps
+the working copy; the source file and Git history preserve the transferable
+approved revision.
 
 ## Batch Strategy for P2 and P4
 

@@ -63,15 +63,17 @@ Start here:
   visuals.
 - `docs/zoho_control_tower_v2_dashboard_click_by_click.md`
 - `docs/ZOHO_EMBEDDED_PORTAL_SETUP.md`: secured-login embedding,
-  browser-local URL configuration, hosting boundaries and custom-chart
-  fallbacks.
+  19 individual view slots, four native dashboard fallbacks and the Supabase
+  boundary.
 - `docs/ZOHO_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md`: current-stage,
-  four-dashboard build order, sign-in, secured handoff and filter contract.
+  report/dashboard build order, verified sign-in, v4 handoff and filter
+  contract.
 - `docs/ZOHO_DASHBOARD_FILTER_MAPPING_MATRIX.md`: exact page-by-page Query
   Table, physical field, fixed-filter and dashboard User Filter mappings.
-- `docs/ZOHO_PORTAL_HOSTING_AUTH_HANDOFF.md`: final GitHub Pages versus
-  SharePoint decision, Pro-plan gate, login behavior, one-file handoff,
-  work-laptop checks and backend boundary.
+- `docs/ZOHO_PORTAL_HOSTING_AUTH_HANDOFF.md`: GitHub Pages-only frontend,
+  Supabase OAuth/session backend, v4 one-file handoff and work-laptop checks.
+- `portal_runtime/`: generated secret-free copy of the exact frontend/backend
+  runtime contract so the downloadable project pack remains complete.
 - `docs/zoho_control_tower_v2_validation.md`
 - `docs/control_tower_v2_truth_reference.md`
 - `docs/ZOHO_CONTROL_TOWER_V2_EXECUTION_RUNBOOK.md`: the authoritative
