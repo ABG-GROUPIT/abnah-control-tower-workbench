@@ -35,7 +35,6 @@ import { ApiRegistry } from "./ApiRegistry";
 import { ArchitectureGraphWorkspace } from "./ArchitectureGraphWorkspace";
 import { ControlTowerWorkspace } from "./ControlTowerWorkspace";
 import { DataQualityWorkspace } from "./DataQualityWorkspace";
-import { EmbeddedControlTowerPortal } from "./EmbeddedControlTowerPortal";
 import { ProjectLibraryWorkspace } from "./ProjectLibraryWorkspace";
 import { ReportNavigator } from "./ReportNavigator";
 import { ReportWorkspacePanel, type ReportTab } from "./ReportWorkspacePanel";
@@ -56,7 +55,6 @@ type Surface =
   | "discovery"
   | "api"
   | "control_tower"
-  | "live_portal"
   | "data_quality"
   | "architecture"
   | "library";
@@ -455,7 +453,7 @@ export function AtlasWorkspace({
           <button type="button" className={surface === "discovery" ? "is-active" : ""} onClick={() => setSurface("discovery")}><FileSpreadsheet aria-hidden="true" size={15} /> Discovery</button>
           <button type="button" className={surface === "api" ? "is-active" : ""} onClick={() => setSurface("api")}><Braces aria-hidden="true" size={15} /> API validation</button>
           <button type="button" className={surface === "control_tower" ? "is-active" : ""} onClick={() => setSurface("control_tower")}><LayoutDashboard aria-hidden="true" size={15} /> Control tower</button>
-          <button type="button" className={surface === "live_portal" ? "is-active" : ""} onClick={() => setSurface("live_portal")}><Monitor aria-hidden="true" size={15} /> Live portal</button>
+          <a href="./portal/" target="_blank" rel="noreferrer" title="Open the separate delivery portal"><Monitor aria-hidden="true" size={15} /> Live portal</a>
           <button type="button" className={surface === "data_quality" ? "is-active" : ""} onClick={() => setSurface("data_quality")}><ShieldCheck aria-hidden="true" size={15} /> Data quality</button>
           <button type="button" className={surface === "architecture" ? "is-active" : ""} onClick={() => setSurface("architecture")}><Network aria-hidden="true" size={15} /> Architecture</button>
           <button type="button" className={surface === "library" ? "is-active" : ""} onClick={() => setSurface("library")}><FolderArchive aria-hidden="true" size={15} /> Library</button>
@@ -516,7 +514,6 @@ export function AtlasWorkspace({
           onOpenReport={openDiscoveryReport}
         />
       )}
-      {surface === "live_portal" && <EmbeddedControlTowerPortal />}
       {surface === "data_quality" && (
         <DataQualityWorkspace
           evidence={controlTowerEvidence}

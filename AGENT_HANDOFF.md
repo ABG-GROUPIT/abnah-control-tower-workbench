@@ -55,6 +55,9 @@ Maintain a screenshot-free, evidence-disciplined understanding of ABNAH's Restro
     before changing the final report set
 24. `project-pack/zoho-control-tower/docs/ZOHO_EMBEDDED_PORTAL_SETUP.md`
     before changing embeds, authentication or hosting
+25. `project-pack/zoho-control-tower/docs/ZOHO_PORTAL_HOSTING_AUTH_HANDOFF.md`
+    before changing the standalone portal, work-laptop handoff, OAuth boundary,
+    GitHub Pages or SharePoint decision
 
 ## Truth Model
 
@@ -66,7 +69,7 @@ There are three intentional stores:
   no server-side database.
 - GitHub Pages also publishes the validated project pack under
   `project-pack/zoho-control-tower/`; use the generated project-library index
-  for direct access instead of recursively loading all 710 files.
+  for direct access instead of recursively loading every file.
 
 For the live site, use the latest D1 current document. For a clean rebuild or team transfer, use source blueprints plus an exported D1 backup. Site edits are not automatically promoted into source JSON.
 

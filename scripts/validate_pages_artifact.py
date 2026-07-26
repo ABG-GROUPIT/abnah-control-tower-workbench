@@ -19,6 +19,7 @@ MANIFEST_PATH = ROOT / "project-pack" / "PROJECT_PACK_MANIFEST.csv"
 INDEX_PATH = ROOT / "schema-pack" / "generated" / "project-pack-index.json"
 DEPLOYMENT_PATH = PAGES_ROOT / "project-pack-deployment.json"
 ARCHIVE_PATH = PAGES_ROOT / "ABNAH_COMPLETE_PROJECT_PACK.zip"
+PORTAL_ENTRY_PATH = PAGES_ROOT / "portal" / "index.html"
 META_FILES = ("README.md", "SOURCE_PROVENANCE.json", "PROJECT_PACK_MANIFEST.csv", "INDEX.json")
 FORBIDDEN_SUFFIXES = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp", ".tif", ".tiff"}
 
@@ -59,6 +60,8 @@ def main() -> None:
 
     if not ARCHIVE_PATH.is_file() or ARCHIVE_PATH.stat().st_size == 0:
         fail("complete project download is missing")
+    if not PORTAL_ENTRY_PATH.is_file():
+        fail("standalone portal entry is missing")
     with zipfile.ZipFile(ARCHIVE_PATH) as archive:
         archive_names = set(archive.namelist())
     missing_from_archive = expected_archive_names - archive_names

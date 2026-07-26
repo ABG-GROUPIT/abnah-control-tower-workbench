@@ -2,7 +2,9 @@
 
 import portalSnapshot from "@/config/zoho-portal.json";
 import {
+  ArrowLeft,
   Check,
+  Download,
   ExternalLink,
   Info,
   LayoutTemplate,
@@ -12,13 +14,15 @@ import {
   Save,
   Settings2,
   ShieldCheck,
+  Upload,
   X,
 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type {
   ZohoPortalCapability,
   ZohoPortalConfig,
   ZohoPortalFilter,
+  ZohoPortalHandoff,
   ZohoPortalPage,
   ZohoPortalPreview,
   ZohoPortalUrlOverrides,
@@ -26,6 +30,7 @@ import type {
 
 const portal = portalSnapshot as unknown as ZohoPortalConfig;
 const urlStorageKey = "abnah-zoho-portal-urls-v1";
+const handoffSchema = "abnah-zoho-secured-embed-handoff/v1";
 
 type PortalMode = "blueprint" | "live";
 type FilterValues = Record<string, string>;
@@ -106,6 +111,54 @@ function sanitizeUrlOverrides(value: unknown): ZohoPortalUrlOverrides {
         : [];
     }),
   );
+}
+
+function buildHandoff(urls: ZohoPortalUrlOverrides): ZohoPortalHandoff {
+  return {
+    schema: handoffSchema,
+    generatedAt: new Date().toISOString(),
+    authMode: "zoho_secured_login",
+    note:
+      "Secured Zoho iframe src URLs only. This file must not contain passwords, OAuth tokens, client secrets, or operational rows.",
+    dashboards: Object.fromEntries(
+      portal.pages.map((page) => [
+        page.id,
+        {
+          dashboardViewName: page.dashboardViewName,
+          securedEmbedUrl: urls[page.id]?.trim() ?? "",
+        },
+      ]),
+    ),
+  };
+}
+
+function parseHandoff(value: unknown): ZohoPortalUrlOverrides {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    throw new Error("The selected file is not a Zoho portal handoff.");
+  }
+  const candidate = value as Partial<ZohoPortalHandoff>;
+  if (
+    candidate.schema !== handoffSchema ||
+    candidate.authMode !== "zoho_secured_login" ||
+    !candidate.dashboards ||
+    typeof candidate.dashboards !== "object"
+  ) {
+    throw new Error("Use an ABNAH secured-embed handoff v1 JSON file.");
+  }
+  const urls = Object.fromEntries(
+    portal.pages.map((page) => {
+      const dashboard = candidate.dashboards?.[page.id];
+      const url =
+        dashboard && typeof dashboard.securedEmbedUrl === "string"
+          ? dashboard.securedEmbedUrl.trim()
+          : "";
+      if (url && !isSecuredZohoUrl(url)) {
+        throw new Error(`${page.label}: the embed URL is not an approved HTTPS Zoho Analytics URL.`);
+      }
+      return [page.id, url];
+    }),
+  );
+  return sanitizeUrlOverrides(urls);
 }
 
 function FilterControl({
@@ -310,7 +363,11 @@ function PanelPreview({ type }: { type: ZohoPortalPreview }) {
   return <PlaceholderTable />;
 }
 
-export function EmbeddedControlTowerPortal() {
+export function EmbeddedControlTowerPortal({
+  standalone = false,
+}: {
+  standalone?: boolean;
+}) {
   const [pageId, setPageId] = useState(portal.pages[0]?.id ?? "p1");
   const [mode, setMode] = useState<PortalMode>("blueprint");
   const [filters, setFilters] = useState<PageFilterValues>(initialFilters);
@@ -320,6 +377,7 @@ export function EmbeddedControlTowerPortal() {
   const [draftUrls, setDraftUrls] = useState<ZohoPortalUrlOverrides>({});
   const [configOpen, setConfigOpen] = useState(false);
   const [configMessage, setConfigMessage] = useState("");
+  const handoffInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const hydrateStoredUrls = globalThis.setTimeout(() => {
@@ -398,10 +456,45 @@ export function EmbeddedControlTowerPortal() {
     setConfigMessage("Browser-local Zoho view URLs cleared.");
   };
 
+  const downloadHandoff = () => {
+    const handoff = buildHandoff({ ...urlOverrides, ...draftUrls });
+    const blob = new Blob([`${JSON.stringify(handoff, null, 2)}\n`], {
+      type: "application/json",
+    });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = "abnah-zoho-secured-embed-handoff.json";
+    anchor.click();
+    URL.revokeObjectURL(url);
+    setConfigMessage("One-file handoff downloaded. It contains no credentials or report rows.");
+  };
+
+  const importHandoff = async (file: File | undefined) => {
+    if (!file) return;
+    try {
+      const urls = parseHandoff(JSON.parse(await file.text()));
+      setDraftUrls(urls);
+      setUrlOverrides(urls);
+      globalThis.localStorage?.setItem(urlStorageKey, JSON.stringify(urls));
+      setConfigMessage(
+        `${Object.keys(urls).length} secured Zoho dashboard URLs imported and saved in this browser.`,
+      );
+    } catch (error) {
+      setConfigMessage(
+        error instanceof Error ? error.message : "The Zoho handoff file could not be read.",
+      );
+    } finally {
+      if (handoffInputRef.current) handoffInputRef.current.value = "";
+    }
+  };
+
   if (!page) return null;
 
   return (
-    <section className="zoho-portal-surface">
+    <section
+      className={`zoho-portal-surface portal-page-${page.id}${standalone ? " is-standalone" : ""}`}
+    >
       <header className="portal-command-header">
         <div className="portal-command-title">
           <span className="section-kicker">Embedded delivery portal</span>
@@ -409,6 +502,16 @@ export function EmbeddedControlTowerPortal() {
           <p>{page.title} / {page.subtitle}</p>
         </div>
         <div className="portal-command-actions">
+          {standalone ? (
+            <a
+              className="portal-atlas-link"
+              href="../"
+              title="Return to the Schema Atlas"
+            >
+              <ArrowLeft aria-hidden="true" size={15} />
+              Atlas
+            </a>
+          ) : null}
           <span className="portal-auth-state">
             <ShieldCheck aria-hidden="true" size={15} />
             Zoho secured login
@@ -625,7 +728,8 @@ export function EmbeddedControlTowerPortal() {
               <ShieldCheck aria-hidden="true" size={16} />
               <p>
                 Use secured-login embed URLs only. Access remains controlled by
-                the Zoho users with whom each dashboard is shared.
+                the Zoho users with whom each dashboard is shared. No API key
+                or OAuth secret is required for this delivery mode.
               </p>
             </div>
             <div className="portal-config-fields">
@@ -648,6 +752,29 @@ export function EmbeddedControlTowerPortal() {
             </div>
             {configMessage ? <p className="portal-config-message">{configMessage}</p> : null}
             <footer>
+              <input
+                ref={handoffInputRef}
+                type="file"
+                accept="application/json,.json"
+                hidden
+                onChange={(event) => void importHandoff(event.target.files?.[0])}
+              />
+              <button
+                type="button"
+                onClick={() => handoffInputRef.current?.click()}
+                title="Import all four secured Zoho URLs from one handoff file"
+              >
+                <Upload aria-hidden="true" size={14} />
+                Import
+              </button>
+              <button
+                type="button"
+                onClick={downloadHandoff}
+                title="Download a transferable four-dashboard handoff file"
+              >
+                <Download aria-hidden="true" size={14} />
+                Handoff
+              </button>
               <button type="button" onClick={clearUrls}>
                 <RefreshCcw aria-hidden="true" size={14} />
                 Clear

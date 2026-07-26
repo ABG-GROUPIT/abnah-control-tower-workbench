@@ -81,7 +81,9 @@ $required = @(
     '03_ZOHO_INSTRUCTIONS\04A_DASHBOARD_EXPECTED_RESULTS.md',
     '03_ZOHO_INSTRUCTIONS\04B_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md',
     '03_ZOHO_INSTRUCTIONS\05_ASK_ZIA_SETUP.md',
-    '03_ZOHO_INSTRUCTIONS\07_EMBEDDED_PORTAL_SETUP.md'
+    '03_ZOHO_INSTRUCTIONS\07_EMBEDDED_PORTAL_SETUP.md',
+    '03_ZOHO_INSTRUCTIONS\08_PORTAL_HOSTING_AUTH_HANDOFF.md',
+    '03_ZOHO_INSTRUCTIONS\zoho-secured-embed-handoff.example.json'
 )
 foreach ($relative in $required) {
     if (-not (Test-Path -LiteralPath (Join-Path $root $relative) -PathType Leaf)) {

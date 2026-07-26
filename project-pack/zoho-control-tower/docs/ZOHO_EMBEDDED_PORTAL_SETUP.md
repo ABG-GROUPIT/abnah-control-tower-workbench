@@ -2,15 +2,15 @@
 
 ## What Has Been Built
 
-The workbench contains a `Live portal` surface with:
+The workbench links to a separate `/portal/` delivery page with:
 
 - the four ABNAH reference pages;
 - reference-first filters, five KPI slots per page and the requested panel
   layout;
 - synthetic acceptance values in Blueprint mode;
 - a Live Zoho mode for one secured dashboard embed per page;
-- browser-local URL storage so work-laptop embed URLs do not need to be
-  committed;
+- one-file JSON import/export plus browser-local URL storage so work-laptop
+  embed URLs do not need to be committed;
 - explicit placeholders for the action queue and exact consumption waterfall
   that may later require custom rendering.
 
@@ -18,6 +18,12 @@ The committed configuration is:
 
 ```text
 config/zoho-portal.json
+```
+
+The transferable blank handoff file is:
+
+```text
+config/zoho-secured-embed-handoff.example.json
 ```
 
 It contains report names, source Query Tables, fields and blank embed URLs. It
@@ -114,15 +120,22 @@ The committed JSON intentionally leaves every `dashboardEmbedUrl` blank.
 On the work laptop:
 
 1. Open the published workbench.
-2. Choose **Live portal**.
+2. Choose **Live portal**. It opens as a separate page rather than an Atlas
+   tab.
 3. Choose **Configure**.
-4. Paste one secured Zoho iframe `src` into each page field.
-5. Choose **Save locally**.
+4. Either paste one secured Zoho iframe `src` into each page field and choose
+   **Save locally**, or choose **Import** and select the four-dashboard handoff
+   JSON.
+5. Use **Handoff** to export the current four URLs for another approved browser
+   profile.
 6. Open each page and switch from **Blueprint** to **Live Zoho**.
 7. Complete the Zoho sign-in prompt with the registered work account.
 
 The four URLs are stored in that browser's local storage. They are not pushed
 to GitHub and will not appear on another laptop or browser profile.
+
+The JSON file contains secured iframe URLs, not passwords or OAuth
+credentials. Never add a token, client secret or operational report row.
 
 To make URLs part of a controlled internal build instead, place the secured
 login URLs into each page's `dashboardEmbedUrl` in
@@ -257,8 +270,10 @@ and browser-local configuration without publishing the shell.
 
 SharePoint can provide an organization/Entra access gate around a page, but
 custom scripts and iframes may require tenant-approved SPFx or embed-domain
-configuration. Confirm policy with the Microsoft 365 administrator before
-choosing it as the custom-code host.
+configuration. Its standard Embed web part does not become a Zoho API backend
+and does not allow arbitrary custom script. Confirm policy and allowlist
+`analytics.zoho.in` with the Microsoft 365 administrator before moving the
+shell.
 
 ### Production server or protected static host
 
@@ -284,7 +299,7 @@ dashboard sharing list; do not replace it with an without-login link.
 ### A saved URL disappears
 
 Browser-local URLs are profile-specific and can be cleared with site data. Add
-them again through **Configure** or use a controlled internal JSON build.
+them again through **Configure > Import** using the one-file handoff.
 
 ### Filters do not affect every report
 
@@ -300,4 +315,4 @@ unvalidated external `ZOHO_CRITERIA`.
 - [Dynamic URL criteria](https://www.zoho.com/analytics/help/publishing/creating-url-to-views.html)
 - [Embed URL API](https://www.zoho.com/analytics/api/v2/embed-api/embed-url.html)
 - [OAuth authentication](https://www.zoho.com/analytics/api/v2/authentication.html)
-
+- [Complete hosting, auth and handoff decision](ZOHO_PORTAL_HOSTING_AUTH_HANDOFF.md)

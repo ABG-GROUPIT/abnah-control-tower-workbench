@@ -68,6 +68,10 @@ INSTRUCTION_FILES = (
         ROOT / "docs" / "ZOHO_EMBEDDED_PORTAL_SETUP.md",
         "07_EMBEDDED_PORTAL_SETUP.md",
     ),
+    (
+        ROOT / "docs" / "ZOHO_PORTAL_HOSTING_AUTH_HANDOFF.md",
+        "08_PORTAL_HOSTING_AUTH_HANDOFF.md",
+    ),
 )
 
 VALIDATION_FILES = (
@@ -283,6 +287,10 @@ def build_instruction_folder() -> None:
     destination = PACKAGE / "03_ZOHO_INSTRUCTIONS"
     for source, filename in INSTRUCTION_FILES:
         copy_text_required(source, destination / filename)
+    copy_text_required(
+        ROOT / "config" / "zoho-secured-embed-handoff.example.json",
+        destination / "zoho-secured-embed-handoff.example.json",
+    )
 
 
 def build_validation_folder() -> None:
@@ -384,7 +392,9 @@ Then:
    `03_ZOHO_INSTRUCTIONS/04A_DASHBOARD_EXPECTED_RESULTS.md`.
 10. Connect the four secured dashboard embeds using
    `03_ZOHO_INSTRUCTIONS/07_EMBEDDED_PORTAL_SETUP.md`.
-11. Configure Ask Zia only after reconciliation passes, using
+11. Complete the company-laptop, hosting and one-file handoff checks in
+   `03_ZOHO_INSTRUCTIONS/08_PORTAL_HOSTING_AUTH_HANDOFF.md`.
+12. Configure Ask Zia only after reconciliation passes, using
    `03_ZOHO_INSTRUCTIONS/05_ASK_ZIA_SETUP.md`.
 
 Record progress directly in the two checklist CSVs and
@@ -570,7 +580,9 @@ $required = @(
     '03_ZOHO_INSTRUCTIONS\04A_DASHBOARD_EXPECTED_RESULTS.md',
     '03_ZOHO_INSTRUCTIONS\04B_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md',
     '03_ZOHO_INSTRUCTIONS\05_ASK_ZIA_SETUP.md',
-    '03_ZOHO_INSTRUCTIONS\07_EMBEDDED_PORTAL_SETUP.md'
+    '03_ZOHO_INSTRUCTIONS\07_EMBEDDED_PORTAL_SETUP.md',
+    '03_ZOHO_INSTRUCTIONS\08_PORTAL_HOSTING_AUTH_HANDOFF.md',
+    '03_ZOHO_INSTRUCTIONS\zoho-secured-embed-handoff.example.json'
 )
 foreach ($relative in $required) {
     if (-not (Test-Path -LiteralPath (Join-Path $root $relative) -PathType Leaf)) {

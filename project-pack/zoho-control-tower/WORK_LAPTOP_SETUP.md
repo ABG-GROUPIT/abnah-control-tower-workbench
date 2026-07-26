@@ -1,126 +1,166 @@
-# ABNAH Work Laptop Handoff
+# ABNAH Work-Laptop Handoff
 
-This handoff uses two private GitHub repositories:
+## Canonical Source
 
-- `arnavkadhe/abnah-zoho-synthetic-demo`: synthetic data, Zoho SQL, local
-  auditing, report contracts, validation, and implementation runbooks.
-- `arnavkadhe/abnah-schema-workspace`: the editable Schema Workspace and
-  Control Tower architecture website.
+Use the ABG repository:
 
-Actual ABNAH CSV exports, screenshots, audit outputs, credentials, and local
+```text
+https://github.com/ABG-GROUPIT/abnah-control-tower-workbench
+```
+
+The hosted Atlas and complete downloadable project pack are:
+
+```text
+https://abg-groupit.github.io/abnah-control-tower-workbench/
+https://abg-groupit.github.io/abnah-control-tower-workbench/ABNAH_COMPLETE_PROJECT_PACK.zip
+```
+
+This one pack contains the synthetic data, 38 Zoho Query Tables, dashboard
+instructions, acceptance references, report contracts, local auditor and portal
+handoff documents.
+
+Actual ABNAH CSV exports, screenshots, audit outputs, credentials and private
 machine paths are intentionally excluded.
 
 ## Prerequisites
 
-- Git
-- Python 3.11 or newer
-- Node.js 22 or newer for the Schema Workspace
-- Optional: Ollama for local LLM review
-- Optional: Tesseract or RapidOCR dependencies for screenshot extraction
+- Python 3.11 or newer for the local auditor.
+- Git and Node.js 22 or newer only when editing/rebuilding the website.
+- Optional Ollama for local LLM review.
+- Optional OCR packages only for future screenshot extraction.
 
-## 1. Clone And Prepare The Synthetic Project
+## 1. Obtain The Complete Pack
 
-```powershell
-git clone https://github.com/arnavkadhe/abnah-zoho-synthetic-demo.git
-cd abnah-zoho-synthetic-demo
-powershell -ExecutionPolicy Bypass -File .\setup_work_laptop.ps1
-```
+Preferred non-development handoff:
 
-The default setup creates `.venv`, installs the core packages, runs the
-repository safety check, and executes the test suite.
+1. Open the hosted Atlas.
+2. Download `ABNAH_COMPLETE_PROJECT_PACK.zip`.
+3. Extract it to a company-approved local folder.
+4. Work inside `project-pack/zoho-control-tower`.
 
-Optional setup:
+Developer handoff:
 
 ```powershell
-.\setup_work_laptop.ps1 -Regenerate
-.\setup_work_laptop.ps1 -WithOcr
-.\setup_work_laptop.ps1 -Regenerate -WithOcr
+git clone https://github.com/ABG-GROUPIT/abnah-control-tower-workbench.git
+cd abnah-control-tower-workbench
+npm ci
+npm run data:validate
 ```
 
-Important outputs:
+## 2. Zoho Implementation
 
-- `exports/control_tower_zoho/`: 16 Zoho landing-table CSVs plus normalized
-  variants and acceptance outputs.
-- `docs/ZOHO_CONTROL_TOWER_V2_EXECUTION_RUNBOOK.md`: authoritative 16-table,
-  37-Query-Table, four-dashboard implementation order.
-- `docs/zoho_control_tower_v2_sql/`: Query Table SQL in dependency order.
-- `docs/control_tower_v2_truth_reference.md`: synthetic truth and acceptance
-  reference.
+Start with:
 
-## 2. Run A Local Actual-CSV Audit
+```text
+FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/START_HERE.md
+```
 
-Copy actual CSV exports only into:
+Important folders:
+
+- `01_IMPORT_FILES/`: the final Zoho landing-table CSVs;
+- `02_QUERY_TABLES/`: the 38 Query Tables in dependency order;
+- `03_ZOHO_INSTRUCTIONS/`: lookups, formulas, filters, dashboards, Ask Zia,
+  portal embedding and hosting;
+- `04_VALIDATION_AND_LIMITATIONS/TRUTH_PACK/`: expected KPI/chart values.
+
+Do not delete or overwrite an older accepted workspace until the replacement
+tables, Query Tables, dashboards and truth checks pass.
+
+## 3. Run A Local Actual-CSV Audit
+
+Copy actual exports only into:
 
 ```text
 local_data_auditor/input/
 ```
 
-That directory is ignored by Git. Run:
+Run:
 
 ```powershell
 cd local_data_auditor
 .\run_laptop_pipeline.bat
 ```
 
-Outputs remain under `local_data_auditor/output/`, which is also ignored.
-Review full rows locally with:
+Outputs remain under `local_data_auditor/output/`. They must not be uploaded or
+committed.
+
+To review complete local rows:
 
 ```powershell
 .\run_local_report_viewer.bat
 ```
 
-The portable packets produced for Codex contain schema and aggregated issue
-evidence, not complete operational rows.
+The terminal must remain open. The expected health endpoint is:
 
-## 3. Clone And Run The Schema Workspace
-
-```powershell
-git clone https://github.com/arnavkadhe/abnah-schema-workspace.git
-cd abnah-schema-workspace
-npm ci
-npm run data:validate
-npm run dev
+```text
+http://127.0.0.1:8765/health
 ```
 
-Before transferring or publishing changes:
+If the browser says connection refused:
 
 ```powershell
+powershell -ExecutionPolicy Bypass -File .\diagnose_local_report_viewer.ps1
+```
+
+The viewer must run on the same company laptop as the browser. `127.0.0.1`
+never reaches a different laptop.
+
+## 4. Open The Separate Delivery Portal
+
+The Atlas **Live portal** link opens:
+
+```text
+/portal/
+```
+
+Follow:
+
+```text
+docs/ZOHO_PORTAL_HOSTING_AUTH_HANDOFF.md
+```
+
+No key is required for the secured-login MVP. Import the four secured Zoho
+iframe `src` URLs using one JSON file based on:
+
+```text
+config/zoho-secured-embed-handoff.example.json
+```
+
+The file must not contain a password, OAuth token, client secret or report row.
+
+## 5. Rebuild The Website Only When Needed
+
+Zoho data refreshes and Zoho report changes appear through the iframe and do
+not require a website rebuild.
+
+Rebuild only when changing Atlas content, portal code, labels, layouts,
+lineage, documentation or the committed blueprint:
+
+```powershell
+npm run data:validate
 npm run typecheck
 npm run lint
 npm test
+npm run build:pages
 ```
 
-## 4. Zoho Implementation
+## 6. Data Safety
 
-Follow these files in order:
+Never commit:
 
-1. `docs/CONTROL_TOWER_V2_START_HERE.md`
-2. `docs/ZOHO_CONTROL_TOWER_V2_EXECUTION_RUNBOOK.md`
-3. `docs/zoho_control_tower_v2_import.md`
-4. `docs/zoho_control_tower_v2_query_build.md`
-5. `docs/zoho_control_tower_v2_dashboard_click_by_click.md`
-6. `docs/zoho_control_tower_v2_validation.md`
+- `local_data_auditor/input/`;
+- `local_data_auditor/output/`;
+- POSIST/UAT screenshot dumps;
+- full actual report exports;
+- OAuth tokens, refresh tokens or client secrets;
+- browser-local handoff files unless ABG explicitly accepts exposing the view
+  identifiers.
 
-Build the v2 Zoho workspace in parallel with the existing workspace. Do not
-delete the older raw tables before reconciliation, dashboard acceptance, and
-rollback approval.
+Screenshots remain local. GitHub contains only derived schemas, field
+definitions, mapping decisions, sanitized evidence, synthetic data,
+implementation code and instructions.
 
-## 5. Data Safety
-
-Never commit files from:
-
-- `local_data_auditor/input/`
-- `local_data_auditor/output/`
-- `source_intake/posist_uat/_incoming_drop/`
-- `source_intake/posist_uat/batches/`
-- `source_intake/posist_uat/_working_previews/`
-- `source_intake/posist_uat/ocr_runs/`
-
-Screenshots remain local. Store only derived report schemas, field definitions,
-mapping decisions, sanitized evidence, synthetic data, and implementation code
-in GitHub.
-
-Run this before every push:
+Before every project-pack push:
 
 ```powershell
 python scripts\check_repository_safety.py

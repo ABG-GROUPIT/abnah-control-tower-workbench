@@ -19,6 +19,8 @@ ABNAH Control Tower project.
 - all 38 final Control Tower Query Tables and their build manifests;
 - click-by-click Zoho import, lookup, formula, dashboard, Ask Zia, validation,
   and publication instructions;
+- the separate live-portal route, secured-login hosting/authentication
+  decision, and one-file four-dashboard handoff;
 - KPI/source matrices, truth packs, reconciliation outputs, fidelity registers,
   limitations, and presentation-safe issue documentation;
 - the synthetic-data generators, local CSV auditor, schema contracts, tests,

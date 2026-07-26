@@ -62,14 +62,14 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
 - `Control tower`: page requirements, draft KPI formulas, final source register,
   private audit evidence, prioritized report capture, API gaps, and the
   model/delivery decision.
-- `Live portal`: four-page layout from ABNAH's supplied visual reference, with
-  synthetic acceptance baselines, browser-local secured Zoho embed
-  configuration, and explicit native/custom visualization boundaries.
+- `Live portal`: a separate `/portal/` delivery page with the four-page layout
+  from ABNAH's supplied visual reference, synthetic acceptance baselines,
+  one-file secured Zoho embed handoff, and explicit native/custom boundaries.
 - `Data quality`: severity-tiered issue register, passed-control ledger, safe
   hosted evidence, and optional in-browser loading of the private local packet.
 - `Architecture`: one-object-at-a-time KPI/chart stories plus a separate
   five-layer model and exact-SQL library.
-- `Library`: searchable access to all 724 validated handoff files, pinned
+- `Library`: searchable access to every validated handoff file, pinned
   implementation references, integrity hashes, direct file links, and the
   complete downloadable project pack.
 - `Workspace`: editable current revision.
@@ -77,6 +77,8 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
 
 Hosted handoff:
 [ABNAH Control Tower Workbench](https://abg-groupit.github.io/abnah-control-tower-workbench/).
+Standalone delivery portal:
+[ABNAH Live Portal](https://abg-groupit.github.io/abnah-control-tower-workbench/portal/).
 The GitHub Pages build publishes the complete library while continuing to
 exclude screenshots, real POSist exports, local audit rows, and credentials.
 

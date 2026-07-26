@@ -190,6 +190,25 @@ business-semantic checks. It has no upload or external network route. Source
 blank/null cells are rendered as `blank`; numeric zero remains `0`. The private
 packet download contains operational rows and must never be uploaded or committed.
 
+The launcher must run on the same laptop as the browser, and its terminal must
+remain open. `127.0.0.1` never connects to another laptop. Verify the running
+service at:
+
+```text
+http://127.0.0.1:8765/health
+```
+
+If the browser reports `connection refused`, run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\diagnose_local_report_viewer.ps1
+```
+
+That error means no reviewer process is listening, the audit run is missing,
+Python is unavailable, or the port is occupied. It does not mean that 8765 is
+an insecure port. A different local port can be selected before launch with
+`ABNAH_VIEWER_PORT`, but hosted deep links use 8765 by default.
+
 ## What Is Checked
 
 - literal header sequence, duplicate labels, insertions, removals and renames;

@@ -1,0 +1,23 @@
+{
+  "schema": "abnah-zoho-secured-embed-handoff/v1",
+  "authMode": "zoho_secured_login",
+  "note": "Paste only each secured-with-login iframe src URL. Never add passwords, OAuth tokens, client secrets, or report rows.",
+  "dashboards": {
+    "p1": {
+      "dashboardViewName": "CT_PAGE_1_Risk_Action_Center",
+      "securedEmbedUrl": ""
+    },
+    "p2": {
+      "dashboardViewName": "CT_PAGE_2_Procurement_Vendor_Capital",
+      "securedEmbedUrl": ""
+    },
+    "p3": {
+      "dashboardViewName": "CT_PAGE_3_Consumption_Menu_Profitability",
+      "securedEmbedUrl": ""
+    },
+    "p4": {
+      "dashboardViewName": "CT_PAGE_4_SCM_Explorer_Data_Quality",
+      "securedEmbedUrl": ""
+    }
+  }
+}

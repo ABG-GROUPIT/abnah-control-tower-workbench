@@ -2,14 +2,21 @@ import csv
 import json
 import sys
 import tempfile
+import threading
 import unittest
+from urllib.request import urlopen
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from local_report_viewer import AuditDataset, validate_loopback  # noqa: E402
+from local_report_viewer import (  # noqa: E402
+    AuditDataset,
+    ViewerHandler,
+    ViewerServer,
+    validate_loopback,
+)
 
 
 class LocalReportViewerTests(unittest.TestCase):
@@ -126,6 +133,25 @@ class LocalReportViewerTests(unittest.TestCase):
         self.assertEqual(validate_loopback("127.0.0.1"), "127.0.0.1")
         with self.assertRaises(ValueError):
             validate_loopback("0.0.0.0")
+
+    def test_loopback_health_endpoint(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            run, contracts = self.build_fixture(Path(temporary))
+            server = ViewerServer(("127.0.0.1", 0), ViewerHandler)
+            server.dataset = AuditDataset(run, contracts)
+            thread = threading.Thread(target=server.serve_forever, daemon=True)
+            thread.start()
+            try:
+                port = server.server_address[1]
+                with urlopen(f"http://127.0.0.1:{port}/health", timeout=3) as response:
+                    health = json.loads(response.read().decode("utf-8"))
+                self.assertEqual(health["status"], "ok")
+                self.assertEqual(health["binding"], "loopback_only")
+                self.assertEqual(health["report_count"], 1)
+            finally:
+                server.shutdown()
+                server.server_close()
+                thread.join(timeout=3)
 
     def test_header_only_export_is_visible_without_normalized_file(self):
         with tempfile.TemporaryDirectory() as temporary:

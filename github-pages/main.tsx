@@ -10,6 +10,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "../app/globals.css";
 import { AtlasWorkspace } from "../app/components/AtlasWorkspace";
+import { EmbeddedControlTowerPortal } from "../app/components/EmbeddedControlTowerPortal";
 import type { AtlasData } from "../app/lib/atlas-types";
 import type { ControlTowerRequirements } from "../app/lib/control-tower-types";
 import type { ControlTowerEvidence } from "../app/lib/control-tower-evidence-types";
@@ -24,18 +25,24 @@ import type { WorkspaceSeed } from "../app/lib/workspace-types";
 const root = document.getElementById("root");
 if (!root) throw new Error("ABNAH workbench root was not found.");
 
+const isPortalRoute = /\/portal\/?$/.test(globalThis.location.pathname);
+
 createRoot(root).render(
   <StrictMode>
-    <AtlasWorkspace
-      atlas={atlasSnapshot as AtlasData}
-      controlTower={controlTowerSnapshot as ControlTowerRequirements}
-      controlTowerEvidence={controlTowerEvidenceSnapshot as ControlTowerEvidence}
-      controlTowerFidelity={controlTowerFidelitySnapshot as ControlTowerFidelity}
-      controlTowerModel={controlTowerModelSnapshot as ControlTowerModel}
-      controlTowerPresentation={controlTowerPresentationSnapshot as ControlTowerPresentation}
-      projectPack={projectPackSnapshot as ProjectPackIndex}
-      workspaceSeed={workspaceSnapshot as WorkspaceSeed}
-      persistenceMode="browser"
-    />
+    {isPortalRoute ? (
+      <EmbeddedControlTowerPortal standalone />
+    ) : (
+      <AtlasWorkspace
+        atlas={atlasSnapshot as AtlasData}
+        controlTower={controlTowerSnapshot as ControlTowerRequirements}
+        controlTowerEvidence={controlTowerEvidenceSnapshot as ControlTowerEvidence}
+        controlTowerFidelity={controlTowerFidelitySnapshot as ControlTowerFidelity}
+        controlTowerModel={controlTowerModelSnapshot as ControlTowerModel}
+        controlTowerPresentation={controlTowerPresentationSnapshot as ControlTowerPresentation}
+        projectPack={projectPackSnapshot as ProjectPackIndex}
+        workspaceSeed={workspaceSnapshot as WorkspaceSeed}
+        persistenceMode="browser"
+      />
+    )}
   </StrictMode>,
 );

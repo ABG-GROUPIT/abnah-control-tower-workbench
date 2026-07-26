@@ -86,3 +86,16 @@ export interface ZohoPortalConfig {
 }
 
 export type ZohoPortalUrlOverrides = Record<string, string>;
+
+export interface ZohoPortalHandoffDashboard {
+  dashboardViewName: string;
+  securedEmbedUrl: string;
+}
+
+export interface ZohoPortalHandoff {
+  schema: "abnah-zoho-secured-embed-handoff/v1";
+  generatedAt?: string;
+  authMode: "zoho_secured_login";
+  note?: string;
+  dashboards: Record<string, ZohoPortalHandoffDashboard>;
+}

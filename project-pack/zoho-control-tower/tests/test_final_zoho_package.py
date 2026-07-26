@@ -185,8 +185,14 @@ class FinalZohoPackageTests(unittest.TestCase):
             "03B_CURRENT_WORKSPACE_MIGRATION.md",
             "04B_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md",
             "07_EMBEDDED_PORTAL_SETUP.md",
+            "08_PORTAL_HOSTING_AUTH_HANDOFF.md",
+            "zoho-secured-embed-handoff.example.json",
         ):
             self.assertTrue((instructions / filename).is_file(), filename)
+        handoff = (
+            instructions / "zoho-secured-embed-handoff.example.json"
+        ).read_text(encoding="utf-8")
+        self.assertIn("abnah-zoho-secured-embed-handoff/v1", handoff)
 
 
 if __name__ == "__main__":

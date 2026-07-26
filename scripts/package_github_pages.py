@@ -58,6 +58,9 @@ def main() -> None:
     shutil.copy2(INDEX_PATH, DESTINATION / "INDEX.json")
     copied.append((INDEX_PATH, "INDEX.json"))
     (PAGES_ROOT / ".nojekyll").write_text("", encoding="utf-8")
+    portal_root = PAGES_ROOT / "portal"
+    portal_root.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(PAGES_ROOT / "index.html", portal_root / "index.html")
 
     with zipfile.ZipFile(
         ARCHIVE_PATH,

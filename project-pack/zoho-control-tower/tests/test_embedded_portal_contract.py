@@ -11,6 +11,14 @@ CONFIG = REPOSITORY / "config" / "zoho-portal.json"
 MIGRATION = ROOT / "docs" / "ZOHO_CURRENT_WORKSPACE_MIGRATION.md"
 CAPABILITY = ROOT / "docs" / "ABNAH_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md"
 EMBED = ROOT / "docs" / "ZOHO_EMBEDDED_PORTAL_SETUP.md"
+HOSTING = ROOT / "docs" / "ZOHO_PORTAL_HOSTING_AUTH_HANDOFF.md"
+HANDOFF = REPOSITORY / "config" / "zoho-secured-embed-handoff.example.json"
+PORTAL_PAGE = REPOSITORY / "app" / "portal" / "page.tsx"
+QUERY_TABLES = (
+    ROOT
+    / "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION"
+    / "02_QUERY_TABLES"
+)
 
 
 class EmbeddedPortalContractTests(unittest.TestCase):
@@ -26,6 +34,18 @@ class EmbeddedPortalContractTests(unittest.TestCase):
             [page["id"] for page in pages],
         )
         self.assertTrue(all(len(page["metrics"]) == 5 for page in pages))
+        self.assertEqual(20, sum(len(page["metrics"]) for page in pages))
+        self.assertEqual(19, sum(len(page["panels"]) for page in pages))
+
+    def test_every_portal_object_has_a_packaged_query_source(self) -> None:
+        source_queries = {
+            item["sourceQuery"]
+            for page in self.config["pages"]
+            for item in [*page["metrics"], *page["panels"]]
+        }
+        self.assertTrue(source_queries)
+        for source_query in source_queries:
+            self.assertTrue((QUERY_TABLES / source_query).is_file(), source_query)
 
     def test_reference_corrected_kpis_are_present(self) -> None:
         metric_ids = {
@@ -52,8 +72,30 @@ class EmbeddedPortalContractTests(unittest.TestCase):
                 all(panel["embedUrl"] == "" for panel in page["panels"])
             )
 
+    def test_one_file_handoff_is_blank_and_complete(self) -> None:
+        handoff = json.loads(HANDOFF.read_text(encoding="utf-8"))
+        self.assertEqual(
+            "abnah-zoho-secured-embed-handoff/v1",
+            handoff["schema"],
+        )
+        self.assertEqual("zoho_secured_login", handoff["authMode"])
+        self.assertEqual({"p1", "p2", "p3", "p4"}, set(handoff["dashboards"]))
+        self.assertTrue(
+            all(
+                dashboard["securedEmbedUrl"] == ""
+                for dashboard in handoff["dashboards"].values()
+            )
+        )
+
+    def test_delivery_portal_has_a_separate_route(self) -> None:
+        self.assertTrue(PORTAL_PAGE.is_file(), PORTAL_PAGE)
+        self.assertIn(
+            "EmbeddedControlTowerPortal standalone",
+            PORTAL_PAGE.read_text(encoding="utf-8"),
+        )
+
     def test_handoff_documents_cover_current_stage_and_security(self) -> None:
-        for path in (MIGRATION, CAPABILITY, EMBED):
+        for path in (MIGRATION, CAPABILITY, EMBED, HOSTING):
             self.assertTrue(path.is_file(), path)
         migration = MIGRATION.read_text(encoding="utf-8")
         self.assertIn("all 38 numbered Query Tables saved", migration)
@@ -63,6 +105,10 @@ class EmbeddedPortalContractTests(unittest.TestCase):
         self.assertIn("Zoho secured-login dashboard embeds", embed)
         self.assertIn("Do not use:", embed)
         self.assertIn("GitHub Pages is static", embed)
+        hosting = HOSTING.read_text(encoding="utf-8")
+        self.assertIn("GitHub Pages is not a backend", hosting)
+        self.assertIn("20 KPI cards", hosting)
+        self.assertIn("means **this same laptop**", hosting)
 
 
 if __name__ == "__main__":

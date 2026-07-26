@@ -20,6 +20,28 @@ The ABNAH-provided reference contains hard-coded example values. Page 4 is
 especially important: its values must never be copied into the production
 dashboard.
 
+Coverage is complete at the requirement level: 4 pages, 20 KPI cards and 19
+requested visual/report sections are mapped below. This does not mean every
+pixel is native Zoho. The exact action-card queue and exact consumption
+waterfall remain the two declared custom finishes.
+
+Use the ABNAH reference palette:
+
+| Meaning | Color |
+| --- | --- |
+| Page 1 accent | Purple `#5b2d82`, gold `#9a8559` |
+| Page 2 accent | Blue `#4164d9` |
+| Page 3 accent | Gold `#9a8559`, navy `#162552` |
+| Page 4 accent | Red `#e44b51`, charcoal `#424b56` |
+| Risk purple | `#6f2dbd` |
+| Risk red | `#e24950` |
+| Risk amber | `#d29a2d` |
+| Risk green | `#168d61` |
+| Neutral/unknown | `#9a9a9a` |
+
+Set these colors inside the Zoho chart/report formatting UI. A custom outer
+portal cannot restyle pixels inside a cross-origin Zoho iframe.
+
 ## Final Page 1 - Risk Action Center
 
 ### KPI row

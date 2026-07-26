@@ -466,6 +466,16 @@ class ViewerHandler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
         parsed = urlparse(self.path)
         try:
+            if parsed.path == "/health":
+                self.send_json(
+                    {
+                        "status": "ok",
+                        "binding": "loopback_only",
+                        "audit_run": self.server.dataset.audit_run.name,
+                        "report_count": len(self.server.dataset.profiles),
+                    }
+                )
+                return
             if parsed.path == "/":
                 self.send_bytes(
                     VIEWER_HTML.read_bytes(),
@@ -539,7 +549,12 @@ def main() -> int:
     )
     parser.add_argument("--contracts", type=Path, default=ROOT / "contracts")
     parser.add_argument("--host", default="127.0.0.1")
-    parser.add_argument("--port", type=int, default=8765)
+    parser.add_argument(
+        "--port",
+        type=int,
+        default=int(os.environ.get("ABNAH_VIEWER_PORT", "8765")),
+        help="Loopback port. Defaults to ABNAH_VIEWER_PORT or 8765.",
+    )
     parser.add_argument("--open", action="store_true", help="Open the local viewer in the default browser.")
     parser.add_argument(
         "--report-id",
@@ -551,7 +566,14 @@ def main() -> int:
     audit_run = args.audit_run or latest_audit_run(DEFAULT_OUTPUT)
     host = validate_loopback(args.host)
     dataset = AuditDataset(audit_run, args.contracts)
-    server = ViewerServer((host, args.port), ViewerHandler)
+    try:
+        server = ViewerServer((host, args.port), ViewerHandler)
+    except OSError as exc:
+        raise SystemExit(
+            f"Cannot start the local reviewer on {host}:{args.port}: {exc}\n"
+            "Close the process already using that port, or set "
+            "ABNAH_VIEWER_PORT to another local port and use that same address."
+        ) from exc
     server.dataset = dataset
     query = urlencode({"report_id": args.report_id}) if args.report_id else ""
     url = f"http://{host}:{args.port}/" + (f"?{query}" if query else "")

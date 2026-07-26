@@ -28,14 +28,14 @@ local audit engine, schema contracts, Control Tower documentation, and the
 step-by-step implementation runbooks.
 
 ```powershell
-git clone https://github.com/arnavkadhe/abnah-zoho-synthetic-demo.git
-cd abnah-zoho-synthetic-demo
+git clone https://github.com/ABG-GROUPIT/abnah-control-tower-workbench.git
+cd abnah-control-tower-workbench\project-pack\zoho-control-tower
 powershell -ExecutionPolicy Bypass -File .\setup_work_laptop.ps1
 ```
 
 Use `-Regenerate` to rebuild the synthetic package and `-WithOcr` to install
 the optional screenshot OCR dependencies. Read `WORK_LAPTOP_SETUP.md` for the
-complete two-repository handoff and local-data safety rules.
+complete one-repository handoff and local-data safety rules.
 
 ## Control Tower v2
 
@@ -65,6 +65,9 @@ Start here:
 - `docs/ZOHO_EMBEDDED_PORTAL_SETUP.md`: secured-login embedding,
   browser-local URL configuration, hosting boundaries and custom-chart
   fallbacks.
+- `docs/ZOHO_PORTAL_HOSTING_AUTH_HANDOFF.md`: final GitHub Pages versus
+  SharePoint decision, Pro-plan gate, login behavior, one-file handoff,
+  work-laptop checks and backend boundary.
 - `docs/zoho_control_tower_v2_validation.md`
 - `docs/control_tower_v2_truth_reference.md`
 - `docs/ZOHO_CONTROL_TOWER_V2_EXECUTION_RUNBOOK.md`: the authoritative

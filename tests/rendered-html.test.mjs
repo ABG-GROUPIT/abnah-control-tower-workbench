@@ -2,13 +2,13 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-async function render() {
+async function render(path = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request("http://localhost/", { headers: { accept: "text/html" } }),
+    new Request(`http://localhost${path}`, { headers: { accept: "text/html" } }),
     { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
     { waitUntil() {}, passThroughOnException() {} },
   );
@@ -33,6 +33,17 @@ test("server-renders the editable ABNAH schema workspace", async () => {
   assert.match(html, /Blank table structure/);
   assert.match(html, /318/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
+});
+
+test("server-renders the delivery portal as a separate route", async () => {
+  const response = await render("/portal");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /ABNAH Supply Chain Control Tower/);
+  assert.match(html, /Zoho secured login/);
+  assert.match(html, /Blueprint/);
+  assert.match(html, /Risk Action Center/);
+  assert.doesNotMatch(html, /Schema discovery|Report catalogue/);
 });
 
 test("ships screenshot-free workspace and control-tower contracts", async () => {
@@ -137,12 +148,12 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   assert.equal(lineage.kpis.filter((kpi) => kpi.approvalStatus === "partial").length, 1);
   assert.equal(lineage.nodes.length, 0);
   assert.equal(lineage.edges.length, 0);
-  assert.equal(projectPack.summary.files, 724);
+  assert.equal(projectPack.summary.files, 729);
   assert.equal(projectPack.summary.csvFiles, 349);
   assert.equal(projectPack.summary.sqlFiles, 132);
-  assert.equal(projectPack.summary.guideFiles, 83);
+  assert.equal(projectPack.summary.guideFiles, 85);
   assert.equal(projectPack.categories.length, 10);
-  assert.equal(new Set(projectPack.files.map((file) => file.path)).size, 724);
+  assert.equal(new Set(projectPack.files.map((file) => file.path)).size, 729);
   assert.ok(projectPack.files.filter((file) => file.featuredOrder !== null).length >= 6);
   assert.ok(projectPack.files.every((file) => /^[a-f0-9]{64}$/.test(file.sha256)));
   assert.doesNotMatch(projectPackText, /\.png\b|\.jpe?g\b|AppData\\Local\\Temp|Downloads\\/i);
