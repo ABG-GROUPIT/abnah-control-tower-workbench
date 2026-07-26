@@ -15,6 +15,41 @@ ABNAH page.
 KPI Widgets remain inside Zoho because they are dashboard-only elements.
 Dashboard User Filters update both KPI Widgets and mapped reports.
 
+## What To Share And Embed
+
+| Zoho object | Build action | Share separately? | Portal action |
+| --- | --- | --- | --- |
+| Chart, pivot, summary or tabular view | Save the view, validate it, then add it to the matching page dashboard | Optional for QA or direct access only | Do not paste its individual URL into the current portal |
+| KPI Widget | Create it inside the matching page dashboard | No; it has no independent Share action | It arrives through the page-dashboard embed |
+| Page dashboard | Add its five KPI objects, all saved views and mapped User Filters | Yes, using secured **Access with Login** | Paste this one dashboard iframe `src` into the matching page |
+
+Therefore, build every planned chart/report as a saved view, but the current
+production handoff contains only four URLs. Sharing a chart separately does
+not make it participate in one common page filter outside its dashboard.
+
+Chart views can have report-level User Filters when those filters are created
+in the report designer. Inside a dashboard, prefer the page's Dashboard User
+Filters and map them to each compatible report through **More > Options >
+Apply Dashboard Filters > Customize**. Enable **Show Report Specific User
+Filter** only when a control should affect that one report and nothing else.
+
+## What The Embedded Page Looks Like
+
+The outer portal keeps the ABNAH header, sign-in preflight, page navigation and
+Blueprint/Live switch. In **Live dashboard** mode, the complete content area is
+the Zoho dashboard iframe. It therefore uses the layout, typography, controls
+and chart rendering configured inside Zoho; it does not become the
+pixel-identical custom Blueprint UI.
+
+The Zoho dashboard should be formatted to match the approved ABNAH colors,
+hierarchy and spacing as closely as Zoho permits. Browser code cannot inject
+CSS into the cross-origin Zoho iframe.
+
+Retaining the exact custom Blueprint UI with live values is a separate advanced
+integration: individual report embeds, synchronized JavaScript/API filtering
+for every view, and separately rendered KPI values. It is not the current
+backend-free Pro-plan implementation.
+
 ## Portal Responsibilities
 
 The portal provides:

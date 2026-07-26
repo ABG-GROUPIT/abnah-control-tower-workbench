@@ -49,6 +49,16 @@ ABNAH external portal: one complete dashboard per page
 Do not create 20 standalone KPI embed URLs. The portal handoff contains four
 dashboard URLs.
 
+Saved chart, pivot, summary and tabular views are still required: build,
+validate and add each one to its page dashboard. Their individual Share URLs
+are optional QA links only and are not entered into the current portal.
+
+Embedding the complete dashboard preserves native shared filtering but renders
+the Zoho dashboard UI inside the live iframe. The custom portal remains the
+outer shell and Blueprint reference; it cannot restyle the dashboard iframe.
+An exact custom live composition would require separately embedded reports,
+external filter synchronization and separately rendered KPI values.
+
 ## Governing Guides
 
 Keep these open:

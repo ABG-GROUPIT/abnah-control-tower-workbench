@@ -19,6 +19,15 @@ embed a KPI Widget separately.
 This correction changes only dashboard construction and embedding. It does not
 require another SQL change, lookup rebuild or Aggregate Formula cleanup.
 
+Saved chart, pivot, summary and tabular reports must all be added to their
+matching page dashboard. Do not enter their individual Share URLs in the
+current portal. The only four portal URLs are the secured page-dashboard
+embeds, which preserve Dashboard User Filters for KPI Widgets and reports
+together.
+
+The live iframe displays the Zoho dashboard UI. The custom portal controls only
+the outer shell and Blueprint reference in this implementation.
+
 ## Three Different Filter Types
 
 | Type | Where it is created | User can change it | Purpose |
