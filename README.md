@@ -78,6 +78,8 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
 
 Hosted handoff:
 [ABNAH Control Tower Workbench](https://abg-groupit.github.io/abnah-control-tower-workbench/).
+Worker/Sites portal:
+[ABNAH Live Control Tower](https://abnah-schema-workspace.cfsckksbk4.chatgpt.site/portal).
 The GitHub Pages build publishes the complete library while continuing to
 exclude screenshots, real POSist exports, local audit rows, and credentials.
 The authenticated `/portal` requires the Worker/Sites runtime because static
