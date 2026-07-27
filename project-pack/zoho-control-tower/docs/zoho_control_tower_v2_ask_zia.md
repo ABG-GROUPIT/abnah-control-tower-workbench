@@ -6,7 +6,8 @@ Ask Zia is an optional presentation layer. Configure it only after:
 
 1. all 14 landing tables are imported;
 2. all 38 Query Tables are built in manifest order;
-3. the four dashboard pages reconcile to the truth pack; and
+3. all saved reports and the five KPI objects inside each of the four page
+   dashboards reconcile to the truth pack; and
 4. every unresolved production limitation is visible to the reviewer.
 
 Do not create a second semantic SQL layer for the first implementation. The
@@ -65,7 +66,7 @@ Apply these synonyms where the corresponding column exists:
 | `open_po_value` | open PO value, pending PO value, committed capital |
 | `pending_value` | pending procurement value, outstanding PO value |
 | `delayed_value` | delayed PO value, overdue value |
-| `unit_price_change_percent` | price change percent, purchase inflation |
+| `price_change_percent` | price change percent, purchase inflation |
 | `variance_qty` | consumption variance quantity, usage variance |
 | `variance_value` | consumption variance value, leakage value |
 | `gross_margin_percent` | gross margin percent, margin rate |
@@ -77,7 +78,7 @@ grain. Set percentage, rate, unit-price, days-cover and deviation fields to
 
 - `otif_percent`
 - `fill_rate_percent`
-- `unit_price_change_percent`
+- `price_change_percent`
 - `gross_margin_percent`
 - `days_cover`
 - `average_lead_time_deviation_days`

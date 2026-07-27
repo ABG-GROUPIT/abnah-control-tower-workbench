@@ -1,199 +1,144 @@
-# Zoho Report URL Handoff and Custom Portal Sequence
+# ABNAH Zoho Build, Filter And Runtime Handoff Sequence
 
-Follow `04_DASHBOARD_BUILD.md` for every Zoho click. This file begins only
-after a saved report or page dashboard is working.
+## Resume Point
 
-## What to Send for Each Saved Report
+The 38 numbered Query Tables already exist. For the current Page 2 correction,
+re-save only:
 
-1. Open the saved report in **View Mode**.
-2. Click **Share**.
-3. Click **Embed** or **URL / Permalink**.
-4. Choose secured **Access with Login**.
-5. Keep interactive mode enabled.
-6. Copy the report URL or iframe `src`.
-7. Paste it beside the exact report name in
-   `zoho-secured-embed-handoff.example.json`.
+1. `29_sum_ct_procurement_funnel.sql`
+2. `30_sum_ct_vendor_scorecard.sql`
+3. `31_sum_ct_price_movement.sql`
 
-Do not send:
+Keep the four existing Aggregate Formulas:
 
-- screenshots;
-- exported client rows;
-- passwords;
-- access tokens;
-- refresh tokens;
-- client secrets.
+| Query | Formula |
+| --- | --- |
+| Query 23 | `Weighted Unit Price` |
+| Query 24 | `PO Fill Rate %` |
+| Query 24 | `Vendor OTIF %` |
+| Query 25 | `Menu Gross Margin %` |
 
-## What to Send for Each Page Dashboard
+Add the three Query 30 formulas listed in
+`PAGE_1_AND_PAGE_2_CORRECTIONS.md`. Do not delete any formula that an existing
+report may still use.
 
-1. Open the page dashboard in **View Mode**.
-2. Click **Share**.
-3. Click **Embed**.
-4. Choose secured **Access with Login**.
-5. Keep Dashboard User Filters enabled.
-6. Copy the dashboard URL or iframe `src`.
-7. Paste it beside the exact `CT_PAGE_...` dashboard name.
-
-The four dashboard URLs are native Zoho validation and fallback views. They
-are not the intended final custom UI.
-
-## Required URL List
-
-### Page 1
+## Final Architecture
 
 ```text
-CT_PAGE_1_Risk_Action_Center
-CT_P1_Outlet_Risk_Map
-CT_P1_Action_Center
-CT_P1_Stockout_Risk_Detail
-CT_P1_Menu_Impact_Detail
-CT_P1_Expiry_Risk_Detail_Demo
-CT_P1_Vendor_PO_Risk
-```
-
-### Page 2
-
-```text
-CT_PAGE_2_Procurement_Vendor_Capital
-CT_P2_Procurement_Funnel
-CT_P2_Vendor_Scorecard
-CT_P2_Ingredient_Price_Trend
-CT_P2_Top_Price_Movement
-CT_P2_Pending_By_Vendor
-CT_P2_Expected_Delivery_Breach
-```
-
-### Page 3
-
-```text
-CT_PAGE_3_Consumption_Menu_Profitability
-CT_P3_Consumption_Bridge
-CT_P3_Consumption_Variance
-CT_P3_Menu_BCG
-CT_P3_Outlet_Item_Heatmap
-```
-
-### Page 4
-
-```text
-CT_PAGE_4_SCM_Explorer_Data_Quality
-CT_P4_SCM_Monthly_Trend
-CT_P4_Data_Quality_Detail
-CT_P4_Descriptive_Explorer
-```
-
-## Custom Portal Architecture
-
-The final portal will not place one complete Zoho dashboard iframe in the
-middle of the custom page.
-
-```text
-Custom ABNAH page layout
+Zoho Query Tables
         |
-        +-- custom page filter bar
+        | authenticated metadata + asynchronous JSON exports
+        v
+Supabase Edge Function
         |
-        +-- individual Zoho report slots
-        |       |
-        |       +-- Zoho JavaScript API user-filter calls
-        |
-        +-- custom KPI cards
-                |
-                +-- secure server call to final Zoho Query Tables
+        | approved rows for selected page and date range
+        v
+GitHub Pages custom control tower
 ```
 
-The individual report URLs are placed only inside their matching chart or
-table slots. The custom portal owns:
+Zoho dashboards remain native validation surfaces. The production custom
+portal does not embed the Zoho dashboard, individual reports, KPI Widgets or
+Zoho filter UI.
 
-- page navigation;
-- headings;
-- ABNAH colors;
-- KPI-card design;
-- filter controls;
-- Risk Type section switching;
-- responsive layout;
-- loading and error states.
+KPI Widgets remain dashboard-only. Saved chart, pivot, summary and tabular
+views should still be created because they validate the business logic in Zoho,
+but their Share URLs are not runtime dependencies.
 
-Zoho retains:
+## Current Build Order
 
-- report calculations;
-- chart rendering for individually embedded Zoho reports;
-- drilldown;
-- tooltip;
-- underlying-data permission;
-- secured-login access.
+1. Apply the Page 1 Query 28 correction if it is not already saved.
+2. Re-save Page 2 Queries 29, 30 and 31.
+3. Add the three Query 30 scorecard formulas.
+4. Correct the Page 1 Date Range mapping.
+5. Correct the Page 2 Date Range and dimension mappings.
+6. Rebuild only `CT_P2_Top_Price_Movement`.
+7. Reconcile the Page 1 and Page 2 acceptance values.
+8. Configure Supabase and Zoho OAuth.
+9. Verify the custom GitHub Pages portal against the same date/filter cases.
 
-## Custom Filter Operation
+## Governing Guides
 
-The portal will create one filter state per page. When a user changes a custom
-filter:
+Keep these open:
 
-1. the portal reads the selected value;
-2. it checks which report slots support that filter;
-3. it sends the value to each compatible Zoho view through the Zoho JavaScript
-   API;
-4. it leaves incompatible views unchanged;
-5. it requests refreshed KPI values from the backend;
-6. it updates the custom KPI cards.
+1. `PAGE_1_AND_PAGE_2_CORRECTIONS.md`
+2. `zoho_control_tower_v2_dashboard_click_by_click.md`
+3. `ZOHO_DASHBOARD_FILTER_MAPPING_MATRIX.md`
+4. `ZOHO_DASHBOARD_EXPECTED_RESULTS.md`
+5. `ZOHO_PORTAL_RUNTIME.md`
 
-The filter mapping is exactly the mapping in
-`05_DASHBOARD_FILTER_MAPPING.md`.
+## KPI Widget Rule
 
-## KPI Limitation and Required Production Setup
+For an additive KPI:
 
-Dashboard KPI Widgets do not have individual report URLs. Therefore report and
-dashboard URLs alone are sufficient for the custom layout and individually
-filtered chart/table embeds, but they are not sufficient for fully custom,
-live KPI numbers.
+1. Add a KPI Widget inside the Zoho dashboard.
+2. Select the exact numbered Query Table.
+3. Select the physical field named in the guide.
+4. Choose Sum, Count or Count Distinct as documented.
+5. Leave Group By empty.
+6. Apply only the documented fixed report filter.
+7. Map dashboard user filters from the dashboard editor.
 
-For live custom KPI cards, use one of these two paths:
+For OTIF and other ratio metrics, use the saved Summary View built from the
+approved Aggregate Formula. Do not search for an Aggregate Formula in a direct
+KPI Widget's Data Column list.
 
-1. **Preferred production path:** a secure server-side Zoho API connection
-   reads the final Query Tables and returns only KPI aggregates.
-2. **URL-only fallback:** create one saved Summary View for every KPI and
-   provide its secured report URL.
+## Filter Rule
 
-Do not create the 20 additional Summary Views now. Complete the four native
-Zoho dashboards first. After the first report URL is tested in the custom
-portal, the integration test will determine whether the paid-plan API route is
-available. Only use the Summary View fallback if that API route is unavailable.
+Page 1 and Page 2 use Date Range and Outlet as their common controls. Page 3
+and Page 4 retain `source_period_code` only where their current synthetic
+design requires it.
 
-## Backend Rule
+For every KPI/report:
 
-GitHub Pages cannot store Zoho OAuth secrets or run secure server code.
-Therefore:
+1. Open the dashboard filter's **Map Filter to Reports** screen.
+2. Select the exact physical field from
+   `ZOHO_DASHBOARD_FILTER_MAPPING_MATRIX.md`.
+3. Leave incompatible reports unmapped.
+4. Apply fixed definitions in the report Filter shelf with
+   **Individual Values > Include**.
+5. Never type SQL comparison expressions into the dashboard filter UI.
 
-- the GitHub Pages build remains a static Atlas and presentation fallback;
-- the live custom portal runs on the ABG application deployment with a server
-  route;
-- Zoho client secrets and refresh tokens are environment variables;
-- secrets never enter the repository or URL handoff file;
-- the server exposes only approved KPI/report endpoints;
-- browser requests never contain arbitrary SQL.
+## URL Handoff
 
-Supabase is not required for the first implementation. The existing ABG app
-server can perform the Zoho API calls and cache the resulting aggregates.
+No dashboard or individual-report URL is required for the custom control tower.
+Do not commit public `open-view` links as production configuration.
 
-## First Integration Test
+For local QA only:
 
-Before collecting every URL:
+1. Copy `config/zoho-reference-links.example.json` to
+   `config/zoho-reference-links.local.json`.
+2. Paste dashboard links or report links into the local file.
+3. Use them only to compare Zoho output with the custom portal.
+4. Keep the local file uncommitted.
 
-1. Finish `CT_P2_Ingredient_Price_Trend`.
-2. Add its `Raw Material`, `Vendor`, and `UOM` report User Filters.
-3. Create its secured-with-login individual report URL.
-4. Send that one URL first.
-5. The app will embed it in one custom Page 2 panel.
-6. The app will call the Zoho JavaScript filter function from custom controls.
-7. Test the URL while signed into the intended company Zoho account.
-8. If the report updates correctly, collect the remaining URLs.
+The old `abnah-zoho-view-handoff/v4` files remain backward-compatible developer
+artifacts. They are not the final runtime integration.
 
-## Final Handoff Check
+## Authentication
 
-Before marking a page ready:
+1. The user opens the GitHub Pages portal.
+2. The portal calls the Supabase backend status endpoint.
+3. **Sign in with Zoho** redirects to Zoho India OAuth.
+4. Supabase exchanges the code server-side.
+5. Supabase verifies access to the configured ABNAH workspace.
+6. Supabase stores encrypted Zoho tokens and returns an opaque portal session.
+7. The browser requests allowlisted Page 1 or Page 2 Query Table data.
+8. Logout revokes the portal session.
 
-1. Its five native Zoho KPI objects match
-   `04A_DASHBOARD_EXPECTED_RESULTS.md`.
-2. Every required saved report opens in View Mode.
-3. Every dashboard User Filter has been tested.
-4. The historical trends still show all three periods.
-5. Every individual report URL opens after Zoho login.
-6. The page dashboard URL opens after Zoho login.
-7. The URL handoff JSON contains no credentials or client rows.
+The frontend never receives the Zoho client secret, refresh token, Supabase
+service-role key or token-encryption key.
+
+## Stop Gate
+
+Do not present Page 1 or Page 2 as complete until:
+
+- all five KPI values match the March acceptance guide;
+- Date Range uses physical date fields and no row leaks outside the range;
+- Outlet changes every applicable KPI and report;
+- Category, Vendor, Item and PO Status change every compatible object;
+- Price Watch includes no-baseline observations;
+- Top Price Movement excludes no-baseline observations and uses the visible
+  Query 31 business fields;
+- the GitHub Pages portal exposes no data before successful Zoho sign-in;
+- no screenshot, operational export, credential or public report link has been
+  committed.

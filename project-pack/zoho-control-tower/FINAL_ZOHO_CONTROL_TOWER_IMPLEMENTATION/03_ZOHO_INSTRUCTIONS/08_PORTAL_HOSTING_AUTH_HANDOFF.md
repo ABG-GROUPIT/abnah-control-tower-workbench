@@ -1,120 +1,115 @@
-# Portal Hosting, Authentication and Handoff
+# Zoho Portal Hosting, Authentication And Handoff
 
-## Repository Boundary
+## Final Architecture
 
-| Deliverable | Repository owner |
-| --- | --- |
-| Zoho manuals, model handoff and URL templates | `arnavkadhe` |
-| Custom portal application and server code | `ABG-GROUPIT` |
-
-Do not commit application code changes to the documentation repository.
-Do not commit client rows or credentials to either repository.
-
-## Hosting Boundary
-
-GitHub Pages can host:
-
-- the static Atlas;
-- documentation;
-- screenshots-free presentation material;
-- a blueprint of the custom portal;
-- individual secured Zoho embeds that require no server secret.
-
-GitHub Pages cannot:
-
-- store a Zoho client secret;
-- refresh an OAuth token;
-- query Zoho APIs securely;
-- enforce company authentication for the outer shell;
-- calculate live custom KPI cards from private data.
-
-The operational custom portal therefore runs from the ABG application
-deployment, which supports server routes and environment variables.
-
-## Sign-In for Individual Zoho Embeds
-
-1. Share each saved report with the intended Zoho viewer account.
-2. Generate a secured **Access with Login** URL.
-3. The viewer opens Zoho Analytics and signs in.
-4. The custom portal embeds the individual report URL.
-5. Zoho applies report permissions inside the embed.
-
-The custom portal cannot read or bypass the Zoho login cookie.
-
-## Authentication for the Outer Portal
-
-Zoho report authentication and custom-portal authentication are separate.
-
-For the POC:
-
-1. protect every embedded report with Zoho secured login;
-2. use the approved ABG application URL;
-3. do not place secrets in the browser.
-
-For production:
-
-1. use company-approved authentication for the ABG portal;
-2. keep Zoho OAuth credentials server-side;
-3. use a company allowlist or SSO policy approved by IT;
-4. keep Zoho report permissions as an additional access boundary.
-
-## Secure KPI Backend
-
-If the Zoho API entitlement test succeeds:
-
-1. an administrator creates the approved Zoho OAuth application;
-2. credentials are entered only as deployment environment variables;
-3. the server requests approved KPI aggregates;
-4. the server returns only the fields required by the selected page;
-5. the portal renders ABNAH-styled KPI cards;
-6. the server caches short-lived aggregate responses;
-7. no arbitrary SQL is accepted from the browser.
-
-Do not send OAuth secrets in chat or store them in the handoff JSON.
-
-## URL Handoff
-
-Use:
+GitHub Pages is the only frontend host. Supabase is the only backend.
 
 ```text
-03_ZOHO_INSTRUCTIONS/zoho-secured-embed-handoff.example.json
+GitHub Pages /portal/
+        |
+        | OAuth start, session, page-data requests
+        v
+Supabase Edge Function
+        |
+        | metadata and asynchronous Query Table exports
+        v
+Zoho Analytics India
 ```
 
-Fill only the `securedUrl` values.
+The portal is a separate page linked from the Atlas. It is not an Atlas tab,
+ChatGPT Site or SharePoint-hosted application.
 
-Handoff procedure:
+## Responsibilities
 
-1. finish and validate one saved report;
-2. generate its secured URL;
-3. paste it beside its exact view name;
-4. repeat for the remaining saved reports;
-5. generate the four dashboard URLs;
-6. validate the JSON syntax;
-7. provide the completed JSON to the ABG portal repository maintainer;
-8. keep the file free of credentials and client rows.
+GitHub Pages owns:
 
-## Company-Laptop Acceptance Test
+- the custom four-page presentation;
+- date, outlet and page-specific controls;
+- client-side rendering of approved rows;
+- refresh, navigation and sign-out.
 
-- The ABG application URL opens.
-- `https://analytics.zoho.in/` opens.
-- The company viewer account signs in.
-- The first individual report embed loads.
-- A custom filter changes the embedded report.
-- The native page-dashboard fallback opens.
-- Page refresh does not expose a credential.
-- Browser developer tools show no OAuth secret.
+Supabase owns:
 
-## Local Report Reviewer
+- the Zoho OAuth callback and client secret;
+- allowed-workspace verification;
+- encrypted access and refresh tokens;
+- opaque portal sessions;
+- allowlisted Query Table exports.
 
-The local report reviewer remains separate because it contains operational
-rows.
+Zoho owns:
 
-`127.0.0.1` means the viewer must be running on the same laptop as the browser.
+- the 38-Query-Table model;
+- governed calculations and refreshed source data;
+- native dashboards and saved reports used for validation.
 
-1. Start the local reviewer on that laptop.
-2. Leave its terminal process running.
-3. Open the exact port printed by the command.
-4. If the browser shows `Connection refused`, restart the process on that
-   laptop.
+Supabase does not persist exported report rows. GitHub stores no credentials,
+screenshots or operational data.
 
-The local reviewer is not deployed to GitHub Pages or the custom portal.
+## Verified Sign-In
+
+1. `/portal/` checks the Supabase `/status` endpoint.
+2. **Sign in with Zoho** opens `/auth/start`.
+3. Supabase stores a one-time state hash and redirects to Zoho India OAuth.
+4. Zoho returns to `/auth/callback`.
+5. Supabase exchanges the authorization code.
+6. Supabase verifies `ZOHO_ALLOWED_WORKSPACE_ID`.
+7. Supabase redirects to GitHub Pages with an opaque session handle in the URL
+   fragment.
+8. The browser moves the handle into tab `sessionStorage` and removes the
+   fragment.
+9. Every data request must present the session handle.
+10. Logout revokes the server-side session.
+
+There is no Continue-after-sign-in bypass.
+
+## Supabase Deployment
+
+Register this exact callback in a Zoho server-based OAuth client:
+
+```text
+https://<PROJECT_REF>.supabase.co/functions/v1/abnah-portal/auth/callback
+```
+
+Store these as Supabase Edge Function secrets:
+
+- `ZOHO_OAUTH_CLIENT_ID`
+- `ZOHO_OAUTH_CLIENT_SECRET`
+- `ZOHO_ALLOWED_WORKSPACE_ID`
+- `ZOHO_TOKEN_ENCRYPTION_KEY`
+- `PORTAL_ALLOWED_ORIGIN`
+- `PORTAL_RETURN_URL`
+
+The complete commands and India data-centre URLs are in the root
+`docs/ZOHO_PORTAL_RUNTIME.md`.
+
+## Query Table Handoff
+
+The runtime handoff is already represented in code:
+
+- Page 1 and Page 2 Query Table names in
+  `supabase/functions/_shared/zoho-data.ts`;
+- OAuth and workspace enforcement in
+  `supabase/functions/_shared/zoho.ts`;
+- public backend location in `config/supabase-portal.json`;
+- secrets in Supabase, never GitHub.
+
+No individual report URL, dashboard URL, iframe source or API token must be
+pasted into the production frontend.
+
+## Optional Local References
+
+Use `config/zoho-reference-links.local.json` only for developer QA. It means **this same laptop**
+or developer checkout, not shared production configuration.
+The file is ignored by Git.
+
+## Handoff Checklist
+
+1. Queries 29-31 have been re-saved.
+2. Page 1 and Page 2 Date Range mappings pass.
+3. `config/supabase-portal.json` contains the real Supabase project reference.
+4. Supabase migration, secrets and Edge Function are deployed.
+5. `/status` returns `configured: true`.
+6. An allowed Zoho user can sign in and load Page 1 and Page 2.
+7. A user without workspace access is rejected.
+8. Sign-out removes all visible data.
+9. No screenshot, row export, credential or public report link is committed.

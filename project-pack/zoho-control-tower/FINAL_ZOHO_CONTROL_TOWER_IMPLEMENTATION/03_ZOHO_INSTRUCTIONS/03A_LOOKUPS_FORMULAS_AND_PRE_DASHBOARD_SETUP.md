@@ -63,7 +63,7 @@ Complete the work in this exact order:
 2. Validate dimension uniqueness and key data types.
 3. Create the required lookup relationships.
 4. Verify the SQL-derived dashboard columns.
-5. Create the four required aggregate formulas.
+5. Create the seven required aggregate formulas.
 6. Validate direct aggregations and table-specific restrictions.
 7. Reconcile formulas to the synthetic truth reference.
 8. Mark the final readiness checklist complete.
@@ -381,8 +381,8 @@ Open each Query Table in View Mode and confirm the exact physical columns:
 | `21_fact_ct_consumption_variance.sql` | `signed_consumption_variance_value` | Signed variance KPI and trend |
 | `21_fact_ct_consumption_variance.sql` | `consumption_variance_direction` | Exact Individual Values filter for over/under/matched rows |
 | `24_fact_ct_po_receipt_line.sql` | `eligible_lead_time_deviation_days` | Average lead-time deviation for eligible closed lines |
-| `31_sum_ct_price_movement.sql` | `price_comparison_key` | Unambiguous outlet/vendor/item/UOM label |
-| `31_sum_ct_price_movement.sql` | `absolute_unit_price_change_percent` | Sort by movement magnitude |
+| `31_sum_ct_price_movement.sql` | `item_name`, `vendor_name`, `canonical_uom` | Visible comparison grain |
+| `31_sum_ct_price_movement.sql` | `absolute_price_change_percent` | Sort by movement magnitude |
 | `31_sum_ct_price_movement.sql` | `price_movement_direction` | Increase/decrease/no-change color and filter |
 | `33_sum_ct_scm_monthly.sql` | `working_capital_value` | Direct Working Capital KPI Widget |
 
@@ -393,7 +393,7 @@ below theoretical consumption.
 
 # Phase 4 - Create Reusable Aggregate Formulas
 
-Only the four ratio or weighted-rate metrics in this phase require Aggregate
+Only the seven approved ratio, weighted-rate or weighted-average metrics in this phase require Aggregate
 Formulas. All sums and counts in the dashboard guide use physical columns and
 the report/widget aggregation control.
 
@@ -489,7 +489,34 @@ Type: Percentage
 The unfiltered synthetic result must display approximately `82.02%`. Do not
 average the row-level `gross_margin_percent` column.
 
-## 4D - Aggregate Formula Inventory Check
+## 4D - Query 30 Vendor Scorecard Ratios
+
+Add these only after re-saving the corrected
+`30_sum_ct_vendor_scorecard.sql`. They do not replace or require deletion of
+the existing Query 24 formulas.
+
+```text
+Name: Q30 Vendor OTIF %
+Formula: if(sum("eligible_closed_line_count") <> 0, sum("otif_success_line_count") / sum("eligible_closed_line_count") * 100, null)
+Type: Percentage
+```
+
+```text
+Name: Q30 PO Fill Rate %
+Formula: if(sum("ordered_qty") <> 0, sum("received_qty") / sum("ordered_qty") * 100, null)
+Type: Percentage
+```
+
+```text
+Name: Q30 Avg Lead Deviation Days
+Formula: if(sum("eligible_lead_time_line_count") <> 0, sum("eligible_lead_time_deviation_days_total") / sum("eligible_lead_time_line_count"), null)
+Type: Decimal Number
+```
+
+Use these three formulas in `CT_P2_Vendor_Scorecard`. Do not use Average on
+Query 30's row-level `otif_percent` or `fill_rate_percent`.
+
+## 4E - Aggregate Formula Inventory Check
 
 After completing Phase 4, the required catalog is exactly:
 
@@ -499,6 +526,9 @@ After completing Phase 4, the required catalog is exactly:
 | `24_fact_ct_po_receipt_line.sql` | `PO Fill Rate %` |
 | `24_fact_ct_po_receipt_line.sql` | `Vendor OTIF %` |
 | `25_fact_ct_menu_profitability.sql` | `Menu Gross Margin %` |
+| `30_sum_ct_vendor_scorecard.sql` | `Q30 Vendor OTIF %` |
+| `30_sum_ct_vendor_scorecard.sql` | `Q30 PO Fill Rate %` |
+| `30_sum_ct_vendor_scorecard.sql` | `Q30 Avg Lead Deviation Days` |
 
 If additional formulas from an earlier draft already exist, they do not need
 to be deleted, but do not use them in the direct KPI Widget instructions.
@@ -553,7 +583,7 @@ Do not sum or average:
 - Query 25 row `gross_margin_percent`;
 - Query 28 unallocated `forecast_net_sales_at_risk`;
 - Query 30 `otif_percent` or `fill_rate_percent` across outlets;
-- Query 31 `unit_price_change_percent` across items or UOMs;
+- Query 31 `price_change_percent` across items or UOMs;
 - Query 32 `bcg_quadrant`;
 - quantities across kg, litre and pieces;
 - inventory snapshots across multiple periods for a current-state KPI.
@@ -596,8 +626,8 @@ Use this register as the final pass across all 38 Query Tables.
 | 27 | `27_fact_ct_inventory_risk.sql` | Create outlet/item lookups. Use physical `risk_type` in the report Filter shelf and distinct physical identifiers for counts. |
 | 28 | `28_fact_ct_menu_impact.sql` | Create outlet, ingredient and menu lookups. Sum allocated sales-at-risk only. |
 | 29 | `29_sum_ct_procurement_funnel.sql` | Create outlet/vendor lookups. Use value measures as separate funnel stages. |
-| 30 | `30_sum_ct_vendor_scorecard.sql` | Create outlet/vendor lookups. Percentages are native period-outlet-vendor results; do not combine them across outlets. |
-| 31 | `31_sum_ct_price_movement.sql` | Create outlet/item/vendor lookups. Use the physical comparison key and absolute-change sort field. Compare one item and one UOM. |
+| 30 | `30_sum_ct_vendor_scorecard.sql` | Create outlet/item/vendor lookups. Add the three Q30 ratio formulas and use their physical numerator/denominator fields. |
+| 31 | `31_sum_ct_price_movement.sql` | Create outlet/item/vendor lookups. Use the visible item/vendor/UOM fields and `absolute_price_change_percent` for ranking. |
 | 32 | `32_sum_ct_menu_profitability.sql` | Create outlet/menu lookups. Force one source period and one outlet for a BCG view, or retain outlet as a visible grouping. |
 | 33 | `33_sum_ct_scm_monthly.sql` | Create outlet lookup. Sum physical `working_capital_value`; current-state KPI cards require one source period. |
 | 34 | `34_fact_ct_data_quality_exception.sql` | Sum physical `exception_count`. Do not add outlet/item lookups because `ALL` and blank keys are intentional. |
@@ -649,14 +679,14 @@ same.
 
 ## Vendor Percentages
 
-Query 30 percentages are already calculated at:
+Query 30 contains physical numerator and denominator totals at:
 
 ```text
-source period + outlet + vendor
+source period + PO date + outlet + vendor + PO status + item + UOM
 ```
 
-Do not sum or average them across outlets. For a cross-outlet vendor view,
-calculate fill rate and OTIF from Query 24 using their aggregate formulas.
+Do not sum or average its row-level percentage columns. Use the three Query 30
+Aggregate Formulas so vendor and outlet filters reaggregate the ratios.
 
 ## Price Movement
 
@@ -776,9 +806,9 @@ Do not start dashboard construction until every item is complete.
 | Query 20 physical bridge columns | Three fields validated | NOT STARTED |
 | Query 21 physical signed variance/direction | Two fields validated | NOT STARTED |
 | Query 24 eligible lead deviation | Field validated | NOT STARTED |
-| Query 31 physical comparison/sort/direction fields | Three fields validated | NOT STARTED |
+| Query 31 visible comparison, change, impact and direction fields | Fields validated | NOT STARTED |
 | Query 33 physical working capital | Field validated | NOT STARTED |
-| Aggregate formula catalog | Exactly four required formulas saved | NOT STARTED |
+| Aggregate formula catalog | Exactly seven required formulas saved | NOT STARTED |
 | Percentage display convention | 83.25%, 51.67%, 82.02% | NOT STARTED |
 | All-period reconciliation | Matches Phase 8 | NOT STARTED |
 | Query 34 exception checks | Matches Phase 8 | NOT STARTED |

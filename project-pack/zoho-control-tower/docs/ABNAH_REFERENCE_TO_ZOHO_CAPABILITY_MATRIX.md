@@ -158,7 +158,8 @@ tables inside a dashboard.
 
 | Scope | Filters |
 | --- | --- |
-| Common across pages where mapped | As-of Source Period, Outlet |
+| Page 1-2 common controls | Date Range, Outlet |
+| Page 3-4 current-state controls | As-of Source Period, Outlet |
 | Page 1 | Region, risk type, ingredient category, action owner |
 | Page 2 | Region, ingredient category, vendor, PO status, raw material |
 | Page 3 | Region, outlet, super category, menu category, menu item, raw material; add Canonical UOM only to quantity views |
