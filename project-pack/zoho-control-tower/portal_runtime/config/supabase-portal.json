@@ -1,4 +1,4 @@
 {
-  "functionBaseUrl": "https://YOUR_PROJECT_REF.supabase.co/functions/v1/abnah-portal",
+  "functionBaseUrl": "https://aihrzgxlacdlensziyme.supabase.co/functions/v1/abnah-portal",
   "returnUrl": "https://abg-groupit.github.io/abnah-control-tower-workbench/portal/"
 }

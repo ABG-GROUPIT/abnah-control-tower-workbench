@@ -18,7 +18,7 @@ The local file contains:
 
 - GitHub Pages and Supabase runtime URLs;
 - Zoho workspace and OAuth configuration;
-- private backend secrets;
+- the Zoho client secret and token-encryption key;
 - Page 1 to Page 4 dashboard URLs;
 - all 19 individual secured Zoho view URLs;
 - the exact Query Table attached to every view.
@@ -66,9 +66,12 @@ Zoho is stronger. A complete Zoho dashboard is only a fallback link.
 
 These values must stay in the ignored local file and Supabase secrets:
 
-- `supabaseServiceRoleKey`;
 - `zohoOAuthClientSecret`;
 - `zohoTokenEncryptionKey`.
+
+Do not request or copy a Supabase anon key or service-role key for this portal.
+The browser does not use either key, and Supabase injects its reserved
+service-role value into the deployed Edge Function.
 
 Do not paste them into GitHub, documentation, screenshots, Teams messages or
 public `open-view` URLs. The GitHub Pages frontend never receives them.

@@ -7,7 +7,7 @@
   "policy": "Tracked synthetic, documentation, code, schema, and validation artifacts only. Screenshots, real operational exports, local audit runtime data, credentials, and environment values are excluded.",
   "summary": {
     "files": 773,
-    "sizeBytes": 51853322,
+    "sizeBytes": 51853440,
     "categories": 10,
     "csvFiles": 349,
     "sqlFiles": 133,
@@ -20,7 +20,7 @@
       "label": "Final Zoho implementation",
       "description": "Production handoff imports, Query Tables, dashboard instructions, truth packs, and validation.",
       "count": 127,
-      "sizeBytes": 8234099
+      "sizeBytes": 8234156
     },
     {
       "id": "synthetic_data",
@@ -41,7 +41,7 @@
       "label": "Documentation",
       "description": "Architecture, modeling, dashboard, Zoho, external-signal, validation, and presentation guidance.",
       "count": 82,
-      "sizeBytes": 1911894
+      "sizeBytes": 1912094
     },
     {
       "id": "local_auditor",
@@ -83,7 +83,7 @@
       "label": "Other project files",
       "description": "Supporting repository and configuration files retained for a complete handoff.",
       "count": 37,
-      "sizeBytes": 493402
+      "sizeBytes": 493263
     }
   ],
   "files": [
@@ -1355,8 +1355,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "documentation",
-      "sizeBytes": 2414,
-      "sha256": "f1a6a8b4bc2eb1e9b92859bd570c30c6382c7ceb7cd98c5760adbc8a6f71fb3b",
+      "sizeBytes": 2614,
+      "sha256": "07e5dd2cdc6bd39d2a0ace8067831aa083f4358c1508b7f4434b9a8a9c0dba06",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -2616,8 +2616,8 @@
       "extension": ".json",
       "kind": "Contract",
       "category": "final_zoho",
-      "sizeBytes": 5971,
-      "sha256": "e4fafc6dbd8437a709c7de8a55bbb3ca6d77f09baa8bd9ff15b3d1fde77a1177",
+      "sizeBytes": 5947,
+      "sha256": "105a5828e58a33745f732129407e1fee27bda97284598922abf58151fa999235",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -2629,8 +2629,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "final_zoho",
-      "sizeBytes": 2414,
-      "sha256": "f1a6a8b4bc2eb1e9b92859bd570c30c6382c7ceb7cd98c5760adbc8a6f71fb3b",
+      "sizeBytes": 2614,
+      "sha256": "07e5dd2cdc6bd39d2a0ace8067831aa083f4358c1508b7f4434b9a8a9c0dba06",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -2642,8 +2642,8 @@
       "extension": ".py",
       "kind": "Python",
       "category": "final_zoho",
-      "sizeBytes": 7767,
-      "sha256": "83bd63356c1cf646e85adbfa11c2d181dc0d3d7a5bdb49b0adfd7071cf7e336c",
+      "sizeBytes": 7648,
+      "sha256": "3b2cd8373df5275350dde3c7c24f33735dd7499196eb80024311b01524e6b137",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -2955,7 +2955,7 @@
       "kind": "CSV data",
       "category": "final_zoho",
       "sizeBytes": 26913,
-      "sha256": "23181677cd8c1df3e93935201a90ded9eef01f366afc884991b60f5937313653",
+      "sha256": "c6e9c376ea4647d587dbcf48277393c40be560e9001b377fa4ff425eb865b68d",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4592,8 +4592,8 @@
       "extension": ".json",
       "kind": "Contract",
       "category": "other",
-      "sizeBytes": 176,
-      "sha256": "4047e80d432a3d05cbce36e1e6edfd94e7b5a1232457f1f2a3deb06a96688a5f",
+      "sizeBytes": 180,
+      "sha256": "f3323570384647721382c763072116a12e442004654a9c8273605b5204830e17",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4683,8 +4683,8 @@
       "extension": ".json",
       "kind": "Contract",
       "category": "other",
-      "sizeBytes": 5971,
-      "sha256": "e4fafc6dbd8437a709c7de8a55bbb3ca6d77f09baa8bd9ff15b3d1fde77a1177",
+      "sizeBytes": 5947,
+      "sha256": "105a5828e58a33745f732129407e1fee27bda97284598922abf58151fa999235",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4696,8 +4696,8 @@
       "extension": ".py",
       "kind": "Python",
       "category": "other",
-      "sizeBytes": 7767,
-      "sha256": "83bd63356c1cf646e85adbfa11c2d181dc0d3d7a5bdb49b0adfd7071cf7e336c",
+      "sizeBytes": 7648,
+      "sha256": "3b2cd8373df5275350dde3c7c24f33735dd7499196eb80024311b01524e6b137",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""

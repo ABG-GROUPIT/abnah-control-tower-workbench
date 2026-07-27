@@ -117,7 +117,6 @@ def main() -> None:
         ("publicConfiguration", "supabaseProjectRef"),
         ("publicConfiguration", "supabaseProjectUrl"),
         ("publicConfiguration", "supabaseFunctionBaseUrl"),
-        ("publicConfiguration", "supabaseProjectAnonKey"),
         ("publicConfiguration", "portalReturnUrl"),
         ("publicConfiguration", "portalAuthStartUrl"),
         ("publicConfiguration", "portalAuthCallbackUrl"),
@@ -126,7 +125,6 @@ def main() -> None:
         ("publicConfiguration", "zohoWorkspaceId"),
         ("publicConfiguration", "zohoOAuthClientId"),
         ("publicConfiguration", "zohoPortalAdminEmails"),
-        ("privateConfiguration", "supabaseServiceRoleKey"),
         ("privateConfiguration", "zohoOAuthClientSecret"),
         ("privateConfiguration", "zohoTokenEncryptionKey"),
     ]

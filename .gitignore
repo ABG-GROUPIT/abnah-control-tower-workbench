@@ -46,6 +46,7 @@ next-env.d.ts
 /public/data/control-tower-portal-demo.json
 /github-pages/public/data/control-tower-portal-demo.json
 /.wrangler/
+/supabase/.temp/
 /outputs/
 /work/
 __pycache__/

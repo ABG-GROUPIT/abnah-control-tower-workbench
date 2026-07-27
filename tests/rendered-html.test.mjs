@@ -178,9 +178,10 @@ test("ships one validated URL and authentication handoff contract", async () => 
   );
   assert.ok(reports.every((report) => report.viewName && report.queryTable));
   assert.ok(reports.every((report) => report.securedViewUrl === ""));
-  assert.equal(handoff.privateConfiguration.supabaseServiceRoleKey, "");
   assert.equal(handoff.privateConfiguration.zohoOAuthClientSecret, "");
   assert.equal(handoff.privateConfiguration.zohoTokenEncryptionKey, "");
+  assert.equal("supabaseProjectAnonKey" in handoff.publicConfiguration, false);
+  assert.equal("supabaseServiceRoleKey" in handoff.privateConfiguration, false);
 });
 
 test("ships screenshot-free workspace and control-tower contracts", async () => {
