@@ -66,6 +66,7 @@ test("publishes the secured delivery portal as a GitHub Pages route", async () =
   assert.match(bundle, /Zoho native visual/);
   assert.match(bundle, /ZOHO_CRITERIA/);
   assert.match(bundle, /Connect the secured Zoho view/);
+  assert.match(bundle, /Matching validated March rows are shown temporarily/);
 });
 
 test("ships the secured data gateway and backward-compatible handoff contract", async () => {

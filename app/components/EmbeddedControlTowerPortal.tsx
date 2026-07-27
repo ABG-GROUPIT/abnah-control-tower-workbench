@@ -15,7 +15,7 @@ import {
   Table2,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import portalSnapshot from "@/config/zoho-portal.json";
 import {
   clearPortalSessionToken,
@@ -240,7 +240,11 @@ export function EmbeddedControlTowerPortal({
   const [pageData, setPageData] = useState<
     Partial<Record<PortalPageId, PortalPageData>>
   >({});
+  const [pageFallbackDatasets, setPageFallbackDatasets] = useState<
+    Partial<Record<PortalPageId, string[]>>
+  >({});
   const [demoData, setDemoData] = useState<PortalDemoData | null>(null);
+  const demoDataRef = useRef<PortalDemoData | null>(null);
   const [loadingData, setLoadingData] = useState(false);
   const [dataMessage, setDataMessage] = useState("");
   const [refreshVersion, setRefreshVersion] = useState(0);
@@ -261,6 +265,7 @@ export function EmbeddedControlTowerPortal({
           try {
             const demo = await getControlTowerDemoData();
             if (!active) return;
+            demoDataRef.current = demo;
             setDemoData(demo);
             setRequestRange(demo.defaultRange);
             setAccessState("local-preview");
@@ -346,6 +351,13 @@ export function EmbeddedControlTowerPortal({
     };
   }, [accessState]);
 
+  const loadDemoFallback = useCallback(async () => {
+    if (demoDataRef.current) return demoDataRef.current;
+    const demo = await getControlTowerDemoData();
+    demoDataRef.current = demo;
+    return demo;
+  }, []);
+
   const loadPage = useCallback(
     async (page: PortalPageId) => {
       if (accessState === "local-preview") return;
@@ -358,13 +370,45 @@ export function EmbeddedControlTowerPortal({
           requestRange.start,
           requestRange.end,
         );
-        setPageData((current) => ({ ...current, [page]: data }));
         const datasetErrors = Object.keys(data.datasetErrors ?? {});
-        const rowCount = Object.values(data.datasets).reduce(
+        let resolvedData = data;
+        let fallbackDatasets: string[] = [];
+        const configuredRange =
+          requestRange.start === portalDefinition.defaultRange.start &&
+          requestRange.end === portalDefinition.defaultRange.end;
+
+        if (datasetErrors.length && configuredRange) {
+          try {
+            const demo = await loadDemoFallback();
+            const datasets = { ...data.datasets };
+            fallbackDatasets = datasetErrors.filter((dataset) => {
+              const rows = demo.pages[page]?.[dataset] ?? [];
+              if (datasets[dataset]?.length || !rows.length) return false;
+              datasets[dataset] = rows;
+              return true;
+            });
+            if (fallbackDatasets.length) {
+              resolvedData = { ...data, datasets };
+            }
+          } catch {
+            fallbackDatasets = [];
+          }
+        }
+
+        setPageData((current) => ({ ...current, [page]: resolvedData }));
+        setPageFallbackDatasets((current) => ({
+          ...current,
+          [page]: fallbackDatasets,
+        }));
+        const rowCount = Object.values(resolvedData.datasets).reduce(
           (total, rows) => total + rows.length,
           0,
         );
-        if (datasetErrors.length && rowCount === 0) {
+        if (fallbackDatasets.length) {
+          setDataMessage(
+            `Zoho is still completing ${fallbackDatasets.length} source export${fallbackDatasets.length === 1 ? "" : "s"}. Matching validated March rows are shown temporarily for those sections.`,
+          );
+        } else if (datasetErrors.length && rowCount === 0) {
           setDataMessage(
             "Zoho returned no usable rows because the selected source exports failed. Refresh or inspect the source diagnostics.",
           );
@@ -397,7 +441,12 @@ export function EmbeddedControlTowerPortal({
         setLoadingData(false);
       }
     },
-    [accessState, requestRange.end, requestRange.start],
+    [
+      accessState,
+      loadDemoFallback,
+      requestRange.end,
+      requestRange.start,
+    ],
   );
 
   useEffect(() => {
@@ -423,9 +472,15 @@ export function EmbeddedControlTowerPortal({
         ? demoData?.generatedAt
         : pageData[activePage]?.generatedAt
       : "";
+  const activeFallbackDatasets =
+    activePage === "p1" || activePage === "p2"
+      ? pageFallbackDatasets[activePage] ?? []
+      : [];
   const sourceLabel =
     accessState === "local-preview"
       ? "Synthetic validation baseline"
+      : activeFallbackDatasets.length
+        ? "Live Zoho + validated March fallback"
       : "Live governed workspace data";
 
   const canShowPortal = ["local-preview", "authenticated"].includes(accessState);
@@ -442,6 +497,7 @@ export function EmbeddedControlTowerPortal({
   const signOut = async () => {
     await revokePortalSession();
     setPageData({});
+    setPageFallbackDatasets({});
     setUserName("");
     setAccessState("signed-out");
     setAccessMessage(

@@ -7,7 +7,7 @@
   "policy": "Tracked synthetic, documentation, code, schema, and validation artifacts only. Screenshots, real operational exports, local audit runtime data, credentials, and environment values are excluded.",
   "summary": {
     "files": 773,
-    "sizeBytes": 51854214,
+    "sizeBytes": 51856283,
     "categories": 10,
     "csvFiles": 349,
     "sqlFiles": 133,
@@ -83,7 +83,7 @@
       "label": "Other project files",
       "description": "Supporting repository and configuration files retained for a complete handoff.",
       "count": 37,
-      "sizeBytes": 494037
+      "sizeBytes": 496106
     }
   ],
   "files": [
@@ -4488,8 +4488,8 @@
       "extension": ".tsx",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 17739,
-      "sha256": "2c9ea563d7847d9b43b1f565049b13e25e5d660552153bb2747e89f2094adadc",
+      "sizeBytes": 19808,
+      "sha256": "15adc2fd8796c399b26d490daa2d7795e6ee04992e11e3ee5054f15c73ede605",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
