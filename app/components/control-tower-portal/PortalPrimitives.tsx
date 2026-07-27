@@ -162,7 +162,7 @@ export function HybridVisualPanel({
         <div>
           <span className="ct-panel-kicker">
             <ChartNoAxesCombined aria-hidden="true" size={12} />
-            {connected ? "Zoho native visual" : "Validation fallback"}
+            {connected ? "Zoho native visual" : "API-backed visual"}
           </span>
           <h2>{title}</h2>
           <p>{subtitle}</p>
@@ -202,7 +202,9 @@ export function HybridVisualPanel({
           <div className="ct-visual-source-note">
             <Database aria-hidden="true" size={13} />
             <span>{viewName}</span>
-            <small>Connect the secured Zoho view to replace this fallback.</small>
+            <small>
+              Rendered from governed query-table data; open the source for Zoho detail.
+            </small>
           </div>
         </div>
       )}
