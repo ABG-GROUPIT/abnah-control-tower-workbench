@@ -99,6 +99,16 @@ const pageDefinitions: Array<{
 ];
 
 const portalDefinition = portalSnapshot as unknown as ZohoPortalConfig;
+const datasetLabels: Record<string, string> = {
+  inventoryRisk: "inventory risk",
+  menuImpact: "menu impact",
+  expiryRisk: "expiry risk",
+  riskyPo: "risky PO mitigation",
+  purchaseOrders: "purchase orders",
+  poReceiptLines: "PO receipt comparison",
+  purchaseReceipts: "purchase receipts",
+  priceMovement: "price movement",
+};
 
 function staticVisualMaps(): ZohoPortalUrlMaps {
   return {
@@ -405,8 +415,11 @@ export function EmbeddedControlTowerPortal({
           0,
         );
         if (fallbackDatasets.length) {
+          const labels = fallbackDatasets
+            .map((dataset) => datasetLabels[dataset] ?? dataset)
+            .join(", ");
           setDataMessage(
-            `Zoho is still completing ${fallbackDatasets.length} source export${fallbackDatasets.length === 1 ? "" : "s"}. Matching validated March rows are shown temporarily for those sections.`,
+            `Zoho could not complete ${fallbackDatasets.length} source export${fallbackDatasets.length === 1 ? "" : "s"} in this refresh (${labels}). Matching validated March rows are shown temporarily for those sections.`,
           );
         } else if (datasetErrors.length && rowCount === 0) {
           setDataMessage(
@@ -547,6 +560,15 @@ export function EmbeddedControlTowerPortal({
           <a href={atlasUrl()} target="_blank" rel="noreferrer">
             Data Atlas
             <ExternalLink aria-hidden="true" size={14} />
+          </a>
+          <a
+            href={`${atlasUrl()}?surface=data_quality`}
+            target="_blank"
+            rel="noreferrer"
+            title="Open the hosted data-quality evidence register"
+          >
+            Data quality
+            <ShieldCheck aria-hidden="true" size={14} />
           </a>
           {activeDashboardUrl ? (
             <a

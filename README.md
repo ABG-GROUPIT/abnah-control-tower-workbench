@@ -1,5 +1,7 @@
 # ABNAH Schema Workspace
 
+Presentation entry point: [PRESENTATION_README.md](PRESENTATION_README.md)
+
 This repository is the portable discovery memory and editable schema workspace for ABNAH's Restroworks/POSist data assessment.
 
 The current phase records what data exists, how each report is structurally arranged, which public API candidates may expose it, what has actually been tested, and the draft business requirements for ABNAH's four-page Supply Chain Control Tower. Draft formulas are stored separately from source lineage so that an approved calculation is never confused with a proven data connection.

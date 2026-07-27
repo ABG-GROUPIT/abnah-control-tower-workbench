@@ -20,6 +20,14 @@ interface PortalBackendStatus {
   missingEnvironment?: string[];
 }
 
+export interface ZohoResolvedViewUrl {
+  viewName: string;
+  viewId: string;
+  viewType: string;
+  mode: "embed" | "source";
+  url: string;
+}
+
 const runtime = runtimeSnapshot as SupabasePortalRuntime;
 const sessionStorageKey = "abnah-portal-session-v1";
 const placeholderProjectRef = "YOUR_PROJECT_REF";
@@ -242,6 +250,29 @@ export async function getControlTowerPageData(
   return readJson<PortalPageData>(
     response,
     "The selected control-tower data could not be loaded.",
+  );
+}
+
+export async function getZohoViewUrl(
+  viewName: string,
+  criteria = "",
+  mode: "embed" | "source" = "source",
+) {
+  const parameters = new URLSearchParams({
+    view: viewName,
+    mode,
+  });
+  if (criteria) parameters.set("criteria", criteria);
+  const response = await fetch(
+    endpoint(`view-url?${parameters.toString()}`),
+    {
+      headers: authorizationHeaders(),
+      cache: "no-store",
+    },
+  );
+  return readJson<ZohoResolvedViewUrl>(
+    response,
+    `${viewName} could not be opened in Zoho Analytics.`,
   );
 }
 

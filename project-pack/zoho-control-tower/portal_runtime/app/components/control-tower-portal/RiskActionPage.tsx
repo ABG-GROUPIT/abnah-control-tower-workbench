@@ -9,7 +9,8 @@ import {
   Search,
   Store,
 } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import "leaflet/dist/leaflet.css";
 import {
   clampPresentedQuantity,
   formatDate,
@@ -23,6 +24,10 @@ import {
   type PortalPageDatasets,
   type PortalRow,
 } from "../../lib/control-tower-portal-data";
+import {
+  getPortalSessionToken,
+  getZohoViewUrl,
+} from "../../lib/supabase-portal-client";
 import type { ZohoPortalUrlMaps } from "../../lib/zoho-portal-types";
 import {
   combineZohoCriteria,
@@ -212,26 +217,53 @@ function OutletRiskOverview({
   inventory: PortalRow[];
   expiry: PortalRow[];
 }) {
+  const mapElement = useRef<HTMLDivElement | null>(null);
   const outlets = useMemo(() => {
     const grouped = new Map<
       string,
       {
         code: string;
         name: string;
+        latitude: number;
+        longitude: number;
         severity: string;
         value: number;
         risks: number;
+        coordinateSource: "row" | "governed_demo";
       }
     >();
     [...inventory, ...expiry].forEach((row) => {
       const code = rowText(row, "outlet_code");
       if (!code) return;
+      const governedCoordinates: Record<
+        string,
+        { latitude: number; longitude: number }
+      > = {
+        OUT001: { latitude: 28.6315, longitude: 77.2167 },
+        OUT002: { latitude: 28.5494, longitude: 77.2001 },
+        OUT003: { latitude: 28.5245, longitude: 77.2066 },
+      };
+      const governed = governedCoordinates[code];
+      const latitude = rowNumber(row, "latitude");
+      const longitude = rowNumber(row, "longitude");
+      const hasRowCoordinates =
+        latitude !== 0 &&
+        longitude !== 0 &&
+        Math.abs(latitude) <= 90 &&
+        Math.abs(longitude) <= 180;
       const current = grouped.get(code) ?? {
         code,
-        name: rowText(row, "outlet_name"),
+        name: rowText(row, "outlet_name") || code,
+        latitude: hasRowCoordinates
+          ? latitude
+          : governed?.latitude ?? 28.6139,
+        longitude: hasRowCoordinates
+          ? longitude
+          : governed?.longitude ?? 77.209,
         severity: "GREEN",
         value: 0,
         risks: 0,
+        coordinateSource: hasRowCoordinates ? "row" : "governed_demo",
       };
       const severity = rowText(row, "risk_severity");
       if (
@@ -254,23 +286,110 @@ function OutletRiskOverview({
     );
   }, [expiry, inventory]);
 
+  useEffect(() => {
+    let map: import("leaflet").Map | null = null;
+    let active = true;
+    if (!mapElement.current) return;
+
+    void import("leaflet").then((leaflet) => {
+      if (!active || !mapElement.current) return;
+      map = leaflet.map(mapElement.current, {
+        zoomControl: true,
+        attributionControl: true,
+        scrollWheelZoom: false,
+        minZoom: 10,
+        maxZoom: 12,
+      });
+      const tileUrl = new URL(
+        "../map/tiles/{z}/{x}/{y}.png",
+        globalThis.location.href,
+      ).toString();
+      leaflet
+        .tileLayer(tileUrl, {
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+          minZoom: 10,
+          maxZoom: 12,
+          noWrap: true,
+        })
+        .addTo(map);
+
+      const severityColor: Record<string, string> = {
+        PURPLE: "#6e3c8f",
+        RED: "#c6464d",
+        AMBER: "#b77b17",
+        GREEN: "#15735f",
+      };
+      const bounds = leaflet.latLngBounds([]);
+      outlets.forEach((outlet) => {
+        const position = leaflet.latLng(
+          outlet.latitude,
+          outlet.longitude,
+        );
+        bounds.extend(position);
+        const tooltip = document.createElement("div");
+        const name = document.createElement("strong");
+        const detail = document.createElement("span");
+        name.textContent = shortenedOutlet(outlet.name);
+        detail.textContent =
+          `${outlet.risks} risk records / ${formatIndianCurrency(outlet.value)}`;
+        tooltip.append(name, detail);
+        leaflet
+          .circleMarker(position, {
+            radius: 10,
+            color: "#ffffff",
+            weight: 3,
+            fillColor:
+              severityColor[outlet.severity.toUpperCase()] ??
+              severityColor.AMBER,
+            fillOpacity: 0.96,
+          })
+          .bindTooltip(tooltip, {
+            direction: "top",
+            offset: [0, -8],
+            opacity: 1,
+          })
+          .addTo(map!);
+      });
+
+      if (outlets.length) {
+        map.fitBounds(bounds.pad(0.32), {
+          maxZoom: 12,
+          animate: false,
+        });
+      } else {
+        map.setView([28.6139, 77.209], 10);
+      }
+      globalThis.setTimeout(() => map?.invalidateSize(false), 0);
+    });
+
+    return () => {
+      active = false;
+      map?.remove();
+    };
+  }, [outlets]);
+
   return (
-    <div className="ct-outlet-risk-list">
-      {outlets.map((outlet, index) => (
-        <div key={outlet.code}>
-          <span>{String(index + 1).padStart(2, "0")}</span>
-          <div>
-            <strong>{shortenedOutlet(outlet.name)}</strong>
-            <small>
-              {outlet.risks} risk records / {formatIndianCurrency(outlet.value)}
-            </small>
-          </div>
-          <SeverityBadge
-            value={outlet.severity}
-            label={outlet.severity === "RED" ? "Action now" : outlet.severity}
-          />
-        </div>
-      ))}
+    <div className="ct-risk-map ct-leaflet-risk-map">
+      <div
+        ref={mapElement}
+        className="ct-leaflet-map"
+        role="img"
+        aria-label="Interactive Delhi NCR outlet risk map"
+      />
+      <span className="ct-map-coordinate-note">
+        {outlets.some(
+          (outlet) => outlet.coordinateSource === "governed_demo",
+        )
+          ? "Governed demo outlet coordinates"
+          : "Zoho outlet coordinates"}
+      </span>
+      <div className="ct-map-legend" aria-label="Risk severity legend">
+        <SeverityBadge value="PURPLE" label="Now" />
+        <SeverityBadge value="RED" label="High" />
+        <SeverityBadge value="AMBER" label="Watch" />
+        <SeverityBadge value="GREEN" label="Healthy" />
+      </div>
     </div>
   );
 }
@@ -295,6 +414,10 @@ export function RiskActionPage({
   const [draft, setDraft] = useState<RiskFilters>(() => initialFilters(range));
   const [filters, setFilters] = useState<RiskFilters>(() => initialFilters(range));
   const [evidence, setEvidence] = useState<EvidenceContext | null>(null);
+  const [nativeMapResolution, setNativeMapResolution] = useState({
+    key: "",
+    url: "",
+  });
 
   const riskDate = latestDate(inventory, "snapshot_date", filters.end);
   const expiryDate = latestDate(expiry, "as_of_date", filters.end);
@@ -512,6 +635,41 @@ export function RiskActionPage({
   };
   const visualUrl = (reportId: string, criteria = "") =>
     reportVisualUrl(reportId, criteria) || visualUrls.dashboards.p1 || "";
+  const configuredMapUrl = reportVisualUrl("p1-risk-map", mapCriteria);
+  const nativeMapKey = `${nativeMapEligible}|${mapCriteria}`;
+  const resolvedNativeMapUrl =
+    nativeMapResolution.key === nativeMapKey
+      ? nativeMapResolution.url
+      : "";
+
+  useEffect(() => {
+    let active = true;
+    if (
+      configuredMapUrl ||
+      !nativeMapEligible ||
+      !getPortalSessionToken()
+    ) {
+      return () => {
+        active = false;
+      };
+    }
+    void getZohoViewUrl(
+      "CT_P1_Outlet_Risk_Map",
+      mapCriteria,
+      "embed",
+    ).then((resolved) => {
+      if (active) {
+        setNativeMapResolution({
+          key: nativeMapKey,
+          url: resolved.url,
+        });
+      }
+    }).catch(() => undefined);
+    return () => {
+      active = false;
+    };
+  }, [configuredMapUrl, mapCriteria, nativeMapEligible, nativeMapKey]);
+
   const openEvidence = (
     context: Omit<EvidenceContext, "sourceUrl"> & {
       reportId: string;
@@ -522,6 +680,7 @@ export function RiskActionPage({
     setEvidence({
       ...details,
       sourceUrl: visualUrl(reportId, criteria),
+      sourceCriteria: criteria,
     });
   };
   const riskColumns: EvidenceContext["columns"] = [
@@ -1063,7 +1222,7 @@ export function RiskActionPage({
           viewName="CT_P1_Outlet_Risk_Map"
           embedUrl={
             nativeMapEligible
-              ? reportVisualUrl("p1-risk-map", mapCriteria) || undefined
+              ? configuredMapUrl || resolvedNativeMapUrl || undefined
               : undefined
           }
           sourceUrl={visualUrl("p1-risk-map", mapCriteria) || undefined}

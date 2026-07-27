@@ -6,12 +6,12 @@
   "sourceCommit": "c364bef92eac98566975f333f205648a34ce2b14",
   "policy": "Tracked synthetic, documentation, code, schema, and validation artifacts only. Screenshots, real operational exports, local audit runtime data, credentials, and environment values are excluded.",
   "summary": {
-    "files": 773,
-    "sizeBytes": 51856283,
+    "files": 778,
+    "sizeBytes": 51952344,
     "categories": 10,
     "csvFiles": 349,
     "sqlFiles": 133,
-    "guideFiles": 97,
+    "guideFiles": 99,
     "testFiles": 8
   },
   "categories": [
@@ -40,8 +40,8 @@
       "id": "documentation",
       "label": "Documentation",
       "description": "Architecture, modeling, dashboard, Zoho, external-signal, validation, and presentation guidance.",
-      "count": 82,
-      "sizeBytes": 1912094
+      "count": 84,
+      "sizeBytes": 1935456
     },
     {
       "id": "local_auditor",
@@ -82,8 +82,8 @@
       "id": "other",
       "label": "Other project files",
       "description": "Supporting repository and configuration files retained for a complete handoff.",
-      "count": 37,
-      "sizeBytes": 496106
+      "count": 40,
+      "sizeBytes": 568805
     }
   ],
   "files": [
@@ -190,6 +190,19 @@
       "featuredOrder": 8,
       "featuredTitle": "Local audit workflow",
       "description": "How to inspect real exports locally without publishing operational rows."
+    },
+    {
+      "path": "portal_runtime/PRESENTATION_README.md",
+      "name": "PRESENTATION_README.md",
+      "title": "PRESENTATION README",
+      "extension": ".md",
+      "kind": "Guide",
+      "category": "documentation",
+      "sizeBytes": 19784,
+      "sha256": "a32d424cc2bafd183ddd56c44f829a62f406397b6960cfa04cd112f0948898b4",
+      "featuredOrder": 0,
+      "featuredTitle": "Presentation runbook",
+      "description": "The complete demo sequence, validated P1/P2 values, source findings, architecture, Q&A, and remaining actions."
     },
     {
       "path": "api.py",
@@ -1305,6 +1318,19 @@
       "category": "documentation",
       "sizeBytes": 55870,
       "sha256": "013446dda9eada4ecfb639c9898c55aacd431f3573ae87bab1d0120f91642f7d",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
+      "path": "portal_runtime/docs/DATA_QUALITY_AND_HOSTING.md",
+      "name": "DATA_QUALITY_AND_HOSTING.md",
+      "title": "DATA QUALITY AND HOSTING",
+      "extension": ".md",
+      "kind": "Guide",
+      "category": "documentation",
+      "sizeBytes": 3578,
+      "sha256": "8404fc53d8b16531e0d6e185f029fd4e472496759a0a9ab062fb623eb0d8b784",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4443,14 +4469,40 @@
       "description": ""
     },
     {
+      "path": "portal_runtime/app/components/ArchitectureGraphWorkspace.tsx",
+      "name": "ArchitectureGraphWorkspace.tsx",
+      "title": "ArchitectureGraphWorkspace",
+      "extension": ".tsx",
+      "kind": "Project file",
+      "category": "other",
+      "sizeBytes": 24157,
+      "sha256": "51ba36cf6c758eac225ce332038ca609bd6d148e4151f271abcae74392811b26",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
+      "path": "portal_runtime/app/components/AtlasWorkspace.tsx",
+      "name": "AtlasWorkspace.tsx",
+      "title": "AtlasWorkspace",
+      "extension": ".tsx",
+      "kind": "Project file",
+      "category": "other",
+      "sizeBytes": 22594,
+      "sha256": "b04597cb1053f0d70f00a75586e0c2f2a6c05f6530a031965a5187e1e98ff2f7",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
       "path": "portal_runtime/app/components/control-tower-portal/PortalPrimitives.tsx",
       "name": "PortalPrimitives.tsx",
       "title": "PortalPrimitives",
       "extension": ".tsx",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 8807,
-      "sha256": "5248c29128528400dd31913816f4db2d8b478c6bf35929a58ac4d8673c665cad",
+      "sizeBytes": 11046,
+      "sha256": "af8697e72f44f6306356d9595f74c97e386c5d1ccb119a91e72edd5c1cdac5f5",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4462,8 +4514,8 @@
       "extension": ".tsx",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 45577,
-      "sha256": "2acd8f65a351d40bcad6a49478114bad4a77a09b2efbc7b02e2541aa4718e715",
+      "sizeBytes": 45609,
+      "sha256": "059b6ee01aa2f1a36a6f9ff30b9666bcced69e103fc46d121912bcf8658259fd",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4475,8 +4527,8 @@
       "extension": ".tsx",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 51631,
-      "sha256": "034d98cdd266868ff261caa3d9c8800f46cbd305c722a1a707e9e44135354f74",
+      "sizeBytes": 56399,
+      "sha256": "7f83cd183fffc89107c212775932c8ada7c706c64bd8ea2ae6653a1cab050928",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4488,8 +4540,8 @@
       "extension": ".tsx",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 19808,
-      "sha256": "15adc2fd8796c399b26d490daa2d7795e6ee04992e11e3ee5054f15c73ede605",
+      "sizeBytes": 20603,
+      "sha256": "4df1f0001803eb9a2c669b0f7f0c285908e8e2419f1c16af63a77f1a1870be45",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4501,8 +4553,8 @@
       "extension": ".css",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 223997,
-      "sha256": "533d11ff2caa9d8c53c8bb5d97edc1606c7a26763540406177a32b844a653643",
+      "sizeBytes": 225448,
+      "sha256": "3390d1e914bc1eb7099e8109686a29a1bf1053c20b8ad8acf5f5157e70fa6da0",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4527,8 +4579,8 @@
       "extension": ".ts",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 6989,
-      "sha256": "f116acf0b5905e2b1b65b71616b53679ec7044dc54144d9ae7fa891b57a50455",
+      "sizeBytes": 7668,
+      "sha256": "58cacadfa6c2a62d2da099d7fa31c09148e5b3e887bd471ba72508e70074820d",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4670,8 +4722,8 @@
       "extension": ".json",
       "kind": "Contract",
       "category": "other",
-      "sizeBytes": 2165,
-      "sha256": "06f877029b9a8e7e4af36d2e4fd391343f0c67cc6596c713a2f0921450a1aa2c",
+      "sizeBytes": 2324,
+      "sha256": "e1769ad9c03269655d3ad2a9b075c51373da41a9c4c762b54497218a5e5af888",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4711,6 +4763,19 @@
       "category": "other",
       "sizeBytes": 17802,
       "sha256": "af398e0614adafe1bb4d5ac6f12512ba529dfce0cfa5baae3a3169db325cd39c",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
+      "path": "portal_runtime/scripts/validate_portal_kpis.mjs",
+      "name": "validate_portal_kpis.mjs",
+      "title": "validate portal kpis",
+      "extension": ".mjs",
+      "kind": "Project file",
+      "category": "other",
+      "sizeBytes": 7976,
+      "sha256": "0787cf8f696e8f5dd28dd8460d97d404c667f538a0a075a8359138ce474f28d1",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4761,8 +4826,8 @@
       "extension": ".ts",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 8397,
-      "sha256": "04cdc808f6f5c92bfd564847a63b36bb286e2704f3d7c1688818d75a7ec31dd4",
+      "sizeBytes": 13593,
+      "sha256": "472475f41c05ea1d5885f405ff58351da01c0360f8b705dfab692811b88b8d39",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4774,8 +4839,8 @@
       "extension": ".ts",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 5877,
-      "sha256": "7700529d7d8b6348f2d498e86e041471880157977f8fedf83143fe848a60c526",
+      "sizeBytes": 5907,
+      "sha256": "e5af118eb3b049e5d4be1dd11eff8e9873fb9d7c45b5849f93240b6c9a9e815a",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4787,8 +4852,8 @@
       "extension": ".ts",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 26384,
-      "sha256": "7feaddbe3cc5585cacee98396328612890e4a292b3096483c7eaf406a27eb46d",
+      "sizeBytes": 29007,
+      "sha256": "e2788302ca3dc9023adb1de970264765f07baafad71ab776d14c3e6663c8f152",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""

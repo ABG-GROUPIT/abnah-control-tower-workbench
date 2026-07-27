@@ -15,7 +15,10 @@ DESTINATION = PACK_ROOT / "portal_runtime"
 MANIFEST_PATH = ROOT / "project-pack" / "PROJECT_PACK_MANIFEST.csv"
 
 PORTAL_FILES = (
+    "PRESENTATION_README.md",
     ".github/workflows/pages.yml",
+    "app/components/ArchitectureGraphWorkspace.tsx",
+    "app/components/AtlasWorkspace.tsx",
     "app/components/EmbeddedControlTowerPortal.tsx",
     "app/components/control-tower-portal/PortalPrimitives.tsx",
     "app/components/control-tower-portal/ProcurementPage.tsx",
@@ -32,6 +35,7 @@ PORTAL_FILES = (
     "config/zoho-reference-links.example.json",
     "config/zoho-secured-embed-handoff.example.json",
     "docs/LIVE_P2_DASHBOARD_AUDIT_2026-07-27.md",
+    "docs/DATA_QUALITY_AND_HOSTING.md",
     "docs/PAGE_1_AND_PAGE_2_CORRECTIONS.md",
     "docs/ZOHO_PORTAL_RUNTIME.md",
     "github-pages/index.html",
@@ -41,6 +45,7 @@ PORTAL_FILES = (
     "portal-handoff/ABNAH_PORTAL_HANDOFF_TEMPLATE.json",
     "portal-handoff/validate_handoff.py",
     "scripts/build_portal_demo_data.py",
+    "scripts/validate_portal_kpis.mjs",
     "supabase/.env.example",
     "supabase/config.toml",
     "supabase/functions/_shared/crypto.ts",

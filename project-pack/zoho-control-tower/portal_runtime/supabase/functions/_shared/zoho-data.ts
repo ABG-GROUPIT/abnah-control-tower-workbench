@@ -13,6 +13,37 @@ interface ExportSpec {
   dateField: string;
 }
 
+export type ZohoViewUrlMode = "embed" | "source";
+
+export interface ZohoResolvedViewUrl {
+  viewName: string;
+  viewId: string;
+  viewType: string;
+  mode: ZohoViewUrlMode;
+  url: string;
+}
+
+interface CachedPageData {
+  expiresAt: number;
+  value: {
+    datasets: Record<string, Record<string, unknown>[]>;
+    datasetErrors: Record<string, string>;
+  };
+}
+
+interface ZohoViewMetadata {
+  id: string;
+  type: string;
+}
+
+const pageCacheTtlMs = 2 * 60 * 1000;
+const pageCache = new Map<string, CachedPageData>();
+const pageRequests = new Map<
+  string,
+  Promise<CachedPageData["value"]>
+>();
+let exportQueue: Promise<void> = Promise.resolve();
+
 const pageExports: Record<PortalDataPage, ExportSpec[]> = {
   p1: [
     {
@@ -120,23 +151,77 @@ function findObjectRows(value: unknown): Record<string, unknown>[] {
   return [];
 }
 
-async function accessibleQueryTables(
+function normalizeZohoDate(value: unknown) {
+  if (typeof value !== "string") return value;
+  const clean = value.trim();
+  const iso = clean.match(/^(\d{4}-\d{2}-\d{2})(?:[T\s].*)?$/);
+  if (iso) return iso[1];
+  const zoho = clean.match(
+    /^(\d{1,2})\s+([A-Za-z]{3}),\s*(\d{4})(?:\s+.*)?$/,
+  );
+  if (!zoho) return value;
+  const months: Record<string, string> = {
+    Jan: "01",
+    Feb: "02",
+    Mar: "03",
+    Apr: "04",
+    May: "05",
+    Jun: "06",
+    Jul: "07",
+    Aug: "08",
+    Sep: "09",
+    Oct: "10",
+    Nov: "11",
+    Dec: "12",
+  };
+  const month =
+    months[zoho[2][0].toUpperCase() + zoho[2].slice(1).toLowerCase()];
+  return month
+    ? `${zoho[3]}-${month}-${zoho[1].padStart(2, "0")}`
+    : value;
+}
+
+function normalizeExportRows(rows: Record<string, unknown>[]) {
+  return rows.map((row) =>
+    Object.fromEntries(
+      Object.entries(row).map(([key, value]) => [
+        key,
+        /(date|_at|period_start|period_end)$/i.test(key)
+          ? normalizeZohoDate(value)
+          : value,
+      ]),
+    )
+  );
+}
+
+function serializedExport<T>(operation: () => Promise<T>) {
+  const current = exportQueue.then(operation, operation);
+  exportQueue = current.then(
+    () => undefined,
+    () => undefined,
+  );
+  return current;
+}
+
+async function accessibleViews(
   environment: ZohoEnvironment,
   session: SessionWorkspace,
   accessToken: string,
+  queryTablesOnly = false,
 ) {
   const url = new URL(
     `${environment.analyticsApiBaseUrl}/restapi/v2/workspaces/${session.workspace_id}/views`,
   );
+  const config: Record<string, unknown> = {
+    noOfResult: 200,
+    startIndex: 1,
+    sortedColumn: 0,
+    sortedOrder: 0,
+  };
+  if (queryTablesOnly) config.viewTypes = [6];
   url.searchParams.set(
     "CONFIG",
-    JSON.stringify({
-      viewTypes: [6],
-      noOfResult: 200,
-      startIndex: 1,
-      sortedColumn: 0,
-      sortedOrder: 0,
-    }),
+    JSON.stringify(config),
   );
   const response = await fetch(url, {
     headers: apiHeaders(accessToken, session.organization_id),
@@ -150,7 +235,13 @@ async function accessibleQueryTables(
     views.flatMap((view) => {
       const name = stringAt(view, "viewName");
       const id = stringAt(view, "viewId");
-      return name && id ? [[name, id] as const] : [];
+      const type =
+        stringAt(view, "viewType") ||
+        stringAt(view, "viewTypeName") ||
+        "View";
+      return name && id
+        ? [[name, { id, type } satisfies ZohoViewMetadata] as const]
+        : [];
     }),
   );
 }
@@ -244,51 +335,53 @@ async function downloadExport(
   if (!response.ok || payload === null) {
     throw new Error(`${viewName} export could not be downloaded.`);
   }
-  return findObjectRows(payload);
+  return normalizeExportRows(findObjectRows(payload));
 }
 
 async function exportDataset(
   environment: ZohoEnvironment,
   session: SessionWorkspace,
   accessToken: string,
-  queryTables: Map<string, string>,
+  queryTables: Map<string, ZohoViewMetadata>,
   spec: ExportSpec,
   start: string,
   end: string,
 ) {
-  const viewId = queryTables.get(spec.viewName);
-  if (!viewId) {
+  const view = queryTables.get(spec.viewName);
+  if (!view) {
     throw new Error(
       `${spec.viewName} is not available to the signed-in Zoho account.`,
     );
   }
-  const jobId = await startExport(
-    environment,
-    session,
-    accessToken,
-    viewId,
-    spec,
-    start,
-    end,
-  );
-  const downloadUrl = await waitForExport(
-    environment,
-    session,
-    accessToken,
-    jobId,
-    spec.viewName,
-  );
-  return downloadExport(
-    environment,
-    session,
-    accessToken,
-    jobId,
-    downloadUrl,
-    spec.viewName,
-  );
+  return serializedExport(async () => {
+    const jobId = await startExport(
+      environment,
+      session,
+      accessToken,
+      view.id,
+      spec,
+      start,
+      end,
+    );
+    const downloadUrl = await waitForExport(
+      environment,
+      session,
+      accessToken,
+      jobId,
+      spec.viewName,
+    );
+    return downloadExport(
+      environment,
+      session,
+      accessToken,
+      jobId,
+      downloadUrl,
+      spec.viewName,
+    );
+  });
 }
 
-export async function fetchControlTowerPageData(
+async function loadControlTowerPageData(
   environment: ZohoEnvironment,
   session: SessionWorkspace,
   accessToken: string,
@@ -296,10 +389,11 @@ export async function fetchControlTowerPageData(
   start: string,
   end: string,
 ) {
-  const queryTables = await accessibleQueryTables(
+  const queryTables = await accessibleViews(
     environment,
     session,
     accessToken,
+    true,
   );
 
   const datasets: Record<string, Record<string, unknown>[]> = {};
@@ -325,4 +419,126 @@ export async function fetchControlTowerPageData(
   }
 
   return { datasets, datasetErrors };
+}
+
+export async function fetchControlTowerPageData(
+  environment: ZohoEnvironment,
+  session: SessionWorkspace,
+  accessToken: string,
+  page: PortalDataPage,
+  start: string,
+  end: string,
+) {
+  const cacheKey = [
+    session.organization_id,
+    session.workspace_id,
+    page,
+    start,
+    end,
+  ].join(":");
+  const cached = pageCache.get(cacheKey);
+  if (cached && cached.expiresAt > Date.now()) return cached.value;
+
+  const activeRequest = pageRequests.get(cacheKey);
+  if (activeRequest) return activeRequest;
+
+  const request = loadControlTowerPageData(
+    environment,
+    session,
+    accessToken,
+    page,
+    start,
+    end,
+  ).then((value) => {
+    pageCache.set(cacheKey, {
+      expiresAt: Date.now() + pageCacheTtlMs,
+      value,
+    });
+    return value;
+  }).finally(() => {
+    pageRequests.delete(cacheKey);
+  });
+  pageRequests.set(cacheKey, request);
+  return request;
+}
+
+export async function fetchZohoViewUrl(
+  environment: ZohoEnvironment,
+  session: SessionWorkspace,
+  accessToken: string,
+  viewName: string,
+  criteria: string,
+  mode: ZohoViewUrlMode,
+): Promise<ZohoResolvedViewUrl> {
+  const views = await accessibleViews(
+    environment,
+    session,
+    accessToken,
+  );
+  const view = views.get(viewName);
+  if (!view) {
+    throw new Error(
+      `${viewName} is not available to the signed-in Zoho account.`,
+    );
+  }
+
+  if (mode === "source") {
+    const analyticsUiBaseUrl = environment.analyticsApiBaseUrl.replace(
+      "://analyticsapi.",
+      "://analytics.",
+    );
+    return {
+      viewName,
+      viewId: view.id,
+      viewType: view.type,
+      mode,
+      url:
+        `${analyticsUiBaseUrl}/workspace/${session.workspace_id}/edit/` +
+        `${view.id}`,
+    };
+  }
+
+  const suffix = mode === "embed" ? "/publish/embed" : "/publish";
+  const url = new URL(
+    `${environment.analyticsApiBaseUrl}/restapi/v2/workspaces/${session.workspace_id}/views/${view.id}${suffix}`,
+  );
+  const config: Record<string, unknown> = {
+    includeTitle: false,
+    includeDesc: false,
+    includeToolBar: false,
+    includeSearchBox: false,
+  };
+  if (criteria) config.criteria = criteria;
+  config.validityPeriod = 900;
+  config.permissions = {
+    export: false,
+    vud: true,
+    drillDown: true,
+    insight: false,
+  };
+  url.searchParams.set("CONFIG", JSON.stringify(config));
+
+  const response = await fetch(url, {
+    headers: apiHeaders(accessToken, session.organization_id),
+  });
+  const payload = await jsonResponse(
+    response,
+    `${viewName} could not produce a secured embed URL.`,
+  );
+  const data = objectAt(payload, "data");
+  const resolved =
+    stringAt(data, "embedUrl") ||
+    stringAt(data, "viewUrl") ||
+    stringAt(data, "embedURL");
+  if (!resolved) {
+    throw new Error(`${viewName} did not return a usable Zoho URL.`);
+  }
+
+  return {
+    viewName,
+    viewId: view.id,
+    viewType: view.type,
+    mode,
+    url: resolved,
+  };
 }

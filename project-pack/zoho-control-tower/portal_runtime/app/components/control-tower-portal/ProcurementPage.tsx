@@ -526,6 +526,7 @@ export function ProcurementPage({
     setEvidence({
       ...details,
       sourceUrl: visualUrl(reportId, criteria),
+      sourceCriteria: criteria,
     });
   };
   const poColumns: EvidenceContext["columns"] = [

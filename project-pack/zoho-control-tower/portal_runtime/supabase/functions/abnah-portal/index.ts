@@ -15,7 +15,9 @@ import {
 } from "../_shared/zoho.ts";
 import {
   fetchControlTowerPageData,
+  fetchZohoViewUrl,
   type PortalDataPage,
+  type ZohoViewUrlMode,
 } from "../_shared/zoho-data.ts";
 
 const configKey = "production";
@@ -63,6 +65,25 @@ const expectedViews = {
     },
   },
 } as const;
+
+const sourceQueryViews = [
+  "22_fact_ct_purchase_order.sql",
+  "23_fact_ct_purchase_receipt.sql",
+  "24_fact_ct_po_receipt_line.sql",
+  "27_fact_ct_inventory_risk.sql",
+  "28_fact_ct_menu_impact.sql",
+  "31_sum_ct_price_movement.sql",
+  "36_fact_ct_risky_po.sql",
+  "38_fact_ct_expiry_risk.sql",
+] as const;
+
+const allowedResolvedViews = new Set<string>([
+  ...sourceQueryViews,
+  ...Object.values(expectedViews).flatMap((page) => [
+    page.dashboardViewName,
+    ...Object.values(page.reports),
+  ]),
+]);
 
 interface RuntimeEnvironment {
   configured: boolean;
@@ -683,6 +704,79 @@ async function handleData(
   });
 }
 
+async function handleViewUrl(
+  request: Request,
+  environment: RuntimeEnvironment,
+) {
+  assertAllowedOrigin(request, environment);
+  const session = await resolveSession(request, environment);
+  if (!session) {
+    return json(
+      request,
+      environment,
+      { error: "Verified Zoho Analytics access is required." },
+      401,
+    );
+  }
+
+  const url = new URL(request.url);
+  const viewName = url.searchParams.get("view")?.trim() ?? "";
+  const criteria = url.searchParams.get("criteria")?.trim() ?? "";
+  const mode = (url.searchParams.get("mode")?.trim() ||
+    "source") as ZohoViewUrlMode;
+  if (!allowedResolvedViews.has(viewName)) {
+    return json(request, environment, { error: "Unknown governed view." }, 400);
+  }
+  if (!["embed", "source"].includes(mode)) {
+    return json(request, environment, { error: "Invalid view URL mode." }, 400);
+  }
+  if (
+    criteria.length > 4_000 ||
+    /;|--|\/\*/.test(criteria)
+  ) {
+    return json(request, environment, { error: "Invalid Zoho criteria." }, 400);
+  }
+
+  const accessToken = await decryptSecret(
+    session.access_token_ciphertext,
+    environment.tokenEncryptionKey,
+  );
+  if (!accessToken) {
+    return json(
+      request,
+      environment,
+      { error: "The verified analytics session has expired." },
+      401,
+    );
+  }
+
+  try {
+    const resolved = await fetchZohoViewUrl(
+      environment.zoho,
+      session,
+      accessToken,
+      viewName,
+      criteria,
+      mode,
+    );
+    return json(request, environment, resolved);
+  } catch (error) {
+    const message =
+      error instanceof Error ? error.message : "The Zoho view URL failed.";
+    const missingScope = /scope|oauth|permission|unauthorized|8518/i.test(message);
+    return json(
+      request,
+      environment,
+      {
+        error: missingScope
+          ? "Reconnect Zoho once to grant secured view access."
+          : message,
+      },
+      missingScope ? 403 : 502,
+    );
+  }
+}
+
 async function handleLogout(
   request: Request,
   environment: RuntimeEnvironment,
@@ -862,6 +956,9 @@ Deno.serve(async (request) => {
     }
     if (path === "/data" && request.method === "GET") {
       return await handleData(request, environment);
+    }
+    if (path === "/view-url" && request.method === "GET") {
+      return await handleViewUrl(request, environment);
     }
     if (path === "/logout" && request.method === "POST") {
       return await handleLogout(request, environment);

@@ -74,6 +74,11 @@ CATEGORY_DEFINITIONS = (
 )
 
 FEATURED = {
+    "portal_runtime/PRESENTATION_README.md": (
+        0,
+        "Presentation runbook",
+        "The complete demo sequence, validated P1/P2 values, source findings, architecture, Q&A, and remaining actions.",
+    ),
     "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/START_HERE.md": (
         1,
         "Final implementation start",

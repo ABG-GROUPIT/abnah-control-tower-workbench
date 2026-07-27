@@ -7,8 +7,12 @@ import {
   Layers3,
   X,
 } from "lucide-react";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
+import {
+  getPortalSessionToken,
+  getZohoViewUrl,
+} from "../../lib/supabase-portal-client";
 
 export interface EvidenceColumn {
   key: string;
@@ -23,6 +27,7 @@ export interface EvidenceContext {
   sourceQuery: string;
   sourceView: string;
   sourceUrl?: string;
+  sourceCriteria?: string;
   records: Array<Record<string, unknown>>;
   columns: EvidenceColumn[];
 }
@@ -263,6 +268,20 @@ export function EvidenceDrawer({
   context: EvidenceContext | null;
   onClose: () => void;
 }) {
+  const contextKey = context
+    ? [
+        context.sourceView,
+        context.sourceQuery,
+        context.sourceCriteria ?? "",
+      ].join("|")
+    : "";
+  const [resolution, setResolution] = useState({
+    key: "",
+    reportUrl: "",
+    queryUrl: "",
+    message: "",
+  });
+
   useEffect(() => {
     if (!context) return;
     const handleKey = (event: KeyboardEvent) => {
@@ -272,7 +291,52 @@ export function EvidenceDrawer({
     return () => globalThis.removeEventListener("keydown", handleKey);
   }, [context, onClose]);
 
+  useEffect(() => {
+    let active = true;
+    if (!context || !getPortalSessionToken()) {
+      return () => {
+        active = false;
+      };
+    }
+
+    const criteria = context.sourceCriteria ?? "";
+    void Promise.allSettled([
+      getZohoViewUrl(context.sourceView, criteria, "source"),
+      getZohoViewUrl(context.sourceQuery, criteria, "source"),
+    ]).then((results) => {
+      if (!active) return;
+      const [report, query] = results;
+      const message =
+        report.status === "rejected" &&
+        query.status === "rejected"
+          ? report.reason instanceof Error
+            ? report.reason.message
+            : "The exact Zoho sources could not be resolved."
+          : "";
+      setResolution({
+        key: contextKey,
+        reportUrl:
+          report.status === "fulfilled" ? report.value.url : "",
+        queryUrl:
+          query.status === "fulfilled" ? query.value.url : "",
+        message,
+      });
+    });
+
+    return () => {
+      active = false;
+    };
+  }, [context, contextKey]);
+
   if (!context) return null;
+  const currentResolution =
+    resolution.key === contextKey
+      ? resolution
+      : { reportUrl: "", queryUrl: "", message: "" };
+  const resolvedReportUrl = currentResolution.reportUrl;
+  const resolvedQueryUrl = currentResolution.queryUrl;
+  const resolutionMessage = currentResolution.message;
+  const governedReportUrl = resolvedReportUrl || context.sourceUrl || "";
   return (
     <div
       className="ct-evidence-backdrop"
@@ -323,14 +387,25 @@ export function EvidenceDrawer({
 
         <div className="ct-evidence-toolbar">
           <span>Selected scope records</span>
-          {context.sourceUrl ? (
-            <a href={context.sourceUrl} target="_blank" rel="noreferrer">
-              Open governed view
-              <ArrowUpRight aria-hidden="true" size={14} />
-            </a>
-          ) : (
-            <span className="is-pending">Zoho view awaiting connection</span>
-          )}
+          <div>
+            {governedReportUrl ? (
+              <a href={governedReportUrl} target="_blank" rel="noreferrer">
+                Open Zoho report
+                <ArrowUpRight aria-hidden="true" size={14} />
+              </a>
+            ) : null}
+            {resolvedQueryUrl ? (
+              <a href={resolvedQueryUrl} target="_blank" rel="noreferrer">
+                Open Query Table
+                <ArrowUpRight aria-hidden="true" size={14} />
+              </a>
+            ) : null}
+            {!governedReportUrl && !resolvedQueryUrl ? (
+              <span className="is-pending">
+                {resolutionMessage || "Resolving exact Zoho sources"}
+              </span>
+            ) : null}
+          </div>
         </div>
 
         <div className="ct-evidence-table" role="region" tabIndex={0}>

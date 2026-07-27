@@ -1,6 +1,7 @@
 const oauthScopes = [
   "ZohoAnalytics.metadata.read",
   "ZohoAnalytics.data.read",
+  "ZohoAnalytics.embed.read",
   "profile.userinfo.READ",
 ].join(",");
 
