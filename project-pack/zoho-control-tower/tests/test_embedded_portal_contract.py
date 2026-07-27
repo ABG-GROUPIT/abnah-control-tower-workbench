@@ -160,19 +160,19 @@ class EmbeddedPortalContractTests(unittest.TestCase):
         self.assertIn("20_fact_ct_actual_consumption.sql", migration)
         self.assertIn("Weighted Unit Price", migration)
         embed = EMBED.read_text(encoding="utf-8")
-        self.assertIn("does not embed Zoho reports or dashboards", embed)
-        self.assertIn("Do not use:", embed)
+        self.assertIn("hybrid control-tower shell", embed)
+        self.assertIn("Do Not Use", embed)
         self.assertIn("Query Table API", embed)
         hosting = HOSTING.read_text(encoding="utf-8")
         self.assertIn("GitHub Pages is the only frontend host", hosting)
         self.assertIn("Supabase Edge Function", hosting)
-        self.assertIn("means **this same laptop**", hosting)
+        self.assertIn("**this same laptop**", hosting)
         sequence = REPORT_SEQUENCE.read_text(encoding="utf-8")
         self.assertIn(
-            "No dashboard or individual-report URL is required",
+            "hybrid native visual slots additionally require",
             sequence,
         )
-        self.assertIn("not the final runtime integration", sequence)
+        self.assertIn("production visual", sequence)
         self.assertIn("abnah-zoho-view-handoff/v4", sequence)
         mapping = FILTER_MAPPING.read_text(encoding="utf-8")
         self.assertIn("Query 34", mapping)

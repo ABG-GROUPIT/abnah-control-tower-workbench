@@ -37,10 +37,10 @@ def main() -> None:
         "authMode": "zoho_secured_login",
         "integrationMode": "individual_report_views_with_dashboard_fallbacks",
         "note": (
-            "Backward-compatible QA artifact only. The production custom "
-            "portal uses authenticated Query Table API exports and does not "
-            "require these URLs. Never add passwords, OAuth tokens, client "
-            "secrets, or report rows."
+            "Production hybrid visual handoff. Query Table API exports power "
+            "custom KPI, action and evidence surfaces; approved secured Zoho "
+            "view URLs power native visuals and governed-view drilldowns. "
+            "Never add passwords, OAuth tokens, client secrets, or report rows."
         ),
         "pages": pages,
     }

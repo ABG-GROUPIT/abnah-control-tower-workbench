@@ -22,12 +22,24 @@ import {
   type PortalPageDatasets,
   type PortalRow,
 } from "../../lib/control-tower-portal-data";
+import type { ZohoPortalUrlMaps } from "../../lib/zoho-portal-types";
+import {
+  combineZohoCriteria,
+  withZohoCriteria,
+  zohoContains,
+  zohoDateRange,
+  zohoEquals,
+} from "../../lib/zoho-view-criteria";
 import {
   EmptyState,
+  EvidenceDrawer,
+  ExecutiveBrief,
+  HybridVisualPanel,
   MetricCard,
   PortalPanel,
   SeverityBadge,
   TableShell,
+  type EvidenceContext,
 } from "./PortalPrimitives";
 
 interface ProcurementFilters {
@@ -299,11 +311,13 @@ export function ProcurementPage({
   sourceLabel,
   range,
   onRangeChange,
+  visualUrls,
 }: {
   datasets: PortalPageDatasets;
   sourceLabel: string;
   range: { start: string; end: string };
   onRangeChange: (range: { start: string; end: string }) => void;
+  visualUrls: ZohoPortalUrlMaps;
 }) {
   const purchaseOrders = datasets.purchaseOrders ?? EMPTY_ROWS;
   const receiptLines = datasets.poReceiptLines ?? EMPTY_ROWS;
@@ -313,6 +327,7 @@ export function ProcurementPage({
     useState<ProcurementFilters>(() => initialFilters(range));
   const [filters, setFilters] =
     useState<ProcurementFilters>(() => initialFilters(range));
+  const [evidence, setEvidence] = useState<EvidenceContext | null>(null);
 
   const poRows = useMemo(
     () =>
@@ -447,6 +462,176 @@ export function ProcurementPage({
     selectedTrendItem,
     selectedTrendUom,
   );
+  const trendReceiptRows = receiptRows.filter(
+    (row) =>
+      rowText(row, "item_code") === selectedTrendItem &&
+      (!selectedTrendUom || rowUnit(row) === selectedTrendUom),
+  );
+
+  const poCriteria = combineZohoCriteria(
+    zohoDateRange("po_date", filters.start, filters.end),
+    filters.outlet === "ALL"
+      ? ""
+      : zohoEquals("outlet_code", filters.outlet),
+    filters.category === "ALL"
+      ? ""
+      : zohoEquals("category_name", filters.category),
+    filters.vendor === "ALL"
+      ? ""
+      : zohoEquals("vendor_name", filters.vendor),
+    filters.poStatus === "ALL"
+      ? ""
+      : zohoEquals("po_status", filters.poStatus),
+    zohoContains(["item_code", "item_name"], filters.rawMaterial),
+  );
+  const receiptCriteria = combineZohoCriteria(
+    zohoDateRange("receipt_date", filters.start, filters.end),
+    filters.outlet === "ALL"
+      ? ""
+      : zohoEquals("outlet_code", filters.outlet),
+    filters.category === "ALL"
+      ? ""
+      : zohoEquals("category_name", filters.category),
+    filters.vendor === "ALL"
+      ? ""
+      : zohoEquals("vendor_name", filters.vendor),
+    zohoContains(["item_code", "item_name"], filters.rawMaterial),
+  );
+  const movementCriteria = combineZohoCriteria(
+    zohoDateRange("price_as_of_date", filters.start, filters.end),
+    filters.outlet === "ALL"
+      ? ""
+      : zohoEquals("outlet_code", filters.outlet),
+    filters.category === "ALL"
+      ? ""
+      : zohoEquals("category_name", filters.category),
+    filters.vendor === "ALL"
+      ? ""
+      : zohoEquals("vendor_name", filters.vendor),
+    zohoContains(["item_code", "item_name"], filters.rawMaterial),
+  );
+  const reportVisualUrl = (reportId: string, criteria = "") => {
+    const reportUrl = visualUrls.reports[reportId] || "";
+    return reportUrl ? withZohoCriteria(reportUrl, criteria) : "";
+  };
+  const visualUrl = (reportId: string, criteria = "") =>
+    reportVisualUrl(reportId, criteria) || visualUrls.dashboards.p2 || "";
+  const openEvidence = (
+    context: Omit<EvidenceContext, "sourceUrl"> & {
+      reportId: string;
+      criteria?: string;
+    },
+  ) => {
+    const { reportId, criteria = "", ...details } = context;
+    setEvidence({
+      ...details,
+      sourceUrl: visualUrl(reportId, criteria),
+    });
+  };
+  const poColumns: EvidenceContext["columns"] = [
+    { key: "po_number", label: "PO" },
+    { key: "vendor_name", label: "Vendor" },
+    { key: "item_name", label: "Raw material" },
+    { key: "outlet_name", label: "Outlet" },
+    { key: "po_status", label: "Status" },
+    {
+      key: "gross_order_value",
+      label: "Ordered value",
+      render: (record) =>
+        formatIndianCurrency(
+          Number(record.gross_order_value ?? record.total_item_cost ?? 0),
+        ),
+    },
+    {
+      key: "open_po_value",
+      label: "Open value",
+      render: (record) =>
+        formatIndianCurrency(Number(record.open_po_value ?? 0)),
+    },
+    { key: "expected_delivery_date", label: "Expected" },
+  ];
+  const vendorEvidenceColumns: EvidenceContext["columns"] = [
+    { key: "vendor_name", label: "Vendor" },
+    { key: "po_number", label: "PO" },
+    { key: "item_name", label: "Raw material" },
+    { key: "po_status", label: "Status" },
+    { key: "ordered_qty", label: "Ordered quantity" },
+    { key: "received_qty", label: "Received quantity" },
+    {
+      key: "open_po_value",
+      label: "Open value",
+      render: (record) =>
+        formatIndianCurrency(Number(record.open_po_value ?? 0)),
+    },
+    { key: "otif_success_flag", label: "OTIF success" },
+    { key: "lead_time_deviation_days", label: "Lead deviation" },
+  ];
+  const receiptColumns: EvidenceContext["columns"] = [
+    { key: "receipt_date", label: "Receipt date" },
+    { key: "item_name", label: "Raw material" },
+    { key: "vendor_name", label: "Vendor" },
+    { key: "canonical_uom", label: "UOM" },
+    { key: "received_qty", label: "Received quantity" },
+    {
+      key: "receipt_subtotal",
+      label: "Receipt value",
+      render: (record) =>
+        formatIndianCurrency(Number(record.receipt_subtotal ?? 0)),
+    },
+    {
+      key: "weighted_unit_price",
+      label: "Derived unit price",
+      render: (record) => {
+        const received = Number(record.received_qty ?? 0);
+        const value = Number(record.receipt_subtotal ?? 0);
+        return formatIndianCurrency(received ? value / received : 0, {
+          compact: false,
+          decimals: 2,
+        });
+      },
+    },
+  ];
+  const movementColumns: EvidenceContext["columns"] = [
+    { key: "item_name", label: "Raw material" },
+    { key: "vendor_name", label: "Vendor" },
+    { key: "canonical_uom", label: "UOM" },
+    {
+      key: "previous_unit_price",
+      label: "Previous",
+      render: (record) =>
+        formatIndianCurrency(Number(record.previous_unit_price ?? 0), {
+          compact: false,
+          decimals: 2,
+        }),
+    },
+    {
+      key: "current_unit_price",
+      label: "Current",
+      render: (record) =>
+        formatIndianCurrency(Number(record.current_unit_price ?? 0), {
+          compact: false,
+          decimals: 2,
+        }),
+    },
+    {
+      key: "price_change_percent",
+      label: "Change",
+      render: (record) =>
+        formatPercent(
+          Number(
+            record.price_change_percent ??
+              record.unit_price_change_percent ??
+              0,
+          ),
+        ),
+    },
+    {
+      key: "price_change_value_impact",
+      label: "Value impact",
+      render: (record) =>
+        formatIndianCurrency(Number(record.price_change_value_impact ?? 0)),
+    },
+  ];
 
   const categories = uniqueValues(purchaseOrders, "category_name");
   const vendors = uniqueValues(purchaseOrders, "vendor_name");
@@ -591,12 +776,56 @@ export function ProcurementPage({
         <span>{sourceLabel}</span>
       </div>
 
+      <ExecutiveBrief
+        label="CAPITAL AT RISK"
+        title={`${breachRows.length} delayed lines require procurement follow-up`}
+        detail={`${formatIndianCurrency(delayedExposure)} remains exposed beyond its expected delivery date. Open a KPI, vendor, or PO row to inspect the line-level evidence and continue into Zoho.`}
+        tone={breachRows.length ? "danger" : "neutral"}
+        action={
+          breachRows.length ? (
+            <button
+              type="button"
+              onClick={() =>
+                openEvidence({
+                  reportId: "p2-breach",
+                  criteria: poCriteria,
+                  title: "Delayed purchase-order evidence",
+                  subtitle: "Open lines beyond their expected delivery date",
+                  reason:
+                    "These lines remain open and carry the delayed-PO flag for the selected date and business scope.",
+                  sourceQuery: "22_fact_ct_purchase_order.sql",
+                  sourceView: "CT_P2_Expected_Delivery_Breach",
+                  records: breachRows,
+                  columns: poColumns,
+                })
+              }
+            >
+              Review delayed lines
+            </button>
+          ) : null
+        }
+      />
+
       <section className="ct-metric-grid" aria-label="Procurement metrics">
         <MetricCard
           title="Monthly purchase"
           value={formatIndianCurrency(monthlyPurchase)}
           detail="Ordered gross value"
           icon={ShoppingCart}
+          onInspect={() =>
+            openEvidence({
+              reportId: "p2-funnel",
+              criteria: poCriteria,
+              title: "Monthly purchase",
+              subtitle: "Purchase-order lines contributing to ordered gross value",
+              reason:
+                "The KPI sums gross ordered value after the active date, outlet, category, vendor, status and material filters.",
+              sourceQuery: "22_fact_ct_purchase_order.sql",
+              sourceView: "CT_P2_Procurement_Funnel",
+              records: poRows,
+              columns: poColumns,
+            })
+          }
         />
         <MetricCard
           title="Open PO exposure"
@@ -604,6 +833,20 @@ export function ProcurementPage({
           detail={`${new Set(pendingRows.map((row) => rowText(row, "po_number"))).size} open purchase orders`}
           icon={BadgeIndianRupee}
           tone="warning"
+          onInspect={() =>
+            openEvidence({
+              reportId: "p2-pending-vendor",
+              criteria: poCriteria,
+              title: "Open purchase-order exposure",
+              subtitle: "Pending PO lines in the selected scope",
+              reason:
+                "Only purchase-order lines still marked open contribute to this liability. The value is the unreceived financial exposure, not total ordered value.",
+              sourceQuery: "22_fact_ct_purchase_order.sql",
+              sourceView: "CT_P2_Pending_By_Vendor",
+              records: pendingRows,
+              columns: poColumns,
+            })
+          }
         />
         <MetricCard
           title="Delayed PO value"
@@ -611,6 +854,20 @@ export function ProcurementPage({
           detail={`${breachRows.length} delayed lines`}
           icon={ClockAlert}
           tone="danger"
+          onInspect={() =>
+            openEvidence({
+              reportId: "p2-breach",
+              criteria: poCriteria,
+              title: "Delayed purchase-order value",
+              subtitle: "Delayed open lines contributing to the KPI",
+              reason:
+                "The KPI sums open PO value only where the delayed-PO flag is true. Closed and future-due lines are excluded.",
+              sourceQuery: "22_fact_ct_purchase_order.sql",
+              sourceView: "CT_P2_Expected_Delivery_Breach",
+              records: breachRows,
+              columns: poColumns,
+            })
+          }
         />
         <MetricCard
           title="Vendor OTIF"
@@ -622,20 +879,67 @@ export function ProcurementPage({
           }
           icon={Gauge}
           tone={otif === null ? undefined : otif < 60 ? "danger" : "success"}
+          onInspect={() =>
+            openEvidence({
+              reportId: "p2-scorecard",
+              criteria: poCriteria,
+              title: "Vendor OTIF",
+              subtitle: "Eligible closed receipt lines used in the weighted rate",
+              reason:
+                "OTIF is successful eligible closed lines divided by all eligible closed lines. Open lines do not enter the denominator.",
+              sourceQuery: "24_fact_ct_po_receipt_line.sql",
+              sourceView: "CT_P2_Vendor_Scorecard",
+              records: scoreRows.filter(
+                (row) => rowNumber(row, "eligible_closed_line_flag") > 0,
+              ),
+              columns: vendorEvidenceColumns,
+            })
+          }
         />
         <MetricCard
           title="Price watch"
           value={formatNumber(priceWatch)}
-          detail={`${comparablePriceWatch} comparable · ${noBaselinePriceWatch} no baseline`}
+          detail={`${comparablePriceWatch} comparable / ${noBaselinePriceWatch} no baseline`}
           icon={Tags}
+          onInspect={() =>
+            openEvidence({
+              reportId: "p2-price-movement",
+              criteria: movementCriteria,
+              title: "Raw materials on price watch",
+              subtitle: "Comparable movements and first-observation baselines",
+              reason:
+                "Each distinct material with a price observation is counted once. Rows without a previous comparable price remain visible but are not presented as a percentage movement.",
+              sourceQuery: "31_sum_ct_price_movement.sql",
+              sourceView: "CT_P2_Top_Price_Movement",
+              records: movementRows,
+              columns: movementColumns,
+            })
+          }
         />
       </section>
 
       <div className="ct-primary-grid">
-        <PortalPanel
+        <HybridVisualPanel
           title="Procurement funnel"
-          subtitle="Ordered, processed, pending and delayed value"
+          subtitle="Zoho-native ordered, processed, pending and delayed value"
           badge="selected scope"
+          viewName="CT_P2_Procurement_Funnel"
+          embedUrl={reportVisualUrl("p2-funnel", poCriteria) || undefined}
+          sourceUrl={visualUrl("p2-funnel", poCriteria) || undefined}
+          onInspect={() =>
+            openEvidence({
+              reportId: "p2-funnel",
+              criteria: poCriteria,
+              title: "Procurement funnel evidence",
+              subtitle: "Purchase-order lines behind all four funnel stages",
+              reason:
+                "Ordered, processed, pending and delayed values are mutually explained from the filtered purchase-order line population.",
+              sourceQuery: "22_fact_ct_purchase_order.sql",
+              sourceView: "CT_P2_Procurement_Funnel",
+              records: poRows,
+              columns: poColumns,
+            })
+          }
         >
           <div className="ct-procurement-funnel">
             {[
@@ -661,7 +965,7 @@ export function ProcurementPage({
               );
             })}
           </div>
-        </PortalPanel>
+        </HybridVisualPanel>
 
         <PortalPanel
           title="Vendor risk scorecard"
@@ -683,7 +987,34 @@ export function ProcurementPage({
               </thead>
               <tbody>
                 {vendorRows.map((row) => (
-                  <tr key={row.vendor}>
+                  <tr
+                    key={row.vendor}
+                    className="is-drillable"
+                    tabIndex={0}
+                    onClick={() =>
+                      openEvidence({
+                        reportId: "p2-scorecard",
+                        criteria: zohoEquals("vendor_name", row.vendor),
+                        title: row.vendor,
+                        subtitle: "Vendor performance and exposure evidence",
+                        reason:
+                          "This scorecard row aggregates purchase, open exposure, fulfillment, OTIF and delay from the vendor's eligible PO-receipt lines.",
+                        sourceQuery: "24_fact_ct_po_receipt_line.sql",
+                        sourceView: "CT_P2_Vendor_Scorecard",
+                        records: scoreRows.filter(
+                          (record) =>
+                            rowText(record, "vendor_name") === row.vendor,
+                        ),
+                        columns: vendorEvidenceColumns,
+                      })
+                    }
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        event.currentTarget.click();
+                      }
+                    }}
+                  >
                     <td><SeverityBadge value={row.rag} /></td>
                     <td><strong>{row.vendor}</strong></td>
                     <td>{formatIndianCurrency(row.purchase)}</td>
@@ -700,10 +1031,31 @@ export function ProcurementPage({
       </div>
 
       <div className="ct-detail-grid">
-        <PortalPanel
+        <HybridVisualPanel
           title="Raw material price trend"
-          subtitle="Weighted accepted receipt price"
+          subtitle="Zoho-native weighted accepted receipt price"
           badge={`${trendPoints.length} periods`}
+          viewName="CT_P2_Ingredient_Price_Trend"
+          embedUrl={
+            reportVisualUrl("p2-price-trend", receiptCriteria) || undefined
+          }
+          sourceUrl={
+            visualUrl("p2-price-trend", receiptCriteria) || undefined
+          }
+          onInspect={() =>
+            openEvidence({
+              reportId: "p2-price-trend",
+              criteria: receiptCriteria,
+              title: "Raw material price trend evidence",
+              subtitle: `${materialOptions.find(([code]) => code === selectedTrendItem)?.[1] ?? selectedTrendItem} / ${selectedTrendUom}`,
+              reason:
+                "The plotted value is weighted receipt subtotal divided by accepted received quantity for the selected material, UOM and receipt period.",
+              sourceQuery: "23_fact_ct_purchase_receipt.sql",
+              sourceView: "CT_P2_Ingredient_Price_Trend",
+              records: trendReceiptRows,
+              columns: receiptColumns,
+            })
+          }
         >
           <div className="ct-chart-control">
             <label>
@@ -733,7 +1085,7 @@ export function ProcurementPage({
             </label>
           </div>
           <PriceLineChart points={trendPoints} />
-        </PortalPanel>
+        </HybridVisualPanel>
 
         <PortalPanel
           title="Top price movement"
@@ -758,7 +1110,39 @@ export function ProcurementPage({
                 {comparableMovementRows.slice(0, 12).map((row, index) => {
                   const change = movementChange(row);
                   return (
-                    <tr key={`${rowText(row, "outlet_code")}-${rowText(row, "vendor_name")}-${rowText(row, "item_code")}-${index}`}>
+                    <tr
+                      key={`${rowText(row, "outlet_code")}-${rowText(row, "vendor_name")}-${rowText(row, "item_code")}-${index}`}
+                      className="is-drillable"
+                      tabIndex={0}
+                      onClick={() =>
+                        openEvidence({
+                          reportId: "p2-price-movement",
+                          criteria: combineZohoCriteria(
+                            movementCriteria,
+                            zohoEquals("item_code", rowText(row, "item_code")),
+                            zohoEquals(
+                              "vendor_name",
+                              rowText(row, "vendor_name"),
+                            ),
+                            zohoEquals("canonical_uom", rowUnit(row)),
+                          ),
+                          title: rowText(row, "item_name"),
+                          subtitle: `${rowText(row, "vendor_name")} / ${rowUnit(row)}`,
+                          reason:
+                            "This row compares two valid consecutive price observations for the same outlet, material, vendor and canonical UOM.",
+                          sourceQuery: "31_sum_ct_price_movement.sql",
+                          sourceView: "CT_P2_Top_Price_Movement",
+                          records: [row],
+                          columns: movementColumns,
+                        })
+                      }
+                      onKeyDown={(event) => {
+                        if (event.key === "Enter" || event.key === " ") {
+                          event.preventDefault();
+                          event.currentTarget.click();
+                        }
+                      }}
+                    >
                       <td><strong>{rowText(row, "item_name")}</strong></td>
                       <td>{rowText(row, "vendor_name")}</td>
                       <td>{rowUnit(row)}</td>
@@ -799,7 +1183,38 @@ export function ProcurementPage({
               </thead>
               <tbody>
                 {pendingRows.slice(0, 14).map((row, index) => (
-                  <tr key={`${rowText(row, "po_number")}-${rowText(row, "item_code")}-${index}`}>
+                  <tr
+                    key={`${rowText(row, "po_number")}-${rowText(row, "item_code")}-${index}`}
+                    className="is-drillable"
+                    tabIndex={0}
+                    onClick={() =>
+                      openEvidence({
+                        reportId: "p2-pending-vendor",
+                        criteria: combineZohoCriteria(
+                          poCriteria,
+                          zohoEquals(
+                            "vendor_name",
+                            rowText(row, "vendor_name"),
+                          ),
+                          zohoEquals("item_code", rowText(row, "item_code")),
+                        ),
+                        title: rowText(row, "po_number"),
+                        subtitle: `${rowText(row, "vendor_name")} / ${rowText(row, "item_name")}`,
+                        reason:
+                          "This line remains financially open after received quantities are reconciled against the order.",
+                        sourceQuery: "22_fact_ct_purchase_order.sql",
+                        sourceView: "CT_P2_Pending_By_Vendor",
+                        records: [row],
+                        columns: poColumns,
+                      })
+                    }
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        event.currentTarget.click();
+                      }
+                    }}
+                  >
                     <td><strong>{rowText(row, "vendor_name")}</strong></td>
                     <td>{rowText(row, "item_name")}</td>
                     <td>{rowText(row, "category_name")}</td>
@@ -833,7 +1248,35 @@ export function ProcurementPage({
                 </thead>
                 <tbody>
                   {breachRows.slice(0, 14).map((row, index) => (
-                    <tr key={`${rowText(row, "po_number")}-${rowText(row, "item_code")}-${index}`}>
+                    <tr
+                      key={`${rowText(row, "po_number")}-${rowText(row, "item_code")}-${index}`}
+                      className="is-drillable"
+                      tabIndex={0}
+                      onClick={() =>
+                        openEvidence({
+                          reportId: "p2-breach",
+                          criteria: combineZohoCriteria(
+                            poCriteria,
+                            zohoEquals("po_number", rowText(row, "po_number")),
+                            zohoEquals("item_code", rowText(row, "item_code")),
+                          ),
+                          title: rowText(row, "po_number"),
+                          subtitle: `${rowText(row, "vendor_name")} / delayed delivery`,
+                          reason:
+                            "This purchase-order line is still open after its expected delivery date and therefore requires escalation.",
+                          sourceQuery: "22_fact_ct_purchase_order.sql",
+                          sourceView: "CT_P2_Expected_Delivery_Breach",
+                          records: [row],
+                          columns: poColumns,
+                        })
+                      }
+                      onKeyDown={(event) => {
+                        if (event.key === "Enter" || event.key === " ") {
+                          event.preventDefault();
+                          event.currentTarget.click();
+                        }
+                      }}
+                    >
                       <td><strong>{rowText(row, "po_number")}</strong></td>
                       <td>{rowText(row, "vendor_name")}</td>
                       <td>{rowText(row, "item_name")}</td>
@@ -850,6 +1293,10 @@ export function ProcurementPage({
           )}
         </PortalPanel>
       </div>
+      <EvidenceDrawer
+        context={evidence}
+        onClose={() => setEvidence(null)}
+      />
     </div>
   );
 }

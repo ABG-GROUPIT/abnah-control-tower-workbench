@@ -27,18 +27,22 @@ report may still use.
 ```text
 Zoho Query Tables
         |
-        | authenticated metadata + asynchronous JSON exports
+        +-- authenticated metadata + asynchronous JSON exports
         v
 Supabase Edge Function
         |
-        | approved rows for selected page and date range
+        +-- approved rows and secured visual URL handoff
         v
-GitHub Pages custom control tower
+GitHub Pages hybrid control tower
+        |
+        +-- custom KPI, action, evidence and detail surfaces
+        +-- selected Zoho-native map, bar and line views
 ```
 
-Zoho dashboards remain native validation surfaces. The production custom
-portal does not embed the Zoho dashboard, individual reports, KPI Widgets or
-Zoho filter UI.
+Zoho dashboards remain native validation and fallback surfaces. The production
+portal does not place a whole dashboard iframe behind each custom page. It
+embeds selected individual views where Zoho rendering is stronger and uses API
+rows for the custom operational surfaces.
 
 KPI Widgets remain dashboard-only. Saved chart, pivot, summary and tabular
 views should still be created because they validate the business logic in Zoho,
@@ -100,19 +104,22 @@ For every KPI/report:
 
 ## URL Handoff
 
-No dashboard or individual-report URL is required for the custom control tower.
-Do not commit public `open-view` links as production configuration.
+The Query Table API is sufficient for KPI cards, custom action queues and
+underlying-data tables. The hybrid native visual slots additionally require
+secured Zoho view URLs.
 
-For local QA only:
+1. Share each saved view with **Access with Login** for the approved viewer.
+2. Start from `config/zoho-secured-embed-handoff.example.json`.
+3. Populate all 19 report slots and four dashboard fallback slots.
+4. Store the completed v4 handoff through the authenticated Supabase `/config`
+   endpoint; keep the committed template blank.
+5. The portal embeds `p1-risk-map`, `p2-funnel` and `p2-price-trend`.
+6. Other report URLs open from evidence drilldowns; dashboard URLs remain
+   external page fallbacks.
 
-1. Copy `config/zoho-reference-links.example.json` to
-   `config/zoho-reference-links.local.json`.
-2. Paste dashboard links or report links into the local file.
-3. Use them only to compare Zoho output with the custom portal.
-4. Keep the local file uncommitted.
-
-The old `abnah-zoho-view-handoff/v4` files remain backward-compatible developer
-artifacts. They are not the final runtime integration.
+Do not commit public `open-view` links or use them as the authentication
+boundary. The `abnah-zoho-view-handoff/v4` contract is the production visual
+handoff; it contains URLs only, never credentials or report rows.
 
 ## Authentication
 

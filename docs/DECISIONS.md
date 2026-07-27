@@ -62,4 +62,8 @@ KPI calculations should use the most detailed stable facts. Summary and report-l
 
 ## D-015: Zoho First, Custom Shell by Capability Test
 
-Build and validate the data model, calculations, standard visuals, drilldowns, and exports in Zoho Analytics first. Use embedded or white-label Zoho inside a custom shell only when a documented test shows the native portal cannot meet the required action queue, RAG interaction, map, or presentation behavior.
+Build and validate the data model, calculations, standard visuals, drilldowns,
+and exports in Zoho Analytics first. The approved portal is hybrid: use secured
+Zoho-native views for the outlet map and standard bar/line visuals, and use API
+rows for custom KPI, action queue, evidence and detail-table behavior. Keep
+whole dashboards as external fallbacks rather than the custom page body.

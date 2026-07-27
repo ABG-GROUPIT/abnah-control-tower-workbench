@@ -248,10 +248,7 @@ function bearerToken(request: Request) {
 }
 
 function canConfigure(row: SessionRow, environment: RuntimeEnvironment) {
-  return (
-    environment.adminEmails.size === 0 ||
-    environment.adminEmails.has(row.email.toLowerCase())
-  );
+  return environment.adminEmails.has(row.email.toLowerCase());
 }
 
 function publicSession(row: SessionRow, environment: RuntimeEnvironment) {

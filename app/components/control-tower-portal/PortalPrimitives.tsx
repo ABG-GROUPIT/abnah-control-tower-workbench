@@ -1,5 +1,31 @@
+import {
+  ArrowUpRight,
+  ChartNoAxesCombined,
+  ChevronRight,
+  Database,
+  ExternalLink,
+  Layers3,
+  X,
+} from "lucide-react";
+import { useEffect, type ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
-import type { ReactNode } from "react";
+
+export interface EvidenceColumn {
+  key: string;
+  label: string;
+  render?: (record: Record<string, unknown>) => ReactNode;
+}
+
+export interface EvidenceContext {
+  title: string;
+  subtitle: string;
+  reason: string;
+  sourceQuery: string;
+  sourceView: string;
+  sourceUrl?: string;
+  records: Array<Record<string, unknown>>;
+  columns: EvidenceColumn[];
+}
 
 export function MetricCard({
   title,
@@ -7,22 +33,67 @@ export function MetricCard({
   detail,
   icon: Icon,
   tone = "default",
+  onInspect,
 }: {
   title: string;
   value: string;
   detail: string;
   icon: LucideIcon;
   tone?: "default" | "danger" | "warning" | "success";
+  onInspect?: () => void;
 }) {
-  return (
-    <article className={`ct-metric-card tone-${tone}`}>
+  const content = (
+    <>
       <header>
         <span>{title}</span>
-        <Icon aria-hidden="true" size={16} />
+        <span className="ct-metric-icon">
+          <Icon aria-hidden="true" size={16} />
+        </span>
       </header>
       <strong>{value}</strong>
-      <p>{detail}</p>
-    </article>
+      <footer>
+        <p>{detail}</p>
+        {onInspect ? <ChevronRight aria-hidden="true" size={14} /> : null}
+      </footer>
+    </>
+  );
+
+  return onInspect ? (
+    <button
+      type="button"
+      className={`ct-metric-card tone-${tone} is-interactive`}
+      onClick={onInspect}
+      title={`Inspect ${title}`}
+    >
+      {content}
+    </button>
+  ) : (
+    <article className={`ct-metric-card tone-${tone}`}>{content}</article>
+  );
+}
+
+export function ExecutiveBrief({
+  label,
+  title,
+  detail,
+  tone = "neutral",
+  action,
+}: {
+  label: string;
+  title: string;
+  detail: string;
+  tone?: "neutral" | "danger" | "warning";
+  action?: ReactNode;
+}) {
+  return (
+    <section className={`ct-executive-brief tone-${tone}`}>
+      <span>{label}</span>
+      <div>
+        <strong>{title}</strong>
+        <p>{detail}</p>
+      </div>
+      {action ? <aside>{action}</aside> : null}
+    </section>
   );
 }
 
@@ -32,12 +103,14 @@ export function PortalPanel({
   badge,
   children,
   className = "",
+  action,
 }: {
   title: string;
   subtitle: string;
   badge?: string;
   children: ReactNode;
   className?: string;
+  action?: ReactNode;
 }) {
   return (
     <section className={`ct-data-panel ${className}`.trim()}>
@@ -46,9 +119,88 @@ export function PortalPanel({
           <h2>{title}</h2>
           <p>{subtitle}</p>
         </div>
-        {badge ? <span>{badge}</span> : null}
+        <div className="ct-panel-actions">
+          {badge ? <span>{badge}</span> : null}
+          {action}
+        </div>
       </header>
       <div className="ct-panel-body">{children}</div>
+    </section>
+  );
+}
+
+export function HybridVisualPanel({
+  title,
+  subtitle,
+  badge,
+  viewName,
+  embedUrl,
+  sourceUrl,
+  children,
+  onInspect,
+  className = "",
+}: {
+  title: string;
+  subtitle: string;
+  badge?: string;
+  viewName: string;
+  embedUrl?: string;
+  sourceUrl?: string;
+  children: ReactNode;
+  onInspect?: () => void;
+  className?: string;
+}) {
+  const connected = Boolean(embedUrl);
+  return (
+    <section className={`ct-data-panel ct-hybrid-panel ${className}`.trim()}>
+      <header>
+        <div>
+          <span className="ct-panel-kicker">
+            <ChartNoAxesCombined aria-hidden="true" size={12} />
+            {connected ? "Zoho native visual" : "Validation fallback"}
+          </span>
+          <h2>{title}</h2>
+          <p>{subtitle}</p>
+        </div>
+        <div className="ct-panel-actions">
+          {badge ? <span>{badge}</span> : null}
+          {onInspect ? (
+            <button type="button" onClick={onInspect} title="Inspect underlying data">
+              <Layers3 aria-hidden="true" size={14} />
+            </button>
+          ) : null}
+          {sourceUrl ? (
+            <a
+              href={sourceUrl}
+              target="_blank"
+              rel="noreferrer"
+              title={`Open ${viewName} in Zoho`}
+            >
+              <ExternalLink aria-hidden="true" size={14} />
+            </a>
+          ) : null}
+        </div>
+      </header>
+      {connected ? (
+        <div className="ct-zoho-frame">
+          <iframe
+            title={viewName}
+            src={embedUrl}
+            loading="lazy"
+            allow="fullscreen"
+            referrerPolicy="strict-origin-when-cross-origin"
+          />
+        </div>
+      ) : (
+        <div className="ct-hybrid-fallback">
+          {children}
+          <div className="ct-visual-source-note">
+            <Database aria-hidden="true" size={13} />
+            <span>{viewName}</span>
+            <small>Connect the secured Zoho view to replace this fallback.</small>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
@@ -95,5 +247,117 @@ export function SourceBadge({
     <span className={`ct-source-badge${estimated ? " is-estimated" : ""}`}>
       {estimated ? "Estimated evidence" : "Source-linked"}
     </span>
+  );
+}
+
+function displayValue(value: unknown) {
+  if (value === null || value === undefined || value === "") return "Not available";
+  if (typeof value === "boolean") return value ? "Yes" : "No";
+  return String(value);
+}
+
+export function EvidenceDrawer({
+  context,
+  onClose,
+}: {
+  context: EvidenceContext | null;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    if (!context) return;
+    const handleKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+    globalThis.addEventListener("keydown", handleKey);
+    return () => globalThis.removeEventListener("keydown", handleKey);
+  }, [context, onClose]);
+
+  if (!context) return null;
+  return (
+    <div
+      className="ct-evidence-backdrop"
+      role="presentation"
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget) onClose();
+      }}
+    >
+      <aside
+        className="ct-evidence-drawer"
+        role="dialog"
+        aria-modal="true"
+        aria-label={`${context.title} underlying evidence`}
+      >
+        <header>
+          <div>
+            <span>
+              <Layers3 aria-hidden="true" size={13} />
+              UNDERLYING EVIDENCE
+            </span>
+            <h2>{context.title}</h2>
+            <p>{context.subtitle}</p>
+          </div>
+          <button type="button" onClick={onClose} title="Close drilldown">
+            <X aria-hidden="true" size={18} />
+          </button>
+        </header>
+
+        <section className="ct-evidence-reason">
+          <strong>Why this is shown</strong>
+          <p>{context.reason}</p>
+        </section>
+
+        <section className="ct-evidence-lineage">
+          <div>
+            <span>Query Table</span>
+            <strong>{context.sourceQuery}</strong>
+          </div>
+          <div>
+            <span>Zoho view</span>
+            <strong>{context.sourceView}</strong>
+          </div>
+          <div>
+            <span>Rows in scope</span>
+            <strong>{context.records.length}</strong>
+          </div>
+        </section>
+
+        <div className="ct-evidence-toolbar">
+          <span>Selected scope records</span>
+          {context.sourceUrl ? (
+            <a href={context.sourceUrl} target="_blank" rel="noreferrer">
+              Open governed view
+              <ArrowUpRight aria-hidden="true" size={14} />
+            </a>
+          ) : (
+            <span className="is-pending">Zoho view awaiting connection</span>
+          )}
+        </div>
+
+        <div className="ct-evidence-table" role="region" tabIndex={0}>
+          <table>
+            <thead>
+              <tr>
+                {context.columns.map((column) => (
+                  <th key={column.key}>{column.label}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {context.records.slice(0, 100).map((record, index) => (
+                <tr key={index}>
+                  {context.columns.map((column) => (
+                    <td key={column.key}>
+                      {column.render
+                        ? column.render(record)
+                        : displayValue(record[column.key])}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </aside>
+    </div>
   );
 }

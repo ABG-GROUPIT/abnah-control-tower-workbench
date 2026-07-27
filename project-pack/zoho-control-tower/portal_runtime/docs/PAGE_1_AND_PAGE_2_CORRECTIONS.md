@@ -303,7 +303,9 @@ The live dashboard audit that produced these corrections is documented in
 
 Zoho remains the governed analytics and data-refresh layer. The GitHub Pages
 portal renders the ABNAH presentation from allowlisted Query Table rows through
-the secured gateway. It does not embed the Zoho dashboard UI.
+the secured gateway. It does not embed a complete Zoho dashboard UI; selected
+map, bar and line views can render in secured hybrid slots while custom KPIs,
+actions and evidence remain API-backed.
 
 The complete production authentication and deployment procedure is in
 `11_GITHUB_PAGES_ZOHO_AUTH_SETUP.md` inside the final implementation pack.

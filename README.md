@@ -65,8 +65,9 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
   model/delivery decision.
 - `Live portal`: a separate `/portal/` delivery page with custom Page 1 and
   Page 2 operational views, verified Zoho OAuth access, date-range and
-  page-specific filters, direct allowlisted Query Table exports, and explicit
-  model-derived action provenance. Pages 3 and 4 are marked `Coming soon`.
+  page-specific filters, direct allowlisted Query Table exports, selected
+  Zoho-native map/bar/line views, and row-level evidence with exact governed
+  view links. Pages 3 and 4 are marked `Coming soon`.
 - `Data quality`: severity-tiered issue register, passed-control ledger, safe
   hosted evidence, and optional in-browser loading of the private local packet.
 - `Architecture`: one-object-at-a-time KPI/chart stories plus a separate
@@ -85,7 +86,8 @@ The GitHub Pages build publishes the complete library while continuing to
 exclude screenshots, real POSist exports, local audit rows, and credentials.
 GitHub Pages is the only frontend host. The authenticated `/portal/` delegates
 Zoho OAuth, workspace verification, opaque sessions, and allowlisted Query
-Table exports to the Supabase Edge Function under `supabase/`. See
+Table exports plus the URL-only hybrid visual handoff to the Supabase Edge
+Function under `supabase/`. See
 `docs/ZOHO_PORTAL_RUNTIME.md`.
 
 ## Start Here

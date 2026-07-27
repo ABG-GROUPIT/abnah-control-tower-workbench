@@ -3,9 +3,11 @@
 ## Product Boundary
 
 Zoho dashboards are the governed build and validation surfaces. The GitHub
-Pages control tower does not embed Zoho dashboard UI or depend on shared report
-URLs. Supabase verifies Zoho access, exports allowlisted Query Table rows, and
-the custom frontend applies the same field-level filter contract.
+Pages control tower does not embed a complete Zoho dashboard UI. Supabase
+verifies Zoho access, exports allowlisted Query Table rows, and stores secured
+individual-view URLs for selected native visuals and governed drilldowns. The
+custom frontend applies the same field-level filter contract to API-backed
+surfaces.
 
 A dashboard user filter affects a KPI or report only after that object has been
 mapped to a compatible physical field. A report-specific filter affects only

@@ -1,7 +1,9 @@
 "use client";
 
 import {
+  AlertTriangle,
   ArrowLeft,
+  ChartNoAxesCombined,
   Database,
   ExternalLink,
   LoaderCircle,
@@ -9,8 +11,12 @@ import {
   LogOut,
   RefreshCw,
   ShieldCheck,
+  ShoppingCart,
+  Table2,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import portalSnapshot from "@/config/zoho-portal.json";
 import {
   clearPortalSessionToken,
   consumePortalCallback,
@@ -18,10 +24,16 @@ import {
   getControlTowerPageData,
   getPortalAuthSession,
   getPortalBackendStatus,
+  getSharedPortalConfig,
   isPortalBackendConfigured,
   portalSignInUrl,
   revokePortalSession,
 } from "../lib/supabase-portal-client";
+import { handoffToUrlMaps } from "../lib/zoho-portal-handoff";
+import type {
+  ZohoPortalConfig,
+  ZohoPortalUrlMaps,
+} from "../lib/zoho-portal-types";
 import type {
   PortalDemoData,
   PortalPageData,
@@ -41,6 +53,7 @@ type AccessState =
 
 const pageDefinitions: Array<{
   id: NavigationPage;
+  icon: LucideIcon;
   shortLabel: string;
   label: string;
   title: string;
@@ -49,6 +62,7 @@ const pageDefinitions: Array<{
 }> = [
   {
     id: "p1",
+    icon: AlertTriangle,
     shortLabel: "Risk",
     label: "Risk Action Center",
     title: "Risk Action Center",
@@ -57,6 +71,7 @@ const pageDefinitions: Array<{
   },
   {
     id: "p2",
+    icon: ShoppingCart,
     shortLabel: "Procurement",
     label: "Procurement & Vendor",
     title: "Procurement, Vendor & Capital Control",
@@ -65,6 +80,7 @@ const pageDefinitions: Array<{
   },
   {
     id: "p3",
+    icon: ChartNoAxesCombined,
     shortLabel: "Consumption",
     label: "Consumption & Menu",
     title: "Consumption Variance & Menu Profitability",
@@ -73,6 +89,7 @@ const pageDefinitions: Array<{
   },
   {
     id: "p4",
+    icon: Table2,
     shortLabel: "Explorer",
     label: "Explorer & Quality",
     title: "SCM Descriptive Explorer & Data Quality",
@@ -80,6 +97,24 @@ const pageDefinitions: Array<{
     available: false,
   },
 ];
+
+const portalDefinition = portalSnapshot as unknown as ZohoPortalConfig;
+
+function staticVisualMaps(): ZohoPortalUrlMaps {
+  return {
+    reports: Object.fromEntries(
+      portalDefinition.pages.flatMap((page) =>
+        page.panels.map((panel) => [panel.id, panel.embedUrl || ""]),
+      ),
+    ),
+    dashboards: Object.fromEntries(
+      portalDefinition.pages.map((page) => [
+        page.id,
+        page.dashboardEmbedUrl || "",
+      ]),
+    ),
+  };
+}
 
 function currentMonthRange() {
   const now = new Date();
@@ -200,6 +235,8 @@ export function EmbeddedControlTowerPortal({
   const [dataMessage, setDataMessage] = useState("");
   const [refreshVersion, setRefreshVersion] = useState(0);
   const [requestRange, setRequestRange] = useState(currentMonthRange);
+  const [visualUrls, setVisualUrls] =
+    useState<ZohoPortalUrlMaps>(staticVisualMaps);
 
   useEffect(() => {
     let active = true;
@@ -272,6 +309,32 @@ export function EmbeddedControlTowerPortal({
       active = false;
     };
   }, []);
+
+  useEffect(() => {
+    let active = true;
+    if (accessState !== "authenticated") {
+      return () => {
+        active = false;
+      };
+    }
+    void getSharedPortalConfig()
+      .then((envelope) => {
+        if (!active) return;
+        setVisualUrls(
+          handoffToUrlMaps(envelope.handoff, portalDefinition),
+        );
+      })
+      .catch(() => {
+        if (!active) return;
+        setVisualUrls(staticVisualMaps());
+        setDataMessage(
+          "Zoho visual links could not be loaded. API-backed tables remain available.",
+        );
+      });
+    return () => {
+      active = false;
+    };
+  }, [accessState]);
 
   const loadPage = useCallback(
     async (page: PortalPageId) => {
@@ -347,6 +410,7 @@ export function EmbeddedControlTowerPortal({
     () => `${selectedPage.available ? "Available" : "Planned"} / Page ${pageDefinitions.findIndex((page) => page.id === activePage) + 1}`,
     [activePage, selectedPage.available],
   );
+  const activeDashboardUrl = visualUrls.dashboards[activePage] ?? "";
 
   if (!canShowPortal) {
     return <AccessGate state={accessState} message={accessMessage} />;
@@ -405,6 +469,17 @@ export function EmbeddedControlTowerPortal({
             Data Atlas
             <ExternalLink aria-hidden="true" size={14} />
           </a>
+          {activeDashboardUrl ? (
+            <a
+              href={activeDashboardUrl}
+              target="_blank"
+              rel="noreferrer"
+              title="Open the governed Zoho dashboard"
+            >
+              Zoho dashboard
+              <ExternalLink aria-hidden="true" size={14} />
+            </a>
+          ) : null}
           {accessState === "authenticated" ? (
             <button type="button" onClick={() => void signOut()} title="Sign out">
               <LogOut aria-hidden="true" size={16} />
@@ -430,52 +505,62 @@ export function EmbeddedControlTowerPortal({
         </div>
       ) : null}
 
-      <div className="ct-page-stage">
-        {selectedPage.available ? (
-          currentData ? (
-            activePage === "p1" ? (
-              <RiskActionPage
-                datasets={currentData}
-                sourceLabel={sourceLabel}
-                range={requestRange}
-                onRangeChange={setRequestRange}
-              />
+      <div className="ct-workspace-frame">
+        <nav className="ct-page-navigation" aria-label="Control tower pages">
+          {pageDefinitions.map((page, index) => {
+            const Icon = page.icon;
+            return (
+              <button
+                type="button"
+                key={page.id}
+                className={page.id === activePage ? "is-active" : ""}
+                onClick={() => setActivePage(page.id)}
+              >
+                <span>
+                  <Icon aria-hidden="true" size={16} />
+                  <small>{String(index + 1).padStart(2, "0")}</small>
+                </span>
+                <strong>{page.shortLabel}</strong>
+                <small>{page.available ? page.label : "Coming soon"}</small>
+              </button>
+            );
+          })}
+        </nav>
+
+        <div className="ct-page-stage">
+          {selectedPage.available ? (
+            currentData ? (
+              activePage === "p1" ? (
+                <RiskActionPage
+                  datasets={currentData}
+                  sourceLabel={sourceLabel}
+                  range={requestRange}
+                  onRangeChange={setRequestRange}
+                  visualUrls={visualUrls}
+                />
+              ) : (
+                <ProcurementPage
+                  datasets={currentData}
+                  sourceLabel={sourceLabel}
+                  range={requestRange}
+                  onRangeChange={setRequestRange}
+                  visualUrls={visualUrls}
+                />
+              )
             ) : (
-              <ProcurementPage
-                datasets={currentData}
-                sourceLabel={sourceLabel}
-                range={requestRange}
-                onRangeChange={setRequestRange}
-              />
+              <div className="ct-loading-stage">
+                <LoaderCircle aria-hidden="true" className="ct-spin" size={28} />
+                <span>Loading control-tower data</span>
+              </div>
             )
           ) : (
-            <div className="ct-loading-stage">
-              <LoaderCircle aria-hidden="true" className="ct-spin" size={28} />
-              <span>Loading control-tower data</span>
-            </div>
-          )
-        ) : (
-          <ComingSoon
-            title={selectedPage.title}
-            subtitle={selectedPage.subtitle}
-          />
-        )}
+            <ComingSoon
+              title={selectedPage.title}
+              subtitle={selectedPage.subtitle}
+            />
+          )}
+        </div>
       </div>
-
-      <nav className="ct-page-navigation" aria-label="Control tower pages">
-        {pageDefinitions.map((page, index) => (
-          <button
-            type="button"
-            key={page.id}
-            className={page.id === activePage ? "is-active" : ""}
-            onClick={() => setActivePage(page.id)}
-          >
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <strong>{page.shortLabel}</strong>
-            <small>{page.available ? page.label : "Coming soon"}</small>
-          </button>
-        ))}
-      </nav>
     </div>
   );
 }

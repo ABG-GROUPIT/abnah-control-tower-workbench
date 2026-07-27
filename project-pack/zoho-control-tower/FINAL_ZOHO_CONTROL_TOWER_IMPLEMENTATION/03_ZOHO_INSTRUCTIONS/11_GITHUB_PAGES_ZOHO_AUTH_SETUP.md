@@ -6,8 +6,10 @@ The production frontend is only:
 
 `https://abg-groupit.github.io/abnah-control-tower-workbench/portal/`
 
-It is a custom ABNAH interface. It does not place the Zoho dashboard, Zoho
-tables, or Zoho filters inside an iframe.
+It is a custom ABNAH interface with selected Zoho-native visual slots. The
+portal does not place an entire Zoho dashboard behind each page. KPI cards,
+action queues, evidence drawers and detail tables are custom; the P1 map and
+the P2 funnel and price trend can use secured individual Zoho views.
 
 GitHub Pages serves static HTML, CSS and JavaScript. A Supabase Edge Function is
 the only backend. It performs Zoho sign-in, verifies access to the approved
@@ -20,10 +22,10 @@ Pages 1 and 2 are implemented. Pages 3 and 4 deliberately show `Coming soon`.
 
 | Layer | Responsibility | Sensitive material |
 |---|---|---|
-| GitHub Pages | Custom filters, cards, map, charts, tables and navigation | Opaque session handle in tab `sessionStorage` |
-| Edge Function | Zoho OAuth, workspace check, token refresh, allowlisted data export | Client secret and encrypted Zoho tokens |
-| Supabase Postgres | One-time OAuth states and encrypted sessions | No POSist/Zoho report rows |
-| Zoho Analytics | Governed Query Tables and workspace membership | Operational analytics data |
+| GitHub Pages | Custom filters, cards, actions, drilldowns, visual slots and navigation | Opaque session handle in tab `sessionStorage` |
+| Edge Function | Zoho OAuth, workspace check, token refresh, allowlisted exports and URL-only visual handoff | Client secret and encrypted Zoho tokens |
+| Supabase Postgres | One-time OAuth states, encrypted sessions and secured Zoho URLs | No POSist/Zoho report rows |
+| Zoho Analytics | Governed Query Tables, native map/bar/line views and workspace membership | Operational analytics data |
 
 The browser never receives the Zoho client secret, refresh token, database
 service-role key, or token-encryption key. The gateway does not persist exported
@@ -81,7 +83,8 @@ There is no production bypass. A local synthetic preview is available only on
 Zoho Analytics API access is included in paid plans. API units depend on the
 account plan, so confirm the current allowance under **Subscription** before
 production load testing. This portal uses metadata reads plus JSON bulk exports;
-it does not require Enterprise-only white-label embedding.
+selected visuals use manually supplied secured view URLs. It does not require
+Enterprise-only white-label embedding.
 
 ## One-Time Setup
 
@@ -129,9 +132,10 @@ The function requests:
 - `ZohoAnalytics.data.read`
 - `profile.userinfo.READ`
 
-`ZohoAnalytics.embed.read` is intentionally not requested. The portal renders
-its own interface from allowlisted Query Table rows and does not embed a Zoho
-dashboard.
+`ZohoAnalytics.embed.read` is intentionally not requested. That scope belongs
+to the Embed URL API and is not required for manually supplied **Access with
+Login** view URLs. Operational rows still come through
+`ZohoAnalytics.data.read`.
 
 ### 3. Create the local secret file
 
@@ -143,6 +147,7 @@ ZOHO_OAUTH_CLIENT_ID=<CLIENT_ID>
 ZOHO_OAUTH_CLIENT_SECRET=<CLIENT_SECRET>
 ZOHO_ALLOWED_WORKSPACE_ID=333330000004099001
 ZOHO_TOKEN_ENCRYPTION_KEY=<RANDOM_KEY>
+ZOHO_PORTAL_ADMIN_EMAILS=<APPROVED_EDITOR_EMAIL>
 PORTAL_ALLOWED_ORIGIN=https://abg-groupit.github.io
 PORTAL_RETURN_URL=https://abg-groupit.github.io/abnah-control-tower-workbench/portal/
 ZOHO_ACCOUNTS_BASE_URL=https://accounts.zoho.in
@@ -248,28 +253,44 @@ If `configured` is false, read `missingEnvironment` and add only those values in
 
 ## Dashboard And Report URL Handoff
 
-No Zoho dashboard or individual-report URL is required to render the custom
-portal. The runtime resolves the allowlisted Query Tables by name and exports
-their rows through the authenticated Zoho Analytics API.
+Query Table rows remain the source for custom KPIs, actions and evidence.
+Selected Zoho-native visuals and governed-view drilldowns use the versioned URL
+handoff stored in Supabase.
 
-The links created with **Share > Open View** are public presentation links.
-They do not prove that a user signed in with an approved Zoho account and must
-not be used as the production authentication boundary.
+1. Share each saved report using **Access with Login** for the approved company
+   viewer population.
+2. Start from `config/zoho-secured-embed-handoff.example.json`.
+3. Populate the 19 `securedViewUrl` slots and four dashboard fallback slots.
+4. Submit the file through the authenticated Supabase `/config` endpoint using
+   a user allowed by `ZOHO_PORTAL_ADMIN_EMAILS`.
+5. Keep the committed example blank.
 
-Use dashboard/report URLs only as optional QA references:
+Current embedded slots:
 
-1. Copy `config/zoho-reference-links.example.json` to
-   `config/zoho-reference-links.local.json`.
-2. Paste the Page 1 and Page 2 dashboard links into the local file.
-3. Add individual report links only when a developer needs to compare a
-   specific Zoho rendering with the custom portal.
-4. Do not commit the local file. It is already ignored by Git.
-5. Do not add OAuth client secrets, access tokens, refresh tokens, or report
-   rows to either file.
+| Slot | Zoho view |
+|---|---|
+| `p1-risk-map` | `CT_P1_Outlet_Risk_Map` |
+| `p2-funnel` | `CT_P2_Procurement_Funnel` |
+| `p2-price-trend` | `CT_P2_Ingredient_Price_Trend` |
 
-The production handoff therefore consists of the Query Table names already
-committed in code, the Supabase project reference, and the OAuth environment
-secrets stored in Supabase. It does not consist of 19 pasted embed URLs.
+The other report URLs open from the evidence drawer. Dashboard URLs are
+external page fallbacks. If a native slot is unconfigured, the portal shows a
+factual validation fallback and labels it as such.
+
+Connected individual views receive Zoho's supported, URL-encoded
+`ZOHO_CRITERIA` parameter for compatible physical fields. The P1 map receives
+snapshot/outlet/category/owner criteria; the P2 funnel receives PO
+date/outlet/category/vendor/status/material criteria; the P2 price trend
+receives receipt date/outlet/category/vendor/material criteria. Region and
+other fields absent from a target view are intentionally not sent.
+
+Do not use a public presentation link as the production authentication
+boundary. Never add OAuth client secrets, access tokens, refresh tokens,
+passwords or report rows to the handoff.
+
+The outer Zoho OAuth session proves workspace access for the API-backed portal.
+A cross-origin secured Zoho iframe can separately request the user's Zoho web
+session. Test this in the intended company browser profile before presentation.
 
 ## Product Behavior
 

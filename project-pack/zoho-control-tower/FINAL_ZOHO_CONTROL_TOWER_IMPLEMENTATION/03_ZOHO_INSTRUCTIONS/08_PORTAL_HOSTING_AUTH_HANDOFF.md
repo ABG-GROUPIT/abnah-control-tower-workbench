@@ -25,7 +25,8 @@ GitHub Pages owns:
 
 - the custom four-page presentation;
 - date, outlet and page-specific controls;
-- client-side rendering of approved rows;
+- client-side rendering of approved KPI, action and detail rows;
+- placement of selected secured Zoho-native visual views;
 - refresh, navigation and sign-out.
 
 Supabase owns:
@@ -35,6 +36,7 @@ Supabase owns:
 - encrypted access and refresh tokens;
 - opaque portal sessions;
 - allowlisted Query Table exports.
+- the versioned, URL-only Zoho visual handoff.
 
 Zoho owns:
 
@@ -76,15 +78,16 @@ Store these as Supabase Edge Function secrets:
 - `ZOHO_OAUTH_CLIENT_SECRET`
 - `ZOHO_ALLOWED_WORKSPACE_ID`
 - `ZOHO_TOKEN_ENCRYPTION_KEY`
+- `ZOHO_PORTAL_ADMIN_EMAILS`
 - `PORTAL_ALLOWED_ORIGIN`
 - `PORTAL_RETURN_URL`
 
 The complete commands and India data-centre URLs are in the root
 `docs/ZOHO_PORTAL_RUNTIME.md`.
 
-## Query Table Handoff
+## Data And Visual Handoff
 
-The runtime handoff is already represented in code:
+The data handoff is represented in code:
 
 - Page 1 and Page 2 Query Table names in
   `supabase/functions/_shared/zoho-data.ts`;
@@ -93,14 +96,24 @@ The runtime handoff is already represented in code:
 - public backend location in `config/supabase-portal.json`;
 - secrets in Supabase, never GitHub.
 
-No individual report URL, dashboard URL, iframe source or API token must be
-pasted into the production frontend.
+The visual handoff uses
+`config/zoho-secured-embed-handoff.example.json` as its blank contract. An
+approved editor stores the completed 19 report URLs and four dashboard fallback
+URLs through the authenticated Supabase `/config` endpoint. The URLs are not
+hardcoded into the GitHub Pages bundle.
+
+The portal currently embeds the P1 outlet map, P2 procurement funnel and P2
+price trend. Other configured views open from the underlying-evidence drawer.
+The full page dashboards remain external fallbacks.
+
+No API token, OAuth secret, password or operational row is pasted into the
+frontend or URL handoff.
 
 ## Optional Local References
 
-Use `config/zoho-reference-links.local.json` only for developer QA. It means **this same laptop**
-or developer checkout, not shared production configuration.
-The file is ignored by Git.
+Use `config/zoho-reference-links.local.json` only for developer QA. It means
+**this same laptop** or developer checkout, not shared production
+configuration. The file is ignored by Git.
 
 ## Handoff Checklist
 
@@ -111,5 +124,7 @@ The file is ignored by Git.
 5. `/status` returns `configured: true`.
 6. An allowed Zoho user can sign in and load Page 1 and Page 2.
 7. A user without workspace access is rejected.
-8. Sign-out removes all visible data.
-9. No screenshot, row export, credential or public report link is committed.
+8. The v4 handoff is saved and the three native visual slots render.
+9. Every evidence drawer opens its exact governed Zoho view.
+10. Sign-out removes all visible data.
+11. No screenshot, row export, credential or public report link is committed.

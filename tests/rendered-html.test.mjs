@@ -28,6 +28,8 @@ test("builds the editable ABNAH workspace for GitHub Pages", async () => {
   const bundle = await pagesBundleText();
   assert.match(html, /<title>ABNAH Control Tower Workbench<\/title>/i);
   assert.match(html, /Content-Security-Policy/);
+  assert.match(html, /frame-src https:\/\/analytics\.zoho\.in/);
+  assert.doesNotMatch(html, /frame-src\s+\*/);
   assert.match(bundle, /Schema Workspace/);
   assert.match(bundle, /Discovery/);
   assert.match(bundle, /API validation/);
@@ -60,7 +62,10 @@ test("publishes the secured delivery portal as a GitHub Pages route", async () =
   assert.match(bundle, /Portal access is being prepared/);
   assert.match(bundle, /Coming soon/);
   assert.doesNotMatch(bundle, /Continue after sign-in/);
-  assert.doesNotMatch(bundle, /<iframe/i);
+  assert.match(bundle, /UNDERLYING EVIDENCE/);
+  assert.match(bundle, /Zoho native visual/);
+  assert.match(bundle, /ZOHO_CRITERIA/);
+  assert.match(bundle, /Connect the secured Zoho view/);
 });
 
 test("ships the secured data gateway and backward-compatible handoff contract", async () => {
@@ -125,6 +130,7 @@ test("ships the secured data gateway and backward-compatible handoff contract", 
   );
   assert.match(runtime.functionBaseUrl, /\.supabase\.co\/functions\/v1\/abnah-portal$/);
   assert.match(edgeFunction, /ZOHO_ALLOWED_WORKSPACE_ID/);
+  assert.match(edgeFunction, /ZOHO_PORTAL_ADMIN_EMAILS/);
   assert.match(edgeFunction, /abnah_portal_sessions/);
   assert.match(edgeFunction, /fetchControlTowerPageData/);
   assert.match(dataGateway, /27_fact_ct_inventory_risk\.sql/);
@@ -136,6 +142,7 @@ test("ships the secured data gateway and backward-compatible handoff contract", 
   assert.match(dataGateway, /Promise\.allSettled/);
   assert.match(migration, /enable row level security/);
   assert.match(migration, /revoke all .* from anon, authenticated/);
+  assert.doesNotMatch(edgeFunction, /adminEmails\.size === 0/);
   assert.match(client, /sessionStorage/);
   assert.match(client, /`Bearer \$\{token\}`/);
   assert.doesNotMatch(client, /\/api\/zoho-auth|\/api\/zoho-portal-config/);
@@ -247,12 +254,12 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   assert.equal(lineage.kpis.filter((kpi) => kpi.approvalStatus === "partial").length, 1);
   assert.equal(lineage.nodes.length, 0);
   assert.equal(lineage.edges.length, 0);
-  assert.equal(projectPack.summary.files, 766);
+  assert.equal(projectPack.summary.files, 767);
   assert.equal(projectPack.summary.csvFiles, 349);
   assert.equal(projectPack.summary.sqlFiles, 133);
   assert.equal(projectPack.summary.guideFiles, 95);
   assert.equal(projectPack.categories.length, 10);
-  assert.equal(new Set(projectPack.files.map((file) => file.path)).size, 766);
+  assert.equal(new Set(projectPack.files.map((file) => file.path)).size, 767);
   assert.ok(projectPack.files.filter((file) => file.featuredOrder !== null).length >= 6);
   assert.ok(projectPack.files.every((file) => /^[a-f0-9]{64}$/.test(file.sha256)));
   assert.doesNotMatch(projectPackText, /\.png\b|\.jpe?g\b|AppData\\Local\\Temp|Downloads\\/i);

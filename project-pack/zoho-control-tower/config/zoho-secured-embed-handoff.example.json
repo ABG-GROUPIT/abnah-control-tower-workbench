@@ -2,7 +2,7 @@
   "schema": "abnah-zoho-view-handoff/v4",
   "authMode": "zoho_secured_login",
   "integrationMode": "individual_report_views_with_dashboard_fallbacks",
-  "note": "Paste secured Zoho view URLs only. Dashboard URLs are native fallbacks; individual report URLs fill the custom control-tower layout. Never add passwords, OAuth tokens, client secrets, or report rows.",
+  "note": "Production hybrid visual handoff. Query Table API exports power custom KPI, action and evidence surfaces; approved secured Zoho view URLs power native visuals and governed-view drilldowns. Never add passwords, OAuth tokens, client secrets, or report rows.",
   "pages": {
     "p1": {
       "dashboardViewName": "CT_PAGE_1_Risk_Action_Center",
