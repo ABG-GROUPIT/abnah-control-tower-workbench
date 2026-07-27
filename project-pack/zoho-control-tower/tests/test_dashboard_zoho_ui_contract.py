@@ -68,13 +68,11 @@ class DashboardZohoUiContractTests(unittest.TestCase):
         for criterion in forbidden_ui_criteria:
             self.assertNotIn(criterion, self.text)
 
-    def test_only_five_queries_require_resave(self) -> None:
+    def test_only_three_page_two_queries_require_resave(self) -> None:
         expected = (
-            "20_fact_ct_actual_consumption.sql",
-            "21_fact_ct_consumption_variance.sql",
-            "24_fact_ct_po_receipt_line.sql",
+            "29_sum_ct_procurement_funnel.sql",
+            "30_sum_ct_vendor_scorecard.sql",
             "31_sum_ct_price_movement.sql",
-            "33_sum_ct_scm_monthly.sql",
         )
         section = self.text.split("## One-Time SQL Correction", 1)[1].split(
             "# Part 1", 1
@@ -82,9 +80,27 @@ class DashboardZohoUiContractTests(unittest.TestCase):
         for filename in expected:
             self.assertIn(f"`{filename}`", section)
         self.assertIn(
-            "Do not recreate Queries 01-19, 22-23, 25-30, 32 or 34-38.",
+            "Do not recreate the other 35 Query Tables.",
             section,
         )
+
+    def test_risky_po_uses_the_correct_date_for_each_page(self) -> None:
+        corrections = (ROOT.parents[1] / "docs" / "PAGE_1_AND_PAGE_2_CORRECTIONS.md").read_text(
+            encoding="utf-8"
+        )
+        filter_matrix = (
+            ROOT / "docs" / "ZOHO_DASHBOARD_FILTER_MAPPING_MATRIX.md"
+        ).read_text(encoding="utf-8")
+
+        for document in (corrections, filter_matrix):
+            self.assertIn(
+                "| `36_fact_ct_risky_po.sql` | `as_of_date` |",
+                document,
+            )
+            self.assertIn(
+                "| `36_fact_ct_risky_po.sql` | `po_date` |",
+                document,
+            )
 
 
 if __name__ == "__main__":

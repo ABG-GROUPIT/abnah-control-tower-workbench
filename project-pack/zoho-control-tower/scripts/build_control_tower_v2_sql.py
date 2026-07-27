@@ -1537,9 +1537,15 @@ LEFT JOIN (
 SELECT
     p."source_period_code",
     p."as_of_date",
+    p."po_date",
     p."outlet_code",
     p."outlet_name",
     p."vendor_name",
+    p."po_status",
+    p."item_code",
+    p."item_name",
+    p."category_name",
+    p."canonical_uom",
     SUM(p."gross_order_value") AS "ordered_value",
     SUM(p."processed_po_value") AS "processed_value",
     SUM(p."open_po_value") AS "pending_value",
@@ -1550,9 +1556,15 @@ FROM "FACT_CT_Purchase_Order" p
 GROUP BY
     p."source_period_code",
     p."as_of_date",
+    p."po_date",
     p."outlet_code",
     p."outlet_name",
-    p."vendor_name"
+    p."vendor_name",
+    p."po_status",
+    p."item_code",
+    p."item_name",
+    p."category_name",
+    p."canonical_uom"
 """,
     ),
     q(
@@ -1565,11 +1577,37 @@ GROUP BY
 SELECT
     v."source_period_code",
     v."as_of_date",
+    v."po_date",
     v."outlet_code",
     v."outlet_name",
     v."vendor_name",
+    v."po_status",
+    v."item_code",
+    v."item_name",
+    v."category_name",
+    v."canonical_uom",
     SUM(v."gross_order_value") AS "monthly_purchase_value",
-    SUM(v."remaining_qty" * v."unit_price") AS "open_po_value",
+    SUM(v."open_po_value") AS "open_po_value",
+    SUM(v."otif_success_flag") AS "otif_success_line_count",
+    SUM(v."eligible_closed_line_flag") AS "eligible_closed_line_count",
+    SUM(v."received_qty") AS "received_qty",
+    SUM(v."ordered_qty") AS "ordered_qty",
+    SUM(
+        CASE
+            WHEN v."eligible_closed_line_flag" = 1
+             AND v."lead_time_deviation_days" IS NOT NULL
+            THEN v."lead_time_deviation_days"
+            ELSE 0
+        END
+    ) AS "eligible_lead_time_deviation_days_total",
+    SUM(
+        CASE
+            WHEN v."eligible_closed_line_flag" = 1
+             AND v."lead_time_deviation_days" IS NOT NULL
+            THEN 1
+            ELSE 0
+        END
+    ) AS "eligible_lead_time_line_count",
     CASE
         WHEN SUM(v."eligible_closed_line_flag") <> 0
         THEN SUM(v."otif_success_flag")
@@ -1593,9 +1631,15 @@ FROM "FACT_CT_PO_Receipt_Line" v
 GROUP BY
     v."source_period_code",
     v."as_of_date",
+    v."po_date",
     v."outlet_code",
     v."outlet_name",
-    v."vendor_name"
+    v."vendor_name",
+    v."po_status",
+    v."item_code",
+    v."item_name",
+    v."category_name",
+    v."canonical_uom"
 """,
     ),
     q(
@@ -1615,14 +1659,11 @@ SELECT
     c."item_name",
     c."category_name",
     c."canonical_uom",
-    CONCAT(
-        c."outlet_code", ' | ',
-        c."vendor_name", ' | ',
-        c."item_name", ' | ',
-        c."canonical_uom"
-    ) AS "price_comparison_key",
+    c."current_purchase_qty",
+    c."current_purchase_value",
     c."current_unit_price",
     p."current_unit_price" AS "previous_unit_price",
+    c."current_unit_price" - p."current_unit_price" AS "price_change_amount",
     c."current_unit_price" - p."current_unit_price" AS "unit_price_change",
     CASE
         WHEN p."current_unit_price" IS NULL THEN 'NO_BASELINE'
@@ -1630,6 +1671,11 @@ SELECT
         WHEN c."current_unit_price" < p."current_unit_price" THEN 'DECREASE'
         ELSE 'NO_CHANGE'
     END AS "price_movement_direction",
+    CASE
+        WHEN p."current_unit_price" <> 0
+        THEN (c."current_unit_price" - p."current_unit_price") / p."current_unit_price" * 100
+        ELSE NULL
+    END AS "price_change_percent",
     CASE
         WHEN p."current_unit_price" <> 0
         THEN (c."current_unit_price" - p."current_unit_price") / p."current_unit_price" * 100
@@ -1642,7 +1688,21 @@ SELECT
             / p."current_unit_price" * 100
         )
         ELSE NULL
-    END AS "absolute_unit_price_change_percent"
+    END AS "absolute_price_change_percent",
+    CASE
+        WHEN p."current_unit_price" <> 0
+        THEN ABS(
+            (c."current_unit_price" - p."current_unit_price")
+            / p."current_unit_price" * 100
+        )
+        ELSE NULL
+    END AS "absolute_unit_price_change_percent",
+    CASE
+        WHEN p."current_unit_price" IS NOT NULL
+        THEN (c."current_unit_price" - p."current_unit_price")
+           * c."current_purchase_qty"
+        ELSE NULL
+    END AS "price_change_value_impact"
 FROM (
     SELECT
         "source_period_code",
@@ -1654,6 +1714,8 @@ FROM (
         "category_name",
         "canonical_uom",
         MAX("receipt_date") AS "price_as_of_date",
+        SUM("received_qty") AS "current_purchase_qty",
+        SUM("receipt_subtotal") AS "current_purchase_value",
         SUM("receipt_subtotal") / NULLIF(SUM("received_qty"), 0) AS "current_unit_price"
     FROM "FACT_CT_Purchase_Receipt"
     GROUP BY

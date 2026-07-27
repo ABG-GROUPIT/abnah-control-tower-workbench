@@ -44,8 +44,8 @@ Page 2 reads exactly:
 
 | Portal dataset | Zoho Query Table | Date |
 |---|---|---|
-| Purchase orders | `22_fact_ct_purchase_order.sql` | `as_of_date` |
-| PO/receipt lines | `24_fact_ct_po_receipt_line.sql` | `as_of_date` |
+| Purchase orders | `22_fact_ct_purchase_order.sql` | `po_date` |
+| PO/receipt lines | `24_fact_ct_po_receipt_line.sql` | `po_date` |
 | Purchase receipts | `23_fact_ct_purchase_receipt.sql` | `receipt_date` |
 | Price movement | `31_sum_ct_price_movement.sql` | `price_as_of_date` |
 
@@ -127,8 +127,11 @@ The function requests:
 
 - `ZohoAnalytics.metadata.read`
 - `ZohoAnalytics.data.read`
-- `ZohoAnalytics.embed.read`
 - `profile.userinfo.READ`
+
+`ZohoAnalytics.embed.read` is intentionally not requested. The portal renders
+its own interface from allowlisted Query Table rows and does not embed a Zoho
+dashboard.
 
 ### 3. Create the local secret file
 
@@ -243,6 +246,31 @@ If `configured` is false, read `missingEnvironment` and add only those values in
 9. Repeat with a Zoho account that does not have workspace access; it must be
    rejected.
 
+## Dashboard And Report URL Handoff
+
+No Zoho dashboard or individual-report URL is required to render the custom
+portal. The runtime resolves the allowlisted Query Tables by name and exports
+their rows through the authenticated Zoho Analytics API.
+
+The links created with **Share > Open View** are public presentation links.
+They do not prove that a user signed in with an approved Zoho account and must
+not be used as the production authentication boundary.
+
+Use dashboard/report URLs only as optional QA references:
+
+1. Copy `config/zoho-reference-links.example.json` to
+   `config/zoho-reference-links.local.json`.
+2. Paste the Page 1 and Page 2 dashboard links into the local file.
+3. Add individual report links only when a developer needs to compare a
+   specific Zoho rendering with the custom portal.
+4. Do not commit the local file. It is already ignored by Git.
+5. Do not add OAuth client secrets, access tokens, refresh tokens, or report
+   rows to either file.
+
+The production handoff therefore consists of the Query Table names already
+committed in code, the Supabase project reference, and the OAuth environment
+secrets stored in Supabase. It does not consist of 19 pasted embed URLs.
+
 ## Product Behavior
 
 The deployed product does not display infrastructure names or setup
@@ -271,6 +299,21 @@ For 01 March 2026 through 31 March 2026:
 See `docs/PAGE_1_AND_PAGE_2_CORRECTIONS.md` for the Query 28 and Zoho Timeline
 Filter correction.
 
+## Expected Page 2 Validation
+
+For 01 March 2026 through 31 March 2026:
+
+| KPI | Expected |
+|---|---:|
+| Ordered gross value | INR 1,565,981.32 |
+| Open PO exposure | INR 177,145.39 |
+| Delayed PO value | INR 156,529.83 |
+| Vendor OTIF | 53.70% |
+| Price watch | 42 ingredients |
+
+Price Watch includes 39 comparable ingredients and 3 observations without a
+prior-period baseline.
+
 ## Operational Notes
 
 - Recommendations and owners are control-tower decision rules, not POSist
@@ -288,7 +331,7 @@ Filter correction.
 ## Release Checklist
 
 1. Query 28 correction has been saved in Zoho.
-2. Queries 29-31 contain their date columns.
+2. Queries 29-31 contain the corrected filter dimensions and price fields.
 3. `config/supabase-portal.json` contains the actual project reference.
 4. `/status` returns `configured: true`.
 5. Allowed and rejected Zoho accounts behave correctly.

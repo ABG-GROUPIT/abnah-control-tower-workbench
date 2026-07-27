@@ -34,6 +34,7 @@ interface ProcurementFilters {
   start: string;
   end: string;
   region: string;
+  outlet: string;
   category: string;
   vendor: string;
   poStatus: string;
@@ -44,6 +45,7 @@ const EMPTY_ROWS: PortalRow[] = [];
 
 const filterDefaults = {
   region: "ALL",
+  outlet: "ALL",
   category: "ALL",
   vendor: "ALL",
   poStatus: "ALL",
@@ -57,7 +59,11 @@ function initialFilters(
 }
 
 function poScopeDate(row: PortalRow) {
-  return rowText(row, "as_of_date") || rowText(row, "source_period_end");
+  return (
+    rowText(row, "po_date") ||
+    rowText(row, "as_of_date") ||
+    rowText(row, "source_period_end")
+  );
 }
 
 function matchesFilters(row: PortalRow, filters: ProcurementFilters) {
@@ -68,6 +74,8 @@ function matchesFilters(row: PortalRow, filters: ProcurementFilters) {
     .toLowerCase();
   return (
     (filters.region === "ALL" || region === filters.region) &&
+    (filters.outlet === "ALL" ||
+      rowText(row, "outlet_code") === filters.outlet) &&
     (filters.category === "ALL" ||
       !category ||
       category === filters.category) &&
@@ -107,7 +115,7 @@ function weightedOtif(rows: PortalRow[]) {
     (total, row) => total + rowNumber(row, "otif_success_flag"),
     0,
   );
-  return eligible ? (successful / eligible) * 100 : 0;
+  return eligible ? (successful / eligible) * 100 : null;
 }
 
 function vendorScore(rows: PortalRow[]) {
@@ -156,12 +164,12 @@ function vendorScore(rows: PortalRow[]) {
   });
   return Array.from(grouped.values())
     .map((row) => {
-      const otif = row.eligible ? (row.success / row.eligible) * 100 : 0;
+      const otif = row.eligible ? (row.success / row.eligible) * 100 : null;
       const fill = row.ordered ? (row.received / row.ordered) * 100 : 0;
       const rag =
-        row.open >= 50_000 || otif < 45
+        row.open >= 50_000 || (otif !== null && otif < 45)
           ? "RED"
-          : row.open > 0 || otif < 70
+          : row.open > 0 || (otif !== null && otif < 70)
             ? "AMBER"
             : "GREEN";
       return {
@@ -172,31 +180,45 @@ function vendorScore(rows: PortalRow[]) {
         rag,
       };
     })
-    .sort((left, right) => right.open - left.open || left.otif - right.otif);
+    .sort(
+      (left, right) =>
+        right.open - left.open ||
+        (left.otif ?? Number.POSITIVE_INFINITY) -
+          (right.otif ?? Number.POSITIVE_INFINITY),
+    );
 }
 
 function priceTrend(
   rows: PortalRow[],
   itemCode: string,
+  canonicalUom: string,
 ) {
   const grouped = new Map<
     string,
     { label: string; value: number; qty: number; date: string }
   >();
   rows
-    .filter((row) => rowText(row, "item_code") === itemCode)
+    .filter(
+      (row) =>
+        rowText(row, "item_code") === itemCode &&
+        (!canonicalUom || rowUnit(row) === canonicalUom),
+    )
     .forEach((row) => {
-      const period = rowText(row, "source_period_code");
+      const receiptDate = rowText(row, "receipt_date");
+      const period =
+        /^\d{4}-\d{2}/.test(receiptDate)
+          ? receiptDate.slice(0, 7)
+          : rowText(row, "source_period_code");
       const current = grouped.get(period) ?? {
         label: period,
         value: 0,
         qty: 0,
-        date: rowText(row, "receipt_date"),
+        date: receiptDate,
       };
       current.value += rowNumber(row, "receipt_subtotal");
       current.qty += rowNumber(row, "received_qty");
-      if (rowText(row, "receipt_date") > current.date) {
-        current.date = rowText(row, "receipt_date");
+      if (receiptDate > current.date) {
+        current.date = receiptDate;
       }
       grouped.set(period, current);
     });
@@ -248,6 +270,27 @@ function PriceLineChart({
         ))}
       </svg>
     </div>
+  );
+}
+
+function movementChange(row: PortalRow) {
+  return (
+    rowNumber(row, "price_change_amount") ||
+    rowNumber(row, "unit_price_change")
+  );
+}
+
+function movementChangePercent(row: PortalRow) {
+  return (
+    rowNumber(row, "price_change_percent") ||
+    rowNumber(row, "unit_price_change_percent")
+  );
+}
+
+function movementAbsolutePercent(row: PortalRow) {
+  return (
+    rowNumber(row, "absolute_price_change_percent") ||
+    rowNumber(row, "absolute_unit_price_change_percent")
   );
 }
 
@@ -311,8 +354,7 @@ export function ProcurementPage({
         )
         .sort(
           (left, right) =>
-            rowNumber(right, "absolute_unit_price_change_percent") -
-            rowNumber(left, "absolute_unit_price_change_percent"),
+            movementAbsolutePercent(right) - movementAbsolutePercent(left),
         ),
     [filters, movement],
   );
@@ -389,11 +431,34 @@ export function ProcurementPage({
     trendItem && materialOptions.some(([code]) => code === trendItem)
       ? trendItem
       : defaultMaterial;
-  const trendPoints = priceTrend(receiptRows, selectedTrendItem);
+  const trendUomOptions = uniqueValues(
+    receiptRows.filter(
+      (row) => rowText(row, "item_code") === selectedTrendItem,
+    ),
+    "canonical_uom",
+  );
+  const [trendUom, setTrendUom] = useState("");
+  const selectedTrendUom =
+    trendUom && trendUomOptions.includes(trendUom)
+      ? trendUom
+      : trendUomOptions[0] ?? "";
+  const trendPoints = priceTrend(
+    receiptRows,
+    selectedTrendItem,
+    selectedTrendUom,
+  );
 
   const categories = uniqueValues(purchaseOrders, "category_name");
   const vendors = uniqueValues(purchaseOrders, "vendor_name");
   const statuses = uniqueValues(purchaseOrders, "po_status");
+  const outlets = Array.from(
+    new Map(
+      purchaseOrders.map((row) => [
+        rowText(row, "outlet_code"),
+        rowText(row, "outlet_name") || rowText(row, "outlet_code"),
+      ]),
+    ),
+  ).filter(([code]) => code);
   const reset = () => {
     const next = initialFilters(range);
     setDraft(next);
@@ -439,6 +504,20 @@ export function ProcurementPage({
           >
             <option value="ALL">All regions</option>
             <option value="North">North</option>
+          </select>
+        </label>
+        <label>
+          <span>Outlet</span>
+          <select
+            value={draft.outlet}
+            onChange={(event) =>
+              setDraft((current) => ({ ...current, outlet: event.target.value }))
+            }
+          >
+            <option value="ALL">All outlets</option>
+            {outlets.map(([code, name]) => (
+              <option value={code} key={code}>{name}</option>
+            ))}
           </select>
         </label>
         <label>
@@ -535,10 +614,14 @@ export function ProcurementPage({
         />
         <MetricCard
           title="Vendor OTIF"
-          value={formatPercent(otif)}
-          detail="Weighted eligible-line rate"
+          value={otif === null ? "Not available" : formatPercent(otif)}
+          detail={
+            otif === null
+              ? "No eligible closed lines in scope"
+              : "Weighted eligible-line rate"
+          }
           icon={Gauge}
-          tone={otif < 60 ? "danger" : "success"}
+          tone={otif === null ? undefined : otif < 60 ? "danger" : "success"}
         />
         <MetricCard
           title="Price watch"
@@ -605,7 +688,7 @@ export function ProcurementPage({
                     <td><strong>{row.vendor}</strong></td>
                     <td>{formatIndianCurrency(row.purchase)}</td>
                     <td>{formatIndianCurrency(row.open)}</td>
-                    <td>{formatPercent(row.otif)}</td>
+                    <td>{row.otif === null ? "Not available" : formatPercent(row.otif)}</td>
                     <td>{formatPercent(row.fill)}</td>
                     <td>{formatNumber(row.delays)}</td>
                   </tr>
@@ -627,10 +710,24 @@ export function ProcurementPage({
               <span>Raw material</span>
               <select
                 value={selectedTrendItem}
-                onChange={(event) => setTrendItem(event.target.value)}
+                onChange={(event) => {
+                  setTrendItem(event.target.value);
+                  setTrendUom("");
+                }}
               >
                 {materialOptions.map(([code, name]) => (
                   <option value={code} key={code}>{name}</option>
+                ))}
+              </select>
+            </label>
+            <label>
+              <span>UOM</span>
+              <select
+                value={selectedTrendUom}
+                onChange={(event) => setTrendUom(event.target.value)}
+              >
+                {trendUomOptions.map((uom) => (
+                  <option value={uom} key={uom}>{uom}</option>
                 ))}
               </select>
             </label>
@@ -649,22 +746,22 @@ export function ProcurementPage({
                 <tr>
                   <th>Raw material</th>
                   <th>Vendor</th>
+                  <th>UOM</th>
                   <th>Previous</th>
                   <th>Current</th>
                   <th>Change</th>
                   <th>Change %</th>
+                  <th>Value impact</th>
                 </tr>
               </thead>
               <tbody>
                 {comparableMovementRows.slice(0, 12).map((row, index) => {
-                  const change = rowNumber(row, "unit_price_change");
+                  const change = movementChange(row);
                   return (
                     <tr key={`${rowText(row, "outlet_code")}-${rowText(row, "vendor_name")}-${rowText(row, "item_code")}-${index}`}>
-                      <td>
-                        <strong>{rowText(row, "item_name")}</strong>
-                        <small>{rowText(row, "canonical_uom")}</small>
-                      </td>
+                      <td><strong>{rowText(row, "item_name")}</strong></td>
                       <td>{rowText(row, "vendor_name")}</td>
+                      <td>{rowUnit(row)}</td>
                       <td>{formatIndianCurrency(rowNumber(row, "previous_unit_price"), { compact: false, decimals: 1 })}</td>
                       <td>{formatIndianCurrency(rowNumber(row, "current_unit_price"), { compact: false, decimals: 1 })}</td>
                       <td className={change >= 0 ? "ct-positive" : "ct-negative"}>
@@ -672,8 +769,9 @@ export function ProcurementPage({
                         {formatIndianCurrency(change, { compact: false, decimals: 1 })}
                       </td>
                       <td className={change >= 0 ? "ct-positive" : "ct-negative"}>
-                        {formatPercent(rowNumber(row, "unit_price_change_percent"))}
+                        {formatPercent(movementChangePercent(row))}
                       </td>
+                      <td>{formatIndianCurrency(rowNumber(row, "price_change_value_impact"))}</td>
                     </tr>
                   );
                 })}

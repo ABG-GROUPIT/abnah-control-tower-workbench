@@ -40,12 +40,12 @@ const pageExports: Record<PortalDataPage, ExportSpec[]> = {
     {
       dataset: "purchaseOrders",
       viewName: "22_fact_ct_purchase_order.sql",
-      dateField: "as_of_date",
+      dateField: "po_date",
     },
     {
       dataset: "poReceiptLines",
       viewName: "24_fact_ct_po_receipt_line.sql",
-      dateField: "as_of_date",
+      dateField: "po_date",
     },
     {
       dataset: "purchaseReceipts",

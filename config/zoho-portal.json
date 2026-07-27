@@ -231,21 +231,25 @@
       "filterStrategy": "zoho_dashboard_user_filters",
       "criteriaTable": "29_sum_ct_procurement_funnel.sql",
       "criteriaColumns": {
-        "period": "source_period_code",
+        "date": "po_date",
         "outlet": "outlet_code",
-        "vendor": "vendor_name"
+        "vendor": "vendor_name",
+        "category": "category_name",
+        "poStatus": "po_status",
+        "rawMaterial": "item_code"
       },
       "filters": [
         {
-          "id": "period",
-          "label": "As-of period",
-          "kind": "select",
-          "defaultValue": "month_03",
-          "options": [
-            { "label": "Month 03", "value": "month_03" },
-            { "label": "Month 02", "value": "month_02" },
-            { "label": "Month 01", "value": "month_01" }
-          ]
+          "id": "startDate",
+          "label": "From",
+          "kind": "date",
+          "defaultValue": "2026-03-01"
+        },
+        {
+          "id": "endDate",
+          "label": "To",
+          "kind": "date",
+          "defaultValue": "2026-03-31"
         },
         {
           "id": "region",
@@ -330,7 +334,7 @@
         {
           "id": "p2-delayed-po",
           "title": "Delayed PO value",
-          "expectedValue": "INR 156,529.82",
+          "expectedValue": "INR 156,529.83",
           "detail": "Overdue open liability",
           "zohoViewName": "CT_P2_KPI_Delayed_PO_Value",
           "sourceQuery": "29_sum_ct_procurement_funnel.sql",
@@ -379,8 +383,8 @@
           "title": "Vendor risk scorecard",
           "subtitle": "Exposure, OTIF, fill rate and delay",
           "zohoViewName": "CT_P2_Vendor_Scorecard",
-          "sourceQuery": "24_fact_ct_po_receipt_line.sql",
-          "sourceFields": ["vendor_name", "gross_order_value", "open_po_value", "Vendor OTIF %", "PO Fill Rate %"],
+          "sourceQuery": "30_sum_ct_vendor_scorecard.sql",
+          "sourceFields": ["vendor_name", "monthly_purchase_value", "open_po_value", "Q30 Vendor OTIF %", "Q30 PO Fill Rate %", "Q30 Avg Lead Deviation Days", "delayed_po_line_count"],
           "capability": "native",
           "preview": "scorecard",
           "span": "half",
@@ -389,10 +393,10 @@
         {
           "id": "p2-price-trend",
           "title": "Raw material price trend",
-          "subtitle": "Weighted receipt price by period",
+          "subtitle": "Weighted receipt price by receipt month and UOM",
           "zohoViewName": "CT_P2_Ingredient_Price_Trend",
           "sourceQuery": "23_fact_ct_purchase_receipt.sql",
-          "sourceFields": ["source_period_code", "item_name", "vendor_name", "Weighted Unit Price"],
+          "sourceFields": ["receipt_date", "item_name", "vendor_name", "canonical_uom", "Weighted Unit Price"],
           "capability": "native",
           "preview": "line",
           "span": "half",
@@ -401,10 +405,10 @@
         {
           "id": "p2-price-movement",
           "title": "Top price movement",
-          "subtitle": "Signed unit-price change by comparable item",
+          "subtitle": "Comparable item/vendor/UOM price changes and value impact",
           "zohoViewName": "CT_P2_Top_Price_Movement",
           "sourceQuery": "31_sum_ct_price_movement.sql",
-          "sourceFields": ["price_comparison_key", "unit_price_change_percent", "price_movement_direction"],
+          "sourceFields": ["item_name", "vendor_name", "canonical_uom", "previous_unit_price", "current_unit_price", "price_change_amount", "price_change_percent", "price_change_value_impact", "price_movement_direction"],
           "capability": "native_better",
           "preview": "movement",
           "span": "half",

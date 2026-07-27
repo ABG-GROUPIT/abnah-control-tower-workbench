@@ -46,7 +46,7 @@ Do not re-save any other Query Table for this correction.
 | 20 | `bridge_transfer_out_qty`, `bridge_return_qty`, `bridge_closing_qty` |
 | 21 | `signed_consumption_variance_value`, `consumption_variance_direction` |
 | 24 | `eligible_lead_time_deviation_days` |
-| 31 | `price_comparison_key`, `unit_price_change_percent`, `absolute_unit_price_change_percent`, `price_movement_direction` |
+| 31 | `item_name`, `vendor_name`, `canonical_uom`, `price_change_amount`, `price_change_percent`, `absolute_price_change_percent`, `price_change_value_impact`, `price_movement_direction` |
 | 33 | `working_capital_value` |
 
 If Zoho still shows the old metadata, close and reopen the table/report
@@ -191,9 +191,10 @@ Validate every object before styling or embedding it.
 
 ## Step 9 - Add Filters
 
-1. Add only `As-of Source Period` and `Outlet` as common filters.
-2. Map each filter only to a report with the exact compatible field.
-3. Exclude historical trend reports from the current-period filter.
+1. Add `Date Range` and `Outlet` as the Page 1 and Page 2 common filters.
+2. Map Date Range to the physical date field listed in
+   `ZOHO_DASHBOARD_FILTER_MAPPING_MATRIX.md`.
+3. Keep `source_period_code` only for Page 3 and Page 4 current-state controls.
 4. Exclude Query 34 quality objects from period and outlet filters.
 5. Add page-specific filters after the common filters reconcile.
 6. Apply fixed conditions through the report Filter shelf using
@@ -218,4 +219,3 @@ Then continue with:
 ```text
 ZOHO_EMBEDDED_PORTAL_SETUP.md
 ```
-

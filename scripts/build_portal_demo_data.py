@@ -350,10 +350,17 @@ def build_price_movement(po_rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 "item_name": label.get("item_name"),
                 "category_name": label.get("category_name"),
                 "canonical_uom": unit,
+                "current_purchase_qty": round(float(totals["qty"]), 6),
+                "current_purchase_value": round(float(totals["value"]), 2),
                 "current_unit_price": round(current_price, 6),
                 "previous_unit_price": (
                     round(previous_price, 6)
                     if previous_price is not None
+                    else None
+                ),
+                "price_change_amount": (
+                    round(change, 6)
+                    if change is not None
                     else None
                 ),
                 "unit_price_change": (
@@ -361,14 +368,29 @@ def build_price_movement(po_rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     if change is not None
                     else None
                 ),
+                "price_change_percent": (
+                    round(change_percent, 6)
+                    if change_percent is not None
+                    else None
+                ),
                 "unit_price_change_percent": (
                     round(change_percent, 6)
+                    if change_percent is not None
+                    else None
+                ),
+                "absolute_price_change_percent": (
+                    round(abs(change_percent), 6)
                     if change_percent is not None
                     else None
                 ),
                 "absolute_unit_price_change_percent": (
                     round(abs(change_percent), 6)
                     if change_percent is not None
+                    else None
+                ),
+                "price_change_value_impact": (
+                    round(change * float(totals["qty"]), 2)
+                    if change is not None
                     else None
                 ),
                 "price_movement_direction": (

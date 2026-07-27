@@ -26,7 +26,7 @@ export interface ZohoPortalFilterOption {
 export interface ZohoPortalFilter {
   id: string;
   label: string;
-  kind: "select" | "search";
+  kind: "date" | "select" | "search";
   defaultValue: string;
   options?: ZohoPortalFilterOption[];
   placeholder?: string;

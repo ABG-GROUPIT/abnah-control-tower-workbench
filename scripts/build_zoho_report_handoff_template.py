@@ -37,10 +37,10 @@ def main() -> None:
         "authMode": "zoho_secured_login",
         "integrationMode": "individual_report_views_with_dashboard_fallbacks",
         "note": (
-            "Paste secured Zoho view URLs only. Dashboard URLs are native "
-            "fallbacks; individual report URLs fill the custom control-tower "
-            "layout. Never add passwords, OAuth tokens, client secrets, or "
-            "report rows."
+            "Backward-compatible QA artifact only. The production custom "
+            "portal uses authenticated Query Table API exports and does not "
+            "require these URLs. Never add passwords, OAuth tokens, client "
+            "secrets, or report rows."
         ),
         "pages": pages,
     }

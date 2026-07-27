@@ -65,26 +65,22 @@ syntax. They are never typed into a report filter.
 
 ## One-Time SQL Correction
 
-If Queries 01-38 were created before this guide was updated, replace and save
-only these five Query Tables, in this order:
+For the live Page 2 correction, replace and save only these three Query Tables,
+in this order:
 
-1. `20_fact_ct_actual_consumption.sql`
-2. `21_fact_ct_consumption_variance.sql`
-3. `24_fact_ct_po_receipt_line.sql`
-4. `31_sum_ct_price_movement.sql`
-5. `33_sum_ct_scm_monthly.sql`
+1. `29_sum_ct_procurement_funnel.sql`
+2. `30_sum_ct_vendor_scorecard.sql`
+3. `31_sum_ct_price_movement.sql`
 
-Do not recreate Queries 01-19, 22-23, 25-30, 32 or 34-38.
+Do not recreate the other 35 Query Tables.
 
 Confirm these physical columns now appear:
 
 | Query Table | Required new physical columns |
 | --- | --- |
-| Query 20 | `bridge_transfer_out_qty`, `bridge_return_qty`, `bridge_closing_qty` |
-| Query 21 | `signed_consumption_variance_value`, `consumption_variance_direction` |
-| Query 24 | `eligible_lead_time_deviation_days` |
-| Query 31 | `price_comparison_key`, `unit_price_change_percent`, `absolute_unit_price_change_percent`, `price_movement_direction` |
-| Query 33 | `working_capital_value` |
+| Query 29 | `po_date`, `po_status`, `item_code`, `category_name`, `canonical_uom` |
+| Query 30 | Query 29 filter fields plus the OTIF, fill-rate and lead-time numerator/denominator fields |
+| Query 31 | `price_change_amount`, `price_change_percent`, `absolute_price_change_percent`, `price_change_value_impact`, `price_movement_direction` |
 
 Stop if any of these fields is absent. Refresh the table metadata after saving
 the Query Table, then reopen the widget/report editor.
@@ -187,7 +183,7 @@ Build rows 1, 2, 3 and 5 with Pattern A. Build row 4 with Pattern B.
 | ---: | --- | --- | --- | --- | --- | --- | ---: |
 | 1 | `CT_P2_KPI_Monthly_Purchase` / Monthly Purchase | Direct KPI | `29_sum_ct_procurement_funnel.sql` | `ordered_value` | Sum | INR, 2 decimals | INR 1,565,981.32 |
 | 2 | `CT_P2_KPI_Open_PO_Liability` / Open PO Exposure | Direct KPI | `29_sum_ct_procurement_funnel.sql` | `pending_value` | Sum | INR, 2 decimals | INR 177,145.39 |
-| 3 | `CT_P2_KPI_Delayed_PO_Value` / Delayed PO Value | Direct KPI | `29_sum_ct_procurement_funnel.sql` | `delayed_value` | Sum | INR, 2 decimals | INR 156,529.82 |
+| 3 | `CT_P2_KPI_Delayed_PO_Value` / Delayed PO Value | Direct KPI | `29_sum_ct_procurement_funnel.sql` | `delayed_value` | Sum | INR, 2 decimals | INR 156,529.83 |
 | 4 | `CT_P2_KPI_OTIF` / Vendor OTIF - Formula Demo | Summary View | `24_fact_ct_po_receipt_line.sql` | `Vendor OTIF %` | Aggregate Formula | Percentage, 2 decimals | 53.70% |
 | 5 | `CT_P2_KPI_Price_Watch` / Price Watch | Direct KPI | `31_sum_ct_price_movement.sql` | `item_code` | Count Distinct | Whole number | 42 |
 
@@ -274,10 +270,10 @@ as Filter** only on the map and priority stack.
 | `CT_P2_Pending_Ingredient_Risk` | Tabular | `36_fact_ct_risky_po.sql` | PO, vendor, item, remaining quantity, open value, expected date, severity | None |
 | `CT_P2_Expected_Delivery_Breach` | Tabular | `22_fact_ct_purchase_order.sql` | PO, vendor, item, expected date, remaining quantity, open value | `delayed_po_flag`: Include `1` |
 | `CT_P2_Vendor_Performance_Matrix` | Bubble | `24_fact_ct_po_receipt_line.sql` | Group: `vendor_name`; X: `Vendor OTIF %`; Y: Average `eligible_lead_time_deviation_days`; size: Sum `open_po_value` | None |
-| `CT_P2_Vendor_Scorecard` | Summary or pivot | `24_fact_ct_po_receipt_line.sql` | Row: vendor; values: Sum gross order value, Sum open PO value, `Vendor OTIF %`, `PO Fill Rate %`, Average eligible lead deviation, Sum delayed flag | None |
-| `CT_P2_Ingredient_Price_Trend` | Line | `23_fact_ct_purchase_receipt.sql` | X: `source_period_code`; Y: `Weighted Unit Price`; color: `item_name`; vendor is a user filter | None |
+| `CT_P2_Vendor_Scorecard` | Summary or pivot | `30_sum_ct_vendor_scorecard.sql` | Row: vendor; values: Sum `monthly_purchase_value`, Sum `open_po_value`, `Q30 Vendor OTIF %`, `Q30 PO Fill Rate %`, `Q30 Avg Lead Deviation Days`, Sum `delayed_po_line_count` | None |
+| `CT_P2_Ingredient_Price_Trend` | Line | `23_fact_ct_purchase_receipt.sql` | X: `receipt_date` grouped by month; Y: `Weighted Unit Price`; color: `item_name`; select one item and one UOM | None |
 | `CT_P2_Vendor_Price_Comparison` | Grouped bar | `23_fact_ct_purchase_receipt.sql` | X: `vendor_name`; Y: `Weighted Unit Price`; require one item and one UOM selection | None |
-| `CT_P2_Top_Price_Movement` | Horizontal bar | `31_sum_ct_price_movement.sql` | Y: `price_comparison_key`; X: `unit_price_change_percent`; color: `price_movement_direction`; sort `absolute_unit_price_change_percent` descending; Top 10 | None |
+| `CT_P2_Top_Price_Movement` | Tabular | `31_sum_ct_price_movement.sql` | Columns: `item_name`, `vendor_name`, `canonical_uom`, `previous_unit_price`, `current_unit_price`, `price_change_amount`, `price_change_percent`, `price_change_value_impact`; sort `absolute_price_change_percent` descending | `price_movement_direction`: include `INCREASE`, `DECREASE`, `NO_CHANGE`; exclude `NO_BASELINE` |
 | `CT_P2_Inventory_Value` | Stacked bar | `05_std_ct_inventory_snapshot.sql` | X: `outlet_name`; Y: Sum `closing_value`; color: `category_name` | None |
 | `CT_P2_High_Value_Slow_Stock` | Tabular | `27_fact_ct_inventory_risk.sql` | closing value, days cover, forecast demand and severity; sort closing value then days cover descending | None |
 | `CT_P2_Observed_Wastage` | Column | `35_sum_ct_financial_leakage.sql` | X: `source_period_code`; Y: Sum `leakage_value` | None |
@@ -285,6 +281,24 @@ as Filter** only on the map and priority stack.
 
 If Funnel cannot accept four value fields as stages, use the grouped horizontal
 bar option. Do not create an unsupported custom chart.
+
+### Exact R04 Top Price Movement clicks
+
+1. Re-save `31_sum_ct_price_movement.sql` from the current SQL pack.
+2. Confirm `price_change_amount`, `price_change_percent`,
+   `absolute_price_change_percent` and `price_change_value_impact` are visible.
+3. Click **Create > New Report > Tabular View**.
+4. Select Query 31.
+5. Add the eight columns in the order shown in the Page 2 table above.
+6. Drag `price_movement_direction` to **Filters**.
+7. Choose **Individual Values** and include `INCREASE`, `DECREASE` and
+   `NO_CHANGE`.
+8. Sort `absolute_price_change_percent` descending.
+9. Format price and impact columns as INR and Change % as percentage.
+10. Save as `CT_P2_Top_Price_Movement`.
+
+There is no `price_comparison_key` requirement and no Aggregate Formula for
+this report.
 
 Do not build vendor return rate, standing PO tracking or exact batch expiry as
 actual-source KPIs. Their source gates remain unresolved.
@@ -405,17 +419,39 @@ Extended rows: variance trend, sales/item/PO/GRN/vendor explorers and expiry sce
 
 ## Do Not Add Every Filter Everywhere
 
-Create these two common controls inside every page dashboard:
+Create these common controls:
 
-1. **As-of Source Period**
-2. **Outlet**
+1. Page 1 and Page 2: **Date Range** and **Outlet**
+2. Page 3 and Page 4: **As-of Source Period** and **Outlet**
 
 Create the remaining controls only on their relevant page dashboard. For each
 KPI/report,
 open **Options > Apply Dashboard Filters > Customize** and map only the fields
 listed below. A filter that is not mapped must leave that report unchanged.
 
-## Global Filter 1 - As-of Source Period
+## Page 1 And Page 2 - Date Range
+
+1. Open the dashboard in Edit Mode.
+2. Click **Add User Filters**.
+3. Choose **Timeline Filter**.
+4. Set the label to `Date Range`.
+5. Allow a custom From and To selection.
+6. Open **Map Filter to Reports**.
+7. Map each report to its physical date field:
+
+| Source | Date field |
+| --- | --- |
+| Query 27 and Query 28 | `snapshot_date` |
+| Query 29 and Query 30 | `po_date` |
+| Query 31 | `price_as_of_date` |
+| Query 22 and Query 24 | `po_date` |
+| Query 23 | `receipt_date` |
+| Query 36 | `po_date` |
+| Query 38 | `as_of_date` |
+
+Do not map Date Range to `source_period_code`.
+
+## Page 3 And Page 4 - As-of Source Period
 
 1. Open the dashboard in Edit Mode.
 2. Click **Add User Filters**.
@@ -430,8 +466,6 @@ listed below. A filter that is not mapped must leave that report unchanged.
 
 | Tab | Apply | Exclude |
 | --- | --- | --- |
-| Page 1 | Every Page 1 KPI and report | None |
-| Page 2 | Current KPIs, procurement flow, PO/vendor/inventory/current-risk reports | `CT_P2_Ingredient_Price_Trend`, `CT_P2_Observed_Wastage`, `CT_P2_Expiry_Exposure_Demo` |
 | Page 3 | Current KPIs, comparisons, leakage, profitability, BCG, contribution, ranking and heatmap | `CT_P3_Consumption_Bridge`, `CT_P3_Sales_Trend` |
 | Page 4 | Current KPIs and current explorers | `CT_P4_SCM_Monthly_Trend`, `CT_P4_Consumption_Variance_Trend`, all Query 34 tiles and `CT_P4_Data_Quality_Detail` |
 
@@ -466,7 +500,7 @@ Add these filters only on the named tab.
 | Page 2 | Vendor | `vendor_name` | Queries 22, 23, 24, 29, 30, 31 and 36 reports |
 | Page 2 | Ingredient Category | item lookup `category_name` | PO/receipt/risky-PO/price/inventory reports with item lookup |
 | Page 2 | Ingredient Item | `item_code` | PO/receipt/risky-PO/price/inventory reports with item grain |
-| Page 2 | PO Status | `po_status` | `CT_P2_PO_Status_Distribution` and `CT_P2_Expected_Delivery_Breach` |
+| Page 2 | PO Status | `po_status` | Query 22, 24, 29 and 30 reports only |
 | Page 3 | Region | Query 37 lookup `region` | Page 3 reports with outlet lookup |
 | Page 3 | Menu Category | `category_name` through menu lookup | Queries 18, 25 and 32 menu reports |
 | Page 3 | Menu Item | menu `item_code` or `menu_item_code` as exposed by source | Queries 18, 25 and 32 menu reports |
@@ -529,16 +563,18 @@ to a later externally embedded portal, not to the native dashboard editor.
 
 Keep `ZOHO_DASHBOARD_EXPECTED_RESULTS.md` open while building.
 
-For each dashboard KPI Widget or saved report:
+For each Page 1 or Page 2 KPI Widget or saved report:
 
-1. Set As-of Source Period to `month_03`.
+1. Set Date Range to 01 March 2026 through 31 March 2026.
 2. Set Outlet to All.
 3. Compare with the expected default result or chart table.
 4. Test OUT001, OUT002 and OUT003 separately.
 5. Clear the Outlet filter.
-6. Confirm historical trends still show all three months.
-7. Confirm Query 34 tiles and detail are unchanged by global period/outlet.
-8. Export one detail report and trace its rows to the Query Table.
+6. Confirm every visible detail row falls inside the selected physical date range.
+7. Export one detail report and trace its rows to the Query Table.
+
+For Page 3 and Page 4, keep the separate source-period validation described in
+their sections.
 
 Stop and fix the source/report before styling if:
 

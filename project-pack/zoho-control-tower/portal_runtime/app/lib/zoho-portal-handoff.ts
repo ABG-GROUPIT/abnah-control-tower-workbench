@@ -53,7 +53,7 @@ export function buildZohoPortalHandoff(
     authMode: "zoho_secured_login",
     integrationMode: "individual_report_views_with_dashboard_fallbacks",
     note:
-      "Secured Zoho view URLs only. Dashboard URLs are native fallbacks; individual report URLs fill the custom control-tower layout. Do not add passwords, OAuth secrets, tokens, or operational rows.",
+      "Backward-compatible QA artifact only. Production uses authenticated Query Table API exports and does not require these URLs. Do not add passwords, OAuth secrets, tokens, or operational rows.",
     pages: Object.fromEntries(
       portal.pages.map((page) => [
         page.id,

@@ -114,9 +114,10 @@ class PreDashboardSetupTests(unittest.TestCase):
                 "allocated_forecast_net_sales_at_risk",
             },
             "31_sum_ct_price_movement.sql": {
-                "price_comparison_key",
-                "unit_price_change_percent",
-                "absolute_unit_price_change_percent",
+                "price_change_amount",
+                "price_change_percent",
+                "absolute_price_change_percent",
+                "price_change_value_impact",
                 "price_movement_direction",
             },
             "33_sum_ct_scm_monthly.sql": {
@@ -149,7 +150,7 @@ class PreDashboardSetupTests(unittest.TestCase):
             "Default value: month_03",
             "Synthetic demo estimate - no POSIST batch/expiry source",
             "do not search for an Aggregate Formula name in a direct KPI Widget",
-            "Exactly four required formulas saved",
+            "Exactly seven required formulas saved",
         }
         for statement in required_text:
             self.assertIn(statement, compact_text)
@@ -164,6 +165,9 @@ class PreDashboardSetupTests(unittest.TestCase):
                 "PO Fill Rate %",
                 "Vendor OTIF %",
                 "Menu Gross Margin %",
+                "Q30 Vendor OTIF %",
+                "Q30 PO Fill Rate %",
+                "Q30 Avg Lead Deviation Days",
             },
             formula_names,
         )

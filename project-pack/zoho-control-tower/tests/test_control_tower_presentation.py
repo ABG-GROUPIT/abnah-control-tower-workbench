@@ -19,7 +19,7 @@ class ControlTowerPresentationTests(unittest.TestCase):
         self.assertEqual(len(stories), 76)
         self.assertEqual(len({story["id"] for story in stories}), 76)
         self.assertEqual(
-            {"kpi": 33, "chart": 23, "table": 20},
+            {"kpi": 33, "chart": 22, "table": 21},
             {
                 kind: sum(story["kind"] == kind for story in stories)
                 for kind in ("kpi", "chart", "table")

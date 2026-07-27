@@ -1,0 +1,20 @@
+{
+  "purpose": "Optional local QA references only. The custom portal does not embed or depend on these URLs.",
+  "pages": {
+    "p1": {
+      "dashboardUrl": "",
+      "reports": {}
+    },
+    "p2": {
+      "dashboardUrl": "",
+      "reports": {
+        "procurementFunnel": "",
+        "vendorScorecard": "",
+        "ingredientPriceTrend": "",
+        "topPriceMovement": "",
+        "pendingByVendor": "",
+        "expectedDeliveryBreach": ""
+      }
+    }
+  }
+}

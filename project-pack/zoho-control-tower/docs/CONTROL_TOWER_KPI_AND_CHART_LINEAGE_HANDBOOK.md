@@ -48,10 +48,10 @@ This is generated from `docs/control_tower_presentation_contract.json`. Update t
 | 2 | [Pending Value By Vendor](#ct-p2-pending-by-vendor) | chart | Horizontal bar | `29_sum_ct_procurement_funnel.sql` |
 | 2 | [Pending Ingredient Risk](#ct-p2-pending-ingredient-risk) | table | Tabular | `36_fact_ct_risky_po.sql` |
 | 2 | [Procurement Funnel](#ct-p2-procurement-funnel) | chart | Funnel or grouped horizontal bar | `29_sum_ct_procurement_funnel.sql` |
-| 2 | [Top Price Movement](#ct-p2-top-price-movement) | chart | Divergent or horizontal bar | `31_sum_ct_price_movement.sql` |
+| 2 | [Top Price Movement](#ct-p2-top-price-movement) | table | Tabular View | `31_sum_ct_price_movement.sql` |
 | 2 | [Vendor Performance Matrix](#ct-p2-vendor-performance-matrix) | chart | Bubble | `24_fact_ct_po_receipt_line.sql` |
 | 2 | [Vendor Price Comparison](#ct-p2-vendor-price-comparison) | chart | Grouped bar | `23_fact_ct_purchase_receipt.sql` |
-| 2 | [Vendor Scorecard](#ct-p2-vendor-scorecard) | table | Summary or pivot | `24_fact_ct_po_receipt_line.sql` |
+| 2 | [Vendor Scorecard](#ct-p2-vendor-scorecard) | table | Summary or pivot | `30_sum_ct_vendor_scorecard.sql` |
 | 3 | [Category Contribution](#ct-p3-category-contribution) | chart | Stacked bar or ring | `25_fact_ct_menu_profitability.sql` |
 | 3 | [Consumption Bridge](#ct-p3-consumption-bridge) | chart | Combination | `20_fact_ct_actual_consumption.sql` |
 | 3 | [Consumption Leakage Rank](#ct-p3-consumption-leakage-rank) | chart | Horizontal bar | `21_fact_ct_consumption_variance.sql` |
@@ -1330,7 +1330,7 @@ High Value / Slow Stock starts from Closing Stock Report, Item Recipe Report, AU
 
 ### Calculation
 
-**Final fields:** `source_period_code`, `item_code`, `received_qty`, `receipt_subtotal`, `vendor_name`
+**Final fields:** `receipt_date`, `item_code`, `canonical_uom`, `received_qty`, `receipt_subtotal`, `vendor_name`
 
 **Formula:** `Aggregate Formula "Weighted Unit Price".`
 
@@ -1342,13 +1342,13 @@ High Value / Slow Stock starts from Closing Stock Report, Item Recipe Report, AU
 
 **Shelves/columns:**
 
-- X: source period
+- X: receipt_date grouped by month
 - Y: Weighted Unit Price
 - Color: item
 
 **Fixed report filters:**
 
-- None
+- Select one canonical UOM when an item is stored in more than one UOM
 
 **User filters:**
 
@@ -1956,7 +1956,7 @@ Open PO Liability starts from Enterprise Purchase Order Report. The model follow
 
 ### Calculation
 
-**Final fields:** `item_code`, `previous_unit_price`, `unit_price_change_percent`, `price_movement_direction`
+**Final fields:** `item_code`, `previous_unit_price`, `price_change_percent`, `price_movement_direction`
 
 **Formula:** `distinctcount("item_code")`
 
@@ -2395,9 +2395,9 @@ Procurement Funnel starts from Enterprise Purchase Order Report. The model follo
 <a id="ct-p2-top-price-movement"></a>
 ## CT_P2_Top_Price_Movement - Top Price Movement
 
-**Business question:** Which item/vendor prices changed most from the prior synthetic month?
+**Business question:** Which item/vendor prices changed most from the immediately prior synthetic month?
 
-**Final object:** chart / Divergent or horizontal bar from `31_sum_ct_price_movement.sql`
+**Final object:** table / Tabular View from `31_sum_ct_price_movement.sql`
 
 **Final grain:** Source period, outlet, vendor, item, and canonical UOM
 
@@ -2421,25 +2421,23 @@ Procurement Funnel starts from Enterprise Purchase Order Report. The model follo
 
 ### Calculation
 
-**Final fields:** `price_comparison_key`, `unit_price_change_percent`, `absolute_unit_price_change_percent`, `price_movement_direction`
+**Final fields:** `item_name`, `vendor_name`, `canonical_uom`, `previous_unit_price`, `current_unit_price`, `price_change_amount`, `price_change_percent`, `price_change_value_impact`, `price_movement_direction`
 
-**Formula:** `Signed physical change is displayed; absolute physical change is used only for sorting.`
+**Formula:** `Signed physical change is displayed; absolute_price_change_percent is used only for ranking.`
 
 **Aggregation:** Direct period-item-vendor-UOM result
 
 ### Exact Zoho Configuration
 
-**Visual:** Divergent or horizontal bar
+**Visual:** Tabular View
 
 **Shelves/columns:**
 
-- Y: price_comparison_key
-- X: unit_price_change_percent
-- Color: price_movement_direction
+- Columns: item, vendor, UOM, previous price, current price, price change, price change %, purchase-value impact
 
 **Fixed report filters:**
 
-- None
+- price_movement_direction: include INCREASE, DECREASE, and NO_CHANGE; exclude NO_BASELINE
 
 **User filters:**
 
@@ -2451,17 +2449,16 @@ Procurement Funnel starts from Enterprise Purchase Order Report. The model follo
 - Item
 - PO status
 
-**Sort:** absolute_unit_price_change_percent descending; Top 10
+**Sort:** absolute_price_change_percent descending; Top 10
 
 **Tooltips:**
 
-- Vendor
-- Previous weighted price
-- Current weighted price
+- None
 
 **Formatting:**
 
 - Signed percentage
+- INR price and value-impact columns
 
 ### Guardrails
 
@@ -2470,7 +2467,7 @@ Procurement Funnel starts from Enterprise Purchase Order Report. The model follo
 
 ### How To Explain It
 
-Top Price Movement starts from Enterprise Entry Report - Stock Entry. The model follows 23_fact_ct_purchase_receipt.sql -> 31_sum_ct_price_movement.sql at source period, outlet, vendor, item, and canonical uom. The relationship rule is: Calculate weighted receipt price per period and compare it with the immediately prior synthetic month at the same outlet/vendor/item/UOM grain. In Zoho, use direct period-item-vendor-uom result and render it as divergent or horizontal bar to answer: Which item/vendor prices changed most from the prior synthetic month?
+Top Price Movement starts from Enterprise Entry Report - Stock Entry. The model follows 23_fact_ct_purchase_receipt.sql -> 31_sum_ct_price_movement.sql at source period, outlet, vendor, item, and canonical uom. The relationship rule is: Calculate weighted receipt price per period and compare it with the immediately prior synthetic month at the same outlet/vendor/item/UOM grain. In Zoho, use direct period-item-vendor-uom result and render it as tabular view to answer: Which item/vendor prices changed most from the immediately prior synthetic month?
 
 <a id="ct-p2-vendor-performance-matrix"></a>
 ## CT_P2_Vendor_Performance_Matrix - Vendor Performance Matrix
@@ -2638,9 +2635,9 @@ Vendor Price Comparison starts from Enterprise Entry Report - Stock Entry. The m
 
 **Business question:** What purchase, exposure, fill, OTIF, lead, and delay profile does each vendor have?
 
-**Final object:** table / Summary or pivot from `24_fact_ct_po_receipt_line.sql`
+**Final object:** table / Summary or pivot from `30_sum_ct_vendor_scorecard.sql`
 
-**Final grain:** Source period, outlet, purchase order, and item line
+**Final grain:** Source period, outlet, and vendor
 
 ### Original Evidence
 
@@ -2651,21 +2648,20 @@ Vendor Price Comparison starts from Enterprise Entry Report - Stock Entry. The m
 
 ### Model Route And Relationship
 
-`07_std_ct_purchase_order.sql -> 08_std_ct_purchase_receipt.sql -> 24_fact_ct_po_receipt_line.sql`
+`24_fact_ct_po_receipt_line.sql -> 30_sum_ct_vendor_scorecard.sql`
 
-**Join/relationship logic:** Left join PO and receipt lines on source period + outlet + canonical PO number + item code; aggregate receipts before the join.
+**Join/relationship logic:** Aggregate PO/receipt line results into vendor purchase, open exposure, fill, eligible OTIF, and lead-time deviation.
 
 **Zoho lookups:**
 
 - `outlet_code -> 37_dim_ct_outlet_enriched.sql.outlet_code`
-- `item_code -> 14_dim_ct_item.sql.item_code`
 - `vendor_name -> 16_dim_ct_vendor.sql.vendor_name`
 
 ### Calculation
 
-**Final fields:** `vendor_name`, `gross_order_value`, `open_po_value`, `ordered_qty`, `received_qty`, `eligible_closed_line_flag`, `otif_success_flag`, `eligible_lead_time_deviation_days`, `delayed_po_flag`
+**Final fields:** `vendor_name`, `monthly_purchase_value`, `open_po_value`, `ordered_qty`, `received_qty`, `eligible_closed_line_count`, `otif_success_line_count`, `eligible_lead_time_deviation_days_total`, `eligible_lead_time_line_count`, `delayed_po_line_count`
 
-**Formula:** `Use PO Fill Rate % and Vendor OTIF % Aggregate Formulas over Query 24.`
+**Formula:** `Use Q30 Vendor OTIF %, Q30 PO Fill Rate %, and Q30 Avg Lead Deviation Days over the physical numerator and denominator fields.`
 
 **Aggregation:** Group by vendor
 
@@ -2703,13 +2699,13 @@ Vendor Price Comparison starts from Enterprise Entry Report - Stock Entry. The m
 
 ### Guardrails
 
-- Actual PO-to-GRN linkage was sparse, so OTIF remains a formula demonstration.
-- Fill rate uses sums of quantities, never an average of row percentages.
-- Do not average precomputed Query 30 percentages across outlets.
+- Do not average vendor percentages across outlets.
+- OTIF and lead deviation remain demonstration metrics until receipt linkage improves.
+- Do not average the row-level otif_percent or fill_rate_percent fields.
 
 ### How To Explain It
 
-Vendor Scorecard starts from Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows 07_std_ct_purchase_order.sql -> 08_std_ct_purchase_receipt.sql -> 24_fact_ct_po_receipt_line.sql at source period, outlet, purchase order, and item line. The relationship rule is: Left join PO and receipt lines on source period + outlet + canonical PO number + item code; aggregate receipts before the join. In Zoho, use group by vendor and render it as summary or pivot to answer: What purchase, exposure, fill, OTIF, lead, and delay profile does each vendor have?
+Vendor Scorecard starts from Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows 24_fact_ct_po_receipt_line.sql -> 30_sum_ct_vendor_scorecard.sql at source period, outlet, and vendor. The relationship rule is: Aggregate PO/receipt line results into vendor purchase, open exposure, fill, eligible OTIF, and lead-time deviation. In Zoho, use group by vendor and render it as summary or pivot to answer: What purchase, exposure, fill, OTIF, lead, and delay profile does each vendor have?
 
 # Page 3 - Consumption Variance & Menu Profitability
 

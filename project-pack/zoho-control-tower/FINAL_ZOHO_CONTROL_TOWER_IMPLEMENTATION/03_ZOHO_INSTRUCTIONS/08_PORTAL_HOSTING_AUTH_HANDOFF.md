@@ -2,86 +2,75 @@
 
 ## Final Architecture
 
+GitHub Pages is the only frontend host. Supabase is the only backend.
+
 ```text
-GitHub Pages custom ABNAH portal
+GitHub Pages /portal/
         |
-        | OAuth/session/config API
+        | OAuth start, session, page-data requests
         v
-Supabase Edge Function + private Postgres tables
+Supabase Edge Function
         |
-        | verifies workspace membership
+        | metadata and asynchronous Query Table exports
         v
 Zoho Analytics India
-        |
-        | 19 secured report views + 4 dashboard fallbacks
-        v
-Approved 38-Query-Table model
 ```
 
-GitHub Pages is the only frontend host. The delivery portal is the separate
-`/portal/` route linked from the Atlas; it is not an Atlas tab. No ChatGPT-hosted
-or SharePoint-hosted copy is part of the production design.
+The portal is a separate page linked from the Atlas. It is not an Atlas tab,
+ChatGPT Site or SharePoint-hosted application.
 
 ## Responsibilities
 
 GitHub Pages owns:
 
-- the custom four-page visual shell and navigation;
-- external page filters and `ZOHO_CRITERIA` generation;
-- 19 individual chart, pivot, summary, or tabular view slots;
-- four links to complete Zoho dashboards as native fallbacks;
-- a configuration drawer for the URL-only v4 handoff.
+- the custom four-page presentation;
+- date, outlet and page-specific controls;
+- client-side rendering of approved rows;
+- refresh, navigation and sign-out.
 
 Supabase owns:
 
 - the Zoho OAuth callback and client secret;
 - allowed-workspace verification;
-- encrypted Zoho access/refresh tokens;
+- encrypted access and refresh tokens;
 - opaque portal sessions;
-- the shared, versioned URL-only handoff.
+- allowlisted Query Table exports.
 
 Zoho owns:
 
-- Query Table execution and refreshed analytics data;
-- saved report rendering, drills, tooltips, and exports;
-- native dashboard KPI Widgets and Dashboard User Filters;
-- report and dashboard sharing permissions.
+- the 38-Query-Table model;
+- governed calculations and refreshed source data;
+- native dashboards and saved reports used for validation.
 
-Supabase stores no POSist rows, screenshots, dashboard values, or report
-exports. GitHub stores no secrets.
+Supabase does not persist exported report rows. GitHub stores no credentials,
+screenshots or operational data.
 
 ## Verified Sign-In
 
 1. `/portal/` checks the Supabase `/status` endpoint.
-2. **Continue with Zoho** opens the Edge Function `/auth/start` route.
+2. **Sign in with Zoho** opens `/auth/start`.
 3. Supabase stores a one-time state hash and redirects to Zoho India OAuth.
-4. Zoho returns to the Supabase `/auth/callback` route.
-5. Supabase exchanges the code and calls the Zoho workspace metadata API.
-6. The account must be able to access `ZOHO_ALLOWED_WORKSPACE_ID`.
-7. Supabase redirects to GitHub Pages with an opaque session in the URL
+4. Zoho returns to `/auth/callback`.
+5. Supabase exchanges the authorization code.
+6. Supabase verifies `ZOHO_ALLOWED_WORKSPACE_ID`.
+7. Supabase redirects to GitHub Pages with an opaque session handle in the URL
    fragment.
-8. The browser moves the handle to `sessionStorage` and clears the fragment.
+8. The browser moves the handle into tab `sessionStorage` and removes the
+   fragment.
+9. Every data request must present the session handle.
+10. Logout revokes the server-side session.
 
-There is no **Continue after sign-in** bypass and the frontend cannot mark
-itself authenticated.
+There is no Continue-after-sign-in bypass.
 
 ## Supabase Deployment
 
-The repository root contains:
-
-- `supabase/migrations/20260727000100_abnah_portal.sql`;
-- `supabase/functions/abnah-portal/`;
-- `supabase/.env.example`;
-- `config/supabase-portal.json`;
-- `docs/ZOHO_PORTAL_RUNTIME.md`.
-
-Register this callback in the Zoho server-based OAuth client:
+Register this exact callback in a Zoho server-based OAuth client:
 
 ```text
 https://<PROJECT_REF>.supabase.co/functions/v1/abnah-portal/auth/callback
 ```
 
-Keep these in Supabase Edge Function Secrets:
+Store these as Supabase Edge Function secrets:
 
 - `ZOHO_OAUTH_CLIENT_ID`
 - `ZOHO_OAUTH_CLIENT_SECRET`
@@ -89,96 +78,38 @@ Keep these in Supabase Edge Function Secrets:
 - `ZOHO_TOKEN_ENCRYPTION_KEY`
 - `PORTAL_ALLOWED_ORIGIN`
 - `PORTAL_RETURN_URL`
-- optional `ZOHO_PORTAL_ADMIN_EMAILS`
 
-The full deployment commands are in the root
+The complete commands and India data-centre URLs are in the root
 `docs/ZOHO_PORTAL_RUNTIME.md`.
 
-## V4 URL Handoff
+## Query Table Handoff
 
-Use:
+The runtime handoff is already represented in code:
 
-```text
-config/zoho-secured-embed-handoff.example.json
-```
+- Page 1 and Page 2 Query Table names in
+  `supabase/functions/_shared/zoho-data.ts`;
+- OAuth and workspace enforcement in
+  `supabase/functions/_shared/zoho.ts`;
+- public backend location in `config/supabase-portal.json`;
+- secrets in Supabase, never GitHub.
 
-Schema:
+No individual report URL, dashboard URL, iframe source or API token must be
+pasted into the production frontend.
 
-```text
-abnah-zoho-view-handoff/v4
-```
+## Optional Local References
 
-The file has:
+Use `config/zoho-reference-links.local.json` only for developer QA. It means **this same laptop**
+or developer checkout, not shared production configuration.
+The file is ignored by Git.
 
-- 19 individual secured report-view URL slots;
-- four secured complete-dashboard fallback URL slots;
-- exact expected Zoho view names;
-- no credentials, tokens, passwords, or report rows.
+## Handoff Checklist
 
-The configuration drawer saves the handoff centrally through Supabase. The
-browser keeps a URL-only read-through cache for temporary backend outages.
-
-## Live Filters
-
-The custom portal's page controls remain outside Zoho. Applying a filter sends
-an encoded `ZOHO_CRITERIA` expression only to report views with a compatible
-field mapping in `app/lib/zoho-report-embed-contract.ts`.
-
-Native Dashboard User Filters remain inside each complete-dashboard fallback.
-They use `ZOHO_DASHBOARD_FILTER_MAPPING_MATRIX.md`.
-
-Do not send a filter to a report whose source grain does not contain the mapped
-field. Historical trends remain excluded from current-period criteria where
-the contract says so.
-
-## KPI Boundary
-
-Zoho KPI Widgets are dashboard-only objects and have no independent Share
-contract. The custom KPI cards therefore remain explicitly labelled synthetic
-validation baselines until a governed Zoho data-API measure endpoint is
-activated. Dashboard pages are never scraped for KPI values.
-
-Use the complete dashboard fallback to demonstrate native live KPI Widgets.
-Use the custom page to demonstrate the approved external visual composition.
-
-## Visual Boundary
-
-The custom portal controls page composition, navigation, filters, labels,
-spacing, and its baseline KPI cards. Zoho controls every pixel inside each
-cross-origin report iframe.
-
-Configure internal report colors in Zoho:
-
-- purple `#6F2DBD`;
-- red `#E24950`;
-- amber `#D29A2D`;
-- green `#168D61`;
-- grey `#9A9A9A`.
-
-## Company-Laptop Acceptance
-
-- GitHub Pages `/portal/` opens.
-- Supabase `/status` returns `configured: true`.
-- a permitted Zoho account signs in and a non-member is rejected;
-- all 19 individual views and four dashboard fallbacks reload across browsers;
-- external filters affect only compatible report views;
-- logout revokes the opaque session;
-- no credential or operational row is present in Git or the handoff.
-
-## Local Report Reviewer
-
-The local reviewer remains separate because it can contain operational rows.
-`127.0.0.1` means **this same laptop**. Run the viewer on the laptop that opens
-it, leave the terminal active, and use `http://127.0.0.1:8765/`.
-
-`Connection refused` means no process is listening on that laptop. It does not
-mean port 8765 is inherently insecure.
-
-## Official References
-
-- [Zoho Analytics API prerequisites](https://www.zoho.com/analytics/api/v2/prerequisites.html)
-- [Zoho workspace metadata API](https://www.zoho.com/analytics/api/v2/metadata-api/all-workspace.html)
-- [Zoho dashboard filters](https://www.zoho.com/analytics/help/dashboard/filter.html)
-- [Zoho KPI Widgets](https://www.zoho.com/analytics/help/dashboard/kpi-widgets.html)
-- [Supabase Edge Functions](https://supabase.com/docs/guides/functions)
-- [Supabase Edge Function secrets](https://supabase.com/docs/guides/functions/secrets)
+1. Queries 29-31 have been re-saved.
+2. Page 1 and Page 2 Date Range mappings pass.
+3. `config/supabase-portal.json` contains the real Supabase project reference.
+4. Supabase migration, secrets and Edge Function are deployed.
+5. `/status` returns `configured: true`.
+6. An allowed Zoho user can sign in and load Page 1 and Page 2.
+7. A user without workspace access is rejected.
+8. Sign-out removes all visible data.
+9. No screenshot, row export, credential or public report link is committed.

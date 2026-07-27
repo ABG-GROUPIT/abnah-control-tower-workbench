@@ -262,8 +262,10 @@ class ControlTowerSqlPackTests(unittest.TestCase):
                 '"eligible_lead_time_deviation_days"',
             },
             "SUM_CT_Price_Movement": {
-                '"price_comparison_key"',
-                '"absolute_unit_price_change_percent"',
+                '"price_change_amount"',
+                '"price_change_percent"',
+                '"absolute_price_change_percent"',
+                '"price_change_value_impact"',
                 '"price_movement_direction"',
             },
             "SUM_CT_SCM_Monthly": {

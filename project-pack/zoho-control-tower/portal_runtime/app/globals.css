@@ -4270,8 +4270,15 @@ code { font-family: var(--font-geist-mono), Consolas, monospace; }
   font-weight: 700;
 }
 
-.ct-page-heading {
+.control-tower-portal .ct-page-heading {
+  display: grid;
+  min-height: 0;
   min-width: 0;
+  align-items: center;
+  justify-content: initial;
+  gap: 0;
+  padding: 0;
+  border: 0;
 }
 
 .ct-page-heading > span,
@@ -4290,11 +4297,10 @@ code { font-family: var(--font-geist-mono), Consolas, monospace; }
 
 .ct-page-heading p {
   margin: 0;
-  overflow: hidden;
   color: #b5bfba;
   font-size: 11px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  line-height: 1.35;
+  white-space: normal;
 }
 
 .ct-command-actions {
@@ -4405,7 +4411,7 @@ code { font-family: var(--font-geist-mono), Consolas, monospace; }
 
 .ct-filter-bar {
   display: grid;
-  grid-template-columns: repeat(7, minmax(112px, 1fr)) auto;
+  grid-template-columns: repeat(8, minmax(104px, 1fr)) auto;
   align-items: end;
   gap: 8px;
   padding: 12px;
@@ -4837,10 +4843,12 @@ code { font-family: var(--font-geist-mono), Consolas, monospace; }
 .ct-chart-control {
   display: flex;
   justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
   padding: 9px 12px 0;
 }
 
-.ct-chart-control label { width: min(260px, 100%); }
+.ct-chart-control label { width: min(220px, 100%); }
 .ct-price-chart { min-height: 275px; padding: 0 10px 5px; }
 .ct-price-chart svg { display: block; width: 100%; height: 275px; }
 .ct-chart-grid { stroke: #e1e6e3; stroke-width: 1; }
