@@ -780,7 +780,7 @@ P4 = "page_4_scm_explorer_data_quality"
 STORIES: list[dict[str, Any]] = []
 
 P1_FILTERS = [
-    "Source period (global, single-select; default month_03)",
+    "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
     "Outlet (global, multi-select)",
     "Region",
     "New/matured",
@@ -789,7 +789,7 @@ P1_FILTERS = [
     "Ingredient category",
 ]
 P2_FILTERS = [
-    "Source period (global, single-select; default month_03)",
+    "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
     "Outlet (global, multi-select)",
     "Region",
     "Vendor",
@@ -884,16 +884,17 @@ STORIES.extend(
         ),
         story(
             P1,
-            "CT_P1_KPI_Open_Risky_PO",
-            "Open Risky PO Count",
+            "CT_P1_KPI_Open_Actions",
+            "Open Actions",
             "kpi",
             "KPI widget",
-            "36_fact_ct_risky_po.sql",
-            "How many distinct open POs relate to ingredients already in a stockout-risk state?",
-            ["po_number", "risk_severity", "open_po_value"],
-            'distinctcount("po_number")',
-            "Distinct count of PO number",
-            ["Data Column: po_number", "Show Value As: Count Distinct", "Group By: blank"],
+            "27_fact_ct_inventory_risk.sql",
+            "How many distinct stockout-risk actions require attention in the selected scope?",
+            ["action_id", "risk_type", "recommended_action", "action_owner", "due_band"],
+            'distinctcount("action_id")',
+            "Distinct count of stockout action ID",
+            ["Data Column: action_id", "Show Value As: Count Distinct", "Group By: blank"],
+            fixed_filters=["Filter shelf: risk_type / Individual Values / Include STOCKOUT"],
             user_filters=P1_FILTERS,
             formatting=["Whole number"],
         ),
@@ -1529,13 +1530,13 @@ def main() -> int:
 STORIES.extend(
     [
         story(P3, "CT_P3_KPI_Net_Sales", "Net Sales", "kpi", "KPI widget", "25_fact_ct_menu_profitability.sql", "What net menu sales were realized in the selected scope?", ["net_sales"], 'sum("net_sales")', "Sum net sales", ["Data Column: net_sales", "Show Value As: Sum", "Group By: blank"], user_filters=P3_FILTERS, formatting=["INR currency"]),
-        story(P3, "CT_P3_KPI_Quantity_Sold", "Quantity Sold", "kpi", "KPI widget", "25_fact_ct_menu_profitability.sql", "How many menu-item units were sold?", ["sold_qty"], 'sum("sold_qty")', "Sum sold quantity", ["Data Column: sold_qty", "Show Value As: Sum", "Group By: blank"], user_filters=P3_FILTERS, formatting=["Whole or decimal quantity as source requires"]),
+        story(P3, "CT_P3_KPI_Menu_Items", "Menu Items", "kpi", "KPI widget", "25_fact_ct_menu_profitability.sql", "How many distinct menu items contributed sales in the selected scope?", ["menu_item_code", "menu_item_name"], 'distinctcount("menu_item_code")', "Distinct count of menu-item code", ["Data Column: menu_item_code", "Show Value As: Count Distinct", "Group By: blank"], user_filters=P3_FILTERS, formatting=["Whole number"]),
         story(P3, "CT_P3_KPI_Theoretical_COGS", "Theoretical COGS", "kpi", "KPI widget", "25_fact_ct_menu_profitability.sql", "What should the sold menu mix have cost under the effective recipe and normalized ingredient cost?", ["sold_qty", "theoretical_cost_per_unit", "theoretical_cogs"], 'sum("theoretical_cogs")', "Sum theoretical COGS", ["Data Column: theoretical_cogs", "Show Value As: Sum", "Group By: blank"], user_filters=P3_FILTERS, formatting=["INR currency"]),
         story(P3, "CT_P3_KPI_Consumption_Leakage", "Consumption Leakage Value", "kpi", "KPI widget", "21_fact_ct_consumption_variance.sql", "What positive actual-over-theoretical consumption variance is valued as leakage?", ["leakage_value"], 'sum("leakage_value")', "Sum leakage value", ["Data Column: leakage_value", "Show Value As: Sum", "Group By: blank"], user_filters=P3_FILTERS, formatting=["INR currency"], caveats=["Use value, not a mixed-UOM all-item quantity."]),
         story(P3, "CT_P3_KPI_Menu_Gross_Margin", "Menu Gross Margin %", "kpi", "Saved Summary View", "25_fact_ct_menu_profitability.sql", "What share of net sales remains after theoretical menu COGS?", ["gross_margin_value", "net_sales"], 'Aggregate Formula "Menu Gross Margin %" in a saved Summary View.', "Ratio of summed gross margin value to summed net sales", ["Summary value: Menu Gross Margin %", "Grouping: none"], user_filters=P3_FILTERS, formatting=["Percentage; expected display near 82.02% in all-period synthetic truth"], caveats=["Never average gross_margin_percent.", "The Aggregate Formula is not selected from a direct KPI Widget Data Column list."]),
         story(P3, "CT_P3_Consumption_Bridge", "Consumption Bridge", "chart", "Combination", "20_fact_ct_actual_consumption.sql", "How do opening, receipts, transfers, returns, and closing stock reconcile to actual consumption?", ["source_period_code", "opening_qty", "purchase_qty", "transfer_in_qty", "bridge_transfer_out_qty", "bridge_return_qty", "bridge_closing_qty", "calculated_actual_consumption_qty"], "Physical bridge fields are already signed in Query 20.", "Sum each bridge component within one canonical UOM", ["X: source period", "Bars: opening, purchase, transfer in, bridge transfer out, bridge return, bridge closing", "Line: calculated actual consumption"], fixed_filters=["Canonical UOM user filter: select exactly one value for this quantity view"], user_filters=P3_FILTERS, tooltips=["Outlet", "Item", "Actual consumption value"]),
         story(P3, "CT_P3_Theoretical_Consumption_Detail", "Theoretical Consumption Detail", "table", "Tabular", "19_fact_ct_theoretical_consumption.sql", "What ingredient quantity and value should have been consumed?", ["outlet_code", "item_code", "theoretical_consumption_qty", "theoretical_consumption_value", "canonical_uom", "average_unit_cost"], "Sold menu quantity x normalized recipe ingredient quantity; value x normalized average cost.", "Direct detail rows", ["Columns: outlet, ingredient, theoretical quantity/value, UOM, average cost"], user_filters=P3_FILTERS, sort="Theoretical consumption value descending"),
-        story(P3, "CT_P3_Actual_vs_Theoretical", "Actual vs Theoretical Consumption", "chart", "Grouped bar", "21_fact_ct_consumption_variance.sql", "For one UOM, where does actual ingredient consumption differ from theoretical?", ["item_code", "actual_consumption_qty", "theoretical_consumption_qty", "canonical_uom"], "Display both fact measures at the same joined grain.", "Sum quantities only within one canonical UOM", ["X: ingredient", "Y: actual quantity and theoretical quantity"], fixed_filters=["Exactly one canonical UOM"], user_filters=P3_FILTERS, sort="Absolute variance descending"),
+        story(P3, "CT_P3_Consumption_Variance", "Consumption Variance", "chart", "Butterfly", "21_fact_ct_consumption_variance.sql", "Which ingredients show the largest over- or under-consumption value against theoretical usage?", ["item_code", "item_name", "signed_consumption_variance_value", "consumption_variance_direction", "canonical_uom"], 'sum("signed_consumption_variance_value")', "Sum signed variance value by ingredient", ["Category: item name", "Measure: signed_consumption_variance_value", "Color: consumption_variance_direction"], user_filters=P3_FILTERS, sort="Absolute signed consumption variance value descending", formatting=["INR currency; retain negative values"]),
         story(P3, "CT_P3_Consumption_Leakage_Rank", "Consumption Leakage Rank", "chart", "Horizontal bar", "21_fact_ct_consumption_variance.sql", "Which ingredients create the highest positive consumption leakage value?", ["item_code", "leakage_value", "consumption_variance_direction"], 'sum("leakage_value")', "Sum leakage value", ["Y: ingredient", "X: leakage value"], fixed_filters=["Filter shelf: consumption_variance_direction / Individual Values / Include OVER_CONSUMPTION"], user_filters=P3_FILTERS, sort="Leakage value descending", formatting=["INR currency"]),
         story(P3, "CT_P3_Low_Consumption_Check", "Low Consumption Check", "table", "Tabular", "21_fact_ct_consumption_variance.sql", "Where is theoretical consumption higher than calculated actual consumption?", ["outlet_code", "item_code", "actual_consumption_qty", "theoretical_consumption_qty", "low_consumption_qty", "canonical_uom", "consumption_variance_direction"], "low_consumption_qty is the positive under-consumption difference.", "Direct detail rows", ["Columns: outlet, ingredient, actual, theoretical, delta, UOM"], fixed_filters=["Filter shelf: consumption_variance_direction / Individual Values / Include UNDER_CONSUMPTION", "Canonical UOM user filter: select exactly one value for quantity comparison"], user_filters=P3_FILTERS, sort="Low consumption quantity descending", caveats=["Title and explanation must frame this as a data/process check, not a saving."]),
         story(P3, "CT_P3_Menu_BCG", "Menu BCG", "chart", "Bubble", "32_sum_ct_menu_profitability.sql", "Which menu items are high/low volume and high/low margin under the demo thresholds?", ["menu_item_code", "sold_qty", "gross_margin_percent", "net_sales", "bcg_quadrant"], "Quadrant is preclassified from sold quantity and gross margin percent.", "Direct summary at one period + one outlet + menu item", ["X: sold quantity", "Y: gross margin %", "Size: net sales", "Text: menu item", "Color: BCG quadrant"], fixed_filters=["Exactly one source period", "Exactly one outlet or keep outlet visible"], user_filters=P3_FILTERS, caveats=["Thresholds are synthetic demonstration rules."]),
@@ -1641,9 +1642,9 @@ STORIES.append(
 STORIES.extend(
     [
         story(P2, "CT_P2_KPI_Monthly_Purchase", "Ordered Gross Value", "kpi", "KPI widget", "29_sum_ct_procurement_funnel.sql", "What was the selected-period ordered gross commitment?", ["ordered_value"], 'sum("ordered_value")', "Sum ordered value", ["Data Column: ordered_value", "Show Value As: Sum", "Group By: blank"], user_filters=P2_FILTERS, formatting=["INR currency", "Label Ordered Gross Value until basis is approved"]),
-        story(P2, "CT_P2_KPI_Closing_Inventory", "Closing Inventory Value", "kpi", "KPI widget", "33_sum_ct_scm_monthly.sql", "What is the selected checkpoint's closing inventory value?", ["closing_stock_value"], 'sum("closing_stock_value")', "Sum closing stock value", ["Data Column: closing_stock_value", "Show Value As: Sum", "Group By: blank"], user_filters=P2_FILTERS, formatting=["INR currency"], caveats=["Require exactly one source period."]),
+        story(P2, "CT_P2_KPI_Delayed_PO_Value", "Delayed PO Value", "kpi", "KPI widget", "29_sum_ct_procurement_funnel.sql", "How much open PO liability is already beyond the expected delivery date?", ["delayed_value"], 'sum("delayed_value")', "Sum delayed PO value", ["Data Column: delayed_value", "Show Value As: Sum", "Group By: blank"], user_filters=P2_FILTERS, formatting=["INR currency"]),
         story(P2, "CT_P2_KPI_Open_PO_Liability", "Open PO Liability", "kpi", "KPI widget", "29_sum_ct_procurement_funnel.sql", "How much value remains committed on open PO lines?", ["pending_value"], 'sum("pending_value")', "Sum pending value", ["Data Column: pending_value", "Show Value As: Sum", "Group By: blank"], user_filters=P2_FILTERS, formatting=["INR currency"]),
-        story(P2, "CT_P2_KPI_Working_Capital", "Working Capital Locked", "kpi", "KPI widget", "33_sum_ct_scm_monthly.sql", "How much capital is represented by closing inventory plus open PO liability?", ["working_capital_value"], 'sum("working_capital_value")', "Sum the physical working-capital field", ["Data Column: working_capital_value", "Show Value As: Sum", "Group By: blank"], user_filters=P2_FILTERS, formatting=["INR currency"], caveats=["Show closing inventory and open PO liability separately beside this combined KPI.", "Require one source period."]),
+        story(P2, "CT_P2_KPI_Price_Watch", "Price Watch", "kpi", "KPI widget", "31_sum_ct_price_movement.sql", "How many distinct ingredients have a current receipt-price observation?", ["item_code", "previous_unit_price", "unit_price_change_percent", "price_movement_direction"], 'distinctcount("item_code")', "Distinct count of tracked ingredient codes", ["Data Column: item_code", "Show Value As: Count Distinct", "Group By: blank"], user_filters=P2_FILTERS, formatting=["Whole number"], caveats=["The card includes new price records with no prior-period baseline. Price-movement rankings exclude rows where previous_unit_price is null."]),
         story(P2, "CT_P2_KPI_Open_PO_Count", "Open PO Count", "kpi", "KPI widget", "29_sum_ct_procurement_funnel.sql", "How many distinct purchase orders remain open?", ["open_po_count"], 'sum("open_po_count")', "Sum vendor-level distinct PO counts within the selected outlet scope", ["Data Column: open_po_count", "Show Value As: Sum", "Group By: blank"], user_filters=P2_FILTERS, formatting=["Whole number"]),
         story(P2, "CT_P2_KPI_Fill_Rate", "PO Fill Rate", "kpi", "Saved Summary View", "24_fact_ct_po_receipt_line.sql", "What proportion of ordered quantity was linked to accepted receipt quantity?", ["ordered_qty", "received_qty"], 'Aggregate Formula "PO Fill Rate %" in a saved Summary View.', "Ratio of summed quantities", ["Summary value: PO Fill Rate %", "Grouping: none"], user_filters=P2_FILTERS, formatting=["Percentage; expected display near 83.25% in all-period synthetic truth"], caveats=["The Aggregate Formula is not selected from a direct KPI Widget Data Column list."]),
         story(P2, "CT_P2_KPI_OTIF", "Vendor OTIF - Formula Demo", "kpi", "Saved Summary View", "24_fact_ct_po_receipt_line.sql", "What share of eligible closed PO lines met both quantity and date conditions in the demonstration?", ["eligible_closed_line_flag", "otif_success_flag"], 'Aggregate Formula "Vendor OTIF %" in a saved Summary View.', "Ratio of summed flags", ["Summary value: Vendor OTIF %", "Grouping: none"], user_filters=P2_FILTERS, formatting=["Percentage", "Visible Formula demo label"], caveats=["Production is blocked by sparse actual PO-to-GRN linkage.", "The Aggregate Formula is not selected from a direct KPI Widget Data Column list."]),

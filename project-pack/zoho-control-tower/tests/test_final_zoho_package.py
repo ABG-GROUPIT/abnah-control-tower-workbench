@@ -179,6 +179,25 @@ class FinalZohoPackageTests(unittest.TestCase):
         self.assertIn("Query 27 stockout action rows: **6**", text)
         self.assertEqual(2557, len(_read_rows(acceptance)))
 
+    def test_page_corrections_and_runtime_setup_are_packaged(self) -> None:
+        instructions = self.package / "03_ZOHO_INSTRUCTIONS"
+        corrections = (
+            instructions / "10_PAGE_1_AND_PAGE_2_CORRECTIONS.md"
+        )
+        runtime = instructions / "11_GITHUB_PAGES_ZOHO_AUTH_SETUP.md"
+        self.assertTrue(corrections.is_file())
+        self.assertTrue(runtime.is_file())
+        correction_text = corrections.read_text(encoding="utf-8")
+        self.assertIn("INR 411,695.50", correction_text)
+        self.assertIn("Opening stock estimate", correction_text)
+        self.assertIn(
+            "model outputs created by CASE rules",
+            correction_text,
+        )
+        runtime_text = runtime.read_text(encoding="utf-8")
+        self.assertIn("GitHub Pages", runtime_text)
+        self.assertIn("ZOHO_ALLOWED_WORKSPACE_ID", runtime_text)
+
 
 if __name__ == "__main__":
     unittest.main()

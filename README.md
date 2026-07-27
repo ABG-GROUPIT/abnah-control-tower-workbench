@@ -34,7 +34,7 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
   source field set, formula, lookup, filter, and Zoho report configuration.
 - 38 exact Control Tower v2 Query Tables are searchable in the hosted model
   library with their dependency levels and complete SQL.
-- One self-contained `project-pack/zoho-control-tower/` now carries all 710
+- One self-contained `project-pack/zoho-control-tower/` now carries all 733
   tracked synthetic-data, Zoho implementation, SQL, validation, local-auditor,
   API-packet, generator, test, and handoff files in this ABG repository.
 - P2 now has 73 captured schemas, 3 bounded partial schemas, and 79 pending reports.
@@ -66,7 +66,7 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
   hosted evidence, and optional in-browser loading of the private local packet.
 - `Architecture`: one-object-at-a-time KPI/chart stories plus a separate
   five-layer model and exact-SQL library.
-- `Library`: searchable access to all 710 validated handoff files, pinned
+- `Library`: searchable access to all 733 validated handoff files, pinned
   implementation references, integrity hashes, direct file links, and the
   complete downloadable project pack.
 - `Workspace`: editable current revision.

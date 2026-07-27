@@ -81,6 +81,14 @@ INSTRUCTION_FILES = (
         "09_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md",
     ),
     (
+        ROOT.parents[1] / "docs" / "PAGE_1_AND_PAGE_2_CORRECTIONS.md",
+        "10_PAGE_1_AND_PAGE_2_CORRECTIONS.md",
+    ),
+    (
+        ROOT.parents[1] / "docs" / "ZOHO_PORTAL_RUNTIME.md",
+        "11_GITHUB_PAGES_ZOHO_AUTH_SETUP.md",
+    ),
+    (
         ROOT / "docs" / "zoho-secured-embed-handoff.example.json",
         "zoho-secured-embed-handoff.example.json",
     ),
@@ -596,6 +604,8 @@ $required = @(
     '03_ZOHO_INSTRUCTIONS\07_EMBEDDED_PORTAL_SETUP.md',
     '03_ZOHO_INSTRUCTIONS\08_PORTAL_HOSTING_AUTH_HANDOFF.md',
     '03_ZOHO_INSTRUCTIONS\09_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md',
+    '03_ZOHO_INSTRUCTIONS\10_PAGE_1_AND_PAGE_2_CORRECTIONS.md',
+    '03_ZOHO_INSTRUCTIONS\11_GITHUB_PAGES_ZOHO_AUTH_SETUP.md',
     '03_ZOHO_INSTRUCTIONS\zoho-secured-embed-handoff.example.json'
 )
 foreach ($relative in $required) {

@@ -124,7 +124,7 @@
     "audited_control_tower_reports": 20,
     "validated_fidelity_contracts": 21,
     "ignored_no_signal_fields": 69,
-    "project_pack_files": 717,
+    "project_pack_files": 733,
     "project_pack_categories": 10
   },
   "quality_status": "usable_with_warnings",
@@ -151,299 +151,299 @@
   "workspace_source_files": [
     {
       "path": "schema-pack/source/report_structures/p1_main/01_sales_analysis/01_outlet_sales.json",
-      "sha256": "6406920627d80e0ccee3abd03bd45c3241b123d89493b5b19a68bf18b52aac39"
+      "sha256": "5daf65d3ca1ec42a8b58dc37bb303505bb1a6d9efb4c3a556ea9ccc3c91cfd78"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/01_sales_analysis/02_brand_order_type_sales.json",
-      "sha256": "38cdd2a2296568ef132eca7a807e75c7b426bad65e62db6a10dc78a844802748"
+      "sha256": "84c46984cc5be5c1826bed93cf38f4120a03b4f54734bc95a30e07835dcd1d08"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/01_sales_analysis/03_hourly_sales_analysis.json",
-      "sha256": "638efd7ebc3192258ec4dc579d22951dae4ac431a952c98a6a1ec76e8d14465a"
+      "sha256": "9c05e564540ed1a7e064a41e45c2b63f4967f724a8a675a75c95d44716b57af5"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/01_sales_analysis/04_hourly_item_sales_analysis.json",
-      "sha256": "fbd2720f66cd6686a625d58aea4ea1462e7272467c546bf48f5fa43908c74d52"
+      "sha256": "a099c7982c1c9392eb9d733258e9b490797093be46f554f6d9c501e1b22a0d03"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/01_sales_analysis/05_daily_item_sales_analysis.json",
-      "sha256": "a2c8c92343dd283d1c38dc3b804420bf4c703ec6bef39b6ffcf9c03f1c26adc3"
+      "sha256": "ea47b8e3999f94b895f78a046b94ab67117d9ed75c12a0cfa4a9137e13f2c6fc"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/01_sales_analysis/06_consolidated_hourly_sales.json",
-      "sha256": "95cadf92216be1d3e3c9fc4bdf5c87ccb39c5f35eb988adac3a98d50ce5e776f"
+      "sha256": "c68380283cddca695bbf7d06135ad56706600a8c76a6e0d3f0bdd4b2762c79fd"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/01_sales_analysis/07_consolidated_hourly_sales_tabwise.json",
-      "sha256": "f6f0d866d079e3d41ba4b4d022cf5468d5ab7c906266ed8029cb50ba5d6cc416"
+      "sha256": "aea9b555ff5c145be7df8b8d4df99dd1f96fb01f1b7ea4532b914a7d56fc9b97"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/01_sales_analysis/08_daily_sales.json",
-      "sha256": "2b71b22f3b4a1465334bffe0fd38b45b6993fead39c0476cb8860808d909a149"
+      "sha256": "276a73b48742ff33999c9b823be1091a89a9ef476d256ae973ee0538f72910f3"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/01_sales_analysis/09_daily_sales_analysis.json",
-      "sha256": "25df53d41a60a918cbb59fdae00d6e30d8a3fc5b8f1dd24c9c737534151c3a47"
+      "sha256": "03498c2d71bbb116af55115b4942f9a42d69f4bfba12cb9b5a144c813e6eeca1"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/01_sales_analysis/10_daily_sales_tabwise.json",
-      "sha256": "f60a0e1b35f104e768ce11f7ed58f9e89c81999da2e9c563155be3c948bbb51a"
+      "sha256": "6dc33993eae192b34df24a99aeb481fc7ea7ad72b5e75e09d6e0a419b15b21e5"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/01_sales_analysis/11_daily_sales_sourcewise.json",
-      "sha256": "a319c3e187ad9975f9b99f3438bf8541bf9d8b3ef5fd4a49a2a45f83225dba9d"
+      "sha256": "97f7a1306ffcad2f23e82ba3a79fbcf00e9134260714b4bbca67f4aa93a5226d"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/01_sales_analysis/12_daily_sales_with_categories.json",
-      "sha256": "dc0af155d37639c8f9f802d2eb643dfb588b66fe8550fa2aff852167b1e5a406"
+      "sha256": "ce10a547e4b2ea65dfde75c528b742cfc8e60dfbafa6be78e69e2feaae22256b"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/01_sales_analysis/13_item_hourly_sales_by_tab.json",
-      "sha256": "07b4a6736b3517f753a8a791c01c88e6ce75eb944a0ea61d5737cf37b2066a2c"
+      "sha256": "c9eab1c72e26659f2a62b836241c6607411189a435c6d17b74bdab3304de1ff8"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/01_sales_analysis/14_hourly_sales_by_source.json",
-      "sha256": "95cb84263ba0adb14ecd83c15805a70535891fc04f25289c4438ffb9f34f5b5c"
+      "sha256": "99109cd83dde4e1219a0e9c83ef14b44e9ac6bc720fbc9d28303428577d1abbc"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/01_sales_analysis/15_day_part_sales.json",
-      "sha256": "c926d0058cf2c24a787464bd285eb17c4a4cdd3f0387ad29282b218620f64c63"
+      "sha256": "0b3a3cfe056579dca748529d8b2aa0d6826624473209737daf2723f6b17754be"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/01_sales_analysis/16_day_part_product_sales.json",
-      "sha256": "7a1a18ee2811989fafd80f96e61f0824dc1b2d42f185f71ad5e233cc36a02b84"
+      "sha256": "0b84f363ae318b9ae6a7a21d0f9b454a79538ee81845bcbf2ea079fc4d924e73"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/01_sales_analysis/17_day_part_product_detailed.json",
-      "sha256": "fb88f6a787286c3b3805f7d67e5051c9a19798ef575ae014acb8a2ce2b3bc15f"
+      "sha256": "e0d096c58198f5f29ec30de21c4b18503deec10474008ee93ec193d99e7e9167"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/01_sales_analysis/18_brand_sales.json",
-      "sha256": "9e3e03976ed7506c4f744dbd9039364d71666a975f91e550d3912cf14f2fdf2a"
+      "sha256": "f9bb6c9c1210b5aa574acb4a321760fd39bf27d31ebb308d970f785dc75bddc8"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/01_sales_analysis/19_sales_contribution.json",
-      "sha256": "1a328cf7c5ce484c84e4f1ed70ddbeaa543bc66f91942e4577fe3d3f52bebc6f"
+      "sha256": "893d961724784a65a44a1afc6593a25818cf5ecdb7db35e0a3ad3ad6a3a9c787"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/01_sales_analysis/20_billwise_section_sales_analysis.json",
-      "sha256": "3d7edb8a3431254b5e25b2b999cb854e5f88a00aa237774c662a07b0f73a3018"
+      "sha256": "e836c1befa7561a2ce0e06e7f2194e2b40b3ef6b68f3cfcfe1718aae44bd7bfe"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/01_sales_analysis/21_section_sales_analysis.json",
-      "sha256": "b33584d9ceda6fa1258caea4d832e5c57f09bc6bd898fad4904236611044a291"
+      "sha256": "2fa6107bcb0ca0aff93aa8e2b6291f52dfcc2476b592e8a7f9ccd3adf1691316"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/01_sales_analysis/22_source_analysis_summary.json",
-      "sha256": "e324431521e2cb62ae29b7600f8f9772dbfce4f5c81a78a0453c645de1f2b119"
+      "sha256": "9140a86f112a8100f3f6b074039dae5f095d30e6dc3d6d3184deaf18d6f814ee"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/01_sales_analysis/23_source_wise_tab_wise_item_analysis.json",
-      "sha256": "f53e083119f0a869ef4678b9d3fb42f8314942a2fb6ba24009fa9a489d1d0f09"
+      "sha256": "28bd49a2e22054b5057437422a18fa5be04060c1240e41a8f75326dad87e8365"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/02_settlements/01_settlement_analysis.json",
-      "sha256": "02b8fc9e8c3d799a4c7be82b15b2c5e56c0e412b0ac3bf1dcb3aecd938c72ec8"
+      "sha256": "047089d26e9ddafdae750c8f1a33865fbb9368e1945bda290cbf0bd040d2b140"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/02_settlements/02_settlement_analysis_consolidated.json",
-      "sha256": "c57590ad1d25edb8ee22e78e97e6e1673be305f1098a3c7aab3c2cdd9a2c9f17"
+      "sha256": "d6cd48ec22884150925d9d8d3a49a2938446a1e221e6f93c1562a972b75fac7d"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/02_settlements/03_daily_payments_breakup.json",
-      "sha256": "f11aafdbf2aca944661dd9eb8a2403e6307f4f2d2bea2cece54b272be4087686"
+      "sha256": "49222f019b116a54d04430b6ed861ff9d682465be9ca1d7e75dc8bffcd9b3ada"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/02_settlements/04_daily_payments_breakup_consolidate.json",
-      "sha256": "7ccadc6450f0d92ea6641ae8ecb9d7158442001528b9e1361ce4b5079b3c9adb"
+      "sha256": "d8b4d5b86bee81eb72c152011fc3a1abd2ff7eefdb1f2faeb15da14393c6640d"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/02_settlements/05_billwise_settlement_analysis.json",
-      "sha256": "01755648d413af9ed9be5650cd1e53070ac8adfb4e4b93ecacddb3c90b7c1e90"
+      "sha256": "51fbcf308cd8a8b8542c1cbfbf7d9401422621387214031456f63daf0fffb154"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/02_settlements/06_enterprise_btc_report.json",
-      "sha256": "b1f758ed56988409feadf528d999732bfd4f8d68a195d5311b8a4d9af816ff83"
+      "sha256": "7926bcebc518c9503470ef3628b1ad71581af44c6ebf50209322c5fa03ac5f9b"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/03_discounts_offers/01_daily_item_wise_discount.json",
-      "sha256": "d58099ca0682b6f116c2f6b070dd631c354aac3e765e83d443e29a9a84f30244"
+      "sha256": "de3deb6d346031b6805bc4ccededa76af5946436b19e3ea123c73a715fd2a573"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/03_discounts_offers/02_daily_discount_billwise.json",
-      "sha256": "540340bf1719529f22bc71f3a0de93f404ef41a7208cbc227e9033f9c8e4deba"
+      "sha256": "8f938a5e84cae8fcace9310bab3d13496b794209dc85c0d6fb544df48c9ce477"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/03_discounts_offers/04_offer_budget.json",
-      "sha256": "95942a85864e472dc2d0020b54d83f46528f6ac9a3d2d8e00d885d83fbbdfb57"
+      "sha256": "d4f8081dc1b6230c98858c6512a5e959ffa78037aedc2cfe17e3b120d11d5cb6"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/03_discounts_offers/05_discount_billwise_analysis.json",
-      "sha256": "836260bf444bc6a0f63f72455b9bf2e3815691c970e718d2d1d420ec8a973c9c"
+      "sha256": "d7eb932463cdf4d6ed73b26dcbc9c2c3ced5e46c3d732926cfa8db84fd04985a"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/03_discounts_offers/06_offer_code_report.json",
-      "sha256": "dbfa473138c99d723efba8b047e029089a461dbeb95752769b6825f007d258ac"
+      "sha256": "24ce6d90da71cd0a19fe04719c3eaa6bed106ce78f327ca0eff4e2a0cdb9b155"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/03_discounts_offers/07_offer_code_usage_report.json",
-      "sha256": "919eb24c6e1a0a091a0421bce1a2f388d4a00200695f61da4f6c319163fa1c0c"
+      "sha256": "09c36b68f0b309bc24694ce6337bc370a971012138f991365c7d39b7e8c04cc7"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/03_discounts_offers/08_discount_and_complimentary_analysi.json",
-      "sha256": "0365cb361e1614891b6ff6b0e50b6038399b704922b886b0ea4b14f65378d403"
+      "sha256": "f21a0f0fcee1f5f75326a012e80c88c8e1f1ad56744c169d6bcf3800d1ac104d"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/03_discounts_offers/09_entp_item_based_offer.json",
-      "sha256": "28317b573a17211f183c8844d035d8b49563ed09eff0171aa3592ffee768292c"
+      "sha256": "355b2431459416e96e72a93ac21ba91fda87cc8752201d5d8bdb9623b4d46069"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/03_discounts_offers/11_complimentary_head_itemwise.json",
-      "sha256": "13eec8aab63c8f4695da478182f8eb015c74dd9699833f00e562ca7a3d2c66aa"
+      "sha256": "fcbbcec047ae2b972152807b76ffeda9950c9ff9da7ed3cb4cecd3b06b427f0a"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/03_discounts_offers/12_consolidated_item_complimentary.json",
-      "sha256": "6a7327215cff512094126708596d762910161d4c2c1e4c578e18c5a0e7551ff1"
+      "sha256": "b70901cbd6cef48130e8ee93de63d5329840f7ccbfd80b9415c1ea2bc2500731"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/03_discounts_offers/_status.json",
-      "sha256": "45ee2e31d3611be031e568ce964c51fb57cbd7743b3b149e1873e41fc95db6c7"
+      "sha256": "d9756c2437e5b466290914398f09f765c9b6d68e06512c0dc7afa834a3af1c8d"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/04_tax_analysis/01_daily_tax_analysis.json",
-      "sha256": "c3d40f7dc7c2f9ee2f940d427b5350459600fe11e9310f4066d4e408344f3b08"
+      "sha256": "c90fd10615c2fe4411de8f0f32f1d792b173c070bf6c6ebf1359c237561fcc37"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/04_tax_analysis/02_daily_no_vat_analysis.json",
-      "sha256": "cd9dab22834865176e1afcfa64a7bb14d72b4e384d19684dd7ef0c3a65b3734e"
+      "sha256": "cbdb8a57dff2f380574e8cc0f46b0dfb10496945753e8f625291d7a808d86f0a"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/04_tax_analysis/03_super_category_wise_daily_taxes.json",
-      "sha256": "c83a977c76de8189fba0a2596475dc651519fa9682886caa5717167cff8eb313"
+      "sha256": "79e4a24ab9990d24bc9d2ca77aa48b9eb3788c2912ec1877c87f93d0a56d982c"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/04_tax_analysis/04_super_category_wise_no_vat.json",
-      "sha256": "3e5d7e53e871646ed7239bfa299444b9c066a0a8ce2871e666237db1b0467ec9"
+      "sha256": "b2b9618dde41ce414a379f0bceff08f3750668576dff20a8916f72ec2c0696d4"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/04_tax_analysis/05_tax_summary.json",
-      "sha256": "7e1410136fe0f428f421766b61e616f33ad3439d4dc48c529b92d28a04807f63"
+      "sha256": "ca2c0deb80b66167defacd65fec56834abe58d21f2a803296f6b9e781e180a2a"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/05_performance/01_menu_mix.json",
-      "sha256": "6f9bf994dd69be9563e49fb79aa3441f56b34a71dc86b77fefc49aa83d9119c4"
+      "sha256": "1a6cd5d55f364e037be1a96743b2a02748ae66a3d4e56bc528f7f438d8b57871"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/05_performance/02_category_analysis.json",
-      "sha256": "943fa2467c553ff4bcf579a517ea3a5d303bd6211920cf1dd5f79c9836fd3392"
+      "sha256": "a3cb5ffec65723a48eb2a157234da15571f0b6eefdf9a2bb14107367626f1c48"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/05_performance/03_super_category_sourcewise_sales.json",
-      "sha256": "6368d6bfee994168f36106e9c6c809ad2208f36f13513f8192c7e240192020c7"
+      "sha256": "c38708f5292b3914f5e6e3476af1f333bab97d82d8e400931ebae121ee52dfb0"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/05_performance/04_super_category_tabwise_sourcewise.json",
-      "sha256": "44cd2a97cc4d8d1c264d8fa6f17bd2ee5036cbb8ca5bdd328f4eef7ae70e4c06"
+      "sha256": "d4b9bfa925be9994b7895e69cc69f77dcafedf2fe73b664cb30ea59585d0a7a0"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/05_performance/05_item_analysis.json",
-      "sha256": "fc54d71bd0ea5ce5295cca9b158944fe4d506baf04962c970f50fa51a689aac6"
+      "sha256": "7cfd3753e226a13689b18a69cb9d75ff5614c2861fc6124d5cdae3bfa6f1d482"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/05_performance/06_item_source_report.json",
-      "sha256": "7ce9b7b59497fa9002ec0a8a49e7da88e9529b2ece17ce99ae52bb0b0223f20c"
+      "sha256": "d8e027aa035605114241c9be090128b70f042af62163b52d536b87107c6e74f1"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/05_performance/07_itemwise_enterprise.json",
-      "sha256": "7d58ca15e7b1b300e6a6280cc3bb0515f1c4981008e862e6643cf31ef683e851"
+      "sha256": "f38e67e643d831abbbd541508bf0a1fa3fa33562fcc19dcf5d72a2652d754b3d"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/05_performance/08_tab_wise_item_analysis.json",
-      "sha256": "3be5d6d93dec3c7d15bfe28026f0bf706a570a50052e5b16492daa8fe28c2514"
+      "sha256": "251418efd326caa102dbd031b72b720fbb93fb5bfa37f3ebacd37c6fe1990442"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/05_performance/09_item_incidence.json",
-      "sha256": "c312db5fffdf25db452eaac8930ddd605820f1e5e13e77a911ecea06d5a2baf8"
+      "sha256": "2d1c70dec860cfdaeffb29a1519303683477b17229c16c614c73d3f34ca3d0be"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/05_performance/10_highest_and_lowest_selling_items.json",
-      "sha256": "0efb595f5343eeb3335eadc063a72b32fc0cec2bc9582ae1ebe3e34c2ccde616"
+      "sha256": "e6c8ec7959ab3e10d1238de6920ef53753717713ce11675ccf72c5e3171b470f"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/05_performance/11_tab_wise_analysis.json",
-      "sha256": "d15f653b0d1135dce6186f3c39ed97e466288bf572ddc892c7ef0c3e7f835fca"
+      "sha256": "8e70804ed1092cdb19911f70c26effcb11971878eb6a513b1e2503b7832caeea"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/05_performance/12_brand_performance_section_wise.json",
-      "sha256": "be3aed315d0c9d453a095e81d8ad237e3ca28e32eaf85971ef67a8368e34a44a"
+      "sha256": "a3c1f8319e2a7931c81ae74162f1e4cdece5901ab433d383e120ba482f6a426f"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/05_performance/13_brand_performance_report.json",
-      "sha256": "ad5db309d3a9e6dce431f520a0520a1844324753a7cd65136ce44edf0d9974cf"
+      "sha256": "a10596a3fe282246f8a95f99b3f93d642e6f9431b91b4f8b2151695ab3a955fd"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/05_performance/14_combo_report.json",
-      "sha256": "d989e818b894256d3efde69a4844257e1d2e65eb96ea8b78d0156d3347ce440c"
+      "sha256": "c6284b8b127e6ecadd8cd16951bcecf15787420f7df80d56a99481ad3016640f"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/05_performance/15_meal_count_report.json",
-      "sha256": "e39ce2f17fe42756a8a964720cefc019b8a578474c40a4c7a5a5c4788d84b704"
+      "sha256": "d183d690f37a374f76f298156e2a436f0985bcc3a616ddfdc37cb08c011e7b06"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/05_performance/_status.json",
-      "sha256": "f02c40beb3eb053dac065290c8b2cb0dd514798c9c37d40e4059cc535e6172dc"
+      "sha256": "e62fadb80ecc767251fde441be9a1db84be7e02ce94de6f254045c5e2028599d"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/01_void_bill_item_wise.json",
-      "sha256": "665f897563ffdafef847624503574b822983aac4b9ae177302db1a34c478052d"
+      "sha256": "71819ea1d2e00f8312326104b18d94751054d8659c60b6bbb8dac4744a87a200"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/02_cashier_report.json",
-      "sha256": "705aff3e06cb8235ae6f8e12986b3c922e7a8daa0c9edf90a436e42cd58373b3"
+      "sha256": "86dd72dd4fe060ec28dd498d483f7cb86d6c17e6550ccda900878ffcaeab4e89"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/03_budget_dsr_report.json",
-      "sha256": "bdeb36c8c832a0b22c3a5c4718629c093d995376fd5d9f0a4e5aca6dc1d27561"
+      "sha256": "f14ec880668570b1a7b71683abf4385489032f93b3df19de5cd33318af7ee54a"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/04_crm_report.json",
-      "sha256": "14af6ebc50629b01c4dd215d772eff7295fb5ce67b4f87ebeca9b670c6dd42ba"
+      "sha256": "e5b0adfa6ff4ffcb809981f5cfa84494f13969937242c7d988b70789d37f335d"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/05_voucher_report.json",
-      "sha256": "d8d8ac42edef7219471175fdd465da869d337ac00191d838ed90194d0632daf3"
+      "sha256": "e6a0fa58900626ed0bc0f7d6d6ea9d6d156855ac903c530bca91097b5a59415c"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/06_sales_and_reload_report.json",
-      "sha256": "a8949c9440fe5d68ae6090692a5a6f2e1cb003c4583c61caad5ccec92d0188d5"
+      "sha256": "f37ae21cfee9460b3e150fd492f690c44d2ab0b4e9a1796476ae76f2f1139719"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/09_super_categories_dsr.json",
-      "sha256": "adcc300832fe434319b19c0acb3d8d48fa8ac894e908d497d1763fc0f4b0e4d3"
+      "sha256": "515ec9dd5da986b84440e8df3685d898a5e4ab331c02a437ab94d92674873cc1"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/10_online_orders_time_log.json",
-      "sha256": "a6aa1e792b0490dc2fb69e9937d7611ed15c706f14dbae4b13435841188ab00a"
+      "sha256": "aae8c865d641db6a78d894ad17906bd8a67b1a8b519e7aafd9bfa0761bcff66d"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/11_entp_edc_report.json",
-      "sha256": "50b0961979cc341031567008a6501fe383f38febf56355ab6ed01632fc89bba6"
+      "sha256": "9cc725efd4c12d33448e739b3e383a95d18ef6aa9de3e6c66d370a0d6331229e"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/12_entp_day_report.json",
-      "sha256": "5c4973a21c507a21878707624e424f89c44f15d0785d1e4401463bc4d5758ea7"
+      "sha256": "9cfb5fee7594837531d7494969655fef2109f9035664b509af13bcf27316a408"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/13_entp_reprint_report.json",
-      "sha256": "f2e1a67be142c907b70395d5e01822b855053eeef1965afaecdc0fcce0d7133a"
+      "sha256": "61409e165677a7ac27414918fe69343556030ddf54a628698a0b59224c6fb5f4"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/15_item_out_of_stock.json",
-      "sha256": "009db2ce449c355f4558af8ea6e6be34cefad02b13303f67508647131357a2c8"
+      "sha256": "39432599192dda4f0fc6257718924c088773a7f700832e40fa36d3982b4b56ef"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/16_whatsapp_message_report.json",
-      "sha256": "70578ae83b2a2a41b6e221230b9b0d60d5823fd56415cbc7edddb957130a6dda"
+      "sha256": "0b80286f582238814094b5937aab7157bed3e5b9e327c324ed14cd1a7d6fb50a"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/18_item_recipe_report.json",
@@ -451,159 +451,159 @@
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/20_shift_report.json",
-      "sha256": "178405116bafb35bb9e1de18e2d5f06224b0e2dbf192cae1bd3878609a546f82"
+      "sha256": "9e2cfa00fe48607e9adea794ea0ada3ef71be431900856d21191440c9e5c3a9a"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/23_staff_meal_report.json",
-      "sha256": "49631d02537f6f1f5a7578c40518c4d8498fe340069b4abdff1a9df1dd34024f"
+      "sha256": "22b736c61d5494a944996a9e31751ea400a49a2401413dca2f1ccf6841fa13ce"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/25_removed_taxes_charges_report.json",
-      "sha256": "fab8ea00df718a3ee7a4fb5ffba4f10dd683f4eb84c9cf8dcd2e8641d4e14d0c"
+      "sha256": "960d080554927f041917fa54a7602ef20287ec818767697db0ca52ec08d65bcd"
     },
     {
       "path": "schema-pack/source/report_structures/p1_main/06_misc/_status.json",
-      "sha256": "ca5a4392cce9b1781ac8192172851b5d6127b949e34a8b4b0bfeca75f7614ee3"
+      "sha256": "aa72f0f1dd7288faed52b694095216a5eb8de771d40cf4dea49dccaacf8ea319"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/01_analytics/01_hourly_sales_report.json",
-      "sha256": "695032b1e1d3089b9822935ea8e6d738bc14b41ff75d53382ad238fa1f2ee088"
+      "sha256": "607d34cbe1cc5176f5228e78f8bc07f4f1fc842cf1ce47999979e0ee5f46460c"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/01_analytics/02_half_hourly_sales_report.json",
-      "sha256": "cf6bcadeca8d49078a7ed9dc8c81980421f255a8f6c53fedd2a9219352329979"
+      "sha256": "5bcae66e3fa0607245202a09ea2c06db90f432949dcb016624ebe7deeb7a5a7a"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/01_analytics/03_hourly_sales_by_category.json",
-      "sha256": "f1915402f54090d33568ce154d44c18fad16aa7703b81d0e02b5b6b78c1b81c6"
+      "sha256": "5730aa298c239099e99fdd951b75a29c561cf9f0c592602cd80dfa24d37d4e9e"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/01_analytics/04_growth_report.json",
-      "sha256": "890adf1e12bcb9e43a3b28662f858ed7302a2ab5c0525796fbefae2e2252db52"
+      "sha256": "a452aa33d7bcfb0665df12eea0e0a579b6b7f9cfbd8ff1e1a0d7816d8550337b"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/01_analytics/05_average_bill.json",
-      "sha256": "a91c7378c581430e0e8df4168feff0962731c0996356ad891900d070233543ea"
+      "sha256": "177fdfaca62f936854a39d028379acfa907cadef27eb34adf981cf60caf76658"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/01_analytics/06_income_analysis_report.json",
-      "sha256": "ea04aafd200a5eabafbf962075a119e4895e71a52c0d08f889d29e16ad691507"
+      "sha256": "a6cc5d177e8987b17e22b5caa6eafa92bcef96509ad29b41a24a041c29795f2a"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/01_analytics/07_forecast_comparison_report.json",
-      "sha256": "5b86d2fcc2b11b3f6c69f542fb9153f8f47c427fd422215ce70f2c4c083e0b19"
+      "sha256": "54881c165707f407cce1917cc13ac9906460b209c64b7442b6bbb165f416693d"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/01_analytics/08_food_cost_report.json",
-      "sha256": "f837821db016e8e008f873c5e9fb0182d22a3a095e1e19a1f14a5553649c829d"
+      "sha256": "634513fdad8315dc9fb21324901c01634fa510a288f48ec593f18bee3b2b4e3e"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/01_analytics/09_kds_report.json",
-      "sha256": "e680dd2817cfa02a30eabadcd60f7e14b5185c4a77b88b0511cfdd12d29619a5"
+      "sha256": "a74dc7cb23d8d6c9e2f2cd24c60d5d4825dc640c4d26b55c2c300c5ca940fa3d"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/01_analytics/10_location_wise_sales.json",
-      "sha256": "82880704a147aed5cceb3efc6066e887c3bc5e5d889350945a9f9b937448bbd3"
+      "sha256": "a22b116a53fab7e0a1a439cbba7d23a63a0811e79456f75a9393627b8c3cb095"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/01_kot_detail_report.json",
-      "sha256": "fb84f27d8ec9eea4249e3df49ca22a689129c604ed6ee9d0bf764106104bacb5"
+      "sha256": "51b41f478b27c10d7ad1ffcfc6155e58f70253ed8266df0dd601fece5cd4527d"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/03_kot_delete_history_report.json",
-      "sha256": "1dfb8565cba4ef6e74a12300e6a849599e06f46ffe618eec7023c1bd458afa74"
+      "sha256": "e600cf500202832b20da07adb5c616d3a0bca51bdd5cb424c910159cd5cdef46"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/04_complimentary_report.json",
-      "sha256": "6fc250bc314ab1cfe895f9a4d5210118a6147bf5de592b64eb7d9bc40a85e6e6"
+      "sha256": "c077f265e0002bafb94f3548c04f4924f675a78a5e4ebc656875515520cbd811"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/05_complimentary_detail_report_headwi.json",
-      "sha256": "c78cc77bd50275f1288abf63f383d41048c4336b55a7cf6751b7babb999cf6ca"
+      "sha256": "a55a9b65e57aae43d2486fd25a7045b2486978e0a1517f83bbb3b9dac8dcf148"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/06_discount_report.json",
-      "sha256": "5c8b0eda2b18d1cd4af172cf234ae9c6cc9047bfcab752c3dff35ccf2df8ee4d"
+      "sha256": "148b1ca4ac7e65fba1a14edb9020240278d76a0c2e3cd84608b394a894005794"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/07_discount_and_voucher_report.json",
-      "sha256": "c996509a6c01c0789aee0cdc6a7dd90d54a15124782a7a3e0051a400180f97a9"
+      "sha256": "4d8118a93aa1473e7457cfb2292a659b5ab904ced9052a84c86fe0586e4e9df9"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/08_offers_report.json",
-      "sha256": "584727a6f9215161fca3c6a865c79ba549aa4a12578d1474a8d16cfbba82cd44"
+      "sha256": "7624bfecf4bf3230539c9d0f2a6c24de81a8dd94f92e2436fdc776f9a295b193"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/10_kot_tracking_report.json",
-      "sha256": "d3ce41358ab1277186211f31a1a3d3764d59924f59d227607ca25f04089b08c9"
+      "sha256": "36eb3978b612a9631e33734346dadfa354bd158c0efff7349934c1ad57114bae"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/12_report_by_time.json",
-      "sha256": "a9e6916dd0b011660269943d98d67a7fb3412f27a938f83688550dca0568efec"
+      "sha256": "c707370fb7134571f3b9dcd4bfe54a3b27c53dcfa10476140bf2dbf1ed314e20"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/21_revenue_report.json",
-      "sha256": "59ca4e4a916780fa9008fda472249937071056bfad4ba00a90ecd015fcd50c78"
+      "sha256": "b367c9e8e7789f22fd30e5b5f85f768b7b0ce89e2a93f24147430a87dbae8ccb"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/22_negative_orders_report.json",
-      "sha256": "546249163311b0855684703661aa7227219b54805cc9a870673675738ec95dd2"
+      "sha256": "5524e1f4afda8173e03749c44338c5379f9dd5391f915b36bec2180cdc53c725"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/24_delivery_audit_report.json",
-      "sha256": "151dafc931b3d5d23e95d65862d04bd95a4222f8f555f5334f0ece01919f3233"
+      "sha256": "427a66e8a83c37d1010100d8e1428b72060d3ee3b733b5a7b41aa4969f29e07c"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/28_non_taxable_item_report.json",
-      "sha256": "5cfbb7ae136391b4538afe5e56eef67a40539f4425d96d2cf0d73ef20520b708"
+      "sha256": "2d81beaa746185ff7b9e75db7a88e9648b9330a5bd38a18c89f91328f19d37cd"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/30_food_bills_void_tax_report.json",
-      "sha256": "0d14e3d13e5365d8e4b7045c5769702147b2cbb78dfbff5e9c92d2fa05cbc18a"
+      "sha256": "c638b2cbaca56a5a9f83ed0d30b2aefa1307384d42d5b21580e897606d013295"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/31_online_orders_time_log.json",
-      "sha256": "314b9817a6ea38eb763f845aa53d96fb17019e6598cf67c0418926fadbdac94f"
+      "sha256": "e793653c15d11ff616d727eec42c35af12d8089025918cbd31f9e516f45cecf0"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/33_item_based_offer_report.json",
-      "sha256": "b8942fd2a18e69637988f054ec168ee8ac192883c2811d7b58889a43692c2442"
+      "sha256": "4620fa231ea16c401ac51647abe69e45bd54fe376fda63c24332800c36d4b59c"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/35_bi_logs_report.json",
-      "sha256": "45dbf29d310ac2dd7a5a5bcf556ebdbee32b0e3b1f8b1834d8b432a7dfc8a8c5"
+      "sha256": "871fd07e7710d24e690c58883784e97e6db4030d70383fc4b43708bcaa5e9ed1"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/37_offline_log_report.json",
-      "sha256": "2d3e13b87beed24e5770677a71cd3b977f27fc67b34529a68159f1a7409ef1ea"
+      "sha256": "38c324591911fa2cce423de77f92ce9c984c77c37851f1480f34cceff1fb4435"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/38_aggregator_status_report.json",
-      "sha256": "f46aa5488b3b833717752461031c7bfb0a8a9e61b9a3a80b7de3dc43c504bb9e"
+      "sha256": "e922c4e847475932837c93c29c27be98400577bc177ab9d6ebf490e56750a32a"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/39_custom_group_report.json",
-      "sha256": "297a0415093c9c29b7c53a84507d62d84fd200a8fe530268c2a629d57badca17"
+      "sha256": "90b0c2ac2b4679fcce5f6520ad77f19d99481b4a55b6097c28f8ee41cb8640c0"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/41_audit_report.json",
-      "sha256": "d39c5d2f8087aa570348441e487c922dea38e24d83afd1c557e4700d80c69c6e"
+      "sha256": "8d2a1d5a301e308b012bac3c7fef50c30d6d13c0061b7d34b3a0fbb7cd04bbc3"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/43_billwise_distribution.json",
-      "sha256": "f71a65f0c10f2a692666f8979518ec0300980631d97bffb17184c228fea02b35"
+      "sha256": "57d0878081c1587261e5a9198f4f7ff6a86ddcc4008cd52eefaa91056c18c323"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/45_billwise_sale_gst.json",
-      "sha256": "0d50d5ba7efaea5dbf08da795d34a46bb5a29039fa6ba7b2ac20ae7a70804724"
+      "sha256": "429e6288c12e9f947c34bc7e8301a4bb494734cb4a138d448c1c263cbba9ba89"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/47_day_part_daily_sales.json",
-      "sha256": "aa022bcfee5a79397f2104789608a608a14ffcac6c5f70ce98b8254cd034b511"
+      "sha256": "c46a78315f9fa8a80632ba6f3c02682a1d55cfeb7c5025d8d9a83dd54a255899"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/03_audit/50_bts_itemwise_report.json",
-      "sha256": "04a8a8d096c9723305a53ece8c05db3535136ddee56511f43f09543495e7ce75"
+      "sha256": "9011f7568470573b0a9f7fce281a11abef4b0d5c5f56a8403ae1fcc0dc7b5a83"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/04_category_item/01_item_by_source_report.json",
@@ -695,7 +695,7 @@
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/07_sales/06_bill_item_detail_report.json",
-      "sha256": "4d5c570a87bfa9c671fb47ab61b1d8034fd03ff31b7e73a4f6648a9def4bd891"
+      "sha256": "dbb93625f97fb2badd2bc0e85626093f8e3d29d379539bfb0ef5470900fb596b"
     },
     {
       "path": "schema-pack/source/report_structures/p2_reports/07_sales/07_settlement_report.json",
@@ -876,11 +876,11 @@
   ],
   "kpi_lineage_source": {
     "path": "schema-pack/source/kpi_lineage/kpi-lineage.json",
-    "sha256": "e9558d3714165e241206c0cd72632a97493bc6b6492bd1f0a84f039b92bcba39"
+    "sha256": "49c12ce0a29e39a761e923a3ada1e3abe4050c3a12f9445922334b3cb30b209d"
   },
   "control_tower_source": {
     "path": "schema-pack/source/control_tower/control-tower-requirements.json",
-    "sha256": "767ce5999b1ac341e340c6f979eaa65aad17983391d96934e09f4f74083254c9"
+    "sha256": "96f543b780a2a799a1d6cf0382f4ddf5a7e897f054d75011468cc412ec46ce26"
   },
   "control_tower_evidence_source": {
     "path": "schema-pack/source/control_tower/control-tower-evidence.json",
@@ -892,14 +892,14 @@
   },
   "control_tower_architecture_source": {
     "path": "schema-pack/source/architecture/control-tower-architecture.json",
-    "sha256": "d4a38252722fa74fa781a0186cc6e9c775cd674fdf988f8712e63a0aa3faf1d6"
+    "sha256": "b06631b95e2983531692c45e172852db1b954cbd55fa68c97f3fcaf8f8fdc80d"
   },
   "control_tower_presentation_source": {
     "path": "schema-pack/source/control_tower/control-tower-presentation.json",
-    "sha256": "cad35a3bdcb3bb5c7852a4d7799f65573090fbdfa0465d6f6d8c2d7e39d4c08c"
+    "sha256": "e86d0bca72997d9240d192dfa7066b45e052196a90484681329bf493643f3b66"
   },
   "control_tower_model_source": {
     "path": "schema-pack/source/model/control-tower-model.json",
-    "sha256": "5170811327c4770e962b99c52e321f4109758a0a9e8be2fb4d1c98fa9e1d23c3"
+    "sha256": "8a06eac05dfb8a8171696fa05fcd8056f80ad79d371fb96fd24f330e956087b5"
   }
 }

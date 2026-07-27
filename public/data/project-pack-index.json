@@ -6,12 +6,12 @@
   "sourceCommit": "c364bef92eac98566975f333f205648a34ce2b14",
   "policy": "Tracked synthetic, documentation, code, schema, and validation artifacts only. Screenshots, real operational exports, local audit runtime data, credentials, and environment values are excluded.",
   "summary": {
-    "files": 717,
-    "sizeBytes": 51127612,
+    "files": 733,
+    "sizeBytes": 51322087,
     "categories": 10,
     "csvFiles": 349,
     "sqlFiles": 132,
-    "guideFiles": 77,
+    "guideFiles": 91,
     "testFiles": 7
   },
   "categories": [
@@ -19,29 +19,29 @@
       "id": "final_zoho",
       "label": "Final Zoho implementation",
       "description": "Production handoff imports, Query Tables, dashboard instructions, truth packs, and validation.",
-      "count": 115,
-      "sizeBytes": 8125748
+      "count": 124,
+      "sizeBytes": 8228429
     },
     {
       "id": "synthetic_data",
       "label": "Synthetic data and exports",
       "description": "Three-outlet synthetic source history, normalized Zoho imports, and expected-output truth tables.",
       "count": 291,
-      "sizeBytes": 39684258
+      "sizeBytes": 39691085
     },
     {
       "id": "sql",
       "label": "SQL library",
       "description": "Final Control Tower SQL, legacy analytical SQL, Ask Zia tables, and database setup scripts.",
       "count": 94,
-      "sizeBytes": 177042
+      "sizeBytes": 178054
     },
     {
       "id": "documentation",
       "label": "Documentation",
       "description": "Architecture, modeling, dashboard, Zoho, external-signal, validation, and presentation guidance.",
-      "count": 71,
-      "sizeBytes": 1820798
+      "count": 78,
+      "sizeBytes": 1899035
     },
     {
       "id": "local_auditor",
@@ -55,7 +55,7 @@
       "label": "Generators and loaders",
       "description": "Synthetic-data generators, build scripts, database loaders, and repeatable automation.",
       "count": 61,
-      "sizeBytes": 848692
+      "sizeBytes": 853605
     },
     {
       "id": "schema_api",
@@ -69,7 +69,7 @@
       "label": "Tests and verification",
       "description": "Regression tests, validation scripts, package checks, and reproducibility controls.",
       "count": 7,
-      "sizeBytes": 49452
+      "sizeBytes": 50257
     },
     {
       "id": "application",
@@ -94,8 +94,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "final_zoho",
-      "sizeBytes": 4332,
-      "sha256": "d08b18e2f8822745ef61440f918b59431452fca61c15bcc11cca377d14e0fef3",
+      "sizeBytes": 5223,
+      "sha256": "5b6bcefe0ed7423bf0f00d6232b8499f7ade6a85766290a5ab503fa96fa681f1",
       "featuredOrder": 1,
       "featuredTitle": "Final implementation start",
       "description": "The authoritative entry point for importing data, creating Query Tables, and building the four pages."
@@ -107,8 +107,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "final_zoho",
-      "sizeBytes": 31393,
-      "sha256": "ebe74522b73fa0e729a21683d564bbd4398c45a10c52d7b38f0d64d1859d2bed",
+      "sizeBytes": 56740,
+      "sha256": "04a3cca70af0d455e5a073bb951cd3c5539e12eb63945fcf4614f7e98456837c",
       "featuredOrder": 2,
       "featuredTitle": "Dashboard build guide",
       "description": "Click-by-click page, chart, filter, color, and publication instructions."
@@ -120,8 +120,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "final_zoho",
-      "sizeBytes": 17553,
-      "sha256": "4ccd28bf568b5ca50db4b752dd0504e1d8c4a8b576ecae387728cd6a4c6c234b",
+      "sizeBytes": 17552,
+      "sha256": "f7e793b6c3aa222316f326ba5d23372de459383b5585dbfc74da03f1622b450b",
       "featuredOrder": 3,
       "featuredTitle": "Dashboard expected results",
       "description": "Exact synthetic KPI cards, chart controls, rankings, trends, row counts, tolerances, and stop conditions."
@@ -133,8 +133,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "documentation",
-      "sizeBytes": 258563,
-      "sha256": "2794f083bf52030e659fe0dcd7b0896a638522c25a0e65cb5d1a98fb5315cb5d",
+      "sizeBytes": 258356,
+      "sha256": "4d7a1fe2add929526f1db3b6ae99bda8926f7b52d133498cc68f7858577fad8c",
       "featuredOrder": 4,
       "featuredTitle": "KPI and chart lineage handbook",
       "description": "All 76 final objects with source fields, formula, aggregation, Zoho shelves, filters, and talk tracks."
@@ -159,8 +159,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "final_zoho",
-      "sizeBytes": 33118,
-      "sha256": "1a2233ceea3de8c8f9a4e8529c15300af39eb952342e56ff098b06e7f7602836",
+      "sizeBytes": 33286,
+      "sha256": "82f6538e98dcad6a944f0047770fb2bcc97effb34eebcb26a3a84528168a773c",
       "featuredOrder": 6,
       "featuredTitle": "Lookups and formulas",
       "description": "Many-to-one lookup, aggregate formula, grain, and pre-dashboard setup rules."
@@ -335,6 +335,19 @@
       "description": ""
     },
     {
+      "path": "docs/ABNAH_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md",
+      "name": "ABNAH_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md",
+      "title": "ABNAH REFERENCE TO ZOHO CAPABILITY MATRIX",
+      "extension": ".md",
+      "kind": "Guide",
+      "category": "documentation",
+      "sizeBytes": 11386,
+      "sha256": "64500a4c49591ca8557bb271966e2aa5b6825f3b66d65db4c7d1fbe2facf8c97",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
       "path": "docs/ACTUAL_CSV_SEMANTIC_REASSESSMENT.md",
       "name": "ACTUAL_CSV_SEMANTIC_REASSESSMENT.md",
       "title": "ACTUAL CSV SEMANTIC REASSESSMENT",
@@ -367,8 +380,8 @@
       "extension": ".json",
       "kind": "Contract",
       "category": "documentation",
-      "sizeBytes": 95098,
-      "sha256": "78a055590d2883cb2d7c07689933cb41a423e17798c4c40c25c51b6d4654019f",
+      "sizeBytes": 96219,
+      "sha256": "ed4138563de3c7207ffe7a3f71317e93d741e16baa6596f45c4a199494e6e884",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -380,8 +393,8 @@
       "extension": ".json",
       "kind": "Contract",
       "category": "documentation",
-      "sizeBytes": 193974,
-      "sha256": "d0b15ef480df4a18063fb50f8494c02880b442d1843438f441ca05d7d6a62311",
+      "sizeBytes": 195722,
+      "sha256": "a75ba277acdef52327dfde38e03b33f189323eacc96fe3ee9b329a02564cd147",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -471,8 +484,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "documentation",
-      "sizeBytes": 8619,
-      "sha256": "24e637691ff91b1b4b2b5c1bfc92cc5d09af8bd755836334f787ddc66e0eb6bb",
+      "sizeBytes": 9131,
+      "sha256": "cccb3d976c23d2d995bc421b6b72dafa4b82963d8fc84a257aad849053e9e487",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -894,6 +907,19 @@
       "description": ""
     },
     {
+      "path": "docs/zoho-secured-embed-handoff.example.json",
+      "name": "zoho-secured-embed-handoff.example.json",
+      "title": "zoho secured embed handoff.example",
+      "extension": ".json",
+      "kind": "Contract",
+      "category": "documentation",
+      "sizeBytes": 3466,
+      "sha256": "6937b548b598afdb5b7b794c94017fcaaaec7f9d78477d75a87bf6dee36f0860",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
       "path": "docs/zoho_actual_data_model_build_readme.md",
       "name": "zoho_actual_data_model_build_readme.md",
       "title": "zoho actual data model build readme",
@@ -952,8 +978,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "documentation",
-      "sizeBytes": 31393,
-      "sha256": "ebe74522b73fa0e729a21683d564bbd4398c45a10c52d7b38f0d64d1859d2bed",
+      "sizeBytes": 56740,
+      "sha256": "04a3cca70af0d455e5a073bb951cd3c5539e12eb63945fcf4614f7e98456837c",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -965,8 +991,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "documentation",
-      "sizeBytes": 14883,
-      "sha256": "fd049de5feed1400c6219ad7b8b729349f28bf3bf0d5dda6957268ceef913495",
+      "sizeBytes": 14881,
+      "sha256": "a4b4cd7238eed7f4231edcc8a7013e361c91b6a6ffe3c8d61e5207e88b15e162",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -1037,6 +1063,19 @@
       "description": ""
     },
     {
+      "path": "docs/ZOHO_CURRENT_WORKSPACE_MIGRATION.md",
+      "name": "ZOHO_CURRENT_WORKSPACE_MIGRATION.md",
+      "title": "ZOHO CURRENT WORKSPACE MIGRATION",
+      "extension": ".md",
+      "kind": "Guide",
+      "category": "documentation",
+      "sizeBytes": 8447,
+      "sha256": "3cd72cae48d1de88f6397ca8ebdcd405b68f804146d0ce550ee230be7f168c15",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
       "path": "docs/zoho_dashboard_build_readme.md",
       "name": "zoho_dashboard_build_readme.md",
       "title": "zoho dashboard build readme",
@@ -1069,8 +1108,21 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "documentation",
-      "sizeBytes": 17553,
-      "sha256": "4ccd28bf568b5ca50db4b752dd0504e1d8c4a8b576ecae387728cd6a4c6c234b",
+      "sizeBytes": 17552,
+      "sha256": "f7e793b6c3aa222316f326ba5d23372de459383b5585dbfc74da03f1622b450b",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
+      "path": "docs/ZOHO_DASHBOARD_FILTER_MAPPING_MATRIX.md",
+      "name": "ZOHO_DASHBOARD_FILTER_MAPPING_MATRIX.md",
+      "title": "ZOHO DASHBOARD FILTER MAPPING MATRIX",
+      "extension": ".md",
+      "kind": "Guide",
+      "category": "documentation",
+      "sizeBytes": 10828,
+      "sha256": "c0241e3ec2d8f13923a48dd8b07392460a4a119955d4f5d39096ff4ee69f1727",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -1097,6 +1149,19 @@
       "category": "documentation",
       "sizeBytes": 6627,
       "sha256": "4968fda487fd774b7b2f8b19f11cc403fccf755e17ab5c1a578c6289492ca026",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
+      "path": "docs/ZOHO_EMBEDDED_PORTAL_SETUP.md",
+      "name": "ZOHO_EMBEDDED_PORTAL_SETUP.md",
+      "title": "ZOHO EMBEDDED PORTAL SETUP",
+      "extension": ".md",
+      "kind": "Guide",
+      "category": "documentation",
+      "sizeBytes": 3967,
+      "sha256": "4de089b96086ef7afa9b2e0f19453bae5a096915794a8565e9070dbfff2f7e17",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -1134,8 +1199,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "documentation",
-      "sizeBytes": 33118,
-      "sha256": "1a2233ceea3de8c8f9a4e8529c15300af39eb952342e56ff098b06e7f7602836",
+      "sizeBytes": 33286,
+      "sha256": "82f6538e98dcad6a944f0047770fb2bcc97effb34eebcb26a3a84528168a773c",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -1162,6 +1227,19 @@
       "category": "documentation",
       "sizeBytes": 26228,
       "sha256": "ab947448296dba8980c4389763278a937fda96d730f829bc09284f5709a83f95",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
+      "path": "docs/ZOHO_PORTAL_HOSTING_AUTH_HANDOFF.md",
+      "name": "ZOHO_PORTAL_HOSTING_AUTH_HANDOFF.md",
+      "title": "ZOHO PORTAL HOSTING AUTH HANDOFF",
+      "extension": ".md",
+      "kind": "Guide",
+      "category": "documentation",
+      "sizeBytes": 3737,
+      "sha256": "050a00f560db003dfd1eea9e9ff4710609e4bda98a90d97f241ec931cf672d9a",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -1206,6 +1284,19 @@
       "description": ""
     },
     {
+      "path": "docs/ZOHO_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md",
+      "name": "ZOHO_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md",
+      "title": "ZOHO REPORT BUILD EMBED AND FILTER SEQUENCE",
+      "extension": ".md",
+      "kind": "Guide",
+      "category": "documentation",
+      "sizeBytes": 5778,
+      "sha256": "6395b273791d3c767e6d05bb2dfff4805aa22a719aa9ca7b52155d3601e897b4",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
       "path": "docs/zoho_zia_training_readme.md",
       "name": "zoho_zia_training_readme.md",
       "title": "zoho zia training readme",
@@ -1225,8 +1316,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "documentation",
-      "sizeBytes": 61807,
-      "sha256": "430d61d538b88c2d5a65d1e7376bf387eaa40c43e0803e91232c1eda489d0a0d",
+      "sizeBytes": 63749,
+      "sha256": "60e8c0e87d107c5b50914f6b6652c3198fff0a56492e13c54de9d11e895a1b01",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -1797,8 +1888,8 @@
       "extension": ".sql",
       "kind": "SQL",
       "category": "final_zoho",
-      "sizeBytes": 4315,
-      "sha256": "a5cd08d7f28678e43da6f1ed428fdd8ea3528cdabfd96eb61f77f133e37c20df",
+      "sizeBytes": 4798,
+      "sha256": "2b636084865998464516a1013d3ee5dc42aa3ebcdb075677294be5531c164709",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -1810,8 +1901,8 @@
       "extension": ".sql",
       "kind": "SQL",
       "category": "final_zoho",
-      "sizeBytes": 1026,
-      "sha256": "1d528bb266cf840ce53d5a26bf1f347474d752cbde0776a6a6e55e9d87f7a4f5",
+      "sizeBytes": 1082,
+      "sha256": "bae590a207c4ed6efa88d0816077c5756e3f53fa32495bd8ee213962eb627fdc",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -1823,8 +1914,8 @@
       "extension": ".sql",
       "kind": "SQL",
       "category": "final_zoho",
-      "sizeBytes": 1353,
-      "sha256": "0c28253e25e188198922e59021f7d93637276117180be5f368fb6f6ab97be384",
+      "sizeBytes": 1409,
+      "sha256": "7dacddf8e1a58c4ea8a6040997486a370a495868dca7a4b784e5fc563c23e98d",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -1836,8 +1927,8 @@
       "extension": ".sql",
       "kind": "SQL",
       "category": "final_zoho",
-      "sizeBytes": 2942,
-      "sha256": "e8efacdd0e3dd66c2120117e5f48df93cc17b978e5c4932b3936217dec506539",
+      "sizeBytes": 3359,
+      "sha256": "04ae67b146c4499e8ba9adc525abd4e4a3ccda933002851180b6924ec30bc858",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -1966,8 +2057,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "final_zoho",
-      "sizeBytes": 14883,
-      "sha256": "fd049de5feed1400c6219ad7b8b729349f28bf3bf0d5dda6957268ceef913495",
+      "sizeBytes": 14881,
+      "sha256": "a4b4cd7238eed7f4231edcc8a7013e361c91b6a6ffe3c8d61e5207e88b15e162",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -1999,6 +2090,32 @@
       "description": ""
     },
     {
+      "path": "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/03_ZOHO_INSTRUCTIONS/03B_CURRENT_WORKSPACE_MIGRATION.md",
+      "name": "03B_CURRENT_WORKSPACE_MIGRATION.md",
+      "title": "03B CURRENT WORKSPACE MIGRATION",
+      "extension": ".md",
+      "kind": "Guide",
+      "category": "final_zoho",
+      "sizeBytes": 8447,
+      "sha256": "3cd72cae48d1de88f6397ca8ebdcd405b68f804146d0ce550ee230be7f168c15",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
+      "path": "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/03_ZOHO_INSTRUCTIONS/04B_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md",
+      "name": "04B_REFERENCE_TO_ZOHO_CAPABILITY_MATRIX.md",
+      "title": "04B REFERENCE TO ZOHO CAPABILITY MATRIX",
+      "extension": ".md",
+      "kind": "Guide",
+      "category": "final_zoho",
+      "sizeBytes": 11386,
+      "sha256": "64500a4c49591ca8557bb271966e2aa5b6825f3b66d65db4c7d1fbe2facf8c97",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
       "path": "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/03_ZOHO_INSTRUCTIONS/05_ASK_ZIA_SETUP.md",
       "name": "05_ASK_ZIA_SETUP.md",
       "title": "05 ASK ZIA SETUP",
@@ -2012,6 +2129,19 @@
       "description": ""
     },
     {
+      "path": "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/03_ZOHO_INSTRUCTIONS/05_DASHBOARD_FILTER_MAPPING.md",
+      "name": "05_DASHBOARD_FILTER_MAPPING.md",
+      "title": "05 DASHBOARD FILTER MAPPING",
+      "extension": ".md",
+      "kind": "Guide",
+      "category": "final_zoho",
+      "sizeBytes": 10828,
+      "sha256": "c0241e3ec2d8f13923a48dd8b07392460a4a119955d4f5d39096ff4ee69f1727",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
       "path": "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/03_ZOHO_INSTRUCTIONS/06_VALIDATION_AND_PUBLICATION.md",
       "name": "06_VALIDATION_AND_PUBLICATION.md",
       "title": "06 VALIDATION AND PUBLICATION",
@@ -2020,6 +2150,84 @@
       "category": "final_zoho",
       "sizeBytes": 8862,
       "sha256": "18ea2cec8f35680103acfc33ba98e474886e2a42d4ef6f6534b0113f6a695341",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
+      "path": "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/03_ZOHO_INSTRUCTIONS/07_EMBEDDED_PORTAL_SETUP.md",
+      "name": "07_EMBEDDED_PORTAL_SETUP.md",
+      "title": "07 EMBEDDED PORTAL SETUP",
+      "extension": ".md",
+      "kind": "Guide",
+      "category": "final_zoho",
+      "sizeBytes": 3967,
+      "sha256": "4de089b96086ef7afa9b2e0f19453bae5a096915794a8565e9070dbfff2f7e17",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
+      "path": "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/03_ZOHO_INSTRUCTIONS/08_PORTAL_HOSTING_AUTH_HANDOFF.md",
+      "name": "08_PORTAL_HOSTING_AUTH_HANDOFF.md",
+      "title": "08 PORTAL HOSTING AUTH HANDOFF",
+      "extension": ".md",
+      "kind": "Guide",
+      "category": "final_zoho",
+      "sizeBytes": 3737,
+      "sha256": "050a00f560db003dfd1eea9e9ff4710609e4bda98a90d97f241ec931cf672d9a",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
+      "path": "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/03_ZOHO_INSTRUCTIONS/09_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md",
+      "name": "09_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md",
+      "title": "09 REPORT BUILD EMBED AND FILTER SEQUENCE",
+      "extension": ".md",
+      "kind": "Guide",
+      "category": "final_zoho",
+      "sizeBytes": 5778,
+      "sha256": "6395b273791d3c767e6d05bb2dfff4805aa22a719aa9ca7b52155d3601e897b4",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
+      "path": "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/03_ZOHO_INSTRUCTIONS/10_PAGE_1_AND_PAGE_2_CORRECTIONS.md",
+      "name": "10_PAGE_1_AND_PAGE_2_CORRECTIONS.md",
+      "title": "10 PAGE 1 AND PAGE 2 CORRECTIONS",
+      "extension": ".md",
+      "kind": "Guide",
+      "category": "final_zoho",
+      "sizeBytes": 7419,
+      "sha256": "820e1ed988adaae4c31c7fae6391a31fb985943018a6b58e4972df1cebaa7ffb",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
+      "path": "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/03_ZOHO_INSTRUCTIONS/11_GITHUB_PAGES_ZOHO_AUTH_SETUP.md",
+      "name": "11_GITHUB_PAGES_ZOHO_AUTH_SETUP.md",
+      "title": "11 GITHUB PAGES ZOHO AUTH SETUP",
+      "extension": ".md",
+      "kind": "Guide",
+      "category": "final_zoho",
+      "sizeBytes": 10453,
+      "sha256": "3f56029da4383549150f893e4a1cfcc4f81a2a3aa061b90398ec72b40d2dfe8c",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
+      "path": "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/03_ZOHO_INSTRUCTIONS/zoho-secured-embed-handoff.example.json",
+      "name": "zoho-secured-embed-handoff.example.json",
+      "title": "zoho secured embed handoff.example",
+      "extension": ".json",
+      "kind": "Contract",
+      "category": "final_zoho",
+      "sizeBytes": 3466,
+      "sha256": "6937b548b598afdb5b7b794c94017fcaaaec7f9d78477d75a87bf6dee36f0860",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -2161,8 +2369,8 @@
       "extension": ".csv",
       "kind": "CSV data",
       "category": "final_zoho",
-      "sizeBytes": 303291,
-      "sha256": "5906bf7af965d045a383d8c18e1af249c9105907117740da95f8d21beda1778c",
+      "sizeBytes": 310118,
+      "sha256": "672496976df0f4233f51f05eb8349a4cfdde2c12d51f765c2cba27de2f6a1558",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -2343,8 +2551,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "final_zoho",
-      "sizeBytes": 8619,
-      "sha256": "24e637691ff91b1b4b2b5c1bfc92cc5d09af8bd755836334f787ddc66e0eb6bb",
+      "sizeBytes": 9131,
+      "sha256": "cccb3d976c23d2d995bc421b6b72dafa4b82963d8fc84a257aad849053e9e487",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -2642,8 +2850,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "final_zoho",
-      "sizeBytes": 1326,
-      "sha256": "d1dec04348ae8528866645741e630ea03671c46bca14df3ba950b7f4cb3c641a",
+      "sizeBytes": 1509,
+      "sha256": "db2bddc20619f2179927eeac27fe4791716894c7c5794c59737e5cc6d77ad4be",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -2655,8 +2863,8 @@
       "extension": ".csv",
       "kind": "CSV data",
       "category": "final_zoho",
-      "sizeBytes": 24500,
-      "sha256": "bb824d426f1667e3acf7e8912f05b9f9a07aea678b486e8f947c60d53b812326",
+      "sizeBytes": 26318,
+      "sha256": "dbc6ff148c2c9b198f058c408da19c4ca0f349755e45e160037b59bc5df86c42",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -2668,8 +2876,8 @@
       "extension": ".ps1",
       "kind": "PowerShell",
       "category": "final_zoho",
-      "sizeBytes": 3456,
-      "sha256": "a9107585c230980b816d59db63070bdbb76c54cd1c415f35dbefdb9a84a8102c",
+      "sizeBytes": 3901,
+      "sha256": "2f68d7b8ae3c8e919154134c5e184924903725b277c232c8c95382dc2d32de5c",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -3097,8 +3305,8 @@
       "extension": ".py",
       "kind": "Python",
       "category": "generators",
-      "sizeBytes": 97657,
-      "sha256": "b54daf6d611529afb17f850f324c6770e1cd3e2832f60fe42b2cad8f04995dee",
+      "sizeBytes": 98061,
+      "sha256": "4dad43f45f833d9ddd1985ac36d312dbe646adddec714e0515942b30e7c77889",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -3123,8 +3331,8 @@
       "extension": ".py",
       "kind": "Python",
       "category": "generators",
-      "sizeBytes": 82954,
-      "sha256": "675f46bb37b9ccd66a474763d3b8af451bf4a1a49da3538f4a44bb55b794097c",
+      "sizeBytes": 83873,
+      "sha256": "bd43600e80687b733d5b48aa8d82c1a54b0f624d60291f9dd9ca64e6912ad17a",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -3149,8 +3357,8 @@
       "extension": ".py",
       "kind": "Python",
       "category": "generators",
-      "sizeBytes": 68411,
-      "sha256": "6a937d8d4d37f89fe3bfaa284fc23ff6e84a2c7b4e484308aae922d7828ff9e9",
+      "sizeBytes": 69344,
+      "sha256": "3d64a7106e7a92255dfd517458be77e8c38ef81f7a7ac801e157f7a33a8417a5",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -3162,8 +3370,8 @@
       "extension": ".py",
       "kind": "Python",
       "category": "generators",
-      "sizeBytes": 22723,
-      "sha256": "95ef2a3bf67226506ff64dce487f76cba57d4010c28ee24a52ececba1f2cc4fb",
+      "sizeBytes": 25380,
+      "sha256": "2cb1cfe978306c06e30b5ba8bf38ea897d2dbd8e68eb6b3c502331412774e8d8",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4839,8 +5047,8 @@
       "extension": ".sql",
       "kind": "SQL",
       "category": "sql",
-      "sizeBytes": 4315,
-      "sha256": "a5cd08d7f28678e43da6f1ed428fdd8ea3528cdabfd96eb61f77f133e37c20df",
+      "sizeBytes": 4798,
+      "sha256": "2b636084865998464516a1013d3ee5dc42aa3ebcdb075677294be5531c164709",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4852,8 +5060,8 @@
       "extension": ".sql",
       "kind": "SQL",
       "category": "sql",
-      "sizeBytes": 1026,
-      "sha256": "1d528bb266cf840ce53d5a26bf1f347474d752cbde0776a6a6e55e9d87f7a4f5",
+      "sizeBytes": 1082,
+      "sha256": "bae590a207c4ed6efa88d0816077c5756e3f53fa32495bd8ee213962eb627fdc",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4865,8 +5073,8 @@
       "extension": ".sql",
       "kind": "SQL",
       "category": "sql",
-      "sizeBytes": 1353,
-      "sha256": "0c28253e25e188198922e59021f7d93637276117180be5f368fb6f6ab97be384",
+      "sizeBytes": 1409,
+      "sha256": "7dacddf8e1a58c4ea8a6040997486a370a495868dca7a4b784e5fc563c23e98d",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4878,8 +5086,8 @@
       "extension": ".sql",
       "kind": "SQL",
       "category": "sql",
-      "sizeBytes": 2942,
-      "sha256": "e8efacdd0e3dd66c2120117e5f48df93cc17b978e5c4932b3936217dec506539",
+      "sizeBytes": 3359,
+      "sha256": "04ae67b146c4499e8ba9adc525abd4e4a3ccda933002851180b6924ec30bc858",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -9038,8 +9246,8 @@
       "extension": ".csv",
       "kind": "CSV data",
       "category": "synthetic_data",
-      "sizeBytes": 303291,
-      "sha256": "5906bf7af965d045a383d8c18e1af249c9105907117740da95f8d21beda1778c",
+      "sizeBytes": 310118,
+      "sha256": "672496976df0f4233f51f05eb8349a4cfdde2c12d51f765c2cba27de2f6a1558",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -9363,8 +9571,8 @@
       "extension": ".py",
       "kind": "Python",
       "category": "tests",
-      "sizeBytes": 2403,
-      "sha256": "535384106697355513a11e09d2982ef6f8ca793a0a931b258d7f0cda5a27a6e9",
+      "sizeBytes": 2400,
+      "sha256": "f99efe961a0a9a2a54a4210ce57cde65fe56ff7ffc67e019450942c639340495",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -9376,8 +9584,8 @@
       "extension": ".py",
       "kind": "Python",
       "category": "tests",
-      "sizeBytes": 2890,
-      "sha256": "cbc25f39578ba73b36a8a2bf2c6749d2f39f3bca910d0d80ee97c15848d09b3b",
+      "sizeBytes": 2824,
+      "sha256": "92b5c3993a8971bec320b956e5cb1728253628050e56f9dd57edf69f96959b00",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -9389,8 +9597,8 @@
       "extension": ".py",
       "kind": "Python",
       "category": "tests",
-      "sizeBytes": 7387,
-      "sha256": "a562f5b734d44bd08f67582c6899d7b616233fbcc5b73f42b02b084be4d242bd",
+      "sizeBytes": 8261,
+      "sha256": "49e1ee65448ce9df42ec4521183e2795a27ad5f93dfcccdc81f218c5131d0ab9",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""

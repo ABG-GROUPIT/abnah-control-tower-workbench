@@ -6,6 +6,7 @@
 -- Validate CAST/date function behavior once in the target Zoho workspace.
 SELECT
     v."source_period_code" AS "source_period_code",
+    v."as_of_date" AS "as_of_date",
     v."outlet_code" AS "outlet_code",
     v."outlet_name" AS "outlet_name",
     v."vendor_name" AS "vendor_name",
@@ -33,6 +34,7 @@ SELECT
 FROM "24_fact_ct_po_receipt_line.sql" v
 GROUP BY
     v."source_period_code",
+    v."as_of_date",
     v."outlet_code",
     v."outlet_name",
     v."vendor_name";
