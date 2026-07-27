@@ -16,6 +16,7 @@ ACTIVE_MANIFEST = EXPORTS / "_CONTROL_TOWER_ACTIVE_IMPORT_MANIFEST.csv"
 SQL_SOURCE = ROOT / "docs" / "zoho_control_tower_v2_sql"
 TRUTH_SOURCE = EXPORTS / "truth"
 CONTRACT_SOURCE = ROOT / "local_data_auditor" / "contracts"
+PORTAL_HANDOFF_SOURCE = ROOT.parents[1] / "portal-handoff"
 ZOHO_IMPORT_TABLE_SUFFIX = "-Copy"
 EXPECTED_ACTIVE_IMPORTS = 14
 EXPECTED_QUERY_TABLES = 38
@@ -348,6 +349,16 @@ def build_handoff_folder() -> None:
             destination / "SOURCE_CONTRACTS" / source.name,
         )
 
+    for filename in (
+        "README.md",
+        "ABNAH_PORTAL_HANDOFF_TEMPLATE.json",
+        "validate_handoff.py",
+    ):
+        copy_text_required(
+            PORTAL_HANDOFF_SOURCE / filename,
+            destination / "PORTAL_HANDOFF" / filename,
+        )
+
 
 def write_start_here(import_rows: list[dict[str, str]]) -> None:
     expected_rows = sum(int(row["row_count"]) for row in import_rows)
@@ -430,7 +441,7 @@ Record progress directly in the two checklist CSVs and
 | `02_QUERY_TABLES` | All 38 SQL files, authoritative manifest and editable build checklist |
 | `03_ZOHO_INSTRUCTIONS` | End-to-end import, model, dashboard, Ask Zia and validation steps |
 | `04_VALIDATION_AND_LIMITATIONS` | Truth pack, source/KPI matrix, semantic audit and presentation gates |
-| `05_DEVELOPER_HANDOFF` | Machine-readable source contracts and model/fidelity references |
+| `05_DEVELOPER_HANDOFF` | Machine-readable source contracts, model references and the local URL/authentication handoff template |
 
 `PACKAGE_MANIFEST.csv` contains a SHA-256 hash for every packaged payload file.
 

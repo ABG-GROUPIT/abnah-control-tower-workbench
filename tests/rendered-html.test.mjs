@@ -152,6 +152,37 @@ test("ships the secured data gateway and backward-compatible handoff contract", 
   );
 });
 
+test("ships one validated URL and authentication handoff contract", async () => {
+  const handoff = JSON.parse(
+    await readFile(
+      new URL(
+        "../portal-handoff/ABNAH_PORTAL_HANDOFF_TEMPLATE.json",
+        import.meta.url,
+      ),
+      "utf8",
+    ),
+  );
+  const reports = Object.values(handoff.securedVisualUrls)
+    .flatMap((page) => Object.values(page.reports));
+
+  assert.equal(handoff.schema, "abnah-portal-handoff/v1");
+  assert.equal(Object.keys(handoff.securedVisualUrls).length, 4);
+  assert.equal(reports.length, 19);
+  assert.deepEqual(
+    handoff.publicConfiguration.zohoOAuthScopes,
+    [
+      "ZohoAnalytics.metadata.read",
+      "ZohoAnalytics.data.read",
+      "profile.userinfo.READ",
+    ],
+  );
+  assert.ok(reports.every((report) => report.viewName && report.queryTable));
+  assert.ok(reports.every((report) => report.securedViewUrl === ""));
+  assert.equal(handoff.privateConfiguration.supabaseServiceRoleKey, "");
+  assert.equal(handoff.privateConfiguration.zohoOAuthClientSecret, "");
+  assert.equal(handoff.privateConfiguration.zohoTokenEncryptionKey, "");
+});
+
 test("ships screenshot-free workspace and control-tower contracts", async () => {
   const [workspaceText, atlasText, controlTowerText, evidenceText, fidelityText, architectureText, presentationText, modelText, lineageText, projectPackText, migration, packageJson] = await Promise.all([
     readFile(new URL("../schema-pack/generated/workspace.json", import.meta.url), "utf8"),
@@ -254,12 +285,12 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   assert.equal(lineage.kpis.filter((kpi) => kpi.approvalStatus === "partial").length, 1);
   assert.equal(lineage.nodes.length, 0);
   assert.equal(lineage.edges.length, 0);
-  assert.equal(projectPack.summary.files, 767);
+  assert.equal(projectPack.summary.files, 773);
   assert.equal(projectPack.summary.csvFiles, 349);
   assert.equal(projectPack.summary.sqlFiles, 133);
-  assert.equal(projectPack.summary.guideFiles, 95);
+  assert.equal(projectPack.summary.guideFiles, 97);
   assert.equal(projectPack.categories.length, 10);
-  assert.equal(new Set(projectPack.files.map((file) => file.path)).size, 767);
+  assert.equal(new Set(projectPack.files.map((file) => file.path)).size, 773);
   assert.ok(projectPack.files.filter((file) => file.featuredOrder !== null).length >= 6);
   assert.ok(projectPack.files.every((file) => /^[a-f0-9]{64}$/.test(file.sha256)));
   assert.doesNotMatch(projectPackText, /\.png\b|\.jpe?g\b|AppData\\Local\\Temp|Downloads\\/i);

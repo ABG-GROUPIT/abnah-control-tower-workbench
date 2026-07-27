@@ -111,6 +111,15 @@ class FinalZohoPackageTests(unittest.TestCase):
             )
         )
         self.assertEqual(21, len(contracts))
+        portal_handoff = (
+            self.package
+            / "05_DEVELOPER_HANDOFF"
+            / "PORTAL_HANDOFF"
+        )
+        self.assertTrue(
+            (portal_handoff / "ABNAH_PORTAL_HANDOFF_TEMPLATE.json").is_file()
+        )
+        self.assertTrue((portal_handoff / "validate_handoff.py").is_file())
 
     def test_truth_and_reconciliation_gates_are_packaged_and_passing(self) -> None:
         validation = self.package / "04_VALIDATION_AND_LIMITATIONS"
@@ -195,7 +204,7 @@ class FinalZohoPackageTests(unittest.TestCase):
         corrections = (
             instructions / "10_PAGE_1_AND_PAGE_2_CORRECTIONS.md"
         ).read_text(encoding="utf-8")
-        self.assertIn("INR 411,695.50", corrections)
+        self.assertIn("INR 411,695.55", corrections)
         self.assertIn("Opening stock estimate", corrections)
         self.assertIn("model outputs created by CASE rules", corrections)
         runtime = (

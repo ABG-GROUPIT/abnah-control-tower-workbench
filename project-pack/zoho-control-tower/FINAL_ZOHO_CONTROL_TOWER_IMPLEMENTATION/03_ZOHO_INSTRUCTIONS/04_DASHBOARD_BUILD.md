@@ -433,23 +433,76 @@ listed below. A filter that is not mapped must leave that report unchanged.
 
 1. Open the dashboard in Edit Mode.
 2. Click **Add User Filters**.
-3. Choose **Timeline Filter**.
-4. Set the label to `Date Range`.
-5. Allow a custom From and To selection.
-6. Open **Map Filter to Reports**.
-7. Map each report to its physical date field:
+3. Check **Include Timeline Filter**.
+4. Click the Timeline Filter's pencil icon.
+5. Set **Choose Component Type** to **Single Select Box**.
+6. Set the label to `Date Range`.
+7. Expand **Timeline Filter Column Mapping**.
+8. Select one physical Date column per table from the list.
 
-| Source | Date field |
+There is no text entry and no SQL expression in this step. If a date field is
+shown but disabled, verify that its Query Table column has Date data type.
+
+After the table-level choices, map every KPI/report separately:
+
+1. Hover the KPI/report.
+2. Click **More > Options**.
+3. Check **Apply Dashboard Filters**.
+4. Open **Mapping Timeline Filter**. Some layouts show **Customize** beside
+   `Date Range`.
+5. Select the exact physical date field for that object.
+6. Click **Apply**.
+
+Use the object-level Page 1 and Page 2 matrix in
+`ZOHO_DASHBOARD_FILTER_MAPPING_MATRIX.md`. The important mappings are:
+
+| Object source | Date field |
 | --- | --- |
 | Query 27 and Query 28 | `snapshot_date` |
 | Query 29 and Query 30 | `po_date` |
 | Query 31 | `price_as_of_date` |
 | Query 22 and Query 24 | `po_date` |
 | Query 23 | `receipt_date` |
-| Query 36 | `po_date` |
+| Query 36 on Page 1 | `as_of_date` |
 | Query 38 | `as_of_date` |
 
 Do not map Date Range to `source_period_code`.
+
+The current Page 1 correction must explicitly configure these three objects:
+
+1. `Menu Items Impacted` -> Query 28 `snapshot_date`
+2. `Stockout Risk (Net Sales)` -> Query 28 `snapshot_date`
+3. `CT_P1_Menu_Impact_Detail` -> Query 28 `snapshot_date`
+
+For March, Stockout Risk must change from the all-period `INR 976,271.72` to
+`INR 411,695.55`.
+
+### Page 2 Existing Filter Cleanup
+
+The current Page 2 filter row contains ten controls. Delete these four exact
+visible controls:
+
+1. `As-of Source Period.`
+2. the first `Raw Material`, immediately after Source Period;
+3. the first `Vendor`;
+4. `UOM`.
+
+Rename the retained controls:
+
+| Current label | Final label |
+| --- | --- |
+| `Raw Material Category` | `Ingredient Category` |
+| `Vendor Name (Global)` | `Vendor` |
+| `Raw Material (Global)` | `Raw Material` |
+
+Turn off **Auto Add User Filters from Reports**. Keep UOM only inside
+`CT_P2_Ingredient_Price_Trend`.
+
+For Outlet, Ingredient Category, Vendor and Raw Material, edit the User Filter,
+click **Edit Column Mapping**, and merge the corresponding column from Queries
+22, 23, 24, 29, 30 and 31. For PO Status, merge only Queries 22, 24, 29 and
+30. The exact object-by-object mapping is in
+`ZOHO_DASHBOARD_FILTER_MAPPING_MATRIX.md`.
 
 ## Page 3 And Page 4 - As-of Source Period
 
@@ -491,9 +544,6 @@ Add these filters only on the named tab.
 
 | Tab | Filter label | Physical field | Map only to |
 | --- | --- | --- | --- |
-| Page 1 | Region | Query 37 lookup `region` | Query 27, 28, 36 and 38 reports with outlet lookup |
-| Page 1 | New / Matured | Query 37 lookup `new_matured_flag` | Query 27, 28, 36 and 38 reports with outlet lookup |
-| Page 1 | Stockout Severity | `risk_severity` | Query 27 stockout reports and Query 28 menu impact only |
 | Page 1 | Action Owner | `action_owner` | Query 27 action and stockout-detail reports |
 | Page 1 | Ingredient Category | `category_name` through item lookup | Query 27, 28, 36 and 38 ingredient reports |
 | Page 2 | Region | Query 37 lookup `region` | Page 2 reports with outlet lookup |

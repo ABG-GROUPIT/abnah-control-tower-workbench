@@ -34,8 +34,8 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
   source field set, formula, lookup, filter, and Zoho report configuration.
 - 38 exact Control Tower v2 Query Tables are searchable in the hosted model
   library with their dependency levels and complete SQL.
-- One self-contained `project-pack/zoho-control-tower/` now carries all 764
-  tracked synthetic-data, Zoho implementation, SQL, validation, local-auditor,
+- One self-contained `project-pack/zoho-control-tower/` now carries the
+  validated synthetic-data, Zoho implementation, SQL, local-auditor,
   API-packet, generator, test, portal-runtime, and handoff files in this ABG
   repository.
 - P2 now has 73 captured schemas, 3 bounded partial schemas, and 79 pending reports.
@@ -97,6 +97,8 @@ Developer:
 1. Read `project-pack/README.md`, `docs/ARCHITECTURE.md`,
    `docs/CONTROL_TOWER_KPI_AND_CHART_LINEAGE_HANDBOOK.md`,
    `docs/ZOHO_PORTAL_RUNTIME.md`,
+   `docs/PAGE_1_AND_PAGE_2_CORRECTIONS.md`,
+   `portal-handoff/README.md`,
    `docs/PRESENTATION_SAFE_ACTUAL_DATA_ISSUES.md`, and
    `docs/STRUCTURAL_SCHEMA_METHOD.md`.
 2. Run `npm install`.
@@ -133,6 +135,7 @@ ABNAH Schema Atlas/
   project-pack/
     zoho-control-tower/        complete synthetic demo and Zoho implementation
     PROJECT_PACK_MANIFEST.csv  SHA-256 inventory of every bundled project file
+  portal-handoff/              one-file URL, OAuth, and runtime transfer kit
   scripts/                     builders and validators
   supabase/
     functions/                 Zoho OAuth and portal-config Edge Function

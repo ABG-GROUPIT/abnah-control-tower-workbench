@@ -84,7 +84,7 @@ class DashboardZohoUiContractTests(unittest.TestCase):
             section,
         )
 
-    def test_risky_po_uses_the_correct_date_for_each_page(self) -> None:
+    def test_risky_po_uses_the_page_one_risk_snapshot_date(self) -> None:
         corrections = (ROOT.parents[1] / "docs" / "PAGE_1_AND_PAGE_2_CORRECTIONS.md").read_text(
             encoding="utf-8"
         )
@@ -92,15 +92,18 @@ class DashboardZohoUiContractTests(unittest.TestCase):
             ROOT / "docs" / "ZOHO_DASHBOARD_FILTER_MAPPING_MATRIX.md"
         ).read_text(encoding="utf-8")
 
-        for document in (corrections, filter_matrix):
-            self.assertIn(
-                "| `36_fact_ct_risky_po.sql` | `as_of_date` |",
-                document,
-            )
-            self.assertIn(
-                "| `36_fact_ct_risky_po.sql` | `po_date` |",
-                document,
-            )
+        self.assertIn(
+            "| `36_fact_ct_risky_po.sql` | `as_of_date` |",
+            corrections,
+        )
+        self.assertIn(
+            "| `CT_P1_Vendor_PO_Risk` | Query 36 | `as_of_date` |",
+            filter_matrix,
+        )
+        self.assertNotIn(
+            "| `36_fact_ct_risky_po.sql` | `po_date` |",
+            corrections,
+        )
 
 
 if __name__ == "__main__":

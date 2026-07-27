@@ -1,213 +1,187 @@
-# Page 1 and Page 2 Correction Guide
+# Page 1 And Page 2 - Do This Next
 
-This is the smallest safe correction sequence for the Page 1 dashboard already
-built in Zoho and the Page 2 dashboard now being completed. Do not delete the
-dashboard, rebuild the 38-table model, or remove the existing Aggregate
-Formulas.
+This guide starts from the current Zoho workspace state:
 
-## What The Live Page 1 Review Found
+- all 38 Query Tables are saved;
+- corrected Queries 28, 29, 30 and 31 are saved;
+- the three Query 30 Aggregate Formulas are saved;
+- Page 1 exists and Page 2 is being corrected.
 
-The reviewed dashboard rendered correctly, but three values were not using the
-intended reporting scope or grain:
+Do not replace another Query Table. Do not delete any Aggregate Formula.
 
-| Area | Live result | Correct March demo truth | Cause |
-| --- | ---: | ---: | --- |
-| Menu items at risk | 79 | 110 | Query 28 tested recipe-path shortages instead of the ingredient's total required quantity |
-| Stockout sales at risk | INR 286,563.67 | INR 411,695.50 | The same Query 28 grain issue excluded valid impacted menu items |
-| Expiry risk | about INR 600,000 | INR 271,399.12 | `source_period_code` did not reliably restrict the expiry widget to March |
+## What The Live Page 1 Test Proved
 
-The following reviewed values were already correct for March:
+The public Page 1 dashboard was tested with no date selected and then with
+`01 Mar 2026 - 31 Mar 2026`.
 
-| KPI | Expected |
-| --- | ---: |
-| Outlets at stockout risk | 3 |
-| Open actions | 6 |
-| Vendor PO risk rows | 0 |
+| Visible KPI | No date selected | March selected | March truth | Result |
+| --- | ---: | ---: | ---: | --- |
+| Restaurants at Risk | 3 | 3 | 3 | Correct |
+| Menu Items Impacted | 110 | 110 | 110 | Cannot prove mapping because both scopes equal 110 |
+| Stockout Risk (Net Sales) | INR 976,271.72 | INR 976,271.72 | INR 411,695.55 | **Date filter is not reaching this Query 28 widget** |
+| Expiry Risk (Value) | INR 628,131.99 | about INR 271,399 | INR 271,399.12 | Correct |
+| Open Actions | 16 | 6 | 6 | Correct |
 
-The zero Vendor PO risk result is valid for March. It must not silently pull a
-January PO merely to keep the table non-empty.
+The stockout value is not duplicated by Query 28. `INR 976,271.72` is the
+correct three-month total. The widget is still summing January, February and
+March because its Timeline Filter mapping is missing.
 
-## Part A - Replace Query 28
+## Part 1 - Fix Page 1 Without Changing SQL
 
-1. In Zoho Analytics, open **Data**.
-2. Open `28_fact_ct_menu_impact.sql`.
-3. Select **Edit Design**.
-4. Replace the SQL with the complete contents of:
-   `02_QUERY_TABLES/28_fact_ct_menu_impact.sql`.
-5. Click **Execute Query**.
-6. Confirm that the preview has rows and no parsing or invalid-column error.
-7. Click **Save**.
-8. Wait for the dependent reports to finish refreshing.
+### 1A - Keep The Existing Date Range Control
 
-Only Query 28 must be replaced for the Page 1 value correction. Queries 1-27
-do not need to be re-saved.
+1. Open `CT_PAGE_1_Risk_Action_Center`.
+2. Click **Edit Design**.
+3. In **User Filters**, find `Date Range`.
+4. Click its **Edit** or pencil icon.
+5. Keep **Single Select Box** as the component.
+6. Expand **Timeline Filter Column Mapping**.
+7. Select the following values from the available lists:
 
-## Part B - Refresh The Three Query 28 Views
-
-Open and refresh these existing Page 1 elements:
-
-1. **Menu Items At Risk**
-2. **Stockout Sales At Risk**
-3. **Menu Impact Detail**
-
-Keep their report settings:
-
-| Element | Data column / measure | Display |
-| --- | --- | --- |
-| Menu Items At Risk | `menu_item_code` | Count Distinct |
-| Stockout Sales At Risk | `allocated_forecast_net_sales_at_risk` | Sum |
-| Menu Impact Detail | Query 28 detail columns | Sort allocated value descending |
-
-Do not sum `forecast_net_sales_at_risk`. It repeats when one menu item depends
-on multiple risky ingredients. Only the allocated field is additive.
-
-## Part C - Replace Source Period With A Date Range
-
-The synthetic `month_01` to `month_03` codes are lineage fields. They are not
-the final business-facing time control.
-
-1. Open the Page 1 dashboard in **Edit Design**.
-2. Remove the visible **Source Period** user filter from the page.
-3. Click **Add User Filters**.
-4. Choose **Timeline Filter**.
-5. Set its label to **Date Range**.
-6. Use a custom start/end range and select March for the current validation.
-7. Open the filter's **Map Filter to Reports** or equivalent mapping screen.
-8. Map each report to the physical date column below.
-
-| Query Table | Date column |
+| Table shown by Zoho | Select this date column |
 | --- | --- |
 | `27_fact_ct_inventory_risk.sql` | `snapshot_date` |
 | `28_fact_ct_menu_impact.sql` | `snapshot_date` |
 | `38_fact_ct_expiry_risk.sql` | `as_of_date` |
 | `36_fact_ct_risky_po.sql` | `as_of_date` |
 
-Do not map the filter to `source_period_code`.
+Do not type a query name or column name. Zoho's Timeline Filter mapping is a
+selection list, not a text box.
 
-For the Zoho Page 1 dashboard, keep only the controls that can be mapped
-reliably:
+### 1B - Force The Correct Date On Every Page 1 Object
 
-1. Date Range
-2. Outlet
-3. Ingredient Category
-4. Action Owner
+For each row below:
 
-Region and risk severity remain available in the custom portal, where the
-gateway filters the returned rows consistently. They do not need to be forced
-into the Zoho dashboard if Zoho cannot map them to every report.
+1. Hover over the named KPI/report in the dashboard.
+2. Click the **More** or three-dot icon.
+3. Click **Options**.
+4. Confirm **Apply Dashboard Filters** is checked.
+5. Open **Mapping Timeline Filter**. In some Zoho layouts this appears as
+   **Customize** beside `Date Range`.
+6. Select the exact date column in the last column below.
+7. Click **Apply**.
 
-## Part D - Validate Page 1
+| Visible KPI or report name | Source Table | Select in Mapping Timeline Filter |
+| --- | --- | --- |
+| Restaurants at Risk | `27_fact_ct_inventory_risk.sql` | `snapshot_date` |
+| Menu Items Impacted | `28_fact_ct_menu_impact.sql` | `snapshot_date` |
+| Stockout Risk (Net Sales) | `28_fact_ct_menu_impact.sql` | `snapshot_date` |
+| Expiry Risk (Value) | `38_fact_ct_expiry_risk.sql` | `as_of_date` |
+| Open Actions | `27_fact_ct_inventory_risk.sql` | `snapshot_date` |
+| `CT_P1_Outlet_Risk_Map` | `27_fact_ct_inventory_risk.sql` | `snapshot_date` |
+| `CT_P1_Action_Center` | `27_fact_ct_inventory_risk.sql` | `snapshot_date` |
+| `CT_P1_Stockout_Risk_Detail` | `27_fact_ct_inventory_risk.sql` | `snapshot_date` |
+| `CT_P1_Menu_Impact_Detail` | `28_fact_ct_menu_impact.sql` | `snapshot_date` |
+| `CT_P1_Expiry_Risk_Detail_Demo` | `38_fact_ct_expiry_risk.sql` | `as_of_date` |
+| `CT_P1_Vendor_PO_Risk` | `36_fact_ct_risky_po.sql` | `as_of_date` |
 
-Select the March date range and no outlet/category/owner restriction. Confirm:
+The three Query 28 objects are the critical correction:
 
-| Check | Expected |
-| --- | ---: |
-| Query 28 rows | 302 |
-| Distinct menu items at risk | 110 |
-| Stockout sales at risk | INR 411,695.50 |
-| Expiry risk value | INR 271,399.12 |
-| Open actions | 6 |
-| Vendor PO risk rows | 0 |
+1. `Menu Items Impacted`
+2. `Stockout Risk (Net Sales)`
+3. `CT_P1_Menu_Impact_Detail`
 
-Minor display rounding is acceptable. A materially different total is not.
+If `snapshot_date` is visible but disabled, do not type it elsewhere. Open
+`28_fact_ct_menu_impact.sql` in **Data** and confirm `snapshot_date` has a Date
+calendar icon. If Zoho shows it as Text, stop there and report the metadata
+problem; do not create another dashboard filter.
 
-### Why Some Expiry Vendor And PO Cells Are Blank
+### 1C - Verify The Stockout KPI Definition
 
-The March expiry demo has 68 rows:
+Open the `Stockout Risk (Net Sales)` widget and confirm:
 
-- 26 receipt-linked rows, worth INR 130,382.35, can carry GRN, PO and vendor
-  lineage.
-- 42 opening-stock estimate rows, worth INR 141,016.77, have no captured
-  receipt lineage, so vendor and PO are intentionally blank.
-
-Do not fill those cells with synthetic vendor or PO identifiers. Show
-`Opening stock estimate` or `Not traceable to receipt` in the custom interface.
-Expiry remains explicitly labelled as a synthetic estimate because the POSIST
-batch/expiry module is unavailable.
-
-### Where The Recommended Actions Come From
-
-`recommended_action`, `action_owner`, `due_band`, and similar instructions are
-model outputs created by CASE rules in Queries 27, 36 and 38. They are not
-fields supplied by POSIST. The UI labels them as model recommendations so they
-cannot be mistaken for source-system instructions.
-
-## Part E - Prepare Page 2
-
-Re-save only these updated files, in order:
-
-1. `29_sum_ct_procurement_funnel.sql`
-2. `30_sum_ct_vendor_scorecard.sql`
-3. `31_sum_ct_price_movement.sql`
-
-Do this for each file:
-
-1. Open the Query Table in **Data**.
-2. Click **Edit Design**.
-3. Select all existing SQL and replace it with the complete matching file from
-   `02_QUERY_TABLES`.
-4. Click **Execute Query**.
-5. Confirm that the preview contains the new columns listed below.
-6. Click **Save**.
-7. Wait for dependent views to refresh before continuing.
-
-| Query Table | Columns that must now be visible |
+| Setting | Exact value |
 | --- | --- |
-| Query 29 | `po_date`, `po_status`, `item_code`, `item_name`, `category_name`, `canonical_uom` |
-| Query 30 | the same filter columns, plus `otif_success_line_count`, `eligible_closed_line_count`, `received_qty`, `ordered_qty`, `eligible_lead_time_deviation_days_total`, `eligible_lead_time_line_count` |
-| Query 31 | `current_purchase_qty`, `current_purchase_value`, `previous_unit_price`, `current_unit_price`, `price_change_amount`, `price_change_percent`, `absolute_price_change_percent`, `price_change_value_impact`, `price_movement_direction` |
+| Source | `28_fact_ct_menu_impact.sql` |
+| Data column | `allocated_forecast_net_sales_at_risk` |
+| Aggregation | Sum |
+| Group By | Empty |
+| Fixed filter | None |
 
-`price_comparison_key` is no longer required. The Top Price Movement report is
-a table built from the visible business fields in Query 31.
+Do not use `forecast_net_sales_at_risk`. That unallocated field repeats when a
+menu item depends on multiple risky ingredients.
 
-Keep every Aggregate Formula you already created. Add only these three formulas
-to Query 30 for the vendor scorecard:
+### 1D - Test Page 1
 
-```text
-Q30 Vendor OTIF %
-if(sum("eligible_closed_line_count") <> 0, sum("otif_success_line_count") / sum("eligible_closed_line_count") * 100, null)
-```
+1. Save the dashboard.
+2. Open **View Mode**.
+3. Set `Date Range` to `01 Mar 2026 - 31 Mar 2026`.
+4. Keep Outlet, Raw Material Category and Action Owner at `All`.
+5. Verify:
 
-```text
-Q30 PO Fill Rate %
-if(sum("ordered_qty") <> 0, sum("received_qty") / sum("ordered_qty") * 100, null)
-```
+| KPI | Required March result |
+| --- | ---: |
+| Restaurants at Risk | 3 |
+| Menu Items Impacted | 110 |
+| Stockout Risk (Net Sales) | INR 411,695.55 |
+| Expiry Risk (Value) | INR 271,399.12 |
+| Open Actions | 6 |
 
-```text
-Q30 Avg Lead Deviation Days
-if(sum("eligible_lead_time_line_count") <> 0, sum("eligible_lead_time_deviation_days_total") / sum("eligible_lead_time_line_count"), null)
-```
+Open `CT_P1_Menu_Impact_Detail` and confirm every visible `snapshot_date` is
+`31 Mar 2026`. If the KPI still displays `9.76L`, the Query 28 widget mapping
+was not saved.
 
-Use Percentage for the first two and Decimal Number for the third. If Zoho
-renders a ratio 100 times too large, remove `* 100` but keep Percentage format.
+## Part 2 - Clean The Existing Page 2 Filter Bar
 
-## Part F - Configure Page 2 Filters
+The current dashboard visibly contains these ten controls:
 
-Open `CT_PAGE_2_Procurement_Vendor_Capital` in **Edit Design**.
+1. `As-of Source Period.`
+2. `Raw Material`
+3. `Vendor`
+4. `UOM`
+5. `Region`
+6. `Raw Material Category`
+7. `Vendor Name (Global)`
+8. `PO Status`
+9. `Raw Material (Global)`
+10. `Outlet`
 
-Delete these duplicate report-only controls from the dashboard filter bar:
+The first four controls are the old period control and price-trend-specific
+controls. Remove them from the dashboard-wide row:
 
-- the extra Raw Material control sourced only from Query 23;
-- the extra Vendor control sourced only from Query 23;
-- the extra UOM control sourced only from Query 23;
-- `As-of Source Period`.
+1. Delete `As-of Source Period.`
+2. Delete the first `Raw Material` control, located immediately after it.
+3. Delete the first `Vendor` control.
+4. Delete `UOM` from the dashboard-wide row.
 
-Keep UOM as a control inside the Ingredient Price Trend report only. It must not
-pretend to filter the whole page.
+Keep and rename the remaining controls:
 
-Create these dashboard user filters in this order:
+| Current visible label | Final visible label |
+| --- | --- |
+| `Region` | `Region` |
+| `Raw Material Category` | `Ingredient Category` |
+| `Vendor Name (Global)` | `Vendor` |
+| `PO Status` | `PO Status` |
+| `Raw Material (Global)` | `Raw Material` |
+| `Outlet` | `Outlet` |
 
-1. **Date Range** - Timeline Filter
-2. **Region** - Multi Select
-3. **Outlet** - Multi Select
-4. **Ingredient Category** - Multi Select
-5. **Vendor** - Multi Select
-6. **Raw Material** - Multi Select or Search
-7. **PO Status** - Multi Select
+`UOM` may remain only inside `CT_P2_Ingredient_Price_Trend`.
 
-For **Date Range**, open **Map Filter to Reports** and map:
+To stop Zoho from adding the old report controls back:
 
-| Query Table | Date column |
+1. In dashboard **Edit Design**, open the **User Filters** panel.
+2. Turn off **Auto Add User Filters from Reports**.
+3. Hover `CT_P2_Ingredient_Price_Trend`.
+4. Click **More > Options**.
+5. Use **Show Report Specific User Filter** only for `UOM`.
+
+The global `Raw Material` and `Vendor` controls will filter the trend after
+their column mappings are completed below.
+
+## Part 3 - Add And Map The Page 2 Date Range
+
+### 3A - Create The Control
+
+1. In `CT_PAGE_2_Procurement_Vendor_Capital`, click **Edit Design**.
+2. Click **Add User Filters**.
+3. Check **Include Timeline Filter**.
+4. Click the Timeline Filter's pencil icon.
+5. Set **Filter Display Name** to `Date Range`.
+6. Set **Choose Component Type** to `Single Select Box`.
+7. Expand **Timeline Filter Column Mapping**.
+8. Select one date column per table:
+
+| Table shown by Zoho | Select |
 | --- | --- |
 | `29_sum_ct_procurement_funnel.sql` | `po_date` |
 | `30_sum_ct_vendor_scorecard.sql` | `po_date` |
@@ -215,97 +189,162 @@ For **Date Range**, open **Map Filter to Reports** and map:
 | `22_fact_ct_purchase_order.sql` | `po_date` |
 | `24_fact_ct_po_receipt_line.sql` | `po_date` |
 | `23_fact_ct_purchase_receipt.sql` | `receipt_date` |
-| `36_fact_ct_risky_po.sql` | `po_date` |
-| `05_std_ct_inventory_snapshot.sql` | `snapshot_date` |
-| `27_fact_ct_inventory_risk.sql` | `snapshot_date` |
-| `35_sum_ct_financial_leakage.sql` | `as_of_date` |
-| `38_fact_ct_expiry_risk.sql` | `as_of_date` |
 
-Map the remaining Page 2 filters exactly:
+There is nothing to type and no lookup relationship to create in this dialog.
 
-| Report source | Outlet | Region | Category | Vendor | Raw Material | PO Status |
-| --- | --- | --- | --- | --- | --- | --- |
-| Query 29 | `outlet_code` | outlet lookup `region` | `category_name` | `vendor_name` | `item_code` | `po_status` |
-| Query 30 | `outlet_code` | outlet lookup `region` | `category_name` | `vendor_name` | `item_code` | `po_status` |
-| Query 31 | `outlet_code` | outlet lookup `region` | `category_name` | `vendor_name` | `item_code` | leave unmapped |
-| Query 22 | `outlet_code` | outlet lookup `region` | `category_name` | `vendor_name` | `item_code` | `po_status` |
-| Query 24 | `outlet_code` | outlet lookup `region` | `category_name` | `vendor_name` | `item_code` | `po_status` |
-| Query 23 | `outlet_code` | outlet lookup `region` | `category_name` | `vendor_name` | `item_code` | leave unmapped |
+### 3B - Map Every Visible Page 2 Object
 
-If the Query Table does not expose a field, leave that report unmapped. Do not
-map a similarly named but semantically different column.
+For each row:
 
-### Rebuild `CT_P2_Top_Price_Movement`
+1. Hover the named object.
+2. Click **More > Options**.
+3. Check **Apply Dashboard Filters**.
+4. Open **Mapping Timeline Filter** or **Customize** beside `Date Range`.
+5. Select the exact date field below.
+6. Click **Apply**.
 
-The existing R04 definition is invalid until Query 31 has been re-saved.
+| Visible KPI or report | Source Table | Date field to select |
+| --- | --- | --- |
+| Ordered Value | `29_sum_ct_procurement_funnel.sql` | `po_date` |
+| Open PO | `29_sum_ct_procurement_funnel.sql` | `po_date` |
+| Delayed PO | `29_sum_ct_procurement_funnel.sql` | `po_date` |
+| Avg Vendor OTIF | `24_fact_ct_po_receipt_line.sql` | `po_date` |
+| Items to Price Watch | `31_sum_ct_price_movement.sql` | `price_as_of_date` |
+| `CT_P2_Ingredient_Price_Trend` | `23_fact_ct_purchase_receipt.sql` | `receipt_date` |
+| `CT_P2_Procurement_Funnel` | `29_sum_ct_procurement_funnel.sql` | `po_date` |
+| `CT_P2_Vendor_Scorecard` | `30_sum_ct_vendor_scorecard.sql` | `po_date` |
+| `CT_P2_Expected_Delivery_Breach` | `22_fact_ct_purchase_order.sql` | `po_date` |
+| `CT_P2_Pending_By_Vendor` | `29_sum_ct_procurement_funnel.sql` | `po_date` |
+| `CT_P2_Top_Price_Movement` | `31_sum_ct_price_movement.sql` | `price_as_of_date` |
 
-1. Click **Create > New Report > Tabular View**.
-2. Select `31_sum_ct_price_movement.sql`.
-3. Name it `CT_P2_Top_Price_Movement`.
-4. Add columns in this order:
-   `item_name`, `vendor_name`, `canonical_uom`, `previous_unit_price`,
-   `current_unit_price`, `price_change_amount`, `price_change_percent`,
-   `price_change_value_impact`.
-5. Open **Filters**.
-6. Add `price_movement_direction`.
-7. Choose **Individual Values**.
-8. Include only `INCREASE`, `DECREASE`, and `NO_CHANGE`.
-9. Do not include `NO_BASELINE`.
-10. Sort `absolute_price_change_percent` descending.
-11. Format Previous, Current, Change and Value Impact as INR.
-12. Format Change % as percentage with two decimals.
-13. Save and add this view to Page 2.
+## Part 4 - Map The Five Page 2 Dimension Filters
 
-No Aggregate Formula is required for this table.
+Zoho calls this a merged User Filter. You do not type expressions.
 
-### Keep these report-specific settings
+For each existing filter:
 
-| View | Fixed/report-only setting |
-| --- | --- |
-| `CT_P2_Expected_Delivery_Breach` | `delayed_po_flag`: Individual Values, include `1` |
-| `CT_P2_Ingredient_Price_Trend` | choose exactly one Raw Material and one UOM inside the report |
-| `CT_P2_Top_Price_Movement` | exclude `NO_BASELINE`; rank by `absolute_price_change_percent` |
-| Price Watch KPI | Count Distinct `item_code`; do not exclude `NO_BASELINE` |
+1. Hover the filter and click its pencil icon.
+2. Click **Edit Column Mapping**.
+3. Select the columns listed for that filter.
+4. If **Edit Column Mapping** is not shown, add the same field from the other
+   table as a temporary User Filter, then drag it onto the primary filter to
+   merge it.
+5. Click **OK** and then **Apply**.
 
-## Part G - Validate Page 2
+### Outlet
 
-Select 01 March 2026 through 31 March 2026 and clear every other filter.
+Merge `outlet_code` from:
 
-| KPI | Expected |
+- `29_sum_ct_procurement_funnel.sql`
+- `30_sum_ct_vendor_scorecard.sql`
+- `31_sum_ct_price_movement.sql`
+- `22_fact_ct_purchase_order.sql`
+- `24_fact_ct_po_receipt_line.sql`
+- `23_fact_ct_purchase_receipt.sql`
+
+### Ingredient Category
+
+Merge `category_name` from the same six tables.
+
+### Vendor
+
+Merge `vendor_name` from the same six tables.
+
+### Raw Material
+
+Merge `item_code` from the same six tables. Use `item_name` only as the
+display label if Zoho offers that option.
+
+### PO Status
+
+Merge `po_status` only from:
+
+- `29_sum_ct_procurement_funnel.sql`
+- `30_sum_ct_vendor_scorecard.sql`
+- `22_fact_ct_purchase_order.sql`
+- `24_fact_ct_po_receipt_line.sql`
+
+Do not map PO Status to:
+
+- `31_sum_ct_price_movement.sql`;
+- `23_fact_ct_purchase_receipt.sql`.
+
+### Region
+
+Keep `Region` from the canonical outlet lookup, Query 37. It should flow
+through the existing `outlet_code` lookups. The synthetic demo contains only
+`North`, so Region cannot be functionally tested until another region exists.
+
+## Part 5 - Page 2 Object Contract
+
+Use this table instead of searching another README for source information.
+
+| Visible object | Source | Date | Outlet | Category | Vendor | Raw Material | PO Status | Fixed/report-only rule |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Ordered Value | Query 29 | `po_date` | Yes | Yes | Yes | Yes | Yes | Sum `ordered_value` |
+| Open PO | Query 29 | `po_date` | Yes | Yes | Yes | Yes | Yes | Sum `pending_value` |
+| Delayed PO | Query 29 | `po_date` | Yes | Yes | Yes | Yes | Yes | Sum `delayed_value` |
+| Avg Vendor OTIF | Query 24 | `po_date` | Yes | Yes | Yes | Yes | Yes | Use `Vendor OTIF %` Aggregate Formula |
+| Items to Price Watch | Query 31 | `price_as_of_date` | Yes | Yes | Yes | Yes | No | Count Distinct `item_code`; keep `NO_BASELINE` |
+| `CT_P2_Ingredient_Price_Trend` | Query 23 | `receipt_date` | Yes | Yes | Yes | Yes | No | `UOM` remains report-specific |
+| `CT_P2_Procurement_Funnel` | Query 29 | `po_date` | Yes | Yes | Yes | Yes | Yes | Sum four value fields |
+| `CT_P2_Vendor_Scorecard` | Query 30 | `po_date` | Yes | Yes | Yes | Yes | Yes | Use all three Q30 formulas |
+| `CT_P2_Expected_Delivery_Breach` | Query 22 | `po_date` | Yes | Yes | Yes | Yes | Yes | `delayed_po_flag`: include `1` |
+| `CT_P2_Pending_By_Vendor` | Query 29 | `po_date` | Yes | Yes | Yes | Yes | Yes | Sum `pending_value` |
+| `CT_P2_Top_Price_Movement` | Query 31 | `price_as_of_date` | Yes | Yes | Yes | Yes | No | Exclude `NO_BASELINE`; sort absolute change descending |
+
+## Part 6 - Validate Page 2
+
+1. Save the dashboard.
+2. Open **View Mode**.
+3. Select `01 Mar 2026 - 31 Mar 2026`.
+4. Clear every other filter.
+5. Verify:
+
+| KPI | Required March result |
 | --- | ---: |
-| Ordered gross value | INR 1,565,981.32 |
-| Open PO liability | INR 177,145.39 |
-| Delayed PO value | INR 156,529.83 |
-| Vendor OTIF | 53.70% |
-| Price Watch | 42 ingredients |
+| Ordered Value | INR 1,565,981.32 |
+| Open PO | INR 177,145.39 |
+| Delayed PO | INR 156,529.83 |
+| Avg Vendor OTIF | 53.70% |
+| Items to Price Watch | 42 |
 
-Price Watch includes all 42 current ingredient price observations. Of these,
-39 have a comparable prior-period series and 3 are `NO_BASELINE`. Exclude
-`NO_BASELINE` rows from top price increase/decrease rankings, but do not exclude
-them from the Price Watch count.
+Then test one control at a time:
 
-Then test one filter at a time:
+1. Outlet must change all five KPIs and all compatible reports.
+2. Ingredient Category must change all five KPIs and all compatible reports.
+3. Vendor must change all five KPIs and all vendor-aware reports.
+4. Raw Material must change all item-aware objects.
+5. PO Status must change only Query 22, 24, 29 and 30 objects.
+6. Date Range must remove every row outside the selected physical dates.
 
-1. Select one Outlet. All five KPIs and all six Page 2 reports must refresh.
-2. Select one Category. The three PO KPIs, OTIF, Price Watch, and all applicable
-   reports must refresh.
-3. Select one Vendor. All five KPIs and all vendor-applicable reports must
-   refresh.
-4. Select one PO Status. Query 29, Query 30, Query 22 and Query 24 views must
-   refresh; Query 23 and Query 31 views must remain unchanged.
-5. Select one Raw Material. Every item-aware view must refresh.
-6. Change the Date Range. No table may continue showing rows outside that range.
+## Stop Rules
 
-The live dashboard audit that produced these corrections is documented in
-`docs/LIVE_P2_DASHBOARD_AUDIT_2026-07-27.md`.
+- Do not re-save another Query Table for these two filter issues.
+- Do not delete the seven existing Aggregate Formulas.
+- Do not reintroduce `As-of Source Period.` on Page 2.
+- Do not type SQL such as `<>`, `=` or column names into dashboard controls.
+- Do not use Query 23 as a separate dashboard-wide Raw Material or Vendor
+  control.
+- Do not accept `9.76L` as the March Stockout Risk value.
 
-## Final Build Boundary
+## Unchanged Evidence Boundaries
 
-Zoho remains the governed analytics and data-refresh layer. The GitHub Pages
-portal renders the ABNAH presentation from allowlisted Query Table rows through
-the secured gateway. It does not embed a complete Zoho dashboard UI; selected
-map, bar and line views can render in secured hybrid slots while custom KPIs,
-actions and evidence remain API-backed.
+Some expiry rows are an `Opening stock estimate` and intentionally have no
+GRN, PO or vendor lineage. Do not fill those cells with invented identifiers.
 
-The complete production authentication and deployment procedure is in
-`11_GITHUB_PAGES_ZOHO_AUTH_SETUP.md` inside the final implementation pack.
+`recommended_action`, `action_owner` and `due_band` are model outputs created by CASE rules.
+They are not POSIST source fields and must remain labelled as model
+recommendations.
+
+## URL And Authentication Handoff
+
+Use:
+
+```text
+portal-handoff/ABNAH_PORTAL_HANDOFF_TEMPLATE.json
+```
+
+Copy it to the ignored `.local.json` file and fill the URL/key placeholders
+after Page 1 and Page 2 pass the checks above. The folder README contains the
+exact validation command.

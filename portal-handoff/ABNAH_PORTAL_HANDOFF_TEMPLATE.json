@@ -1,0 +1,165 @@
+{
+  "schema": "abnah-portal-handoff/v1",
+  "preparedBy": "",
+  "preparedOn": "",
+  "notes": "Copy this file to ABNAH_PORTAL_HANDOFF.local.json before adding real values. The local file is ignored by Git.",
+  "publicConfiguration": {
+    "githubRepositoryUrl": "https://github.com/ABG-GROUPIT/abnah-control-tower-workbench",
+    "githubPagesPortalUrl": "https://abg-groupit.github.io/abnah-control-tower-workbench/portal/",
+    "supabaseProjectRef": "",
+    "supabaseProjectUrl": "https://YOUR_PROJECT_REF.supabase.co",
+    "supabaseFunctionBaseUrl": "https://YOUR_PROJECT_REF.supabase.co/functions/v1/abnah-portal",
+    "supabaseProjectAnonKey": "",
+    "portalReturnUrl": "https://abg-groupit.github.io/abnah-control-tower-workbench/portal/",
+    "portalAuthStartUrl": "https://YOUR_PROJECT_REF.supabase.co/functions/v1/abnah-portal/auth/start",
+    "portalAuthCallbackUrl": "https://YOUR_PROJECT_REF.supabase.co/functions/v1/abnah-portal/auth/callback",
+    "portalStatusUrl": "https://YOUR_PROJECT_REF.supabase.co/functions/v1/abnah-portal/status",
+    "portalConfigUrl": "https://YOUR_PROJECT_REF.supabase.co/functions/v1/abnah-portal/config",
+    "zohoDataCenter": "IN",
+    "zohoWorkspaceId": "333330000004099001",
+    "zohoWorkspaceName": "",
+    "zohoAccountsBaseUrl": "https://accounts.zoho.in",
+    "zohoAnalyticsApiBaseUrl": "https://analyticsapi.zoho.in",
+    "zohoProfileBaseUrl": "https://profile.zoho.in",
+    "zohoOAuthClientId": "",
+    "zohoPortalAdminEmails": [],
+    "zohoOAuthScopes": [
+      "ZohoAnalytics.metadata.read",
+      "ZohoAnalytics.data.read",
+      "profile.userinfo.READ"
+    ]
+  },
+  "privateConfiguration": {
+    "_warning": "Never commit, screenshot, or message the filled values in this section.",
+    "supabaseServiceRoleKey": "",
+    "zohoOAuthClientSecret": "",
+    "zohoTokenEncryptionKey": ""
+  },
+  "validationDashboardUrls": {
+    "p1PublicReviewUrl": "",
+    "p2PublicReviewUrl": "",
+    "p3PublicReviewUrl": "",
+    "p4PublicReviewUrl": ""
+  },
+  "securedVisualUrls": {
+    "p1": {
+      "dashboardViewName": "CT_PAGE_1_Risk_Action_Center",
+      "securedDashboardFallbackUrl": "",
+      "reports": {
+        "p1-risk-map": {
+          "viewName": "CT_P1_Outlet_Risk_Map",
+          "queryTable": "27_fact_ct_inventory_risk.sql",
+          "securedViewUrl": ""
+        },
+        "p1-action-queue": {
+          "viewName": "CT_P1_Action_Center",
+          "queryTable": "27_fact_ct_inventory_risk.sql",
+          "securedViewUrl": ""
+        },
+        "p1-stockout-detail": {
+          "viewName": "CT_P1_Stockout_Risk_Detail",
+          "queryTable": "27_fact_ct_inventory_risk.sql",
+          "securedViewUrl": ""
+        },
+        "p1-menu-detail": {
+          "viewName": "CT_P1_Menu_Impact_Detail",
+          "queryTable": "28_fact_ct_menu_impact.sql",
+          "securedViewUrl": ""
+        },
+        "p1-expiry-detail": {
+          "viewName": "CT_P1_Expiry_Risk_Detail_Demo",
+          "queryTable": "38_fact_ct_expiry_risk.sql",
+          "securedViewUrl": ""
+        },
+        "p1-po-mitigation": {
+          "viewName": "CT_P1_Vendor_PO_Risk",
+          "queryTable": "36_fact_ct_risky_po.sql",
+          "securedViewUrl": ""
+        }
+      }
+    },
+    "p2": {
+      "dashboardViewName": "CT_PAGE_2_Procurement_Vendor_Capital",
+      "securedDashboardFallbackUrl": "",
+      "reports": {
+        "p2-funnel": {
+          "viewName": "CT_P2_Procurement_Funnel",
+          "queryTable": "29_sum_ct_procurement_funnel.sql",
+          "securedViewUrl": ""
+        },
+        "p2-scorecard": {
+          "viewName": "CT_P2_Vendor_Scorecard",
+          "queryTable": "30_sum_ct_vendor_scorecard.sql",
+          "securedViewUrl": ""
+        },
+        "p2-price-trend": {
+          "viewName": "CT_P2_Ingredient_Price_Trend",
+          "queryTable": "23_fact_ct_purchase_receipt.sql",
+          "securedViewUrl": ""
+        },
+        "p2-price-movement": {
+          "viewName": "CT_P2_Top_Price_Movement",
+          "queryTable": "31_sum_ct_price_movement.sql",
+          "securedViewUrl": ""
+        },
+        "p2-pending-vendor": {
+          "viewName": "CT_P2_Pending_By_Vendor",
+          "queryTable": "29_sum_ct_procurement_funnel.sql",
+          "securedViewUrl": ""
+        },
+        "p2-breach": {
+          "viewName": "CT_P2_Expected_Delivery_Breach",
+          "queryTable": "22_fact_ct_purchase_order.sql",
+          "securedViewUrl": ""
+        }
+      }
+    },
+    "p3": {
+      "dashboardViewName": "CT_PAGE_3_Consumption_Menu_Profitability",
+      "securedDashboardFallbackUrl": "",
+      "reports": {
+        "p3-bridge": {
+          "viewName": "CT_P3_Consumption_Bridge",
+          "queryTable": "20_fact_ct_actual_consumption.sql",
+          "securedViewUrl": ""
+        },
+        "p3-variance": {
+          "viewName": "CT_P3_Consumption_Variance",
+          "queryTable": "21_fact_ct_consumption_variance.sql",
+          "securedViewUrl": ""
+        },
+        "p3-bcg": {
+          "viewName": "CT_P3_Menu_BCG",
+          "queryTable": "32_sum_ct_menu_profitability.sql",
+          "securedViewUrl": ""
+        },
+        "p3-heatmap": {
+          "viewName": "CT_P3_Outlet_Item_Heatmap",
+          "queryTable": "25_fact_ct_menu_profitability.sql",
+          "securedViewUrl": ""
+        }
+      }
+    },
+    "p4": {
+      "dashboardViewName": "CT_PAGE_4_SCM_Explorer_Data_Quality",
+      "securedDashboardFallbackUrl": "",
+      "reports": {
+        "p4-trend": {
+          "viewName": "CT_P4_SCM_Monthly_Trend",
+          "queryTable": "33_sum_ct_scm_monthly.sql",
+          "securedViewUrl": ""
+        },
+        "p4-quality": {
+          "viewName": "CT_P4_Data_Quality_Detail",
+          "queryTable": "34_fact_ct_data_quality_exception.sql",
+          "securedViewUrl": ""
+        },
+        "p4-explorer": {
+          "viewName": "CT_P4_Descriptive_Explorer",
+          "queryTable": "33_sum_ct_scm_monthly.sql",
+          "securedViewUrl": ""
+        }
+      }
+    }
+  }
+}

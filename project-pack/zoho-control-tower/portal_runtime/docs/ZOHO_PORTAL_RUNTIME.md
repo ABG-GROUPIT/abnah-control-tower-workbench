@@ -259,11 +259,21 @@ handoff stored in Supabase.
 
 1. Share each saved report using **Access with Login** for the approved company
    viewer population.
-2. Start from `config/zoho-secured-embed-handoff.example.json`.
-3. Populate the 19 `securedViewUrl` slots and four dashboard fallback slots.
-4. Submit the file through the authenticated Supabase `/config` endpoint using
+2. Copy `portal-handoff/ABNAH_PORTAL_HANDOFF_TEMPLATE.json` to the ignored
+   `portal-handoff/ABNAH_PORTAL_HANDOFF.local.json`.
+3. Populate the 19 `securedViewUrl` slots and four dashboard fallback slots in
+   that one local file.
+4. Validate it and generate the secret-free backend payload:
+
+   ```powershell
+   py -3 portal-handoff\validate_handoff.py portal-handoff\ABNAH_PORTAL_HANDOFF.local.json --required-pages p1,p2 --write-visual-handoff portal-handoff\ABNAH_ZOHO_VISUAL_HANDOFF.generated.json
+   ```
+
+5. Submit `ABNAH_ZOHO_VISUAL_HANDOFF.generated.json` through the authenticated
+   Supabase `/config` endpoint using
    a user allowed by `ZOHO_PORTAL_ADMIN_EMAILS`.
-5. Keep the committed example blank.
+6. Keep the committed template blank. Both `.local.json` and `.generated.json`
+   files are ignored by Git.
 
 Current embedded slots:
 
@@ -313,7 +323,7 @@ For 01 March 2026 through 31 March 2026:
 |---|---:|
 | Restaurants at risk | 3 |
 | Menu items impacted | 110 |
-| Stockout risk | INR 411,695.50 |
+| Stockout risk | INR 411,695.55 |
 | Expiry risk | INR 271,399.12 |
 | Open actions | 6 |
 

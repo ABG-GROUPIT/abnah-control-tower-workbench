@@ -2,12 +2,13 @@
 
 ## Resume Point
 
-The 38 numbered Query Tables already exist. For the current Page 2 correction,
-re-save only:
+The 38 numbered Query Tables already exist. Queries 28, 29, 30 and 31 have
+already been corrected and re-saved. The three Query 30 scorecard formulas have
+also been added.
 
-1. `29_sum_ct_procurement_funnel.sql`
-2. `30_sum_ct_vendor_scorecard.sql`
-3. `31_sum_ct_price_movement.sql`
+Do not re-save another Query Table and do not delete an Aggregate Formula. The
+next action is the named Page 1 Timeline mapping correction, followed by the
+Page 2 filter cleanup.
 
 Keep the four existing Aggregate Formulas:
 
@@ -18,9 +19,8 @@ Keep the four existing Aggregate Formulas:
 | Query 24 | `Vendor OTIF %` |
 | Query 25 | `Menu Gross Margin %` |
 
-Add the three Query 30 formulas listed in
-`PAGE_1_AND_PAGE_2_CORRECTIONS.md`. Do not delete any formula that an existing
-report may still use.
+The three Query 30 formulas listed in `PAGE_1_AND_PAGE_2_CORRECTIONS.md` should
+now remain unchanged.
 
 ## Final Architecture
 
@@ -50,15 +50,21 @@ but their Share URLs are not runtime dependencies.
 
 ## Current Build Order
 
-1. Apply the Page 1 Query 28 correction if it is not already saved.
-2. Re-save Page 2 Queries 29, 30 and 31.
-3. Add the three Query 30 scorecard formulas.
-4. Correct the Page 1 Date Range mapping.
-5. Correct the Page 2 Date Range and dimension mappings.
-6. Rebuild only `CT_P2_Top_Price_Movement`.
-7. Reconcile the Page 1 and Page 2 acceptance values.
-8. Configure Supabase and Zoho OAuth.
-9. Verify the custom GitHub Pages portal against the same date/filter cases.
+1. In Page 1, explicitly map `snapshot_date` on `Menu Items Impacted`,
+   `Stockout Risk (Net Sales)` and `CT_P1_Menu_Impact_Detail`.
+2. Confirm Page 1 March Stockout Risk changes from the all-period `9.76L` to
+   `INR 411,695.55`.
+3. Remove the exact four obsolete Page 2 controls named in
+   `PAGE_1_AND_PAGE_2_CORRECTIONS.md`.
+4. Add the Page 2 Date Range Timeline Filter.
+5. Map every named Page 2 KPI/report to its exact physical date column.
+6. Merge Outlet, Category, Vendor, Raw Material and PO Status by selecting the
+   exact table columns in **Edit Column Mapping**.
+7. Rebuild only `CT_P2_Top_Price_Movement` if it is not already present.
+8. Reconcile the Page 1 and Page 2 acceptance values.
+9. Fill the ignored handoff file in `portal-handoff`.
+10. Configure Supabase and Zoho OAuth.
+11. Verify the custom GitHub Pages portal against the same date/filter cases.
 
 ## Governing Guides
 
@@ -92,15 +98,26 @@ Page 1 and Page 2 use Date Range and Outlet as their common controls. Page 3
 and Page 4 retain `source_period_code` only where their current synthetic
 design requires it.
 
-For every KPI/report:
+For Date Range:
 
-1. Open the dashboard filter's **Map Filter to Reports** screen.
-2. Select the exact physical field from
+1. Edit the Timeline Filter.
+2. Expand **Timeline Filter Column Mapping**.
+3. Select one physical date column per table.
+4. Open **More > Options** on each named KPI/report.
+5. Use **Mapping Timeline Filter** or **Customize** to select that object's
+   exact date column from
    `ZOHO_DASHBOARD_FILTER_MAPPING_MATRIX.md`.
-3. Leave incompatible reports unmapped.
-4. Apply fixed definitions in the report Filter shelf with
+6. Do not type a table name or column name.
+
+For dimension controls:
+
+1. Edit the merged User Filter.
+2. Click **Edit Column Mapping**.
+3. Select the exact fields from the mapping matrix.
+4. Leave incompatible reports unmapped.
+5. Apply fixed definitions in the report Filter shelf with
    **Individual Values > Include**.
-5. Never type SQL comparison expressions into the dashboard filter UI.
+6. Never type SQL comparison expressions into the dashboard filter UI.
 
 ## URL Handoff
 
@@ -109,12 +126,16 @@ underlying-data tables. The hybrid native visual slots additionally require
 secured Zoho view URLs.
 
 1. Share each saved view with **Access with Login** for the approved viewer.
-2. Start from `config/zoho-secured-embed-handoff.example.json`.
-3. Populate all 19 report slots and four dashboard fallback slots.
-4. Store the completed v4 handoff through the authenticated Supabase `/config`
+2. Copy
+   `portal-handoff/ABNAH_PORTAL_HANDOFF_TEMPLATE.json` to the ignored
+   `ABNAH_PORTAL_HANDOFF.local.json`.
+3. Fill the runtime URLs, OAuth placeholders, all 19 report slots and four
+   dashboard fallback slots in that one local file.
+4. Run the validator command in `portal-handoff/README.md`.
+5. Store the completed visual URL section through the authenticated Supabase `/config`
    endpoint; keep the committed template blank.
-5. The portal embeds `p1-risk-map`, `p2-funnel` and `p2-price-trend`.
-6. Other report URLs open from evidence drilldowns; dashboard URLs remain
+6. The portal embeds `p1-risk-map`, `p2-funnel` and `p2-price-trend`.
+7. Other report URLs open from evidence drilldowns; dashboard URLs remain
    external page fallbacks.
 
 Do not commit public `open-view` links or use them as the authentication

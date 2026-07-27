@@ -77,7 +77,7 @@ Record progress directly in the two checklist CSVs and
 | `02_QUERY_TABLES` | All 38 SQL files, authoritative manifest and editable build checklist |
 | `03_ZOHO_INSTRUCTIONS` | End-to-end import, model, dashboard, Ask Zia and validation steps |
 | `04_VALIDATION_AND_LIMITATIONS` | Truth pack, source/KPI matrix, semantic audit and presentation gates |
-| `05_DEVELOPER_HANDOFF` | Machine-readable source contracts and model/fidelity references |
+| `05_DEVELOPER_HANDOFF` | Machine-readable source contracts, model references and the local URL/authentication handoff template |
 
 `PACKAGE_MANIFEST.csv` contains a SHA-256 hash for every packaged payload file.
 

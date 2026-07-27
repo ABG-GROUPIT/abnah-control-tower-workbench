@@ -39,6 +39,7 @@ REQUIRED_PATHS = (
     "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/03_ZOHO_INSTRUCTIONS/04A_DASHBOARD_EXPECTED_RESULTS.md",
     "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/03_ZOHO_INSTRUCTIONS/09_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md",
     "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/05_DEVELOPER_HANDOFF/MODEL_OVERVIEW.md",
+    "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/05_DEVELOPER_HANDOFF/PORTAL_HANDOFF/ABNAH_PORTAL_HANDOFF_TEMPLATE.json",
     "docs/CONTROL_TOWER_KPI_AND_CHART_LINEAGE_HANDBOOK.md",
     "docs/PRESENTATION_SAFE_ACTUAL_DATA_ISSUES.md",
     "docs/control_tower_presentation_contract.json",
@@ -46,6 +47,7 @@ REQUIRED_PATHS = (
     "local_data_auditor/run_full_pipeline.bat",
     "scripts/build_control_tower_presentation.py",
     "tests/test_control_tower_presentation.py",
+    "portal_runtime/portal-handoff/ABNAH_PORTAL_HANDOFF_TEMPLATE.json",
 )
 SECRET_PATTERNS = {
     "GitHub token": re.compile(r"gh[oprsu]_[A-Za-z0-9_]{20,}"),

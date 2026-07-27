@@ -124,7 +124,7 @@
     "audited_control_tower_reports": 20,
     "validated_fidelity_contracts": 21,
     "ignored_no_signal_fields": 69,
-    "project_pack_files": 767,
+    "project_pack_files": 773,
     "project_pack_categories": 10
   },
   "quality_status": "usable_with_warnings",

@@ -6,12 +6,12 @@
   "sourceCommit": "c364bef92eac98566975f333f205648a34ce2b14",
   "policy": "Tracked synthetic, documentation, code, schema, and validation artifacts only. Screenshots, real operational exports, local audit runtime data, credentials, and environment values are excluded.",
   "summary": {
-    "files": 767,
-    "sizeBytes": 51806202,
+    "files": 773,
+    "sizeBytes": 51853322,
     "categories": 10,
     "csvFiles": 349,
     "sqlFiles": 133,
-    "guideFiles": 95,
+    "guideFiles": 97,
     "testFiles": 8
   },
   "categories": [
@@ -19,8 +19,8 @@
       "id": "final_zoho",
       "label": "Final Zoho implementation",
       "description": "Production handoff imports, Query Tables, dashboard instructions, truth packs, and validation.",
-      "count": 124,
-      "sizeBytes": 8210590
+      "count": 127,
+      "sizeBytes": 8234099
     },
     {
       "id": "synthetic_data",
@@ -40,8 +40,8 @@
       "id": "documentation",
       "label": "Documentation",
       "description": "Architecture, modeling, dashboard, Zoho, external-signal, validation, and presentation guidance.",
-      "count": 81,
-      "sizeBytes": 1902756
+      "count": 82,
+      "sizeBytes": 1911894
     },
     {
       "id": "local_auditor",
@@ -55,7 +55,7 @@
       "label": "Generators and loaders",
       "description": "Synthetic-data generators, build scripts, database loaders, and repeatable automation.",
       "count": 61,
-      "sizeBytes": 856972
+      "sizeBytes": 857336
     },
     {
       "id": "schema_api",
@@ -69,7 +69,7 @@
       "label": "Tests and verification",
       "description": "Regression tests, validation scripts, package checks, and reproducibility controls.",
       "count": 8,
-      "sizeBytes": 58590
+      "sizeBytes": 58961
     },
     {
       "id": "application",
@@ -82,8 +82,8 @@
       "id": "other",
       "label": "Other project files",
       "description": "Supporting repository and configuration files retained for a complete handoff.",
-      "count": 35,
-      "sizeBytes": 479664
+      "count": 37,
+      "sizeBytes": 493402
     }
   ],
   "files": [
@@ -94,8 +94,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "final_zoho",
-      "sizeBytes": 5196,
-      "sha256": "c1d3fa9674e37198074962e4c77ef2e7c4a75ce9e8b0248ef76e1e7f9592f3ee",
+      "sizeBytes": 5234,
+      "sha256": "a8875637d8b558980cbb9a2cb22ac24a1b3ec730229cf9c6ae62303282a50329",
       "featuredOrder": 1,
       "featuredTitle": "Final implementation start",
       "description": "The authoritative entry point for importing data, creating Query Tables, and building the four pages."
@@ -107,8 +107,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "final_zoho",
-      "sizeBytes": 33990,
-      "sha256": "d9ecd06423352c561bc1dd1c4150cffb0429786ff095aec15dab01d0694406b5",
+      "sizeBytes": 35621,
+      "sha256": "d66914bcefcebb2f221ca6c0f2bd67ae7ec396fde6f21d942a2568ea562e246a",
       "featuredOrder": 2,
       "featuredTitle": "Dashboard build guide",
       "description": "Click-by-click page, chart, filter, color, and publication instructions."
@@ -133,8 +133,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "final_zoho",
-      "sizeBytes": 5524,
-      "sha256": "a893b822ebe5eb9f3436dd9ed28c51dc3f9dbabd295d0be81854f8c8179efa56",
+      "sizeBytes": 6575,
+      "sha256": "e6e1e75569fd48e1adc4c68f43decab6cfd36c4bd8ad30eb4ddfa749ef558796",
       "featuredOrder": 4,
       "featuredTitle": "Report embed sequence",
       "description": "The exact four-dashboard build, validation, secured embed, handoff, and User Filter workflow."
@@ -978,8 +978,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "documentation",
-      "sizeBytes": 33990,
-      "sha256": "d9ecd06423352c561bc1dd1c4150cffb0429786ff095aec15dab01d0694406b5",
+      "sizeBytes": 35621,
+      "sha256": "d66914bcefcebb2f221ca6c0f2bd67ae7ec396fde6f21d942a2568ea562e246a",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -1121,8 +1121,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "documentation",
-      "sizeBytes": 6134,
-      "sha256": "2530cd52d84192774aee7a5030452c7aafa1e29f646d85d3a259a720fbf04d6d",
+      "sizeBytes": 9082,
+      "sha256": "f1a63ce3e6d3d7e82d34139b49b73fb14fdc4104f3b5da8c984cbc1e7680ab15",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -1290,8 +1290,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "documentation",
-      "sizeBytes": 5524,
-      "sha256": "a893b822ebe5eb9f3436dd9ed28c51dc3f9dbabd295d0be81854f8c8179efa56",
+      "sizeBytes": 6575,
+      "sha256": "e6e1e75569fd48e1adc4c68f43decab6cfd36c4bd8ad30eb4ddfa749ef558796",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -1329,8 +1329,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "documentation",
-      "sizeBytes": 12583,
-      "sha256": "e2ab43acd93ea6dbdeee317708c320eaa3edd63093cfe06b731787ecccb70a1e",
+      "sizeBytes": 13199,
+      "sha256": "147b2d4b90a398c77ba34804f384b8fe0cfa9af8424a369fa1cd3a818b1dd8ee",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -1342,8 +1342,21 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "documentation",
-      "sizeBytes": 13088,
-      "sha256": "9fb47325427f06357d58c4f670ece7e7d4aa4562a7844199d46b95dab2e88203",
+      "sizeBytes": 13566,
+      "sha256": "f1e4967e08bfbe83f4c700fccf69ecff24d72c3d67f91fd7f30f1484be3a684b",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
+      "path": "portal_runtime/portal-handoff/README.md",
+      "name": "README.md",
+      "title": "README",
+      "extension": ".md",
+      "kind": "Guide",
+      "category": "documentation",
+      "sizeBytes": 2414,
+      "sha256": "f1a6a8b4bc2eb1e9b92859bd570c30c6382c7ceb7cd98c5760adbc8a6f71fb3b",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -2187,8 +2200,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "final_zoho",
-      "sizeBytes": 6134,
-      "sha256": "2530cd52d84192774aee7a5030452c7aafa1e29f646d85d3a259a720fbf04d6d",
+      "sizeBytes": 9082,
+      "sha256": "f1a63ce3e6d3d7e82d34139b49b73fb14fdc4104f3b5da8c984cbc1e7680ab15",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -2239,8 +2252,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "final_zoho",
-      "sizeBytes": 12583,
-      "sha256": "e2ab43acd93ea6dbdeee317708c320eaa3edd63093cfe06b731787ecccb70a1e",
+      "sizeBytes": 13199,
+      "sha256": "147b2d4b90a398c77ba34804f384b8fe0cfa9af8424a369fa1cd3a818b1dd8ee",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -2252,8 +2265,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "final_zoho",
-      "sizeBytes": 13088,
-      "sha256": "9fb47325427f06357d58c4f670ece7e7d4aa4562a7844199d46b95dab2e88203",
+      "sizeBytes": 13566,
+      "sha256": "f1e4967e08bfbe83f4c700fccf69ecff24d72c3d67f91fd7f30f1484be3a684b",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -2597,6 +2610,45 @@
       "description": ""
     },
     {
+      "path": "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/05_DEVELOPER_HANDOFF/PORTAL_HANDOFF/ABNAH_PORTAL_HANDOFF_TEMPLATE.json",
+      "name": "ABNAH_PORTAL_HANDOFF_TEMPLATE.json",
+      "title": "ABNAH PORTAL HANDOFF TEMPLATE",
+      "extension": ".json",
+      "kind": "Contract",
+      "category": "final_zoho",
+      "sizeBytes": 5971,
+      "sha256": "e4fafc6dbd8437a709c7de8a55bbb3ca6d77f09baa8bd9ff15b3d1fde77a1177",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
+      "path": "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/05_DEVELOPER_HANDOFF/PORTAL_HANDOFF/README.md",
+      "name": "README.md",
+      "title": "README",
+      "extension": ".md",
+      "kind": "Guide",
+      "category": "final_zoho",
+      "sizeBytes": 2414,
+      "sha256": "f1a6a8b4bc2eb1e9b92859bd570c30c6382c7ceb7cd98c5760adbc8a6f71fb3b",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
+      "path": "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/05_DEVELOPER_HANDOFF/PORTAL_HANDOFF/validate_handoff.py",
+      "name": "validate_handoff.py",
+      "title": "validate handoff",
+      "extension": ".py",
+      "kind": "Python",
+      "category": "final_zoho",
+      "sizeBytes": 7767,
+      "sha256": "83bd63356c1cf646e85adbfa11c2d181dc0d3d7a5bdb49b0adfd7071cf7e336c",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
       "path": "FINAL_ZOHO_CONTROL_TOWER_IMPLEMENTATION/05_DEVELOPER_HANDOFF/SOURCE_CONTRACTS/bill_item_detail.json",
       "name": "bill_item_detail.json",
       "title": "bill item detail",
@@ -2902,8 +2954,8 @@
       "extension": ".csv",
       "kind": "CSV data",
       "category": "final_zoho",
-      "sizeBytes": 26318,
-      "sha256": "48d890860574a6d3e4b939bc1c0af9522e1b3dd63042328bb3496f9b872a0948",
+      "sizeBytes": 26913,
+      "sha256": "23181677cd8c1df3e93935201a90ded9eef01f366afc884991b60f5937313653",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -3409,8 +3461,8 @@
       "extension": ".py",
       "kind": "Python",
       "category": "generators",
-      "sizeBytes": 25401,
-      "sha256": "99f7af6da57162f6090bf23076c5d852b46dd5ab6077eb85ab34216cef4d2523",
+      "sizeBytes": 25765,
+      "sha256": "12c988994d290bae2c3daf81514a552b20bccbc4a7bf16d7b00d70a44d707f84",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4554,7 +4606,7 @@
       "kind": "Contract",
       "category": "other",
       "sizeBytes": 29326,
-      "sha256": "1d95cad6ac8f0eff8b1765e034b316442a8c9313f96cc7fa66c6d85eba68ec64",
+      "sha256": "23b52fa425f4caefc7c1f256bd3ff93e3c6ca21374fee8fbc2a1a4af24f4d656",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4620,6 +4672,32 @@
       "category": "other",
       "sizeBytes": 2165,
       "sha256": "06f877029b9a8e7e4af36d2e4fd391343f0c67cc6596c713a2f0921450a1aa2c",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
+      "path": "portal_runtime/portal-handoff/ABNAH_PORTAL_HANDOFF_TEMPLATE.json",
+      "name": "ABNAH_PORTAL_HANDOFF_TEMPLATE.json",
+      "title": "ABNAH PORTAL HANDOFF TEMPLATE",
+      "extension": ".json",
+      "kind": "Contract",
+      "category": "other",
+      "sizeBytes": 5971,
+      "sha256": "e4fafc6dbd8437a709c7de8a55bbb3ca6d77f09baa8bd9ff15b3d1fde77a1177",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
+      "path": "portal_runtime/portal-handoff/validate_handoff.py",
+      "name": "validate_handoff.py",
+      "title": "validate handoff",
+      "extension": ".py",
+      "kind": "Python",
+      "category": "other",
+      "sizeBytes": 7767,
+      "sha256": "83bd63356c1cf646e85adbfa11c2d181dc0d3d7a5bdb49b0adfd7071cf7e336c",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -10013,8 +10091,8 @@
       "extension": ".py",
       "kind": "Python",
       "category": "tests",
-      "sizeBytes": 3638,
-      "sha256": "9850b3c261b62b957aeefc31c46e7172d0ff397cb43971944e16058ed7570980",
+      "sizeBytes": 3690,
+      "sha256": "ab61a7307f30ea74e8d062edb5defce6fac915da1c0dde11ef95bd6d73c33bf4",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -10039,8 +10117,8 @@
       "extension": ".py",
       "kind": "Python",
       "category": "tests",
-      "sizeBytes": 8920,
-      "sha256": "bbe4567299dc5195bba085cc8f7fc73c9761e8103e638bf2fb377e59f605ceaf",
+      "sizeBytes": 9239,
+      "sha256": "23a69c4327c7c7a28700bfa7cf91aac01561366eab319dbd3c0409930de1a86f",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""

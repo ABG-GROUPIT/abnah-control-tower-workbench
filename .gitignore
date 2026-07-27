@@ -62,3 +62,5 @@ __pycache__/
 /.preview-pages.*.log
 /.preview-pages.pid
 /config/zoho-reference-links.local.json
+/portal-handoff/*.local.json
+/portal-handoff/*.generated.json

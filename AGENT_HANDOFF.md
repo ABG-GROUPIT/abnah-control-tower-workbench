@@ -58,6 +58,12 @@ Maintain a screenshot-free, evidence-disciplined understanding of ABNAH's Restro
 25. `project-pack/zoho-control-tower/docs/ZOHO_PORTAL_HOSTING_AUTH_HANDOFF.md`
     before changing the standalone portal, work-laptop handoff, OAuth boundary,
     GitHub Pages or SharePoint decision
+26. `docs/PAGE_1_AND_PAGE_2_CORRECTIONS.md` before asking the dashboard builder
+    to change Page 1 or Page 2 filters, widgets, measures, or report mappings
+27. `portal-handoff/README.md` and
+    `portal-handoff/ABNAH_PORTAL_HANDOFF_TEMPLATE.json` before requesting or
+    transferring any Zoho report URL, dashboard URL, OAuth value, Supabase
+    value, or deployment setting
 
 ## Truth Model
 

@@ -115,7 +115,7 @@
         {
           "id": "p1-stockout",
           "title": "Stockout risk",
-          "expectedValue": "INR 411,695.50",
+          "expectedValue": "INR 411,695.55",
           "detail": "Forecast sales at risk",
           "zohoViewName": "CT_P1_KPI_Stockout_Risk_Value",
           "sourceQuery": "28_fact_ct_menu_impact.sql",
