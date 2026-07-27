@@ -1486,7 +1486,7 @@
           "Filter shelf: risk_type / Individual Values / Include STOCKOUT"
         ],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "New/matured",
@@ -1535,7 +1535,7 @@
         ],
         "fixedFilters": [],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "New/matured",
@@ -1575,7 +1575,7 @@
         ],
         "fixedFilters": [],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "New/matured",
@@ -1616,7 +1616,7 @@
         ],
         "fixedFilters": [],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "New/matured",
@@ -1660,7 +1660,7 @@
           "Filter shelf: risk_type / Individual Values / Include STOCKOUT"
         ],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "New/matured",
@@ -1701,7 +1701,7 @@
           "Filter shelf: risk_type / Individual Values / Include STOCKOUT"
         ],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "New/matured",
@@ -1740,7 +1740,7 @@
         ],
         "fixedFilters": [],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "New/matured",
@@ -1783,7 +1783,7 @@
         ],
         "fixedFilters": [],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "New/matured",
@@ -1824,7 +1824,7 @@
           "Filter shelf: risk_type / Individual Values / Include STOCKOUT"
         ],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "New/matured",
@@ -1873,7 +1873,7 @@
           "Filter shelf: risk_type / Individual Values / Include STOCKOUT"
         ],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "New/matured",
@@ -1923,7 +1923,7 @@
           "Filter shelf: risk_type / Individual Values / Include STOCKOUT"
         ],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "New/matured",
@@ -1962,7 +1962,7 @@
         ],
         "fixedFilters": [],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "New/matured",
@@ -2004,7 +2004,7 @@
           "Filter shelf: delayed_po_flag / Individual Values / Include 1"
         ],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "Vendor",
@@ -2043,7 +2043,7 @@
         ],
         "fixedFilters": [],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "Vendor",
@@ -2086,7 +2086,7 @@
           "Exactly one source period"
         ],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "Vendor",
@@ -2126,7 +2126,7 @@
         ],
         "fixedFilters": [],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "Vendor",
@@ -2172,7 +2172,7 @@
           "Exactly one source period"
         ],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "Vendor",
@@ -2210,7 +2210,7 @@
         ],
         "fixedFilters": [],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "Vendor",
@@ -2248,7 +2248,7 @@
         ],
         "fixedFilters": [],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "Vendor",
@@ -2288,7 +2288,7 @@
         ],
         "fixedFilters": [],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "Vendor",
@@ -2327,7 +2327,7 @@
         ],
         "fixedFilters": [],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "Vendor",
@@ -2369,7 +2369,7 @@
         ],
         "fixedFilters": [],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "Vendor",
@@ -2407,7 +2407,7 @@
         ],
         "fixedFilters": [],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "Vendor",
@@ -2431,14 +2431,15 @@
       "kind": "kpi",
       "visual": "KPI widget",
       "sourceTable": "31_sum_ct_price_movement.sql",
-      "question": "How many distinct ingredients have a comparable prior-period purchase price?",
+      "question": "How many distinct ingredients have a current receipt-price observation?",
       "finalFields": [
         "item_code",
+        "previous_unit_price",
         "unit_price_change_percent",
         "price_movement_direction"
       ],
       "formula": "distinctcount(\"item_code\")",
-      "aggregation": "Distinct count of comparable ingredient codes",
+      "aggregation": "Distinct count of tracked ingredient codes",
       "zoho": {
         "shelves": [
           "Data Column: item_code",
@@ -2447,7 +2448,7 @@
         ],
         "fixedFilters": [],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "Vendor",
@@ -2462,9 +2463,9 @@
         ]
       },
       "caveats": [
-        "This counts ingredients with a valid immediately prior synthetic-month comparison."
+        "The card includes new price records with no prior-period baseline. Price-movement rankings exclude rows where previous_unit_price is null."
       ],
-      "talkTrack": "Price Watch starts from Enterprise Entry Report - Stock Entry. The model follows 23_fact_ct_purchase_receipt.sql -> 31_sum_ct_price_movement.sql at source period, outlet, vendor, item, and canonical uom. The relationship rule is: Calculate weighted receipt price per period and compare it with the immediately prior synthetic month at the same outlet/vendor/item/UOM grain. In Zoho, use distinct count of comparable ingredient codes and render it as kpi widget to answer: How many distinct ingredients have a comparable prior-period purchase price?"
+      "talkTrack": "Price Watch starts from Enterprise Entry Report - Stock Entry. The model follows 23_fact_ct_purchase_receipt.sql -> 31_sum_ct_price_movement.sql at source period, outlet, vendor, item, and canonical uom. The relationship rule is: Calculate weighted receipt price per period and compare it with the immediately prior synthetic month at the same outlet/vendor/item/UOM grain. In Zoho, use distinct count of tracked ingredient codes and render it as kpi widget to answer: How many distinct ingredients have a current receipt-price observation?"
     },
     {
       "id": "CT_P2_Observed_Wastage",
@@ -2487,7 +2488,7 @@
         ],
         "fixedFilters": [],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "Vendor",
@@ -2528,7 +2529,7 @@
         ],
         "fixedFilters": [],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "Vendor",
@@ -2569,7 +2570,7 @@
           "Open PO summary only"
         ],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "Vendor",
@@ -2611,7 +2612,7 @@
         ],
         "fixedFilters": [],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "Vendor",
@@ -2650,7 +2651,7 @@
         ],
         "fixedFilters": [],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "Vendor",
@@ -2694,7 +2695,7 @@
         ],
         "fixedFilters": [],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "Vendor",
@@ -2741,7 +2742,7 @@
         ],
         "fixedFilters": [],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "Vendor",
@@ -2789,7 +2790,7 @@
           "Canonical UOM user filter: select exactly one value"
         ],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "Vendor",
@@ -2833,7 +2834,7 @@
         ],
         "fixedFilters": [],
         "userFilters": [
-          "Source period (global, single-select; default month_03)",
+          "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
           "Region",
           "Vendor",

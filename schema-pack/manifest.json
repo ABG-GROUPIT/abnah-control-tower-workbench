@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1.0",
-  "generated_at": "2026-07-23T23:42:02+00:00",
+  "generated_at": "2026-07-27T00:42:56+00:00",
   "portable": true,
   "source_inputs": {
     "schema_reference": "external local input; not packaged",
@@ -124,7 +124,7 @@
     "audited_control_tower_reports": 20,
     "validated_fidelity_contracts": 21,
     "ignored_no_signal_fields": 69,
-    "project_pack_files": 752,
+    "project_pack_files": 764,
     "project_pack_categories": 10
   },
   "quality_status": "usable_with_warnings",
@@ -896,10 +896,10 @@
   },
   "control_tower_presentation_source": {
     "path": "schema-pack/source/control_tower/control-tower-presentation.json",
-    "sha256": "6c2c6b0428d6b88e2a55f199aadf04875ea2304eec5bbcc1f021d6aadc140a4a"
+    "sha256": "e86d0bca72997d9240d192dfa7066b45e052196a90484681329bf493643f3b66"
   },
   "control_tower_model_source": {
     "path": "schema-pack/source/model/control-tower-model.json",
-    "sha256": "5170811327c4770e962b99c52e321f4109758a0a9e8be2fb4d1c98fa9e1d23c3"
+    "sha256": "8a06eac05dfb8a8171696fa05fcd8056f80ad79d371fb96fd24f330e956087b5"
   }
 }

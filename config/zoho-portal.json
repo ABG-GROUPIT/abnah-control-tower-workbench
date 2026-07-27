@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-26",
+  "version": "2026-07-27",
   "portalName": "ABNAH Supply Chain Control Tower",
   "baselineLabel": "Synthetic validation baseline / month_03 / all outlets",
   "auth": {
@@ -115,7 +115,7 @@
         {
           "id": "p1-stockout",
           "title": "Stockout risk",
-          "expectedValue": "INR 411,695.55",
+          "expectedValue": "INR 411,695.50",
           "detail": "Forecast sales at risk",
           "zohoViewName": "CT_P1_KPI_Stockout_Risk_Value",
           "sourceQuery": "28_fact_ct_menu_impact.sql",
@@ -189,7 +189,7 @@
           "subtitle": "Blocked menu items and forecast sales exposure",
           "zohoViewName": "CT_P1_Menu_Impact_Detail",
           "sourceQuery": "28_fact_ct_menu_impact.sql",
-          "sourceFields": ["ingredient_code", "menu_item_code", "forecast_menu_qty", "allocated_forecast_net_sales_at_risk"],
+          "sourceFields": ["snapshot_date", "ingredient_code", "category_name", "risk_severity", "menu_item_code", "forecast_menu_qty", "allocated_forecast_net_sales_at_risk"],
           "capability": "native",
           "preview": "table",
           "span": "half",

@@ -51,18 +51,20 @@ test("publishes the secured delivery portal as a GitHub Pages route", async () =
     pagesBundleText(),
   ]);
   assert.equal(portalHtml, rootHtml);
-  assert.match(bundle, /ABNAH Supply Chain Control Tower/);
-  assert.match(bundle, /Verified analytics access/);
+  assert.match(bundle, /SCM CONTROL TOWER/);
+  assert.match(bundle, /Risk Action Center/);
   assert.match(
     bundle,
-    /Checking this browser for a verified Zoho Analytics session/,
+    /Sign in with your approved Zoho Analytics account to continue/,
   );
-  assert.match(bundle, /Supabase configuration required/);
+  assert.match(bundle, /Portal access is being prepared/);
+  assert.match(bundle, /Coming soon/);
   assert.doesNotMatch(bundle, /Continue after sign-in/);
+  assert.doesNotMatch(bundle, /<iframe/i);
 });
 
-test("ships the Supabase security boundary and v4 handoff contract", async () => {
-  const [handoff, runtime, edgeFunction, migration, client] = await Promise.all([
+test("ships the secured data gateway and backward-compatible handoff contract", async () => {
+  const [handoff, runtime, edgeFunction, dataGateway, migration, client] = await Promise.all([
     readFile(
       new URL(
         "../config/zoho-secured-embed-handoff.example.json",
@@ -77,6 +79,13 @@ test("ships the Supabase security boundary and v4 handoff contract", async () =>
     readFile(
       new URL(
         "../supabase/functions/abnah-portal/index.ts",
+        import.meta.url,
+      ),
+      "utf8",
+    ),
+    readFile(
+      new URL(
+        "../supabase/functions/_shared/zoho-data.ts",
         import.meta.url,
       ),
       "utf8",
@@ -117,6 +126,14 @@ test("ships the Supabase security boundary and v4 handoff contract", async () =>
   assert.match(runtime.functionBaseUrl, /\.supabase\.co\/functions\/v1\/abnah-portal$/);
   assert.match(edgeFunction, /ZOHO_ALLOWED_WORKSPACE_ID/);
   assert.match(edgeFunction, /abnah_portal_sessions/);
+  assert.match(edgeFunction, /fetchControlTowerPageData/);
+  assert.match(dataGateway, /27_fact_ct_inventory_risk\.sql/);
+  assert.match(dataGateway, /28_fact_ct_menu_impact\.sql/);
+  assert.match(dataGateway, /38_fact_ct_expiry_risk\.sql/);
+  assert.match(dataGateway, /22_fact_ct_purchase_order\.sql/);
+  assert.match(dataGateway, /31_sum_ct_price_movement\.sql/);
+  assert.match(dataGateway, /responseFormat: "json"/);
+  assert.match(dataGateway, /Promise\.allSettled/);
   assert.match(migration, /enable row level security/);
   assert.match(migration, /revoke all .* from anon, authenticated/);
   assert.match(client, /sessionStorage/);
@@ -230,12 +247,12 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   assert.equal(lineage.kpis.filter((kpi) => kpi.approvalStatus === "partial").length, 1);
   assert.equal(lineage.nodes.length, 0);
   assert.equal(lineage.edges.length, 0);
-  assert.equal(projectPack.summary.files, 752);
+  assert.equal(projectPack.summary.files, 764);
   assert.equal(projectPack.summary.csvFiles, 349);
   assert.equal(projectPack.summary.sqlFiles, 133);
-  assert.equal(projectPack.summary.guideFiles, 91);
+  assert.equal(projectPack.summary.guideFiles, 94);
   assert.equal(projectPack.categories.length, 10);
-  assert.equal(new Set(projectPack.files.map((file) => file.path)).size, 752);
+  assert.equal(new Set(projectPack.files.map((file) => file.path)).size, 764);
   assert.ok(projectPack.files.filter((file) => file.featuredOrder !== null).length >= 6);
   assert.ok(projectPack.files.every((file) => /^[a-f0-9]{64}$/.test(file.sha256)));
   assert.doesNotMatch(projectPackText, /\.png\b|\.jpe?g\b|AppData\\Local\\Temp|Downloads\\/i);

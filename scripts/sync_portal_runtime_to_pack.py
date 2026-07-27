@@ -17,6 +17,11 @@ MANIFEST_PATH = ROOT / "project-pack" / "PROJECT_PACK_MANIFEST.csv"
 PORTAL_FILES = (
     ".github/workflows/pages.yml",
     "app/components/EmbeddedControlTowerPortal.tsx",
+    "app/components/control-tower-portal/PortalPrimitives.tsx",
+    "app/components/control-tower-portal/ProcurementPage.tsx",
+    "app/components/control-tower-portal/RiskActionPage.tsx",
+    "app/globals.css",
+    "app/lib/control-tower-portal-data.ts",
     "app/lib/supabase-portal-client.ts",
     "app/lib/zoho-portal-handoff.ts",
     "app/lib/zoho-portal-types.ts",
@@ -24,15 +29,20 @@ PORTAL_FILES = (
     "config/supabase-portal.json",
     "config/zoho-portal.json",
     "config/zoho-secured-embed-handoff.example.json",
+    "docs/PAGE_1_AND_PAGE_2_CORRECTIONS.md",
     "docs/ZOHO_PORTAL_RUNTIME.md",
     "github-pages/index.html",
     "github-pages/main.tsx",
+    "package.json",
+    "scripts/build_portal_demo_data.py",
     "supabase/.env.example",
     "supabase/config.toml",
     "supabase/functions/_shared/crypto.ts",
+    "supabase/functions/_shared/zoho-data.ts",
     "supabase/functions/_shared/zoho.ts",
     "supabase/functions/abnah-portal/index.ts",
     "supabase/migrations/20260727000100_abnah_portal.sql",
+    "vite.pages.config.ts",
 )
 
 README = """# Portal Runtime Pack
@@ -43,7 +53,8 @@ contract from the repository root.
 - GitHub Pages is the only frontend host.
 - Supabase is the only production backend.
 - Supabase handles Zoho OAuth, workspace verification, opaque sessions, and
-  the shared URL-only handoff.
+  allowlisted Query Table exports.
+- The browser renders the ABNAH interface from rows; it does not embed Zoho UI.
 - No POSist rows, screenshots, credentials, or runtime tokens belong here.
 
 Start with `docs/ZOHO_PORTAL_RUNTIME.md`. Edit the repository source files, then

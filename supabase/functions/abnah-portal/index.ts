@@ -13,6 +13,10 @@ import {
   refreshZohoAccessToken,
   type ZohoEnvironment,
 } from "../_shared/zoho.ts";
+import {
+  fetchControlTowerPageData,
+  type PortalDataPage,
+} from "../_shared/zoho-data.ts";
 
 const configKey = "production";
 const maxBodyBytes = 250_000;
@@ -611,6 +615,77 @@ async function handleSession(
   return json(request, environment, publicSession(session, environment));
 }
 
+function validIsoDate(value: string) {
+  return /^\d{4}-\d{2}-\d{2}$/.test(value) &&
+    !Number.isNaN(Date.parse(`${value}T00:00:00Z`));
+}
+
+async function handleData(
+  request: Request,
+  environment: RuntimeEnvironment,
+) {
+  assertAllowedOrigin(request, environment);
+  const session = await resolveSession(request, environment);
+  if (!session) {
+    return json(
+      request,
+      environment,
+      { error: "Verified Zoho Analytics access is required." },
+      401,
+    );
+  }
+  const url = new URL(request.url);
+  const page = url.searchParams.get("page")?.trim() as PortalDataPage;
+  const start = url.searchParams.get("start")?.trim() ?? "";
+  const end = url.searchParams.get("end")?.trim() ?? "";
+  if (!["p1", "p2"].includes(page)) {
+    return json(request, environment, { error: "Invalid portal page." }, 400);
+  }
+  if (!validIsoDate(start) || !validIsoDate(end) || start > end) {
+    return json(request, environment, { error: "Invalid date range." }, 400);
+  }
+  const rangeDays =
+    (Date.parse(`${end}T00:00:00Z`) - Date.parse(`${start}T00:00:00Z`)) /
+    86_400_000;
+  if (rangeDays > 366) {
+    return json(
+      request,
+      environment,
+      { error: "Select a date range of 366 days or fewer." },
+      400,
+    );
+  }
+  const accessToken = await decryptSecret(
+    session.access_token_ciphertext,
+    environment.tokenEncryptionKey,
+  );
+  if (!accessToken) {
+    return json(
+      request,
+      environment,
+      { error: "The verified analytics session has expired." },
+      401,
+    );
+  }
+  const data = await fetchControlTowerPageData(
+    environment.zoho,
+    session,
+    accessToken,
+    page,
+    start,
+    end,
+  );
+  return json(request, environment, {
+    schema: "abnah-control-tower-portal-page/v1",
+    page,
+    generatedAt: new Date().toISOString(),
+    source: "zoho_analytics",
+    dataBoundary:
+      "Rows are read from the approved Zoho Analytics workspace and are not stored by this gateway.",
+    ...data,
+  });
+}
+
 async function handleLogout(
   request: Request,
   environment: RuntimeEnvironment,
@@ -787,6 +862,9 @@ Deno.serve(async (request) => {
     }
     if (path === "/session" && request.method === "GET") {
       return await handleSession(request, environment);
+    }
+    if (path === "/data" && request.method === "GET") {
+      return await handleData(request, environment);
     }
     if (path === "/logout" && request.method === "POST") {
       return await handleLogout(request, environment);

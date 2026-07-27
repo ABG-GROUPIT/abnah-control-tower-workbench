@@ -151,7 +151,7 @@ Show what needs action now across stockout, menu impact, expiry demonstration, a
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - New/matured
@@ -229,7 +229,7 @@ Risk Action Center starts from Closing Stock Report, Item Recipe Report, AUX Men
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - New/matured
@@ -308,7 +308,7 @@ Expiry Risk Detail - Demo starts from Enterprise Entry Report - Stock Entry, Clo
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - New/matured
@@ -390,7 +390,7 @@ Expiry Risk Value - Demo Estimate starts from Enterprise Entry Report - Stock En
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - New/matured
@@ -470,7 +470,7 @@ Menu Items At Risk starts from Closing Stock Report, Item Recipe Report, AUX Men
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - New/matured
@@ -550,7 +550,7 @@ Open Actions starts from Closing Stock Report, Item Recipe Report, AUX Menu Dema
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - New/matured
@@ -631,7 +631,7 @@ Outlets At Stockout Risk starts from Closing Stock Report, Item Recipe Report, A
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - New/matured
@@ -712,7 +712,7 @@ Stockout Sales At Risk starts from Closing Stock Report, Item Recipe Report, AUX
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - New/matured
@@ -792,7 +792,7 @@ Menu Impact Detail starts from Closing Stock Report, Item Recipe Report, AUX Men
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - New/matured
@@ -877,7 +877,7 @@ Outlet Risk Map starts from Closing Stock Report, Item Recipe Report, AUX Menu D
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - New/matured
@@ -957,7 +957,7 @@ Stockout Priority Stack starts from Closing Stock Report, Item Recipe Report, AU
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - New/matured
@@ -1036,7 +1036,7 @@ Stockout Risk Detail starts from Closing Stock Report, Item Recipe Report, AUX M
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - New/matured
@@ -1116,7 +1116,7 @@ Explain purchase commitments, receipts, vendor performance, price movement, and 
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - Vendor
@@ -1195,7 +1195,7 @@ Expected Delivery Breach starts from Enterprise Purchase Order Report. The model
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - Vendor
@@ -1274,7 +1274,7 @@ Expiry Exposure - Demo starts from Enterprise Entry Report - Stock Entry, Closin
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - Vendor
@@ -1352,7 +1352,7 @@ High Value / Slow Stock starts from Closing Stock Report, Item Recipe Report, AU
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - Vendor
@@ -1431,7 +1431,7 @@ Ingredient Price Trend starts from Enterprise Entry Report - Stock Entry. The mo
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - Vendor
@@ -1508,7 +1508,7 @@ Inventory Value starts from Closing Stock Report. The model follows RAWN_CT_clos
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - Vendor
@@ -1586,7 +1586,7 @@ Delayed PO Value starts from Enterprise Purchase Order Report. The model follows
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - Vendor
@@ -1664,7 +1664,7 @@ PO Fill Rate starts from Enterprise Purchase Order Report, Enterprise Entry Repo
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - Vendor
@@ -1743,7 +1743,7 @@ Ordered Gross Value starts from Enterprise Purchase Order Report. The model foll
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - Vendor
@@ -1823,7 +1823,7 @@ Vendor OTIF - Formula Demo starts from Enterprise Purchase Order Report, Enterpr
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - Vendor
@@ -1900,7 +1900,7 @@ Open PO Count starts from Enterprise Purchase Order Report. The model follows 22
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - Vendor
@@ -1930,7 +1930,7 @@ Open PO Liability starts from Enterprise Purchase Order Report. The model follow
 <a id="ct-p2-kpi-price-watch"></a>
 ## CT_P2_KPI_Price_Watch - Price Watch
 
-**Business question:** How many distinct ingredients have a comparable prior-period purchase price?
+**Business question:** How many distinct ingredients have a current receipt-price observation?
 
 **Final object:** kpi / KPI widget from `31_sum_ct_price_movement.sql`
 
@@ -1956,11 +1956,11 @@ Open PO Liability starts from Enterprise Purchase Order Report. The model follow
 
 ### Calculation
 
-**Final fields:** `item_code`, `unit_price_change_percent`, `price_movement_direction`
+**Final fields:** `item_code`, `previous_unit_price`, `unit_price_change_percent`, `price_movement_direction`
 
 **Formula:** `distinctcount("item_code")`
 
-**Aggregation:** Distinct count of comparable ingredient codes
+**Aggregation:** Distinct count of tracked ingredient codes
 
 ### Exact Zoho Configuration
 
@@ -1978,7 +1978,7 @@ Open PO Liability starts from Enterprise Purchase Order Report. The model follow
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - Vendor
@@ -2000,11 +2000,11 @@ Open PO Liability starts from Enterprise Purchase Order Report. The model follow
 
 - Do not aggregate price-change percentages across items or UOMs.
 - Use absolute change only for sorting; display the signed change.
-- This counts ingredients with a valid immediately prior synthetic-month comparison.
+- The card includes new price records with no prior-period baseline. Price-movement rankings exclude rows where previous_unit_price is null.
 
 ### How To Explain It
 
-Price Watch starts from Enterprise Entry Report - Stock Entry. The model follows 23_fact_ct_purchase_receipt.sql -> 31_sum_ct_price_movement.sql at source period, outlet, vendor, item, and canonical uom. The relationship rule is: Calculate weighted receipt price per period and compare it with the immediately prior synthetic month at the same outlet/vendor/item/UOM grain. In Zoho, use distinct count of comparable ingredient codes and render it as kpi widget to answer: How many distinct ingredients have a comparable prior-period purchase price?
+Price Watch starts from Enterprise Entry Report - Stock Entry. The model follows 23_fact_ct_purchase_receipt.sql -> 31_sum_ct_price_movement.sql at source period, outlet, vendor, item, and canonical uom. The relationship rule is: Calculate weighted receipt price per period and compare it with the immediately prior synthetic month at the same outlet/vendor/item/UOM grain. In Zoho, use distinct count of tracked ingredient codes and render it as kpi widget to answer: How many distinct ingredients have a current receipt-price observation?
 
 <a id="ct-p2-observed-wastage"></a>
 ## CT_P2_Observed_Wastage - Observed Wastage
@@ -2054,7 +2054,7 @@ Price Watch starts from Enterprise Entry Report - Stock Entry. The model follows
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - Vendor
@@ -2132,7 +2132,7 @@ Observed Wastage starts from Enterprise Wastage Report. The model follows RAWN_C
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - Vendor
@@ -2209,7 +2209,7 @@ PO Status Distribution starts from Enterprise Purchase Order Report. The model f
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - Vendor
@@ -2288,7 +2288,7 @@ Pending Value By Vendor starts from Enterprise Purchase Order Report. The model 
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - Vendor
@@ -2363,7 +2363,7 @@ Pending Ingredient Risk starts from Closing Stock Report, Item Recipe Report, AU
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - Vendor
@@ -2443,7 +2443,7 @@ Procurement Funnel starts from Enterprise Purchase Order Report. The model follo
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - Vendor
@@ -2525,7 +2525,7 @@ Top Price Movement starts from Enterprise Entry Report - Stock Entry. The model 
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - Vendor
@@ -2606,7 +2606,7 @@ Vendor Performance Matrix starts from Enterprise Purchase Order Report, Enterpri
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - Vendor
@@ -2683,7 +2683,7 @@ Vendor Price Comparison starts from Enterprise Entry Report - Stock Entry. The m
 
 **User filters:**
 
-- Source period (global, single-select; default month_03)
+- Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)
 - Outlet (global, multi-select)
 - Region
 - Vendor

@@ -187,14 +187,30 @@ class FinalZohoPackageTests(unittest.TestCase):
             "07_EMBEDDED_PORTAL_SETUP.md",
             "08_PORTAL_HOSTING_AUTH_HANDOFF.md",
             "09_REPORT_BUILD_EMBED_AND_FILTER_SEQUENCE.md",
+            "10_PAGE_1_AND_PAGE_2_CORRECTIONS.md",
+            "11_GITHUB_PAGES_ZOHO_AUTH_SETUP.md",
             "zoho-secured-embed-handoff.example.json",
         ):
             self.assertTrue((instructions / filename).is_file(), filename)
+        corrections = (
+            instructions / "10_PAGE_1_AND_PAGE_2_CORRECTIONS.md"
+        ).read_text(encoding="utf-8")
+        self.assertIn("INR 411,695.50", corrections)
+        self.assertIn("Opening stock estimate", corrections)
+        self.assertIn("model outputs created by CASE rules", corrections)
+        runtime = (
+            instructions / "11_GITHUB_PAGES_ZOHO_AUTH_SETUP.md"
+        ).read_text(encoding="utf-8")
+        self.assertIn("GitHub Pages", runtime)
+        self.assertIn("ZOHO_ALLOWED_WORKSPACE_ID", runtime)
         handoff = (
             instructions / "zoho-secured-embed-handoff.example.json"
         ).read_text(encoding="utf-8")
-        self.assertIn("abnah-zoho-dashboard-embed-handoff/v3", handoff)
-        self.assertIn('"integrationMode": "page_dashboard_views"', handoff)
+        self.assertIn("abnah-zoho-view-handoff/v4", handoff)
+        self.assertIn(
+            '"integrationMode": "individual_report_views_with_dashboard_fallbacks"',
+            handoff,
+        )
 
 
 if __name__ == "__main__":

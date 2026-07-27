@@ -43,6 +43,8 @@ next-env.d.ts
 *.tsbuildinfo
 /dist/
 /pages-dist/
+/public/data/control-tower-portal-demo.json
+/github-pages/public/data/control-tower-portal-demo.json
 /.wrangler/
 /outputs/
 /work/

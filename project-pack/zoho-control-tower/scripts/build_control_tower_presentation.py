@@ -780,7 +780,7 @@ P4 = "page_4_scm_explorer_data_quality"
 STORIES: list[dict[str, Any]] = []
 
 P1_FILTERS = [
-    "Source period (global, single-select; default month_03)",
+    "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
     "Outlet (global, multi-select)",
     "Region",
     "New/matured",
@@ -789,7 +789,7 @@ P1_FILTERS = [
     "Ingredient category",
 ]
 P2_FILTERS = [
-    "Source period (global, single-select; default month_03)",
+    "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
     "Outlet (global, multi-select)",
     "Region",
     "Vendor",
@@ -1644,7 +1644,7 @@ STORIES.extend(
         story(P2, "CT_P2_KPI_Monthly_Purchase", "Ordered Gross Value", "kpi", "KPI widget", "29_sum_ct_procurement_funnel.sql", "What was the selected-period ordered gross commitment?", ["ordered_value"], 'sum("ordered_value")', "Sum ordered value", ["Data Column: ordered_value", "Show Value As: Sum", "Group By: blank"], user_filters=P2_FILTERS, formatting=["INR currency", "Label Ordered Gross Value until basis is approved"]),
         story(P2, "CT_P2_KPI_Delayed_PO_Value", "Delayed PO Value", "kpi", "KPI widget", "29_sum_ct_procurement_funnel.sql", "How much open PO liability is already beyond the expected delivery date?", ["delayed_value"], 'sum("delayed_value")', "Sum delayed PO value", ["Data Column: delayed_value", "Show Value As: Sum", "Group By: blank"], user_filters=P2_FILTERS, formatting=["INR currency"]),
         story(P2, "CT_P2_KPI_Open_PO_Liability", "Open PO Liability", "kpi", "KPI widget", "29_sum_ct_procurement_funnel.sql", "How much value remains committed on open PO lines?", ["pending_value"], 'sum("pending_value")', "Sum pending value", ["Data Column: pending_value", "Show Value As: Sum", "Group By: blank"], user_filters=P2_FILTERS, formatting=["INR currency"]),
-        story(P2, "CT_P2_KPI_Price_Watch", "Price Watch", "kpi", "KPI widget", "31_sum_ct_price_movement.sql", "How many distinct ingredients have a comparable prior-period purchase price?", ["item_code", "unit_price_change_percent", "price_movement_direction"], 'distinctcount("item_code")', "Distinct count of comparable ingredient codes", ["Data Column: item_code", "Show Value As: Count Distinct", "Group By: blank"], user_filters=P2_FILTERS, formatting=["Whole number"], caveats=["This counts ingredients with a valid immediately prior synthetic-month comparison."]),
+        story(P2, "CT_P2_KPI_Price_Watch", "Price Watch", "kpi", "KPI widget", "31_sum_ct_price_movement.sql", "How many distinct ingredients have a current receipt-price observation?", ["item_code", "previous_unit_price", "unit_price_change_percent", "price_movement_direction"], 'distinctcount("item_code")', "Distinct count of tracked ingredient codes", ["Data Column: item_code", "Show Value As: Count Distinct", "Group By: blank"], user_filters=P2_FILTERS, formatting=["Whole number"], caveats=["The card includes new price records with no prior-period baseline. Price-movement rankings exclude rows where previous_unit_price is null."]),
         story(P2, "CT_P2_KPI_Open_PO_Count", "Open PO Count", "kpi", "KPI widget", "29_sum_ct_procurement_funnel.sql", "How many distinct purchase orders remain open?", ["open_po_count"], 'sum("open_po_count")', "Sum vendor-level distinct PO counts within the selected outlet scope", ["Data Column: open_po_count", "Show Value As: Sum", "Group By: blank"], user_filters=P2_FILTERS, formatting=["Whole number"]),
         story(P2, "CT_P2_KPI_Fill_Rate", "PO Fill Rate", "kpi", "Saved Summary View", "24_fact_ct_po_receipt_line.sql", "What proportion of ordered quantity was linked to accepted receipt quantity?", ["ordered_qty", "received_qty"], 'Aggregate Formula "PO Fill Rate %" in a saved Summary View.', "Ratio of summed quantities", ["Summary value: PO Fill Rate %", "Grouping: none"], user_filters=P2_FILTERS, formatting=["Percentage; expected display near 83.25% in all-period synthetic truth"], caveats=["The Aggregate Formula is not selected from a direct KPI Widget Data Column list."]),
         story(P2, "CT_P2_KPI_OTIF", "Vendor OTIF - Formula Demo", "kpi", "Saved Summary View", "24_fact_ct_po_receipt_line.sql", "What share of eligible closed PO lines met both quantity and date conditions in the demonstration?", ["eligible_closed_line_flag", "otif_success_flag"], 'Aggregate Formula "Vendor OTIF %" in a saved Summary View.', "Ratio of summed flags", ["Summary value: Vendor OTIF %", "Grouping: none"], user_filters=P2_FILTERS, formatting=["Percentage", "Visible Formula demo label"], caveats=["Production is blocked by sparse actual PO-to-GRN linkage.", "The Aggregate Formula is not selected from a direct KPI Widget Data Column list."]),

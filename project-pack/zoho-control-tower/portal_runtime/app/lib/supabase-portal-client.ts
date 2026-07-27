@@ -4,6 +4,11 @@ import type {
   ZohoPortalConfigEnvelope,
   ZohoPortalHandoff,
 } from "./zoho-portal-types";
+import type {
+  PortalDemoData,
+  PortalPageData,
+  PortalPageId,
+} from "./control-tower-portal-data";
 
 interface SupabasePortalRuntime {
   functionBaseUrl: string;
@@ -222,4 +227,39 @@ export async function revokePortalSession() {
     headers: authorizationHeaders(),
   }).catch(() => undefined);
   clearPortalSessionToken();
+}
+
+export async function getControlTowerPageData(
+  page: PortalPageId,
+  start: string,
+  end: string,
+) {
+  const parameters = new URLSearchParams({ page, start, end });
+  const response = await fetch(endpoint(`data?${parameters.toString()}`), {
+    headers: authorizationHeaders(),
+    cache: "no-store",
+  });
+  return readJson<PortalPageData>(
+    response,
+    "The selected control-tower data could not be loaded.",
+  );
+}
+
+export async function getControlTowerDemoData() {
+  const path =
+    typeof globalThis.location === "undefined"
+      ? "/"
+      : globalThis.location.pathname.replace(
+          /\/portal(?:\/index\.html)?\/?$/,
+          "/",
+        );
+  const base = path.endsWith("/") ? path : `${path}/`;
+  const response = await fetch(
+    `${base}data/control-tower-portal-demo.json`,
+    { cache: "no-store" },
+  );
+  return readJson<PortalDemoData>(
+    response,
+    "The validation data could not be loaded.",
+  );
 }

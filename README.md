@@ -34,7 +34,7 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
   source field set, formula, lookup, filter, and Zoho report configuration.
 - 38 exact Control Tower v2 Query Tables are searchable in the hosted model
   library with their dependency levels and complete SQL.
-- One self-contained `project-pack/zoho-control-tower/` now carries all 752
+- One self-contained `project-pack/zoho-control-tower/` now carries all 764
   tracked synthetic-data, Zoho implementation, SQL, validation, local-auditor,
   API-packet, generator, test, portal-runtime, and handoff files in this ABG
   repository.
@@ -63,10 +63,10 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
 - `Control tower`: page requirements, draft KPI formulas, final source register,
   private audit evidence, prioritized report capture, API gaps, and the
   model/delivery decision.
-- `Live portal`: a separate `/portal/` delivery page with the four-page layout
-  from ABNAH's supplied visual reference, synthetic acceptance baselines,
-  verified Zoho OAuth access, a shared individual-view handoff, report-specific
-  filters, dashboard fallbacks, and explicit native/custom boundaries.
+- `Live portal`: a separate `/portal/` delivery page with custom Page 1 and
+  Page 2 operational views, verified Zoho OAuth access, date-range and
+  page-specific filters, direct allowlisted Query Table exports, and explicit
+  model-derived action provenance. Pages 3 and 4 are marked `Coming soon`.
 - `Data quality`: severity-tiered issue register, passed-control ledger, safe
   hosted evidence, and optional in-browser loading of the private local packet.
 - `Architecture`: one-object-at-a-time KPI/chart stories plus a separate
@@ -84,8 +84,8 @@ Live portal:
 The GitHub Pages build publishes the complete library while continuing to
 exclude screenshots, real POSist exports, local audit rows, and credentials.
 GitHub Pages is the only frontend host. The authenticated `/portal/` delegates
-Zoho OAuth, workspace verification, opaque sessions, and the shared URL handoff
-to the Supabase Edge Function under `supabase/`. See
+Zoho OAuth, workspace verification, opaque sessions, and allowlisted Query
+Table exports to the Supabase Edge Function under `supabase/`. See
 `docs/ZOHO_PORTAL_RUNTIME.md`.
 
 ## Start Here
@@ -153,8 +153,9 @@ ABNAH Schema Atlas/
 - Portable baseline: `schema-pack/source/` compiled into `schema-pack/generated/`.
 - GitHub Pages working state: browser-local draft documents over the generated
   repository baseline.
-- Portal runtime state: Supabase stores only OAuth state hashes, encrypted Zoho
-  tokens behind opaque sessions, and the secured view-URL handoff.
+- Portal runtime state: Supabase stores only OAuth state hashes and encrypted
+  Zoho tokens behind opaque sessions. Operational Query Table rows are
+  requested from Zoho and are not persisted by the gateway.
 - Published presentation: the generated repository baseline committed to Git.
 
 Editing in the site does not automatically rewrite source JSON. Export a backup before transfer and intentionally reconcile approved edits into source blueprints.
