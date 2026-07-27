@@ -2,6 +2,10 @@
   "version": "2026-07-27",
   "portalName": "ABNAH Supply Chain Control Tower",
   "baselineLabel": "Synthetic validation baseline / month_03 / all outlets",
+  "defaultRange": {
+    "start": "2026-03-01",
+    "end": "2026-03-31"
+  },
   "auth": {
     "mode": "zoho_secured_login",
     "loginUrl": "https://analytics.zoho.in/",

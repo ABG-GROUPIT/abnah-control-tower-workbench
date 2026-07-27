@@ -76,6 +76,10 @@ export interface ZohoPortalConfig {
   version: string;
   portalName: string;
   baselineLabel: string;
+  defaultRange: {
+    start: string;
+    end: string;
+  };
   auth: {
     mode: "zoho_secured_login";
     loginUrl: string;

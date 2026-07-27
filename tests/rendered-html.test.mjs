@@ -139,7 +139,8 @@ test("ships the secured data gateway and backward-compatible handoff contract", 
   assert.match(dataGateway, /22_fact_ct_purchase_order\.sql/);
   assert.match(dataGateway, /31_sum_ct_price_movement\.sql/);
   assert.match(dataGateway, /responseFormat: "json"/);
-  assert.match(dataGateway, /Promise\.allSettled/);
+  assert.match(dataGateway, /for \(const spec of pageExports\[page\]\)/);
+  assert.doesNotMatch(dataGateway, /Promise\.allSettled/);
   assert.match(migration, /enable row level security/);
   assert.match(migration, /revoke all .* from anon, authenticated/);
   assert.doesNotMatch(edgeFunction, /adminEmails\.size === 0/);

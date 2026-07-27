@@ -116,7 +116,17 @@ function staticVisualMaps(): ZohoPortalUrlMaps {
   };
 }
 
-function currentMonthRange() {
+function configuredInitialRange() {
+  const configured = portalDefinition.defaultRange;
+  if (
+    configured &&
+    /^\d{4}-\d{2}-\d{2}$/.test(configured.start) &&
+    /^\d{4}-\d{2}-\d{2}$/.test(configured.end) &&
+    configured.start <= configured.end
+  ) {
+    return { ...configured };
+  }
+
   const now = new Date();
   const end = [
     now.getFullYear(),
@@ -234,7 +244,7 @@ export function EmbeddedControlTowerPortal({
   const [loadingData, setLoadingData] = useState(false);
   const [dataMessage, setDataMessage] = useState("");
   const [refreshVersion, setRefreshVersion] = useState(0);
-  const [requestRange, setRequestRange] = useState(currentMonthRange);
+  const [requestRange, setRequestRange] = useState(configuredInitialRange);
   const [visualUrls, setVisualUrls] =
     useState<ZohoPortalUrlMaps>(staticVisualMaps);
 
@@ -349,9 +359,22 @@ export function EmbeddedControlTowerPortal({
           requestRange.end,
         );
         setPageData((current) => ({ ...current, [page]: data }));
-        if (data.datasetErrors && Object.keys(data.datasetErrors).length) {
+        const datasetErrors = Object.keys(data.datasetErrors ?? {});
+        const rowCount = Object.values(data.datasets).reduce(
+          (total, rows) => total + rows.length,
+          0,
+        );
+        if (datasetErrors.length && rowCount === 0) {
+          setDataMessage(
+            "Zoho returned no usable rows because the selected source exports failed. Refresh or inspect the source diagnostics.",
+          );
+        } else if (datasetErrors.length) {
           setDataMessage(
             "Some source views could not be refreshed. Available sections remain current.",
+          );
+        } else if (rowCount === 0) {
+          setDataMessage(
+            `No Zoho rows are available from ${requestRange.start} to ${requestRange.end}. Select a populated date range.`,
           );
         }
       } catch (error) {

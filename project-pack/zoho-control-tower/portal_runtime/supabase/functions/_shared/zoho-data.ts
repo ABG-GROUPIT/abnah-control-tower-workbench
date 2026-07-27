@@ -301,10 +301,12 @@ export async function fetchControlTowerPageData(
     session,
     accessToken,
   );
-  const results = await Promise.allSettled(
-    pageExports[page].map(async (spec) => ({
-      spec,
-      rows: await exportDataset(
+
+  const datasets: Record<string, Record<string, unknown>[]> = {};
+  const datasetErrors: Record<string, string> = {};
+  for (const spec of pageExports[page]) {
+    try {
+      datasets[spec.dataset] = await exportDataset(
         environment,
         session,
         accessToken,
@@ -312,22 +314,15 @@ export async function fetchControlTowerPageData(
         spec,
         start,
         end,
-      ),
-    })),
-  );
-  const datasets: Record<string, Record<string, unknown>[]> = {};
-  const datasetErrors: Record<string, string> = {};
-  results.forEach((result, index) => {
-    const spec = pageExports[page][index];
-    if (result.status === "fulfilled") {
-      datasets[spec.dataset] = result.value.rows;
-    } else {
+      );
+    } catch (error) {
       datasets[spec.dataset] = [];
       datasetErrors[spec.dataset] =
-        result.reason instanceof Error
-          ? result.reason.message
+        error instanceof Error
+          ? error.message
           : `${spec.viewName} could not be exported.`;
     }
-  });
+  }
+
   return { datasets, datasetErrors };
 }
