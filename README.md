@@ -40,6 +40,11 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
   validated synthetic-data, Zoho implementation, SQL, local-auditor,
   API-packet, generator, test, portal-runtime, and handoff files in this ABG
   repository.
+- The isolated
+  `demo-packages/zoho-concise-dashboard-and-databridge/` package provides six
+  dependency-safe P1/P2 visual Query Tables, exact merged-filter setup, concise
+  tabular layouts, and a three-week synthetic DataBridge refresh demonstration
+  without changing the 38-table production chain.
 - P2 now has 73 captured schemas, 3 bounded partial schemas, and 79 pending reports.
 - P4 now has 26 captured schemas and 48 pending reports, including all 15 Enterprise reports, four explicit Consumption Report modes, Bulk Return, and Closing Stock.
 - The private CSV audit checkpoint covers 26 exports, 20 report contracts, and
@@ -134,6 +139,9 @@ ABNAH Schema Atlas/
   app/                         workspace UI and API routes
   drizzle/                     database migration history
   docs/                        architecture, intake, operations, transfer
+  demo-packages/
+    zoho-concise-dashboard-and-databridge/
+                               isolated visual/filter and DataBridge demo
   project-pack/
     zoho-control-tower/        complete synthetic demo and Zoho implementation
     PROJECT_PACK_MANIFEST.csv  SHA-256 inventory of every bundled project file
