@@ -1,7 +1,0 @@
-build_order,page,query_table_name,dependency_level,sources,purpose
-1,P1,D03_demo_p1_expiry_watch.sql,1,AUX_Expiry_Estimate-Copy,Estimated expiry watch
-2,P2,D04_demo_p2_po_control.sql,2,07_std_ct_purchase_order.sql,PO status and delayed-delivery control
-3,P1,D01_demo_p1_action_queue.sql,3,05_std_ct_inventory_snapshot.sql;26_fact_ct_forecast_ingredient_demand.sql;22_fact_ct_purchase_order.sql,Stockout action queue
-4,P1,D02_demo_p1_menu_impact.sql,3,05_std_ct_inventory_snapshot.sql;26_fact_ct_forecast_ingredient_demand.sql;22_fact_ct_purchase_order.sql,Impacted menu items and sales exposure
-5,P2,D05_demo_p2_vendor_control.sql,3,24_fact_ct_po_receipt_line.sql,Vendor OTIF fill rate and delayed lines
-6,P2,D06_demo_p2_price_watch.sql,3,23_fact_ct_purchase_receipt.sql,Weighted purchase-price movement
