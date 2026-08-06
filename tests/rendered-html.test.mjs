@@ -30,13 +30,18 @@ test("builds the editable ABNAH workspace for GitHub Pages", async () => {
   assert.match(html, /Content-Security-Policy/);
   assert.match(html, /frame-src https:\/\/analytics\.zoho\.in/);
   assert.doesNotMatch(html, /frame-src\s+\*/);
-  assert.match(bundle, /Schema Workspace/);
+  assert.match(bundle, /Control Tower Workbench/);
   assert.match(bundle, /Discovery/);
   assert.match(bundle, /API validation/);
   assert.match(bundle, /Control tower/);
   assert.match(bundle, /Live portal/);
   assert.match(bundle, /Data quality/);
   assert.match(bundle, /Architecture/);
+  assert.match(bundle, /From source reports to daily decisions/);
+  assert.match(bundle, /10 Query Tables/);
+  assert.match(bundle, /Period measures flow\. Snapshot measures state\./);
+  assert.match(bundle, /RPT_V2_R08B_7_Day_Inventory_Shortage_Action_Table/);
+  assert.match(bundle, /QT_02_Numerical_Risk_Center\.as_of_date/);
   assert.match(bundle, /Library/);
   assert.match(bundle, /Budget DSR Report/);
   assert.match(bundle, /Blank table structure/);
@@ -44,6 +49,19 @@ test("builds the editable ABNAH workspace for GitHub Pages", async () => {
     bundle,
     /codex-preview|Your site is taking shape|react-loading-skeleton/i,
   );
+});
+
+test("publishes the exact ten-query SQL handover", async () => {
+  const sqlDirectory = new URL("../pages-dist/architecture/sql/", import.meta.url);
+  const sqlFiles = (await readdir(sqlDirectory, { withFileTypes: true }))
+    .filter((entry) => entry.isFile() && entry.name.endsWith(".sql"));
+
+  assert.equal(sqlFiles.length, 10);
+  const numericalRisk = await readFile(
+    new URL("02_numerical_risk_center.sql", sqlDirectory),
+    "utf8",
+  );
+  assert.match(numericalRisk, /Query Table\s*:\s*QT_02_Numerical_Risk_Center/i);
 });
 
 test("publishes the secured delivery portal as a GitHub Pages route", async () => {
@@ -65,7 +83,7 @@ test("publishes the secured delivery portal as a GitHub Pages route", async () =
   assert.match(bundle, /UNDERLYING EVIDENCE/);
   assert.match(bundle, /Zoho native visual/);
   assert.match(bundle, /ZOHO_CRITERIA/);
-  assert.match(bundle, /Connect the secured Zoho view/);
+  assert.match(bundle, /Rendered from governed query-table data; open the source for Zoho detail\./);
   assert.match(bundle, /Matching validated March rows are shown temporarily/);
 });
 
@@ -288,12 +306,12 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   assert.equal(lineage.kpis.filter((kpi) => kpi.approvalStatus === "partial").length, 1);
   assert.equal(lineage.nodes.length, 0);
   assert.equal(lineage.edges.length, 0);
-  assert.equal(projectPack.summary.files, 773);
+  assert.equal(projectPack.summary.files, 779);
   assert.equal(projectPack.summary.csvFiles, 349);
   assert.equal(projectPack.summary.sqlFiles, 133);
-  assert.equal(projectPack.summary.guideFiles, 97);
+  assert.equal(projectPack.summary.guideFiles, 99);
   assert.equal(projectPack.categories.length, 10);
-  assert.equal(new Set(projectPack.files.map((file) => file.path)).size, 773);
+  assert.equal(new Set(projectPack.files.map((file) => file.path)).size, 779);
   assert.ok(projectPack.files.filter((file) => file.featuredOrder !== null).length >= 6);
   assert.ok(projectPack.files.every((file) => /^[a-f0-9]{64}$/.test(file.sha256)));
   assert.doesNotMatch(projectPackText, /\.png\b|\.jpe?g\b|AppData\\Local\\Temp|Downloads\\/i);

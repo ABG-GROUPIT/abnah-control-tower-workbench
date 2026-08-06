@@ -27,10 +27,6 @@ import type { ControlTowerRequirements } from "../lib/control-tower-types";
 import type { ControlTowerEvidence } from "../lib/control-tower-evidence-types";
 import type { ControlTowerFidelity } from "../lib/control-tower-fidelity-types";
 import type { ProjectPackIndex } from "../lib/project-pack-types";
-import type {
-  ControlTowerModel,
-  ControlTowerPresentation,
-} from "../lib/control-tower-presentation-types";
 import { ApiRegistry } from "./ApiRegistry";
 import { ArchitectureGraphWorkspace } from "./ArchitectureGraphWorkspace";
 import { ControlTowerWorkspace } from "./ControlTowerWorkspace";
@@ -45,8 +41,6 @@ interface AtlasWorkspaceProps {
   controlTower: ControlTowerRequirements;
   controlTowerEvidence: ControlTowerEvidence;
   controlTowerFidelity: ControlTowerFidelity;
-  controlTowerModel: ControlTowerModel;
-  controlTowerPresentation: ControlTowerPresentation;
   projectPack: ProjectPackIndex;
   persistenceMode?: "auto" | "browser";
 }
@@ -76,7 +70,7 @@ function initialSurface(): Surface {
         "library",
       ].includes(requested)
     ? requested
-    : "discovery";
+    : "architecture";
 }
 
 function documentRecord(reports: ReportWorkspaceDocument[]) {
@@ -142,8 +136,6 @@ export function AtlasWorkspace({
   controlTower,
   controlTowerEvidence,
   controlTowerFidelity,
-  controlTowerModel,
-  controlTowerPresentation,
   projectPack,
   persistenceMode = "auto",
 }: AtlasWorkspaceProps) {
@@ -464,7 +456,7 @@ export function AtlasWorkspace({
       <header className="app-topbar">
         <div className="app-brand">
           <Database aria-hidden="true" size={20} />
-          <span><strong>ABNAH</strong><small>Schema Workspace</small></span>
+          <span><strong>ABNAH</strong><small>Control Tower Workbench</small></span>
         </div>
         <nav className="app-nav" aria-label="Workspace surfaces">
           <button type="button" className={surface === "discovery" ? "is-active" : ""} onClick={() => setSurface("discovery")}><FileSpreadsheet aria-hidden="true" size={15} /> Discovery</button>
@@ -538,12 +530,7 @@ export function AtlasWorkspace({
         />
       )}
       {surface === "architecture" && (
-        <ArchitectureGraphWorkspace
-          presentation={controlTowerPresentation}
-          model={controlTowerModel}
-          reports={reports}
-          onOpenReport={openDiscoveryReport}
-        />
+        <ArchitectureGraphWorkspace />
       )}
       {surface === "library" && <ProjectLibraryWorkspace index={projectPack} />}
     </main>
