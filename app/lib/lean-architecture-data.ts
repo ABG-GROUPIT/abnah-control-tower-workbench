@@ -287,7 +287,7 @@ export const activeAggregateMetrics = [
   ["AF_Period_Consumption_Variance_Pct", "QT_03_Consumption_Variance", "SUM(variance) / SUM(theoretical)", "Ratio of sums"],
   ["AF_Flow_Theoretical_COGS", "QT_04_Menu_Profitability", "SUM(theoretical_cogs)", "Recipe cost of sold items"],
   ["AF_Flow_Theoretical_Gross_Margin", "QT_04_Menu_Profitability", "SUM(menu_gross_margin)", "Sales minus theoretical COGS"],
-  ["AF_Flow_Theoretical_Gross_Margin_Pct", "QT_04_Menu_Profitability", "SUM(menu_gross_margin) / SUM(net_sales_value)", "Ratio of sums; never sum row percentages"],
+  ["AF_Flow_Theoretical_Gross_Margin_Pct", "QT_04_Menu_Profitability", "100 × SUM(menu_gross_margin) / SUM(net_sales_value)", "Percentage-typed ratio of sums; never sum row percentages"],
   ["AF_DQ_Exception_Count", "QT_06_Data_Quality_Exceptions", "DISTINCTCOUNT(exception_id)", "Evaluated exceptions"],
   ["AF_DQ_Affected_Subject_Count", "QT_06_Data_Quality_Exceptions", "DISTINCTCOUNT(source table + row key)", "Affected source records"],
 ] as const;
@@ -431,7 +431,7 @@ export const dashboardTabs: Array<{
     objects: [
       { name: "Net Sales", kind: "KPI", base: "RAW_Gross_Net_Margin", question: "How much recognized net sales flowed in the selected period?", measure: "SUM(Net Sale Value)", fixed: [], mappings: salesMappings },
       { name: "Theoretical Gross Margin", kind: "KPI", base: "QT_04_Menu_Profitability", question: "How much theoretical recipe margin was generated?", measure: "SUM(menu_gross_margin)", fixed: ["cost_evaluation_status_code = COMPLETE_RECIPE_COST"], mappings: marginMappings },
-      { name: "Theoretical Gross Margin %", kind: "KPI", base: "QT_04_Menu_Profitability", question: "What share of eligible net sales remains after theoretical recipe cost?", measure: "SUM(menu_gross_margin) / SUM(net_sales_value)", fixed: ["cost_evaluation_status_code = COMPLETE_RECIPE_COST"], mappings: marginMappings, note: "Ratio of sums; never sum or average the row percentage." },
+      { name: "Theoretical Gross Margin %", kind: "KPI", base: "QT_04_Menu_Profitability", question: "What share of eligible net sales remains after theoretical recipe cost?", measure: "100 × SUM(menu_gross_margin) / SUM(net_sales_value)", fixed: ["cost_evaluation_status_code = COMPLETE_RECIPE_COST"], mappings: marginMappings, note: "Percentage-typed ratio of sums; never sum or average the row percentage." },
       { name: "Open PO Liability", kind: "KPI", base: "QT_05_Procurement_Control", question: "What pre-tax PO value remains open at the selected snapshot?", measure: "SUM(open_po_liability_pre_tax)", fixed: ["record_type = PO_AS_OF", "remaining_qty_canonical > 0"], mappings: procurementMappings },
       { name: "Outlets With Inventory Risk", kind: "KPI", base: "QT_02_Numerical_Risk_Center", question: "How many outlets have an active inventory risk?", measure: "DISTINCTCOUNT(outlet_name)", fixed: ["subject_type = INVENTORY", "risk_color excludes Green and Grey"], mappings: riskMappings },
       { name: "Critical Inventory Risk Subjects", kind: "KPI", base: "QT_02_Numerical_Risk_Center", question: "How many distinct inventory evaluations are currently critical?", measure: "DISTINCTCOUNT(evaluation_id)", fixed: ["subject_type = INVENTORY", "risk_color = Red"], mappings: riskMappings },
