@@ -25,6 +25,7 @@ PORTAL_FILES = (
     "app/components/control-tower-portal/RiskActionPage.tsx",
     "app/globals.css",
     "app/lib/lean-architecture-data.ts",
+    "app/lib/zoho-build-guides.ts",
     "app/lib/control-tower-portal-data.ts",
     "app/lib/supabase-portal-client.ts",
     "app/lib/zoho-portal-handoff.ts",
