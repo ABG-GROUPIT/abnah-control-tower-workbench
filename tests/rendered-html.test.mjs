@@ -42,6 +42,11 @@ test("builds the editable ABNAH workspace for GitHub Pages", async () => {
   assert.match(bundle, /Period measures flow\. Snapshot measures state\./);
   assert.match(bundle, /RPT_V2_R08B_7_Day_Inventory_Shortage_Action_Table/);
   assert.match(bundle, /QT_02_Numerical_Risk_Center\.as_of_date/);
+  assert.match(bundle, /See more details: build/);
+  assert.match(bundle, /DB_02_ABNAH_SCM_Control_Tower_Final/);
+  assert.match(bundle, /NEW_RPT_FC04R_PVT_Daily_Net_Sales_Forecast_7D/);
+  assert.match(bundle, /AF_Flow_Theoretical_Gross_Margin_Pct/);
+  assert.match(bundle, /Add > Aggregate Formula/);
   assert.match(bundle, /Library/);
   assert.match(bundle, /Budget DSR Report/);
   assert.match(bundle, /Blank table structure/);
@@ -306,12 +311,12 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   assert.equal(lineage.kpis.filter((kpi) => kpi.approvalStatus === "partial").length, 1);
   assert.equal(lineage.nodes.length, 0);
   assert.equal(lineage.edges.length, 0);
-  assert.equal(projectPack.summary.files, 779);
+  assert.equal(projectPack.summary.files, 780);
   assert.equal(projectPack.summary.csvFiles, 349);
   assert.equal(projectPack.summary.sqlFiles, 133);
   assert.equal(projectPack.summary.guideFiles, 99);
   assert.equal(projectPack.categories.length, 10);
-  assert.equal(new Set(projectPack.files.map((file) => file.path)).size, 779);
+  assert.equal(new Set(projectPack.files.map((file) => file.path)).size, 780);
   assert.ok(projectPack.files.filter((file) => file.featuredOrder !== null).length >= 6);
   assert.ok(projectPack.files.every((file) => /^[a-f0-9]{64}$/.test(file.sha256)));
   assert.doesNotMatch(projectPackText, /\.png\b|\.jpe?g\b|AppData\\Local\\Temp|Downloads\\/i);

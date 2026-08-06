@@ -8,6 +8,7 @@ import {
   Braces,
   CalendarDays,
   Check,
+  ChevronDown,
   ChevronRight,
   CircleDot,
   FileCode2,
@@ -38,6 +39,13 @@ import {
   type DashboardObject,
   type JourneyStageId,
 } from "../lib/lean-architecture-data";
+import {
+  aggregateMetricBuildGuides,
+  dashboardFilterBuildGuides,
+  dashboardObjectBuildGuide,
+  dashboardTabBuildGuides,
+  forecastProductBuildGuides,
+} from "../lib/zoho-build-guides";
 
 const stageIcons = {
   inputs: FileSpreadsheet,
@@ -51,6 +59,19 @@ const stageIcons = {
 
 function Pill({ children, tone = "neutral" }: { children: React.ReactNode; tone?: string }) {
   return <span className={`journey-pill tone-${tone}`}>{children}</span>;
+}
+
+function SeeMore({ children, label = "See more details" }: { children: React.ReactNode; label?: string }) {
+  return (
+    <details className="journey-see-more">
+      <summary><span>{label}</span><ChevronDown aria-hidden="true" size={15} /></summary>
+      <div className="journey-see-more-body">{children}</div>
+    </details>
+  );
+}
+
+function StepList({ steps }: { steps: readonly string[] }) {
+  return <ol className="journey-step-list">{steps.map((step, index) => <li key={`${index}-${step}`}><span>{index + 1}</span><p>{step}</p></li>)}</ol>;
 }
 
 function SourceInputs() {
@@ -129,6 +150,20 @@ function GovernedControls() {
           <BadgeCheck aria-hidden="true" size={16} />
           <div><strong>Change once, refresh the model</strong><span>Effective-dated controls keep thresholds and conversion rules editable without hard-coding them independently into every report.</span></div>
         </div>
+        <SeeMore label={`See more details: govern ${control.name}`}>
+          <div className="journey-detail-facts">
+            <section><label>Exact Zoho table</label><code>{control.name}</code></section>
+            <section><label>Business role</label><p>{control.role}</p></section>
+          </div>
+          <section className="journey-detail-section"><label>Fields and current examples</label><div className="journey-detail-chips">{control.examples.map((item) => <code key={item}>{item}</code>)}</div></section>
+          <section className="journey-detail-section"><label>Click-by-click</label><StepList steps={[
+            `Open Data and locate the existing table named ${control.name}; preserve that exact name.`,
+            "Open the active/effective-dated row and change only the approved business value or mapping.",
+            "Save the table, then refresh the dependent Query Tables in their documented build order.",
+            "Open one downstream KPI/report and reconcile its filtered rows before presenting the change.",
+            "Record the approved control change; never repair a control threshold inside an individual report formula.",
+          ]} /></section>
+        </SeeMore>
       </article>
     </div>
   );
@@ -195,6 +230,23 @@ function LeanModel() {
           <a className="journey-sql-link" href={`./architecture/sql/${selected.sqlFile}`} target="_blank" rel="noreferrer">
             <FileCode2 aria-hidden="true" size={16} /> Open exact Zoho SQL <small>{selected.sqlFile}</small>
           </a>
+          <SeeMore label={`See more details: create ${selected.name}`}>
+            <div className="journey-detail-facts">
+              <section><label>Exact object name</label><code>{selected.name}</code></section>
+              <section><label>Output grain</label><p>{selected.grain}</p></section>
+              <section><label>Physical date</label><code>{selected.dateField}</code></section>
+              <section><label>Dependency level</label><p>Level {selected.level} · build position {selected.order} of 10</p></section>
+            </div>
+            <section className="journey-detail-section"><label>Click-by-click</label><StepList steps={[
+              "In Zoho Analytics choose Create > New Query Table.",
+              `Name it exactly ${selected.name}.`,
+              `Open ${selected.sqlFile} from the exact SQL link above and paste the complete statement without renaming source tables or output aliases.`,
+              "Execute the query and resolve only real schema errors; do not replace missing data with fabricated constants.",
+              `Confirm the physical ${selected.dateField} column, contracted grain, and key output fields shown above.`,
+              "Save, refresh its dependents in build order, then verify one filtered downstream object before continuing.",
+            ]} /></section>
+            <div className="journey-callout is-blue"><ShieldCheck size={15} /><span>Use the downloadable SQL as the source of truth. The short purpose text is a navigation aid, not a substitute for the query.</span></div>
+          </SeeMore>
         </article>
       ) : <div className="journey-empty"><Search size={20} /><strong>No matching Query Table</strong></div>}
     </div>
@@ -231,7 +283,31 @@ function Calculations() {
         {showMetrics ? (
           <div className="journey-metric-table" role="region" aria-label="Active aggregate formulas">
             {activeAggregateMetrics.map(([name, base, formula, meaning], index) => (
-              <article key={name}><span>{String(index + 1).padStart(2, "0")}</span><div><strong>{name}</strong><small>{base}</small></div><code>{formula}</code><p>{meaning}</p></article>
+              <article key={name}>
+                <span>{String(index + 1).padStart(2, "0")}</span><div><strong>{name}</strong><small>{base}</small></div><code>{formula}</code><p>{meaning}</p>
+                <SeeMore label="See more details">
+                  {(() => {
+                    const guide = aggregateMetricBuildGuides[name];
+                    return guide ? <>
+                      <div className="journey-detail-facts">
+                        <section><label>Owner table</label><code>{base}</code></section>
+                        <section><label>Formula name</label><code>{name}</code></section>
+                        <section><label>Data type / format</label><p>{guide.dataType} · {guide.display}</p></section>
+                        <section><label>Unified Metrics</label><p>{guide.priority} · {guide.synonyms}</p></section>
+                      </div>
+                      <section className="journey-detail-section"><label>Exact expression</label><pre>{guide.expression}</pre></section>
+                      <section className="journey-detail-section"><label>Click-by-click</label><StepList steps={[
+                        `Open ${base} in Zoho Analytics.`,
+                        "Choose Add > Aggregate Formula, or edit the existing formula through Edit Design > Add / Edit Formulas.",
+                        `Enter the formula name exactly as ${name} and paste the exact expression above.`,
+                        `Set Data Type to ${guide.dataType} and format it as ${guide.display}.`,
+                        `Save, reopen the formula, set Unified Metrics priority ${guide.priority}, add the listed business synonyms, and reconcile one filtered result.`,
+                      ]} /></section>
+                      <div className="journey-callout is-amber"><ShieldCheck size={15} /><span>{guide.guardrail}</span></div>
+                    </> : null;
+                  })()}
+                </SeeMore>
+              </article>
             ))}
           </div>
         ) : (
@@ -247,6 +323,7 @@ function Calculations() {
 function Forecasting() {
   const [selectedId, setSelectedId] = useState<(typeof forecastProducts)[number]["id"]>(forecastProducts[0].id);
   const forecast = forecastProducts.find((item) => item.id === selectedId) ?? forecastProducts[0];
+  const guide = forecastProductBuildGuides[forecast.id];
   return (
     <div className="journey-forecasting">
       <section className="journey-forecast-cards">
@@ -263,12 +340,16 @@ function Forecasting() {
         <div className="journey-callout is-blue"><ShieldCheck size={16} /><div><strong>Reuse boundary</strong><span>{forecast.boundary}</span></div></div>
         {forecast.id === "native" ? (
           <div className="journey-native-strip">
-            <span><b>FC04</b><small>Net sales value</small></span>
-            <span><b>FC05</b><small>Theoretical margin value</small></span>
-            <span><b>FC06</b><small>Expected menu units</small></span>
+            <span><b>FC04R / FC04</b><small>Daily / category net sales</small></span>
+            <span><b>FC05</b><small>Category theoretical margin</small></span>
+            <span><b>FC06</b><small>Category menu units</small></span>
             <i>7 daily forecast periods</i>
           </div>
         ) : null}
+        <SeeMore label={`See more details: build ${forecast.label}`}>
+          <section className="journey-detail-section"><label>Exact Zoho entities</label><ul>{guide.entities.map((item) => <li key={item}>{item}</li>)}</ul></section>
+          <section className="journey-detail-section"><label>Click-by-click</label><StepList steps={guide.steps} /></section>
+        </SeeMore>
       </article>
     </div>
   );
@@ -276,6 +357,7 @@ function Forecasting() {
 
 function ObjectDetail({ object }: { object: DashboardObject }) {
   const unmapped = unmappedFilters(object);
+  const guide = dashboardObjectBuildGuide(object);
   return (
     <article className="journey-report-detail">
       <header>
@@ -292,6 +374,40 @@ function ObjectDetail({ object }: { object: DashboardObject }) {
       </section>
       <section className="journey-unmapped"><label>Intentionally unmapped</label><p>{unmapped.join(" · ")}</p></section>
       {object.note ? <div className="journey-callout is-amber"><CircleDot size={15} /><span>{object.note}</span></div> : null}
+      <SeeMore label={`See more details: build ${object.name}`}>
+        <div className="journey-detail-facts">
+          <section><label>Create as</label><p>{guide.visual}</p></section>
+          <section><label>Exact base table</label><code>{object.base}</code></section>
+          <section><label>Live status</label><p>{guide.status}</p></section>
+          <section><label>Exact saved title</label><code>{object.name}</code></section>
+        </div>
+        <section className="journey-detail-section">
+          <label>Columns, shelves and aggregation</label>
+          <ul>{(guide.shelves ?? [object.measure]).map((item) => <li key={item}>{item}</li>)}</ul>
+        </section>
+        <section className="journey-detail-section">
+          <label>Fixed filters inside the object</label>
+          {object.fixed.length ? <ul>{object.fixed.map((item) => <li key={item}>{item}</li>)}</ul> : <p>None. Do not add a fixed date or outlet.</p>}
+        </section>
+        <section className="journey-detail-section">
+          <label>Dashboard user-filter mapping</label>
+          <div className="journey-detail-mapping">{Object.entries(object.mappings).map(([filter, column]) => <span key={filter}><b>{filter}</b><ArrowRight size={12} /><code>{column}</code></span>)}</div>
+          <p className="journey-muted-line"><strong>Leave unmapped:</strong> {unmapped.join(" · ")}</p>
+        </section>
+        <section className="journey-detail-section"><label>Click-by-click</label><StepList steps={[
+          `${object.kind === "KPI" ? "Edit the dashboard and choose Widget > KPI" : `Choose Create > New Report > ${guide.visual}`} using ${object.base}.`,
+          `Set the visible/saved title exactly to ${object.name}.`,
+          "Drag the exact columns to the shelves above and select the stated aggregation; do not accept Zoho's automatic aggregation without checking it.",
+          object.fixed.length ? "Add only the listed fixed business filters inside the object, then save it." : "Keep the object free of fixed business/date filters, then save it.",
+          "Place it on the named dashboard tab, open Customize dashboard filters, and map only the listed compatible controls.",
+          "Apply the formatting below, enter View Mode, test All plus one narrowed scope, and inspect Underlying Data before acceptance.",
+        ]} /></section>
+        {guide.formatting.length ? <section className="journey-detail-section"><label>Formatting</label><ul>{guide.formatting.map((item) => <li key={item}>{item}</li>)}</ul></section> : null}
+        <div className="journey-acceptance-grid">
+          <section><label>Acceptance proof</label><p>{guide.acceptance}</p></section>
+          <section><label>Legitimate No Data</label><p>{guide.noData}</p></section>
+        </div>
+      </SeeMore>
     </article>
   );
 }
@@ -312,6 +428,22 @@ function DecisionOutputs() {
         {dashboardTabs.map((item) => <button key={item.id} type="button" className={item.id === tab.id ? "is-active" : ""} onClick={() => selectTab(item.id)}><span>{item.label.slice(0, 2)}</span><div><strong>{item.label.slice(3)}</strong><small>{item.objects.length} objects</small></div></button>)}
       </nav>
       <header className="journey-tab-purpose"><div><span className="section-kicker">Final dashboard tab</span><h2>{tab.label}</h2><p>{tab.purpose}</p></div><div>{tab.visibleFilters.map((item) => <Pill key={item}>{item}</Pill>)}</div></header>
+      <div className="journey-tab-build">
+        <SeeMore label={`See more details: assemble ${tab.label}`}>
+          {(() => {
+            const guide = dashboardTabBuildGuides[tab.id];
+            return guide ? <>
+              <div className="journey-detail-facts">
+                <section><label>Dashboard</label><code>DB_02_ABNAH_SCM_Control_Tower_Final</code></section>
+                <section><label>Exact tab</label><code>{tab.label}</code></section>
+              </div>
+              <section className="journey-detail-section"><label>Filter rows</label><ul>{guide.filters.map((item) => <li key={item}>{item}</li>)}</ul></section>
+              <section className="journey-detail-section"><label>Placement blueprint</label><ul>{guide.rows.map((item) => <li key={item}>{item}</li>)}</ul></section>
+              <section className="journey-detail-section"><label>Click-by-click</label><StepList steps={guide.steps} /></section>
+            </> : null;
+          })()}
+        </SeeMore>
+      </div>
       <div className="journey-output-browser">
         <aside aria-label={`${tab.label} objects`}>
           {tab.objects.map((item) => <button key={item.name} type="button" className={item.name === selected.name ? "is-active" : ""} onClick={() => setObjectName(item.name)}><span data-kind={item.kind}>{item.kind === "KPI" ? <Gauge size={14} /> : item.kind === "Action table" || item.kind === "Pivot" ? <Table2 size={14} /> : <BarChart3 size={14} />}</span><div><strong>{item.name}</strong><small>{item.base}</small></div><ChevronRight size={14} /></button>)}
@@ -324,6 +456,7 @@ function DecisionOutputs() {
 
 function FilterContract() {
   const [filter, setFilter] = useState<(typeof allDashboardFilters)[number]>(allDashboardFilters[0]);
+  const guide = dashboardFilterBuildGuides[filter];
   const mapped = dashboardTabs.flatMap((tab) => tab.objects.map((object) => ({ tab, object, column: object.mappings[filter] }))).filter((item) => item.column);
   const grouped = dashboardTabs.map((tab) => ({ tab, objects: mapped.filter((item) => item.tab.id === tab.id) }));
   return (
@@ -340,6 +473,17 @@ function FilterContract() {
         <nav aria-label="Dashboard filters">
           {allDashboardFilters.map((item) => <button key={item} type="button" className={item === filter ? "is-active" : ""} onClick={() => setFilter(item)}>{item}</button>)}
         </nav>
+        <SeeMore label={`See more details: create ${filter}`}>
+          <div className="journey-detail-facts">
+            <section><label>Control type</label><p>{guide.control}</p></section>
+            <section><label>Seed column</label><code>{guide.seed}</code></section>
+            <section><label>Visible tabs</label><p>{guide.tabs}</p></section>
+            <section><label>Default</label><p>{guide.defaultValue}</p></section>
+          </div>
+          <section className="journey-detail-section"><label>Mapping rule</label><p>{guide.mappingRule}</p></section>
+          <section className="journey-detail-section"><label>Click-by-click</label><StepList steps={guide.steps} /></section>
+          <div className="journey-callout is-amber"><ShieldCheck size={15} /><span>{guide.warning}</span></div>
+        </SeeMore>
         <div className="journey-filter-groups">
           {grouped.map(({ tab, objects }) => (
             <article key={tab.id}>

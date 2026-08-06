@@ -6,8 +6,8 @@
   "sourceCommit": "c364bef92eac98566975f333f205648a34ce2b14",
   "policy": "Tracked synthetic, documentation, code, schema, and validation artifacts only. Screenshots, real operational exports, local audit runtime data, credentials, and environment values are excluded.",
   "summary": {
-    "files": 779,
-    "sizeBytes": 52015831,
+    "files": 780,
+    "sizeBytes": 52062440,
     "categories": 10,
     "csvFiles": 349,
     "sqlFiles": 133,
@@ -82,8 +82,8 @@
       "id": "other",
       "label": "Other project files",
       "description": "Supporting repository and configuration files retained for a complete handoff.",
-      "count": 41,
-      "sizeBytes": 632292
+      "count": 42,
+      "sizeBytes": 678901
     }
   ],
   "files": [
@@ -4475,8 +4475,8 @@
       "extension": ".tsx",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 21225,
-      "sha256": "2cc365711f19be1473ba20a4915e055d0d5a5eca3c96075432ef3a359e737c5e",
+      "sizeBytes": 31749,
+      "sha256": "0ae4ded16813f034ef8617db2e71fc18ec334c9833992667e6d9726b2ac2e41d",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4553,8 +4553,8 @@
       "extension": ".css",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 261804,
-      "sha256": "e059f4d1d9ee4e252963ff24e8232369a577e90379d8e838e167a11a4849f33c",
+      "sizeBytes": 266008,
+      "sha256": "3da26c4bb94dc421e32831051719d27f048be7b72ef55caafe6c763d00cd1473",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4579,8 +4579,8 @@
       "extension": ".ts",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 30812,
-      "sha256": "dfb0cccc8dffaf4a1ab0e7064bded34b2e66ca6708171b45c6a7c66c7a238caf",
+      "sizeBytes": 30885,
+      "sha256": "cce8dbacb460db05e3bee0ccbb6b4cced91e69bd0942bb3a08f86d2f855f8052",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4594,6 +4594,19 @@
       "category": "other",
       "sizeBytes": 7668,
       "sha256": "58cacadfa6c2a62d2da099d7fa31c09148e5b3e887bd471ba72508e70074820d",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
+      "path": "portal_runtime/app/lib/zoho-build-guides.ts",
+      "name": "zoho-build-guides.ts",
+      "title": "zoho build guides",
+      "extension": ".ts",
+      "kind": "Project file",
+      "category": "other",
+      "sizeBytes": 31808,
+      "sha256": "8c08d3abeba319c43a2c23ffc62f6197bb975f6024f3774269a76f3a91751e7d",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
