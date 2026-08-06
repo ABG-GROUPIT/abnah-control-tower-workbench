@@ -250,10 +250,10 @@ function DeliveryPlan({ requirements }: { requirements: ControlTowerRequirements
     ["Presentation", requirements.deliveryPlan.presentation],
   ];
   const modelColumns = [
-    ["Retain", requirements.modelRevision.retain],
-    ["Revise", requirements.modelRevision.revise],
-    ["Add", requirements.modelRevision.add],
-    ["Defer", requirements.modelRevision.defer],
+    ["Level 1", ["QT_01A_Menu_Forecast", "QT_03_Consumption_Variance", "QT_04_Menu_Profitability", "QT_05A_Receipt_Return_As_Of", "QT_06A_Return_DQ"]],
+    ["Level 2", ["QT_01_Demand_Requirement", "QT_05_Procurement_Control", "QT_02A_Risk_Base_Evidence", "QT_06_Data_Quality_Exceptions"]],
+    ["Level 3", ["QT_02_Numerical_Risk_Center"]],
+    ["Governance", ["5 control tables", "14 active Unified Metrics", "Physical reporting and snapshot dates", "10 exact dashboard filters"]],
   ] as const;
 
   return (
@@ -262,8 +262,8 @@ function DeliveryPlan({ requirements }: { requirements: ControlTowerRequirements
         <DatabaseZap aria-hidden="true" size={22} />
         <div>
           <span className="section-kicker">Architecture decision</span>
-          <h2>Revise the existing 37-query model</h2>
-          <p>{requirements.modelRevision.rationale}</p>
+          <h2>Operate the lean 10-query model</h2>
+          <p>Build three dependency levels in order, keep physical dates on every output, and govern thresholds, units and snapshot readiness through shared control tables.</p>
         </div>
         <StatusPill tone="green">Decision recorded</StatusPill>
       </section>
@@ -292,7 +292,7 @@ function DeliveryPlan({ requirements }: { requirements: ControlTowerRequirements
 
       <section className="ct-section">
         <div className="ct-section-heading">
-          <div><Layers3 aria-hidden="true" size={16} /><span><strong>Model change register</strong><small>Scope for the revised Zoho layer after source schemas are validated</small></span></div>
+          <div><Layers3 aria-hidden="true" size={16} /><span><strong>Current model register</strong><small>Ten active Query Tables plus their governed calculation contract</small></span></div>
         </div>
         <div className="ct-model-grid">
           {modelColumns.map(([label, items]) => (
@@ -333,7 +333,7 @@ export function ControlTowerWorkspace({ requirements, evidence, fidelity, onOpen
         <div>
           <span className="section-kicker">Business requirements / source validation workspace</span>
           <h1>Supply Chain Control Tower</h1>
-          <p>{requirements.pages.length} pages / {requirements.kpis.length} governed KPI definitions / {fidelity.summary.exactHeaderReports} exact POSIST contracts / {evidence.zohoReadiness.queryTableCount} active Query Tables / {approvedKpis} KPIs approved</p>
+          <p>{requirements.pages.length} pages / {requirements.kpis.length} governed KPI definitions / {fidelity.summary.exactHeaderReports} exact POSIST contracts / 10 active Query Tables / {approvedKpis} KPIs approved</p>
         </div>
         <div className="ct-header-state"><ShieldCheck aria-hidden="true" size={15} /><span><strong>Source fidelity verified</strong><small>{fidelity.summary.ignoredNoSignalFields} no-signal fields controlled</small></span></div>
       </header>

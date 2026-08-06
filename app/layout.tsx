@@ -16,18 +16,18 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     "https://abg-groupit.github.io/abnah-control-tower-workbench/",
   ),
-  title: "ABNAH Schema Workspace",
+  title: "ABNAH Control Tower Workbench",
   description:
-    "ABNAH report discovery, planned control-tower architecture, KPI requirements, API evidence and versioned schema review.",
+    "A visual handover of ABNAH source reports, the lean Zoho Analytics model, governed calculations, forecasts, decision outputs and exact dashboard filter mappings.",
   openGraph: {
-    title: "ABNAH Schema Workspace",
-    description: "Report discovery, data quality, and KPI lineage.",
+    title: "ABNAH Control Tower Workbench",
+    description: "From source reports to filter-safe daily decisions.",
     images: [{ url: "/og.png", width: 1710, height: 912 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ABNAH Schema Workspace",
-    description: "Report discovery, data quality, and KPI lineage.",
+    title: "ABNAH Control Tower Workbench",
+    description: "From source reports to filter-safe daily decisions.",
     images: ["/og.png"],
   },
 };

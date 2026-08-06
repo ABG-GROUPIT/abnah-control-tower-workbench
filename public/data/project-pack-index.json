@@ -6,8 +6,8 @@
   "sourceCommit": "c364bef92eac98566975f333f205648a34ce2b14",
   "policy": "Tracked synthetic, documentation, code, schema, and validation artifacts only. Screenshots, real operational exports, local audit runtime data, credentials, and environment values are excluded.",
   "summary": {
-    "files": 778,
-    "sizeBytes": 51952388,
+    "files": 779,
+    "sizeBytes": 52015831,
     "categories": 10,
     "csvFiles": 349,
     "sqlFiles": 133,
@@ -82,8 +82,8 @@
       "id": "other",
       "label": "Other project files",
       "description": "Supporting repository and configuration files retained for a complete handoff.",
-      "count": 40,
-      "sizeBytes": 568849
+      "count": 41,
+      "sizeBytes": 632292
     }
   ],
   "files": [
@@ -4475,8 +4475,8 @@
       "extension": ".tsx",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 24157,
-      "sha256": "51ba36cf6c758eac225ce332038ca609bd6d148e4151f271abcae74392811b26",
+      "sizeBytes": 21225,
+      "sha256": "2cc365711f19be1473ba20a4915e055d0d5a5eca3c96075432ef3a359e737c5e",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4488,8 +4488,8 @@
       "extension": ".tsx",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 22594,
-      "sha256": "b04597cb1053f0d70f00a75586e0c2f2a6c05f6530a031965a5187e1e98ff2f7",
+      "sizeBytes": 22181,
+      "sha256": "1c6a60e01167ec88a1caf065034bb2d701e79b42e40c85bb5fda270f82bd69f2",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4553,8 +4553,8 @@
       "extension": ".css",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 225448,
-      "sha256": "3390d1e914bc1eb7099e8109686a29a1bf1053c20b8ad8acf5f5157e70fa6da0",
+      "sizeBytes": 261804,
+      "sha256": "e059f4d1d9ee4e252963ff24e8232369a577e90379d8e838e167a11a4849f33c",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4568,6 +4568,19 @@
       "category": "other",
       "sizeBytes": 3296,
       "sha256": "f5ea6de37ea335eec654557f50f8019472b99e408b410a420c162f71267a1376",
+      "featuredOrder": null,
+      "featuredTitle": "",
+      "description": ""
+    },
+    {
+      "path": "portal_runtime/app/lib/lean-architecture-data.ts",
+      "name": "lean-architecture-data.ts",
+      "title": "lean architecture data",
+      "extension": ".ts",
+      "kind": "Project file",
+      "category": "other",
+      "sizeBytes": 30812,
+      "sha256": "dfb0cccc8dffaf4a1ab0e7064bded34b2e66ca6708171b45c6a7c66c7a238caf",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4696,8 +4709,8 @@
       "extension": ".html",
       "kind": "Local tool",
       "category": "other",
-      "sizeBytes": 1745,
-      "sha256": "56f9b0fb64846e4cd3fd5823eec8113648939002f802de3110a2ba6d4960ebb7",
+      "sizeBytes": 1847,
+      "sha256": "e0835cafc6f3ce74457e4fd94cd7f8b707fc95f9b17cd4a3289b6051fa723429",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4709,8 +4722,8 @@
       "extension": ".tsx",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 2504,
-      "sha256": "1d096f1b7b7ffc32f2d90d9f7de54f9984a355584ac62235ffac485b7a3a28ba",
+      "sizeBytes": 2022,
+      "sha256": "526f314069205f3673df6036528b0bca38bebcfb98e5033426e64d63cbe70e3d",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
