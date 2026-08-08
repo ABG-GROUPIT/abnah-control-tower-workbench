@@ -11,11 +11,13 @@ import {
   ChevronDown,
   ChevronRight,
   CircleDot,
+  CloudSun,
   FileCode2,
   FileSpreadsheet,
   Filter,
   Gauge,
   GitBranch,
+  MessageSquareText,
   PackageCheck,
   Search,
   Settings2,
@@ -40,6 +42,15 @@ import {
   type JourneyStageId,
 } from "../lib/lean-architecture-data";
 import {
+  weatherGovernanceGates,
+  weatherLandingTables,
+  weatherQueryTables,
+  weatherReports,
+  ziaHelperTables,
+  ziaPresentationFlows,
+  ziaWorkflows,
+} from "../lib/architecture-extension-data";
+import {
   aggregateMetricBuildGuides,
   dashboardFilterBuildGuides,
   dashboardObjectBuildGuide,
@@ -55,6 +66,9 @@ const stageIcons = {
   forecasting: Sparkles,
   outputs: BarChart3,
   filters: Filter,
+  zia: MessageSquareText,
+  weather: CloudSun,
+  handoff: PackageCheck,
 } satisfies Record<JourneyStageId, typeof FileSpreadsheet>;
 
 function Pill({ children, tone = "neutral" }: { children: React.ReactNode; tone?: string }) {
@@ -497,6 +511,319 @@ function FilterContract() {
   );
 }
 
+function ZiaSemanticLayer() {
+  const [mode, setMode] = useState<"helpers" | "workflows" | "presentation">("helpers");
+  const [helperName, setHelperName] = useState(ziaHelperTables[0].name);
+  const [workflowId, setWorkflowId] = useState(ziaWorkflows[0].id);
+  const helper = ziaHelperTables.find((item) => item.name === helperName) ?? ziaHelperTables[0];
+  const workflow = ziaWorkflows.find((item) => item.id === workflowId) ?? ziaWorkflows[0];
+
+  return (
+    <div className="journey-extension">
+      <header className="journey-extension-header">
+        <div>
+          <span className="section-kicker">Curated semantic layer</span>
+          <h2>Ask Zia is governed by two acceptance gates</h2>
+          <p>Source controls pass, but the 22-row live ledger is 0 PASS / 1 FAIL / 1 PARTIAL / 20 NOT_RUN. WF01 refused both its original exact prompt and an explicit ZIA_01A helper prompt; a prior same-conversation retry also failed, and its follow-up is only PARTIAL. The conversational and presentation gates remain BLOCKED.</p>
+        </div>
+        <div className="journey-extension-metrics" aria-label="Ask Zia acceptance summary">
+          <span className="is-pass"><b>29</b><small>source controls pass</small></span>
+          <span className="is-blocked"><b>0</b><small>conversation passes logged</small></span>
+          <span className="is-blocked"><b>1</b><small>primary fail</small></span>
+          <span className="is-blocked"><b>1</b><small>follow-up partial</small></span>
+        </div>
+      </header>
+      <nav className="journey-extension-switcher" aria-label="Ask Zia architecture views">
+        <button type="button" className={mode === "helpers" ? "is-active" : ""} onClick={() => setMode("helpers")}>Helper Query Tables</button>
+        <button type="button" className={mode === "workflows" ? "is-active" : ""} onClick={() => setMode("workflows")}>11-workflow gate</button>
+        <button type="button" className={mode === "presentation" ? "is-active" : ""} onClick={() => setMode("presentation")}>Presentation flows</button>
+      </nav>
+
+      {mode === "helpers" ? (
+        <div className="journey-model journey-extension-browser">
+          <aside className="journey-model-index">
+            <div className="journey-extension-note"><ShieldCheck size={15} /><span>These helpers sit beside the ten core Query Tables. None replaces or edits the core model.</span></div>
+            <nav aria-label="Ask Zia helper Query Tables">
+              {ziaHelperTables.map((item) => (
+                <button key={item.name} type="button" className={item.name === helper.name ? "is-active" : ""} onClick={() => setHelperName(item.name)}>
+                  <span data-level={item.name.startsWith("ZIA_01") ? 3 : 2}>{String(item.order).padStart(2, "0")}</span>
+                  <div><strong>{item.name}</strong><small>{item.workflows.join(" · ")}</small></div>
+                  <ChevronRight aria-hidden="true" size={14} />
+                </button>
+              ))}
+            </nav>
+          </aside>
+          <article className="journey-model-detail">
+            <header>
+              <div><span className="section-kicker">Live semantic helper</span><h2>{helper.name}</h2><p>{helper.purpose}</p></div>
+              <Pill tone={helper.deploymentStatus.includes("REQUIRED") || helper.deploymentStatus.includes("BLOCKED") ? "amber" : "green"}>{helper.deploymentStatus}</Pill>
+            </header>
+            <dl className="journey-model-facts">
+              <div><dt>Contracted grain</dt><dd>{helper.grain}</dd></div>
+              <div><dt>Live view ID</dt><dd><code>{helper.viewId}</code></dd></div>
+            </dl>
+            <section className="journey-dependency-band"><label>Core / curated dependencies</label><div>{helper.dependencies.map((item) => <code key={item}>{item}</code>)}</div></section>
+            <div className="journey-model-columns">
+              <section><label>Key fields exposed</label><ul>{helper.keyFields.slice(0, 8).map((item) => <li key={item}><Check size={13} /><code>{item}</code></li>)}</ul></section>
+              <section><label>Workflows served</label><ul>{helper.workflows.map((item) => <li key={item}><ArrowRight size={13} /><span>{item}</span></li>)}</ul></section>
+            </div>
+            <div className="journey-callout is-amber"><CircleDot size={15} /><div><strong>Why this helper exists</strong><span>{helper.whyItExists}</span></div></div>
+            <SeeMore label={`See more details: govern ${helper.name}`}>
+              <div className="journey-detail-facts">
+                <section><label>Exact object</label><code>{helper.name}</code></section>
+                <section><label>Live view ID</label><code>{helper.viewId}</code></section>
+                <section><label>Output grain</label><p>{helper.grain}</p></section>
+                <section><label>Source acceptance</label><p>{helper.acceptanceControl}</p></section>
+              </div>
+              <section className="journey-detail-section"><label>Full curated field set</label><div className="journey-detail-chips">{helper.keyFields.map((item) => <code key={item}>{item}</code>)}</div></section>
+              {helper.sqlPurpose ? <section className="journey-detail-section"><label>Business-readable SQL purpose</label><p>{helper.sqlPurpose}</p></section> : null}
+              <section className="journey-detail-section"><label>Guardrails</label><ul>{helper.guardrails.map((item) => <li key={item}>{item}</li>)}</ul></section>
+              <section className="journey-detail-section"><label>Click-by-click</label><StepList steps={helper.steps} /></section>
+            </SeeMore>
+          </article>
+        </div>
+      ) : null}
+
+      {mode === "workflows" ? (
+        <div className="journey-output-browser journey-zia-workflows">
+          <aside aria-label="Ask Zia workflow acceptance matrix">
+            {ziaWorkflows.map((item) => (
+              <button key={item.id} type="button" className={item.id === workflow.id ? "is-active" : ""} onClick={() => setWorkflowId(item.id)}>
+                <span><MessageSquareText size={14} /></span>
+                <div><strong>{item.id} · {item.name}</strong><small>{item.primaryObject}</small></div>
+                <ChevronRight size={14} />
+              </button>
+            ))}
+          </aside>
+          <article className="journey-report-detail journey-zia-detail">
+            <header><div><Pill tone="blue">{workflow.id}</Pill><h2>{workflow.name}</h2><p>{workflow.prompt}</p></div><code>{workflow.primaryObject}</code></header>
+            <div className="journey-gate-grid">
+              <section className="is-pass"><label>Source reconciliation</label><strong>{workflow.sourceStatus}</strong><p>Validated by the live numerical control suite.</p></section>
+              <section className="is-blocked"><label>Ask Zia conversation</label><strong>{workflow.conversationStatus} primary / {workflow.followUpStatus} follow-up</strong><p>No completed PASS is recorded in the conversational ledger.</p></section>
+              <section><label>Presentation decision</label><strong>BLOCKED</strong><p>{workflow.presentationStatus}</p></section>
+            </div>
+            <div className="journey-report-build">
+              <section><label>Date contract</label><p>{workflow.dateContract}</p></section>
+              <section><label>Filter contract</label><p>{workflow.filterContract}</p></section>
+              <section><label>Aggregation contract</label><p>{workflow.aggregationContract}</p></section>
+              <section><label>Expected numerical control</label><p>{workflow.expectedControl}</p></section>
+            </div>
+            <div className="journey-callout is-amber"><MessageSquareText size={15} /><div><strong>Current live evidence</strong><span>{workflow.liveFinding}</span></div></div>
+            <div className="journey-callout is-amber"><ShieldCheck size={15} /><div><strong>Negative control</strong><span>{workflow.negativeControl}</span></div></div>
+            <SeeMore label={`See more details: test ${workflow.id} end to end`}>
+              <section className="journey-detail-section"><label>Exact prompt</label><pre>{workflow.prompt}</pre></section>
+              <section className="journey-detail-section"><label>Click-by-click acceptance</label><StepList steps={[
+                `Open Ask Zia and start a new conversation for ${workflow.id}.`,
+                `Ask the complete atomic prompt against ${workflow.primaryObject}; do not depend on a prior question for date or outlet scope.`,
+                "Inspect Report Information and verify the exact source object, date predicate, filters and aggregation contract shown above.",
+                "Compare every visible number and row to the expected control and actively reject the negative control.",
+                "Ask the documented follow-up, verify retained context, then log PASS, FAIL, PARTIAL or NOT_RUN in the conversational ledger.",
+                "Use the workflow in a presentation only when both the primary and follow-up are PASS and the visible narrative matches the table.",
+              ]} /></section>
+            </SeeMore>
+          </article>
+        </div>
+      ) : null}
+
+      {mode === "presentation" ? (
+        <div className="journey-presentation-flows">
+          <div className="journey-callout is-amber"><ShieldCheck size={16} /><div><strong>Overall gate BLOCKED</strong><span>These are six governed demo sequences, not proof of conversational acceptance. WF01 still refused against both the original strict helper and the business-readable ZIA_01A summary, so it must use RPT_V2_P08_Delivery_Breach_Action_Top10; its matching isolated helper run is historical diagnostic evidence only.</span></div></div>
+          <div className="journey-flow-grid">
+            {ziaPresentationFlows.map((flow, index) => (
+              <article key={flow.title}>
+                <header><span>{String(index + 1).padStart(2, "0")}</span><div><strong>{flow.title}</strong><code>{flow.route}</code></div></header>
+                <StepList steps={flow.steps} />
+                <div><label>Visible control</label><p>{flow.control}</p></div>
+                <div><label>Governed fallback</label><p>{flow.fallback}</p></div>
+              </article>
+            ))}
+          </div>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function WeatherExtension() {
+  const [mode, setMode] = useState<"pipeline" | "reports" | "governance">("pipeline");
+  const weatherObjects = [...weatherLandingTables, ...weatherQueryTables];
+  const [objectName, setObjectName] = useState(weatherObjects[0].name);
+  const [reportName, setReportName] = useState(weatherReports[0].name);
+  const object = weatherObjects.find((item) => item.name === objectName) ?? weatherObjects[0];
+  const report = weatherReports.find((item) => item.name === reportName) ?? weatherReports[0];
+
+  return (
+    <div className="journey-extension">
+      <header className="journey-extension-header">
+        <div><span className="section-kicker">Open-Meteo evaluation extension</span><h2>Weather sits beside the unchanged operational core</h2><p>Historical provider data explains association; the current outlook shows D+1-D+7 weather. Neither changes the deterministic shortage forecast today.</p></div>
+        <div className="journey-extension-metrics" aria-label="Weather extension summary">
+          <span><b>3</b><small>live inputs</small></span>
+          <span><b>3</b><small>extension queries</small></span>
+          <span className="is-pass"><b>4</b><small>QA reports</small></span>
+          <span className="is-blocked"><b>0</b><small>production approvals</small></span>
+        </div>
+      </header>
+      <nav className="journey-extension-switcher" aria-label="Weather architecture views">
+        <button type="button" className={mode === "pipeline" ? "is-active" : ""} onClick={() => setMode("pipeline")}>API to Query Tables</button>
+        <button type="button" className={mode === "reports" ? "is-active" : ""} onClick={() => setMode("reports")}>Live demo reports</button>
+        <button type="button" className={mode === "governance" ? "is-active" : ""} onClick={() => setMode("governance")}>Governance & future</button>
+      </nav>
+
+      {mode === "pipeline" ? (
+        <>
+          <div className="journey-weather-route" aria-label="Weather ingestion and analysis route">
+            <span><CloudSun size={16} /><strong>Open-Meteo</strong><small>Historical Forecast + Forecast APIs</small></span><ArrowRight size={15} />
+            <span><Braces size={16} /><strong>Local normalizer</strong><small>Daily means, keys, status, attribution</small></span><ArrowRight size={15} />
+            <span><FileSpreadsheet size={16} /><strong>DataBridge Update/Add</strong><small>Stable CSV into existing tables</small></span><ArrowRight size={15} />
+            <span><GitBranch size={16} /><strong>QT_07 / QT_08 / QT_09</strong><small>Daily join, sensitivity, latest outlook</small></span><ArrowRight size={15} />
+            <span><BarChart3 size={16} /><strong>Four demo reports</strong><small>Association and D+1-D+7 context</small></span>
+          </div>
+          <div className="journey-model journey-extension-browser">
+            <aside className="journey-model-index">
+              <div className="journey-extension-note"><ShieldCheck size={15} /><span>Recommended production route: approved endpoint → local normalizer → DataBridge Update/Add.</span></div>
+              <nav aria-label="Weather tables and extension Query Tables">
+                {weatherObjects.map((item, index) => (
+                  <button key={item.name} type="button" className={item.name === object.name ? "is-active" : ""} onClick={() => setObjectName(item.name)}>
+                    <span data-level={index < weatherLandingTables.length ? 1 : 2}>{String(index + 1).padStart(2, "0")}</span>
+                    <div><strong>{item.name}</strong><small>{item.rows}</small></div><ChevronRight size={14} />
+                  </button>
+                ))}
+              </nav>
+            </aside>
+            <article className="journey-model-detail">
+              <header><div><span className="section-kicker">Weather data contract</span><h2>{object.name}</h2><p>{object.purpose}</p></div><Pill tone={object.status.includes("LIVE") ? "green" : "amber"}>{object.status}</Pill></header>
+              <dl className="journey-model-facts"><div><dt>Contracted grain</dt><dd>{object.grain}</dd></div><div><dt>Live view ID</dt><dd><code>{object.viewId}</code></dd></div></dl>
+              <section className="journey-dependency-band"><label>Inputs</label><div>{object.dependencies.map((item) => <code key={item}>{item}</code>)}</div></section>
+              <section className="journey-example-band"><label>Key fields</label><div>{object.keyFields.map((item) => <code key={item}>{item}</code>)}</div></section>
+              <div className="journey-callout is-amber"><ShieldCheck size={15} /><div><strong>Evidence boundary</strong><span>Approximate coordinates and provider model-grid data are evaluation evidence, not client-approved outlet observation.</span></div></div>
+              <SeeMore label={`See more details: build ${object.name}`}>
+                <div className="journey-detail-facts"><section><label>Exact object</label><code>{object.name}</code></section><section><label>Verified rows</label><p>{object.rows}</p></section><section><label>Live view ID</label><code>{object.viewId}</code></section><section><label>Grain</label><p>{object.grain}</p></section></div>
+                <section className="journey-detail-section"><label>Click-by-click</label><StepList steps={object.steps} /></section>
+              </SeeMore>
+            </article>
+          </div>
+        </>
+      ) : null}
+
+      {mode === "reports" ? (
+        <div className="journey-output-browser journey-weather-reports">
+          <aside aria-label="Live weather demo reports">
+            {weatherReports.map((item) => (
+              <button key={item.name} type="button" className={item.name === report.name ? "is-active" : ""} onClick={() => setReportName(item.name)}>
+                <span><BarChart3 size={14} /></span><div><strong>{item.name}</strong><small>{item.base}</small></div><ChevronRight size={14} />
+              </button>
+            ))}
+          </aside>
+          <article className="journey-report-detail">
+            <header><div><Pill tone="amber">DEMO / EVALUATION</Pill><h2>{report.name}</h2><p>{report.question}</p></div><code>{report.base}</code></header>
+            <div className="journey-report-build"><section><label>Visual and shelves</label><ul><li>{report.visual}</li>{report.shelves.map((item) => <li key={item}>{item}</li>)}</ul></section><section><label>Fixed scope</label>{report.fixed.length ? <ul>{report.fixed.map((item) => <li key={item}>{item}</li>)}</ul> : <p>None beyond the extension table’s governed scope.</p>}</section></div>
+            <section className="journey-report-mappings"><label>Exact dashboard mapping</label><div>{Object.entries(report.mappings).map(([filterName, column]) => <span key={filterName}><b>{filterName}</b><ArrowRight size={12} /><code>{column}</code></span>)}</div></section>
+            <section className="journey-unmapped"><label>Intentionally unmapped</label><p>{report.intentionallyUnmapped.join(" · ")}</p></section>
+            <div className="journey-callout is-amber"><CircleDot size={15} /><div><strong>Mandatory disclosure</strong><span>{report.disclosure}</span></div></div>
+            <SeeMore label={`See more details: build ${report.name}`}>
+              <div className="journey-detail-facts"><section><label>Exact saved report</label><code>{report.name}</code></section><section><label>Live view ID</label><code>{report.viewId}</code></section><section><label>Create as</label><p>{report.visual}</p></section><section><label>Base table</label><code>{report.base}</code></section></div>
+              <section className="journey-detail-section"><label>Exact shelves</label><ul>{report.shelves.map((item) => <li key={item}>{item}</li>)}</ul></section>
+              <section className="journey-detail-section"><label>Exact filter-column mapping</label><div className="journey-detail-mapping">{Object.entries(report.mappings).map(([filterName, column]) => <span key={filterName}><b>{filterName}</b><ArrowRight size={12} /><code>{column}</code></span>)}</div><p className="journey-muted-line"><strong>Leave unmapped:</strong> {report.intentionallyUnmapped.join(" · ")}</p></section>
+              <section className="journey-detail-section"><label>Click-by-click</label><StepList steps={report.steps} /></section>
+              <div className="journey-acceptance-grid"><section><label>Visual acceptance</label><p>{report.acceptance}</p></section><section><label>Governance acceptance</label><p>{report.disclosure}</p></section></div>
+            </SeeMore>
+          </article>
+        </div>
+      ) : null}
+
+      {mode === "governance" ? (
+        <div className="journey-weather-governance">
+          <section className="journey-reading-card"><span className="section-kicker">Production gate</span><h2>Mechanics passed; authorization has not</h2><p>The live objects prove the API schema, daily join, Query Table design and report readability. They do not authorize commercial use or establish causal sales lift.</p><div className="journey-callout is-blue"><BadgeCheck size={16} /><div><strong>Validated mechanics</strong><span>270 historical proxy rows, 24 forecast rows, 4,855 live Month-1 joins and 21 D+1-D+7 outlook rows.</span></div></div></section>
+          <section className="journey-governance-grid">
+            {weatherGovernanceGates.map((gate) => <article key={gate.label} data-status={gate.status}><Pill tone={gate.status === "LIVE DEMO" ? "green" : "amber"}>{gate.status}</Pill><strong>{gate.label}</strong><p>{gate.detail}</p></article>)}
+            <SeeMore label="See more details: promote weather from evaluation to production">
+              <section className="journey-detail-section"><label>Required sequence</label><StepList steps={[
+                "Replace approximate neighbourhood centroids with ABNAH-confirmed outlet coordinates and approval references.",
+                "Approve an Open-Meteo commercial customer endpoint or an independently reviewed self-hosted route.",
+                "Schedule the local normalizer before DataBridge Update/Add; retain attribution, status and forecast-vintage fields.",
+                "Accumulate as-issued historical forecast vintages and longer actual sales history without future leakage.",
+                "Validate a weather-aware AutoML model chronologically against the deterministic same-weekday baseline.",
+                "Materialize accepted predictions with model/run metadata before allowing them to feed a parallel QT_01-compatible action route.",
+              ]} /></section>
+            </SeeMore>
+          </section>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function PortableHandoff() {
+  const layers = [
+    { icon: FileCode2, label: "Source contracts", detail: "Headers, grain, types and provenance; operational rows stay local." },
+    { icon: FileSpreadsheet, label: "Build assets", detail: "Import schemas, controls, ordered SQL and dependency manifests." },
+    { icon: BarChart3, label: "Presentation contract", detail: "Exact KPI, report, dashboard and User Filter mappings." },
+    { icon: BadgeCheck, label: "Acceptance evidence", detail: "Truth controls, reconciliation outputs and honest execution ledgers." },
+    { icon: ShieldCheck, label: "Operating guardrails", detail: "TEST-only validation, promotion gates and external secret injection." },
+  ] as const;
+  const route = ["Verify pack", "Read contracts", "Load controls + inputs", "Build in order", "Map outputs", "Run gates"];
+
+  return (
+    <div className="journey-extension journey-handoff">
+      <header className="journey-extension-header">
+        <div>
+          <span className="section-kicker">Recipient-ready migration pack</span>
+          <h2>Portable knowledge, guarded execution</h2>
+          <p>The recipient receives enough structure to understand, rebuild and validate the workspace without receiving source rows, credentials or a machine-specific path.</p>
+        </div>
+        <div className="journey-extension-metrics" aria-label="Portable handoff summary">
+          <span><b>5</b><small>handoff layers</small></span>
+          <span><b>6</b><small>navigation gates</small></span>
+          <span className="is-pass"><b>0</b><small>embedded secrets</small></span>
+          <span className="is-blocked"><b>TEST</b><small>first validation scope</small></span>
+        </div>
+      </header>
+
+      <section className="journey-handoff-flow" aria-label="Recommended migration-pack navigation order">
+        {route.map((step, index) => (
+          <div key={step}><span>{String(index + 1).padStart(2, "0")}</span><strong>{step}</strong>{index < route.length - 1 ? <ArrowRight aria-hidden="true" size={15} /> : null}</div>
+        ))}
+      </section>
+
+      <section className="journey-handoff-grid">
+        {layers.map(({ icon: Icon, label, detail }) => (
+          <article key={label}><Icon aria-hidden="true" size={18} /><div><strong>{label}</strong><p>{detail}</p></div></article>
+        ))}
+      </section>
+
+      <div className="journey-handoff-boundaries">
+        <article><ShieldCheck aria-hidden="true" size={18} /><div><label>Secret boundary</label><strong>Inject at runtime; never package</strong><p>OAuth client secrets, refresh/access tokens, passwords, cookies, environment values and real operational rows remain in approved external stores.</p></div></article>
+        <article><BadgeCheck aria-hidden="true" size={18} /><div><label>Execution boundary</label><strong>Prove in TEST before promotion</strong><p>Start read-only. Any validation write must target an explicit TEST workspace or allowlisted TEST object, then pass row, grain, metric and presentation controls.</p></div></article>
+      </div>
+
+      <SeeMore label="See more details: recipient navigation and guarded validation">
+        <div className="journey-detail-facts">
+          <section><label>Recipient gets</label><p>Schema contracts, build manifests, SQL, formula/report/filter instructions, synthetic examples, acceptance controls and reusable validation utilities.</p></section>
+          <section><label>Recipient does not get</label><p>Credentials, tokens, browser state, real source rows, screenshots used as evidence, local database files or hard-coded machine paths.</p></section>
+          <section><label>Portable entry point</label><p>Begin at the pack’s Start Here guide and integrity manifest; follow only the numbered dependency-safe sequence.</p></section>
+          <section><label>Promotion rule</label><p>A TEST success is evidence for review, not permission to mutate production. Production needs named owner approval and a fresh reconciliation.</p></section>
+        </div>
+        <section className="journey-detail-section"><label>Recommended navigation order</label><StepList steps={[
+          "Run the portable integrity validator and stop if any required asset, hash or manifest entry differs.",
+          "Read the source and grain contracts before viewing SQL so each business date, snapshot and unit boundary is understood.",
+          "Load control/reference inputs, then operational inputs, using the import checklist and exact table names.",
+          "Build Query Tables in manifest order and execute each table's row-count, key-uniqueness and null-control checks before continuing.",
+          "Create the named KPIs and reports, then map every dashboard User Filter to the exact compatible column documented in this journey.",
+          "Run numerical reconciliation, visual acceptance, Ask Zia conversational logging and extension-specific governance gates; record NOT_RUN or PARTIAL honestly.",
+        ]} /></section>
+        <section className="journey-detail-section"><label>Guarded TEST-only validation</label><StepList steps={[
+          "Default every automation to inspection or dry-run mode and require an explicit TEST target identifier before allowing a write.",
+          "Allowlist object names and permitted operations; reject a production workspace, an unknown object or a request carrying inline credentials.",
+          "Write only synthetic or approved test rows, attach a run ID, and retain before/after counts so cleanup and audit are deterministic.",
+          "Compare the TEST output to the packaged truth controls and negative controls; a technically successful call is not a semantic PASS.",
+          "Promote only the reviewed assets, never the stored session or secret material, and repeat the acceptance checks in the destination.",
+        ]} /></section>
+        <div className="journey-callout is-amber"><ShieldCheck size={15} /><div><strong>Credential rule</strong><span>The pack documents required secret names and setup boundaries only. It never contains secret values, authorization codes or copied browser sessions.</span></div></div>
+      </SeeMore>
+    </div>
+  );
+}
+
 const stageContent: Record<JourneyStageId, () => React.ReactNode> = {
   inputs: SourceInputs,
   controls: GovernedControls,
@@ -505,6 +832,9 @@ const stageContent: Record<JourneyStageId, () => React.ReactNode> = {
   forecasting: Forecasting,
   outputs: DecisionOutputs,
   filters: FilterContract,
+  zia: ZiaSemanticLayer,
+  weather: WeatherExtension,
+  handoff: PortableHandoff,
 };
 
 export function ArchitectureGraphWorkspace() {
@@ -516,13 +846,13 @@ export function ArchitectureGraphWorkspace() {
         <div>
           <span className="section-kicker">Zoho Analytics implementation journey</span>
           <h1>From source reports to daily decisions</h1>
-          <p>A visual handover of the current lean architecture: what enters the workspace, how the 10 Query Tables transform it, and how each final dashboard object stays filter-safe.</p>
+          <p>A visual handover of the current lean architecture: what enters the workspace, how the 10 Query Tables in the core transform it, how each dashboard object stays filter-safe, and where governed Zia and weather extensions sit.</p>
         </div>
         <div className="journey-hero-metrics" aria-label="Current architecture counts">
-          <span><b>26</b><small>landing tables</small></span>
+          <span><b>26</b><small>core inputs</small></span>
           <span><b>10</b><small>Query Tables</small></span>
-          <span><b>14</b><small>active metrics</small></span>
-          <span><b>27</b><small>final objects</small></span>
+          <span><b>9</b><small>extension queries</small></span>
+          <span><b>31</b><small>governed outputs</small></span>
         </div>
         <div className="journey-hero-badge"><PackageCheck size={16} /><span><strong>Lean foundation</strong><small>Physical dates · governed controls · exact mappings</small></span></div>
       </header>
@@ -543,7 +873,7 @@ export function ArchitectureGraphWorkspace() {
         <BookOpen aria-hidden="true" size={16} />
         <span><strong>Handover rule:</strong> start with the journey, then open only the selected table, metric or report for exact build detail.</span>
         <Target aria-hidden="true" size={15} />
-        <small>No multi-date state totals. No cross-UOM quantity totals. Provisional expiry remains disclosed.</small>
+        <small>No multi-date state totals. No cross-UOM quantity totals. Provisional expiry and weather remain disclosed. Zia needs a logged conversational PASS.</small>
       </footer>
     </section>
   );
