@@ -530,7 +530,7 @@ export function AtlasWorkspace({
         />
       )}
       {surface === "architecture" && (
-        <ArchitectureGraphWorkspace />
+        <ArchitectureGraphWorkspace onOpenDiscovery={() => setSurface("discovery")} />
       )}
       {surface === "library" && <ProjectLibraryWorkspace index={projectPack} />}
     </main>

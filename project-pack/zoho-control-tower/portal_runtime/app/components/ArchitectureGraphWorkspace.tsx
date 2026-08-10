@@ -47,7 +47,9 @@ import {
   weatherQueryTables,
   weatherReports,
   ziaHelperTables,
+  ziaNaturalLanguageLadder,
   ziaPresentationFlows,
+  ziaSemanticDeployment,
   ziaWorkflows,
 } from "../lib/architecture-extension-data";
 import {
@@ -88,7 +90,7 @@ function StepList({ steps }: { steps: readonly string[] }) {
   return <ol className="journey-step-list">{steps.map((step, index) => <li key={`${index}-${step}`}><span>{index + 1}</span><p>{step}</p></li>)}</ol>;
 }
 
-function SourceInputs() {
+function SourceInputs({ onOpenDiscovery }: { onOpenDiscovery?: () => void } = {}) {
   const [selected, setSelected] = useState<(typeof sourceGroups)[number]["id"]>(sourceGroups[0].id);
   const group = sourceGroups.find((item) => item.id === selected) ?? sourceGroups[0];
   return (
@@ -110,6 +112,19 @@ function SourceInputs() {
         <div className="journey-callout is-amber">
           <ShieldCheck aria-hidden="true" size={16} />
           <div><strong>Expiry boundary</strong><span>The expiry source is a clearly labelled provisional synthetic demonstration until the POSIST expiry export is enabled.</span></div>
+        </div>
+        <div className="journey-discovery-bridge">
+          <div>
+            <span className="section-kicker">Architecture → green Discovery</span>
+            <strong>20 selected report schemas</strong>
+            <p>The handoff coverage checkpoint is 17 captured, 1 partial and 2 pending. Open Discovery for the structural schema record; status is evidence coverage, not production readiness.</p>
+          </div>
+          <div className="journey-discovery-coverage" aria-label="Selected report schema coverage">
+            <span className="is-captured"><b>17</b><small>captured</small></span>
+            <span className="is-partial"><b>1</b><small>partial</small></span>
+            <span className="is-pending"><b>2</b><small>pending</small></span>
+          </div>
+          <button type="button" onClick={onOpenDiscovery} disabled={!onOpenDiscovery}><FileSpreadsheet aria-hidden="true" size={14} /> Open green Discovery</button>
         </div>
       </section>
       <section className="journey-browser-card">
@@ -512,7 +527,7 @@ function FilterContract() {
 }
 
 function ZiaSemanticLayer() {
-  const [mode, setMode] = useState<"helpers" | "workflows" | "presentation">("helpers");
+  const [mode, setMode] = useState<"helpers" | "deployment" | "workflows" | "presentation">("helpers");
   const [helperName, setHelperName] = useState(ziaHelperTables[0].name);
   const [workflowId, setWorkflowId] = useState(ziaWorkflows[0].id);
   const helper = ziaHelperTables.find((item) => item.name === helperName) ?? ziaHelperTables[0];
@@ -528,13 +543,14 @@ function ZiaSemanticLayer() {
         </div>
         <div className="journey-extension-metrics" aria-label="Ask Zia acceptance summary">
           <span className="is-pass"><b>29</b><small>source controls pass</small></span>
-          <span className="is-blocked"><b>0</b><small>conversation passes logged</small></span>
-          <span className="is-blocked"><b>1</b><small>primary fail</small></span>
-          <span className="is-blocked"><b>1</b><small>follow-up partial</small></span>
+          <span className="is-blocked"><b>67</b><small>semantic actions local only</small></span>
+          <span className="is-blocked"><b>66</b><small>natural-language tests NOT_RUN</small></span>
+          <span className="is-blocked"><b>BLOCKED</b><small>presentation gate</small></span>
         </div>
       </header>
       <nav className="journey-extension-switcher" aria-label="Ask Zia architecture views">
         <button type="button" className={mode === "helpers" ? "is-active" : ""} onClick={() => setMode("helpers")}>Helper Query Tables</button>
+        <button type="button" className={mode === "deployment" ? "is-active" : ""} onClick={() => setMode("deployment")}>67 actions · 66-test ladder</button>
         <button type="button" className={mode === "workflows" ? "is-active" : ""} onClick={() => setMode("workflows")}>11-workflow gate</button>
         <button type="button" className={mode === "presentation" ? "is-active" : ""} onClick={() => setMode("presentation")}>Presentation flows</button>
       </nav>
@@ -581,6 +597,52 @@ function ZiaSemanticLayer() {
               <section className="journey-detail-section"><label>Click-by-click</label><StepList steps={helper.steps} /></section>
             </SeeMore>
           </article>
+        </div>
+      ) : null}
+
+      {mode === "deployment" ? (
+        <div className="journey-zia-plan">
+          <section className="journey-zia-plan-column">
+            <header>
+              <div><span className="section-kicker">Live semantic deployment contract</span><h2>67 ordered actions</h2><p>{ziaSemanticDeployment.liveEvidence}</p></div>
+              <Pill tone="amber">LOCAL PLAN ONLY</Pill>
+            </header>
+            <div className="journey-zia-breakdown">
+              {ziaSemanticDeployment.actionBreakdown.map((item) => (
+                <article key={item.label}><span>{item.count}</span><div><strong>{item.label}</strong><p>{item.detail}</p></div></article>
+              ))}
+            </div>
+            <SeeMore label={`See more details: deploy ${ziaSemanticDeployment.actionCount} semantic actions`}>
+              <div className="journey-detail-facts">
+                <section><label>Exact artifact</label><code>{ziaSemanticDeployment.artifact}</code></section>
+                <section><label>Underlying base contract</label><p>{ziaSemanticDeployment.baseSemanticRowCount} semantic rows</p></section>
+                <section><label>Current truth</label><p>{ziaSemanticDeployment.status}</p></section>
+                <section><label>WF08 live field</label><code>Expected Delivery</code></section>
+              </div>
+              <section className="journey-detail-section"><label>Deployment and read-back sequence</label><StepList steps={ziaSemanticDeployment.deploymentSteps} /></section>
+            </SeeMore>
+          </section>
+
+          <section className="journey-zia-plan-column">
+            <header>
+              <div><span className="section-kicker">Natural-language acceptance contract</span><h2>66 tests across 11 workflows</h2><p>Six tests per workflow prove ordinary wording, safe routing, context retention and governed refusal—not merely a source calculation.</p></div>
+              <Pill tone="amber">66 NOT_RUN</Pill>
+            </header>
+            <div className="journey-zia-tiers">
+              {ziaNaturalLanguageLadder.tiers.map((tier) => (
+                <article key={tier.id}><span>{tier.id}</span><div><strong>{tier.label}</strong><small>{tier.count} tests</small><p>{tier.rule}</p></div></article>
+              ))}
+            </div>
+            <div className="journey-callout is-amber"><ShieldCheck size={15} /><div><strong>Acceptance remains blocked</strong><span>{ziaNaturalLanguageLadder.acceptanceRule} Current ledger: {ziaNaturalLanguageLadder.currentLedger}.</span></div></div>
+            <SeeMore label={`See more details: run the ${ziaNaturalLanguageLadder.testCount}-test ladder`}>
+              <div className="journey-detail-facts">
+                <section><label>Exact artifact</label><code>{ziaNaturalLanguageLadder.artifact}</code></section>
+                <section><label>Workflow coverage</label><p>{ziaNaturalLanguageLadder.workflowCount} workflows × 6 tiers</p></section>
+                <section><label>Current truth</label><p>{ziaNaturalLanguageLadder.status}</p></section>
+                <section><label>Recorded live ledger</label><p>{ziaNaturalLanguageLadder.currentLedger}</p></section>
+              </div>
+            </SeeMore>
+          </section>
         </div>
       ) : null}
 
@@ -755,7 +817,7 @@ function WeatherExtension() {
 
 function PortableHandoff() {
   const layers = [
-    { icon: FileCode2, label: "Source contracts", detail: "Headers, grain, types and provenance; operational rows stay local." },
+    { icon: FileCode2, label: "Source contracts", detail: "Headers, grain, types and provenance; public/project-pack surfaces stay screenshot-free while the private pack may carry vetted schema evidence." },
     { icon: FileSpreadsheet, label: "Build assets", detail: "Import schemas, controls, ordered SQL and dependency manifests." },
     { icon: BarChart3, label: "Presentation contract", detail: "Exact KPI, report, dashboard and User Filter mappings." },
     { icon: BadgeCheck, label: "Acceptance evidence", detail: "Truth controls, reconciliation outputs and honest execution ledgers." },
@@ -769,7 +831,7 @@ function PortableHandoff() {
         <div>
           <span className="section-kicker">Recipient-ready migration pack</span>
           <h2>Portable knowledge, guarded execution</h2>
-          <p>The recipient receives enough structure to understand, rebuild and validate the workspace without receiving source rows, credentials or a machine-specific path.</p>
+          <p>The recipient receives enough structure to understand, rebuild and validate the workspace without receiving source rows, credentials or a machine-specific path. The public website and repository project pack remain screenshot-free; the private migration pack may include privacy-vetted P1/P2/P4 schema screenshots for offline handoff.</p>
         </div>
         <div className="journey-extension-metrics" aria-label="Portable handoff summary">
           <span><b>5</b><small>handoff layers</small></span>
@@ -794,12 +856,13 @@ function PortableHandoff() {
       <div className="journey-handoff-boundaries">
         <article><ShieldCheck aria-hidden="true" size={18} /><div><label>Secret boundary</label><strong>Inject at runtime; never package</strong><p>OAuth client secrets, refresh/access tokens, passwords, cookies, environment values and real operational rows remain in approved external stores.</p></div></article>
         <article><BadgeCheck aria-hidden="true" size={18} /><div><label>Execution boundary</label><strong>Prove in TEST before promotion</strong><p>Start read-only. Any validation write must target an explicit TEST workspace or allowlisted TEST object, then pass row, grain, metric and presentation controls.</p></div></article>
+        <article><FileSpreadsheet aria-hidden="true" size={18} /><div><label>Screenshot boundary</label><strong>Public excluded; private vetted only</strong><p>No screenshots ship in the public website or repository project pack. The separately transferred private migration pack may include only reviewed P1/P2/P4 schema screenshots with sensitive values, browser chrome, credentials and local paths excluded.</p></div></article>
       </div>
 
       <SeeMore label="See more details: recipient navigation and guarded validation">
         <div className="journey-detail-facts">
-          <section><label>Recipient gets</label><p>Schema contracts, build manifests, SQL, formula/report/filter instructions, synthetic examples, acceptance controls and reusable validation utilities.</p></section>
-          <section><label>Recipient does not get</label><p>Credentials, tokens, browser state, real source rows, screenshots used as evidence, local database files or hard-coded machine paths.</p></section>
+          <section><label>Recipient gets</label><p>Schema contracts, build manifests, SQL, formula/report/filter instructions, synthetic examples, acceptance controls and reusable validation utilities. A private transfer may additionally include privacy-vetted schema screenshots indexed to Discovery.</p></section>
+          <section><label>Recipient does not get</label><p>Credentials, tokens, browser state, real source rows, unreviewed screenshots, local database files or hard-coded machine paths. Public/project-pack artifacts never contain screenshot evidence.</p></section>
           <section><label>Portable entry point</label><p>Begin at the pack’s Start Here guide and integrity manifest; follow only the numbered dependency-safe sequence.</p></section>
           <section><label>Promotion rule</label><p>A TEST success is evidence for review, not permission to mutate production. Production needs named owner approval and a fresh reconciliation.</p></section>
         </div>
@@ -837,7 +900,7 @@ const stageContent: Record<JourneyStageId, () => React.ReactNode> = {
   handoff: PortableHandoff,
 };
 
-export function ArchitectureGraphWorkspace() {
+export function ArchitectureGraphWorkspace({ onOpenDiscovery }: { onOpenDiscovery?: () => void }) {
   const [stage, setStage] = useState<JourneyStageId>("inputs");
   const ActiveStage = stageContent[stage];
   return (
@@ -851,7 +914,7 @@ export function ArchitectureGraphWorkspace() {
         <div className="journey-hero-metrics" aria-label="Current architecture counts">
           <span><b>26</b><small>core inputs</small></span>
           <span><b>10</b><small>Query Tables</small></span>
-          <span><b>9</b><small>extension queries</small></span>
+          <span><b>10</b><small>extension queries</small></span>
           <span><b>31</b><small>governed outputs</small></span>
         </div>
         <div className="journey-hero-badge"><PackageCheck size={16} /><span><strong>Lean foundation</strong><small>Physical dates · governed controls · exact mappings</small></span></div>
@@ -868,7 +931,7 @@ export function ArchitectureGraphWorkspace() {
           );
         })}
       </nav>
-      <div className="journey-stage-body" key={stage}><ActiveStage /></div>
+      <div className="journey-stage-body" key={stage}>{stage === "inputs" ? <SourceInputs onOpenDiscovery={onOpenDiscovery} /> : <ActiveStage />}</div>
       <footer className="journey-footer">
         <BookOpen aria-hidden="true" size={16} />
         <span><strong>Handover rule:</strong> start with the journey, then open only the selected table, metric or report for exact build detail.</span>

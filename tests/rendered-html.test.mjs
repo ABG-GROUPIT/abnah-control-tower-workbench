@@ -55,8 +55,14 @@ test("builds the editable ABNAH workspace for GitHub Pages", async () => {
   assert.match(bundle, /56,175\.0572 \/ 10 POs \/ 29 days/);
   assert.match(bundle, /both the original strict helper and the business-readable ZIA_01A summary/);
   assert.match(bundle, /Business-readable SQL purpose/);
-  assert.match(bundle, /conversation passes logged/);
+  assert.match(bundle, /semantic actions local only/);
   assert.match(bundle, /0 PASS \/ 1 FAIL \/ 1 PARTIAL \/ 20 NOT_RUN/);
+  assert.match(bundle, /67 ordered actions/);
+  assert.match(bundle, /66 tests across 11 workflows/);
+  assert.match(bundle, /LOCAL PLAN ONLY/);
+  assert.match(bundle, /66 NOT_RUN/);
+  assert.match(bundle, /Expected Delivery = 27 Jan/);
+  assert.match(bundle, /live physical field is not named Expected Delivery Date/);
   assert.match(bundle, /81,472\.74 \/ 15 POs \/ 29 days/);
   assert.match(bundle, /historical diagnostic evidence only/);
   assert.match(bundle, /RPT_V2_P08_Delivery_Breach_Action_Top10/);
@@ -66,6 +72,11 @@ test("builds the editable ABNAH workspace for GitHub Pages", async () => {
   assert.match(bundle, /QT_09_Latest_Weather_Outlook\.forecast_as_of_date/);
   assert.match(bundle, /DataBridge Update\/Add/);
   assert.match(bundle, /Portable knowledge, guarded execution/);
+  assert.match(bundle, /public website and repository project pack remain screenshot-free/);
+  assert.match(bundle, /private migration pack may include privacy-vetted P1\/P2\/P4 schema screenshots/);
+  assert.match(bundle, /20 selected report schemas/);
+  assert.match(bundle, /17 captured, 1 partial and 2 pending/);
+  assert.match(bundle, /Open green Discovery/);
   assert.match(bundle, /Inject at runtime; never package/);
   assert.match(bundle, /TEST before promotion/);
   assert.match(bundle, /Library/);
@@ -75,6 +86,20 @@ test("builds the editable ABNAH workspace for GitHub Pages", async () => {
     bundle,
     /codex-preview|Your site is taking shape|react-loading-skeleton/i,
   );
+});
+
+test("keeps architecture extension counts and Zia contracts explicit", async () => {
+  const [component, extensionData] = await Promise.all([
+    readFile(new URL("../app/components/ArchitectureGraphWorkspace.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/lib/architecture-extension-data.ts", import.meta.url), "utf8"),
+  ]);
+
+  assert.match(component, /<b>10<\/b><small>extension queries<\/small>/);
+  assert.match(extensionData, /actionCount:\s*67/);
+  assert.match(extensionData, /testCount:\s*66/);
+  assert.match(extensionData, /currentLedger:\s*"0 PASS \/ 1 FAIL \/ 1 PARTIAL \/ 20 NOT_RUN"/);
+  assert.match(extensionData, /dateContract:\s*"Expected Delivery = 27 Jan/);
+  assert.doesNotMatch(extensionData, /dateContract:\s*"Expected Delivery Date = 27 Jan/);
 });
 
 test("publishes the exact ten-query SQL handover", async () => {
