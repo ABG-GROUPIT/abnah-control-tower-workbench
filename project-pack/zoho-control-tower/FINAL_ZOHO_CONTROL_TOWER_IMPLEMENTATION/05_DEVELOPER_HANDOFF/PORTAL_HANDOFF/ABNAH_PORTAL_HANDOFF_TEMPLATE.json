@@ -15,7 +15,7 @@
     "portalStatusUrl": "https://aihrzgxlacdlensziyme.supabase.co/functions/v1/abnah-portal/status",
     "portalConfigUrl": "https://aihrzgxlacdlensziyme.supabase.co/functions/v1/abnah-portal/config",
     "zohoDataCenter": "IN",
-    "zohoWorkspaceId": "333330000004099001",
+    "zohoWorkspaceId": "<ANALYTICS_WORKSPACE_ID>",
     "zohoWorkspaceName": "",
     "zohoAccountsBaseUrl": "https://accounts.zoho.in",
     "zohoAnalyticsApiBaseUrl": "https://analyticsapi.zoho.in",

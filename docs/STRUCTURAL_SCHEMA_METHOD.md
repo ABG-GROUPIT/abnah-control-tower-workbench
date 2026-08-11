@@ -30,7 +30,7 @@ For each report, inspect local evidence in this order:
 
 The evidence itself stays outside the project. A blueprint must remain understandable without knowing the screenshot filename.
 
-In this repository, `captured` means structurally transcribed from one or more governed evidence channels. It does not mean that a strict schema-only image is present in the private migration candidate. Current private image coverage is tracked separately: 65 of 94 historically evidenced groups are image-covered and 29 are image-pending. Among those 29 groups, 27 have verified text-schema cards totaling 530 fields and 2 remain text-pending. Text cards never count as screenshots.
+In this repository, `captured` means structurally transcribed from one or more governed evidence channels. It does not mean that a strict schema-only image is present in the private migration candidate. Current private image coverage is tracked separately: 64 of 94 historically evidenced groups are image-covered and 30 are image-pending. Among those 30 groups, 27 have verified text-schema cards totaling 530 fields and 3 remain text-pending. Text cards never count as screenshots.
 
 ## Exactness Rules
 

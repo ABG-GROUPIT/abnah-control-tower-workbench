@@ -29,7 +29,7 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
 
 - 318 exact report names catalogued across P1, P2, and Stock Administration/P4.
 
-Catalog coverage, structural schema status, private image coverage and verified text-schema coverage are separate measures. The private audit reviewed 182 historical images across 94 report groups. The isolated candidate retains 98 strict schema-only images and excludes 84 value-bearing images; the retained images cover 65 groups and leave 29 image-pending. Of those 29 groups, 27 have separately verified text schemas totaling 530 fields and 2 remain text-pending. Text-schema cards add structural evidence but never count as screenshots or close an image gap. None of the private images belongs in this public repository, and the private handoff remains blocked.
+Catalog coverage, structural schema status, private image coverage and verified text-schema coverage are separate measures. The private audit reviewed 182 historical images across 94 report groups. The isolated candidate retains 95 strict schema-only images and excludes 87 value-bearing images; the retained images cover 64 groups and leave 30 image-pending. Of those 30 groups, 27 have separately verified text schemas totaling 530 fields and 3 remain text-pending. Text-schema cards add structural evidence but never count as screenshots or close an image gap. None of the private images belongs in this public repository, and the private handoff remains blocked.
 
 - 17 P1 Misc reports encoded as explicit editable structural blueprints.
 - 8 P1 Misc reports marked unavailable because their screens returned no usable schema.

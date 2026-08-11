@@ -424,7 +424,7 @@ def main() -> int:
         kind: sum(story.get("kind") == kind for story in presentation_stories)
         for kind in ("kpi", "chart", "table")
     }
-    if story_kind_counts != {"kpi": 33, "chart": 23, "table": 20}:
+    if story_kind_counts != {"kpi": 33, "chart": 22, "table": 21}:
         errors.append(f"Unexpected presentation story-kind counts: {story_kind_counts}")
     model_table_names = {
         table.get("physicalName", "") for table in control_tower_model.get("tables", [])

@@ -7,7 +7,7 @@
   "policy": "Tracked synthetic, documentation, code, schema, and validation artifacts only. Screenshots, real operational exports, local audit runtime data, credentials, and environment values are excluded.",
   "summary": {
     "files": 781,
-    "sizeBytes": 52160202,
+    "sizeBytes": 52169666,
     "categories": 10,
     "csvFiles": 349,
     "sqlFiles": 133,
@@ -20,7 +20,7 @@
       "label": "Final Zoho implementation",
       "description": "Production handoff imports, Query Tables, dashboard instructions, truth packs, and validation.",
       "count": 127,
-      "sizeBytes": 8234156
+      "sizeBytes": 8234208
     },
     {
       "id": "synthetic_data",
@@ -41,7 +41,7 @@
       "label": "Documentation",
       "description": "Architecture, modeling, dashboard, Zoho, external-signal, validation, and presentation guidance.",
       "count": 84,
-      "sizeBytes": 1936456
+      "sizeBytes": 1936502
     },
     {
       "id": "local_auditor",
@@ -83,7 +83,7 @@
       "label": "Other project files",
       "description": "Supporting repository and configuration files retained for a complete handoff.",
       "count": 43,
-      "sizeBytes": 775663
+      "sizeBytes": 785029
     }
   ],
   "files": [
@@ -199,7 +199,7 @@
       "kind": "Guide",
       "category": "documentation",
       "sizeBytes": 20784,
-      "sha256": "5297708d4b61227a276f1ccb5d9d6d26512317ac3891dda19f8d89fd354a8dd4",
+      "sha256": "9cb0665170b9642b28dc1c0671af5910794e2f1919109572cd52382f201b489e",
       "featuredOrder": 0,
       "featuredTitle": "Presentation runbook",
       "description": "The complete demo sequence, validated P1/P2 values, source findings, architecture, Q&A, and remaining actions."
@@ -1368,8 +1368,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "documentation",
-      "sizeBytes": 13566,
-      "sha256": "f1e4967e08bfbe83f4c700fccf69ecff24d72c3d67f91fd7f30f1484be3a684b",
+      "sizeBytes": 13612,
+      "sha256": "79289cfe8dd7d0c04a3605142c02136357dbb9ca0b8d1025652a0e77e0fb73c7",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -2291,8 +2291,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "final_zoho",
-      "sizeBytes": 13566,
-      "sha256": "f1e4967e08bfbe83f4c700fccf69ecff24d72c3d67f91fd7f30f1484be3a684b",
+      "sizeBytes": 13612,
+      "sha256": "79289cfe8dd7d0c04a3605142c02136357dbb9ca0b8d1025652a0e77e0fb73c7",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -2642,8 +2642,8 @@
       "extension": ".json",
       "kind": "Contract",
       "category": "final_zoho",
-      "sizeBytes": 5947,
-      "sha256": "105a5828e58a33745f732129407e1fee27bda97284598922abf58151fa999235",
+      "sizeBytes": 5953,
+      "sha256": "33d54361ce548e4e0ddff4a408503da708f7a4fe1af04a340e3f40052a269595",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4475,8 +4475,8 @@
       "extension": ".tsx",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 66370,
-      "sha256": "c00a36ae2d25d40de359d8f17302eb8d89dabbcc0e06c8ac11cfed5b14981e29",
+      "sizeBytes": 66570,
+      "sha256": "7edb7b20dc2da1b094d82640752f10ac67c2db7e18581155a93c848a05eea600",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4566,8 +4566,8 @@
       "extension": ".ts",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 45413,
-      "sha256": "825df163b02f4406b4f11d9985112b33ad412bc94ed1eafd76f7cba4bfe93040",
+      "sizeBytes": 54425,
+      "sha256": "12fb20d2f5c445e65086493a78c8373412a7a3f730527613d18820d182e628b4",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4592,8 +4592,8 @@
       "extension": ".ts",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 31827,
-      "sha256": "c168d370a12623938488a0861fdcc3e6179a07417fa7bfa533eaa34f6167b685",
+      "sizeBytes": 31890,
+      "sha256": "19ab115a919c0fc5c8ff816da6607357e891f2fac0c8fc3b77d56205dd12bd77",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4618,8 +4618,8 @@
       "extension": ".ts",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 32037,
-      "sha256": "30850626d03faec068023594e94f098ba2bdbb43876a9e231c23cadaa23dcc8a",
+      "sizeBytes": 32109,
+      "sha256": "5415254cf4da9533dd88d14bde41ddb0268e78b4f5ec0b7e91b7c3d8c6b8d81e",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4761,8 +4761,8 @@
       "extension": ".json",
       "kind": "Contract",
       "category": "other",
-      "sizeBytes": 2324,
-      "sha256": "e1769ad9c03269655d3ad2a9b075c51373da41a9c4c762b54497218a5e5af888",
+      "sizeBytes": 2331,
+      "sha256": "c566c844b2c72947f46c07931d7ed604e8a46a358150b65883b16610a1bf413f",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4774,8 +4774,8 @@
       "extension": ".json",
       "kind": "Contract",
       "category": "other",
-      "sizeBytes": 5947,
-      "sha256": "105a5828e58a33745f732129407e1fee27bda97284598922abf58151fa999235",
+      "sizeBytes": 5953,
+      "sha256": "33d54361ce548e4e0ddff4a408503da708f7a4fe1af04a340e3f40052a269595",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4826,8 +4826,8 @@
       "extension": ".example",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 1153,
-      "sha256": "188936410f651468fa71553d5296a3158753f4d43bfc02980530fbf94bd9c3b0",
+      "sizeBytes": 1159,
+      "sha256": "b804939639889579979f6e1e1419af03562620644765caf9756f231bb6ec2d54",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
