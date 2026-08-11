@@ -38,7 +38,7 @@ test("builds the editable ABNAH workspace for GitHub Pages", async () => {
   assert.match(bundle, /Data quality/);
   assert.match(bundle, /Architecture/);
   assert.match(bundle, /From source reports to daily decisions/);
-  assert.match(bundle, /10 Query Tables/);
+  assert.match(bundle, /10-query governed lean foundation/);
   assert.match(bundle, /Period measures flow\. Snapshot measures state\./);
   assert.match(bundle, /RPT_V2_R08B_7_Day_Inventory_Shortage_Action_Table/);
   assert.match(bundle, /QT_02_Numerical_Risk_Center\.as_of_date/);
@@ -53,18 +53,17 @@ test("builds the editable ABNAH workspace for GitHub Pages", async () => {
   assert.match(bundle, /333330000004653105/);
   assert.match(bundle, /LIVE_REMEDIATION_HELPER_CONVERSATIONALLY_BLOCKED/);
   assert.match(bundle, /56,175\.0572 \/ 10 POs \/ 29 days/);
-  assert.match(bundle, /both the original strict helper and the business-readable ZIA_01A summary/);
   assert.match(bundle, /Business-readable SQL purpose/);
-  assert.match(bundle, /semantic actions local only/);
-  assert.match(bundle, /0 PASS \/ 1 FAIL \/ 1 PARTIAL \/ 20 NOT_RUN/);
+  assert.match(bundle, /application indicated; readback pending/);
+  assert.match(bundle, /7 PASS \/ 9 PARTIAL \/ 6 FAIL/);
+  assert.match(bundle, /7 PASS \/ 9 PARTIAL \/ 50 FAIL/);
   assert.match(bundle, /67 ordered actions/);
   assert.match(bundle, /66 tests across 11 workflows/);
-  assert.match(bundle, /LOCAL PLAN ONLY/);
-  assert.match(bundle, /66 NOT_RUN/);
+  assert.match(bundle, /READBACK PENDING/);
+  assert.doesNotMatch(bundle, /LOCAL PLAN ONLY|66 NOT_RUN/);
   assert.match(bundle, /Expected Delivery = 27 Jan/);
   assert.match(bundle, /live physical field is not named Expected Delivery Date/);
-  assert.match(bundle, /81,472\.74 \/ 15 POs \/ 29 days/);
-  assert.match(bundle, /historical diagnostic evidence only/);
+  assert.match(bundle, /zero workflows are presentation-ready/i);
   assert.match(bundle, /RPT_V2_P08_Delivery_Breach_Action_Top10/);
   assert.doesNotMatch(bundle, /every conversational workflow NOT_RUN/);
   assert.match(bundle, /Weather sits beside the unchanged operational core/);
@@ -89,17 +88,36 @@ test("builds the editable ABNAH workspace for GitHub Pages", async () => {
 });
 
 test("keeps architecture extension counts and Zia contracts explicit", async () => {
-  const [component, extensionData] = await Promise.all([
+  const [component, extensionData, leanData, filterGuides, prChecks] = await Promise.all([
     readFile(new URL("../app/components/ArchitectureGraphWorkspace.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/lib/architecture-extension-data.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/lib/lean-architecture-data.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/lib/zoho-build-guides.ts", import.meta.url), "utf8"),
+    readFile(new URL("../.github/workflows/pr-checks.yml", import.meta.url), "utf8"),
   ]);
 
   assert.match(component, /<b>10<\/b><small>extension queries<\/small>/);
+  assert.match(leanData, /governedLeanFoundationQueryTables:\s*10/);
+  assert.match(leanData, /broaderHistoricalLiveModelTables:\s*38/);
   assert.match(extensionData, /actionCount:\s*67/);
+  assert.match(extensionData, /LIVE_TEST_SESSION_INDICATES_APPLICATION_FULL_METADATA_READBACK_PENDING/);
+  assert.match(extensionData, /testCount:\s*22/);
   assert.match(extensionData, /testCount:\s*66/);
-  assert.match(extensionData, /currentLedger:\s*"0 PASS \/ 1 FAIL \/ 1 PARTIAL \/ 20 NOT_RUN"/);
+  assert.match(extensionData, /currentLedger:\s*"7 PASS \/ 9 PARTIAL \/ 6 FAIL"/);
+  assert.match(extensionData, /currentLedger:\s*"7 PASS \/ 9 PARTIAL \/ 50 FAIL"/);
+  assert.match(extensionData, /presentationReadyWorkflowCount:\s*0/);
+  assert.equal((extensionData.match(/presentationStatus:\s*"BLOCKED/g) ?? []).length, 11);
+  assert.doesNotMatch(extensionData, /presentationStatus:\s*"SAFE/);
   assert.match(extensionData, /dateContract:\s*"Expected Delivery = 27 Jan/);
   assert.doesNotMatch(extensionData, /dateContract:\s*"Expected Delivery Date = 27 Jan/);
+  assert.match(filterGuides, /"Menu Item":\s*\{[\s\S]*?tabs:\s*"01 Executive Control · 03 Sales & Menu Economics"/);
+  assert.match(filterGuides, /"Menu Category":\s*\{[\s\S]*?tabs:\s*"01 Executive Control · 03 Sales & Menu Economics"/);
+  assert.match(filterGuides, /procurement:\s*\{[\s\S]*?Row 1 · Reporting Period · Snapshot As Of · Outlet"/);
+  assert.doesNotMatch(filterGuides, /procurement:\s*\{[\s\S]*?Row 1 · Reporting Period · Snapshot As Of · Outlet · Menu Item · Menu Category/);
+  assert.match(prChecks, /pull_request:/);
+  assert.match(prChecks, /contents:\s*read/);
+  assert.match(prChecks, /npm test/);
+  assert.doesNotMatch(prChecks, /pages:\s*write|deploy-pages|workflow_dispatch/);
 });
 
 test("publishes the exact ten-query SQL handover", async () => {

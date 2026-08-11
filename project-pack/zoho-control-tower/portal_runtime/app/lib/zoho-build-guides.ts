@@ -168,19 +168,19 @@ export const dashboardFilterBuildGuides: Record<(typeof allDashboardFilters)[num
   "Menu Item": {
     seed: "QT_04_Menu_Profitability.menu_item_name",
     control: "Single-select User Filter; All enabled",
-    tabs: "All three tabs",
+    tabs: "01 Executive Control · 03 Sales & Menu Economics",
     defaultValue: "All",
     mappingRule: "Map only to menu sales/profitability fields and REF_Item_Recipe.Item Name.",
-    steps: ["Place a QT04 report before opening Add User Filters.", "Add Menu Item from QT_04_Menu_Profitability.menu_item_name.", "Choose Single Select and retain All.", "Map to QT04 menu_item_name, raw sales SKU / Item Name, or REF_Item_Recipe.Item Name only where listed.", "Leave every inventory, consumption and procurement object unmapped."],
+    steps: ["Place a QT04 report before opening Add User Filters.", "Add Menu Item from QT_04_Menu_Profitability.menu_item_name.", "Choose Single Select and retain All.", "Show it only on 01 Executive Control and 03 Sales & Menu Economics.", "Map to QT04 menu_item_name, raw sales SKU / Item Name, or REF_Item_Recipe.Item Name only where listed; leave every inventory, consumption and procurement object unmapped."],
     warning: "Do not map Menu Item to QT02 item_name; that field is polymorphic across risk domains.",
   },
   "Menu Category": {
     seed: "QT_04_Menu_Profitability.category_name",
     control: "Single-select User Filter; All enabled",
-    tabs: "All three tabs",
+    tabs: "01 Executive Control · 03 Sales & Menu Economics",
     defaultValue: "All",
     mappingRule: "Map only to QT04 menu category or RAW_Gross_Net_Margin.Category.",
-    steps: ["Add a User Filter named Menu Category.", "Seed it from QT_04_Menu_Profitability.category_name.", "Choose Single Select and retain All.", "Map only to the menu-sales and menu-economics objects listed.", "Leave material and procurement categories unmapped."],
+    steps: ["Add a User Filter named Menu Category.", "Seed it from QT_04_Menu_Profitability.category_name.", "Choose Single Select and retain All.", "Show it only on 01 Executive Control and 03 Sales & Menu Economics.", "Map only to the listed menu-sales and menu-economics objects; leave material and procurement categories unmapped."],
     warning: "Menu Category and Material Category are different business dimensions.",
   },
   "Raw Material": {
@@ -292,9 +292,9 @@ export const dashboardTabBuildGuides: Record<string, DashboardTabBuildGuide> = {
     steps: ["Open DB_02_ABNAH_SCM_Control_Tower_Final in Edit Design.", "Create or rename this tab exactly 01 Executive Control.", "Place the two filter rows in the listed left-to-right order.", "Place the two four-card KPI rows, then the 60/40 visual row.", "Place R08A and R08B full width so the action columns remain readable.", "Map each filter per object; save, enter View Mode and run the Month-1 acceptance checks."],
   },
   procurement: {
-    filters: ["Row 1 · Reporting Period · Snapshot As Of · Outlet · Menu Item · Menu Category", "Row 2 · Raw Material · Material Category · Canonical UOM · Vendor"],
+    filters: ["Row 1 · Reporting Period · Snapshot As Of · Outlet", "Row 2 · Raw Material · Material Category · Canonical UOM · Vendor"],
     rows: ["KPI row 1 · Ordered Value · Received Value · Pending Open PO Liability · 33.3% each", "KPI row 2 · Delayed Open PO Liability · Closing Inventory Value · Positive Consumption Leakage · 33.3% each", "Visual row · RPT_V2_P05_Vendor_Exposure 50% · Open_Liability_Flow 50%", "Visual row · RPT_V2_S08_Ingredient_Leakage_Top10 100%", "Evidence rows · RPT_V2_P08_Delivery_Breach_Action_Top10 100% · RPT_V2_P07A_Top_Unit_Price_Movement_Action_Table 100%"],
-    steps: ["Create or rename this tab exactly 02 Procurement Vendor Consumption.", "Place the two filter rows and add Vendor only here.", "Place the two three-card KPI rows.", "Place Vendor Exposure and the approved Sankey side by side.", "Keep leakage and both action tables full width; price movement may sit below the initial viewport.", "Map flow dates and snapshot dates independently, then reconcile ordered, received, pending and overdue values."],
+    steps: ["Create or rename this tab exactly 02 Procurement Vendor Consumption.", "Place the two filter rows and add Vendor only here; do not place Menu Item or Menu Category on this tab.", "Place the two three-card KPI rows.", "Place Vendor Exposure and the approved Sankey side by side.", "Keep leakage and both action tables full width; price movement may sit below the initial viewport.", "Map flow dates and snapshot dates independently, then reconcile ordered, received, pending and overdue values."],
   },
   sales: {
     filters: ["One row · Reporting Period · Outlet · Menu Item · Menu Category · Raw Material"],

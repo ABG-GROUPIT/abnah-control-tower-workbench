@@ -30,6 +30,7 @@ import { useMemo, useState } from "react";
 import {
   activeAggregateMetrics,
   allDashboardFilters,
+  architectureScopeTruth,
   calculationFamilies,
   controlTables,
   dashboardTabs,
@@ -50,6 +51,7 @@ import {
   ziaNaturalLanguageLadder,
   ziaPresentationFlows,
   ziaSemanticDeployment,
+  ziaWorkflowAcceptanceLedger,
   ziaWorkflows,
 } from "../lib/architecture-extension-data";
 import {
@@ -539,12 +541,12 @@ function ZiaSemanticLayer() {
         <div>
           <span className="section-kicker">Curated semantic layer</span>
           <h2>Ask Zia is governed by two acceptance gates</h2>
-          <p>Source controls pass, but the 22-row live ledger is 0 PASS / 1 FAIL / 1 PARTIAL / 20 NOT_RUN. WF01 refused both its original exact prompt and an explicit ZIA_01A helper prompt; a prior same-conversation retry also failed, and its follow-up is only PARTIAL. The conversational and presentation gates remain BLOCKED.</p>
+          <p>Source reconciliation remains PASS, but live conversational evidence is mixed: WAT 22 is {ziaWorkflowAcceptanceLedger.currentLedger}; the 66-test ladder is {ziaNaturalLanguageLadder.currentLedger}. The 67-action session indicates application, with full metadata readback pending. No workflow is presentation-ready; the gate remains BLOCKED.</p>
         </div>
         <div className="journey-extension-metrics" aria-label="Ask Zia acceptance summary">
-          <span className="is-pass"><b>29</b><small>source controls pass</small></span>
-          <span className="is-blocked"><b>67</b><small>semantic actions local only</small></span>
-          <span className="is-blocked"><b>66</b><small>natural-language tests NOT_RUN</small></span>
+          <span className="is-blocked"><b>67</b><small>application indicated; readback pending</small></span>
+          <span className="is-blocked"><b>7 / 9 / 6</b><small>WAT pass / partial / fail</small></span>
+          <span className="is-blocked"><b>7 / 9 / 50</b><small>ladder pass / partial / fail</small></span>
           <span className="is-blocked"><b>BLOCKED</b><small>presentation gate</small></span>
         </div>
       </header>
@@ -605,7 +607,7 @@ function ZiaSemanticLayer() {
           <section className="journey-zia-plan-column">
             <header>
               <div><span className="section-kicker">Live semantic deployment contract</span><h2>67 ordered actions</h2><p>{ziaSemanticDeployment.liveEvidence}</p></div>
-              <Pill tone="amber">LOCAL PLAN ONLY</Pill>
+              <Pill tone="amber">READBACK PENDING</Pill>
             </header>
             <div className="journey-zia-breakdown">
               {ziaSemanticDeployment.actionBreakdown.map((item) => (
@@ -626,7 +628,7 @@ function ZiaSemanticLayer() {
           <section className="journey-zia-plan-column">
             <header>
               <div><span className="section-kicker">Natural-language acceptance contract</span><h2>66 tests across 11 workflows</h2><p>Six tests per workflow prove ordinary wording, safe routing, context retention and governed refusal—not merely a source calculation.</p></div>
-              <Pill tone="amber">66 NOT_RUN</Pill>
+              <Pill tone="amber">7 PASS · 9 PARTIAL · 50 FAIL</Pill>
             </header>
             <div className="journey-zia-tiers">
               {ziaNaturalLanguageLadder.tiers.map((tier) => (
@@ -661,7 +663,7 @@ function ZiaSemanticLayer() {
             <header><div><Pill tone="blue">{workflow.id}</Pill><h2>{workflow.name}</h2><p>{workflow.prompt}</p></div><code>{workflow.primaryObject}</code></header>
             <div className="journey-gate-grid">
               <section className="is-pass"><label>Source reconciliation</label><strong>{workflow.sourceStatus}</strong><p>Validated by the live numerical control suite.</p></section>
-              <section className="is-blocked"><label>Ask Zia conversation</label><strong>{workflow.conversationStatus} primary / {workflow.followUpStatus} follow-up</strong><p>No completed PASS is recorded in the conversational ledger.</p></section>
+              <section className="is-blocked"><label>Ask Zia conversation</label><strong>{workflow.conversationStatus} primary / {workflow.followUpStatus} follow-up</strong><p>These are the two WAT results. Full readiness still requires the six-tier ladder, and no workflow has passed that presentation gate.</p></section>
               <section><label>Presentation decision</label><strong>BLOCKED</strong><p>{workflow.presentationStatus}</p></section>
             </div>
             <div className="journey-report-build">
@@ -689,7 +691,7 @@ function ZiaSemanticLayer() {
 
       {mode === "presentation" ? (
         <div className="journey-presentation-flows">
-          <div className="journey-callout is-amber"><ShieldCheck size={16} /><div><strong>Overall gate BLOCKED</strong><span>These are six governed demo sequences, not proof of conversational acceptance. WF01 still refused against both the original strict helper and the business-readable ZIA_01A summary, so it must use RPT_V2_P08_Delivery_Breach_Action_Top10; its matching isolated helper run is historical diagnostic evidence only.</span></div></div>
+          <div className="journey-callout is-amber"><ShieldCheck size={16} /><div><strong>Overall gate BLOCKED</strong><span>These are six governed fallback sequences, not approved Ask Zia demonstrations. WAT 22 is 7 PASS / 9 PARTIAL / 6 FAIL and the full ladder is 7 PASS / 9 PARTIAL / 50 FAIL; zero workflows are presentation-ready. Use only the named governed reports/tables until every required tier passes.</span></div></div>
           <div className="journey-flow-grid">
             {ziaPresentationFlows.map((flow, index) => (
               <article key={flow.title}>
@@ -909,7 +911,7 @@ export function ArchitectureGraphWorkspace({ onOpenDiscovery }: { onOpenDiscover
         <div>
           <span className="section-kicker">Zoho Analytics implementation journey</span>
           <h1>From source reports to daily decisions</h1>
-          <p>A visual handover of the current lean architecture: what enters the workspace, how the 10 Query Tables in the core transform it, how each dashboard object stays filter-safe, and where governed Zia and weather extensions sit.</p>
+          <p>A visual handover of the governed lean foundation: what enters the workspace, how its {architectureScopeTruth.governedLeanFoundationQueryTables} Query Tables transform it, how each dashboard object stays filter-safe, and where governed Zia and weather extensions sit. The broader historical live v2 registry contains {architectureScopeTruth.broaderHistoricalLiveModelTables} tables and remains a separate compatibility/lineage scope.</p>
         </div>
         <div className="journey-hero-metrics" aria-label="Current architecture counts">
           <span><b>26</b><small>core inputs</small></span>
@@ -917,7 +919,7 @@ export function ArchitectureGraphWorkspace({ onOpenDiscovery }: { onOpenDiscover
           <span><b>10</b><small>extension queries</small></span>
           <span><b>31</b><small>governed outputs</small></span>
         </div>
-        <div className="journey-hero-badge"><PackageCheck size={16} /><span><strong>Lean foundation</strong><small>Physical dates · governed controls · exact mappings</small></span></div>
+        <div className="journey-hero-badge"><PackageCheck size={16} /><span><strong>10-query governed lean foundation · 38-table historical live v2 model</strong><small>Separate scopes · physical dates · exact mappings</small></span></div>
       </header>
       <nav className="journey-stage-rail" aria-label="Architecture journey">
         {journeyStages.map((item, index) => {

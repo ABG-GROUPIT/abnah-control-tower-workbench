@@ -42,6 +42,12 @@ export const journeyStages: Array<{
   { id: "handoff", number: "10", label: "Portable handoff", summary: "A verified migration pack with secrets kept outside the payload", count: "5 layers" },
 ];
 
+export const architectureScopeTruth = {
+  governedLeanFoundationQueryTables: 10,
+  broaderHistoricalLiveModelTables: 38,
+  relationship: "The ten-query lean foundation is the governed implementation journey documented here. The broader 38-table v2 registry is retained as the historical live workspace model for compatibility and lineage; it is a separate scope, not an alternative count of the lean foundation.",
+} as const;
+
 export const sourceGroups = [
   {
     id: "operational",
