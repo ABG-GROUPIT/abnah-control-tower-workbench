@@ -54,12 +54,15 @@ test("builds the editable ABNAH workspace for GitHub Pages", async () => {
   assert.match(bundle, /LIVE_REMEDIATION_HELPER_CONVERSATIONALLY_BLOCKED/);
   assert.match(bundle, /56,175\.0572 \/ 10 POs \/ 29 days/);
   assert.match(bundle, /Business-readable SQL purpose/);
-  assert.match(bundle, /application indicated; readback pending/);
+  assert.match(bundle, /ZLD009 and the corrected ZLD037 ACTUAL \/ Full Date setting were applied and read back/);
+  assert.match(bundle, /governed aggregate formula was verified/);
+  assert.match(bundle, /Standard descriptions remain uncertified/);
+  assert.match(bundle, /Focused WF08 and WF04 smokes produced no gate improvement/);
   assert.match(bundle, /7 PASS \/ 9 PARTIAL \/ 6 FAIL/);
   assert.match(bundle, /7 PASS \/ 9 PARTIAL \/ 50 FAIL/);
   assert.match(bundle, /67 ordered actions/);
   assert.match(bundle, /66 tests across 11 workflows/);
-  assert.match(bundle, /READBACK PENDING/);
+  assert.match(bundle, /SCOPED READBACK/);
   assert.doesNotMatch(bundle, /LOCAL PLAN ONLY|66 NOT_RUN/);
   assert.match(bundle, /Expected Delivery = 27 Jan/);
   assert.match(bundle, /live physical field is not named Expected Delivery Date/);
@@ -71,10 +74,18 @@ test("builds the editable ABNAH workspace for GitHub Pages", async () => {
   assert.match(bundle, /QT_09_Latest_Weather_Outlook\.forecast_as_of_date/);
   assert.match(bundle, /DataBridge Update\/Add/);
   assert.match(bundle, /Portable knowledge, guarded execution/);
-  assert.match(bundle, /public website and repository project pack remain screenshot-free/);
-  assert.match(bundle, /private migration pack may include privacy-vetted P1\/P2\/P4 schema screenshots/);
+  assert.match(bundle, /public website and repository project pack contain no private discovery images/);
+  assert.match(bundle, /historical private audit reviewed 182 images/i);
+  assert.match(bundle, /retains 98 strict schema-only images/);
+  assert.match(bundle, /excludes 84 value-bearing images/);
+  assert.match(bundle, /cover 65 of 94 historically evidenced report groups/);
+  assert.match(bundle, /leaving 29 image-pending/);
+  assert.match(bundle, /27 have separately verified text schemas covering 530 fields/);
+  assert.match(bundle, /2 remain text-pending/);
+  assert.match(bundle, /Text-schema cards never count as screenshots/);
+  assert.match(bundle, /schema-captured/);
   assert.match(bundle, /20 selected report schemas/);
-  assert.match(bundle, /17 captured, 1 partial and 2 pending/);
+  assert.match(bundle, /17 structurally captured, 1 partial and 2 pending/);
   assert.match(bundle, /Open green Discovery/);
   assert.match(bundle, /Inject at runtime; never package/);
   assert.match(bundle, /TEST before promotion/);
@@ -100,7 +111,8 @@ test("keeps architecture extension counts and Zia contracts explicit", async () 
   assert.match(leanData, /governedLeanFoundationQueryTables:\s*10/);
   assert.match(leanData, /broaderHistoricalLiveModelTables:\s*38/);
   assert.match(extensionData, /actionCount:\s*67/);
-  assert.match(extensionData, /LIVE_TEST_SESSION_INDICATES_APPLICATION_FULL_METADATA_READBACK_PENDING/);
+  assert.match(extensionData, /ZLD009_AND_CORRECTED_ZLD037_APPLIED_AND_READ_BACK_FORMULA_VERIFIED_DESCRIPTIONS_UNCERTIFIED_GATE_UNCHANGED/);
+  assert.match(extensionData, /Focused WF08 and WF04 smokes produced no gate improvement/i);
   assert.match(extensionData, /testCount:\s*22/);
   assert.match(extensionData, /testCount:\s*66/);
   assert.match(extensionData, /currentLedger:\s*"7 PASS \/ 9 PARTIAL \/ 6 FAIL"/);
@@ -301,7 +313,41 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   const misc = workspace.reports.filter((report) => report.page === "p1_main" && report.section === "06_misc");
 
   assert.equal(workspace.contractVersion, "1.0.0");
+  assert.equal(
+    workspace.schema_status_semantics,
+    "Structural transcription state; not current strict schema-only image coverage.",
+  );
   assert.equal(workspace.reports.length, atlas.summary.reports);
+  assert.equal(atlas.summary.historical_p1_ocr_index_items, 161);
+  assert.equal("evidence_items" in atlas.summary, false);
+  const discoveryBoundary = atlas.discovery_evidence_boundary;
+  assert.equal(discoveryBoundary.catalog_reports, 318);
+  assert.equal(discoveryBoundary.historical_image_audit_universe, 182);
+  assert.equal(discoveryBoundary.strict_schema_only_images_retained, 98);
+  assert.equal(discoveryBoundary.operational_value_images_excluded, 84);
+  assert.equal(discoveryBoundary.schema_only_image_report_groups_covered, 65);
+  assert.equal(discoveryBoundary.report_groups_pending_schema_only_image, 29);
+  assert.equal(discoveryBoundary.pending_image_groups_with_verified_text_schema, 27);
+  assert.equal(discoveryBoundary.pending_image_groups_still_text_pending, 2);
+  assert.equal(discoveryBoundary.verified_text_schema_fields, 530);
+  assert.equal(discoveryBoundary.text_cards_count_as_screenshots, false);
+  assert.equal(discoveryBoundary.public_website_screenshot_assets, 0);
+  assert.equal(
+    discoveryBoundary.schema_only_image_report_groups_covered
+      + discoveryBoundary.report_groups_pending_schema_only_image,
+    discoveryBoundary.historically_evidenced_report_groups,
+  );
+  assert.equal(
+    discoveryBoundary.strict_schema_only_images_retained
+      + discoveryBoundary.operational_value_images_excluded,
+    discoveryBoundary.historical_image_audit_universe,
+  );
+  assert.equal(
+    discoveryBoundary.pending_image_groups_with_verified_text_schema
+      + discoveryBoundary.pending_image_groups_still_text_pending,
+    discoveryBoundary.report_groups_pending_schema_only_image,
+  );
+  assert.match(discoveryBoundary.release_gate, /^BLOCKED_/);
   assert.equal(misc.filter((report) => report.schemaStatus === "captured").length, 17);
   assert.equal(misc.filter((report) => report.schemaStatus === "unavailable" && !report.isArchived).length, 8);
   assert.equal(misc.filter((report) => report.isArchived).length, 2);

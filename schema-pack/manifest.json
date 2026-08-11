@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1.0",
-  "generated_at": "2026-07-27T00:42:56+00:00",
+  "generated_at": "2026-08-11T21:24:50+00:00",
   "portable": true,
   "source_inputs": {
     "schema_reference": "external local input; not packaged",
@@ -85,7 +85,7 @@
     "reports_with_fields": 58,
     "unique_fields": 371,
     "field_occurrences": 783,
-    "evidence_items": 161,
+    "historical_p1_ocr_index_items": 161,
     "api_endpoints": 34,
     "model_objects": 67,
     "mapping_options": 0,
@@ -127,6 +127,38 @@
     "project_pack_files": 781,
     "project_pack_categories": 10
   },
+  "discovery_evidence_boundary": {
+    "contract_version": "1.1.0",
+    "as_of_date": "2026-08-12",
+    "scope": "private_migration_pack_discovery_evidence",
+    "catalog_reports": 318,
+    "historical_image_audit_universe": 182,
+    "historically_evidenced_report_groups": 94,
+    "strict_schema_only_images_retained": 98,
+    "operational_value_images_excluded": 84,
+    "schema_only_image_report_groups_covered": 65,
+    "report_groups_pending_schema_only_image": 29,
+    "pending_image_groups_with_verified_text_schema": 27,
+    "pending_image_groups_still_text_pending": 2,
+    "verified_text_schema_fields": 530,
+    "text_cards_count_as_screenshots": false,
+    "public_website_screenshot_assets": 0,
+    "release_gate": "BLOCKED_PENDING_29_SAFE_IMAGES_AND_2_TEXT_SCHEMAS",
+    "count_semantics": {
+      "catalog_reports": "Known report names in the website catalog; this is not an evidence count.",
+      "historical_image_audit_universe": "Images reviewed in the historical private audit; this is not a retained or release-safe count.",
+      "historically_evidenced_report_groups": "Report groups that had at least one image in the historical private audit; this is not current safe coverage.",
+      "strict_schema_only_images_retained": "Audited images safe for the isolated private candidate; this is an image count, not a report-group count.",
+      "operational_value_images_excluded": "Historical images excluded because operational values were visible.",
+      "schema_only_image_report_groups_covered": "Historically evidenced report groups with at least one retained strict schema-only image.",
+      "report_groups_pending_schema_only_image": "Historically evidenced report groups that still lack a safe image.",
+      "pending_image_groups_with_verified_text_schema": "Image-pending groups with a separately verified text-schema card; text cards do not count as screenshots.",
+      "pending_image_groups_still_text_pending": "Image-pending groups that still lack a provenance-complete text schema.",
+      "verified_text_schema_fields": "Fields emitted by the verified text-schema cards for the 27 text-covered groups.",
+      "text_cards_count_as_screenshots": "Always false: text-schema cards add structural evidence but never image coverage.",
+      "public_website_screenshot_assets": "Private discovery images do not ship in the public website or repository project pack."
+    }
+  },
   "quality_status": "usable_with_warnings",
   "entry_points": {
     "human": "README.md",
@@ -134,6 +166,7 @@
     "ai_agent": "AGENT_HANDOFF.md",
     "graph_data": "schema-pack/generated/atlas.json",
     "quality": "schema-pack/generated/quality_report.json",
+    "discovery_evidence_boundary": "schema-pack/source/catalog/discovery_evidence_boundary.json",
     "mapping_registry": "curation/mapping_options.csv",
     "validation_registry": "curation/validation_tests.csv",
     "workspace_data": "schema-pack/generated/workspace.json",
@@ -148,6 +181,7 @@
   },
   "workspace_contract_version": "1.0.0",
   "workspace_source_policy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "schema_status_semantics": "Structural transcription state; not current strict schema-only image coverage.",
   "workspace_source_files": [
     {
       "path": "schema-pack/source/report_structures/p1_main/01_sales_analysis/01_outlet_sales.json",
@@ -896,10 +930,10 @@
   },
   "control_tower_presentation_source": {
     "path": "schema-pack/source/control_tower/control-tower-presentation.json",
-    "sha256": "e86d0bca72997d9240d192dfa7066b45e052196a90484681329bf493643f3b66"
+    "sha256": "d7fbbff4bb69c60ad39cac2f282cf692454f51ababe09746d656c330daa7035e"
   },
   "control_tower_model_source": {
     "path": "schema-pack/source/model/control-tower-model.json",
-    "sha256": "8a06eac05dfb8a8171696fa05fcd8056f80ad79d371fb96fd24f330e956087b5"
+    "sha256": "27d936d74b1efd21c255cf739aa9cfd64f06aaaaf2e0df950b4d330b9d6aacb2"
   }
 }

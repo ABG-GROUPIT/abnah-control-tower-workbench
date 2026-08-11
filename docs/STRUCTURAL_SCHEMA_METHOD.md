@@ -30,6 +30,8 @@ For each report, inspect local evidence in this order:
 
 The evidence itself stays outside the project. A blueprint must remain understandable without knowing the screenshot filename.
 
+In this repository, `captured` means structurally transcribed from one or more governed evidence channels. It does not mean that a strict schema-only image is present in the private migration candidate. Current private image coverage is tracked separately: 65 of 94 historically evidenced groups are image-covered and 29 are image-pending. Among those 29 groups, 27 have verified text-schema cards totaling 530 fields and 2 remain text-pending. Text cards never count as screenshots.
+
 ## Exactness Rules
 
 - Transcribe source labels exactly.
@@ -94,6 +96,8 @@ This prevents one malformed grid from blocking a large 100-200 report batch and 
 
 ## P1 Reconciliation Baseline
 
+The counts below describe the structural transcription milestone recorded at that time. They do not override the current private evidence boundary and must not be presented as current schema-only image coverage.
+
 P1 no longer uses report-level completeness inferred from OCR confidence. All usable local report-output evidence has been transcribed into explicit blueprints, including horizontal continuations and non-flat report shapes.
 
 The locked P1 baseline is 90 catalogue entries, 85 active reports, 76 captured reports, 14 unavailable reports, and zero `partial` or `pending` reports. Five unavailable entries are archived catalogue placeholders; the remaining nine active unavailable reports have explicit evidence reasons.
@@ -108,6 +112,8 @@ For future changes:
 Verification status is intentionally separate from schema completeness. A report may be structurally `captured` while still `needs_review`; it must not be relabelled `partial` for that reason.
 
 ## P2 Batch-One Baseline
+
+The counts below describe the structural transcription milestone recorded at that time. They do not override the current private evidence boundary and must not be presented as current schema-only image coverage.
 
 The first P2 transcription pass covers all 10 Analytics reports and 25 of the 50 Audit reports. It produces 32 captured schemas and 3 explicitly partial schemas; the other 120 P2 catalogue entries remain pending.
 

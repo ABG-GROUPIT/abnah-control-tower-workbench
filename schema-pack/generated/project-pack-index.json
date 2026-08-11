@@ -7,7 +7,7 @@
   "policy": "Tracked synthetic, documentation, code, schema, and validation artifacts only. Screenshots, real operational exports, local audit runtime data, credentials, and environment values are excluded.",
   "summary": {
     "files": 781,
-    "sizeBytes": 52157283,
+    "sizeBytes": 52160202,
     "categories": 10,
     "csvFiles": 349,
     "sqlFiles": 133,
@@ -41,7 +41,7 @@
       "label": "Documentation",
       "description": "Architecture, modeling, dashboard, Zoho, external-signal, validation, and presentation guidance.",
       "count": 84,
-      "sizeBytes": 1935456
+      "sizeBytes": 1936456
     },
     {
       "id": "local_auditor",
@@ -83,7 +83,7 @@
       "label": "Other project files",
       "description": "Supporting repository and configuration files retained for a complete handoff.",
       "count": 43,
-      "sizeBytes": 773744
+      "sizeBytes": 775663
     }
   ],
   "files": [
@@ -198,8 +198,8 @@
       "extension": ".md",
       "kind": "Guide",
       "category": "documentation",
-      "sizeBytes": 19784,
-      "sha256": "a32d424cc2bafd183ddd56c44f829a62f406397b6960cfa04cd112f0948898b4",
+      "sizeBytes": 20784,
+      "sha256": "5297708d4b61227a276f1ccb5d9d6d26512317ac3891dda19f8d89fd354a8dd4",
       "featuredOrder": 0,
       "featuredTitle": "Presentation runbook",
       "description": "The complete demo sequence, validated P1/P2 values, source findings, architecture, Q&A, and remaining actions."
@@ -4475,8 +4475,8 @@
       "extension": ".tsx",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 65435,
-      "sha256": "9655eef71cd3d481d3769d96a60c463b545a61264bc7855960dff22e4521db64",
+      "sizeBytes": 66370,
+      "sha256": "c00a36ae2d25d40de359d8f17302eb8d89dabbcc0e06c8ac11cfed5b14981e29",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4488,8 +4488,8 @@
       "extension": ".tsx",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 22229,
-      "sha256": "602d1fb870cb9b23f0a7f74f5f6b7cc4bab1511ed2251f851f79b86c4c2fcaa6",
+      "sizeBytes": 22948,
+      "sha256": "8419ab00c16c623f9d03fb6979453fdc7798d7fcbf15881ffbd74d2108f75748",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4566,8 +4566,8 @@
       "extension": ".ts",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 45160,
-      "sha256": "bd8ec2b6dc2f80983ebbb559420af0a3127863d30a82f8d83ed90196792e11dd",
+      "sizeBytes": 45413,
+      "sha256": "825df163b02f4406b4f11d9985112b33ad412bc94ed1eafd76f7cba4bfe93040",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""
@@ -4592,8 +4592,8 @@
       "extension": ".ts",
       "kind": "Project file",
       "category": "other",
-      "sizeBytes": 31815,
-      "sha256": "12bf9c4ecf06506d4650f9a041964354da8d463615df57d5872e225470797c97",
+      "sizeBytes": 31827,
+      "sha256": "c168d370a12623938488a0861fdcc3e6179a07417fa7bfa533eaa34f6167b685",
       "featuredOrder": null,
       "featuredTitle": "",
       "description": ""

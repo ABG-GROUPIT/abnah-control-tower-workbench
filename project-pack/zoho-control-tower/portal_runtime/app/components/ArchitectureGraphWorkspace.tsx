@@ -119,7 +119,7 @@ function SourceInputs({ onOpenDiscovery }: { onOpenDiscovery?: () => void } = {}
           <div>
             <span className="section-kicker">Architecture → green Discovery</span>
             <strong>20 selected report schemas</strong>
-            <p>The handoff coverage checkpoint is 17 captured, 1 partial and 2 pending. Open Discovery for the structural schema record; status is evidence coverage, not production readiness.</p>
+            <p>The handoff coverage checkpoint is 17 structurally captured, 1 partial and 2 pending. Open Discovery for the structural schema record; this status is not private image coverage or production readiness.</p>
           </div>
           <div className="journey-discovery-coverage" aria-label="Selected report schema coverage">
             <span className="is-captured"><b>17</b><small>captured</small></span>
@@ -541,10 +541,10 @@ function ZiaSemanticLayer() {
         <div>
           <span className="section-kicker">Curated semantic layer</span>
           <h2>Ask Zia is governed by two acceptance gates</h2>
-          <p>Source reconciliation remains PASS, but live conversational evidence is mixed: WAT 22 is {ziaWorkflowAcceptanceLedger.currentLedger}; the 66-test ladder is {ziaNaturalLanguageLadder.currentLedger}. The 67-action session indicates application, with full metadata readback pending. No workflow is presentation-ready; the gate remains BLOCKED.</p>
+          <p>Source reconciliation remains PASS, but live conversational evidence is mixed: WAT 22 is {ziaWorkflowAcceptanceLedger.currentLedger}; the 66-test ladder is {ziaNaturalLanguageLadder.currentLedger}. ZLD009 and the corrected ZLD037 ACTUAL / Full Date setting were applied and read back, and the governed aggregate formula was verified. Standard descriptions remain uncertified. Focused WF08 and WF04 smokes produced no gate improvement, so no workflow is presentation-ready and the gate remains BLOCKED.</p>
         </div>
         <div className="journey-extension-metrics" aria-label="Ask Zia acceptance summary">
-          <span className="is-blocked"><b>67</b><small>application indicated; readback pending</small></span>
+          <span className="is-blocked"><b>67</b><small>scoped readback; descriptions uncertified</small></span>
           <span className="is-blocked"><b>7 / 9 / 6</b><small>WAT pass / partial / fail</small></span>
           <span className="is-blocked"><b>7 / 9 / 50</b><small>ladder pass / partial / fail</small></span>
           <span className="is-blocked"><b>BLOCKED</b><small>presentation gate</small></span>
@@ -607,7 +607,7 @@ function ZiaSemanticLayer() {
           <section className="journey-zia-plan-column">
             <header>
               <div><span className="section-kicker">Live semantic deployment contract</span><h2>67 ordered actions</h2><p>{ziaSemanticDeployment.liveEvidence}</p></div>
-              <Pill tone="amber">READBACK PENDING</Pill>
+              <Pill tone="amber">SCOPED READBACK</Pill>
             </header>
             <div className="journey-zia-breakdown">
               {ziaSemanticDeployment.actionBreakdown.map((item) => (
@@ -819,7 +819,7 @@ function WeatherExtension() {
 
 function PortableHandoff() {
   const layers = [
-    { icon: FileCode2, label: "Source contracts", detail: "Headers, grain, types and provenance; public/project-pack surfaces stay screenshot-free while the private pack may carry vetted schema evidence." },
+    { icon: FileCode2, label: "Source contracts", detail: "Headers, grain, types and provenance. Structural catalog status is separate from private image coverage; the candidate remains blocked." },
     { icon: FileSpreadsheet, label: "Build assets", detail: "Import schemas, controls, ordered SQL and dependency manifests." },
     { icon: BarChart3, label: "Presentation contract", detail: "Exact KPI, report, dashboard and User Filter mappings." },
     { icon: BadgeCheck, label: "Acceptance evidence", detail: "Truth controls, reconciliation outputs and honest execution ledgers." },
@@ -831,9 +831,9 @@ function PortableHandoff() {
     <div className="journey-extension journey-handoff">
       <header className="journey-extension-header">
         <div>
-          <span className="section-kicker">Recipient-ready migration pack</span>
+          <span className="section-kicker">Candidate migration handoff</span>
           <h2>Portable knowledge, guarded execution</h2>
-          <p>The recipient receives enough structure to understand, rebuild and validate the workspace without receiving source rows, credentials or a machine-specific path. The public website and repository project pack remain screenshot-free; the private migration pack may include privacy-vetted P1/P2/P4 schema screenshots for offline handoff.</p>
+          <p>The candidate contains the contracts and guarded build sequence needed for review, but it is not release-ready. The public website and repository project pack contain no private discovery images. The historical private audit reviewed 182 images: the isolated candidate retains 98 strict schema-only images and excludes 84 value-bearing images. Those safe images cover 65 of 94 historically evidenced report groups, leaving 29 image-pending. Of those 29 groups, 27 have separately verified text schemas covering 530 fields and 2 remain text-pending. Text-schema cards never count as screenshots or close an image gap.</p>
         </div>
         <div className="journey-extension-metrics" aria-label="Portable handoff summary">
           <span><b>5</b><small>handoff layers</small></span>
@@ -858,13 +858,13 @@ function PortableHandoff() {
       <div className="journey-handoff-boundaries">
         <article><ShieldCheck aria-hidden="true" size={18} /><div><label>Secret boundary</label><strong>Inject at runtime; never package</strong><p>OAuth client secrets, refresh/access tokens, passwords, cookies, environment values and real operational rows remain in approved external stores.</p></div></article>
         <article><BadgeCheck aria-hidden="true" size={18} /><div><label>Execution boundary</label><strong>Prove in TEST before promotion</strong><p>Start read-only. Any validation write must target an explicit TEST workspace or allowlisted TEST object, then pass row, grain, metric and presentation controls.</p></div></article>
-        <article><FileSpreadsheet aria-hidden="true" size={18} /><div><label>Screenshot boundary</label><strong>Public excluded; private vetted only</strong><p>No screenshots ship in the public website or repository project pack. The separately transferred private migration pack may include only reviewed P1/P2/P4 schema screenshots with sensitive values, browser chrome, credentials and local paths excluded.</p></div></article>
+        <article><FileSpreadsheet aria-hidden="true" size={18} /><div><label>Screenshot boundary</label><strong>Public excluded; private candidate blocked</strong><p>No private discovery images ship in the public website or repository project pack. The isolated candidate retains 98 strict schema-only images, excludes 84 value-bearing images, covers 65 of 94 historically evidenced report groups and leaves 29 groups image-pending. Verified text cards provide structural evidence for 27 pending groups but add zero screenshot coverage.</p></div></article>
       </div>
 
       <SeeMore label="See more details: recipient navigation and guarded validation">
         <div className="journey-detail-facts">
-          <section><label>Recipient gets</label><p>Schema contracts, build manifests, SQL, formula/report/filter instructions, synthetic examples, acceptance controls and reusable validation utilities. A private transfer may additionally include privacy-vetted schema screenshots indexed to Discovery.</p></section>
-          <section><label>Recipient does not get</label><p>Credentials, tokens, browser state, real source rows, unreviewed screenshots, local database files or hard-coded machine paths. Public/project-pack artifacts never contain screenshot evidence.</p></section>
+          <section><label>Recipient gets</label><p>The candidate provides schema contracts, build manifests, SQL, formula/report/filter instructions, synthetic examples, acceptance controls and reusable validators. Its private image subset is limited to 98 audited strict schema-only images; image coverage is 65 of 94 historical report groups, with 29 disclosed gaps. Verified text-schema cards cover 27 of those gaps structurally with 530 fields, while 2 remain text-pending. The candidate is not yet a releasable handoff.</p></section>
+          <section><label>Recipient does not get</label><p>Credentials, tokens, browser state, real source rows, unreviewed or excluded historical images, local database files or hard-coded machine paths. Public/project-pack artifacts never contain private discovery images, and excluded images must not be reintroduced through a generated index, archive, mirror or website asset.</p></section>
           <section><label>Portable entry point</label><p>Begin at the pack’s Start Here guide and integrity manifest; follow only the numbered dependency-safe sequence.</p></section>
           <section><label>Promotion rule</label><p>A TEST success is evidence for review, not permission to mutate production. Production needs named owner approval and a fresh reconciliation.</p></section>
         </div>

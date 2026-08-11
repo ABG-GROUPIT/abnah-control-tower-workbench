@@ -210,26 +210,26 @@ export const ziaWorkflows: ZiaWorkflow[] = [
 
 export const ziaSemanticDeployment = {
   artifact: "25_MINIMAL_LIVE_SEMANTIC_DEPLOYMENT.csv",
-  status: "LIVE_TEST_SESSION_INDICATES_APPLICATION_FULL_METADATA_READBACK_PENDING",
+  status: "ZLD009_AND_CORRECTED_ZLD037_APPLIED_AND_READ_BACK_FORMULA_VERIFIED_DESCRIPTIONS_UNCERTIFIED_GATE_UNCHANGED",
   actionCount: 67,
   baseSemanticRowCount: 67,
   actionBreakdown: [
-    { label: "Apply base semantic contract", count: 1, detail: "Apply all 67 rows from 15_WORKFLOW_SEMANTIC_EXTENSION.csv, then read them back live." },
-    { label: "Include curated objects", count: 8, detail: "Seven helper Query Tables plus RAW_Enterprise_Purchase_Order for physical expected-delivery flow." },
-    { label: "Exclude competing objects", count: 9, detail: "Keep broad, duplicate and staging objects available for reports but outside the meeting-demo Ask Zia scope." },
-    { label: "Set missing field metadata", count: 42, detail: "Descriptions, synonyms, priorities and safe Default Functions for the exact workflow fields." },
+    { label: "Apply base semantic contract", count: 1, detail: "The ordered semantic contract is the comparison baseline; standard descriptions remain uncertified." },
+    { label: "Include curated objects", count: 8, detail: "Seven helper Query Tables plus the physical purchase-order flow were read back in scope." },
+    { label: "Exclude competing objects", count: 9, detail: "Broad, duplicate and staging objects remain outside the meeting-demo Ask Zia scope; exclusion readback matched." },
+    { label: "Set missing field metadata", count: 42, detail: "Synonyms, priorities and supported Default Functions were checked; descriptions are not certified by the available readback." },
     { label: "Hide unsafe fields", count: 6, detail: "Remove competing dates, amounts and row-ratio shortcuts from conversational routing." },
-    { label: "Create governed formula", count: 1, detail: "Add the ratio-of-sums weighted theoretical gross-margin percentage." },
+    { label: "Create governed formula", count: 1, detail: "The ratio-of-sums weighted theoretical gross-margin formula exists, is included and is semantically verified." },
   ],
   deploymentSteps: [
-    "Export the current Ask Zia scope and metadata before any further change.",
-    "Read back all eight included objects, nine exclusions, 42 field settings, six hidden fields and the governed formula.",
-    "Compare the readback to the 67 ordered actions; do not infer a missing setting from successful test routing.",
-    "Map WF08's natural label Expected Delivery Date to the live RAW PO field Expected Delivery.",
-    "Resolve every readback mismatch, save, close and reopen before certification.",
-    "Rerun the affected WAT and six-tier ladder rows in clean conversations after semantic re-indexing.",
+    "Keep ZLD009 and the corrected ZLD037 ACTUAL / Full Date setting unchanged unless a new governed contract is approved.",
+    "Treat the aggregate formula as verified; do not recreate or rewrite it without a causal failure.",
+    "Keep standard descriptions uncertified until a supported description readback proves them directly.",
+    "Do not repeat the WF08 or WF04 smoke without a new causal semantic or presentation change.",
+    "After any approved causal change, save, close, reopen and read back the exact setting before testing.",
+    "Run the affected WAT rows first; rerun the six-tier ladder only when the WAT gate materially improves.",
   ],
-  liveEvidence: "The live test session indicates application of the 67-action semantic plan because post-session WAT and ladder runs reached curated helpers and governed formulas. Full object-and-field metadata readback is pending, so deployment is not certified.",
+  liveEvidence: "ZLD009 and the corrected ZLD037 ACTUAL / Full Date setting are applied and read back. The governed aggregate formula is verified. Standard descriptions remain uncertified. Focused WF08 and WF04 smokes produced no gate improvement, so WAT 22 remains 7 PASS / 9 PARTIAL / 6 FAIL and the 66-test ladder remains 7 PASS / 9 PARTIAL / 50 FAIL.",
 } as const;
 
 export const ziaNaturalLanguageLadder = {

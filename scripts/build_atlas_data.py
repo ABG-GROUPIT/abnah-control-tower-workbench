@@ -418,6 +418,12 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
     report_overrides = json.loads(
         (atlas_root / "config" / "report_overrides.json").read_text(encoding="utf-8")
     )
+    discovery_evidence_boundary_path = (
+        source_root / "catalog" / "discovery_evidence_boundary.json"
+    )
+    discovery_evidence_boundary = json.loads(
+        discovery_evidence_boundary_path.read_text(encoding="utf-8")
+    )
     core_keywords = curation["core_report_keywords"]
     domain_labels = curation["domain_labels"]
 
@@ -453,7 +459,7 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         for row in read_csv(reference_files["report_fields"])
         if (sanitized := sanitize_field_row(row)) is not None
     ]
-    evidence_raw = read_csv(reference_files["evidence"])
+    historical_p1_ocr_index_raw = read_csv(reference_files["evidence"])
     endpoints_raw = read_csv(reference_files["api_endpoints"])
     api_model_seed = read_csv(reference_files["api_model_seed"])
     report_api_verified = read_csv(reference_files["report_api_mappings"])
@@ -527,10 +533,10 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
             label="contains section",
         )
 
-    evidence_by_report: dict[str, list[dict[str, str]]] = defaultdict(list)
-    for row in evidence_raw:
+    historical_p1_ocr_index_by_report: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for row in historical_p1_ocr_index_raw:
         if row.get("report_folder"):
-            evidence_by_report[row["report_folder"]].append(row)
+            historical_p1_ocr_index_by_report[row["report_folder"]].append(row)
 
     questions_by_key: dict[tuple[str, str, str], list[dict[str, str]]] = defaultdict(list)
     for row in questions_raw:
@@ -549,7 +555,9 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
             fields_by_report.get(row.get("report_folder", ""), []),
             key=lambda item: int(item.get("field_order") or 999999),
         )
-        evidence = evidence_by_report.get(row.get("report_folder", ""), [])
+        historical_p1_ocr_index_items = historical_p1_ocr_index_by_report.get(
+            row.get("report_folder", ""), []
+        )
         questions = questions_by_key.get((row["page"], row["section"], row["report_name"]), [])
         record = {
             "id": rid,
@@ -564,7 +572,7 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
             "capture_method": row.get("capture_method", ""),
             "next_action": row.get("next_action", ""),
             "field_ids": [],
-            "evidence_count": len(evidence),
+            "historical_p1_ocr_index_item_count": len(historical_p1_ocr_index_items),
             "questions": questions,
             "api_links": [],
             "model_links": [],
@@ -583,7 +591,7 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
                 "page": row["page"],
                 "section": row["section"],
                 "description": f"{row['report_name']} in {row['section'].replace('_', ' ')}.",
-                "evidence_count": len(evidence),
+                "historical_p1_ocr_index_item_count": len(historical_p1_ocr_index_items),
                 "field_count": len(report_fields),
                 "schema_ready": bool(report_fields),
             }
@@ -984,7 +992,7 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
     if len(all_node_ids) != len(nodes):
         errors.append("Graph node IDs are not unique.")
     if reports_with_fields < len(report_records):
-        warnings.append(f"{len(report_records) - reports_with_fields} reports do not yet have captured fields.")
+        warnings.append(f"{len(report_records) - reports_with_fields} reports do not yet have schema fields.")
     if verified_api_links == 0:
         warnings.append("No report-to-API mapping is UAT verified; displayed API links are semantic candidates.")
     if not report_model_verified:
@@ -1023,7 +1031,7 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
             "reports_with_fields": reports_with_fields,
             "unique_fields": len(field_records),
             "field_occurrences": len(fields_raw),
-            "evidence_items": len(evidence_raw),
+            "historical_p1_ocr_index_items": len(historical_p1_ocr_index_raw),
             "api_endpoints": len(endpoint_records),
             "model_objects": len(model_records),
             "mapping_options": len(mapping_options),
@@ -1036,6 +1044,7 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
             "edge_types": dict(edge_types),
         },
         "quality": quality,
+        "discovery_evidence_boundary": discovery_evidence_boundary,
         "facets": {
             "pages": pages,
             "domains": [{"id": key, "label": domain_labels.get(key, key)} for key in domains],
@@ -1121,6 +1130,7 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         },
         "source_snapshots": snapshot_records,
         "counts": atlas["summary"],
+        "discovery_evidence_boundary": discovery_evidence_boundary,
         "quality_status": quality["status"],
         "entry_points": {
             "human": "README.md",
@@ -1128,6 +1138,7 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
             "ai_agent": "AGENT_HANDOFF.md",
             "graph_data": "schema-pack/generated/atlas.json",
             "quality": "schema-pack/generated/quality_report.json",
+            "discovery_evidence_boundary": "schema-pack/source/catalog/discovery_evidence_boundary.json",
             "mapping_registry": "curation/mapping_options.csv",
             "validation_registry": "curation/validation_tests.csv",
         },
@@ -1147,7 +1158,9 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
                 "is_core": item["is_core"],
                 "schema_status": item["status"],
                 "field_count": len(item["field_ids"]),
-                "evidence_count": item["evidence_count"],
+                "historical_p1_ocr_index_item_count": item[
+                    "historical_p1_ocr_index_item_count"
+                ],
                 "api_link_count": len(item["api_links"]),
                 "model_link_count": len(item["model_links"]),
             }
@@ -1163,7 +1176,7 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
             "is_core",
             "schema_status",
             "field_count",
-            "evidence_count",
+            "historical_p1_ocr_index_item_count",
             "api_link_count",
             "model_link_count",
         ],

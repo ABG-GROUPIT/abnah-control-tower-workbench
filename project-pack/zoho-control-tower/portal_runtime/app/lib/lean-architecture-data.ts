@@ -39,7 +39,7 @@ export const journeyStages: Array<{
   { id: "filters", number: "07", label: "Filter contract", summary: "Exact field mappings keep flow and state questions separate", count: "10 controls" },
   { id: "zia", number: "08", label: "Ask Zia", summary: "Seven helpers, a 67-action metadata plan and a 66-test natural-language gate", count: "67 + 66" },
   { id: "weather", number: "09", label: "Weather extension", summary: "Open-Meteo evaluation evidence beside the unchanged core", count: "3 queries" },
-  { id: "handoff", number: "10", label: "Portable handoff", summary: "A verified migration pack with secrets kept outside the payload", count: "5 layers" },
+  { id: "handoff", number: "10", label: "Portable handoff", summary: "A validation-gated migration candidate with private evidence gaps disclosed", count: "5 layers" },
 ];
 
 export const architectureScopeTruth = {

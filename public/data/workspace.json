@@ -1,7 +1,8 @@
 {
   "contractVersion": "1.0.0",
-  "generatedAt": "2026-07-27T00:42:56+00:00",
+  "generatedAt": "2026-08-11T21:24:50+00:00",
   "sourcePolicy": "Schema definitions only. Local screenshots, paths, and source images are excluded.",
+  "schema_status_semantics": "Structural transcription state; not current strict schema-only image coverage.",
   "reports": [
     {
       "id": "report:p1_main:01_sales_analysis:20_billwise_section_sales_analysis",

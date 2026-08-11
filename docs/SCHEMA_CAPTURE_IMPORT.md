@@ -38,6 +38,8 @@ Review these generated indexes before publishing:
 
 For a newly captured report, confirm the stable report ID, display name, field count, table/mode count, positional keys, schema status, and source note. A populated blank structure proves only that the schema was observed; it does not prove row quality, API coverage, joins, or KPI suitability.
 
+In this repository, `captured` means structurally transcribed from one or more governed evidence channels. It does not mean that a strict schema-only image is present in the private migration candidate. Current private image coverage is tracked separately: 65 of 94 historically evidenced groups are image-covered and 29 are image-pending. Among those 29 groups, 27 have verified text-schema cards totaling 530 fields and 2 remain text-pending. Text cards never count as screenshots.
+
 ## Current Imported Checkpoint
 
 - P2: 73 captured, 3 partial, 79 pending.

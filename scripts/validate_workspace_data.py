@@ -77,6 +77,10 @@ def main() -> int:
         errors.append("Unexpected workspace contract version.")
     if "Local screenshots" not in workspace.get("sourcePolicy", ""):
         errors.append("Workspace source policy does not explicitly exclude local screenshots.")
+    if workspace.get("schema_status_semantics") != (
+        "Structural transcription state; not current strict schema-only image coverage."
+    ):
+        errors.append("Workspace schema-status semantics are missing or ambiguous.")
     if lineage.get("contractVersion") != "1.0.0":
         errors.append("Unexpected KPI lineage contract version.")
     for collection in ("kpis", "nodes", "edges", "publications"):

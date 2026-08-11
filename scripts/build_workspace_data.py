@@ -14,6 +14,9 @@ from typing import Any, Iterable
 
 CONTRACT_VERSION = "1.0.0"
 SOURCE_POLICY = "Schema definitions only. Local screenshots, paths, and source images are excluded."
+SCHEMA_STATUS_SEMANTICS = (
+    "Structural transcription state; not current strict schema-only image coverage."
+)
 
 
 def slug(value: str) -> str:
@@ -486,6 +489,7 @@ def build(root: Path) -> dict[str, Any]:
         "contractVersion": CONTRACT_VERSION,
         "generatedAt": atlas["generated_at"],
         "sourcePolicy": SOURCE_POLICY,
+        "schema_status_semantics": SCHEMA_STATUS_SEMANTICS,
         "reports": sorted(reports.values(), key=lambda item: (item["page"], item["section"], item["name"].lower())),
     }
     write_json(generated_root / "workspace.json", workspace)
@@ -625,6 +629,7 @@ def build(root: Path) -> dict[str, Any]:
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     manifest["workspace_contract_version"] = CONTRACT_VERSION
     manifest["workspace_source_policy"] = SOURCE_POLICY
+    manifest["schema_status_semantics"] = SCHEMA_STATUS_SEMANTICS
     manifest["workspace_source_files"] = source_files
     manifest.setdefault("entry_points", {})["workspace_data"] = "schema-pack/generated/workspace.json"
     manifest["entry_points"]["kpi_lineage"] = "schema-pack/generated/kpi-lineage.json"

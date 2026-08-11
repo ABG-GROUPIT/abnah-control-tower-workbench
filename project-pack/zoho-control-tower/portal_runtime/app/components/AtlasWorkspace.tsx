@@ -467,7 +467,13 @@ export function AtlasWorkspace({
           <button type="button" className={surface === "architecture" ? "is-active" : ""} onClick={() => setSurface("architecture")}><Network aria-hidden="true" size={15} /> Architecture</button>
           <button type="button" className={surface === "library" ? "is-active" : ""} onClick={() => setSurface("library")}><FolderArchive aria-hidden="true" size={15} /> Library</button>
         </nav>
-        <div className="app-summary"><span><b>{atlas.summary.reports}</b> reports</span><span><b>{workspaceSeed.reports.filter((report) => report.schemaStatus === "captured").length}</b> captured</span><span className={`persistence-indicator state-${persistenceState}`}>{persistenceState === "ready" ? "Stored" : persistenceState === "loading" ? "Connecting" : "Browser saved"}</span></div>
+        <div className="app-summary">
+          <span><b>{atlas.summary.reports}</b> reports</span>
+          <span><b>{workspaceSeed.reports.filter((report) => report.schemaStatus === "captured").length}</b> schema-captured</span>
+          <span title="Structural catalog status is separate from private image coverage."><b>{atlas.discovery_evidence_boundary.schema_only_image_report_groups_covered}/{atlas.discovery_evidence_boundary.historically_evidenced_report_groups}</b> private image-covered · {atlas.discovery_evidence_boundary.report_groups_pending_schema_only_image} image-pending</span>
+          <span title="Text-schema cards add structural evidence but never count as screenshots."><b>{atlas.discovery_evidence_boundary.pending_image_groups_with_verified_text_schema}</b> text-verified · {atlas.discovery_evidence_boundary.pending_image_groups_still_text_pending} text-pending</span>
+          <span className={`persistence-indicator state-${persistenceState}`}>{persistenceState === "ready" ? "Stored" : persistenceState === "loading" ? "Connecting" : "Browser saved"}</span>
+        </div>
         <button type="button" className="backup-button" onClick={() => void exportBackup()} disabled={persistenceState === "loading"} title="Export current documents and revision history"><Download aria-hidden="true" size={14} /> Backup</button>
         <div className="view-switch" role="group" aria-label="Workspace view">
           <button type="button" className={!presentationMode ? "is-active" : ""} aria-pressed={!presentationMode} onClick={() => setPresentationMode(false)}><Pencil aria-hidden="true" size={14} /> Workspace</button>
