@@ -4,6 +4,10 @@ This folder stores the portable, screenshot-free structural model for P2 reports
 
 ## Batch-One State
 
+In this repository, `captured` means structurally transcribed from one or more governed evidence channels. It does not mean that a strict schema-only image is present in the private migration candidate. Current private image coverage is tracked separately: 64 of 94 historically evidenced groups are image-covered and 30 are image-pending. Among those 30 groups, 27 have verified text-schema cards totaling 530 fields and 3 remain text-pending. Text cards never count as screenshots.
+
+The counts below describe the structural transcription milestone recorded at that time. They do not override the current private evidence boundary and must not be presented as current schema-only image coverage.
+
 Reviewed on 2026-07-15:
 
 | Section | Catalogue | Captured | Partial | Pending | Reviewed |

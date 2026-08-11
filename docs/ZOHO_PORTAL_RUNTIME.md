@@ -145,7 +145,7 @@ Git. Use:
 ```dotenv
 ZOHO_OAUTH_CLIENT_ID=<CLIENT_ID>
 ZOHO_OAUTH_CLIENT_SECRET=<CLIENT_SECRET>
-ZOHO_ALLOWED_WORKSPACE_ID=333330000004099001
+ZOHO_ALLOWED_WORKSPACE_ID=<ANALYTICS_WORKSPACE_ID>
 ZOHO_TOKEN_ENCRYPTION_KEY=<RANDOM_KEY>
 ZOHO_PORTAL_ADMIN_EMAILS=<APPROVED_EDITOR_EMAIL>
 PORTAL_ALLOWED_ORIGIN=https://abg-groupit.github.io
@@ -243,7 +243,7 @@ If `configured` is false, read `missingEnvironment` and add only those values in
 2. Confirm no KPI or report data is visible before sign-in.
 3. Click **Sign in with Zoho**.
 4. Sign in with an account that has access to workspace
-   `333330000004099001`.
+   the workspace ID supplied through the private client binding.
 5. Confirm Page 1 loads.
 6. Click **Refresh** and confirm the updated time changes.
 7. Switch to Page 2 and confirm it loads independently.

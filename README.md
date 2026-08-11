@@ -28,6 +28,9 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
 ## Current Snapshot
 
 - 318 exact report names catalogued across P1, P2, and Stock Administration/P4.
+
+Catalog coverage, structural schema status, private image coverage and verified text-schema coverage are separate measures. The private audit reviewed 182 historical images across 94 report groups. The isolated candidate retains 95 strict schema-only images and excludes 87 value-bearing images; the retained images cover 64 groups and leave 30 image-pending. Of those 30 groups, 27 have separately verified text schemas totaling 530 fields and 3 remain text-pending. Text-schema cards add structural evidence but never count as screenshots or close an image gap. None of the private images belongs in this public repository, and the private handoff remains blocked.
+
 - 17 P1 Misc reports encoded as explicit editable structural blueprints.
 - 8 P1 Misc reports marked unavailable because their screens returned no usable schema.
 - 2 unknown P1 Misc placeholders archived instead of being guessed.
@@ -40,8 +43,8 @@ minimal excerpt per deterministic finding type, with sensitive fields removed.
   validated synthetic-data, Zoho implementation, SQL, local-auditor,
   API-packet, generator, test, portal-runtime, and handoff files in this ABG
   repository.
-- P2 now has 73 captured schemas, 3 bounded partial schemas, and 79 pending reports.
-- P4 now has 26 captured schemas and 48 pending reports, including all 15 Enterprise reports, four explicit Consumption Report modes, Bulk Return, and Closing Stock.
+- P2 now has 73 structurally captured schemas, 3 bounded partial schemas, and 79 pending reports.
+- P4 now has 26 structurally captured schemas and 48 pending reports, including all 15 Enterprise reports, four explicit Consumption Report modes, Bulk Return, and Closing Stock.
 - The private CSV audit checkpoint covers 26 exports, 20 report contracts, and
   35,128 rows; all headers, Workbench variants, and encoded arithmetic rules
   align, while two reports and two additional periods remain header-only.

@@ -4,11 +4,13 @@ This folder is the transferable machine-readable memory for ABNAH data discovery
 
 ## Source
 
-- `source/report_structures/`: one screenshot-free structural blueprint per explicitly captured report.
+- `source/report_structures/`: one screenshot-free structural blueprint per structurally captured report.
 - `source/kpi_lineage/`: empty contract until KPIs and mappings are approved.
 - `source/catalog/`: report, field, API, question, test, and mapping registries.
 - `source/model_sql/`: current/proposed SQL model context.
 - `source/reference_chunks/`: text-only report notes and headers.
+
+In this repository, `captured` means structurally transcribed from one or more governed evidence channels. It does not mean that a strict schema-only image is present in the private migration candidate. Current private image coverage is tracked separately: 64 of 94 historically evidenced groups are image-covered and 30 are image-pending. Among the 30 image-pending groups, 27 have verified text-schema cards totaling 530 fields and 3 remain text-pending. Text cards never count as screenshots.
 
 ## Generated
 

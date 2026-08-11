@@ -2110,8 +2110,9 @@
       "sourceTable": "23_fact_ct_purchase_receipt.sql",
       "question": "How has weighted received unit price changed by ingredient over time?",
       "finalFields": [
-        "source_period_code",
+        "receipt_date",
         "item_code",
+        "canonical_uom",
         "received_qty",
         "receipt_subtotal",
         "vendor_name"
@@ -2120,11 +2121,13 @@
       "aggregation": "Weighted unit price",
       "zoho": {
         "shelves": [
-          "X: source period",
+          "X: receipt_date grouped by month",
           "Y: Weighted Unit Price",
           "Color: item"
         ],
-        "fixedFilters": [],
+        "fixedFilters": [
+          "Select one canonical UOM when an item is stored in more than one UOM"
+        ],
         "userFilters": [
           "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
@@ -2435,7 +2438,7 @@
       "finalFields": [
         "item_code",
         "previous_unit_price",
-        "unit_price_change_percent",
+        "price_change_percent",
         "price_movement_direction"
       ],
       "formula": "distinctcount(\"item_code\")",
@@ -2675,25 +2678,30 @@
       "id": "CT_P2_Top_Price_Movement",
       "pageId": "page_2_procurement_vendor_capital",
       "name": "Top Price Movement",
-      "kind": "chart",
-      "visual": "Divergent or horizontal bar",
+      "kind": "table",
+      "visual": "Tabular View",
       "sourceTable": "31_sum_ct_price_movement.sql",
-      "question": "Which item/vendor prices changed most from the prior synthetic month?",
+      "question": "Which item/vendor prices changed most from the immediately prior synthetic month?",
       "finalFields": [
-        "price_comparison_key",
-        "unit_price_change_percent",
-        "absolute_unit_price_change_percent",
+        "item_name",
+        "vendor_name",
+        "canonical_uom",
+        "previous_unit_price",
+        "current_unit_price",
+        "price_change_amount",
+        "price_change_percent",
+        "price_change_value_impact",
         "price_movement_direction"
       ],
-      "formula": "Signed physical change is displayed; absolute physical change is used only for sorting.",
+      "formula": "Signed physical change is displayed; absolute_price_change_percent is used only for ranking.",
       "aggregation": "Direct period-item-vendor-UOM result",
       "zoho": {
         "shelves": [
-          "Y: price_comparison_key",
-          "X: unit_price_change_percent",
-          "Color: price_movement_direction"
+          "Columns: item, vendor, UOM, previous price, current price, price change, price change %, purchase-value impact"
         ],
-        "fixedFilters": [],
+        "fixedFilters": [
+          "price_movement_direction: include INCREASE, DECREASE, and NO_CHANGE; exclude NO_BASELINE"
+        ],
         "userFilters": [
           "Date range (global Timeline Filter mapped to each Query Table's physical date column; maximum 366 days)",
           "Outlet (global, multi-select)",
@@ -2703,18 +2711,15 @@
           "Item",
           "PO status"
         ],
-        "sort": "absolute_unit_price_change_percent descending; Top 10",
-        "tooltips": [
-          "Vendor",
-          "Previous weighted price",
-          "Current weighted price"
-        ],
+        "sort": "absolute_price_change_percent descending; Top 10",
+        "tooltips": [],
         "formatting": [
-          "Signed percentage"
+          "Signed percentage",
+          "INR price and value-impact columns"
         ]
       },
       "caveats": [],
-      "talkTrack": "Top Price Movement starts from Enterprise Entry Report - Stock Entry. The model follows 23_fact_ct_purchase_receipt.sql -> 31_sum_ct_price_movement.sql at source period, outlet, vendor, item, and canonical uom. The relationship rule is: Calculate weighted receipt price per period and compare it with the immediately prior synthetic month at the same outlet/vendor/item/UOM grain. In Zoho, use direct period-item-vendor-uom result and render it as divergent or horizontal bar to answer: Which item/vendor prices changed most from the prior synthetic month?"
+      "talkTrack": "Top Price Movement starts from Enterprise Entry Report - Stock Entry. The model follows 23_fact_ct_purchase_receipt.sql -> 31_sum_ct_price_movement.sql at source period, outlet, vendor, item, and canonical uom. The relationship rule is: Calculate weighted receipt price per period and compare it with the immediately prior synthetic month at the same outlet/vendor/item/UOM grain. In Zoho, use direct period-item-vendor-uom result and render it as tabular view to answer: Which item/vendor prices changed most from the immediately prior synthetic month?"
     },
     {
       "id": "CT_P2_Vendor_Performance_Matrix",
@@ -2813,20 +2818,21 @@
       "name": "Vendor Scorecard",
       "kind": "table",
       "visual": "Summary or pivot",
-      "sourceTable": "24_fact_ct_po_receipt_line.sql",
+      "sourceTable": "30_sum_ct_vendor_scorecard.sql",
       "question": "What purchase, exposure, fill, OTIF, lead, and delay profile does each vendor have?",
       "finalFields": [
         "vendor_name",
-        "gross_order_value",
+        "monthly_purchase_value",
         "open_po_value",
         "ordered_qty",
         "received_qty",
-        "eligible_closed_line_flag",
-        "otif_success_flag",
-        "eligible_lead_time_deviation_days",
-        "delayed_po_flag"
+        "eligible_closed_line_count",
+        "otif_success_line_count",
+        "eligible_lead_time_deviation_days_total",
+        "eligible_lead_time_line_count",
+        "delayed_po_line_count"
       ],
-      "formula": "Use PO Fill Rate % and Vendor OTIF % Aggregate Formulas over Query 24.",
+      "formula": "Use Q30 Vendor OTIF %, Q30 PO Fill Rate %, and Q30 Avg Lead Deviation Days over the physical numerator and denominator fields.",
       "aggregation": "Group by vendor",
       "zoho": {
         "shelves": [
@@ -2847,9 +2853,9 @@
         "formatting": []
       },
       "caveats": [
-        "Do not average precomputed Query 30 percentages across outlets."
+        "Do not average the row-level otif_percent or fill_rate_percent fields."
       ],
-      "talkTrack": "Vendor Scorecard starts from Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows 07_std_ct_purchase_order.sql -> 08_std_ct_purchase_receipt.sql -> 24_fact_ct_po_receipt_line.sql at source period, outlet, purchase order, and item line. The relationship rule is: Left join PO and receipt lines on source period + outlet + canonical PO number + item code; aggregate receipts before the join. In Zoho, use group by vendor and render it as summary or pivot to answer: What purchase, exposure, fill, OTIF, lead, and delay profile does each vendor have?"
+      "talkTrack": "Vendor Scorecard starts from Enterprise Purchase Order Report, Enterprise Entry Report - Stock Entry. The model follows 24_fact_ct_po_receipt_line.sql -> 30_sum_ct_vendor_scorecard.sql at source period, outlet, and vendor. The relationship rule is: Aggregate PO/receipt line results into vendor purchase, open exposure, fill, eligible OTIF, and lead-time deviation. In Zoho, use group by vendor and render it as summary or pivot to answer: What purchase, exposure, fill, OTIF, lead, and delay profile does each vendor have?"
     },
     {
       "id": "CT_P3_Category_Contribution",
@@ -4621,8 +4627,8 @@
     "pages": 4,
     "stories": 76,
     "kpis": 33,
-    "charts": 23,
-    "tables": 20,
+    "charts": 22,
+    "tables": 21,
     "queryTables": 38
   }
 }

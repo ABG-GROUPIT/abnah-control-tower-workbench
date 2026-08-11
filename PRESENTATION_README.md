@@ -18,10 +18,17 @@ The demonstration proves that:
 
 ## 90-Second Opening
 
-> We began with data discovery rather than dashboard design. We captured the
-> available POSIST report catalogue, extracted each report's fields and table
-> structure, and created a searchable Atlas so the work can be handed to
-> another developer without repeating discovery. We then selected the minimum
+> We began with data discovery rather than dashboard design. We catalogued 318
+> known reports and built a searchable structural Atlas without publishing
+> private images. Structural schema status and private image coverage are
+> different measures. The historical private audit reviewed 182 images; the
+> isolated candidate retains 95 safe images covering 64 of 94 historically
+> evidenced report groups, excludes 87 value-bearing images and leaves 30
+> groups image-pending. Of those 30 groups, 27 have separately verified text
+> schemas totaling 530 fields and 3 remain text-pending. Text cards never count
+> as screenshots. Fields and table structures are shown only where governed
+> schema evidence was transcribed; the catalog itself is not proof that every
+> report has image evidence. We then selected the minimum
 > report set needed for ABNAH's four-page Control Tower and audited 26 local
 > exports covering 35,128 rows. The files were structurally parseable, but we
 > found specific freshness, valuation, cost-coverage, and lineage limitations
@@ -36,8 +43,10 @@ The demonstration proves that:
 ## Demo Sequence
 
 1. Open the hosted Data Atlas.
-2. Show **Discovery**: report catalogue, captured fields, and editable table
-   structures.
+2. Show **Discovery**: the 318-report catalog, structural schema status, fields
+   where available, editable blank structures, and the separate private
+   evidence boundary: 64 image-covered / 30 image-pending, with 27 text-verified
+   and 3 text-pending. Text cards do not count as screenshots.
 3. Show **Data quality**: aggregate findings and privacy boundary.
 4. Show **Architecture**: select one KPI and explain the five-stage route:
    original evidence, relationships, calculation, Zoho output, custom delivery.
@@ -56,7 +65,7 @@ The demonstration proves that:
 
 | Component | Status |
 | --- | --- |
-| Report/schema discovery | Complete for the captured scope |
+| Report catalog and structural schemas | 318 reports catalogued; structural status retained. Private image coverage is 64 of 94 historically evidenced groups, with 30 image-pending; 27 of those have verified text schemas totaling 530 fields and 3 remain text-pending. Text cards add zero screenshot coverage; private handoff gate BLOCKED. |
 | Transferable Atlas and project library | Hosted |
 | Local CSV structural and semantic audit | Complete for 26 exports |
 | Layered Zoho model | 38 Query Tables created |

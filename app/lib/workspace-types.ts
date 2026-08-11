@@ -98,6 +98,7 @@ export interface WorkspaceSeed {
   contractVersion: string;
   generatedAt: string;
   sourcePolicy: string;
+  schema_status_semantics: string;
   reports: ReportWorkspaceDocument[];
 }
 

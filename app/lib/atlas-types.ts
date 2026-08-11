@@ -27,7 +27,7 @@ export interface AtlasNode {
   layer?: string;
   method?: string;
   path?: string;
-  evidence_count?: number;
+  historical_p1_ocr_index_item_count?: number;
   occurrence_count?: number;
   field_count?: number;
   schema_ready?: boolean;
@@ -60,7 +60,7 @@ export interface AtlasReport {
   capture_method: string;
   next_action: string;
   field_ids: string[];
-  evidence_count: number;
+  historical_p1_ocr_index_item_count: number;
   questions: Array<Record<string, string>>;
   api_links: string[];
   model_links: string[];
@@ -135,6 +135,26 @@ export interface AtlasValidationTest {
   notes: string;
 }
 
+export interface DiscoveryEvidenceBoundary {
+  contract_version: string;
+  as_of_date: string;
+  scope: string;
+  catalog_reports: number;
+  historical_image_audit_universe: number;
+  historically_evidenced_report_groups: number;
+  strict_schema_only_images_retained: number;
+  operational_value_images_excluded: number;
+  schema_only_image_report_groups_covered: number;
+  report_groups_pending_schema_only_image: number;
+  pending_image_groups_with_verified_text_schema: number;
+  pending_image_groups_still_text_pending: number;
+  verified_text_schema_fields: number;
+  text_cards_count_as_screenshots: false;
+  public_website_screenshot_assets: 0;
+  release_gate: string;
+  count_semantics: Record<string, string>;
+}
+
 export interface AtlasData {
   schema_version: string;
   generated_at: string;
@@ -144,7 +164,7 @@ export interface AtlasData {
     reports_with_fields: number;
     unique_fields: number;
     field_occurrences: number;
-    evidence_items: number;
+    historical_p1_ocr_index_items: number;
     api_endpoints: number;
     model_objects: number;
     mapping_options: number;
@@ -173,6 +193,7 @@ export interface AtlasData {
       passed_validation_tests: number;
     };
   };
+  discovery_evidence_boundary: DiscoveryEvidenceBoundary;
   facets: {
     pages: string[];
     domains: Array<{ id: string; label: string }>;

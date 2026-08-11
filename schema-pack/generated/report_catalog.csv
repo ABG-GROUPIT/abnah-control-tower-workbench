@@ -1,4 +1,4 @@
-﻿report_id,report_name,page,section,domain,priority,is_core,schema_status,field_count,evidence_count,api_link_count,model_link_count
+﻿report_id,report_name,page,section,domain,priority,is_core,schema_status,field_count,historical_p1_ocr_index_item_count,api_link_count,model_link_count
 report:p1_main:01_sales_analysis:01_outlet_sales,Outlet Sales,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,17,3,1,0
 report:p1_main:01_sales_analysis:02_brand_order_type_sales,Brand Order Type Sales,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,17,3,1,0
 report:p1_main:01_sales_analysis:03_hourly_sales_analysis,Hourly Sales Analysis,p1_main,01_sales_analysis,sales_revenue,P2,False,screenshot_schema_and_filter_available,17,3,1,0

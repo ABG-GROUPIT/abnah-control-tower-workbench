@@ -2,7 +2,7 @@
   "status": "usable_with_warnings",
   "errors": [],
   "warnings": [
-    "260 reports do not yet have captured fields.",
+    "260 reports do not yet have schema fields.",
     "No report-to-API mapping is UAT verified; displayed API links are semantic candidates.",
     "No report-to-model mapping is verified yet.",
     "No ABNAH UAT validation tests have been recorded yet.",

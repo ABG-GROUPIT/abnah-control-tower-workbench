@@ -5,7 +5,10 @@ export type JourneyStageId =
   | "calculations"
   | "forecasting"
   | "outputs"
-  | "filters";
+  | "filters"
+  | "zia"
+  | "weather"
+  | "handoff";
 
 export interface QueryTableJourney {
   order: number;
@@ -34,7 +37,16 @@ export const journeyStages: Array<{
   { id: "forecasting", number: "05", label: "Forecasting", summary: "Transparent action forecast and Zoho-native comparisons", count: "3 products" },
   { id: "outputs", number: "06", label: "Decision outputs", summary: "A concise KPI and report layer across three dashboard tabs", count: "27 objects" },
   { id: "filters", number: "07", label: "Filter contract", summary: "Exact field mappings keep flow and state questions separate", count: "10 controls" },
+  { id: "zia", number: "08", label: "Ask Zia", summary: "Twelve helpers: the seven-table baseline plus five purpose-separated remediations, governed by the 67-action contract and a 66-test gate", count: "12 helpers" },
+  { id: "weather", number: "09", label: "Weather extension", summary: "Open-Meteo evaluation evidence beside the unchanged core", count: "3 queries" },
+  { id: "handoff", number: "10", label: "Portable handoff", summary: "A validation-gated migration candidate with private evidence gaps disclosed", count: "5 layers" },
 ];
+
+export const architectureScopeTruth = {
+  governedLeanFoundationQueryTables: 10,
+  broaderHistoricalLiveModelTables: 38,
+  relationship: "The ten-query lean foundation is the governed implementation journey documented here. The broader 38-table v2 registry is retained as the historical live workspace model for compatibility and lineage; it is a separate scope, not an alternative count of the lean foundation.",
+} as const;
 
 export const sourceGroups = [
   {
@@ -434,7 +446,7 @@ export const dashboardTabs: Array<{
       { name: "Theoretical Gross Margin %", kind: "KPI", base: "QT_04_Menu_Profitability", question: "What share of eligible net sales remains after theoretical recipe cost?", measure: "100 × SUM(menu_gross_margin) / SUM(net_sales_value)", fixed: ["cost_evaluation_status_code = COMPLETE_RECIPE_COST"], mappings: marginMappings, note: "Percentage-typed ratio of sums; never sum or average the row percentage." },
       { name: "Open PO Liability", kind: "KPI", base: "QT_05_Procurement_Control", question: "What pre-tax PO value remains open at the selected snapshot?", measure: "SUM(open_po_liability_pre_tax)", fixed: ["record_type = PO_AS_OF", "remaining_qty_canonical > 0"], mappings: procurementMappings },
       { name: "Outlets With Inventory Risk", kind: "KPI", base: "QT_02_Numerical_Risk_Center", question: "How many outlets have an active inventory risk?", measure: "DISTINCTCOUNT(outlet_name)", fixed: ["subject_type = INVENTORY", "risk_color excludes Green and Grey"], mappings: riskMappings },
-      { name: "Critical Inventory Risk Subjects", kind: "KPI", base: "QT_02_Numerical_Risk_Center", question: "How many distinct inventory evaluations are currently critical?", measure: "DISTINCTCOUNT(evaluation_id)", fixed: ["subject_type = INVENTORY", "risk_color = Red"], mappings: riskMappings },
+      { name: "Critical Inventory Risk Subjects", kind: "KPI", base: "QT_02_Numerical_Risk_Center", question: "How many distinct inventory subjects are currently critical?", measure: "DISTINCTCOUNT(subject_id)", fixed: ["subject_type = INVENTORY", "risk_color = Red (include Amber when available)"], mappings: riskMappings },
       { name: "Red Numerical Breaches", kind: "KPI", base: "QT_02_Numerical_Risk_Center", question: "How many red numerical evaluations require attention?", measure: "DISTINCTCOUNT(evaluation_id)", fixed: ["risk_color = Red"], mappings: riskDomainMappings },
       { name: "Shortage by Canonical UOM", kind: "KPI", base: "QT_02_Numerical_Risk_Center", question: "How much projected shortage exists in each compatible unit?", measure: "SUM(base_shortage_qty), grouped by canonical_uom", fixed: ["subject_type = INVENTORY", "risk_color = Red", "grand total off"], mappings: riskMappings, note: "kg, litre and pcs are never added into one total." },
       { name: "RPT_V2_E06_Daily_Net_Sales_By_Outlet", kind: "Chart", base: "RAW_Gross_Net_Margin", question: "How did recognized sales move each day by outlet?", measure: "Date × AF_Flow_Net_Sales; color Store Name", fixed: [], mappings: salesMappings },

@@ -1,0 +1,32 @@
+{
+  "contract_version": "1.1.0",
+  "as_of_date": "2026-08-12",
+  "scope": "private_migration_pack_discovery_evidence",
+  "catalog_reports": 318,
+  "historical_image_audit_universe": 182,
+  "historically_evidenced_report_groups": 94,
+  "strict_schema_only_images_retained": 95,
+  "operational_value_images_excluded": 87,
+  "schema_only_image_report_groups_covered": 64,
+  "report_groups_pending_schema_only_image": 30,
+  "pending_image_groups_with_verified_text_schema": 27,
+  "pending_image_groups_still_text_pending": 3,
+  "verified_text_schema_fields": 530,
+  "text_cards_count_as_screenshots": false,
+  "public_website_screenshot_assets": 0,
+  "release_gate": "BLOCKED_PENDING_30_SAFE_IMAGES_AND_3_TEXT_SCHEMAS",
+  "count_semantics": {
+    "catalog_reports": "Known report names in the website catalog; this is not an evidence count.",
+    "historical_image_audit_universe": "Images reviewed in the historical private audit; this is not a retained or release-safe count.",
+    "historically_evidenced_report_groups": "Report groups that had at least one image in the historical private audit; this is not current safe coverage.",
+    "strict_schema_only_images_retained": "Audited images safe for the isolated private candidate; this is an image count, not a report-group count.",
+    "operational_value_images_excluded": "Historical images excluded because operational values were visible.",
+    "schema_only_image_report_groups_covered": "Historically evidenced report groups with at least one retained strict schema-only image.",
+    "report_groups_pending_schema_only_image": "Historically evidenced report groups that still lack a safe image.",
+    "pending_image_groups_with_verified_text_schema": "Image-pending groups with a separately verified text-schema card; text cards do not count as screenshots.",
+    "pending_image_groups_still_text_pending": "Image-pending groups that still lack a provenance-complete text schema.",
+    "verified_text_schema_fields": "Fields emitted by the verified text-schema cards for the 27 text-covered groups.",
+    "text_cards_count_as_screenshots": "Always false: text-schema cards add structural evidence but never image coverage.",
+    "public_website_screenshot_assets": "Private discovery images do not ship in the public website or repository project pack."
+  }
+}

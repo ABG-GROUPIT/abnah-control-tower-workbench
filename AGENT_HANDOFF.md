@@ -120,6 +120,8 @@ The transferable implementation for generating and reviewing that packet is in
 
 ## Current P2/P4 Coverage
 
+In this repository, `captured` means structurally transcribed from one or more governed evidence channels. It does not mean that a strict schema-only image is present in the private migration candidate. Current private image coverage is tracked separately: 64 of 94 historically evidenced groups are image-covered and 30 are image-pending. Among those 30, 27 have verified text-schema cards totaling 530 fields and 3 remain text-pending. Text cards never count as screenshots.
+
 - P2: 73 captured, 3 partial, 79 pending. Category/Item has 17 of 18 captured; Sales has 24 of 41 captured.
 - P4: 26 captured, 48 pending. Enterprise Reports has 15 of 15 captured; Bulk Return and Closing Stock are also captured from the first sanitized local CSV audit.
 - The first local CSV checkpoint covers 26 exports across 20 contracts. Read `docs/REAL_CSV_AUDIT_CHECKPOINT.md` before revising report identities, formulas, or value-quality notes.

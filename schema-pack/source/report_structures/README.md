@@ -9,6 +9,8 @@ This folder is the portable, screenshot-free source for report layouts shown in 
 - Keep one JSON file per captured report so another developer or AI agent can change a report without loading the full catalogue.
 - Use stable report IDs from `schema-pack/generated/report_catalog.csv`.
 
+In this repository, `captured` means structurally transcribed from one or more governed evidence channels. It does not mean that a strict schema-only image is present in the private migration candidate. Current private image coverage is tracked separately: 64 of 94 historically evidenced groups are image-covered and 30 are image-pending. Among the 30 image-pending groups, 27 have verified text-schema cards totaling 530 fields and 3 remain text-pending. Text cards never count as screenshots.
+
 ## Blueprint Contract
 
 Required report keys:
@@ -70,6 +72,8 @@ The generated runtime contract is `schema-pack/generated/workspace.json`. Do not
 
 ## P1 Completion Baseline
 
+The counts below describe the structural transcription milestone recorded at that time. They do not override the current private evidence boundary and must not be presented as current schema-only image coverage.
+
 P1 was reconciled against all usable local report-output evidence on 2026-07-15. Its portable baseline is:
 
 - 90 catalogue entries: 85 active and 5 archived placeholders.
@@ -85,6 +89,8 @@ Dynamic report members such as dates, categories, sources, sections, meal period
 See `p1_main/README.md` for the section ledger and transfer notes. `scripts/validate_workspace_data.py` locks this baseline so a later build cannot silently reintroduce legacy OCR `partial` states.
 
 ## P2 Batch-One Baseline
+
+The counts below describe the structural transcription milestone recorded at that time. They do not override the current private evidence boundary and must not be presented as current schema-only image coverage.
 
 The first P2 evidence batch was reconciled on 2026-07-15:
 

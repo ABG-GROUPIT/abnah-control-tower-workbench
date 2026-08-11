@@ -38,10 +38,60 @@ test("builds the editable ABNAH workspace for GitHub Pages", async () => {
   assert.match(bundle, /Data quality/);
   assert.match(bundle, /Architecture/);
   assert.match(bundle, /From source reports to daily decisions/);
-  assert.match(bundle, /10 Query Tables/);
+  assert.match(bundle, /10-query governed lean foundation/);
   assert.match(bundle, /Period measures flow\. Snapshot measures state\./);
   assert.match(bundle, /RPT_V2_R08B_7_Day_Inventory_Shortage_Action_Table/);
   assert.match(bundle, /QT_02_Numerical_Risk_Center\.as_of_date/);
+  assert.match(bundle, /See more details: build/);
+  assert.match(bundle, /DB_02_ABNAH_SCM_Control_Tower_Final/);
+  assert.match(bundle, /NEW_RPT_FC04R_PVT_Daily_Net_Sales_Forecast_7D/);
+  assert.match(bundle, /AF_Flow_Theoretical_Gross_Margin_Pct/);
+  assert.match(bundle, /Add > Aggregate Formula/);
+  assert.match(bundle, /Ask Zia is governed by two acceptance gates/);
+  assert.match(bundle, /ZIA_01_Strict_Overdue_PO/);
+  assert.match(bundle, /ZIA_01A_Strict_Overdue_Vendor_Summary/);
+  assert.match(bundle, /PRIVATE_CLIENT_BINDING/);
+  assert.match(bundle, /LIVE_REMEDIATION_HELPER_CONVERSATIONALLY_BLOCKED/);
+  assert.match(bundle, /56,175\.0572 \/ 10 POs \/ 29 days/);
+  assert.match(bundle, /Business-readable SQL purpose/);
+  assert.match(bundle, /ZLD009, corrected ZLD037 and the governed aggregate formula remain read back/);
+  assert.match(bundle, /aggregate formula is verified/);
+  assert.match(bundle, /standard descriptions remain uncertified/);
+  assert.match(bundle, /Do not repeat the WF08 or WF04 smoke without a new causal semantic or presentation change/);
+  assert.match(bundle, /7 PASS \/ 9 PARTIAL \/ 6 FAIL/);
+  assert.match(bundle, /7 PASS \/ 9 PARTIAL \/ 50 FAIL/);
+  assert.match(bundle, /67 ordered actions/);
+  assert.match(bundle, /66 tests across 11 workflows/);
+  assert.match(bundle, /targeted smokes are complete/);
+  assert.match(bundle, /WAT09 plus WAT11 functionally passed without schema-v1 receipts/);
+  assert.match(bundle, /FUNCTIONAL_SMOKE_PASS_NO_SCHEMA_V1_RECEIPT/);
+  assert.match(bundle, /SCOPED READBACK/);
+  assert.doesNotMatch(bundle, /LOCAL PLAN ONLY|66 NOT_RUN/);
+  assert.match(bundle, /expected_delivery_date = 27 Jan/);
+  assert.match(bundle, /WF08 live field/);
+  assert.match(bundle, /zero workflows are presentation-ready/i);
+  assert.match(bundle, /RPT_V2_P08_Delivery_Breach_Action_Top10/);
+  assert.doesNotMatch(bundle, /every conversational workflow NOT_RUN/);
+  assert.match(bundle, /Weather sits beside the unchanged operational core/);
+  assert.match(bundle, /RPT_WX04_Menu_Demand_Weather_Matrix_DEMO/);
+  assert.match(bundle, /QT_09_Latest_Weather_Outlook\.forecast_as_of_date/);
+  assert.match(bundle, /DataBridge Update\/Add/);
+  assert.match(bundle, /Portable knowledge, guarded execution/);
+  assert.match(bundle, /public website and repository project pack contain no private discovery images/);
+  assert.match(bundle, /historical private audit reviewed 182 images/i);
+  assert.match(bundle, /retains 95 strict schema-only images/);
+  assert.match(bundle, /excludes 87 value-bearing images/);
+  assert.match(bundle, /cover 64 of 94 historically evidenced report groups/);
+  assert.match(bundle, /leaving 30 image-pending/);
+  assert.match(bundle, /27 have separately verified text schemas covering 530 fields/);
+  assert.match(bundle, /3 remain text-pending/);
+  assert.match(bundle, /Text-schema cards never count as screenshots/);
+  assert.match(bundle, /schema-captured/);
+  assert.match(bundle, /20 selected report schemas/);
+  assert.match(bundle, /17 structurally captured, 1 partial and 2 pending/);
+  assert.match(bundle, /Open green Discovery/);
+  assert.match(bundle, /Inject at runtime; never package/);
+  assert.match(bundle, /TEST before promotion/);
   assert.match(bundle, /Library/);
   assert.match(bundle, /Budget DSR Report/);
   assert.match(bundle, /Blank table structure/);
@@ -49,6 +99,58 @@ test("builds the editable ABNAH workspace for GitHub Pages", async () => {
     bundle,
     /codex-preview|Your site is taking shape|react-loading-skeleton/i,
   );
+});
+
+test("keeps architecture extension counts and Zia contracts explicit", async () => {
+  const [component, extensionData, leanData, filterGuides, prChecks] = await Promise.all([
+    readFile(new URL("../app/components/ArchitectureGraphWorkspace.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/lib/architecture-extension-data.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/lib/lean-architecture-data.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/lib/zoho-build-guides.ts", import.meta.url), "utf8"),
+    readFile(new URL("../.github/workflows/pr-checks.yml", import.meta.url), "utf8"),
+  ]);
+
+  assert.match(component, /<b>10<\/b><small>extension queries<\/small>/);
+  assert.match(leanData, /governedLeanFoundationQueryTables:\s*10/);
+  assert.match(leanData, /broaderHistoricalLiveModelTables:\s*38/);
+  assert.match(extensionData, /actionCount:\s*67/);
+  assert.match(extensionData, /BASE_67_READ_BACK_FIVE_CAUSAL_HELPERS_TARGETED_SMOKES_COMPLETE_FUNCTIONAL_ONLY_GATE_UNCHANGED_FULL_RERUNS_HELD/);
+  assert.match(extensionData, /ZIA_QT_06_Provisional_Expiry_Only/);
+  assert.match(extensionData, /ZIA_QT_07_Current_Red_Inventory/);
+  assert.match(extensionData, /ZIA_QT_08_Positive_Open_Vendor_Material/);
+  assert.match(extensionData, /ZIA_QT_09_PO_Delivery_UOM_Safe/);
+  assert.match(extensionData, /ZIA_QT_10_PO_Delivery_Value_By_PO/);
+  assert.match(extensionData, /ordered_quantity as non-additive text beside source_uom/);
+  assert.match(extensionData, /replacement detail helper exposes ordered_quantity as non-additive text beside source_uom/);
+  assert.match(extensionData, /indexed WAT_08_01 retry still routed to RAW_Enterprise_Purchase_Order and generated a cross-UOM grand total and Key Highlights/);
+  assert.match(extensionData, /LIVE_EDITED_IN_PLACE_V3_FUNCTIONAL_SMOKE_PASS_NO_SCHEMA_V1_RECEIPT/);
+  assert.match(extensionData, /vendor_distinct_po_count_safe/);
+  assert.match(extensionData, /vendor_open_liability_pre_tax_safe/);
+  assert.match(extensionData, /deterministic minimum-item anchor row/);
+  assert.match(extensionData, /WAT06 routed to ZIA_QT_06 and returned the exact three UOM-bound rows/);
+  assert.match(extensionData, /WAT07 routed to ZIA_QT_06 and preserved the continuous inclusive interval/);
+  assert.match(extensionData, /WAT09 routed to ZIA_QT_07, returned all six governed rows with UOM-safe quantities/);
+  assert.match(extensionData, /FUNCTIONAL_SMOKE_PASS_NO_SCHEMA_V1_RECEIPT: WAT11 routed to QT08 v3/);
+  assert.match(extensionData, /all 19 vendor-material rows across eight vendors/);
+  assert.match(extensionData, /full reruns remain held/i);
+  assert.match(extensionData, /Do not repeat the WF08 or WF04 smoke without a new causal semantic or presentation change/i);
+  assert.match(extensionData, /testCount:\s*22/);
+  assert.match(extensionData, /testCount:\s*66/);
+  assert.match(extensionData, /currentLedger:\s*"7 PASS \/ 9 PARTIAL \/ 6 FAIL"/);
+  assert.match(extensionData, /currentLedger:\s*"7 PASS \/ 9 PARTIAL \/ 50 FAIL"/);
+  assert.match(extensionData, /presentationReadyWorkflowCount:\s*0/);
+  assert.equal((extensionData.match(/presentationStatus:\s*"BLOCKED/g) ?? []).length, 11);
+  assert.doesNotMatch(extensionData, /presentationStatus:\s*"SAFE/);
+  assert.match(extensionData, /dateContract:\s*"expected_delivery_date = 27 Jan/);
+  assert.doesNotMatch(extensionData, /dateContract:\s*"Expected Delivery Date = 27 Jan/);
+  assert.match(filterGuides, /"Menu Item":\s*\{[\s\S]*?tabs:\s*"01 Executive Control · 03 Sales & Menu Economics"/);
+  assert.match(filterGuides, /"Menu Category":\s*\{[\s\S]*?tabs:\s*"01 Executive Control · 03 Sales & Menu Economics"/);
+  assert.match(filterGuides, /procurement:\s*\{[\s\S]*?Row 1 · Reporting Period · Snapshot As Of · Outlet"/);
+  assert.doesNotMatch(filterGuides, /procurement:\s*\{[\s\S]*?Row 1 · Reporting Period · Snapshot As Of · Outlet · Menu Item · Menu Category/);
+  assert.match(prChecks, /pull_request:/);
+  assert.match(prChecks, /contents:\s*read/);
+  assert.match(prChecks, /npm test/);
+  assert.doesNotMatch(prChecks, /pages:\s*write|deploy-pages|workflow_dispatch/);
 });
 
 test("publishes the exact ten-query SQL handover", async () => {
@@ -232,7 +334,41 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   const misc = workspace.reports.filter((report) => report.page === "p1_main" && report.section === "06_misc");
 
   assert.equal(workspace.contractVersion, "1.0.0");
+  assert.equal(
+    workspace.schema_status_semantics,
+    "Structural transcription state; not current strict schema-only image coverage.",
+  );
   assert.equal(workspace.reports.length, atlas.summary.reports);
+  assert.equal(atlas.summary.historical_p1_ocr_index_items, 161);
+  assert.equal("evidence_items" in atlas.summary, false);
+  const discoveryBoundary = atlas.discovery_evidence_boundary;
+  assert.equal(discoveryBoundary.catalog_reports, 318);
+  assert.equal(discoveryBoundary.historical_image_audit_universe, 182);
+  assert.equal(discoveryBoundary.strict_schema_only_images_retained, 95);
+  assert.equal(discoveryBoundary.operational_value_images_excluded, 87);
+  assert.equal(discoveryBoundary.schema_only_image_report_groups_covered, 64);
+  assert.equal(discoveryBoundary.report_groups_pending_schema_only_image, 30);
+  assert.equal(discoveryBoundary.pending_image_groups_with_verified_text_schema, 27);
+  assert.equal(discoveryBoundary.pending_image_groups_still_text_pending, 3);
+  assert.equal(discoveryBoundary.verified_text_schema_fields, 530);
+  assert.equal(discoveryBoundary.text_cards_count_as_screenshots, false);
+  assert.equal(discoveryBoundary.public_website_screenshot_assets, 0);
+  assert.equal(
+    discoveryBoundary.schema_only_image_report_groups_covered
+      + discoveryBoundary.report_groups_pending_schema_only_image,
+    discoveryBoundary.historically_evidenced_report_groups,
+  );
+  assert.equal(
+    discoveryBoundary.strict_schema_only_images_retained
+      + discoveryBoundary.operational_value_images_excluded,
+    discoveryBoundary.historical_image_audit_universe,
+  );
+  assert.equal(
+    discoveryBoundary.pending_image_groups_with_verified_text_schema
+      + discoveryBoundary.pending_image_groups_still_text_pending,
+    discoveryBoundary.report_groups_pending_schema_only_image,
+  );
+  assert.match(discoveryBoundary.release_gate, /^BLOCKED_/);
   assert.equal(misc.filter((report) => report.schemaStatus === "captured").length, 17);
   assert.equal(misc.filter((report) => report.schemaStatus === "unavailable" && !report.isArchived).length, 8);
   assert.equal(misc.filter((report) => report.isArchived).length, 2);
@@ -249,8 +385,8 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   assert.equal(presentation.pages.length, 4);
   assert.equal(presentation.stories.length, 76);
   assert.equal(presentation.stories.filter((story) => story.kind === "kpi").length, 33);
-  assert.equal(presentation.stories.filter((story) => story.kind === "chart").length, 23);
-  assert.equal(presentation.stories.filter((story) => story.kind === "table").length, 20);
+  assert.equal(presentation.stories.filter((story) => story.kind === "chart").length, 22);
+  assert.equal(presentation.stories.filter((story) => story.kind === "table").length, 21);
   assert.equal(model.layers.length, 5);
   assert.equal(model.tables.length, 38);
   assert.deepEqual(model.tables.map((table) => table.buildOrder), Array.from({ length: 38 }, (_, index) => index + 1));
@@ -306,12 +442,12 @@ test("ships screenshot-free workspace and control-tower contracts", async () => 
   assert.equal(lineage.kpis.filter((kpi) => kpi.approvalStatus === "partial").length, 1);
   assert.equal(lineage.nodes.length, 0);
   assert.equal(lineage.edges.length, 0);
-  assert.equal(projectPack.summary.files, 779);
+  assert.equal(projectPack.summary.files, 781);
   assert.equal(projectPack.summary.csvFiles, 349);
   assert.equal(projectPack.summary.sqlFiles, 133);
   assert.equal(projectPack.summary.guideFiles, 99);
   assert.equal(projectPack.categories.length, 10);
-  assert.equal(new Set(projectPack.files.map((file) => file.path)).size, 779);
+  assert.equal(new Set(projectPack.files.map((file) => file.path)).size, 781);
   assert.ok(projectPack.files.filter((file) => file.featuredOrder !== null).length >= 6);
   assert.ok(projectPack.files.every((file) => /^[a-f0-9]{64}$/.test(file.sha256)));
   assert.doesNotMatch(projectPackText, /\.png\b|\.jpe?g\b|AppData\\Local\\Temp|Downloads\\/i);
